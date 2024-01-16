@@ -17,7 +17,19 @@
     --color-orange-secondary: 13deg, 81%, 76%;
     --color-red-primary: 3deg, 71%, 52%;
   }
+  * {
+    min-width: 0;
+  }
   html {
     font-family: var(--font-family);
+  }
+  body {
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
   }
 }
