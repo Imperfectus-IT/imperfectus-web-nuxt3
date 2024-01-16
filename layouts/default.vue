@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import TKButton from "~/components/talkual-ui/primevue/TKButton/TKButton.vue";
 </script>
 
 <template>
-  <div>
-    <p>Some default layout content shared across all pages</p>
+  <div class="flex justify-center">
+    <Button label="Submit" />
+    <br/>
+    <TKButton label="Suscripción" />
     <slot />
   </div>
 </template>
