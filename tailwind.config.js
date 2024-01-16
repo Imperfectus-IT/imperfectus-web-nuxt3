@@ -11,20 +11,20 @@ export default {
   theme: {
     colors: {
       beige: {
-        primary: 'hsl(var(--color-beige-primary) / <alpha-value>)',
+        primary: '#FFFAE8',
       },
       current: 'currentColor',
       green: {
-        primary: 'hsl(var(--color-green-primary) / <alpha-value>)',
-        secondary: 'hsl(var(--color-green-secondary) / <alpha-value>)',
-        tertiary: 'hsl(var(--color-green-tertiary) / <alpha-value>)',
+        primary: '#D9EF52',
+        secondary: '#007D08',
+        tertiary: '#002625',
       },
       orange: {
-        primary: 'hsl(var(--color-orange-primary) / <alpha-value>)',
-        secondary: 'hsl(var(--color-orange-secondary) / <alpha-value>)',
+        primary: '#F8CA8E',
+        secondary: '#F3A58F',
       },
       red: {
-        primary: 'hsl(var(--color-red-primary) / <alpha-value>)',
+        primary: '#DC362E',
       },
       transparent: 'transparent',
     },
