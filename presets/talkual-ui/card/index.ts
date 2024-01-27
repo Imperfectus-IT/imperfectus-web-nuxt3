@@ -2,8 +2,7 @@ export default {
     root: {
         class: [
             //Shape
-            'rounded-md',
-            'shadow-md',
+            'border-1 border-beige-primary p-5',
 
             //Color
             'bg-surface-0 dark:bg-surface-900',

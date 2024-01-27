@@ -1,24 +1,33 @@
 
 <template>
-    <div class="card flex items-center justify-center">
-        <Card style="width: 25em">
-            <template #header>
-                <img alt="user header" src="https://primefaces.org/cdn/primevue/images/usercard.png" />
-            </template>
-            <template #title> Advanced Card </template>
-            <template #subtitle> Card subtitle </template>
-            <template #content>
-                <p class="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
-                    numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis
-                    esse, cupiditate neque
-                    quas!
-                </p>
-            </template>
-            <template #footer>
-                <Button icon="pi pi-check" label="Save" />
-                <Button icon="pi pi-times" label="Cancel" severity="secondary" style="margin-left: 0.5em" />
-            </template>
-        </Card>
-    </div>
+  <div class="flex items-center justify-center">
+    <Card>
+      <template #header>
+        <img
+          alt="user header"
+          src="https://res.cloudinary.com/talkual/image/upload/v1686833239/Caixa_S_1_ad68acddfa.webp"
+        >
+      </template>
+      <template #title>
+        Caja pequeña
+      </template>
+      <template #content>
+        <p>
+          Entre 6-7 kg de fruta y/o verdura de temporada. Ideal para 1-2 personas.
+        </p>
+      </template>
+      <template #footer>
+        <Button
+          icon="pi pi-check"
+          label="Save"
+        />
+        <Button
+          icon="pi pi-times"
+          label="Cancel"
+          severity="secondary"
+          style="margin-left: 0.5em"
+        />
+      </template>
+    </Card>
+  </div>
 </template>
