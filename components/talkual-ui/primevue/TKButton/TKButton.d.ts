@@ -10,7 +10,7 @@ export interface TKButtonProps extends /* @vue-ignore */ ButtonHTMLAttributes {
     loading?: boolean | undefined;
     loadingIcon?: string | undefined;
     link?: boolean | undefined;
-    roleType?: 'default' | 'primary' | 'secundary' | 'tertiary' | string | undefined;
+    severity?: 'default' | 'primary' | 'secondary' | 'tertiary' | string | undefined;
     text?: boolean | undefined;
     size?: 'small' | 'large' | undefined;
     plain?: boolean | undefined;

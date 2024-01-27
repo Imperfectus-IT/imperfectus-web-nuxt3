@@ -4,11 +4,9 @@ import { TKButtonProps, TKButtonSlots } from "./TKButton";
 import TKButtonStyle from "./TKButtonStyle";
 
 const props = withDefaults(defineProps<TKButtonProps>(), {
-  roleType: 'default',
   iconPos: 'left',
   loading: false,
   link: false,
-  raised: false,
   rounded: false,
   text: false,
   outlined: false,
@@ -18,7 +16,7 @@ const slots = defineSlots<TKButtonSlots>()
 </script>
 
 <template>
-  <Button v-bind="props" :pt="TKButtonStyle[props.roleType]">
+  <Button v-bind="props" :pt="TKButtonStyle">
     <slot v-if="slots.default" name="default" />
     <template v-if="slots.icon" v-slot:icon="scope">
       <slot name="icon" v-bind="scope" />

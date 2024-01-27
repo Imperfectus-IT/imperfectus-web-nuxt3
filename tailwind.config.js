@@ -6,6 +6,7 @@ export default {
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
+    "presets/**/*.{js,vue,ts}",
     "./app.vue",
     "./error.vue",
   ],
@@ -15,6 +16,7 @@ export default {
         primary: "#FFFAE8",
       },
       current: "currentColor",
+      white: '#ffffff',
       green: {
         primary: "#D9EF52",
         secondary: "#007D08",

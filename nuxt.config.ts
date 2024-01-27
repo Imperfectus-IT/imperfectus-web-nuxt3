@@ -1,22 +1,39 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import * as path from 'path';
 export default defineNuxtConfig({
+    app: {
+        head: {
+            link: [{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css?display=swap' }]
+        }
+    },
+    components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+    ],
+    typescript: {
+        typeCheck: false
+    },
     devtools: {enabled: true},
     modules: [
         '@nuxtjs/tailwindcss',
-        'nuxt-primevue'
+        'nuxt-primevue',
+        'nuxt-svgo'
     ],
     primevue: {
         options: { unstyled: true },
-        importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
+        importPT: { as: 'TalkualUI', from: path.resolve(__dirname, './presets/talkual-ui/') },
         components: {
             include: [
                 'Button',
-                'InputText',
+                'Carousel',
+                'Toolbar',
             ]
         }
     },
     tailwindcss: {
-        cssPath: '~/assets/css/tailwind.scss',
+        cssPath: '~/assets/scss/tailwind.scss',
         configPath: 'tailwind.config',
     },
 })
