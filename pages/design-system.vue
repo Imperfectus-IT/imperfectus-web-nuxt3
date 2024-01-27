@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <div class="container flex flex-col gap-3">
+  <div class="container flex flex-col gap-4">
     <ButtonDemo />
     <ToolbarDemo />
-    <Carousel />
+    <CarouselDemo />
+    <CardDemo />
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

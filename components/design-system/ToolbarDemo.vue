@@ -6,39 +6,24 @@
         <p>Envío GRATIS a toda la península</p>
       </template>
     </Toolbar>
-    
+
     <Toolbar class="!p-0 bg-transparent border-none">
       <template #start>
-        <Button
-          icon="mdi mdi-menu"
-          text
-          raised
-          aria-label="Menu"
-          :pt="{ icon: 'text-xl' }"
-        />
+        <Button icon="mdi mdi-menu" text raised aria-label="Menu" :pt="{ icon: 'text-xl' }" />
       </template>
 
       <template #center>
         <NuxtLink to="/">
-          <TalkualLogoDark
-            class="w-[156] h-7"
-            :font-controlled="false"
-          />
+          <TalkualLogoDark class="w-[156] h-7" :font-controlled="false" />
         </NuxtLink>
       </template>
 
       <template #end>
-        <Button
-          icon="mdi mdi-account"
-          text
-          raised
-          aria-label="Account"
-          :pt="{ icon: 'text-xl' }"
-        />
+        <Button icon="mdi mdi-account" text raised aria-label="Account" :pt="{ icon: 'text-xl' }" />
       </template>
     </Toolbar>
   </div>
 </template>
 <script setup lang="ts">
-import TalkualLogoDark from '~/assets/images/logos/talkual-logo-dark.svg'
+import TalkualLogoDark from '~/assets/images/svg/talkual-logo-dark.svg'
 </script>

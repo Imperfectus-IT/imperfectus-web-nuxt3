@@ -7,18 +7,19 @@ export default defineNuxtConfig({
         }
     },
     components: [
-    {
-      path: '~/components',
-      pathPrefix: false,
-    },
+        {
+            path: '~/components',
+            pathPrefix: false,
+        },
     ],
     typescript: {
         typeCheck: false
     },
-    devtools: {enabled: true},
+    devtools: { enabled: true },
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-primevue',
+        '@nuxt/image',
         'nuxt-svgo'
     ],
     primevue: {
@@ -27,7 +28,9 @@ export default defineNuxtConfig({
         components: {
             include: [
                 'Button',
+                'Card',
                 'Carousel',
+                'Image',
                 'Toolbar',
             ]
         }

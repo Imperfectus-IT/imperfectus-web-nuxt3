@@ -29,7 +29,7 @@ export default {
             'flex justify-center items-center self-center',
 
             // Sizing & Overflow
-            'overflow-hidden w-8 h-8',
+            'overflow-hidden w-[30px] h-[25px]',
 
             // Spacing
             'mx-2',
@@ -38,10 +38,10 @@ export default {
             'rounded-full',
 
             // Border & Background
-            'border-0 bg-transparent',
+            'border-0 bg-green-tertiary',
 
             // Color
-            'text-surface-600',
+            'text-green-primary',
 
             // Transitions
             'transition duration-200 ease-in-out'
@@ -53,7 +53,7 @@ export default {
             'flex justify-center items-center self-center',
 
             // Sizing & Overflow
-            'overflow-hidden w-8 h-8',
+            'overflow-hidden w-[30px] h-[25px]',
 
             // Spacing
             'mx-2',
@@ -62,10 +62,10 @@ export default {
             'rounded-full',
 
             // Border & Background
-            'border-0 bg-transparent',
+            'border-0 bg-green-tertiary',
 
             // Color
-            'text-surface-600',
+            'text-green-primary',
 
             // Transitions
             'transition duration-200 ease-in-out'
@@ -92,17 +92,16 @@ export default {
     item: ({ props }) => ({
         class: [
             // Flexbox
-            'flex shrink-0 grow',
+            'flex shrink-0 grow gap-3',
 
             // Width
-            {
-                'w-1/3': props.orientation !== 'vertical',
-                'w-full': props.orientation == 'vertical'
-            }
+            'w-full h-full',
         ]
     }),
     indicators: {
         class: [
+            //Position
+            'absolute inset-x-0 bottom-12',
             // Flexbox & Alignment
             'flex flex-row justify-center flex-wrap'
         ]
@@ -116,18 +115,18 @@ export default {
     indicatorbutton: ({ context }) => ({
         class: [
             // Sizing & Shape
-            'w-8 h-2 rounded-0',
+            'w-2.5 h-2.5 rounded-full',
 
             // Transitions
             'transition duration-200',
 
             // Focus Styles
-            'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-primary-400/50 dark:focus:ring-primary-300/50',
+            'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-green-primary ',
 
             // Color & Background
             {
-                'bg-surface-200 hover:bg-surface-300 dark:bg-surface-700 dark:hover:bg-surface-600': !context.highlighted,
-                'bg-primary-500 hover:bg-primary-600': context.highlighted
+                'bg-white hover:white': !context.highlighted,
+                'bg-green-primary hover:bg-green-primary': context.highlighted
             }
         ]
     })

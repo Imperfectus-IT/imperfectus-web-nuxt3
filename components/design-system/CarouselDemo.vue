@@ -1,71 +1,29 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-
 const products = computed(() => [
   {
     id: 1,
-    image: '1-zanahoria.webp',
+    image: '/images/home/1-zanahoria.webp',
     name: 'Zanahoria',
   },
   {
     id: 2,
-    image: '2-berenjena.webp',
+    image: '/images/home/2-berenjena.webp',
     name: 'Berenjena',
   },
   {
     id: 3,
-    image: '3-tomate.webp',
+    image: '/images/home/3-tomate.webp',
     name: 'Tomate',
   },
   {
     id: 4,
-    image: '4-brenjena.webp',
-    name: 'Brenjena',
+    image: '/images/home/4-berenjena.webp',
+    name: 'Berenjena',
   }
 ]);
-const productItems = ref([
-  {
-    id: 1,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508919/small_Pruna_6ca01d4dda.png',
-    name: 'Ciruela'
-  },
-  {
-    id: 2,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508856/small_maduixes_edb0086bbe.png',
-    name: 'Fresas'
-  },
-  {
-    id: 3,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508919/small_Pruna_6ca01d4dda.png',
-    name: 'Ciruela'
-  },
-  {
-    id: 4,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508856/small_maduixes_edb0086bbe.png',
-    name: 'Fresas'
-  },
-  {
-    id: 5,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508919/small_Pruna_6ca01d4dda.png',
-    name: 'Ciruela'
-  },
-  {
-    id: 6,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508856/small_maduixes_edb0086bbe.png',
-    name: 'Fresas'
-  },
-  {
-    id: 7,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508919/small_Pruna_6ca01d4dda.png',
-    name: 'Ciruela'
-  },
-  {
-    id: 8,
-    image: 'https://res.cloudinary.com/talkual/image/upload/f_auto/v1668508856/small_maduixes_edb0086bbe.png',
-    name: 'Fresas'
-  },
-]);
+
 const responsiveOptions = ref([
   {
     breakpoint: '1536px',
@@ -91,35 +49,18 @@ const responsiveOptions = ref([
 </script>
 
 <template>
-  <Carousel
-    :value="productItems"
-    :num-visible="3"
-    :num-scroll="1"
-    :responsive-options="responsiveOptions"
-  >
-    <template #item="product">
-      <img
-        :src="product.data.image"
-        :alt="product.data.name"
-        width="160"
-      >
-    </template>
-  </Carousel>
+  <div class="mb-6 min-h-32">
+    <Carousel :value="products" :num-visible="1" :num-scroll="1" :showNavigators="false"
+      :responsive-options="responsiveOptions">
+      <template #item="slotProps">
+        <NuxtImg :src="slotProps.data.image" :alt="slotProps.data.name" />
+      </template>
+    </Carousel>
+    <Carousel :value="products" :num-visible="2" :num-scroll="1" :showIndicators="false"
+      :responsive-options="responsiveOptions">
+      <template #item="slotProps">
+        <NuxtImg :src="slotProps.data.image" :alt="slotProps.data.name" class="w-[200px] h-[200px]" />
+      </template>
+    </Carousel>
+  </div>
 </template>
-
-<!--<template>
-  <Carousel
-    :value="products"
-    :num-visible="3"
-    :num-scroll="1"
-    :responsive-options="responsiveOptions"
-  >
-    <template #item="slotProps">
-      <img
-        :src="'~/assets/images/products/' + slotProps.data.image"
-        :alt="slotProps.data.name"
-        class="w-full border-round"
-      >
-    </template>
-  </Carousel>
-</template> -->
