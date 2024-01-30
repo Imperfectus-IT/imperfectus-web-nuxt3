@@ -1,5 +1,5 @@
 export default {
-    root: ({ props, context }) => ({
+    root: ({props, context}) => ({
         class: [
             'relative',
 
@@ -19,10 +19,10 @@ export default {
 
             // Shapes
             'shadow-none drop-shadow-none border border-green-tertiary ring-0 focus:ring-0 focus:visible:ring-0',
-            { 'rounded-lg': !props.rounded, 'rounded-full': props.rounded },
+            {'rounded-lg': !props.rounded, 'rounded-full': props.rounded},
 
             // Link Button
-            { 'bg-transparent border-none': props.link },
+            {'bg-transparent border-none': props.link},
 
             // Primary Button
             {
@@ -34,10 +34,10 @@ export default {
             },
 
             // Outlined Button
-            { 'hover:bg-green-tertiary hover:text-white': props.outlined && !props.plain },
+            {'hover:bg-green-tertiary hover:text-white': props.outlined && !props.plain},
 
             // Raised Button
-            { 'border-none': props.raised },
+            {'border-none': props.raised},
 
             // Success Button
             {
@@ -49,23 +49,23 @@ export default {
             },
 
             // Disabled
-            { 'opacity-60 pointer-events-none cursor-default': context.disabled },
+            {'opacity-60 pointer-events-none cursor-default': context.disabled},
         ]
     }),
-    label: ({ props }) => ({
+    label: ({props}) => ({
         class: [
             'duration-200',
             'text-base font-light',
             {
                 'hover:underline': props.link
             },
-            { 'flex-1': props.label !== null, 'invisible w-0': props.label == null }
+            {'flex-1': props.label !== null, 'invisible w-0': props.label == null}
         ]
     }),
-    icon: ({ props }) => ({
+    icon: ({props}) => ({
         class: [
             'mx-0',
-            
+
             {
                 'mr-2': props.iconPos == 'left' && props.label != null,
                 'ml-2 order-1': props.iconPos == 'right' && props.label != null,
@@ -74,7 +74,7 @@ export default {
             }
         ]
     }),
-    loadingicon: ({ props }) => ({
+    loadingicon: ({props}) => ({
         class: [
             'h-4 w-4',
             'mx-0',
@@ -87,7 +87,7 @@ export default {
             'animate-spin'
         ]
     }),
-    badge: ({ props }) => ({
-        class: [{ 'ml-2 w-4 h-4 leading-none flex items-center justify-center': props.badge }]
+    badge: ({props}) => ({
+        class: [{'ml-2 w-4 h-4 leading-none flex items-center justify-center': props.badge}]
     })
 };

@@ -1,36 +1,31 @@
 export default {
     root: {
         class: [
-            //Shape
-            'border-1 border-beige-primary p-5',
-
-            //Color
-            'bg-surface-0 dark:bg-surface-900',
-            'text-surface-700 dark:text-surface-0'
+            'border-0 bg-beige-primary shadow-sm rounded-lg'
         ]
     },
-    body: {
-        class: 'p-5'
+    header: {
+        class: 'rounded-t-lg rounded-b-lg'
     },
     title: {
-        class: 'text-2xl font-bold mb-2'
+        class: 'text-lg p-2'
     },
     subtitle: {
         class: [
             //Font
-            'font-normal',
+            'font-normal text-lg',
 
             //Spacing
             'mb-2',
 
             //Color
-            'text-surface-600 dark:text-surface-0/60'
+            'text-green-tertiary'
         ]
     },
     content: {
-        class: 'py-5' // Vertical padding.
+        class: 'text-sm px-2 py-3' // Vertical padding.
     },
     footer: {
-        class: 'pt-5' // Top padding.
+        class: 'w-full' // Top padding.
     }
 };

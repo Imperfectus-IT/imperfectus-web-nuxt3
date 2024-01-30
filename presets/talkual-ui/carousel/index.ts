@@ -11,7 +11,7 @@ export default {
             'flex flex-col overflow-auto'
         ]
     },
-    container: ({ props }) => ({
+    container: ({props}) => ({
         class: [
             // Flexbox
             'flex',
@@ -77,7 +77,7 @@ export default {
             'overflow-hidden w-full'
         ]
     },
-    itemscontainer: ({ props }) => ({
+    itemscontainer: ({props}) => ({
         class: [
             // Flexbox
             'flex',
@@ -89,7 +89,7 @@ export default {
             }
         ]
     }),
-    item: ({ props }) => ({
+    item: ({props}) => ({
         class: [
             // Flexbox
             'flex shrink-0 grow gap-3',
@@ -112,7 +112,7 @@ export default {
             'mr-2 mb-2'
         ]
     },
-    indicatorbutton: ({ context }) => ({
+    indicatorbutton: ({context}) => ({
         class: [
             // Sizing & Shape
             'w-2.5 h-2.5 rounded-full',
