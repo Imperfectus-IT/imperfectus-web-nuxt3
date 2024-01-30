@@ -1078,7 +1078,7 @@ export default {
   'orderStepDate.message': 'Quin dia vols rebre el teu primer enviament?',
   'orderStepDate.available': 'Disponible',
   'orderStepDate.selected': 'Seleccionat',
-  'orderStepDate.deliveryNotes': "Només per a subscripcions: A partir d'ara si la teva subscripció és setmanal, la caixa t'arribarà cada @@nextDeliveryDay@@, per contra, si la teva subscripció és cada dues setmanes, t'arribarà un @@nextDeliveryDay@@ sí i un altre no. Recorda que el pagament es cobrarà el diumenge anterior.",
+  'orderStepDate.deliveryNotes': "Només per a subscripcions: A partir d'ara si la teva subscripció és setmanal, la caixa t'arribarà cada {nextDeliveryDate}, per contra, si la teva subscripció és cada dues setmanes, t'arribarà un {nextDeliveryDay} sí i un altre no. Recorda que el pagament es cobrarà el diumenge anterior.",
   'orderStepDate.nextDeliveryDay.tuesday': 'dimarts',
   'orderStepDate.nextDeliveryDay.wednesday': 'dimecres',
   'orderStepDate.nextDeliveryDay.thursday': 'dijous',
@@ -1090,8 +1090,8 @@ export default {
   'orderStepDate.timeSlot': 'Franja horària',
   'orderStepDate.whenNextDeliveryMessage': '¿Quan vols les pròximes entregues?',
   'orderStepDate.next': 'Continuar',
-  'orderStepDate.holidays.popup.title': 'IMPORTANT! 📢',
-  'orderStepDate.holidays.popup.message': "Aquesta setmana amb motiu del festiu a Catalunya del dia 10 d'abril, els lliuraments es lliuraran un dia més tard. Per qualsevol dubte, pots contactar amb nosaltres a info@talkualfoods.com",
+  'orderStepDate.holidays.popup.title': 'IMPORTANT!',
+  'orderStepDate.holidays.popup.message': "Aquesta setmana amb motiu del festiu a Catalunya del dia 10 d'abril, els lliuraments es lliuraran un dia més tard. Per qualsevol dubte, pots contactar amb nosaltres a ", //sigue email info@talkualfoods.com
   'orderStepDate.messageDeliveryCherries': 'Selecciona un dia de lliurament per la caixa de cireres',
 
   // OrderStepPayment
@@ -1154,6 +1154,16 @@ export default {
   'orderItemExclusions.done': 'Fet!',
 
   // login
+
+  "pages": {
+    "auth": {
+      "login": {
+        "title": 'Iniciar sessió',
+        "description": 'Inicia sessió per continuar',
+      },
+    }
+  },
+
   'pages.auth.login.title': 'Iniciar sessió',
   'pages.auth.login.description': 'Inicia sessió per continuar',
   'pages.auth.recovery.title': 'Recuperar contrasenya',
@@ -1167,7 +1177,7 @@ export default {
   'companies.lgd.description.3': 'perquè col·laborem amb un Centre Especial d\'Ocupació en la producció de les nostres caixes. ',
   'companies.lgd.ask': 'Pregunta\'ns!',
   'companies.whoItWorks': 'Com funciona?',
-  'companies.wantBeHealthy.1': 'Fruites imperfectes ',
+  'companies.wantBeHealthy.1': 'Fruites imperfectes ', 
     // ++ break tag ++
   'companies.wantBeHealthy.2': 'per a la teva empresa',
   'companies.reasons.proximity': 'Caixes de fruita de temporada i proximitat',
@@ -1586,8 +1596,7 @@ export default {
   'gdpr-modal.personal-data.label': 'Accepto que TALKUAL emmagatzemi i processi les meves dades personals',
   'gdpr-modal.communications-required': "Per continuar has d'acceptar els termes i condicions del servei",
   'gdpr-modal.personal-data-required': "Per continuar has d'acceptar els termes i condicions del servei",
-  'gdpr-modal.text.1': 'Pots donar-te de baixa d\'aquestes comunicacions en qualsevol moment escrivint a ',
-  'gdpr-modal.text.2.bold': 'info@talkualfoods.com .',
+  'gdpr-modal.text.1': 'Pots donar-te de baixa d\'aquestes comunicacions en qualsevol moment escrivint a ', //sigue email info@talkualfoods.com en bold
   'gdpr-modal.text.3': 'Per a més informació sobre el tractament de dades, consulta la nostra',
   'gdpr-modal.personal-data.submit': 'Em subscric!',
   'gdpr-modal.privacy-policy': 'Política de privacitat',

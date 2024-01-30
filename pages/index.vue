@@ -1,6 +1,7 @@
 <template>
   <div>
-    {{ $t('common.languages.spanish') }}
-    <Toolbar />
+    <div>
+      <Toolbar />
+    </div>
   </div>
 </template>

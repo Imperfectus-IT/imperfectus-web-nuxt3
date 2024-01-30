@@ -1079,7 +1079,7 @@ export default {
   'orderStepDate.message': '¿Qué día quieres recibir tu primer envío?',
   'orderStepDate.available': 'Disponible',
   'orderStepDate.selected': 'Seleccionado',
-  'orderStepDate.deliveryNotes': 'Sólo para suscripciones: A partir de ahora si tu suscripción es semanal, la caja te llegará cada @@nextDeliveryDay@@, en cambio, si tu suscripción es cada dos semanas, te llegará un @@nextDeliveryDay@@ sí y otro no. Recuerda que el pago se cobrará el domingo anterior.',
+  'orderStepDate.deliveryNotes': 'Sólo para suscripciones: A partir de ahora si tu suscripción es semanal, la caja te llegará cada {nextDeliveryDay}, en cambio, si tu suscripción es cada dos semanas, te llegará un {nextDeliveryDay} sí y otro no. Recuerda que el pago se cobrará el domingo anterior.',
   'orderStepDate.nextDeliveryDay.tuesday': 'martes',
   'orderStepDate.nextDeliveryDay.wednesday': 'miércoles',
   'orderStepDate.nextDeliveryDay.thursday': 'jueves',
@@ -1092,7 +1092,7 @@ export default {
   'orderStepDate.whenNextDeliveryMessage': '¿Cuándo quieres las próximas entregas?',
   'orderStepDate.next': 'Continuar',
   'orderStepDate.holidays.popup.title': '¡IMPORTANTE! 📢',
-  'orderStepDate.holidays.popup.message': 'Esta semana en motivo del festivo en Cataluña del día 10 de abril, las entregas se entregarán un día más tarde. Para cualquier duda, puedes contactar con nosotros a info@talkualfoods.com',
+  'orderStepDate.holidays.popup.message': 'Esta semana en motivo del festivo en Cataluña del día 10 de abril, las entregas se entregarán un día más tarde. Para cualquier duda, puedes contactar con nosotros a ', //sigue info@talkualfoods.com
   'orderStepDate.messageDeliveryCherries': 'Selecciona un día de entrega por la caja de cerezas',
 
   // OrderStepPayment
@@ -1600,8 +1600,7 @@ export default {
   'gdpr-modal.communications-required': 'Para continuar debes de aceptar los términos y condiciones del servicio',
   'gdpr-modal.personal-data-required': 'Para continuar debes de aceptar los términos y condiciones del servicio',
   'gdpr-modal.personal-data.label': 'Acepto permitir a TALKUAL almacenar y procesar mis datos personales.',
-  'gdpr-modal.text.1': 'Puedes darte de baja de estas comunicaciones en cualquier momento escribiendo a ',
-  'gdpr-modal.text.2.bold': 'info@talkualfoods.com. ',
+  'gdpr-modal.text.1': 'Puedes darte de baja de estas comunicaciones en cualquier momento escribiendo a ', //sigue email info@talkualfoods.com
   'gdpr-modal.text.3': 'Para más información sobre el tratamiento de datos, consulta nuestra',
   'gdpr-modal.personal-data.submit': '¡Me suscribo!',
   'gdpr-modal.privacy-policy': 'Política de privacidad',
