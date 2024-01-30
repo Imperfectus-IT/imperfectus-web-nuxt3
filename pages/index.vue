@@ -1,3 +1,6 @@
 <template>
-  Pagina inicial
+  <div>
+    {{ $t('common.languages.spanish') }}
+    <Toolbar />
+  </div>
 </template>

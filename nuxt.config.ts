@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: [
         '@nuxtjs/tailwindcss',
+        '@nuxtjs/i18n',
         'nuxt-primevue',
         '@nuxt/image',
         'nuxt-svgo'
@@ -39,4 +40,25 @@ export default defineNuxtConfig({
         cssPath: '~/assets/scss/tailwind.scss',
         configPath: 'tailwind.config',
     },
+    i18n: {
+        baseUrl: process.env.BASE_URL,
+        locales: [
+          {
+            name: 'Català',
+            code: 'ca',
+            file: 'ca-ES.ts',
+            iso: 'ca-ES'
+          },
+          {
+            name: 'Español',
+            code: 'es',
+            file: 'es-ES.ts',
+            iso: 'es-ES'
+          }
+        ],
+        lazy: true,
+        langDir: 'lang/',
+        strategy: 'prefix_except_default',
+        defaultLocale: 'es'
+      },
 })
