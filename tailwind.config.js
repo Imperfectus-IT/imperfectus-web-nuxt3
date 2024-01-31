@@ -16,11 +16,12 @@ export default {
         primary: "#FFFAE8",
       },
       current: "currentColor",
-      white: '#ffffff',
+      white: "#ffffff",
       green: {
         primary: "#D9EF52",
         secondary: "#007D08",
         tertiary: "#002625",
+        quaternary: "#e5F8C4",
       },
       orange: {
         primary: "#F8CA8E",
@@ -32,19 +33,20 @@ export default {
       transparent: "transparent",
     },
     fontSize: {
-      xs: ['0.75rem', '0.875rem'],
-      sm: ['0.875rem', '1.0625rem'],
-      base: ['1rem', '1.3125rem'],
-      lg: ['1.25rem', '1.5rem'],
-      xl: ['1.5625rem', '2.125rem'],
-      '2xl': ['2.5rem', '3.125rem']
+      xs: ["0.75rem", "0.875rem"],
+      sm: ["0.875rem", "1.0625rem"],
+      base: ["1rem", "1.3125rem"],
+      lg: ["1.25rem", "1.5rem"],
+      xl: ["1.5625rem", "2.125rem"],
+      "2xl": ["2.5rem", "3.125rem"],
     },
     boxShadow: {
-      sm: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-      md: '4px 4px 4px 0 rgba(0, 0, 0, 0.25)',
+      sm: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
+      md: "4px 4px 4px 0 rgba(0, 0, 0, 0.25)",
     },
     borderRadius: {
-      lg: '0.625rem',
+      lg: "0.625rem",
+      xl: "0.9375rem",
     },
     extend: {
       fontFamily: {
@@ -54,5 +56,4 @@ export default {
     },
   },
   plugins: [],
-}
-
+};

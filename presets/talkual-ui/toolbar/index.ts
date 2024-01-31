@@ -1,9 +1,9 @@
 export default {
-    root: {
-        class: [
-            // Flex & Alignment
-            'flex items-center justify-between flex-wrap',
-            'gap-2',
+  root: {
+    class: [
+      // Flex & Alignment
+      "flex items-center justify-between flex-wrap",
+      "gap-2",
 
             // Spacing
             'p-2',

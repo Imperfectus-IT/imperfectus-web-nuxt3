@@ -1,5 +1,5 @@
-<script setup lang="ts">
-</script>
+<!-- eslint-disable vue/multi-word-component-names -->
+<script setup lang="ts"></script>
 
 <template>
   <div class="container mx-auto">
@@ -10,6 +10,4 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

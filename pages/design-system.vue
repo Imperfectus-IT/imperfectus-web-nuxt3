@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="container flex flex-col gap-4">
@@ -8,6 +6,7 @@
     <ToolbarDemo />
     <CarouselDemo />
     <CardDemo />
+    <InputTextDemo />
   </div>
 </template>
 

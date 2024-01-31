@@ -6,8 +6,13 @@
 
 @layer base {
   :root {
-    font-family: "Solina Extended Book", "Solina Extended Medium",
-      "Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold", -apple-system,
+    font-family:
+      "Solina Extended Book",
+      "Solina Extended Medium",
+      "Recoleta Regular",
+      "Recoleta Medium",
+      "Recoleta SemiBold",
+      -apple-system,
       sans-serif;
     --font-family: "Solina Extended Book", "Solina Extended Medium",
       "Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold", -apple-system,
@@ -17,6 +22,7 @@
     --color-green-primary: hsl(68 83% 63%);
     --color-green-secondary: hsla(124 100% 25%);
     --color-green-tertiary: hsl(178 100% 7%);
+    --color-green-quaternary: hsl(82, 79%, 87%);
     --color-orange-primary: hsla(13 81% 76%);
     --color-red-primary: hsla(3 71% 52%);
   }
