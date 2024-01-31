@@ -8,7 +8,7 @@ export default {
         class: 'rounded-t-lg rounded-b-lg'
     },
     title: {
-        class: 'text-lg p-2'
+        class: 'text-lg p-2 mt-2'
     },
     subtitle: {
         class: [
@@ -23,7 +23,7 @@ export default {
         ]
     },
     content: {
-        class: 'text-sm px-2 py-3' // Vertical padding.
+        class: 'text-sm px-2 mt-2 mb-4' // Vertical padding.
     },
     footer: {
         class: 'w-full' // Top padding.

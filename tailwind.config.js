@@ -21,6 +21,7 @@ export default {
         primary: "#D9EF52",
         secondary: "#007D08",
         tertiary: "#002625",
+        quaternary: "#e5F8C4",
       },
       orange: {
         primary: "#F8CA8E",
