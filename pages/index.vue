@@ -50,11 +50,13 @@
     <p class="text-center mt-4">
       {{ $t('homeTitle.description') }}
     </p>
-    <Button
-      class=" w-1/2 ml-auto mr-auto mt-4 !py-4"
-      :label="$t('homeTitle.order')"
-      raised
-    />
+    <NuxtLink to="/boxes">
+      <Button
+        class=" w-1/2 ml-auto mr-auto mt-4 !py-4"
+        :label="$t('homeTitle.order')"
+        raised
+      />
+    </NuxtLink>
 
     <hr class="mt-4 border-t-2">
 
@@ -67,9 +69,9 @@
       </p>
       <ul class="is-flex !font-solina font-bold ">
         <li class="dot">
-          <nuxt-link :to="localePath('boxes')">
+          <Nuxt-link :to="localePath('boxes')">
             {{ $t('homeBoxes.howToWorks') }}
-          </nuxt-link>
+          </Nuxt-link>
         </li>
       </ul>
     </div>
