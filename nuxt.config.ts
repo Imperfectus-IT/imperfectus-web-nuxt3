@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     typescript: {
         typeCheck: false
     },
-    devtools: { enabled: true },
+    devtools: {enabled: true},
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/i18n',
@@ -28,14 +28,15 @@ export default defineNuxtConfig({
         'nuxt-svgo'
     ],
     primevue: {
-        options: { unstyled: true },
-        importPT: { as: 'TalkualUI', from: path.resolve(__dirname, './presets/talkual-ui/') },
+        options: {unstyled: true},
+        importPT: {as: 'TalkualUI', from: path.resolve(__dirname, './presets/talkual-ui/')},
         components: {
             include: [
                 'Button',
                 'Card',
                 'Carousel',
                 'Image',
+                'InputText',
                 'Sidebar',
                 'Toolbar',
             ]
