@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from "primevue/button"
-import { TKButtonProps, TKButtonSlots } from "./TKButton";
+import { type TKButtonProps, type TKButtonSlots } from "./TKButton";
 import TKButtonStyle from "./TKButtonStyle";
 
 const props = withDefaults(defineProps<TKButtonProps>(), {

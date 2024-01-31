@@ -6,7 +6,7 @@ export default {
             'gap-2',
 
             // Spacing
-            'p-5',
+            'p-2',
 
             // Color
             'bg-green-primary',
@@ -20,6 +20,7 @@ export default {
         class: 'flex items-center'
     },
     end: {
-        class: 'flex items-center'
+        class: 'flex items-center',
+        
     }
 };

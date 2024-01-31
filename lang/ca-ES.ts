@@ -205,6 +205,7 @@ export default {
   'hubspot.banner.action': 'Configurar cookies',
 
   // Strings
+
   'string.forms.name': 'Nom',
   'string.forms.lastname': 'Cognoms',
   'string.forms.email': 'Correu electrònic',

@@ -24,6 +24,7 @@
     </Toolbar>
   </div>
 </template>
+
 <script setup lang="ts">
 import TalkualLogoDark from '~/assets/images/svg/talkual-logo-dark.svg'
 </script>

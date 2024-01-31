@@ -10,7 +10,7 @@ export default {
         ]
     },
     body: {
-        class: 'p-5'
+        // class: 'p-5'
     },
     title: {
         class: 'text-2xl font-bold mb-2'
@@ -28,7 +28,7 @@ export default {
         ]
     },
     content: {
-        class: 'py-5' // Vertical padding.
+        // class: 'py-5' // Vertical padding.
     },
     footer: {
         class: 'pt-5' // Top padding.
