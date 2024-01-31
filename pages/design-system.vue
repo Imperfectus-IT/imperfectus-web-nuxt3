@@ -1,15 +1,13 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div class="container flex flex-col gap-4">
-        <ButtonDemo/>
-        <ToolbarDemo/>
-        <CarouselDemo/>
-        <CardDemo/>
-        <InputTextDemo/>
-    </div>
+  <div class="container flex flex-col gap-4">
+    <ButtonDemo />
+    <ToolbarDemo />
+    <CarouselDemo />
+    <CardDemo />
+    <InputTextDemo />
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

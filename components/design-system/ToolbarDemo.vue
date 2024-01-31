@@ -1,4 +1,3 @@
-
 <template>
   <div class="flex flex-col gap-3">
     <Toolbar>
@@ -41,7 +40,7 @@
     <Sidebar v-model:visible="visible">
       <template #closeicon>
         <span class="mdi mdi-close text-2xl" />
-      </template>  
+      </template>
       <ul>
         <li
           v-for="item in itemLinks"
@@ -56,16 +55,16 @@
       <ul class="mt-14 text-lg">
         <li>
           <NuxtLink
-            v-for="(locale, index) in locales"
-            :key="locale.code"
-            :to="switchLocalePath(locale.code)"
+            v-for="(currentLocale, index) in locales"
+            :key="currentLocale.code"
+            :to="switchLocalePath(currentLocale.code)"
             active-class="text-white"
           >
             <span
               v-if="index !== 0"
               class="mx-3 text-green-primary"
             >|</span>
-            <span>{{ locale.code.toUpperCase() }}</span>
+            <span>{{ currentLocale.code.toUpperCase() }}</span>
           </NuxtLink>
         </li>
       </ul>
@@ -73,7 +72,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import TalkualLogoDark from '~/assets/images/svg/talkual-logo-dark.svg'
+import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 import { ref, computed } from "vue";
 
 const { t, locale, locales } = useI18n();
@@ -81,46 +80,46 @@ const switchLocalePath = useSwitchLocalePath();
 const visible = ref(false);
 const itemLinks = computed(() => [
   {
-    label: t('layout.navbar.boxes'),
+    label: t("layout.navbar.boxes"),
     paths: {
-      ca: '/les-nostres-caixes',
-      es: '/nuestras-cajas'
+      ca: "/les-nostres-caixes",
+      es: "/nuestras-cajas",
     },
   },
   {
-    label: t('layout.navbar.whatinbox'),
+    label: t("layout.navbar.whatinbox"),
     paths: {
-      ca: '/que-hi-ha-a-la-caixa',
-      es: '/que-hay-en-la-caja'
+      ca: "/que-hi-ha-a-la-caixa",
+      es: "/que-hay-en-la-caja",
     },
   },
   {
-    label: t('layout.navbar.fruitsForCompanies'),
+    label: t("layout.navbar.fruitsForCompanies"),
     paths: {
-      ca: '/empreses',
-      es: '/empresas'
+      ca: "/empreses",
+      es: "/empresas",
     },
   },
   {
-    label: t('layout.navbar.referrals'),
+    label: t("layout.navbar.referrals"),
     paths: {
-      ca: '/convida-un-amic',
-      es: '/invita-a-un-amigo'
+      ca: "/convida-un-amic",
+      es: "/invita-a-un-amigo",
     },
   },
   {
-    label: t('layout.navbar.about'),
+    label: t("layout.navbar.about"),
     paths: {
-      ca: '/historia',
-      es: '/historia'
+      ca: "/historia",
+      es: "/historia",
     },
   },
   {
-    label: t('layout.navbar.blog.title'),
+    label: t("layout.navbar.blog.title"),
     paths: {
-      ca: 'https://blog.talkualfoods.com/',
-      es: 'https://blog.talkualfoods.com/'
+      ca: "https://blog.talkualfoods.com/",
+      es: "https://blog.talkualfoods.com/",
     },
-  }
-])
+  },
+]);
 </script>
