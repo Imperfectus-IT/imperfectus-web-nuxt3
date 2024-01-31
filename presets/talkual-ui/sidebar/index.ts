@@ -10,7 +10,7 @@ export default {
 
             // Size
             {
-                'h-full w-full lg:w-80': props.position == 'left' || props.position == 'right',
+                'h-full w-full lg:w-2/4': props.position == 'left' || props.position == 'right',
                 'h-auto w-full': props.position == 'top' || props.position == 'bottom'
             },
 
@@ -33,11 +33,11 @@ export default {
     header: {
         class: [
             // Flexbox and Alignment
-            'flex items-center justify-between',
+            'flex items-center justify-between lg:justify-end',
             'shrink-0',
 
             // Spacing
-            'p-5',
+            'px-[30px] lg:px-24 py-5 lg:pt-8',
 
             // Colors
             'bg-green-tertiary',
@@ -55,11 +55,9 @@ export default {
             'relative',
 
             // Flexbox and Alignment
-            'flex items-center justify-center',
+            'flex items-center justify-center lg:justify-end',
 
             // Size and Spacing
-            'mr-2',
-            'last:mr-0',
             'w-8 h-8',
 
             // Shape
@@ -70,13 +68,7 @@ export default {
             'bg-transparent',
 
             // Transitions
-            'transition duration-200 ease-in-out',
-
-            // States
-            'hover:text-surface-700 dark:hover:text-white/80',
-            'hover:bg-surface-100 dark:hover:bg-surface-800/80',
-            'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-inset',
-            'focus:ring-primary-400/50 dark:focus:ring-primary-300/50',
+            'transition duration-200 ease-in-out',        
 
             // Misc
             'overflow-hidden'
@@ -88,17 +80,17 @@ export default {
             'inline-block',
 
             // Size
-            'w-6',
-            'h-6'
+            'text-2xl',
         ]
     },
     content: {
         class: [
             // Spacing and Size
-            'p-5',
+            'p-8 lg:p-24',
             'pt-0',
             'h-full',
             'w-full',
+            'text-[1.625rem] lg:text-[2.125rem]',
 
             // Growth and Overflow
             'grow',

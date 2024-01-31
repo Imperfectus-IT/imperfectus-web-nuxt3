@@ -8,7 +8,6 @@
     <ToolbarDemo />
     <CarouselDemo />
     <CardDemo />
-    <SidebarDemo />
   </div>
 </template>
 
