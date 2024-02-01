@@ -550,10 +550,10 @@ export default {
   'content.home.ourBoxes.title': 'NUESTRAS CAJAS',
   'content.home.ourBoxes.item0.title': 'Caja pequeña',//
   'content.home.ourBoxes.item0.description': 'Entre 6-7 kg de fruta y/o verdura de temporada. Ideal para 1-2 personas.',//
-  'content.home.ourBoxes.item1.title': 'CAJA TALKUAL',
-  'content.home.ourBoxes.item1.description': 'Para 1 o 2 personas - entre 9 y 10 kg de fruta y verdura',
-  'content.home.ourBoxes.item2.title': 'CAJA TALKUAL XXL',
-  'content.home.ourBoxes.item2.description': 'Para familias - entre 14 y 15 kg de fruta y verdura',
+  'content.home.ourBoxes.item1.title': 'Caja mediana',//
+  'content.home.ourBoxes.item1.description': 'Entre 9-10 kg de fruta y/o verdura de temporada. Ideal para 2-3 personas.',//
+  'content.home.ourBoxes.item2.title': 'Caja grande',//
+  'content.home.ourBoxes.item2.description': 'Entre 14-15 kg de fruta y/o verdura de temporada. Ideal para 4 o 5+ personas.',//
   'content.home.reviews.title': '¡Comentarios de nuestros clientes!',
 
   'content.whatinbox.title': '¿Qué hay en las cajas?',
@@ -1428,7 +1428,7 @@ export default {
   'homeBoxes.buy': 'Comprar',
 
   // HomeProducts
-  'homeProducts.description': 'Estos son algunos de los productos de temporada que puedes encontrar actualmente en nuestras cajas en función de la disponibilidad del producto y de la limitación de peso de tu caja.',
+  'homeProducts.description': 'Estos son algunos de los productos de temporada que puedes encontrar actualmente en nuestras cajas en función de la disponibilidad del producto y de la limitación de peso de tu caja.', //
   'homeProducts.fruit': 'Fruta',
   'homeProducts.vegetable': 'Verdura',
 
@@ -1439,20 +1439,17 @@ export default {
   'homeKnowMore.description.4': 'requisitos estéticos ',
   'homeKnowMore.description.5': 'de las grandes superficies para combatir el ',
   'homeKnowMore.description.6': 'desperdicio alimentario.',
-  'homeKnowMore.more': 'Quiero saber más',
+  'homeKnowMore.more': 'Quiero saber más',//
 
   // HomeOffer
-  'homeOffer.weOfferBoxes.1': 'Ofrecemos cajas de fruta y verdura imperfecta por fuera ',
-    // ++ Br tag
-  'homeOffer.weOfferBoxes.2': 'y deliciosa por dentro, y te las llevamos directamente a tu casa.',
-
-  'homeOffer.fresh.title': 'Fresco',
-  'homeOffer.fresh.title.description': 'Fruta y verdura deliciosa, de temporada y directa del campo.',
-  'homeOffer.economical.title': 'Económico',
-  'homeOffer.economical.description': 'Ahorra hasta un 20% en comparación a precios de supermercados. ',
-  'homeOffer.comfortable.title': 'Cómodo',
-  'homeOffer.comfortable.description': 'Te lo llevamos directamente a la puerta de tu casa. Si tienes una suscripción con nosotrxs, no hace falta que te preocupes de nada, sólo de recibir la caja llena de fruta y verdura imperfecta el día y hora que hayas elegido, todo se realiza automáticamente.',
-  'homeOffer.noCommitment.title': 'Sin compromiso',
+  'homeOffer.weOfferBoxes': 'Ofrecemos cajas de fruta y verdura imperfecta por fuera y deliciosa por dentro, y te las llevamos directamente a tu casa.',
+  'homeOffer.fresh.title': 'Fresco',//
+  'homeOffer.fresh.title.description': 'Fruta y verdura deliciosa, de temporada y directa del campo.',//
+  'homeOffer.economical.title': 'Económico',//
+  'homeOffer.economical.description': 'Ahorra hasta un 20% en comparación a precios de supermercados. ',//
+  'homeOffer.comfortable.title': 'Cómodo',//
+  'homeOffer.comfortable.description': 'Te lo llevamos directamente a la puerta de tu casa. Si tienes una suscripción con nosotrxs, no hace falta que te preocupes de nada, sólo de recibir la caja llena de fruta y verdura imperfecta el día y hora que hayas elegido, todo se realiza automáticamente.',//
+  'homeOffer.noCommitment.title': 'Sin compromiso',//
   'homeOffer.noCommitment.description': 'Siempre puedes modificar, pausar o cancelar tu suscripción sin ningún compromiso ni coste. ',
   // HomeUpToDate
   'homeUpToDate.title': 'Mantente al día',
@@ -1568,12 +1565,12 @@ export default {
   'boxes.frequency.biweekly': 'Cada dos semanas',
   'boxes.boxType.error': 'Error al cambiar el tipo de caja',
   'boxes.products.description': 'Estos son algunos de los productos de temporada que puedes encontrar actualmente en nuestras cajas en función de la disponibilidad del producto y de la limitación de peso de tu caja.',
-  'boxes.suppliers.description.1': 'Repartimos ',
-  'boxes.suppliers.description.2.bold': 'frutas y verduras a domicilio ',
-  'boxes.suppliers.description.3': 'que no cumplen los ',
-  'boxes.suppliers.description.4.bold': 'requisitos estéticos ',
-  'boxes.suppliers.description.5': 'de las grandes superficies para combatir el ',
-  'boxes.suppliers.description.6.bold': 'desperdicio alimentario.',
+  'boxes.suppliers.description.1': 'Repartimos ',//
+  'boxes.suppliers.description.2.bold': 'frutas y verduras a domicilio ',//
+  'boxes.suppliers.description.3': 'que no cumplen los ',//
+  'boxes.suppliers.description.4.bold': 'requisitos estéticos ',//
+  'boxes.suppliers.description.5': 'de las grandes superficies para combatir el ',//
+  'boxes.suppliers.description.6.bold': 'desperdicio alimentario.',//
   'boxes.subscription-description.1.title': 'LA SUSCRIPCIÓN',
   'boxes.subscription-description.1.description.1.bold': 'Ahorra 2€',
   'boxes.subscription-description.1.description.2': 'en cada caja',

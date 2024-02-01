@@ -14,6 +14,7 @@ export default {
     colors: {
       beige: {
         primary: "#FFFAE8",
+        secondary: "#FFF2C1"
       },
       current: "currentColor",
       white: "#ffffff",
@@ -29,6 +30,10 @@ export default {
       },
       red: {
         primary: "#DC362E",
+      },
+      gray: {
+        primary: "#DADADA",
+        secondary: "#002423"
       },
       transparent: "transparent",
     },

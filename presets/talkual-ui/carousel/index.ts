@@ -101,7 +101,7 @@ export default {
   indicators: {
     class: [
       //Position
-      "absolute inset-x-0 bottom-12",
+      " inset-x-0 bottom-8 relative",
       // Flexbox & Alignment
       "flex flex-row justify-center flex-wrap",
     ],

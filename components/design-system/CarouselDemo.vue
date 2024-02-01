@@ -99,6 +99,8 @@ const responsiveOtherProductOptions = ref([
       :num-visible="1"
       :num-scroll="1"
       :show-navigators="false"
+      :show-indicators="false"
+
       :responsive-options="responsiveProductOptions"
     >
       <template #item="slotProps">
