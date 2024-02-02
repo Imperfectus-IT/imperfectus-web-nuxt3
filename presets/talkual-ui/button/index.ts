@@ -9,7 +9,7 @@ export default {
       // Sizes & Spacing
       "leading-[normal]",
       {
-        "px-4 py-3": props.size === null && props.label !== null,
+        "px-4 py-3 min-h-[42px]": props.size === null && props.label !== null,
         "text-sm py-2 px-3": props.size === "small",
         "text-xl py-3 px-4": props.size === "large",
       },
@@ -26,7 +26,7 @@ export default {
 
       // Primary Button
       {
-        "bg-green-primary hover:bg-green-tertiary hover:text-green-primary":
+        "bg-green-primary hover:bg-green-tertiary hover:text-green-primary focus:bg-green-tertiary focus:text-green-primary":
           !props.link &&
           props.severity === null &&
           !props.text &&
@@ -35,7 +35,7 @@ export default {
       },
       // Secondary Button
       {
-        "bg-green-tertiary text-green-primary hover:bg-green-primary hover:text-green-tertiary":
+        "bg-green-tertiary text-green-primary hover:bg-green-primary hover:text-green-tertiary focus:bg-green-tertiary focus:text-green-primary":
           props.severity === "secondary" &&
           !props.text &&
           !props.outlined &&
@@ -44,7 +44,7 @@ export default {
 
       // Outlined Button
       {
-        "hover:bg-green-tertiary hover:text-white":
+        "hover:bg-green-tertiary hover:text-white focus:bg-green-tertiary focus:text-green-primary":
           props.outlined && !props.plain,
       },
 

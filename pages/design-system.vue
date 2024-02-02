@@ -7,6 +7,7 @@
     <CarouselDemo />
     <CardDemo />
     <InputTextDemo />
+    <DialogDemo />
   </div>
 </template>
 

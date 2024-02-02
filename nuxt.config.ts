@@ -41,6 +41,7 @@ export default defineNuxtConfig({
         "Button",
         "Card",
         "Carousel",
+        "Dialog",
         "Image",
         "InputText",
         "Sidebar",
