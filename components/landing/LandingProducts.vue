@@ -3,6 +3,7 @@
     <p class="text-[26px] mx-4 leading-9 px-2 my-12">
       {{ $t('homeProducts.description') }}
     </p>
+    
     <NuxtImg 
       class="w-11/12 h-[auto] mx-auto"
       src="/images/landing/products/Bird_Woman_Dark.png"
@@ -41,19 +42,18 @@
       :num-visible="1"
       :num-scroll="1"
       :show-indicators="false"
+      :pt="{ item: 'flex shrink-0 grow gap-3 mr-12'}"
+      :responsive-options="responsiveProductOptions"
     >
       <template #item="slotProps">
-        <div>
+        <div class="relative bg-beige-secondary rounded-lg w-[200px] h-[215px] !flex !justify-center">
           <NuxtImg
-            class="bg-beige-secondary rounded-lg w-[200px] h-[222px] mx-auto"
+            class="relative h-44"
             :src="slotProps.data.image"
             :alt="slotProps.data.name"
-            :pt="{
-              div: 'w-10'
-            }"
           />
-          <p class="absolute z-50 !text-red-primary z-50">
-            test
+          <p class="absolute bottom-4">
+            {{ slotProps.data.name }}
           </p>
         </div>
       </template>
@@ -106,4 +106,27 @@ const vegetables = [
     image: '/images/landing/products/verduras/alcachofas.webp',
   }
 ]
+
+const responsiveProductOptions = ref([
+  {
+    breakpoint: "1400px",
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "1199px",
+    numVisible: 3,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "767px",
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "575px",
+    numVisible: 1,
+    numScroll: 1,
+  },
+]);      
 </script>

@@ -46,6 +46,9 @@
     <LandingVegetablesCarousel />      <!-- FALTA SWAP AUTOMÁTICO -->
     <LandingOffer />
     <LandingProducts />
+    <LandingUpToDate />
+    <LandingBlog />
+    <LandingWorldData />
   </div>
 </template>
 

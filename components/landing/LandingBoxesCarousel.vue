@@ -23,13 +23,14 @@
       :show-navigators="false"
       :show-indicators="false"
       :responsive-options="responsiveProductOptions"
+      :pt="{ item: 'flex shrink-0 grow gap-3 mr-6 w-4/5'}"
     >
       <template #item="slotProps">
-        <div class="w-5/6 ml-4 h-[400px]">
+        <div class="relative h-[400px] ml-4">
           <NuxtImg
             :alt="slotProps.data.name"
             :src="slotProps.data.image"
-            class="rounded-t-[30px] w-full h-3/6"
+            class="rounded-t-[30px] h-3/6"
           />
           <hr>
           <div class="text-[20px] font-light mt-4 pl-2">

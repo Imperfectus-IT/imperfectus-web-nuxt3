@@ -52,6 +52,7 @@ export default {
     borderRadius: {
       lg: "0.625rem",
       xl: "0.9375rem",
+      xxl: "50%"
     },
     extend: {
       fontFamily: {

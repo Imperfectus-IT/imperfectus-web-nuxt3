@@ -1452,23 +1452,23 @@ export default {
   'homeOffer.noCommitment.title': 'Sin compromiso',//
   'homeOffer.noCommitment.description': 'Siempre puedes modificar, pausar o cancelar tu suscripción sin ningún compromiso ni coste. ',
   // HomeUpToDate
-  'homeUpToDate.title': 'Mantente al día',
-  'homeUpToDate.description': 'Mantente al día de las novedades, productos, recetas y mucho más.',
-  'homeUpToDate.subscribe': 'Suscríbete',
-  'homeUpToDate.email': 'Tu email',
+  'homeUpToDate.title': 'Mantente al día',//
+  'homeUpToDate.description': 'Mantente al día de las novedades, productos, recetas y mucho más.',//
+  'homeUpToDate.subscribe': 'Suscríbete',//
+  'homeUpToDate.email': 'Tu email',//
   'homeUpToDate.repeatEmail': 'Repite tu email',
   'homeUpToDate.emailsDontMatch': 'Los emails no coinciden',
   'homeUpToDate.error': 'Error al suscribirte',
   'homeUpToDate.messageSent': '¡Gracias por suscribirte a nuestra newsletter!',
 
   // Blog posts
-  'blogPosts.title': 'Descubre nuestro blog antidesperdicio',
-  'blogPosts.description': 'Te explicamos cómo reducir el desperdicio alimentario, comer de temporada y vivir de manera más sostenible.',
-  'blogPosts.visit': 'Visita el blog',
+  'blogPosts.title': 'Descubre nuestro blog antidesperdicio', //
+  'blogPosts.description': 'Te explicamos cómo reducir el desperdicio alimentario, comer de temporada y vivir de manera más sostenible.',//
+  'blogPosts.visit': 'Visita el blog',//
   'blogPosts.read': 'Me interesa',
 
   // HomeSolutions
-  'homeSolutions.title': 'El planeta necesita soluciones como la nuestra',
+  'homeSolutions.title': 'El planeta necesita soluciones como la nuestra', //
   // HomeTribe
   'homeTribe.title': 'Algunos comentarios de la tribu...',
   'homeTribe.review.verified': 'Verificado',
