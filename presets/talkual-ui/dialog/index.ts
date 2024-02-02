@@ -6,10 +6,11 @@ export default {
       "border-0",
       "ring-0",
       "max-h-[90vh]",
-      "w-[90vw]",
+      "w-[90vw] lg:w-[25vw]",
       "m-0",
       "transform",
       "scale-100",
+      "lg:translate-x-[37vw] lg:translate-y-[-25vh]",
       {
         "transition-none": e.maximized,
         "transform-none": e.maximized,
