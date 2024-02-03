@@ -10,6 +10,7 @@
     <DialogDemo />
     <PasswordDemo />
     <CheckboxDemo />
+    <DropdownDemo />
   </div>
 </template>
 

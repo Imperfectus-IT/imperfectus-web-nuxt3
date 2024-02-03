@@ -4,6 +4,7 @@ import card from "./card/index.ts";
 import carousel from "./carousel/index.ts";
 import checkbox from "./checkbox/index.ts";
 import dialog from "./dialog/index.ts";
+import dropdown from "./dropdown/index.ts";
 import inputtext from "./inputtext/index.ts";
 import password from "./password/index.ts";
 import sidebar from "./sidebar/index.ts";
@@ -16,6 +17,7 @@ export default {
   carousel,
   checkbox,
   dialog,
+  dropdown,
   inputtext,
   password,
   sidebar,

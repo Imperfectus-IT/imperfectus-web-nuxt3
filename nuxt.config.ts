@@ -43,6 +43,7 @@ export default defineNuxtConfig({
         "Carousel",
         "Checkbox",
         "Dialog",
+        "Dropdown",
         "Image",
         "InputText",
         "Password",
