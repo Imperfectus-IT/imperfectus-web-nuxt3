@@ -9,6 +9,7 @@
     <InputTextDemo />
     <DialogDemo />
     <PasswordDemo />
+    <CheckboxDemo />
   </div>
 </template>
 
