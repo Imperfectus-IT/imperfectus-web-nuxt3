@@ -15,7 +15,6 @@ export default {
       beige: {
         primary: "#FFFAE8",
       },
-      current: "currentColor",
       white: "#ffffff",
       green: {
         primary: "#D9EF52",
@@ -31,6 +30,7 @@ export default {
         primary: "#DC362E",
       },
       transparent: "transparent",
+      current: "currentColor",
     },
     fontSize: {
       xs: ["0.75rem", "0.875rem"],

@@ -44,6 +44,7 @@ export default defineNuxtConfig({
         "Dialog",
         "Image",
         "InputText",
+        "Password",
         "Sidebar",
         "Toolbar",
       ],

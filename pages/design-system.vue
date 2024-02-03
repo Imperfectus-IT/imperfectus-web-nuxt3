@@ -8,6 +8,7 @@
     <CardDemo />
     <InputTextDemo />
     <DialogDemo />
+    <PasswordDemo />
   </div>
 </template>
 
