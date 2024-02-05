@@ -33,20 +33,24 @@
             class="rounded-t-[30px] h-3/6"
           />
           <hr>
-          <div class="text-[20px] font-light mt-4 pl-2">
-            {{ slotProps.data.title }}
+          <div class="h-[120px]">
+            <h4 class="text-[20px] font-light mt-4 pl-2">
+              {{ slotProps.data.title }}
+            </h4>
+            <p class="pl-2 text-sm mt-2 leading-5">
+              {{ slotProps.data.description }}
+            </p>
           </div>
-          <p class="pl-2 text-sm mb-4 mt-2 leading-5">
-            {{ slotProps.data.description }}
-          </p>
           <Button
-            class="w-full !ml-0 rounded-t-[0px] rounded-b-[15px]"
+            class="w-full !ml-0 rounded-t-[0px] rounded-b-[15px] mt-auto"
             :label="$t('homeBoxes.buy')"
             severity="secondary"
           />
         </div>
       </template>
     </Carousel>
+
+    
   </div>
 </template>
 

@@ -44,7 +44,7 @@
           </div>
 
           <p class="text-[20px] p-4 text-center m6-4 text-green-quaternary mx-2">
-            {{ $i18n.locale === 'ca' ? slotProps.data.description_ca : slotProps.data.description_es}}
+            {{ $i18n.locale === 'ca' ? slotProps.data.description_ca : slotProps.data.description_es }}
           </p>
         </div>
       </template>
@@ -115,14 +115,4 @@ const responsiveProductOptions = ref([
     numScroll: 1,
   },
 ]);
-
-
 </script>
-
-<style lang="scss" scoped>
-.test {
-    @apply bg-red-primary;
-}
-
-
-</style>
