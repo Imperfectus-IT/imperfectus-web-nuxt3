@@ -16,7 +16,6 @@ export default {
         primary: "#FFFAE8",
         secondary: "#FFF2C1"
       },
-      current: "currentColor",
       white: "#ffffff",
       green: {
         primary: "#D9EF52",
@@ -36,6 +35,7 @@ export default {
         secondary: "#002423"
       },
       transparent: "transparent",
+      current: "currentColor",
     },
     fontSize: {
       xs: ["0.75rem", "0.875rem"],

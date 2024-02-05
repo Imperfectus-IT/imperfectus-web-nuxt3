@@ -7,6 +7,10 @@
     <CarouselDemo />
     <CardDemo />
     <InputTextDemo />
+    <DialogDemo />
+    <PasswordDemo />
+    <CheckboxDemo />
+    <DropdownDemo />
   </div>
 </template>
 
