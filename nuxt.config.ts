@@ -49,6 +49,7 @@ export default defineNuxtConfig({
         "InputText",
         "Multiselect",
         "Password",
+        "ProgressBar",
         "Sidebar",
         "Toolbar",
       ],

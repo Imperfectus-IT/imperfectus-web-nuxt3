@@ -22,6 +22,9 @@ export default {
         tertiary: "#002625",
         quaternary: "#e5F8C4",
       },
+      grey: {
+        primary: "#E0E0E0",
+      },
       orange: {
         primary: "#F8CA8E",
         secondary: "#F3A58F",
