@@ -964,11 +964,13 @@ export default {
   'homeReviews.description8': 'Me lo llevan a casa y no me tengo que preocupar por nada más. Tuve un problema con una caja y en el momento me lo solucionaron. Gracias.',
 
   // LoginForm
-  'loginForm.email': 'Correo electrónico',
-  'loginForm.password': 'Contraseña',
-  'loginForm.login': 'Iniciar sesión',
-  'loginForm.forgotPassword': '¿Has olvidado la contraseña?',
-  'loginForm.errorMessage': 'El correo electrónico y/o la contraseña son incorrectos',
+  "loginForm.email": "Correo electrónico",
+  "loginForm.password": "Contraseña",
+  "loginForm.login": "Iniciar sesión",
+  "loginForm.forgotPassword": "¿Has olvidado la contraseña?",
+  "loginForm.errorMessage":
+    "El correo electrónico y/o la contraseña son incorrectos",
+  "loginForm.buttonGoogleLogin": "Iniciar sesión con Google",
 
   // Social Provider
   'socialProvider.redirect': 'Cargando...',

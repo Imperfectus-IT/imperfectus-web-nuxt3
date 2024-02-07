@@ -956,11 +956,13 @@ export default {
   'homeReviews.description8': "M'ho porten a casa i no m'he de preocupar per res més. Vaig tenir un problema amb una caixa i al moment m'ho van solventar. Gràcies.",
 
   // LoginForm
-  'loginForm.email': 'Correu electrònic',
-  'loginForm.password': 'Contrasenya',
-  'loginForm.login': 'Iniciar sessió',
-  'loginForm.forgotPassword': 'Has oblidat la contrasenya?',
-  'loginForm.errorMessage': 'El correu electrònic i/o la contrasenya són incorrectes',
+  "loginForm.email": "Correu electrònic",
+  "loginForm.password": "Contrasenya",
+  "loginForm.login": "Iniciar sessió",
+  "loginForm.forgotPassword": "Has oblidat la contrasenya?",
+  "loginForm.errorMessage":
+    "El correu electrònic i/o la contrasenya són incorrectes",
+  "loginForm.buttonGoogleLogin": "Iniciar sesión con Google",
 
   // Social Provider
   'socialProvider.redirect': 'Carregant...',
