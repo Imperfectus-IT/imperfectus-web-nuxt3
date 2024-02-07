@@ -25,7 +25,7 @@ const countries = ref([
 </script>
 
 <template>
-  <div class="container flex flex-wrap justify-center gap-3 mb-10">
+  <div class="flex flex-wrap justify-center gap-3 mb-10">
     <Dropdown
       v-model="selectedCity"
       :options="cities"
@@ -43,10 +43,7 @@ const countries = ref([
       class="w-72"
     >
       <template #value="slotProps">
-        <div
-          v-if="slotProps.value"
-          class="flex items-center"
-        >
+        <div v-if="slotProps.value" class="flex items-center">
           <div>{{ slotProps.value.name }}</div>
         </div>
         <span v-else>
