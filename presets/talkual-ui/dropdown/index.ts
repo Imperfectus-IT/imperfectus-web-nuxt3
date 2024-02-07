@@ -147,7 +147,7 @@ export default {
           context.focused && !context.selected,
       },
       {
-        "bg-transparent text-green-tertiary":
+        "bg-green-tertiary text-green-primary":
           context.focused && context.selected,
       },
       {
@@ -157,10 +157,10 @@ export default {
 
       //States
       {
-        "hover:bg-transparent": !context.focused && !context.selected,
+        "hover:text-green-primary hover:bg-green-tertiary": !context.focused && !context.selected,
       },
       {
-        "hover:text-green-tertiary": context.focused && !context.selected,
+        "hover:text-green-primary hover:bg-green-tertiary": context.focused && !context.selected,
       },
       "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring focus-visible:ring-inset focus-visible:ring-primary-400/50 dark:focus-visible:ring-primary-300/50",
 

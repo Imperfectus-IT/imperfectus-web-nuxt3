@@ -11,6 +11,7 @@
     <PasswordDemo />
     <CheckboxDemo />
     <DropdownDemo />
+    <MultiselectDemo />
   </div>
 </template>
 
