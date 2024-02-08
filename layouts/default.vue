@@ -4,9 +4,7 @@
 <template>
   <div class="container mx-auto">
     <slot />
-    <div>
-      <h3>Footer</h3>
-    </div>
+    <FooterDefault />
   </div>
 </template>
 

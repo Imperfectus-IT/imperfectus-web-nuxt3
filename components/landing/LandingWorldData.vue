@@ -4,14 +4,8 @@
       {{ $t('homeSolutions.title') }}
     </h2>
 
-
-
-    
-
     <Carousel
-      class=""
       :value="data"
-      :infinity="true"
       :num-visible="1"
       :num-scroll="1"
       :show-navigators="true"

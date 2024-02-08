@@ -5,261 +5,116 @@ export default {
   
  
 
-  // Pages
-  // 'pages.home.title': 'Frutas y verduras imperfectas',
-  //'pages.home.description': 'Desde TALKUAL te traemos a tu casa frutas y verduras imperfectas rechazadas por las grandes superficies. ¡Del campo, directas a tu casa!',
-  //'pages.whatinbox.title': 'Qué hay en las cajas',
-  //'pages.whatinbox.description': 'Qué productos hay esta semana en las cajas. En nuestras cajas incluimos la mayoría de estas frutas y verduras, dependemos del excedente del agricultor y a veces nos hace variar las proporciones pero siempre encontrando el equilibrio nutricional.',
-  // 'pages.mission.title': 'Desperdicio alimentario',
-  // 'pages.mission.description': 'Desde TALKUAL queremos informarte un poco más sobre el desperdicio alimentario',
-  // 'pages.boxes.title': 'Cajas fruta y verdura',
-  // 'pages.boxes.description': 'Todos los productos de las cajas TALKUAL provienen de una agricultura respetuosa con el medio ambiente, una parte son ecológicos ecológicos y otra parte viene de cultivo tradicional donde nuestros agricultores de proximidad siguen buenas prácticas en el ámbito de la sostenibilidad para garantizar una buena calidad.',
-  // 'pages.contact.title': 'Ponte en contacto con TALKUAL',
-  // 'pages.contact.description': 'Cómo ponerte en contacto con el equipo de TALKUAL. Aquí encontrarás el correo, teléfono y formulario de contacto. ',
-  // 'pages.contact.general.email': 'Email',
-  // 'pages.contact.general.phone': 'Teléfono',
-  // 'pages.contact.form.email': 'Email de contacto:',
-  // 'pages.contact.form.phone': 'Teléfono:',
-  // 'pages.contact.form.address': 'Dirección:',
-  // 'pages.contact.form.schedule': 'Horario:',
-  // 'pages.contact.customerSchedule.monday': 'LUNES',
-  // 'pages.contact.customerSchedule.tuesday': 'MARTES',
-  // 'pages.contact.customerSchedule.wednesday': 'MIÉRCOLES',
-  // 'pages.contact.customerSchedule.thursday': 'JUEVES',
-  // 'pages.contact.customerSchedule.friday': 'VIERNES',
-  // 'pages.faq.title': 'Preguntas frecuentes',
-  // 'pages.faq.description': '',
-  // 'pages.food-waste.title': 'En TALKUAL luchamos contra el desperdicio alimentario',
-  // 'pages.food-waste.description': 'En TALKUAL trabajamos para reducir los alimentos que se pierden y luchamos contra el desperdicio alimentario.',
+  //Pages
+  'pages.home.title': 'Frutas y verduras imperfectas',
+  'pages.home.description': 'Desde TALKUAL te traemos a tu casa frutas y verduras imperfectas rechazadas por las grandes superficies. ¡Del campo, directas a tu casa!',
+  'pages.whatinbox.title': 'Qué hay en las cajas',
+  'pages.whatinbox.description': 'Qué productos hay esta semana en las cajas. En nuestras cajas incluimos la mayoría de estas frutas y verduras, dependemos del excedente del agricultor y a veces nos hace variar las proporciones pero siempre encontrando el equilibrio nutricional.',
+  'pages.mission.title': 'Desperdicio alimentario',
+  'pages.mission.description': 'Desde TALKUAL queremos informarte un poco más sobre el desperdicio alimentario',
+  'pages.boxes.title': 'Cajas fruta y verdura',
+  'pages.boxes.description': 'Todos los productos de las cajas TALKUAL provienen de una agricultura respetuosa con el medio ambiente, una parte son ecológicos ecológicos y otra parte viene de cultivo tradicional donde nuestros agricultores de proximidad siguen buenas prácticas en el ámbito de la sostenibilidad para garantizar una buena calidad.',
+  'pages.contact.title': 'Ponte en contacto con TALKUAL',
+  'pages.contact.description': 'Cómo ponerte en contacto con el equipo de TALKUAL. Aquí encontrarás el correo, teléfono y formulario de contacto. ',
+  'pages.contact.general.email': 'Email',
+  'pages.contact.general.phone': 'Teléfono',
+  'pages.contact.form.email': 'Email de contacto:',
+  'pages.contact.form.phone': 'Teléfono:',
+  'pages.contact.form.address': 'Dirección:',
+  'pages.contact.form.schedule': 'Horario:',
+  'pages.contact.customerSchedule.monday': 'LUNES',
+  'pages.contact.customerSchedule.tuesday': 'MARTES',
+  'pages.contact.customerSchedule.wednesday': 'MIÉRCOLES',
+  'pages.contact.customerSchedule.thursday': 'JUEVES',
+  'pages.contact.customerSchedule.friday': 'VIERNES',
+  'pages.faq.title': 'Preguntas frecuentes',
+  'pages.faq.description': '',
+  'pages.food-waste.title': 'En TALKUAL luchamos contra el desperdicio alimentario',
+  'pages.food-waste.description': 'En TALKUAL trabajamos para reducir los alimentos que se pierden y luchamos contra el desperdicio alimentario.',
 
 
 
 
 
-  // 'pages.order.title': 'Compra',
-  // 'pages.order.description': 'Aquí puedes comprar los tres tipos de cajas TALKUAL que ofrecemos',
-  // 'pages.order.pay.title': 'Realizar pago',
-  // 'pages.order.pay.message': '¡Gracias por tu compra!',
-  // 'pages.order.pay.orderNumber': 'Número de pedido:',
-  // 'pages.order.pay.deliveryEstimate': 'Fecha de entrega estimada:',
-  // 'pages.order.pay.total': 'Total:',
-  // 'pages.order.pay.orderContents': 'Contenido del pedido',
-  // 'pages.order.pay.pay': 'Realizar pago',
-  // 'pages.order.pay.seeOrder': 'Ver pedido',
+  'pages.order.title': 'Compra',
+  'pages.order.description': 'Aquí puedes comprar los tres tipos de cajas TALKUAL que ofrecemos',
+  'pages.order.pay.title': 'Realizar pago',
+  'pages.order.pay.message': '¡Gracias por tu compra!',
+  'pages.order.pay.orderNumber': 'Número de pedido:',
+  'pages.order.pay.deliveryEstimate': 'Fecha de entrega estimada:',
+  'pages.order.pay.total': 'Total:',
+  'pages.order.pay.orderContents': 'Contenido del pedido',
+  'pages.order.pay.pay': 'Realizar pago',
+  'pages.order.pay.seeOrder': 'Ver pedido',
   
-  // 'pages.order.status.paymentError': 'Error en el pago',
-  // 'pages.order.status.paymentNotAvailable': 'La pasarela de pago no está disponible, disculpa las molestias.',
-  // 'pages.order.status.orderNotAvailable': 'No hemos podido atender tu pedido, vuelve a probarlo más tarde y si no lo logras, contacta con nosotros, disculpa las molestias.',
-  // 'pages.order.status.thanks': '¡Gracias por tu compra!',
-  // 'pages.order.status.trackingNumber': 'Número de seguimiento:',
-  // 'pages.order.status.deliveryEstimate': 'Fecha de entrega estimada:',
-  // 'pages.order.status.total': 'Total:',
-  // 'pages.order.status.pay': 'Realizar pago',
-  // 'pages.order.status.orderContents': 'Contenido del pedido',
-  // 'pages.order.status.shippingData': 'Datos de entrega',
-  // 'pages.order.status.estimateDay': 'Día de entrega estimada:',
-  // 'pages.order.status.estimateTime': 'Hora de entrega estimada:',
-  // 'pages.order.status.name': 'Nombre',
-  // 'pages.order.status.address': 'Dirección',
-  // 'pages.order.status.phone': 'Teléfono de contacto',
-  // 'pages.order.status.email': 'Email de contacto',
-  // 'pages.order.status.company': 'Empresa',
-  // 'pages.order.status.billingData': 'Dirección de facturación',
-  // 'pages.order.status.billingDataName': 'Nombre',
-  // 'pages.order.status.billingDataAddress': 'Dirección',
-  // 'pages.order.status.billingDataPhone': 'Teléfono de contacto',
-  // 'pages.order.status.billingDataEmail': 'Email de contacto',
-  // 'pages.order.status.billingDataCompany': 'Empresa',
-  // 'pages.order.status.paymentData': 'Datos de pago',
-  // 'pages.order.status.status': 'Estado:',
-  // 'pages.order.status.payed': 'Pagado',
-  // 'pages.order.status.notPayed': 'No pagado',
-  // 'pages.order.status.usedCoupon': 'Cupón utilizado:',
-  // 'pages.order.status.discount': 'Descuento:',
-  // 'pages.order.status.seeMyOrders': 'Ver mis pedidos',
-  // 'pages.order.status.newOrder': 'Hacer un nuevo pedido',
-  // 'pages.order.status.error.updateDeliveryDate': 'Error al actualizar la fecha de entrega',
-  // 'pages.order.status.selectNewDeliveryDate': 'Selecciona una nueva fecha de entrega',
-  // 'pages.order.status.error.deliveryDate': 'El día {0} no está disponible',
-  // 'pages.order.status.updateNewDeliverOrder': 'Guardar',
+  'pages.order.status.paymentError': 'Error en el pago',
+  'pages.order.status.paymentNotAvailable': 'La pasarela de pago no está disponible, disculpa las molestias.',
+  'pages.order.status.orderNotAvailable': 'No hemos podido atender tu pedido, vuelve a probarlo más tarde y si no lo logras, contacta con nosotros, disculpa las molestias.',
+  'pages.order.status.thanks': '¡Gracias por tu compra!',
+  'pages.order.status.trackingNumber': 'Número de seguimiento:',
+  'pages.order.status.deliveryEstimate': 'Fecha de entrega estimada:',
+  'pages.order.status.total': 'Total:',
+  'pages.order.status.pay': 'Realizar pago',
+  'pages.order.status.orderContents': 'Contenido del pedido',
+  'pages.order.status.shippingData': 'Datos de entrega',
+  'pages.order.status.estimateDay': 'Día de entrega estimada:',
+  'pages.order.status.estimateTime': 'Hora de entrega estimada:',
+  'pages.order.status.name': 'Nombre',
+  'pages.order.status.address': 'Dirección',
+  'pages.order.status.phone': 'Teléfono de contacto',
+  'pages.order.status.email': 'Email de contacto',
+  'pages.order.status.company': 'Empresa',
+  'pages.order.status.billingData': 'Dirección de facturación',
+  'pages.order.status.billingDataName': 'Nombre',
+  'pages.order.status.billingDataAddress': 'Dirección',
+  'pages.order.status.billingDataPhone': 'Teléfono de contacto',
+  'pages.order.status.billingDataEmail': 'Email de contacto',
+  'pages.order.status.billingDataCompany': 'Empresa',
+  'pages.order.status.paymentData': 'Datos de pago',
+  'pages.order.status.status': 'Estado:',
+  'pages.order.status.payed': 'Pagado',
+  'pages.order.status.notPayed': 'No pagado',
+  'pages.order.status.usedCoupon': 'Cupón utilizado:',
+  'pages.order.status.discount': 'Descuento:',
+  'pages.order.status.seeMyOrders': 'Ver mis pedidos',
+  'pages.order.status.newOrder': 'Hacer un nuevo pedido',
+  'pages.order.status.error.updateDeliveryDate': 'Error al actualizar la fecha de entrega',
+  'pages.order.status.selectNewDeliveryDate': 'Selecciona una nueva fecha de entrega',
+  'pages.order.status.error.deliveryDate': 'El día {0} no está disponible',
+  'pages.order.status.updateNewDeliverOrder': 'Guardar',
   
-  pages: {
-    home: {
-      title: 'Frutas y verduras imperfectas',
-      description: 'Desde TALKUAL te traemos a tu casa frutas y verduras imperfectas rechazadas por las grandes superficies. ¡Del campo, directas a tu casa!'
-    },
-    whatinbox: {
-      title: 'Qué hay en las cajas',
-      description: 'Qué productos hay esta semana en las cajas. En nuestras cajas incluimos la mayoría de estas frutas y verduras, dependemos del excedente del agricultor y a veces nos hace variar las proporciones pero siempre encontrando el equilibrio nutricional.'
-    },
-    mission: {
-      title: 'Desperdicio alimentario',
-      description: 'Desde TALKUAL queremos informarte un poco más sobre el desperdicio alimentario'
-    },
-    boxes: {
-      title: 'Cajas fruta y verdura',
-      description: 'Todos los productos de las cajas TALKUAL provienen de una agricultura respetuosa con el medio ambiente, una parte son ecológicos ecológicos y otra parte viene de cultivo tradicional donde nuestros agricultores de proximidad siguen buenas prácticas en el ámbito de la sostenibilidad para garantizar una buena calidad.'
-    },
-    contact: {
-      title: 'Ponte en contacto con TALKUAL',
-      description: 'Cómo ponerte en contacto con el equipo de TALKUAL. Aquí encontrarás el correo, teléfono y formulario de contacto. ',
-      general: {
-        email: 'Email',
-        phone: 'Teléfono'
-      },
-      form: {
-        email: 'Email de contacto:',
-        phone: 'Teléfono:',
-        address: 'Dirección:',
-        schedule: 'Horario:'
-      },
-      customerSchedule: {
-        monday: 'LUNES',
-        tuesday: 'MARTES',
-        wednesday: 'MIÉRCOLES',
-        thursday: 'JUEVES',
-        friday: 'VIERNES'
-      }
-    },
-    faq: {
-      title: 'Preguntas frecuentes',
-      description: ''
-    },
-    'food-waste': {
-      title: 'En TALKUAL luchamos contra el desperdicio alimentario',
-      description: 'En TALKUAL trabajamos para reducir los alimentos que se pierden y luchamos contra el desperdicio alimentario.'
-    },
-    order: {
-      title: 'Compra',
-      description: 'Aquí puedes comprar los tres tipos de cajas TALKUAL que ofrecemos',
-      pay: {
-        title: 'Realizar pago',
-        message: '¡Gracias por tu compra!',
-        orderNumber: 'Número de pedido:',
-        deliveryEstimate: 'Fecha de entrega estimada:',
-        total: 'Total:',
-        orderContents: 'Contenido del pedido',
-        pay: 'Realizar pago',
-        seeOrder: 'Ver pedido'
-      },
-      status: {
-        paymentError: 'Error en el pago',
-        paymentNotAvailable: 'La pasarela de pago no está disponible, disculpa las molestias.',
-        orderNotAvailable: 'No hemos podido atender tu pedido, vuelve a probarlo más tarde y si no lo logras, contacta con nosotros, disculpa las molestias.',
-        thanks: '¡Gracias por tu compra!',
-        trackingNumber: 'Número de seguimiento:',
-        deliveryEstimate: 'Fecha de entrega estimada:',
-        total: 'Total:',
-        pay: 'Realizar pago',
-        orderContents: 'Contenido del pedido',
-        shippingData: 'Datos de entrega',
-        estimateDay: 'Día de entrega estimada:',
-        estimateTime: 'Hora de entrega estimada:',
-        name: 'Nombre',
-        address: 'Dirección',
-        phone: 'Teléfono de contacto',
-        email: 'Email de contacto',
-        company: 'Empresa',
-        billingData: 'Dirección de facturación',
-        billingDataName: 'Nombre',
-        billingDataAddress: 'Dirección',
-        billingDataPhone: 'Teléfono de contacto',
-        billingDataEmail: 'Email de contacto',
-        billingDataCompany: 'Empresa',
-        paymentData: 'Datos de pago',
-        status: 'Estado:',
-        payed: 'Pagado',
-        notPayed: 'No pagado',
-        usedCoupon: 'Cupón utilizado:',
-        discount: 'Descuento:',
-        seeMyOrders: 'Ver mis pedidos',
-        newOrder: 'Hacer un nuevo pedido',
-        selectNewDeliveryDate: 'Selecciona una nueva fecha de entrega',
-        updateNewDeliverOrder: 'Guardar',
-        error: {
-          updateDeliveryDate: 'Error al actualizar la fecha de entrega',
-          deliveryDate: 'El día {0} no está disponible',
-        }
-      }
-    },
-    admin: {
-      home: {
-        title: 'Mi cuenta',
-        lastOrder: 'Tu último pedido',
-        description: 'Aquí podrás administrar tu cuenta.'
-      },
-      orders: {
-        title: 'Mis pedidos',
-        description: 'Aquí encontrarás todos tus pedidos.',
-        all: 'Todos',
-        current: 'Actuales',
-        past: 'Pasados'
-      },
-      order: {
-        title: 'Mi pedido: ',
-        description: 'Detalle de pedido.',
-        orderItemsTitle: '¿Que contiene tu pedido?',
-        orderPaymentTitle: 'Facturación',
-        orderBillingTitle: 'Dirección de facturación',
-        orderDetailsTitle: 'Detalles del pedido',
-        orderShipmentTitle: 'Dirección de envío',
-        orderCouponTitle: 'Cupón del pedido',
-        refundTotal: 'Reembolso total',
-        refundPartial: 'Reembolso parcial'
-      },
-      status: {
-        title: 'Estado del pedido: '
-      },
-      pay: {
-        title: 'Pago pedido: '
-      },
-      subscriptions: {
-        title: 'mis suscripciones',
-        description: 'Aquí encontrarás todos tus próximos pedidos',
-      },
-      subscription: {
-        title: 'Mi suscripción',
-        adminSubscriptionDetailsTitle: 'Detalles de la suscripción',
-        adminSubscriptionCalendarTitle: 'Próximas fechas',
-        adminSubscriptionItemsTitle: 'Contenido de la suscripción',
-        adminSubscriptionPaymentTitle: 'Método de pago',
-        adminSubscriptionShippingTitle: 'Dirección de envío',
-        adminSubscriptionBillingTitle: 'Dirección de facturación',
-        adminSubscriptionActionsTitle: 'Acciones'
-      }
-    }
-  },
+
   // Pages Admin
-  // 'pages.admin.home.title': 'Mi cuenta',
-  // 'pages.admin.home.lastOrder': 'Tu último pedido',
-  // 'pages.admin.home.description': 'Aquí podrás administrar tu cuenta.',
-  // 'pages.admin.orders.title': 'Mis pedidos',
-  // 'pages.admin.orders.description': 'Aquí encontrarás todos tus pedidos.',
-  // 'pages.admin.orders.all': 'Todos',
-  // 'pages.admin.orders.current': 'Actuales',
-  // 'pages.admin.orders.past': 'Pasados',
-  // 'pages.admin.order.title': 'Mi pedido: ',
-  // 'pages.admin.order.description': 'Detalle de pedido.',
-  // 'pages.admin.order.orderItemsTitle': '¿Que contiene tu pedido?',
-  // 'pages.admin.order.orderPaymentTitle': 'Facturación',
-  // 'pages.admin.order.orderBillingTitle': 'Dirección de facturación',
-  // 'pages.admin.order.orderDetailsTitle': 'Detalles del pedido',
-  // 'pages.admin.order.orderShipmentTitle': 'Dirección de envío',
-  // 'pages.admin.order.orderCouponTitle': 'Cupón del pedido',
-  // 'admin.order.refundTotal': 'Reembolso total',
-  // 'admin.order.refundPartial': 'Reembolso parcial',
-  // 'pages.admin.pay.title': 'Pago pedido: ',
-  // 'pages.admin.status.title': 'Estado del pedido: ',
-  // 'pages.admin.subscriptions.title': 'Mis Suscripciones',
-  // 'pages.admin.subscriptions.description': 'Aquí encontrarás todos tus próximos pedidos',
-  // 'pages.admin.subscription.title': 'Mi Suscripción',
-  // 'pages.admin.subscription.adminSubscriptionDetailsTitle': 'Detalles de la suscripción',
-  // 'pages.admin.subscription.adminSubscriptionCalendarTitle': 'Próximas fechas',
-  // 'pages.admin.subscription.adminSubscriptionItemsTitle': 'Contenido de la suscripción',
-  // 'pages.admin.subscription.adminSubscriptionPaymentTitle': 'Método de pago',
-  // 'pages.admin.subscription.adminSubscriptionShippingTitle': 'Dirección de envío',
-  // 'pages.admin.subscription.adminSubscriptionBillingTitle': 'Dirección de facturación',
-  // 'pages.admin.subscription.adminSubscriptionActionsTitle': 'Acciones',
+  'pages.admin.home.title': 'Mi cuenta',
+  'pages.admin.home.lastOrder': 'Tu último pedido',
+  'pages.admin.home.description': 'Aquí podrás administrar tu cuenta.',
+  'pages.admin.orders.title': 'Mis pedidos',
+  'pages.admin.orders.description': 'Aquí encontrarás todos tus pedidos.',
+  'pages.admin.orders.all': 'Todos',
+  'pages.admin.orders.current': 'Actuales',
+  'pages.admin.orders.past': 'Pasados',
+  'pages.admin.order.title': 'Mi pedido: ',
+  'pages.admin.order.description': 'Detalle de pedido.',
+  'pages.admin.order.orderItemsTitle': '¿Que contiene tu pedido?',
+  'pages.admin.order.orderPaymentTitle': 'Facturación',
+  'pages.admin.order.orderBillingTitle': 'Dirección de facturación',
+  'pages.admin.order.orderDetailsTitle': 'Detalles del pedido',
+  'pages.admin.order.orderShipmentTitle': 'Dirección de envío',
+  'pages.admin.order.orderCouponTitle': 'Cupón del pedido',
+  'admin.order.refundTotal': 'Reembolso total',
+  'admin.order.refundPartial': 'Reembolso parcial',
+  'pages.admin.pay.title': 'Pago pedido: ',
+  'pages.admin.status.title': 'Estado del pedido: ',
+  'pages.admin.subscriptions.title': 'Mis Suscripciones',
+  'pages.admin.subscriptions.description': 'Aquí encontrarás todos tus próximos pedidos',
+  'pages.admin.subscription.title': 'Mi Suscripción',
+  'pages.admin.subscription.adminSubscriptionDetailsTitle': 'Detalles de la suscripción',
+  'pages.admin.subscription.adminSubscriptionCalendarTitle': 'Próximas fechas',
+  'pages.admin.subscription.adminSubscriptionItemsTitle': 'Contenido de la suscripción',
+  'pages.admin.subscription.adminSubscriptionPaymentTitle': 'Método de pago',
+  'pages.admin.subscription.adminSubscriptionShippingTitle': 'Dirección de envío',
+  'pages.admin.subscription.adminSubscriptionBillingTitle': 'Dirección de facturación',
+  'pages.admin.subscription.adminSubscriptionActionsTitle': 'Acciones',
   'pages.admin.upcoming.title': 'Próximas entregas',
   'pages.admin.upcoming.description': 'Próximos pedidos',
   'pages.admin.coupons.title': 'Mis Cupones',
@@ -595,7 +450,6 @@ export default {
   'content.boxes.purchaseOption3': 'Cada dos semanas',
   'content.boxes.buyNow': 'Comprar ahora',
   'content.boxes.from': 'desde',
-
   'content.contact.title': 'Contacto',
   'content.contact.description': 'Estamos encantados de poder escucharos!',
 
@@ -1470,13 +1324,17 @@ export default {
   // HomeSolutions
   'homeSolutions.title': 'El planeta necesita soluciones como la nuestra', //
   // HomeTribe
-  'homeTribe.title': 'Algunos comentarios de la tribu...',
+  'homeTribe.title': 'Algunos comentarios de la tribu...', //
   'homeTribe.review.verified': 'Verificado',
 
+  //HomeDonations
+  'homeDonations.title': 'Además...', //
+  'homeDonations.description': 'Colaboramos con varias ONGs para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.', //
+
   // HomeHelp
-  'homeHelp.tile': 'ÚNETE A LA TRIBU Y AYUDA AL PLANETA',
-  'homeHelp.description': 'Ayúdanos a reducir el desperdicio alimentario haciendo un pedido de nuestra fruta y verdura imperfecta. Nos encantaría que formaras parte de la tribu para contribuir juntos a la sostenibilidad del planeta.',
-  'homeHelp.askBox': 'Pide tu caja',
+  'homeHelp.title': 'ÚNETE A LA TRIBU Y AYUDA AL PLANETA', //
+  'homeHelp.description': 'Ayúdanos a reducir el desperdicio alimentario haciendo un pedido de nuestra fruta y verdura imperfecta. Nos encantaría que formaras parte de la tribu para contribuir juntos a la sostenibilidad del planeta.', //
+  'homeHelp.askBox': 'Pide tu caja', //
 
   // FooterInfo
   'footerInfo.follow': 'SÍGUENOS',
@@ -1914,6 +1772,7 @@ export default {
   'Companies.8.alt': 'Evento TALKUAL',
   'Companies.9.alt': 'Zumos TALKUAL',
   'ReferAFriend.1.alt': 'Ilustración de la tribu TALKUAL',
-
   'general.error': 'Algo ha salido mal, inténtalo de nuevo más tarde'
+
+  
 }

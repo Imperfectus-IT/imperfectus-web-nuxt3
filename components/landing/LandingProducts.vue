@@ -44,6 +44,7 @@
       :show-indicators="false"
       :pt="{ item: 'flex shrink-0 grow gap-3 mr-12'}"
       :responsive-options="responsiveProductOptions"
+      circular
     >
       <template #item="slotProps">
         <div class="relative bg-beige-secondary rounded-lg w-[200px] h-[215px] !flex !justify-center">

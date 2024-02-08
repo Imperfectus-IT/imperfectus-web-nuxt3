@@ -28,8 +28,7 @@ export default defineNuxtConfig({
     "nuxt-primevue",
     "@nuxt/image",
     "nuxt-svgo",
-    "@nuxtjs/eslint-module",
-    "@vee-validate/nuxt"
+    "@nuxtjs/eslint-module"
   ],
   primevue: {
     options: { unstyled: true },

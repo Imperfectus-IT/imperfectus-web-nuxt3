@@ -49,6 +49,10 @@
     <LandingUpToDate />
     <LandingBlog />
     <LandingWorldData />
+    <LandingDonations />
+    <LandingComments />
+    <XDivider />
+    <LandingHelp />
   </div>
 </template>
 

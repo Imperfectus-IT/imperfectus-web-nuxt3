@@ -49,8 +49,6 @@
         </div>
       </template>
     </Carousel>
-
-    
   </div>
 </template>
 
