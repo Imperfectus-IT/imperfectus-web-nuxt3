@@ -25,7 +25,7 @@ const countries = ref([
 </script>
 
 <template>
-  <div class="container flex flex-wrap justify-center gap-3 mb-10">
+  <div class="flex flex-wrap justify-center gap-3 mb-10">
     <Dropdown
       v-model="selectedCity"
       :options="cities"

@@ -11,6 +11,8 @@
     <PasswordDemo />
     <CheckboxDemo />
     <DropdownDemo />
+    <MultiselectDemo />
+    <ProgressBarDemo />
   </div>
 </template>
 
