@@ -41,9 +41,11 @@
     </div>
 
     <LandingHeader />
-    <XDivider /> <!-- Se le puede pasar el color -->
+    <Divider class="before:border-t-2 before:border-green-primary" />
+    <!-- Se le puede pasar el color -->
     <LandingBoxesCarousel />
-    <LandingVegetablesCarousel />      <!-- FALTA SWAP AUTOMÁTICO -->
+    <LandingVegetablesCarousel />
+    <!-- FALTA SWAP AUTOMÁTICO -->
     <LandingOffer />
     <LandingProducts />
     <LandingUpToDate />
@@ -51,16 +53,13 @@
     <LandingWorldData />
     <LandingDonations />
     <LandingComments />
-    <XDivider />
+    <Divider class="before:border-t-2 before:border-green-primary" />
     <LandingHelp />
   </div>
 </template>
 
 <script setup lang="ts">
-import TalkualLogoDark from '~/assets/images/svg/talkual-logo-dark.svg'
-
+import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

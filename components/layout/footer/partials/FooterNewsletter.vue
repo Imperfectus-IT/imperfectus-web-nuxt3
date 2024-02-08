@@ -1,5 +1,8 @@
 <template>
-  <div id="form-newsletter-footer" class="FooterNewsletter">
+  <div
+    id="form-newsletter-footer"
+    class="FooterNewsletter"
+  >
     <h4 class="pl-0 pr-4 has-text-secondary">
       {{ $t('FooterNewsletter.title') }}
     </h4>
@@ -7,18 +10,42 @@
       {{ $t('FooterNewsletter.description') }}
     </p>
 
-    <GDPRModal :is-active="showGDPRModal" method="POST" :purpose="$t('gdpr.content.purpose.newsletter')" @submit="submitForm" @close="closeGDPRModal" />
+    <GDPRModal
+      :is-active="showGDPRModal"
+      method="POST"
+      :purpose="$t('gdpr.content.purpose.newsletter')"
+      @submit="submitForm"
+      @close="closeGDPRModal"
+    />
 
     <div v-if="!isMessageSent">
       <div class="FooterNewsletter__form mt-4">
-        <b-field :type="validations.email.status" :message="$t(validations.email.message)">
-          <b-input v-model="email" :placeholder="$t('FooterNewsletter.email')" @focus="emailFocus" />
+        <b-field
+          :type="validations.email.status"
+          :message="$t(validations.email.message)"
+        >
+          <b-input
+            v-model="email"
+            :placeholder="$t('FooterNewsletter.email')"
+            @focus="emailFocus"
+          />
         </b-field>
-        <b-field :type="validations.repeatEmail.status" :message="$t(validations.repeatEmail.message)">
-          <b-input v-if="emailFocused" v-model="repeatEmail" :placeholder="$t('FooterNewsletter.confirmEmail')" />
+        <b-field
+          :type="validations.repeatEmail.status"
+          :message="$t(validations.repeatEmail.message)"
+        >
+          <b-input
+            v-if="emailFocused"
+            v-model="repeatEmail"
+            :placeholder="$t('FooterNewsletter.confirmEmail')"
+          />
         </b-field>
       </div>
-      <b-button class="FooterNewsletter__form__button mt-3" :disabled="!validated" @click="subscribeToNewsletter">
+      <b-button
+        class="FooterNewsletter__form__button mt-3"
+        :disabled="!validated"
+        @click="subscribeToNewsletter"
+      >
         {{ $t('FooterNewsletter.send') }}
       </b-button>
 
@@ -58,7 +85,11 @@
         >
           <b-icon icon="twitter" />
         </a>
-        <a title="Tiktok" target="_blank" href="https://www.tiktok.com/@talkual">
+        <a
+          title="Tiktok"
+          target="_blank"
+          href="https://www.tiktok.com/@talkual"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -72,7 +103,10 @@
         </a>
       </div>
     </div>
-    <div v-else class="FooterNewsletter__message-sent">
+    <div
+      v-else
+      class="FooterNewsletter__message-sent"
+    >
       <p>
         {{ $t('FooterNewsletter.messageSent') }}
       </p>
