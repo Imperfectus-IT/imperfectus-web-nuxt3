@@ -8,8 +8,8 @@ definePageMeta({
   <section>
     <LoginForm>
       <template #header>
-        <div>
-          <span class="font-recoleta">{{ $t('loginForm.login') }}</span>
+        <div class="mb-5">
+          <span class="font-recoleta text-lg font-normal">{{ $t('loginForm.login') }}</span>
         </div>
       </template>
     </LoginForm>

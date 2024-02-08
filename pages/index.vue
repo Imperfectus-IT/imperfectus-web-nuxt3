@@ -29,13 +29,15 @@
         </template>
 
         <template #end>
-          <Button
-            icon="mdi mdi-account"
-            text
-            raised
-            aria-label="Account"
-            :pt="{ icon: 'text-xl' }"
-          />
+          <NuxtLink to="/auth/login">
+            <Button
+              icon="mdi mdi-account"
+              text
+              raised
+              aria-label="Account"
+              :pt="{ icon: 'text-xl' }"
+            />
+          </NuxtLink>
         </template>
       </Toolbar>
     </div>

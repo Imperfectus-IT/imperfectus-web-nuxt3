@@ -12,6 +12,16 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    baseUrl: process.env.BASE_URL,
+    public: {
+      baseUrl: process.env.BASE_URL,
+    },
+  },
+  routeRules: {
+    "/api/": { proxy: process.env.STRAPI_URL, pathRewrite: { "^/api/": "" } },
+    "/uploads/": { proxy: process.env.STRAPI_URL },
+  },
   components: [
     {
       path: "~/components",
@@ -24,11 +34,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@nuxtjs/tailwindcss",
+    "nuxt-zod-i18n",
     "@nuxtjs/i18n",
     "nuxt-primevue",
     "@nuxt/image",
     "nuxt-svgo",
-    "@nuxtjs/eslint-module"
+    "@nuxtjs/eslint-module",
+    "@nuxtjs/strapi",
   ],
   primevue: {
     options: { unstyled: true },
@@ -78,5 +90,18 @@ export default defineNuxtConfig({
     langDir: "lang/",
     strategy: "prefix_except_default",
     defaultLocale: "es",
+  },
+  zodI18n: {
+    localeCodesMapping: {
+      "es-ES": "es",
+      "ca-ES": "ca",
+    },
+  },
+  strapi: {
+    prefix: "/api/",
+    cookie: {
+      path: "/",
+    },
+    version: "v3",
   },
 });
