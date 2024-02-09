@@ -1,6 +1,6 @@
 <template>
-  <div class="m-4 leading-10">
-    <h2 class="font-recoleta text-[35px]">
+  <div class=" leading-10 bg-green-tertiary text-green-primary">
+    <h2 class=" ml-4 font-recoleta text-[45px] leading-[3.4rem] mt-10">
       {{ $t('homeTribe.title') }}
     </h2>
     <h1 class="text-red-primary">
@@ -11,5 +11,10 @@
 
 <script setup lang="ts">
 
+const comments = [
+  {
+    
+  }
+]
 
 </script>

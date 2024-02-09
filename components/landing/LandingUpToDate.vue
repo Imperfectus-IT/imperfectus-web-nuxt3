@@ -9,8 +9,7 @@
       {{ $t('homeUpToDate.description') }}
     </p>
    
-    <!-- FALTA EL MODAL -->
-        
+    
     <div
       v-if="!form.displayMessageSent"
       id="form-newsletter-home"
@@ -24,23 +23,19 @@
         :pt="{label: 'text-[18px]'}"
         @input="displaySecondInput"
       />
-
+      
       <InputText
         v-if="form.emailFocused"
         v-model="form.confirmEmail"
         class="rounded-none border-0 border-b border-green-tertirary mt-4"
         type="text"
-        placeholder="Tu email"
+        placeholder="Repite tu email"
         :pt="{label: 'text-[18px]'}"
       />
-
-      <Button
-        class="mt-10 mb-4 !px-4"
-        :label="$t('homeUpToDate.subscribe')"
-        raised
-        :pt="{label: 'px-10 py-1'}"
-        :disabled="!emailIsMatched"
-        @click="displayGDPRModal"
+      
+      <LandingUpToDateDialog 
+        class="mt-10 mb-4"
+        :button-disabled="!emailIsMatched"
       />
     </div>
     <div v-else>

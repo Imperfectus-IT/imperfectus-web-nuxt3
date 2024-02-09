@@ -45,7 +45,6 @@
     <!-- Se le puede pasar el color -->
     <LandingBoxesCarousel />
     <LandingVegetablesCarousel />
-    <!-- FALTA SWAP AUTOMÁTICO -->
     <LandingOffer />
     <LandingProducts />
     <LandingUpToDate />

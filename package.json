@@ -36,7 +36,10 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.3.0",
-    "primevue": "^3.48.0"
+    "nuxt-swiper": "^1.2.2",
+    "primevue": "^3.48.0",
+    "swiper": "^8.4.7",
+    "vue3-carousel-nuxt": "^1.1.0"
   },
   "engines": {
     "node": "~20.11.0",

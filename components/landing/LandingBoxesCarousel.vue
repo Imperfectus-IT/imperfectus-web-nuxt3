@@ -23,7 +23,7 @@
       :show-navigators="false"
       :show-indicators="false"
       :responsive-options="responsiveProductOptions"
-      :pt="{ item: 'flex shrink-0 grow gap-3 mr-6 w-4/5'}"
+      :pt="{ item: 'flex shrink-0 grow gap-3 w-4/5'}"
     >
       <template #item="slotProps">
         <div class="relative h-[400px] ml-4">
@@ -49,6 +49,9 @@
         </div>
       </template>
     </Carousel>
+    <p class="text-[22px] px-4 leading-8 mb-8 mt-10">
+      {{ $t('homeOffer.weOfferBoxes') }}
+    </p>
   </div>
 </template>
 

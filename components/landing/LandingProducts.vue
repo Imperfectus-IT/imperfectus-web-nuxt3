@@ -14,22 +14,24 @@
       <ul class="flex">
         <div class="flex items-center mr-4">
           <div 
-            v-if="classItemsToShow === 'Fruits'"
+            v-if="classItemsToShow === 'fruits'"
             class="w-3 h-3 bg-green-primary rounded-xl mr-2"
           />
           <li
-            @click="classItemsToShow = 'Fruits'"
+            :class="classItemsToShow === 'fruits' ? '' : 'text-gray-primary'"
+            @click="classItemsToShow = 'fruits'"
           >
             Fruta
           </li>
         </div>
         <div class="flex items-center">
           <div
-            v-if="classItemsToShow === 'Vegetables'"
+            v-if="classItemsToShow === 'vegetables'"
             class="w-3 h-3 bg-green-primary rounded-xl mr-2"
           />
           <li
-            @click="classItemsToShow = 'Vegetables'"
+            :class="classItemsToShow === 'vegetables' ? '' : 'text-gray-primary'"
+            @click="classItemsToShow = 'vegetables'"
           >
             Verduras
           </li>
@@ -38,22 +40,22 @@
     </div>
     
     <Carousel
-      :value="classItemsToShow === 'Fruits' ? fruits : vegetables"
+      :value="classItemsToShow === 'fruits' ? fruits : vegetables"
       :num-visible="1"
       :num-scroll="1"
       :show-indicators="false"
-      :pt="{ item: 'flex shrink-0 grow gap-3 mr-12'}"
+      :pt="{ item: 'flex shrink-0 w-full relative justify-center' }"
       :responsive-options="responsiveProductOptions"
       circular
     >
       <template #item="slotProps">
-        <div class="relative bg-beige-secondary rounded-lg w-[200px] h-[215px] !flex !justify-center">
+        <div class="bg-beige-secondary rounded-lg h-[215px] w-3/4 !flex !justify-center">
           <NuxtImg
             class="relative h-44"
             :src="slotProps.data.image"
             :alt="slotProps.data.name"
           />
-          <p class="absolute bottom-4">
+          <p class="absolute bottom-4 font-bold">
             {{ slotProps.data.name }}
           </p>
         </div>
@@ -64,7 +66,7 @@
 
 <script setup lang="ts">
 
-const classItemsToShow = ref('Fruits')
+const classItemsToShow = ref('fruits')
 
 const fruits = [
     {
@@ -105,29 +107,37 @@ const vegetables = [
   {
     name: 'Alcachofas',
     image: '/images/landing/products/verduras/alcachofas.webp',
+  },
+  {
+    name: 'Acelgas',
+    image: '/images/landing/products/verduras/acelgas.webp',
+  },
+  {
+    name: 'Alcachofas',
+    image: '/images/landing/products/verduras/alcachofas.webp',
   }
 ]
 
 const responsiveProductOptions = ref([
   {
-    breakpoint: "1400px",
+    breakpoint: "1280px",
     numVisible: 2,
     numScroll: 1,
   },
   {
-    breakpoint: "1199px",
+    breakpoint: "1024px",
     numVisible: 3,
     numScroll: 1,
   },
   {
-    breakpoint: "767px",
+    breakpoint: "768px",
     numVisible: 2,
     numScroll: 1,
   },
   {
-    breakpoint: "575px",
+    breakpoint: "640px",
     numVisible: 1,
     numScroll: 1,
   },
-]);      
+]);
 </script>
