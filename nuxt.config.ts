@@ -57,7 +57,6 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     cssPath: "~/assets/scss/tailwind.scss",
-    configPath: "tailwind.config",
   },
   i18n: {
     baseUrl: process.env.BASE_URL,
