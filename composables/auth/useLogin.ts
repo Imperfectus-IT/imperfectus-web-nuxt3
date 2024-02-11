@@ -8,16 +8,14 @@ export const useStrapiLogin = () => {
 
   const { login } = useStrapiAuth();
 
-  const submitLoginForm = async () => {
-    try {
-      return await login({
-        identifier: loginFormData.value.identifier,
-        password: loginFormData.value.password,
-      });
-    } catch (err) {
-      console.log(err);
-    }
+  const handleLogin = async () => {
+    const data = {
+      identifier: loginFormData.value.identifier,
+      password: loginFormData.value.password,
+    };
+
+    await login(data);
   };
 
-  return { loginFormData, submitLoginForm };
+  return { loginFormData, handleLogin };
 };

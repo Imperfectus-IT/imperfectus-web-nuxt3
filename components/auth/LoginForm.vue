@@ -1,67 +1,82 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { watch } from "vue";
 
-const identifier = ref("");
-const password = ref("");
+const { validationErrors, validateSchema } = useValidateLogin();
+const { loginFormData, handleLogin } = useStrapiLogin();
 
-const { login } = useStrapiAuth();
+watch(loginFormData.value, (newValue) => {
+  validateSchema(newValue);
+});
+
+const emit = defineEmits<{
+  (e: "login"): void;
+}>();
 
 const submitLoginForm = async () => {
   try {
-    const user = await login({
-      identifier: identifier.value,
-      password: password.value,
-    });
+    validateSchema(loginFormData.value);
+
+    if (!validationErrors.value) {
+      await handleLogin();
+    }
+
+    emit("login");
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 </script>
 
 <template>
-  <section class="flex flex-col items-center gap-1">
+  <section class="px-10 lg:px-96">
     <slot name="header" />
     <SocialButtons />
-    <div class="flex flex-col-3 justify-center items-center gap-x-1">
-      <Divider class="opacity-50" />
-      <span class="text-[10px] text-green-tertiary/50">{{
+    <div class="flex items-center text-center py-3">
+      <hr class="border w-[50%] lg:w-[80%] bg-green-tertiary opacity-30" />
+      <span class="text-[10px] text-green-tertiary/50 w-full">{{
         $t("socialProvider.loginWithEmail")
       }}</span>
-      <Divider class="opacity-50" />
+      <hr class="border w-[50%] lg:w-[80%] bg-green-tertiary opacity-30" />
     </div>
     <form class="flex flex-col gap-y-4" @submit.prevent="submitLoginForm">
-      <InputText
-        v-model="identifier"
-        size="small"
-        class="rounded-xl"
-        type="text"
-        :placeholder="$t('loginForm.email')"
-        invalid
-      />
-      <InputText
-        v-model="password"
-        size="small"
-        class="rounded-xl"
-        type="password"
-        :placeholder="$t('loginForm.password')"
-      />
-      <Button
-        class="w-full"
-        :label="$t('loginForm.login')"
-        severity="secondary"
-        type="submit"
-      />
+      <Field :errors="validationErrors?.identifier?._errors">
+        <InputText
+          v-model="loginFormData.identifier"
+          size="small"
+          class="rounded-xl"
+          type="text"
+          :placeholder="$t('loginForm.email')"
+          :invalid="!!validationErrors?.identifier?._errors?.length"
+        />
+      </Field>
+      <Field :errors="validationErrors?.password?._errors">
+        <InputText
+          v-model="loginFormData.password"
+          size="small"
+          class="rounded-xl"
+          type="password"
+          :placeholder="$t('loginForm.password')"
+          :invalid="!!validationErrors?.password?._errors?.length"
+        />
+      </Field>
+      <div class="text-center">
+        <Button
+          class="w-full lg:w-[9rem]"
+          :label="$t('loginForm.login')"
+          severity="secondary"
+          type="submit"
+        />
+      </div>
       <Button
         :label="$t('loginForm.forgotPassword')"
         link
         :pt="{
-          root: { class: 'px-0 py-0 text-start' },
+          root: { class: 'px-0 py-0 text-start lg:text-center' },
           label: { class: 'text-[0.625rem] font-light underline' },
         }"
       />
       <Button
         :label="$t('orderStepAuth.hastAccount')"
-        link
         :pt="{
           root: { class: 'px-0 py-0' },
           label: { class: 'text-base font-medium underline' },

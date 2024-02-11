@@ -28,6 +28,9 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  imports: {
+    dirs: ["composables/**"],
+  },
   typescript: {
     typeCheck: false,
   },
@@ -101,6 +104,9 @@ export default defineNuxtConfig({
     prefix: "/api/",
     cookie: {
       path: "/",
+      maxAge: 14 * 24 * 60 * 60,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: true,
     },
     version: "v3",
   },
