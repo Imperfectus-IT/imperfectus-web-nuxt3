@@ -18,9 +18,9 @@
         </div>
 
         <FooterLinks />
-        <FooterAboutUs /> 
-        <FooterLegal />     
-        <FooterContact />      
+        <FooterAboutUs />
+        <FooterLegal />
+        <FooterContact />
         <FooterLogos />
       </div>
     </Container>
