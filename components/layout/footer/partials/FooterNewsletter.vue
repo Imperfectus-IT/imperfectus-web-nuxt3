@@ -1,7 +1,6 @@
 <template>
   <div
     id="form-newsletter-footer"
-    class="FooterNewsletter"
   >
     <h4 class="pl-0 pr-4 has-text-secondary">
       {{ $t('FooterNewsletter.title') }}

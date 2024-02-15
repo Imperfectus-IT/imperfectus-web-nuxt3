@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-svgo",
     "@nuxtjs/eslint-module",
-    // 'vue3-carousel-nuxt'
+    'vue3-carousel-nuxt'
   ],
   primevue: {
     options: { unstyled: true },

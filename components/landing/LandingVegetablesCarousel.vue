@@ -1,25 +1,18 @@
 <template>
   <div>
-    <Carousel
-      :value="vegetables"
-      :num-visible="1"
-      :num-scroll="1"
-      :show-navigators="false"
-      :show-indicators="true"
-      :autoplay-interval="5000"
-      :responsive-options="responsiveProductOptions"
-    >
-      <template #item="slotProps">
-        <NuxtImg
-          :src="slotProps.data.image"
-          :alt="slotProps.data.name"
-        />
-      </template>
-    </Carousel>
+    <TKCarousel
+      :data="vegetables"
+      :show-navigation="false"
+      :autoplay="5000"
+    />
   </div>
 </template>
 
 <script setup lang="ts">    
+
+
+
+
 const responsiveProductOptions = ref([
   {
     breakpoint: "1400px",

@@ -4,45 +4,22 @@
       {{ $t('homeSolutions.title') }}
     </h2>
 
-    <Carousel
-      :value="data"
-      :num-visible="1"
-      :num-scroll="1"
-      :show-navigators="true"
-      :show-indicators="false"
-      :responsive-options="responsiveProductOptions"
-      :pt="{
-        nextButton: 'absolute right-6 bg-green-quaternary text-green-tertiary h-9 rounded-full w-9 top-1/2 transform -translate-y-full',    
-        nextButtonIcon: 'mx-auto ',
-        previousButton: 'absolute left-6 bg-green-quaternary text-green-tertiary h-9 rounded-full w-9 top-1/2 transform -translate-y-full ',
-        previousButtonIcon: 'mx-auto'
-       
-      }"
+    <TKCarousel
+      :data="data"
     >
-      <template #item="slotProps">
-        <div>
-          <div 
-            class="relative bg-green-primary mx-auto h-48 w-48 rounded-xxl flex items-center justify-center mt-10 border-solid border-2 border-green-primary"
-            :class="slotProps.index %2 === 0 ? 'bg-green-tertiary text-green-quaternary' : 'bg-green-primary'"
-          >
-            <p
-              class="text-center text-[24px] font-recoleta font-extrabold"
-              :class="slotProps.index %2 === 0 ? 'text-green-primary' : 'text-green-tertiary'"
-            >
-              {{ slotProps.data.value }}
-            </p>
-          </div>
-          <div>
-            <div class="h-14 w-0.5 bg-green-primary mx-auto" />
-            <div class="h-3 w-3 rounded-full bg-green-primary mx-auto" />
-          </div>
-
-          <p class="text-[20px] p-4 text-center m6-4 text-green-quaternary mx-2">
-            {{ $i18n.locale === 'ca' ? slotProps.data.description_ca : slotProps.data.description_es }}
+      <template #SlideContent="{ item }">
+        <div class="flex flex-col items-center w-5/6 mx-auto">
+          <div class="border-red-primary h-48 w-48 rounded-full border-2 flex flex-col justify-center ">
+            <p class="font-recoleta text-xl font-bold">{{ item.value }}</p>
+          </div>  
+          <div class="bg-red-primary h-10 w-0.5" />
+          <div class="bg-red-primary h-3 w-3 rounded-full" />
+          <p class="text-lg mt-4">
+            {{ item.description_ca }}
           </p>
         </div>
       </template>
-    </Carousel>
+    </TKCarousel>
   </div>
 </template>
 

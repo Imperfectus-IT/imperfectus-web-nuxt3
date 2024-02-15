@@ -42,11 +42,10 @@
 
     <LandingHeader />
     <Divider class="before:border-t-2 before:border-green-primary" />
-    <!-- Se le puede pasar el color -->
     <LandingBoxesCarousel />
     <LandingVegetablesCarousel />
     <LandingOffer />
-    <LandingProducts />
+    <LandingProductsCarousel />
     <LandingUpToDate />
     <LandingBlog />
     <LandingWorldData />
@@ -61,4 +60,3 @@
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 </script>
 
-<style scoped lang="scss"></style>

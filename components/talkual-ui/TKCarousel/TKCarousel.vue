@@ -1,22 +1,30 @@
 <template>
   <Carousel
-    class=""
-    :wrap-around="true"
-    :items-to-show="1"
+    :class="carouselClass"
+    :wrap-around="wrapItems"
+    :items-to-show="visibleItems"
     :autoplay="autoplay"
   >
     <Slide
       v-for="(item, index) in data"
       :key="index"
     >
-      <div class="">
+      <div 
+        :class="slideClass"
+      >
         <NuxtImg
+          v-if="item.image"
           :src="item.image"
           :alt="item.name"
-          class="lg:w-[50vw] h-full rounded-lg "
-          :class="optionalSlideClass"
+          :class="imageClass"
         />
-        <slot name="SlideContent" />
+        <div :class="slotClass">
+          <slot
+            name="SlideContent"
+            :item="item"
+            :class="slotClass"
+          />
+        </div>
       </div>
     </Slide>
     
@@ -36,13 +44,12 @@
 
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import { ref } from 'vue';
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
-import type { BoxesSlideObject } from '../landing/LandingBoxesCarouselTypes/LandingBoxCarouselTypes';
+import type { CarouselSlideObject } from './TKCarouselTypes';
 
 defineProps({
   data: {
-    type: Array as PropType<BoxesSlideObject[]>,
+    type: Array as PropType<CarouselSlideObject[]>,
     required: true
   },
     visibleItems: {
@@ -61,56 +68,27 @@ defineProps({
         type: Number,
         default: 0
     },
-    optionalSlideClass: {
+    wrapItems: {
+        type: Boolean,
+        default: true
+    },
+    slideClass: {
+        type: String,
+        default: ''
+    },
+    carouselClass: {
+        type: String,
+        default: ''
+    },
+    imageClass: {
+        type: String,
+        default: ''
+    },
+    slotClass: {
         type: String,
         default: ''
     }
 })
-
-const responsiveProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);
-const responsiveOtherProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);
 </script>
 
 <style lang="scss" scoped>

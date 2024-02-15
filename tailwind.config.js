@@ -16,7 +16,10 @@ export default {
         primary: "#FFFAE8",
         secondary: "#FFF2C1"
       },
-      white: "#ffffff",
+      black: {
+        primary: "#000"
+      },
+      white: "#fff",
       green: {
         primary: "#D9EF52",
         secondary: "#007D08",
@@ -25,6 +28,7 @@ export default {
       },
       grey: {
         primary: "#E0E0E0",
+        secondary: "#002423"
       },
       orange: {
         primary: "#F8CA8E",
@@ -32,10 +36,6 @@ export default {
       },
       red: {
         primary: "#DC362E",
-      },
-      gray: {
-        primary: "#DADADA",
-        secondary: "#002423"
       },
       transparent: "transparent",
       current: "currentColor",

@@ -18,7 +18,7 @@
             class="w-3 h-3 bg-green-primary rounded-xl mr-2"
           />
           <li
-            :class="classItemsToShow === 'fruits' ? '' : 'text-gray-primary'"
+            :class="classItemsToShow === 'fruits' ? '' : 'text-grey-primary'"
             @click="classItemsToShow = 'fruits'"
           >
             Fruta
@@ -30,7 +30,7 @@
             class="w-3 h-3 bg-green-primary rounded-xl mr-2"
           />
           <li
-            :class="classItemsToShow === 'vegetables' ? '' : 'text-gray-primary'"
+            :class="classItemsToShow === 'vegetables' ? '' : 'text-grey-primary'"
             @click="classItemsToShow = 'vegetables'"
           >
             Verduras
@@ -39,28 +39,21 @@
       </ul>
     </div>
     
-    <Carousel
-      :value="classItemsToShow === 'fruits' ? fruits : vegetables"
-      :num-visible="1"
-      :num-scroll="1"
-      :show-indicators="false"
-      :pt="{ item: 'flex shrink-0 w-full relative justify-center' }"
-      :responsive-options="responsiveProductOptions"
-      circular
+    <TKCarousel
+      :data="classItemsToShow === 'fruits' ? fruits : vegetables"
+      :visible-items="1.4"
+      :show-pagination="false"
+      :show-navigation="false"
+      :wrap-items="true"
+      :image-class="'py-4 relative bottom-2 h-[32vh] w-[55vw] mx-auto'"
+      :slide-class="'bg-beige-secondary  rounded-[20px] w-[60vw] h-[35vh] mx-auto ml-2 relative'"
     >
-      <template #item="slotProps">
-        <div class="bg-beige-secondary rounded-lg h-[215px] w-3/4 !flex !justify-center">
-          <NuxtImg
-            class="relative h-44"
-            :src="slotProps.data.image"
-            :alt="slotProps.data.name"
-          />
-          <p class="absolute bottom-4 font-bold">
-            {{ slotProps.data.name }}
-          </p>
-        </div>
+      <template #SlideContent="{ item }">
+        <p class=" bottom-4 text-[15px] absolute w-full text-center">
+          {{ item.name }}
+        </p>
       </template>
-    </Carousel>
+    </TKCarousel>
   </div>
 </template>
 
@@ -70,30 +63,37 @@ const classItemsToShow = ref('fruits')
 
 const fruits = [
     {
-        name: 'Fresas',
-        image: '/images/landing/products/frutas/fresas.webp',
+      index: 1,
+      name: 'Fresas',
+      image: '/images/landing/products/frutas/fresas.webp',
     },
     {
-        name: 'Ciruela',
-        image: '/images/landing/products/frutas/ciruela.webp',
+      index: 2,
+      name: 'Ciruela',
+      image: '/images/landing/products/frutas/ciruela.webp',
     },
     {
-        name: 'Kiwi',
-        image: '/images/landing/products/frutas/kiwi.webp',
+      index: 3,
+      name: 'Kiwi',
+      image: '/images/landing/products/frutas/kiwi.webp',
     },
     {
-        name: 'Mango',
-        image: '/images/landing/products/frutas/mango.webp',
+      index: 4,
+      name: 'Mango',
+      image: '/images/landing/products/frutas/mango.webp',
     },
     {
-        name: 'Manzana',
-        image: '/images/landing/products/frutas/manzana.webp',
+      index: 5,
+      name: 'Manzana',
+      image: '/images/landing/products/frutas/manzana.webp',
     },
     {
+      index: 6,
       name: 'Naranja',
       image: '/images/landing/products/frutas/naranja.webp',
     },
     {
+      index: 7,
       name: 'Limón',
       image: '/images/landing/products/frutas/limon.webp',
     }
@@ -101,18 +101,22 @@ const fruits = [
 
 const vegetables = [
   {
+    index: 1,
     name: 'Acelgas',
     image: '/images/landing/products/verduras/acelgas.webp',
   },
   {
+    index: 2,
     name: 'Alcachofas',
     image: '/images/landing/products/verduras/alcachofas.webp',
   },
   {
+    index: 3,
     name: 'Acelgas',
     image: '/images/landing/products/verduras/acelgas.webp',
   },
   {
+    index: 4,
     name: 'Alcachofas',
     image: '/images/landing/products/verduras/alcachofas.webp',
   }

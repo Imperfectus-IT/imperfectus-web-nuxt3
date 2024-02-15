@@ -13,7 +13,7 @@
     <div
       v-if="!form.displayMessageSent"
       id="form-newsletter-home"
-      class="HomeUpToDate__email is-flex is-flex-direction-column is-align-items-center mb-6"
+      class="mb-6"
     >
       <InputText
         v-model="form.email"
@@ -50,15 +50,15 @@
 
 const showGDPRModal = ref(false);
 const form = reactive({
-    email: null,
-    confirmEmail: null,
+    email: '',
+    confirmEmail: '',
     emailFocused: false,
     displayMessageSent: false
 })
 
 
 const emailIsMatched = computed(() => {
-    return form.email === form.confirmEmail && form.email !== null && form.confirmEmail !== null;
+    return form.email === form.confirmEmail && form.email !== '' && form.confirmEmail !== '';
 })
 
 const displayGDPRModal = () => {
@@ -75,8 +75,8 @@ const displaySecondInput = () => {
 
 const submitForm = () => {
     console.log('submitForm')
-    form.email = null;
-    form.confirmEmail = null;
+    form.email = '';
+    form.confirmEmail = '';
 }
 
 
