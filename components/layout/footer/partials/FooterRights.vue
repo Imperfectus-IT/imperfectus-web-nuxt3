@@ -3,7 +3,7 @@
     class="bg-green-primary text-green-tertiary pt-2"
   >
     <h4
-      class="text-[30px] font-recoleta text-center"
+      class="text-[30px] font-recoleta-regular text-center"
     >
       {{ $t('footerLegal.claim') }}
     </h4>

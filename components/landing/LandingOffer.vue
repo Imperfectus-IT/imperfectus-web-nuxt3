@@ -35,19 +35,19 @@
     <p class="inline">
       {{ $t('boxes.suppliers.description.1') }}
     </p>
-    <p class="font-recoleta text-green-primary text-[38px] inline">
+    <p class="font-recoleta-regular text-green-primary text-[38px] inline">
       {{ $t('boxes.suppliers.description.2.bold') }}
     </p>
     <p class="inline">
       {{ $t('boxes.suppliers.description.3') }}
     </p>
-    <p class="inline font-recoleta text-green-primary text-[38px]">
+    <p class="inline font-recoleta-regular text-green-primary text-[38px]">
       {{ $t('boxes.suppliers.description.4.bold') }}
     </p>
     <p class="inline">
       {{ $t('boxes.suppliers.description.5') }}
     </p>
-    <p class="inline font-recoleta text-green-primary text-[38px]">
+    <p class="inline font-recoleta-regular text-green-primary text-[38px]">
       {{ $t('boxes.suppliers.description.6.bold') }}
     </p>
     <div class="flex flex-row items-center mt-4">

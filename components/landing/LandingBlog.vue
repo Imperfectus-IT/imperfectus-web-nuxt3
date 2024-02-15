@@ -1,6 +1,6 @@
 <template>
   <div class="text-center ">
-    <h2 class="font-recoleta text-[35px] leading-10 mt-10 mb-6 text-wrap">
+    <h2 class="font-recoleta-regular text-[35px] leading-10 mt-10 mb-6 text-wrap">
       {{ $t('blogPosts.title') }}
     </h2>
     <p>

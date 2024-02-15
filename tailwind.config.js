@@ -59,8 +59,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        recoleta: ["Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold"],
-        solina: ["Solina Extended Book", "Solina Extended Medium"],
+        'recoleta-regular': ['Recoleta Regular'],
+        'recoleta-medium': ['Recoleta Medium'],
+        'recoleta-semibold': ['Recoleta SemiBold'],
+        'solina-extended-book': ['Solina Extended Book'],
+        'solina-extended-medium': ['Solina Extended Medium'],
+        'solina-condensed': ['Solina Condensed']
       },
     },
   },

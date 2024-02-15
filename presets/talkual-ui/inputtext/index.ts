@@ -27,7 +27,11 @@ export default {
       "text-green-tertiary",
       "placeholder:text-green-tertiary placeholder:opacity-50",
       "bg-transparent",
-      "border border-green-tertiary",
+      "border",
+      {
+        "border-green-tertiary": !props.invalid,
+        "border-red-primary": props.invalid,
+      },
 
       // States
       {

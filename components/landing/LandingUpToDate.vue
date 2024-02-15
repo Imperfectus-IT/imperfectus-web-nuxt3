@@ -2,7 +2,7 @@
   <div
     class="bg-green-quaternary mt-16 flex flex-col items-center justify-center text-center px-1"
   >
-    <h2 class="mt-10 font-recoleta text-[35px]">
+    <h2 class="mt-10 font-recoleta-regular text-[35px]">
       {{ $t('homeUpToDate.title') }}
     </h2>
     <p class="text-[18px] mt-2">

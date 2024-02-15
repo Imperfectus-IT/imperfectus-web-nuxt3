@@ -458,7 +458,7 @@ export default {
     filterinput: {
         class: [
             // Font
-            'font-solina',
+            'font-solina-extended-book',
             'leading-none',
 
             // Sizing

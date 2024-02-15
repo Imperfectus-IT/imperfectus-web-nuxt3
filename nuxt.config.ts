@@ -12,24 +12,39 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    baseUrl: process.env.BASE_URL,
+    public: {
+      baseUrl: process.env.BASE_URL,
+    },
+  },
+  routeRules: {
+    "/api/": { proxy: process.env.STRAPI_URL, pathRewrite: { "^/api/": "" } },
+    "/uploads/": { proxy: process.env.STRAPI_URL },
+  },
   components: [
     {
       path: "~/components",
       pathPrefix: false,
     },
   ],
+  imports: {
+    dirs: ["composables/**"],
+  },
   typescript: {
     typeCheck: false,
   },
   devtools: { enabled: true },
   modules: [
     "@nuxtjs/tailwindcss",
+    "nuxt-zod-i18n",
     "@nuxtjs/i18n",
     "nuxt-primevue",
     "@nuxt/image",
     "nuxt-svgo",
     "@nuxtjs/eslint-module",
-    'vue3-carousel-nuxt'
+    'vue3-carousel-nuxt',
+    "@nuxtjs/strapi",
   ],
   primevue: {
     options: { unstyled: true },
@@ -58,7 +73,6 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     cssPath: "~/assets/scss/tailwind.scss",
-    configPath: "tailwind.config",
   },
   i18n: {
     baseUrl: process.env.BASE_URL,
@@ -80,5 +94,21 @@ export default defineNuxtConfig({
     langDir: "lang/",
     strategy: "prefix_except_default",
     defaultLocale: "es",
+  },
+  zodI18n: {
+    localeCodesMapping: {
+      "es-ES": "es",
+      "ca-ES": "ca",
+    },
+  },
+  strapi: {
+    prefix: "/api/",
+    cookie: {
+      path: "/",
+      maxAge: 14 * 24 * 60 * 60,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: true,
+    },
+    version: "v3",
   },
 });
