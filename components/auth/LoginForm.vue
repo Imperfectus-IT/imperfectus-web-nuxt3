@@ -32,11 +32,11 @@ const submitLoginForm = async () => {
         <slot name="header"/>
         <SocialButtons/>
         <div class="flex items-center text-center py-3">
-            <hr class="border w-[50%] lg:w-[80%] bg-green-tertiary opacity-30"/>
+            <Divider class="w-divider opacity-50"/>
             <span class="text-[10px] text-green-tertiary/50 w-full">{{
                     $t("socialProvider.loginWithEmail")
                 }}</span>
-            <hr class="border w-[50%] lg:w-[80%] bg-green-tertiary opacity-30"/>
+            <Divider class="w-divider opacity-50"/>
         </div>
         <form class="flex flex-col gap-y-4" @submit.prevent="submitLoginForm">
             <TKField :errors="validationErrors?.identifier?._errors">
@@ -85,3 +85,14 @@ const submitLoginForm = async () => {
         </form>
     </section>
 </template>
+<style scoped lang="scss">
+.w-divider {
+    width: 40%;
+    @media (min-width: 768px) {
+        width: 100%;
+    }
+    @media (min-width: 1024px) {
+        width: 100%;
+    }
+}
+</style>

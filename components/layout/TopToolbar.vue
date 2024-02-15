@@ -8,7 +8,7 @@
         console.log(currentWidth);
 
         return currentWidth <= smallBreakpoint
-            ? t("string.misc.freeShipping")
+            ? t("string.misc.freeShipping-mobile")
             : t("string.misc.freeShipping");
     });
 </script>
