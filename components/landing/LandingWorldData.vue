@@ -26,7 +26,7 @@
             :class="slotProps.index %2 === 0 ? 'bg-green-tertiary text-green-quaternary' : 'bg-green-primary'"
           >
             <p
-              class="text-center text-[24px] font-recoleta font-extrabold"
+              class="text-center text-[24px] font-recoleta-medium"
               :class="slotProps.index %2 === 0 ? 'text-green-primary' : 'text-green-tertiary'"
             >
               {{ slotProps.data.value }}

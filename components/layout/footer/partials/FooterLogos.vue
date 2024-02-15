@@ -1,6 +1,6 @@
 <template>
   <div class="bg-green-tertiary text-green-quaternary">
-    <h4 class="font-bold text-[18px] font-solina mb-4 pt-4 uppercase">
+    <h4 class="font-bold text-[18px] font-solina-extended-book mb-4 pt-4 uppercase">
       {{ $t('footer.downloadApp') }}
     </h4>
     <div>

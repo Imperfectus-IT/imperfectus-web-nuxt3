@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mt-4">
-      <h2 class="font-recoleta text-[42px] ml-8 font-semibold">
+      <h2 class="font-recoleta-regular text-[42px] ml-8 font-semibold">
         {{ $t('homeDonations.title') }}
       </h2>
       <NuxtImg

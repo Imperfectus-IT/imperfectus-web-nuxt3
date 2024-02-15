@@ -1,6 +1,6 @@
 <template>
   <div class="bg-green-tertiary text-green-quaternary">
-    <h4 class="font-extrabold text-[18px] font-solina mb-4 ml-2 pt-8 uppercase">
+    <h4 class="font-extrabold text-[18px] font-solina-extended-book mb-4 ml-2 pt-8 uppercase">
       {{ $t('footerLegal.title') }}
     </h4>
 
