@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import TalkualLogoDark from "assets/images/svg/talkual-logo-dark.svg";
-import { computed } from "vue";
+    import {computed} from "vue";
 
-const { t } = useI18n();
-const freeShippingLabel = computed(() => {
-  const smallBreakpoint = 1024;
-  const currentWidth = window?.screen?.width;
-  console.log(currentWidth);
+    const {t} = useI18n();
+    const freeShippingLabel = computed(() => {
+        const smallBreakpoint = 1024;
+        const currentWidth = window?.screen?.width;
+        console.log(currentWidth);
 
-  return currentWidth <= smallBreakpoint
-    ? t("string.misc.freeShipping")
-    : t("string.misc.freeShipping");
-});
+        return currentWidth <= smallBreakpoint
+            ? t("string.misc.freeShipping")
+            : t("string.misc.freeShipping");
+    });
 </script>
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <Toolbar class="p-0">
-    <template #center>
-      <span class="text-xs">{{ freeShippingLabel }}</span>
-    </template>
-  </Toolbar>
+    <Toolbar class="p-0">
+        <template #center>
+            <span class="text-xs">{{ freeShippingLabel }}</span>
+        </template>
+    </Toolbar>
 </template>
