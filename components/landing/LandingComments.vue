@@ -32,7 +32,7 @@
           <NuxtImg
             :src="item.authorPhoto"
             :alt="item.name"
-            class="rounded-full"
+            class="rounded-full "
           />
           <div class="flex flex-col leading-6 justify-center ml-3">
             <p class="text-left text-green-primary">
