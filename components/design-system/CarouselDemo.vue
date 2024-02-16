@@ -6,7 +6,7 @@
     :autoplay="autoplay"
   >
     <Slide
-      v-for="(item, index) in data"
+      v-for="(item, index) in boxes"
       :key="index"
     >
       <div class="">
@@ -38,12 +38,12 @@
 import type { PropType } from 'vue';
 import { ref } from 'vue';
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
-import type { BoxesSlideObject } from '../landing/LandingBoxesCarouselTypes/LandingBoxCarouselTypes';
+import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes';
 
 defineProps({
   data: {
-    type: Array as PropType<BoxesSlideObject[]>,
-    required: true
+    type: Array as PropType<CarouselSlideObject[]>,
+    default: () => []
   },
     visibleItems: {
         type: Number,
@@ -66,6 +66,39 @@ defineProps({
         default: ''
     }
 })
+
+const boxes = ref<CarouselSlideObject[]>([
+  {
+    index: 1,
+    image: "/images/landing/boxes-carousel/S.webp",
+    name: "S-box",
+  },
+  {
+    index: 2,
+    image: "/images/landing/boxes-carousel/M.webp",
+    name: "M-box",
+  },
+  {
+    index: 3,
+    image: "/images/landing/boxes-carousel/XL.webp",
+    name: "XL-box",
+  },
+  {
+    index: 4,
+    image: "/images/landing/boxes-carousel/S.webp",
+    name: "S-box",
+  },
+  {
+    index: 5,
+    image: "/images/landing/boxes-carousel/M.webp",
+    name: "M-box",
+  },
+  {
+    index: 6,
+    image: "/images/landing/boxes-carousel/XL.webp",
+    name: "XL-box",
+  }
+]);
 
 const responsiveProductOptions = ref([
   {
