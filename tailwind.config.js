@@ -37,6 +37,9 @@ export default {
       red: {
         primary: "#DC362E",
       },
+      blue: {
+        primary: "#3F7CE8"
+      },
       transparent: "transparent",
       current: "currentColor",
     },

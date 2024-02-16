@@ -1,8 +1,8 @@
 <template>
   <div class="ml-4">
-    <h2 class="font-bold text-[18px] font-solina-extended-book my-6">
+    <h4 class="mb-6 text-[18px] font-solina-extended-medium font-bold">
       {{ $t('homeHelp.title') }}
-    </h2>
+    </h4>
     <p class="text-[20px] mr-4 mb-4">
       {{ $t('homeHelp.description') }}
     </p>

@@ -43,3 +43,9 @@
     local("Solina-Extended-Medium"),
     url("../fonts/Solina-ExtendedMedium.otf") format("opentype");
 }
+@font-face {
+    font-family: 'Solina Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/solina/Solina-CondensedBold.otf') format('opentype')
+}

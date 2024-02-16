@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-[26px] mx-4 leading-9 px-2 my-12">
+    <p class="text-[26px] px-4 leading-9 my-12">
       {{ $t('homeProducts.description') }}
     </p>
     
@@ -12,12 +12,13 @@
 
     <div class="font-recoleta text-[26px] mt-16 mb-6 ml-4">
       <ul class="flex">
-        <div class="flex items-center mr-4">
+        <div class="flex items-center mr-8">
           <div 
             v-if="classItemsToShow === 'fruits'"
             class="w-3 h-3 bg-green-primary rounded-xl mr-2"
           />
           <li
+            class="font-recoleta-regular"
             :class="classItemsToShow === 'fruits' ? '' : 'text-grey-primary'"
             @click="classItemsToShow = 'fruits'"
           >
@@ -30,10 +31,11 @@
             class="w-3 h-3 bg-green-primary rounded-xl mr-2"
           />
           <li
+            class="font-recoleta-regular"
             :class="classItemsToShow === 'vegetables' ? '' : 'text-grey-primary'"
             @click="classItemsToShow = 'vegetables'"
           >
-            Verduras
+            Verdura
           </li>
         </div>
       </ul>
@@ -42,7 +44,7 @@
     <TKCarousel
       :data="classItemsToShow === 'fruits' ? fruits : vegetables"
       :visible-items="1.4"
-      :show-pagination="false"
+      :show-pagination="true"
       :show-navigation="false"
       :wrap-items="true"
       :image-class="'py-4 relative bottom-2 h-[32vh] w-[55vw] mx-auto'"

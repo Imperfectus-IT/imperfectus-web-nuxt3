@@ -29,10 +29,10 @@
       <template #SlideContent="{ item }">
         <hr>
         <div class="h-[100px]">
-          <p class=" text-left ml-2">
+          <p class=" text-left ml-2 mt-2 text-[20px]">
             {{ item.title }}
           </p>
-          <p class="ml-2">
+          <p class="ml-2 mt-2 text-left text-[14px]">
             {{ item.description }}
           </p>
         </div>

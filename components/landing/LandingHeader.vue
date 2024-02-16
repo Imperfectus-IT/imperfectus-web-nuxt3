@@ -7,7 +7,7 @@
     loop
     src="/videos/home.m4v?url"
   />
-  <h4 class="text-2xl leading-10 text-center mt-4 font-recoleta">
+  <h4 class="text-2xl leading-10 text-center mt-4 font-recoleta-medium">
     {{ $t('homeTitle.title') }}
   </h4>
   <p class="text-center mt-4">

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <p class="text-[26px] mx-4 leading-9 px-2 my-12">
       {{ $t('homeProducts.description') }}
@@ -130,4 +130,4 @@ const responsiveProductOptions = ref([
     numScroll: 1,
   },
 ]);      
-</script>
+</script> -->
