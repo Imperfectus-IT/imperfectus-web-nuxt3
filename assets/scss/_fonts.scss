@@ -1,45 +1,53 @@
 @font-face {
-  font-family: "Recoleta Regular";
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local("Recoleta Regular"),
+    font-family: "Recoleta Regular";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Recoleta Regular"),
     local("Recoleta-Regular"),
     url("../fonts/Recoleta-Regular.otf") format("opentype");
 }
+
 @font-face {
-  font-family: "Recoleta Medium";
-  font-style: normal;
-  font-weight: 500;
-  src:
-    local("Recoleta Medium"),
+    font-family: "Recoleta Medium";
+    font-style: normal;
+    font-weight: 500;
+    src: local("Recoleta Medium"),
     local("Recoleta-Medium"),
     url("../fonts/Recoleta-Medium.otf") format("opentype");
 }
+
 @font-face {
-  font-family: "Recoleta SemiBold";
-  font-style: normal;
-  font-weight: 600;
-  src:
-    local("Recoleta SemiBold"),
+    font-family: "Recoleta SemiBold";
+    font-style: normal;
+    font-weight: 600;
+    src: local("Recoleta SemiBold"),
     local("Recoleta-SemiBold"),
     url("../fonts/Recoleta-SemiBold.otf") format("opentype");
 }
+
 @font-face {
-  font-family: "Solina Extended Book";
-  font-style: normal;
-  font-weight: 300;
-  src:
-    local("Solina Extended Book"),
+    font-family: "Solina Extended Book";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Solina Extended Book"),
     local("Solina-Extended-Book"),
     url("../fonts/Solina-ExtendedBook.otf") format("opentype");
 }
+
 @font-face {
-  font-family: "Solina Extended Medium";
-  font-style: normal;
-  font-weight: 300;
-  src:
-    local("Solina Extended Medium"),
+    font-family: "Solina Extended Medium";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Solina Extended Medium"),
     local("Solina-Extended-Medium"),
     url("../fonts/Solina-ExtendedMedium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Solina Condensed Bold";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Solina Condensed Bold"),
+    local("Solina-Condensed-Bold"),
+    url("../fonts/Solina-CondensedBold.otf") format("opentype");
 }
