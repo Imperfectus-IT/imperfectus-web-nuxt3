@@ -44,7 +44,7 @@ export default defineNuxtConfig({
         "nuxt-svgo",
         "@nuxtjs/eslint-module",
         'vue3-carousel-nuxt',
-    "@nuxtjs/strapi",
+        "@nuxtjs/strapi",
     ],
     primevue: {
         options: {unstyled: true},

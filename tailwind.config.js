@@ -16,7 +16,10 @@ export default {
                 primary: "#FFFAE8",
                 secondary: "#FFF2C1"
             },
-            white: "#ffffff",
+            white: "#fff",
+             black: {
+                primary: "#000"
+            },
             green: {
                 primary: "#D9EF52",
                 secondary: "#007D08",
@@ -25,6 +28,10 @@ export default {
             },
             grey: {
                 primary: "#E0E0E0",
+                secondary: "#002423"
+            },
+            blue: {
+                primary: "#3F7CE8"
             },
             orange: {
                 primary: "#F8CA8E",
