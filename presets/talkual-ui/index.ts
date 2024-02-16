@@ -10,22 +10,24 @@ import inputtext from "./inputtext/index.ts";
 import multiselect from "./multiselect/index.ts";
 import password from "./password/index.ts";
 import progressbar from "./progressbar/index.ts";
+import rating from "./rating/index.ts";
 import sidebar from "./sidebar/index.ts";
 import toolbar from "./toolbar/index.ts";
 
 export default {
-  global,
-  button,
-  card,
-  carousel,
-  checkbox,
-  dialog,
-  divider,
-  dropdown,
-  inputtext,
-  multiselect,
-  password,
-  progressbar,
-  sidebar,
-  toolbar,
+    global,
+    button,
+    card,
+    carousel,
+    checkbox,
+    dialog,
+    divider,
+    dropdown,
+    inputtext,
+    multiselect,
+    password,
+    progressbar,
+    rating,
+    sidebar,
+    toolbar,
 };
