@@ -1,18 +1,12 @@
 <template>
   <footer>
     <Container>
-<<<<<<< HEAD
       <div class="relative w-full pl-4 bg-green-tertiary">
         <div class="flex flex-row absolute left-72 top-8">
           <div
             v-for="(lang, index) in availableLanguages"
             :key="index"
           >
-=======
-      <div class="w-full pl-4 bg-green-tertiary">
-        <div class="flex flex-row relative left-72 top-14">
-          <div v-for="(lang, index) in availableLanguages" :key="index">
->>>>>>> f542d6f (Apply prettier)
             <b-button
               class="mr-3 font-bold text-green-quaternary disabled:text-red-primary"
               :disabled="true"

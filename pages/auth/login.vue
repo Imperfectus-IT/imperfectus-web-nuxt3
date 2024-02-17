@@ -36,7 +36,7 @@ const handleLoginEvent = () => {
 <template>
     <LoginForm @login="handleLoginEvent">
         <template #header>
-            <div class="mb-5 text-center">
+            <div class="mb-5 lg:mb-10 text-center">
         <span class="font-recoleta text-lg font-normal">{{
                 $t("loginForm.login")
             }}</span>
