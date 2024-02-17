@@ -1,9 +1,11 @@
-<template>
-  <div class="flex justify-center">
-    <NuxtLink to="/api/connect/google">
-      <GoogleLoginButton />
-    </NuxtLink>
-  </div>
-</template>
+<script setup lang="ts">
+const googleConnectUrl = `${useRuntimeConfig().public.STRAPI_URL}/connect/google`
+</script>
 
-<style scoped lang="scss"></style>
+<template>
+    <div class="flex justify-center">
+        <NuxtLink :to="googleConnectUrl">
+            <GoogleLoginButton/>
+        </NuxtLink>
+    </div>
+</template>
