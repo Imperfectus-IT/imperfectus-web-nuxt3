@@ -27,31 +27,28 @@
 </template>
 
 <script setup lang="ts">
-
 defineProps({
   value: {
     type: String,
-    required: true
+    required: true,
   },
   containerClass: {
     type: String,
-    default: 'mt-6'
+    default: "mt-6",
   },
   isTitleH1: {
     type: Boolean,
-    default: false
+    default: false,
   },
   isTitleH2: {
     type: Boolean,
-    default: false
+    default: false,
   },
   titleClass: {
     type: String,
-    default: ''
-  }
-})
-
+    default: "",
+  },
+});
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

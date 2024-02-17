@@ -7,7 +7,7 @@
       borderRadius: round ? '25px' : '0',
       margin: !full ? '30px' : '',
       borderWidth: border ? '3px' : '0',
-      borderStyle: border ? 'solid' : ''
+      borderStyle: border ? 'solid' : '',
     }"
   >
     <div class="w-full h-full absolute inset-0 block bg-[rgba(0,0,0,.3)]" />
@@ -15,7 +15,9 @@
     <Container
       class="content text-center flex flex-col items-center relative z-10"
     >
-      <h1 class="text-white font-recoleta-regular font-[500] text-[40px] leading-tight lg:text-[100px] lg:leading-none">
+      <h1
+        class="text-white font-recoleta-regular font-[500] text-[40px] leading-tight lg:text-[100px] lg:leading-none"
+      >
         {{ title }}
       </h1>
 
@@ -37,49 +39,49 @@
 </template>
 
 <script setup>
-import {ref, computed, onMounted, onBeforeUnmount} from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
 const props = defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
     required: false,
-    default: ''
+    default: "",
   },
   backgroundColor: {
     type: String,
     required: false,
-    default: ''
+    default: "",
   },
   backgroundDesktop: {
     type: String,
-    required: true
+    required: true,
   },
   backgroundMobile: {
     type: String,
     required: false,
-    default: null
+    default: null,
   },
   round: {
     type: Boolean,
     required: false,
-    default: false
+    default: false,
   },
   full: {
     type: Boolean,
-    default: true
+    default: true,
   },
   border: {
     type: Boolean,
-    default: false
+    default: false,
   },
   descriptionIsH2: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const windowWidth = ref(null);
@@ -92,15 +94,15 @@ const background = computed(() => {
 });
 
 onMounted(() => {
-  window.addEventListener('resize', updateWidth);
+  window.addEventListener("resize", updateWidth);
   updateWidth();
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateWidth);
+  window.removeEventListener("resize", updateWidth);
 });
 
 const updateWidth = () => {
   windowWidth.value = window.innerWidth;
-}
+};
 </script>

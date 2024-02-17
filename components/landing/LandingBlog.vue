@@ -1,7 +1,9 @@
 <template>
-  <div class="text-center ">
-    <h2 class="font-recoleta-regular text-[35px] leading-10 mt-10 mb-6 text-wrap">
-      {{ $t('blogPosts.title') }}
+  <div class="text-center">
+    <h2
+      class="font-recoleta-regular text-[35px] leading-10 mt-10 mb-6 text-wrap"
+    >
+      {{ $t("blogPosts.title") }}
     </h2>
     <p>
       {{ $t('blogPosts.description') }}
@@ -43,7 +45,7 @@
 
 <script setup lang="ts">
 
- 
+
 const blogPosts = ref([
   {
     index: 1,
@@ -53,20 +55,20 @@ const blogPosts = ref([
   },
   {
     index: 2,
-    title: 'Propiedades de las verduras', 
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Caja%20M_Verdura%283%29.jpg', 
+    title: 'Propiedades de las verduras',
+    imageUrl: 'https://blog.talkualfoods.com/hubfs/Caja%20M_Verdura%283%29.jpg',
     link: 'https://blog.talkualfoods.com/propiedades-verduras'
   },
   {
     index: 3,
-    title: 'Propiedades de las frutas', 
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Frutas.jpg', 
+    title: 'Propiedades de las frutas',
+    imageUrl: 'https://blog.talkualfoods.com/hubfs/Frutas.jpg',
     link: 'https://blog.talkualfoods.com/propiedades-frutas'
   },
   {
     index: 4,
-    title: 'Beneficios y propiedades de la chirimoya', 
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Chirimoya.png', 
+    title: 'Beneficios y propiedades de la chirimoya',
+    imageUrl: 'https://blog.talkualfoods.com/hubfs/Chirimoya.png',
     link: 'https://blog.talkualfoods.com/beneficios-chirimoya'
   }
 ])

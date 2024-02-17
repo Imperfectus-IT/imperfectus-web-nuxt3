@@ -19,7 +19,7 @@
         <slot name="SlideContent" />
       </div>
     </Slide>
-    
+
     <template #addons>
       <Navigation v-if="showNavigation">
         <template #prev>
@@ -149,7 +149,7 @@ const responsiveOtherProductOptions = ref([
 <style lang="scss" scoped>
 .carousel__pagination {
   height: 0px;
-  
+
   :deep button {
     position: relative;
     bottom: 25px;

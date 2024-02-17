@@ -4,7 +4,7 @@
       {{ $t('homeHelp.title') }}
     </h4>
     <p class="text-[20px] mr-4 mb-4">
-      {{ $t('homeHelp.description') }}
+      {{ $t("homeHelp.description") }}
     </p>
     <Button
       :label="$t('homeHelp.askBox')"
@@ -12,7 +12,7 @@
       :pt="{ label: 'text-[15px] font-bold py-1 px-4' }"
     />
     <NuxtImg
-      class="w-full mt-6" 
+      class="w-full mt-6"
       src="/images/landing/help/help.png"
     />
   </div>

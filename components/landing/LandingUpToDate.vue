@@ -3,13 +3,13 @@
     class="bg-green-quaternary mt-16 flex flex-col items-center justify-center text-center px-1"
   >
     <h2 class="mt-10 font-recoleta-regular text-[35px]">
-      {{ $t('homeUpToDate.title') }}
+      {{ $t("homeUpToDate.title") }}
     </h2>
     <p class="text-[18px] mt-2">
-      {{ $t('homeUpToDate.description') }}
+      {{ $t("homeUpToDate.description") }}
     </p>
-   
-    
+
+
     <div
       v-if="!form.displayMessageSent"
       id="form-newsletter-home"
@@ -20,10 +20,10 @@
         class="rounded-none border-0 border-b border-green-tertirary mt-10"
         type="text"
         placeholder="Tu email"
-        :pt="{label: 'text-[18px]'}"
+        :pt="{ label: 'text-[18px]' }"
         @input="displaySecondInput"
       />
-      
+
       <InputText
         v-if="form.emailFocused"
         v-model="form.confirmEmail"
@@ -32,22 +32,21 @@
         placeholder="Repite tu email"
         :pt="{label: 'text-[18px]'}"
       />
-      
-      <LandingUpToDateDialog 
+
+      <LandingUpToDateDialog
         class="mt-10 mb-4"
         :button-disabled="!emailIsMatched"
       />
     </div>
     <div v-else>
       <p class="my-4">
-        {{ $t('homeUpToDate.messageSent') }}
+        {{ $t("homeUpToDate.messageSent") }}
       </p>
-    </div>  
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
 const showGDPRModal = ref(false);
 const form = reactive({
     email: '',
@@ -62,23 +61,19 @@ const emailIsMatched = computed(() => {
 })
 
 const displayGDPRModal = () => {
-    showGDPRModal.value = true;
-}
+  showGDPRModal.value = true;
+};
 
 const closeGDPRModal = () => {
-    showGDPRModal.value = false;
-}
+  showGDPRModal.value = false;
+};
 
 const displaySecondInput = () => {
-    form.emailFocused = true;
-}
+  form.emailFocused = true;
+};
 
 const submitForm = () => {
-    console.log('submitForm')
     form.email = '';
     form.confirmEmail = '';
 }
-
-
-
 </script>

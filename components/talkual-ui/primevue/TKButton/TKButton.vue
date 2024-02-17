@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from "primevue/button"
+import Button from "primevue/button";
 import { type TKButtonProps, type TKButtonSlots } from "./TKButton";
 import TKButtonStyle from "./TKButtonStyle";
 
@@ -16,31 +16,13 @@ const slots = defineSlots<TKButtonSlots>();
 </script>
 
 <template>
-  <Button
-    v-bind="props"
-    :pt="TKButtonStyle"
-  >
-    <slot
-      v-if="slots.default"
-      name="default"
-    />
-    <template
-      v-if="slots.icon"
-      #icon="scope"
-    >
-      <slot
-        name="icon"
-        v-bind="scope"
-      />
+  <Button v-bind="props" :pt="TKButtonStyle">
+    <slot v-if="slots.default" name="default" />
+    <template v-if="slots.icon" #icon="scope">
+      <slot name="icon" v-bind="scope" />
     </template>
-    <template
-      v-if="slots.loadingicon"
-      #loadingicon="scope"
-    >
-      <slot
-        name="loadingicon"
-        v-bind="scope"
-      />
+    <template v-if="slots.loadingicon" #loadingicon="scope">
+      <slot name="loadingicon" v-bind="scope" />
     </template>
   </Button>
 </template>

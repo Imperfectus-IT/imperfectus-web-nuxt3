@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const googleConnectUrl = `${useRuntimeConfig().public.STRAPI_URL}/connect/google`
+const googleConnectUrl = `${useRuntimeConfig().public.STRAPI_URL}/connect/google`;
 </script>
 
 <template>

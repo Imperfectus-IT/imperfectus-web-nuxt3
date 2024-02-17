@@ -1,7 +1,7 @@
 <template>
   <div class="mt-10 bg-green-tertiary text-green-quaternary relative">
     <h2 class="text-[25px] leading-10 mt-10 mb-6 text-center">
-      {{ $t('homeSolutions.title') }}
+      {{ $t("homeSolutions.title") }}
     </h2>
 
     <TKCarousel
@@ -22,7 +22,7 @@
             >
               {{ item.value }}
             </p>
-          </div>  
+          </div>
           <div class="bg-green-primary h-10 w-0.5" />
           <div class="bg-green-primary h-3 w-3 rounded-full" />
           <p class="text-lg mt-4 mb-20">
@@ -35,19 +35,11 @@
 </template>
 
 <script setup lang="ts">
-
 import { useI18n } from 'vue-i18n'
-onMounted(() => {
-  console.log('mounted')
-  console.log(window.innerWidth);
-  
-})
 
 const localeLanguage = computed(() => {
   return useI18n().locale.value;
 })
-
-
 
 const data =  [
         {
@@ -81,28 +73,4 @@ const data =  [
             '143.000 millones de euros desperdiciados en Europa cada año debido al desperdicio de alimentos'
         }
       ]
-
-
-const responsiveProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);
 </script>
