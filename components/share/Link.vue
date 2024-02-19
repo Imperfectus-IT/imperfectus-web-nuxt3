@@ -27,11 +27,11 @@ defineProps({
   <NuxtLink
     v-if="!isEMail"
     :to="localePath(path)"
-    class="text-gray-800 text-sm font-serif flex items-center"
+    class="font-solina-extended-medium text-gray-800 text-sm  flex items-center"
   >
     <span
       v-if="showDot"
-      class="before:content-['x'] inline-block relative h-3 w-3 rounded-full bg-primary mr-3"
+      class="content-['x'] inline-block relative h-3 w-3 rounded-full bg-green-primary mr-3"
     />
     {{ text }}
   </NuxtLink>
@@ -40,11 +40,11 @@ defineProps({
     v-else
     :href="`mailto:${path}`"
     target="_blank"
-    class="text-gray-800 text-sm font-serif flex items-center"
+    class="font-solina-extended-medium text-gray-800 text-sm  flex items-center"
   >
     <span
       v-if="showDot"
-      class="before:content-['x'] inline-block relative h-3 w-3 rounded-full bg-primary mr-3"
+      class="content-['x'] inline-block relative h-3 w-3 rounded-full bg-green-primary mr-3"
     />
     {{ text }}
   </a>
