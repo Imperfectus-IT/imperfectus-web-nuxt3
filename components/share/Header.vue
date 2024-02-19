@@ -1,6 +1,6 @@
 <template>
   <HeaderDefault
-    class="h-[350px] overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px]"
+    class="h-[350px] overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px] before:content-[''] before:block before:bg-black before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[rgba(0,0,0,.3)]"
     :style="{
       backgroundImage: `url(${background})`,
       backgroundColor: backgroundColor,
@@ -10,8 +10,6 @@
       borderStyle: border ? 'solid' : ''
     }"
   >
-    <div class="w-full h-full absolute inset-0 block bg-[rgba(0,0,0,.3)]" />
-
     <Container
       class="content text-center flex flex-col items-center relative z-10"
     >
