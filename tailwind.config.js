@@ -67,7 +67,7 @@ export default {
                 'recoleta-semibold': ['Recoleta SemiBold'],
                 'solina-extended-book': ['Solina Extended Book'],
                 'solina-extended-medium': ['Solina Extended Medium'],
-                'solina-condensed': ['Solina Condensed']
+                'solina-condensed-bold': ['Solina Condensed Bold']
             },
         },
     },
