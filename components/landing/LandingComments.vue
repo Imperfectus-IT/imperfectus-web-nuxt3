@@ -1,6 +1,6 @@
 <template>
   <div class="m-4 leading-10">
-    <h2 class="font-recoleta text-[35px]">
+    <h2 class="font-recoleta-regular text-[35px]">
       {{ $t('homeTribe.title') }}
     </h2>
     <h1 class="text-red-primary">

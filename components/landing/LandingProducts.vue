@@ -10,7 +10,7 @@
       alt="bird_woman_dark"
     />
 
-    <div class="font-recoleta text-[26px] mt-16 mb-6 ml-4">
+    <div class="font-recoleta-regular text-[26px] mt-16 mb-6 ml-4">
       <ul class="flex">
         <div class="flex items-center mr-4">
           <div 

@@ -15,20 +15,20 @@
     <Container
       class="content text-center flex flex-col items-center relative z-10"
     >
-      <h1 class="text-white font-recoleta font-[500] text-[40px] leading-tight lg:text-[100px] lg:leading-none">
+      <h1 class="text-white font-recoleta-regular font-[500] text-[40px] leading-tight lg:text-[100px] lg:leading-none">
         {{ title }}
       </h1>
 
       <h2
         v-if="descriptionIsH2"
-        class="Header__description text-white text-[18px] font-solina lg:text-[30px]"
+        class="Header__description text-white text-[18px] font-solina-extended-book lg:text-[30px]"
       >
         {{ description }}
       </h2>
 
       <p
         v-else
-        class="Header__description text-white text-[18px] font-solina lg:text-[30px]"
+        class="Header__description text-white text-[18px] font-solina-extended-book lg:text-[30px]"
       >
         {{ description }}
       </p>

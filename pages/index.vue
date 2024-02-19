@@ -21,21 +21,20 @@
 
         <template #center>
           <NuxtLink to="/">
-            <TalkualLogoDark
-              class="w-[156] h-7"
-              :font-controlled="false"
-            />
+            <TalkualLogoDark class="w-[156] h-7" :font-controlled="false" />
           </NuxtLink>
         </template>
 
         <template #end>
-          <Button
-            icon="mdi mdi-account"
-            text
-            raised
-            aria-label="Account"
-            :pt="{ icon: 'text-xl' }"
-          />
+          <NuxtLink :to="localePath({ name: 'auth-login' })">
+            <Button
+              icon="mdi mdi-account"
+              text
+              raised
+              aria-label="Account"
+              :pt="{ icon: 'text-xl' }"
+            />
+          </NuxtLink>
         </template>
       </Toolbar>
     </div>
@@ -60,6 +59,8 @@
 
 <script setup lang="ts">
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
+
+const localePath = useLocalePath();
 </script>
 
 <style scoped lang="scss"></style>

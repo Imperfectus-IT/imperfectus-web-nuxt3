@@ -53,10 +53,8 @@ export default {
 
       // Color
       {
-        "before:border-t before:border-green-tertiary":
-          props.layout == "horizontal",
-        "before:border-l before:border-green-tertiary":
-          props.layout == "vertical",
+        "before:border-t": props.layout == "horizontal",
+        "before:border-l": props.layout == "vertical",
       },
     ],
   }),
@@ -66,7 +64,7 @@ export default {
       "px-1 z-10",
 
       // Color
-      "bg-green-tertiary",
+      "bg-green-primary",
     ],
   },
 };

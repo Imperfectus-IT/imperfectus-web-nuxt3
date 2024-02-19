@@ -5,59 +5,58 @@
 @import "./fonts";
 
 @layer base {
-  :root {
-    font-family:
-      "Solina Extended Book",
-      "Solina Extended Medium",
-      "Recoleta Regular",
-      "Recoleta Medium",
-      "Recoleta SemiBold",
-      "Solina Condensed",
-      -apple-system,
-      sans-serif;
-    --font-family: "Solina Extended Book", "Solina Extended Medium",
-      "Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold", "Solina Condensed", -apple-system,
-      sans-serif;
-    /* For hsl(198deg 93% 60% / <alpha-value>) */
-    --color-beige-primary: hsl(47deg 100% 95%);
-    --color-beige-secondary: hsl(47, 100%, 88%);
-    --color-green-primary: hsl(68 83% 63%);
-    --color-green-secondary: hsla(124 100% 25%);
-    --color-green-tertiary: hsl(178 100% 7%);
-    --color-green-quaternary: hsl(82, 79%, 87%);
-    --color-orange-primary: hsla(13 81% 76%);
-    --color-red-primary: hsla(3 71% 52%);
-    --color-gray-primary: hsla(178, 100%, 7%);
-    --color-gray-secondary: hsla(0,0,85%);
-  }
+    :root {
+        font-family: "Solina Extended Book",
+        "Solina Extended Medium",
+        "Solina Condensed Bold",
+        "Recoleta Regular",
+        "Recoleta Medium",
+        "Recoleta SemiBold",
+        -apple-system,
+        sans-serif;
+        --font-family: "Solina Extended Book", "Solina Extended Medium", "Solina Condensed Bold",
+        "Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold", -apple-system,
+        sans-serif;
+        /* For hsl(198deg 93% 60% / <alpha-value>) */
+        --color-beige-primary: hsl(47deg 100% 95%);
+        --color-beige-secondary: hsl(47, 100%, 88%);
+        --color-green-primary: hsl(68 83% 63%);
+        --color-green-secondary: hsla(124 100% 25%);
+        --color-green-tertiary: hsl(178 100% 7%);
+        --color-green-quaternary: hsl(82, 79%, 87%);
+        --color-orange-primary: hsla(13 81% 76%);
+        --color-red-primary: hsla(3 71% 52%);
+        --color-gray-primary: hsla(178, 100%, 7%);
+        --color-gray-secondary: hsla(0, 0, 85%);
+    }
 
-  * {
-    min-width: 0;
-  }
+    * {
+        min-width: 0;
+    }
 
-  html {
-    font-family: var(--font-family);
-  }
+    html {
+        font-family: var(--font-family);
+    }
 
-  body {
-    min-height: 100dvh;
-    background: var(--color-beige-primary);
-  }
+    body {
+        min-height: 100dvh;
+        background: var(--color-beige-primary);
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    text-wrap: balance;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-wrap: balance;
+    }
 
-  p {
-    text-wrap: pretty;
-  }
+    p {
+        text-wrap: pretty;
+    }
 }
 
 .rounded-full {
-  border-radius: 50% !important;
+    border-radius: 50% !important;
 }
