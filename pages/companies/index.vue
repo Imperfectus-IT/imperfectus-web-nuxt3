@@ -49,6 +49,8 @@
 </template>
 
 <script setup lang="ts">
+import Link from '~/components/share/Link.vue';
+
 const scrollIntoView = (id: string) => {
   console.info('scrollIntoView:', id);
 }
