@@ -1,8 +1,8 @@
 <template>
   <footer>
     <Container>
-      <div class="w-full pl-4 bg-green-tertiary">
-        <div class="flex flex-row relative left-72 top-14">
+      <div class="relative w-full pl-4 bg-green-tertiary">
+        <div class="flex flex-row absolute left-72 top-8">
           <div
             v-for="(lang, index) in availableLanguages"
             :key="index"

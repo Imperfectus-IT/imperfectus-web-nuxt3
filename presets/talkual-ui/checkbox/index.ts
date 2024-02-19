@@ -28,7 +28,7 @@ export default {
       "h-6",
 
       // Shape
-      "border-2",
+      "border-2 rounded-[5px]",
 
       // Colors
       {
@@ -52,6 +52,7 @@ export default {
     ],
   }),
   input: {
+    id: "checkbox",
     class: [
       "peer",
 

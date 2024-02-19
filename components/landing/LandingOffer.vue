@@ -1,7 +1,4 @@
 <template>
-  <p class="text-[22px] px-4 leading-8 mb-8">
-    {{ $t('homeOffer.weOfferBoxes') }}
-  </p>
   <ul>
     <li
       v-for="(option, index) in options"
@@ -20,7 +17,7 @@
 
         <h3
           class="text-[30px] ml-2 font-recoleta"
-          :class="currentOption !== $t(option.title) ? 'text-gray-primary' : '!text-gray-secondary'"
+          :class="currentOption !== $t(option.title) ? 'text-grey-primary' : '!text-grey-secondary'"
         >
           {{ $t(option.title) }}
         </h3>

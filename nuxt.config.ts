@@ -43,6 +43,7 @@ export default defineNuxtConfig({
         "@nuxt/image",
         "nuxt-svgo",
         "@nuxtjs/eslint-module",
+        'vue3-carousel-nuxt',
         "@nuxtjs/strapi",
     ],
     primevue: {
@@ -68,7 +69,8 @@ export default defineNuxtConfig({
                 "Rating",
                 "Sidebar",
                 "Toolbar",
-            ],
+              "Rating"
+      ],
         },
     },
     tailwindcss: {

@@ -397,10 +397,12 @@ export default {
   'content.home.how.item4.title': 'Menja i repeteix',
   'content.home.how.item4.description': 'Més temps per a tu, més temps per a cuinar.',
   'content.home.ourBoxes.title': 'LES NOSTRES CAIXES',
-  'content.home.ourBoxes.item1.title': 'CAIXA TALKUAL',
-  'content.home.ourBoxes.item1.description': 'Per a 1 o 2 persones - entre 9 i 10 kg de fruita i verdura',
-  'content.home.ourBoxes.item2.title': 'CAIXA TALKUAL XXL',
-  'content.home.ourBoxes.item2.description': 'Per a famílies - entre 14 i 15 kg de fruita i verdura',
+  'content.home.ourBoxes.item0.title': 'Caixa petita',
+  'content.home.ourBoxes.item0.description': 'Entre 6-7 kg de fruita i/o verdura de temporada. Ideal per a 1-2 persones.',
+  'content.home.ourBoxes.item1.title': 'Caixa mitjana',
+  'content.home.ourBoxes.item1.description': 'Entre 9-10 kg de fruita i/o verdura de temporada. Ideal per a 2-3 persones.',
+  'content.home.ourBoxes.item2.title': 'Caixa gran',
+  'content.home.ourBoxes.item2.description': 'Entre 14-15 kg de fruita i/o verdura de temporada. Ideal per a 4 o +5 persones.',
   'content.home.reviews.title': 'Comentaris dels nostres clients!',
 
   'content.whatinbox.title': 'Què hi ha a les caixes?',
@@ -1371,7 +1373,7 @@ export default {
   'homeTribe.review.verified': 'Verificat',
 
   // HomeHelp
-  'homeHelp.tile': 'UNEIX-TE A LA TRIBU I AJUDA AL PLANETA',
+  'homeHelp.title': 'UNEIX-TE A LA TRIBU I AJUDA AL PLANETA',
   'homeHelp.description': "Ajuda'ns a reduir el malbaratament alimentari fent una comanda de la nostra fruita i verdura imperfecta. Ens encantaria que formessis part de la tribu per contribuir junts a la sostenibilitat del planeta.",
   'homeHelp.askBox': 'Demana la teva caixa',
 

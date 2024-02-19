@@ -4,58 +4,54 @@
       {{ $t('homeSolutions.title') }}
     </h2>
 
-    <Carousel
-      :value="data"
-      :num-visible="1"
-      :num-scroll="1"
-      :show-navigators="true"
-      :show-indicators="false"
-      :responsive-options="responsiveProductOptions"
-      :pt="{
-        nextButton: 'absolute right-6 bg-green-quaternary text-green-tertiary h-9 rounded-full w-9 top-1/2 transform -translate-y-full',    
-        nextButtonIcon: 'mx-auto ',
-        previousButton: 'absolute left-6 bg-green-quaternary text-green-tertiary h-9 rounded-full w-9 top-1/2 transform -translate-y-full ',
-        previousButtonIcon: 'mx-auto'
-       
-      }"
+    <TKCarousel
+      :data="data"
+      :show-pagination="true"
+      :show-navigation="false"
+      :slide-class="'h-full'"
     >
-      <template #item="slotProps">
-        <div>
-          <div 
-            class="relative bg-green-primary mx-auto h-48 w-48 rounded-xxl flex items-center justify-center mt-10 border-solid border-2 border-green-primary"
-            :class="slotProps.index %2 === 0 ? 'bg-green-tertiary text-green-quaternary' : 'bg-green-primary'"
+      <template #SlideContent="{ item }">
+        <div class="flex flex-col items-center w-5/6 mx-auto ">
+          <div
+            class="border-2 border-green-primary h-52 w-52 rounded-full flex flex-col justify-center m-0 p-0"
+            :class="item.index % 2 === 0 ? 'bg-green-primary' : 'bg-green-tertiary'"
           >
             <p
-              class="text-center text-[24px] font-recoleta-medium"
-              :class="slotProps.index %2 === 0 ? 'text-green-primary' : 'text-green-tertiary'"
+              class="font-recoleta-medium text-xl"
+              :class="item.index % 2 === 0 ? 'text-green-tertiary' : 'text-green-quaternary'"
             >
-              {{ slotProps.data.value }}
+              {{ item.value }}
             </p>
-          </div>
-          <div>
-            <div class="h-14 w-0.5 bg-green-primary mx-auto" />
-            <div class="h-3 w-3 rounded-full bg-green-primary mx-auto" />
-          </div>
-
-          <p class="text-[20px] p-4 text-center m6-4 text-green-quaternary mx-2">
-            {{ $i18n.locale === 'ca' ? slotProps.data.description_ca : slotProps.data.description_es }}
+          </div>  
+          <div class="bg-green-primary h-10 w-0.5" />
+          <div class="bg-green-primary h-3 w-3 rounded-full" />
+          <p class="text-lg mt-4 mb-20">
+            {{ item['description_' + localeLanguage] }}
           </p>
         </div>
       </template>
-    </Carousel>
+    </TKCarousel>
   </div>
 </template>
 
 <script setup lang="ts">
 
-
+import { useI18n } from 'vue-i18n'
 onMounted(() => {
-  console.log('mounted');console.log();
-});
+  console.log('mounted')
+  console.log(window.innerWidth);
+  
+})
+
+const localeLanguage = computed(() => {
+  return useI18n().locale.value;
+})
+
+
 
 const data =  [
         {
-          id: 1,
+          index: 1,
           value: '1.300 M',
           description_ca:
             "1.300 milions de tones d'aliments malgastats cada any al nostre país",
@@ -63,13 +59,13 @@ const data =  [
             '1.300 millones de toneladas de alimentos desperdiciados cada año en nuestro país'
         },
         {
-          id: 2,
+          index: 2,
           value: '30%',
           description_ca: '30% del menjar mundial és malbaratat',
           description_es: '30% de la comida mundial es desperdiciada'
         },
         {
-          id: 3,
+          index: 3,
           value: '10%',
           description_ca:
             '10% de les emissions de gas provenen del malbaratament alimentari',
@@ -77,7 +73,7 @@ const data =  [
             '10% de las emisiones de gas provienen del derroche alimentario'
         },
         {
-          id: 4,
+          index: 4,
           value: '143.000 M€',
           description_ca:
             "143.000 milions d'euros desaprofitats a Europa cada any a causa del malbaratament d'aliments",
@@ -100,7 +96,7 @@ const responsiveProductOptions = ref([
   },
   {
     breakpoint: "767px",
-    numVisible: 2,
+    numVisible: 1,
     numScroll: 1,
   },
   {

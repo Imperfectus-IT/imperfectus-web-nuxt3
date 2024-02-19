@@ -8,7 +8,10 @@ import TalkualLogoDark from "assets/images/svg/talkual-logo-dark.svg";
     <TopToolbar class="h-[62px] pb-1 content-end" />
     <div class="flex justify-center my-8">
       <NuxtLink to="/">
-        <TalkualLogoDark class="w-auto h-10" :font-controlled="false" />
+        <TalkualLogoDark
+          class="w-auto h-10"
+          :font-controlled="false"
+        />
       </NuxtLink>
     </div>
     <div class="container mx-auto">
@@ -18,3 +21,4 @@ import TalkualLogoDark from "assets/images/svg/talkual-logo-dark.svg";
 </template>
 
 <style scoped lang="scss"></style>
+

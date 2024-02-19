@@ -9,12 +9,11 @@
       {{ $t('homeUpToDate.description') }}
     </p>
    
-    <!-- FALTA EL MODAL -->
-        
+    
     <div
       v-if="!form.displayMessageSent"
       id="form-newsletter-home"
-      class="HomeUpToDate__email is-flex is-flex-direction-column is-align-items-center mb-6"
+      class="mb-6"
     >
       <InputText
         v-model="form.email"
@@ -24,23 +23,19 @@
         :pt="{label: 'text-[18px]'}"
         @input="displaySecondInput"
       />
-
+      
       <InputText
         v-if="form.emailFocused"
         v-model="form.confirmEmail"
         class="rounded-none border-0 border-b border-green-tertirary mt-4"
         type="text"
-        placeholder="Tu email"
+        placeholder="Repite tu email"
         :pt="{label: 'text-[18px]'}"
       />
-
-      <Button
-        class="mt-10 mb-4 !px-4"
-        :label="$t('homeUpToDate.subscribe')"
-        raised
-        :pt="{label: 'px-10 py-1'}"
-        :disabled="!emailIsMatched"
-        @click="displayGDPRModal"
+      
+      <LandingUpToDateDialog 
+        class="mt-10 mb-4"
+        :button-disabled="!emailIsMatched"
       />
     </div>
     <div v-else>
@@ -55,15 +50,15 @@
 
 const showGDPRModal = ref(false);
 const form = reactive({
-    email: null,
-    confirmEmail: null,
+    email: '',
+    confirmEmail: '',
     emailFocused: false,
     displayMessageSent: false
 })
 
 
 const emailIsMatched = computed(() => {
-    return form.email === form.confirmEmail && form.email !== null && form.confirmEmail !== null;
+    return form.email === form.confirmEmail && form.email !== '' && form.confirmEmail !== '';
 })
 
 const displayGDPRModal = () => {
@@ -80,8 +75,8 @@ const displaySecondInput = () => {
 
 const submitForm = () => {
     console.log('submitForm')
-    form.email = null;
-    form.confirmEmail = null;
+    form.email = '';
+    form.confirmEmail = '';
 }
 
 
