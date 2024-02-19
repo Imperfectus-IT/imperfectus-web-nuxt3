@@ -7,7 +7,9 @@
     />
 
     <Container class="flex flex-col gap-0 pl-4 pr-4 pb-1.5 lg:flex-row lg:gap-12">
-      <div class="flex flex-col text-lg lg:text-xl lg:max-w-1/2 lg:mt-[5px]">
+      <div
+        class="flex flex-col text-lg lg:text-xl lg:max-w-[50%] lg:mt-[5px]"
+      >
         <SectionTitle
           :is-title-h1="true"
           :value="$t('companies.title')"
@@ -15,7 +17,7 @@
           title-class="mb-4"
         />
 
-        <p class="mb-[35px] font-solina-extended-book leading-[30px]">
+        <p class="mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]">
           {{ $t('companies.description') }}
         </p>
 
@@ -29,7 +31,7 @@
 
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] ml-[15px] bg-green-primary lg:h-full" />
 
-      <div class="flex flex-col text-lg lg:text-xl lg:max-w-1/2 lg:mt-[5px]">
+      <div class="flex flex-col text-lg lg:text-xl lg:max-w-[50%] lg:mt-[5px]">
         <SectionTitle
           class="mt-12 mb-6"
           is-title-h2
@@ -37,7 +39,7 @@
           title-class="mb-4"
         />
 
-        <p class="mb-[35px] font-solina-extended-book leading-[30px]">
+        <p class="mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]">
           {{ $t('companies.lgd.description.1') }}
           <strong>{{ $t('companies.lgd.description.2.bold') }}</strong>
           {{ $t('companies.lgd.description.3') }}

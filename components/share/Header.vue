@@ -13,7 +13,7 @@
     <Container
       class="content text-center flex flex-col items-center relative z-10"
     >
-      <h1 class="text-white font-recoleta-regular font-[500] text-[40px] leading-tight lg:text-[100px] lg:leading-none">
+      <h1 class="text-white font-recoleta-regular font-[500] text-[40px] leading-[1.125]  lg:text-[100px]">
         {{ title }}
       </h1>
 
