@@ -3,21 +3,21 @@
     <div :class="containerClass">
       <h1
         v-if="isTitleH1"
-        class="font-solina-condensed-bold text-base mb-4 pl-4 pr-4 uppercase"
+        class="font-solina-condensed-bold text-base uppercase"
         :class="titleClass"
       >
         {{ value }}
       </h1>
       <h2
         v-else-if="isTitleH2"
-        class="font-solina-condensed-bold text-base mb-4 pl-4 pr-4 uppercase font-bold"
+        class="font-solina-condensed-bold text-base uppercase font-bold"
         :class="titleClass"
       >
         {{ value }}
       </h2>
       <p
         v-else
-        class="font-solina-condensed-bold text-base mb-4 pl-4 pr-4 uppercase"
+        class="font-solina-condensed-bold text-base uppercase"
         :class="titleClass"
       >
         {{ value }}
@@ -35,7 +35,7 @@ defineProps({
   },
   containerClass: {
     type: String,
-    default: 'mt-6'
+    default: ''
   },
   isTitleH1: {
     type: Boolean,

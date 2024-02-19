@@ -2,8 +2,8 @@ export default {
   // Common
   'common.languages.spanish': 'Español',
   'common.languages.catalan': 'Catalán',
-  
- 
+
+
 
   //Pages
   'pages.home.title': 'Frutas y verduras imperfectas',
@@ -46,7 +46,7 @@ export default {
   'pages.order.pay.orderContents': 'Contenido del pedido',
   'pages.order.pay.pay': 'Realizar pago',
   'pages.order.pay.seeOrder': 'Ver pedido',
-  
+
   'pages.order.status.paymentError': 'Error en el pago',
   'pages.order.status.paymentNotAvailable': 'La pasarela de pago no está disponible, disculpa las molestias.',
   'pages.order.status.orderNotAvailable': 'No hemos podido atender tu pedido, vuelve a probarlo más tarde y si no lo logras, contacta con nosotros, disculpa las molestias.',
@@ -82,7 +82,7 @@ export default {
   'pages.order.status.selectNewDeliveryDate': 'Selecciona una nueva fecha de entrega',
   'pages.order.status.error.deliveryDate': 'El día {0} no está disponible',
   'pages.order.status.updateNewDeliverOrder': 'Guardar',
-  
+
 
   // Pages Admin
   'pages.admin.home.title': 'Mi cuenta',
@@ -886,7 +886,7 @@ export default {
   'adminCommunicationPreferences.email.error': 'Error al actualizar las preferencias de email',
   'adminCommunicationPreferences.email.success': 'Preferencias de email actualizadas correctamente',
   'adminCommunicationPreferences.whatsapp.title': 'Preferencias de WhatsApp',
-  
+
   'adminCommunicationPreferences.whatsapp.text.1.bold': 'WhatsApp promocionales e informativos',
     // ++ break tag ++
   'adminCommunicationPreferences.whatsapp.text.2': 'en relación a tu suscripción, envíos y preferencias',
@@ -1178,8 +1178,8 @@ export default {
   'companies.description': 'Desde TALKUAL apostamos para que las empresas cuiden a sus trabajadores, es por eso que ofrecemos frutas saludables del campo directamente en tu oficina. La cantidad que necesites y cuándo lo necesites. ¡Frutas imperfectas por fuera y brutales por dentro!',
   'companies.lgd.title': 'LGD (LISMI)',
   'companies.lgd.description.1': 'Podemos ayudarte a cumplir con la',
-  'companies.lgd.description.bold': 'Ley General de Discapacidad',
-  'companies.lgd.description.2': 'porque colaboramos con un Centro Especial de Empleo en la producción de nuestras cajas.',
+  'companies.lgd.description.2.bold': 'Ley General de Discapacidad',
+  'companies.lgd.description.3': 'porque colaboramos con un Centro Especial de Empleo en la producción de nuestras cajas.',
   'companies.lgd.ask': '¡Pregúntanos!',
   'companies.whoItWorks': '¿Cómo funciona?',
 
@@ -1776,5 +1776,5 @@ export default {
   'ReferAFriend.1.alt': 'Ilustración de la tribu TALKUAL',
   'general.error': 'Algo ha salido mal, inténtalo de nuevo más tarde'
 
-  
+
 }

@@ -11,9 +11,11 @@
         <SectionTitle
           :is-title-h1="true"
           :value="$t('companies.title')"
+          class="mt-12 mb-6"
+          title-class="mb-4"
         />
 
-        <p class="mb-[35px] font-solina-extended-book">
+        <p class="mb-[35px] font-solina-extended-book leading-[30px]">
           {{ $t('companies.description') }}
         </p>
 
@@ -29,11 +31,17 @@
 
       <div class="flex flex-col text-lg lg:text-xl lg:max-w-1/2 lg:mt-[5px]">
         <SectionTitle
+          class="mt-12 mb-6"
           is-title-h2
           :value="$t('companies.lgd.title')"
-          title-class="pl-0 ml-0"
+          title-class="mb-4"
         />
-        <p v-html="$t('companies.lgd.description')" />
+
+        <p class="mb-[35px] font-solina-extended-book leading-[30px]">
+          {{ $t('companies.lgd.description.1') }}
+          <strong>{{ $t('companies.lgd.description.2.bold') }}</strong>
+          {{ $t('companies.lgd.description.3') }}
+        </p>
 
         <h3>
           <Link
