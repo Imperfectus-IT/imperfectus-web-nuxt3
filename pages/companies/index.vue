@@ -120,11 +120,128 @@
         </span>
       </div>
     </div>
+
+    <div class="flex flex-col mt-0 mb-0 ml-0 mr-0">
+      <div class="flex flex-col justify-center w-full md:w-1/2">
+        <h2 class="text-2xl">
+          {{ $t('companies.box.title') }}
+        </h2>
+
+        <div class="mt-4">
+          <span>{{ $t('companies.box.description') }}</span>
+          <ul class="list-disc list-inside">
+            <li>
+              <span>{{ $t('companies.box.description.s') }}</span>
+            </li>
+            <li>
+              <span>{{ $t('companies.box.description.m') }}</span>
+            </li>
+            <li>
+              <span>{{ $t('companies.box.description.xl') }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 p-0">
+        <!--<b-carousel
+          :arrow-hover="false"
+          :autoplay="false"
+          icon-size="is-medium"
+        >
+          <b-carousel-item
+            v-for="(image, index) in images"
+            :key="index"
+          >
+            <nuxt-img
+              format="webp"
+              loading="lazy"
+              :src="image.src"
+              :alt="image.alt"
+            />
+          </b-carousel-item>
+        </b-carousel>-->
+
+        <Carousel
+          :value="images"
+          :num-visible="1"
+          :num-scroll="1"
+        >
+          <template #item="item">
+            <pre>item: {{ JSON.stringify(item, null, 2) }}</pre>
+            <!--            <NuxtImg
+              loading="lazy"
+              :src="item.src"
+              :alt="$t(item.alt)"
+            />-->
+          </template>
+        </Carousel>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, reactive } from 'vue';
 import Link from '~/components/share/Link.vue';
+
+
+const loading = ref(false);
+const validationsActive = ref(false);
+const marketingInfoComm = ref(false);
+const talkualLegalBasis = ref(false);
+const showErrorTermsAndConditions = ref(false);
+const isMessageSent = ref(false);
+const images = reactive([
+  {
+    src: '/images/companies/caja_de_fruta.webp',
+    alt: 'Companies.5.alt'
+  },
+  {
+    src: '/images/companies/ISPROX.jpg',
+    alt: 'Companies.6.alt'
+  },
+  {
+    src: '/images/companies/juices.jpg',
+    alt: 'Companies.7.alt'
+  },
+  {
+    src: '/images/companies/MAPFRE.jpg',
+    alt: 'Companies.8.alt'
+  },
+  {
+    src: '/images/companies/zumos-talkual-15.jpg',
+    alt: 'Companies.9.alt'
+  }
+]);
+const reasons = reactive([
+  {
+    title: 'companies.why.1.title',
+    description: 'companies.why.1.description'
+  },
+  {
+    title: 'companies.why.2.title',
+    description: 'companies.why.2.description'
+  },
+  {
+    title: 'companies.why.3.title',
+    description: 'companies.why.3.description'
+  },
+  {
+    title: 'companies.why.4.title',
+    description: 'companies.why.4.description'
+  },
+  {
+    title: 'companies.why.5.title',
+    description: 'companies.why.5.description'
+  },
+  {
+    title: 'companies.why.6.title',
+    description: 'companies.why.6.description'
+  }
+]);
+// const form = this.getFormInitData();
+// const validations = this.getValidationsInitData();
+// const fullForm = ref(false);
 
 const scrollIntoView = (id: string) => {
   console.info('scrollIntoView:', id);
