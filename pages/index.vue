@@ -41,9 +41,10 @@
 
     <LandingHeader />
     <Divider class="before:border-t-2 before:border-green-primary" />
-    <LandingBoxesCarousel />
-    <LandingVegetablesCarousel />
-    <LandingOffer />
+    <LandingBoxes /> 
+    <!-- <LandingVegetablesCarousel />
+    <LandingOffer /> -->
+    <LandingVegetablesOffers />
     <LandingProductsCarousel />
     <LandingUpToDate />
     <LandingBlog />
@@ -59,5 +60,10 @@
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 
 const localePath = useLocalePath();
+
+const deviceWidth = computed(() => window.innerWidth);
+onMounted(() => {
+  console.log(deviceWidth.value);
+})
 </script>
 

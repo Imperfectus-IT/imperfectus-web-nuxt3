@@ -14,11 +14,11 @@
         <div class="flex flex-col items-center w-5/6 mx-auto ">
           <div
             class="border-2 border-green-primary h-52 w-52 rounded-full flex flex-col justify-center m-0 p-0"
-            :class="item.id % 2 === 0 ? 'bg-green-primary' : 'bg-green-tertiary'"
+            :class="item.index % 2 === 0 ? 'bg-green-primary' : 'bg-green-tertiary'"
           >
             <p
               class="font-recoleta-medium text-xl"
-              :class="item.id % 2 === 0 ? 'text-green-tertiary' : 'text-green-quaternary'"
+              :class="item.index % 2 === 0 ? 'text-green-tertiary' : 'text-green-quaternary'"
             >
               {{ item.value }}
             </p>
@@ -51,7 +51,7 @@ const localeLanguage = computed(() => {
 
 const data =  [
         {
-          id: 1,
+          index: 1,
           value: '1.300 M',
           description_ca:
             "1.300 milions de tones d'aliments malgastats cada any al nostre país",
@@ -59,13 +59,13 @@ const data =  [
             '1.300 millones de toneladas de alimentos desperdiciados cada año en nuestro país'
         },
         {
-          id: 2,
+          index: 2,
           value: '30%',
           description_ca: '30% del menjar mundial és malbaratat',
           description_es: '30% de la comida mundial es desperdiciada'
         },
         {
-          id: 3,
+          index: 3,
           value: '10%',
           description_ca:
             '10% de les emissions de gas provenen del malbaratament alimentari',
@@ -73,7 +73,7 @@ const data =  [
             '10% de las emisiones de gas provienen del derroche alimentario'
         },
         {
-          id: 4,
+          index: 4,
           value: '143.000 M€',
           description_ca:
             "143.000 milions d'euros desaprofitats a Europa cada any a causa del malbaratament d'aliments",

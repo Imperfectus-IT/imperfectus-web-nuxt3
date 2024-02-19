@@ -1,40 +1,12 @@
 <template>
   <div>
-    <TKCarousel
-      :data="vegetables"
-      :show-navigation="false"
-      :autoplay="5000"
-    />
+    <LandingVegetablesCarousel />
+    Vegetables
   </div>
 </template>
 
-<script setup lang="ts">    
+<script setup lang="ts">
 
-
-
-
-const responsiveProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);       
 
 const vegetables = ref([
   {
@@ -63,4 +35,5 @@ const vegetables = ref([
     name: "Tomate-5",
   }
 ]);
+
 </script>
