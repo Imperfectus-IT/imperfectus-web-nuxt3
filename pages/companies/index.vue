@@ -6,7 +6,7 @@
       background-desktop="/images/companies/header.jpg"
     />
 
-    <Container class="flex flex-col gap-0 pl-4 pr-4 pb-1.5 lg:flex-row lg:gap-12">
+    <Container class="flex flex-col gap-0 pl-4 pr-4 pb-12 lg:flex-row lg:gap-12">
       <div
         class="flex flex-col text-lg lg:text-xl lg:max-w-[50%] lg:mt-[5px]"
       >
@@ -55,6 +55,71 @@
         </h3>
       </div>
     </Container>
+
+    <div
+      id="reasons"
+      class="bg-gray-secondary text-green-quaternary flex flex-col py-12 gap-y-12 md:grid md:grid-cols-1 md:gap-x-5 md:gap-y-24 md:px-10 md:py-20 lg:grid-cols-2"
+    >
+      <div class="flex flex-col items-center m-[5px] md:flex-row">
+        <div class="ml-auto flex justify-center w-full md:w-[200px]">
+          <NuxtImg
+            class="h-[200px] object-scale-down lg:h-[140px]"
+            format="webp"
+            loading="lazy"
+            src="/images/companies/proximity.webp"
+            :alt="$t('Companies.1.alt')"
+          />
+        </div>
+        <span class="text-[24px] leading-[1.35] font-solina-extended-book mr-auto text-center w-full mt-[18px] pl-2 pr-2 md:w-[300px] md:text-left md:mt-0 md:pl-10 md:pr-0 lg:w-[250px]">
+          {{ $t('companies.reasons.proximity') }}
+        </span>
+      </div>
+
+      <div class="flex flex-col items-center m-[5px] md:flex-row">
+        <div class="ml-auto flex justify-center w-full md:w-[200px]">
+          <NuxtImg
+            format="webp"
+            loading="lazy"
+            class="h-[200px] object-scale-down lg:h-[140px]"
+            src="/images/companies/healthy.webp"
+            :alt="$t('Companies.2.alt')"
+          />
+        </div>
+        <span class="text-[24px] leading-[1.35] font-solina-extended-book mr-auto text-center w-full mt-[18px] pl-2 pr-2 md:w-[300px] md:text-left md:mt-0 md:pl-10 md:pr-0 lg:w-[250px]">
+          {{ $t('companies.reasons.healthy') }}
+        </span>
+      </div>
+
+      <div class="flex flex-col items-center m-[5px] md:flex-row">
+        <div class="ml-auto flex justify-center w-full md:w-[200px]">
+          <NuxtImg
+            format="webp"
+            loading="lazy"
+            class="h-[200px] object-scale-down lg:h-[140px]"
+            src="/images/companies/no-waste.webp"
+            :alt="$t('Companies.3.alt')"
+          />
+        </div>
+        <span class="text-[24px] leading-[1.35] font-solina-extended-book mr-auto text-center w-full mt-[18px] pl-2 pr-2 md:w-[300px] md:text-left md:mt-0 md:pl-10 md:pr-0 lg:w-[250px]">
+          {{ $t('companies.reasons.no-waste') }}
+        </span>
+      </div>
+
+      <div class="flex flex-col items-center m-[5px] md:flex-row">
+        <div class="ml-auto flex justify-center w-full md:w-[200px]">
+          <NuxtImg
+            format="webp"
+            loading="lazy"
+            class="h-[200px] object-scale-down lg:h-[140px]"
+            src="/images/companies/solutions.webp"
+            :alt="$t('Companies.4.alt')"
+          />
+        </div>
+        <span class="text-[24px] leading-[1.35] font-solina-extended-book mr-auto text-center w-full mt-[18px] pl-2 pr-2 md:w-[300px] md:text-left md:mt-0 md:pl-10 md:pr-0 lg:w-[250px]">
+          {{ $t('companies.reasons.solutions') }}
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
