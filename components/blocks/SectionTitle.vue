@@ -10,7 +10,7 @@
       </h1>
       <h2
         v-else-if="isTitleH2"
-        class="font-solina text-base mb-4 pl-4 pr-4 uppercase font-bold"
+        class="font-solina-condensed text-base mb-4 pl-4 pr-4 uppercase font-bold"
         :class="titleClass"
       >
         {{ value }}

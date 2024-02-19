@@ -5,9 +5,51 @@
       background-color="#b79f85"
       background-desktop="/images/companies/header.jpg"
     />
+
+    <Container class="flex flex-col gap-0 pl-4 pr-4 pb-1.5 lg:flex-row lg:gap-12">
+      <div class="flex flex-col text-lg lg:text-xl lg:max-w-1/2 lg:mt-[5px]">
+        <SectionTitle
+          :is-title-h1="true"
+          :value="$t('companies.title')"
+        />
+
+        <p class="mb-[35px] font-solina-extended-book">
+          {{ $t('companies.description') }}
+        </p>
+
+        <h3 @click="scrollIntoView('reasons')">
+          <Link
+            :text="$t('companies.whoItWorks')"
+            :show-dot="true"
+          />
+        </h3>
+      </div>
+
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] ml-[15px] bg-green-primary lg:h-full" />
+
+      <div class="flex flex-col text-lg lg:text-xl lg:max-w-1/2 lg:mt-[5px]">
+        <SectionTitle
+          is-title-h2
+          :value="$t('companies.lgd.title')"
+          title-class="pl-0 ml-0"
+        />
+        <p v-html="$t('companies.lgd.description')" />
+
+        <h3>
+          <Link
+            :text="$t('companies.lgd.ask')"
+            path="empresa@talkualfoods.com"
+            :show-dot="true"
+            :is-e-mail="true"
+          />
+        </h3>
+      </div>
+    </Container>
   </div>
 </template>
 
 <script setup lang="ts">
-
+const scrollIntoView = (id: string) => {
+  console.info('scrollIntoView:', id);
+}
 </script>

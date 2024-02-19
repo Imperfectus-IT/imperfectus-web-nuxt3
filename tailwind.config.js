@@ -61,6 +61,7 @@ export default {
       fontFamily: {
         recoleta: ["Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold"],
         solina: ["Solina Extended Book", "Solina Extended Medium"],
+        'solina-extended-book': ['Solina Extended Book'],
         'solina-condensed': ['Solina Condensed']
       },
     },
