@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Link from "~/components/share/Link.vue";
-// import { Navigation, Pagination } from "vue3-carousel";
 
 defineI18nRoute({
   paths: {
