@@ -39,29 +39,6 @@ const responsiveProductOptions = ref([
   },
 ]);
 
-const boxes = ref([
-  {
-    index: 5,
-    image: "/images/landing/boxes-carousel/S.webp",
-    title: "content.home.ourBoxes.item0.title",
-    description: "content.home.ourBoxes.item0.description",
-    name: "S-box",
-  },
-  {
-    id: 6,
-    image: "/images/landing/boxes-carousel/M.webp",
-    title: "content.home.ourBoxes.item1.title",
-    description: "content.home.ourBoxes.item1.description",
-    name: "M-box",
-  },
-  {
-    id: 7,
-    image: "/images/landing/boxes-carousel/XL.webp",
-    title: "content.home.ourBoxes.item2.title",
-    description: "content.home.ourBoxes.item2.description",
-    name: "XL-box",
-  },
-]);
 const images = ref([
   {
     image: "/images/companies/caja_de_fruta.webp",
