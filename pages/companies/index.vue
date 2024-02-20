@@ -92,7 +92,7 @@ const scrollIntoView = (id: string) => {
           title-class="mb-4"
         />
 
-        <p class="mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]">
+        <p class="mb-[35px] font-solina-extended-book h-full text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]">
           {{ $t('companies.description') }}
         </p>
 
@@ -114,7 +114,7 @@ const scrollIntoView = (id: string) => {
           title-class="mb-4"
         />
 
-        <p class="mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]">
+        <p class="mb-[35px] font-solina-extended-book h-full text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]">
           {{ $t('companies.lgd.description.1') }}
           <strong>{{ $t('companies.lgd.description.2.bold') }}</strong>
           {{ $t('companies.lgd.description.3') }}
@@ -243,11 +243,11 @@ const scrollIntoView = (id: string) => {
         >
           <template #item="item">
             <pre>item: {{ JSON.stringify(item, null, 2) }}</pre>
-            <!--            <NuxtImg
-              loading="lazy"
-              :src="item.src"
-              :alt="$t(item.alt)"
-            />-->
+            <NuxtImg
+                loading="lazy"
+                :src="item.src"
+                :alt="$t(item.alt)"
+            />
           </template>
         </Carousel>
       </div>

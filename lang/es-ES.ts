@@ -1396,8 +1396,8 @@ export default {
         "Desde TALKUAL apostamos para que las empresas cuiden a sus trabajadores, es por eso que ofrecemos frutas saludables del campo directamente en tu oficina. La cantidad que necesites y cuándo lo necesites. ¡Frutas imperfectas por fuera y brutales por dentro!",
     "companies.lgd.title": "LGD (LISMI)",
     "companies.lgd.description.1": "Podemos ayudarte a cumplir con la",
-    "companies.lgd.description.bold": "Ley General de Discapacidad",
-    "companies.lgd.description.2":
+    "companies.lgd.description.2.bold": "Ley General de Discapacidad",
+    "companies.lgd.description.3":
         "porque colaboramos con un Centro Especial de Empleo en la producción de nuestras cajas.",
     "companies.lgd.ask": "¡Pregúntanos!",
     "companies.whoItWorks": "¿Cómo funciona?",
