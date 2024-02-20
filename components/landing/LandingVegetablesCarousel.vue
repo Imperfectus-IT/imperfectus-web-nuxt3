@@ -1,12 +1,12 @@
 <template>
   <Carousel
-      :value="vegetables"
-      :num-visible="1"
-      :num-scroll="1"
-      :show-navigators="false"
-      :show-indicators="true"
-      :autoplay-interval="5000"
-      :responsive-options="responsiveProductOptions"
+    :value="vegetables"
+    :num-visible="1"
+    :num-scroll="1"
+    :show-navigators="false"
+    :show-indicators="true"
+    :autoplay-interval="5000"
+    :responsive-options="responsiveProductOptions"
   >
     <template #item="slotProps">
       <NuxtImg :src="slotProps.data.image" :alt="slotProps.data.name" />

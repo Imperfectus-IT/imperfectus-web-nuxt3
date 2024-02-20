@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <Container>
+    <Container is-full>
       <div class="relative w-full pl-4 bg-green-tertiary">
         <div class="flex flex-row absolute left-72 top-8">
           <div
