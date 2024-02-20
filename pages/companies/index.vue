@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import Link from "~/components/share/Link.vue";
 
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 defineI18nRoute({
   paths: {
     ca: "/empreses/",
     es: "/empresas/",
   },
+});
+
+const pdfFilePath = computed(() => {
+  return `/pdfs/${t("pages.companies.pdfFileName")}`;
 });
 
 const loading = ref(false);
@@ -230,9 +237,11 @@ const scrollIntoView = (id: string) => {
       </div>
     </div>
 
-    <div class="mt-0 mr-0 mb-0 ml-0 flex">
-      <div class="flex w-full flex-col justify-center pl-[5%] pr-[5%] md:w-1/2">
-        <h2 class="text-2xl font-recoleta-regular">
+    <div class="mt-0 mr-0 mb-0 ml-0 flex flex-col md:flex-row">
+      <div
+        class="flex w-full flex-col justify-center pb-[30px] mt-[15px] pl-[5%] pr-[5%] md:mt-0 md:w-1/2 md:pb-0"
+      >
+        <h2 class="text-2xl font-recoleta-regular mt-[15px] md:mt-0">
           {{ $t("companies.box.title") }}
         </h2>
 
@@ -265,10 +274,30 @@ const scrollIntoView = (id: string) => {
           :data="images"
           :num-scroll="1"
           carousel-class="h-[400px] lg:h-[620px]"
-          slide-class="h-full w-full"
-          image-class="h-full w-full object-cover max-h-[400px] lg:h-[620px] lg:max-h-[620px]"
+          image-class="w-full object-cover h-[400px] lg:h-[620px]"
         />
       </div>
+    </div>
+
+    <div class="flex flex-col items-center pt-12 pb-12 bg-green-quaternary">
+      <h2 class="text-center leading-none font-recoleta-regular text-[40px]">
+        {{ $t("companies.knowMore") }}
+      </h2>
+
+      <span
+        class="mt-6 mb-6 w-full text-center font-solina-extended-book md:w-[400px]"
+      >
+        {{ $t("companies.pdfDescription") }}
+      </span>
+
+      <h3>
+        <a :href="pdfFilePath" :download="$t('pages.companies.pdfFileName')">
+          <Button
+            class="w-[240px] font-solina-extended-book md:w-[400px]"
+            :label="$t('companies.downloadPdf')"
+          />
+        </a>
+      </h3>
     </div>
   </div>
 </template>
