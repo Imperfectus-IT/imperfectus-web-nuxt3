@@ -20,10 +20,7 @@
 
       <template #center>
         <NuxtLink to="/">
-          <TalkualLogoDark
-            class="w-[156] h-7"
-            :font-controlled="false"
-          />
+          <TalkualLogoDark class="w-[156] h-7" :font-controlled="false" />
         </NuxtLink>
       </template>
 
@@ -42,11 +39,7 @@
         <span class="mdi mdi-close text-2xl" />
       </template>
       <ul>
-        <li
-          v-for="item in itemLinks"
-          :key="item.label"
-          class="mb-3"
-        >
+        <li v-for="item in itemLinks" :key="item.label" class="mb-3">
           <NuxtLink :to="item.paths[locale]">
             {{ item.label }}
           </NuxtLink>
@@ -60,10 +53,7 @@
             :to="switchLocalePath(currentLocale.code)"
             active-class="text-white"
           >
-            <span
-              v-if="index !== 0"
-              class="mx-3 text-green-primary"
-            >|</span>
+            <span v-if="index !== 0" class="mx-3 text-green-primary">|</span>
             <span>{{ currentLocale.code.toUpperCase() }}</span>
           </NuxtLink>
         </li>

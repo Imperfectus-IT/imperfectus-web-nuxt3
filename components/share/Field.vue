@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 defineProps<{
   errors?: object[];
@@ -7,8 +8,8 @@ defineProps<{
   <div class="flex flex-col flex-wrap">
     <slot />
     <small
-      v-for="error in errors"
-      :key="error"
+      v-for="(error, index) in errors"
+      :key="index"
       class="text-red-primary text-xs"
     >
       {{ error }}

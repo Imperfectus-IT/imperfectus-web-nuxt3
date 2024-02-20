@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <Carousel
+  <Carousel
       :value="vegetables"
       :num-visible="1"
       :num-scroll="1"
@@ -8,18 +7,14 @@
       :show-indicators="true"
       :autoplay-interval="5000"
       :responsive-options="responsiveProductOptions"
-    >
-      <template #item="slotProps">
-        <NuxtImg
-          :src="slotProps.data.image"
-          :alt="slotProps.data.name"
-        />
-      </template>
-    </Carousel>
-  </div>
+  >
+    <template #item="slotProps">
+      <NuxtImg :src="slotProps.data.image" :alt="slotProps.data.name" />
+    </template>
+  </Carousel>
 </template>
 
-<script setup lang="ts">    
+<script setup lang="ts">
 const responsiveProductOptions = ref([
   {
     breakpoint: "1400px",
@@ -41,7 +36,7 @@ const responsiveProductOptions = ref([
     numVisible: 1,
     numScroll: 1,
   },
-]);       
+]);
 
 const vegetables = ref([
   {
@@ -68,6 +63,6 @@ const vegetables = ref([
     index: 5,
     image: "/images/landing/vegetables-carousel/5-tomate.webp",
     name: "Tomate-5",
-  }
+  },
 ]);
 </script>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TalkualLogoDark from "assets/images/svg/talkual-logo-dark.svg";
 import { computed } from "vue";
 
 const { t } = useI18n();
@@ -9,7 +8,7 @@ const freeShippingLabel = computed(() => {
   console.log(currentWidth);
 
   return currentWidth <= smallBreakpoint
-    ? t("string.misc.freeShipping")
+    ? t("string.misc.freeShipping-mobile")
     : t("string.misc.freeShipping");
 });
 </script>

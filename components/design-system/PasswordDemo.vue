@@ -6,17 +6,9 @@ const value = ref(null);
 
 <template>
   <div class="flex flex-wrap justify-center gap-3">
-    <h3 class="text-xl">
-      Password input
-    </h3>
-    <Password
-      v-model="value"
-      :feedback="false"
-    />
-    <Password
-      disabled
-      placeholder="Disabled"
-    />
+    <h3 class="text-xl">Password input</h3>
+    <Password v-model="value" :feedback="false" />
+    <Password disabled placeholder="Disabled" />
     <Password
       v-model="value"
       class="mb-5"
@@ -25,10 +17,7 @@ const value = ref(null);
       medium-label="Medio"
       strong-label="Compleja"
     />
-    <Password
-      v-model="value"
-      prompt-label="Escribe una contraseña"
-    >
+    <Password v-model="value" prompt-label="Escribe una contraseña">
       <template #footer>
         <Divider />
         <ul

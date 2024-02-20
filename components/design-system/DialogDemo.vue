@@ -2,11 +2,7 @@
 
 <template>
   <div class="flex justify-center">
-    <Button
-      label="Show dialog"
-      icon="mdi mdi-link"
-      @click="visible = true"
-    />
+    <Button label="Show dialog" icon="mdi mdi-link" @click="visible = true" />
     <Dialog
       v-model:visible="visible"
       modal

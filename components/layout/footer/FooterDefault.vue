@@ -1,8 +1,8 @@
 <template>
   <footer>
     <Container>
-      <div class="w-full pl-4 bg-green-tertiary">
-        <div class="flex flex-row relative left-72 top-14">
+      <div class="relative w-full pl-4 bg-green-tertiary">
+        <div class="flex flex-row absolute left-72 top-8">
           <div
             v-for="(lang, index) in availableLanguages"
             :key="index"
@@ -29,15 +29,15 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#imports';
-const availableLanguages = ref(['CA', 'ES'])
-const i18n = useI18n()
+import { useI18n } from "#imports";
+const availableLanguages = ref(["CA", "ES"]);
+const i18n = useI18n();
 
-const currentLanguage = ref('es')
+const currentLanguage = ref("es");
 
 const changeLanguage = (lang: string) => {
-  currentLanguage.value = lang
-  i18n.locale.value = lang
-  console.log(currentLanguage.value)
-}
+  currentLanguage.value = lang;
+  i18n.locale.value = lang;
+  console.log(currentLanguage.value);
+};
 </script>

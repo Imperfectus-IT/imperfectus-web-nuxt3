@@ -112,7 +112,7 @@ export default {
       "duration-200",
       { "p-5": !e.position == "full" },
       {
-        "has-[.mask-active]:bg-transparent bg-black/40": e.modal,
+        "has-[.mask-active]:bg-transparent bg-black-primary/40": e.modal,
         "has-[.mask-active]:backdrop-blur-none backdrop-blur-sm": e.modal,
       },
     ],

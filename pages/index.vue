@@ -41,12 +41,11 @@
 
     <LandingHeader />
     <Divider class="before:border-t-2 before:border-green-primary" />
-    <!-- Se le puede pasar el color -->
-    <LandingBoxesCarousel />
-    <LandingVegetablesCarousel />
-    <!-- FALTA SWAP AUTOMÁTICO -->
-    <LandingOffer />
-    <LandingProducts />
+    <LandingBoxes /> 
+    <!-- <LandingVegetablesCarousel />
+    <LandingOffer /> -->
+    <LandingVegetablesOffers />
+    <LandingProductsCarousel />
     <LandingUpToDate />
     <LandingBlog />
     <LandingWorldData />
@@ -61,6 +60,10 @@
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 
 const localePath = useLocalePath();
+
+const deviceWidth = computed(() => window.innerWidth);
+onMounted(() => {
+  console.log(deviceWidth.value);
+})
 </script>
 
-<style scoped lang="scss"></style>

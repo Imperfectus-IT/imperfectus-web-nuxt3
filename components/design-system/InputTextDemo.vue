@@ -34,7 +34,9 @@
         class="rounded-xl"
         aria-describedby="username-help"
       />
-      <small id="username-help">Enter your username to reset your password.</small>
+      <small id="username-help"
+        >Enter your username to reset your password.</small
+      >
     </div>
     <span class="relative">
       <InputText

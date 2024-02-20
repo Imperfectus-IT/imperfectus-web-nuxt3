@@ -1,13 +1,12 @@
 <template>
   <div
     id="form-newsletter-footer"
-    class="FooterNewsletter"
   >
     <h4 class="pl-0 pr-4 has-text-secondary">
-      {{ $t('FooterNewsletter.title') }}
+      {{ $t("FooterNewsletter.title") }}
     </h4>
     <p class="has-text-secondary">
-      {{ $t('FooterNewsletter.description') }}
+      {{ $t("FooterNewsletter.description") }}
     </p>
 
     <GDPRModal
@@ -46,7 +45,7 @@
         :disabled="!validated"
         @click="subscribeToNewsletter"
       >
-        {{ $t('FooterNewsletter.send') }}
+        {{ $t("FooterNewsletter.send") }}
       </b-button>
 
       <div class="FooterNewsletter__share">
@@ -103,26 +102,27 @@
         </a>
       </div>
     </div>
-    <div
-      v-else
-      class="FooterNewsletter__message-sent"
-    >
+    <div v-else class="FooterNewsletter__message-sent">
       <p>
-        {{ $t('FooterNewsletter.messageSent') }}
+        {{ $t("FooterNewsletter.messageSent") }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import { isValidated, isValidEmail, isValidString } from 'assets/js/validations';
+import {
+  isValidated,
+  isValidEmail,
+  isValidString,
+} from "assets/js/validations";
 
 export default {
-  name: 'FooterNewsletter',
+  name: "FooterNewsletter",
   data() {
     return {
-      email: '',
-      repeatEmail: '',
+      email: "",
+      repeatEmail: "",
       emailFocused: false,
       formTouched: false,
       showGDPRModal: false,
@@ -131,103 +131,109 @@ export default {
       isMessageSent: false,
       validations: {
         email: {
-          status: '',
-          message: ''
+          status: "",
+          message: "",
         },
         repeatEmail: {
-          status: '',
-          message: ''
-        }
-      }
-    }
+          status: "",
+          message: "",
+        },
+      },
+    };
   },
   computed: {
     validated() {
       if (!this.formTouched) {
-        return true
+        return true;
       }
-      return isValidated(this.validations)
-    }
+      return isValidated(this.validations);
+    },
   },
   watch: {
     name(name) {
-      this.validations.name = this.formTouched && isValidString(name, false, 1)
-      this.formTouched = true
+      this.validations.name = this.formTouched && isValidString(name, false, 1);
+      this.formTouched = true;
     },
     email(email) {
-      this.formTouched = true
-      this.validations.email = this.formTouched && isValidEmail(email)
-      if (this.validations.email.status === 'is-success') {
-        this.validateEmailsMatch()
+      this.formTouched = true;
+      this.validations.email = this.formTouched && isValidEmail(email);
+      if (this.validations.email.status === "is-success") {
+        this.validateEmailsMatch();
       }
     },
     repeatEmail(repeatEmail) {
-      this.formTouched = true
-      this.validations.repeatEmail = this.formTouched && isValidEmail(repeatEmail)
-      if (this.validations.repeatEmail.status === 'is-success') {
-        this.validateEmailsMatch()
+      this.formTouched = true;
+      this.validations.repeatEmail =
+        this.formTouched && isValidEmail(repeatEmail);
+      if (this.validations.repeatEmail.status === "is-success") {
+        this.validateEmailsMatch();
       }
-    }
+    },
   },
   methods: {
     subscribeToNewsletter() {
-      this.showGDPRModal = true
+      this.showGDPRModal = true;
     },
     emailFocus() {
-      this.emailFocused = true
+      this.emailFocused = true;
     },
     resetForm() {
-      this.email = ''
-      this.repeatEmail = ''
-      this.emailFocused = false
-      this.formTouched = false
-      this.marketingInfoComm = false
-      this.talkualLegalBasis = false
+      this.email = "";
+      this.repeatEmail = "";
+      this.emailFocused = false;
+      this.formTouched = false;
+      this.marketingInfoComm = false;
+      this.talkualLegalBasis = false;
       this.validations = {
         name: {
-          status: '',
-          message: ''
+          status: "",
+          message: "",
         },
         email: {
-          status: '',
-          message: ''
+          status: "",
+          message: "",
         },
         repeatEmail: {
-          status: '',
-          message: ''
-        }
-      }
+          status: "",
+          message: "",
+        },
+      };
     },
     closeGDPRModal() {
-      this.showGDPRModal = false
+      this.showGDPRModal = false;
     },
     submitForm(dataGDPR) {
-      this.$strapi.$http.$post('/hubspot/marketing-communications', {
-        email: this.email,
-        marketingInfoComm: dataGDPR.marketingInfoComm ? 'yes' : 'no',
-        talkualLegalBasis: dataGDPR.talkualLegalBasis ? 'freelyGivenConsentFromContact' : '',
-        language: this.$i18n.locale
-      })
+      this.$strapi.$http
+        .$post("/hubspot/marketing-communications", {
+          email: this.email,
+          marketingInfoComm: dataGDPR.marketingInfoComm ? "yes" : "no",
+          talkualLegalBasis: dataGDPR.talkualLegalBasis
+            ? "freelyGivenConsentFromContact"
+            : "",
+          language: this.$i18n.locale,
+        })
         .then(() => {
-          this.isMessageSent = true
+          this.isMessageSent = true;
         })
         .catch((error) => {
-          console.error(error)
-        })
-      this.closeGDPRModal()
-      this.resetForm()
+          console.error(error);
+        });
+      this.closeGDPRModal();
+      this.resetForm();
     },
     validateEmailsMatch() {
       if (this.email !== this.repeatEmail) {
-        this.validations.repeatEmail.status = 'is-danger'
-        this.validations.repeatEmail.message = this.$t('FooterNewsletter.emailsNotMatch')
+        this.validations.repeatEmail.status = "is-danger";
+        this.validations.repeatEmail.message = this.$t(
+          "FooterNewsletter.emailsNotMatch",
+        );
       } else {
-        this.validations.repeatEmail.status = 'is-success'
-        this.validations.repeatEmail.message = ''
+        this.validations.repeatEmail.status = "is-success";
+        this.validations.repeatEmail.message = "";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -237,16 +243,16 @@ export default {
 
   > h4 {
     font-weight: 700;
-    margin-top: .5rem;
-    margin-bottom: .75rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     font-size: 24px;
-    font-family: 'Solina Condensed', serif;
+    font-family: "Solina Condensed", serif;
   }
 
   > p {
-    font-family: 'Solina Extended Book', serif;
+    font-family: "Solina Extended Book", serif;
     font-size: 16px;
   }
 
@@ -266,7 +272,7 @@ export default {
       padding-left: 0;
       margin-top: 10px;
       margin-bottom: 10px;
-      font-family: 'Solina Extended Book', serif;
+      font-family: "Solina Extended Book", serif;
       font-size: 16px;
 
       &::placeholder {
@@ -290,11 +296,11 @@ export default {
       //padding-left: 0;
       position: relative;
       cursor: pointer;
-      transition: .5s;
+      transition: 0.5s;
       padding: 0;
 
       &:active,
-      &:focus{
+      &:focus {
         outline: 0;
       }
 
@@ -306,7 +312,7 @@ export default {
         color: $primary;
 
         &::after {
-          content: '';
+          content: "";
           display: block;
           height: 1px;
           width: 0;
@@ -314,7 +320,7 @@ export default {
           position: absolute;
           bottom: 0;
           left: 0;
-          animation: textUnderlineAnimation .25s linear forwards;
+          animation: textUnderlineAnimation 0.25s linear forwards;
         }
       }
 
@@ -396,8 +402,6 @@ export default {
         }
       }
     }
-
   }
-
 }
 </style>

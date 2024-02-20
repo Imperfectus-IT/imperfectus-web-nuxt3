@@ -13,18 +13,18 @@ export default {
       //Font
       "font-normal text-lg",
 
-            //Color
-            'bg-surface-0 dark:bg-surface-900',
-            'text-surface-700 dark:text-surface-0'
-        ]
-    },
-    body: {
-        // class: 'p-5'
-    },
-    content: {
-        // class: 'py-5' // Vertical padding.
-    },
-    footer: {
-        class: 'pt-5' // Top padding.
-    }
+      //Color
+      "bg-surface-0 dark:bg-surface-900",
+      "text-surface-700 dark:text-surface-0",
+    ],
+  },
+  body: {
+    // class: 'p-5'
+  },
+  content: {
+    // class: 'py-5' // Vertical padding.
+  },
+  footer: {
+    class: "pt-5", // Top padding.
+  },
 };

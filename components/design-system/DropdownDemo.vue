@@ -43,10 +43,7 @@ const countries = ref([
       class="w-72"
     >
       <template #value="slotProps">
-        <div
-          v-if="slotProps.value"
-          class="flex items-center"
-        >
+        <div v-if="slotProps.value" class="flex items-center">
           <div>{{ slotProps.value.name }}</div>
         </div>
         <span v-else>

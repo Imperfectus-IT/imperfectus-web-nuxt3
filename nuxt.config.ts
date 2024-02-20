@@ -14,13 +14,14 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         baseUrl: process.env.BASE_URL,
+        STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
         public: {
-            baseUrl: process.env.BASE_URL,
+            STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
         },
     },
     routeRules: {
-        "/api/": {proxy: process.env.STRAPI_URL, pathRewrite: {"^/api/": ""}},
-        "/uploads/": {proxy: process.env.STRAPI_URL},
+        "/api/**": {proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: {"^/api/": ""}},
+        "/uploads/**": {proxy: process.env.NUXT_PUBLIC_STRAPI_URL},
     },
     components: [
         {
@@ -43,6 +44,7 @@ export default defineNuxtConfig({
         "@nuxt/image",
         "nuxt-svgo",
         "@nuxtjs/eslint-module",
+        'vue3-carousel-nuxt',
         "@nuxtjs/strapi",
     ],
     primevue: {
@@ -68,7 +70,8 @@ export default defineNuxtConfig({
                 "Rating",
                 "Sidebar",
                 "Toolbar",
-            ],
+              "Rating"
+      ],
         },
     },
     tailwindcss: {

@@ -157,10 +157,12 @@ export default {
 
       //States
       {
-        "hover:text-green-primary hover:bg-green-tertiary": !context.focused && !context.selected,
+        "hover:text-green-primary hover:bg-green-tertiary":
+          !context.focused && !context.selected,
       },
       {
-        "hover:text-green-primary hover:bg-green-tertiary": context.focused && !context.selected,
+        "hover:text-green-primary hover:bg-green-tertiary":
+          context.focused && !context.selected,
       },
       "focus-visible:outline-none focus-visible:outline-offset-0 focus-visible:ring focus-visible:ring-inset focus-visible:ring-primary-400/50 dark:focus-visible:ring-primary-300/50",
 
