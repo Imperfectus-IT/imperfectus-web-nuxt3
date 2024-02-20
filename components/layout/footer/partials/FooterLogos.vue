@@ -1,11 +1,15 @@
 <template>
-  <div class="bg-green-tertiary text-green-quaternary">
-    <h4 class="font-extrabold text-[18px] font-solina-condensed my-4 uppercase">
-      {{ $t('footer.downloadApp') }}
+  <div>
+    <h4 class="font-extrabold text-lg !solina-condensed my-4 uppercase">
+      {{ $t("footer.downloadApp") }}
     </h4>
     <div>
       <NuxtLink>
-        <NuxtImg class="w-2/5 mt-5" src="/images/logos/footer/apple.png" />
+        <NuxtImg
+          class="w-2/5 mt-5"
+          src="/images/logos/footer/apple.png"
+          loading="lazy"
+        />
       </NuxtLink>
 
       <NuxtLink>
@@ -13,6 +17,7 @@
           class="w-2/5 mt-5"
           src="/images/logos/footer/google.png"
           to="https://play.google.com/store/apps/details?id=com.lluraferi.talkual"
+          loading="lazy"
         />
       </NuxtLink>
     </div>

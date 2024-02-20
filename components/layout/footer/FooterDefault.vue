@@ -1,29 +1,11 @@
 <template>
   <footer>
-    <Container is-full>
-      <div class="relative w-full pl-4 bg-green-tertiary">
-        <div class="flex flex-row absolute left-72 top-8">
-          <div
-            v-for="(lang, index) in availableLanguages"
-            :key="index"
-          >
-            <b-button
-              class="mr-3 font-bold text-green-quaternary disabled:text-red-primary"
-              :disabled="true"
-              @click="() => changeLanguage(lang)"
-            >
-              {{ lang }}
-            </b-button>
-          </div>
-        </div>
-
-        <FooterLinks />
-        <FooterAboutUs />
-        <FooterLegal />
-        <FooterContact />
-        <FooterLogos />
-      </div>
-    </Container>
+    <span class="footer-top"></span>
+    <div class="bg-green-tertiary text-green-quaternary p-8">
+      <FooterLinks />
+      <FooterContact />
+      <FooterLogos />
+    </div>
     <FooterRights :dark="false" />
   </footer>
 </template>
@@ -41,3 +23,13 @@ const changeLanguage = (lang: string) => {
   console.log(currentLanguage.value);
 };
 </script>
+<style scoped lang="scss">
+.footer-top {
+  display: block;
+  position: relative;
+  top: 5px;
+  width: 100%;
+  height: 50px;
+  background-image: url("/images/footer/footer-top.png");
+}
+</style>

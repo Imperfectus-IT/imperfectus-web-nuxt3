@@ -21,7 +21,7 @@ export default {
       },
       white: "#ffffff",
       black: {
-        primary: "#000"
+        primary: "#000",
       },
       green: {
         primary: "#D9EF52",
@@ -73,7 +73,7 @@ export default {
         "recoleta-semibold": ["Recoleta SemiBold"],
         "solina-extended-book": ["Solina Extended Book"],
         "solina-extended-medium": ["Solina Extended Medium"],
-        "solina-condensed": ["Solina Condensed"],
+        "solina-condensed": ["Solina Condensed Bold"],
       },
     },
   },
