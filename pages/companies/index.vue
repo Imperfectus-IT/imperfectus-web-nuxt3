@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import Link from "~/components/share/Link.vue";
-
 import { useI18n } from "vue-i18n";
+import { useScroll } from "~/composables/scroll/scroll.ts";
+
 const { t } = useI18n();
+const { scrollToById } = useScroll();
 
 defineI18nRoute({
   paths: {
@@ -37,10 +39,6 @@ const images = ref([
     alt: "Companies.9.alt",
   },
 ]);
-
-const scrollIntoView = (id: string) => {
-  console.info("scrollIntoView:", id);
-};
 </script>
 <template>
   <div class="bg-[#fffae8] font-serif flex flex-col pb-[80px]">
@@ -69,7 +67,7 @@ const scrollIntoView = (id: string) => {
           {{ $t("companies.description") }}
         </p>
 
-        <h3 @click="scrollIntoView('reasons')">
+        <h3 @click="scrollToById('reasons')">
           <Link :text="$t('companies.whoItWorks')" :show-dot="true" />
         </h3>
       </div>
