@@ -5,14 +5,11 @@
     </h4>
     <div>
       <NuxtLink>
-        <NuxtImg 
-          class="w-2/5 mt-5"
-          src="/images/logos/footer/apple.png"
-        />
+        <NuxtImg class="w-2/5 mt-5" src="/images/logos/footer/apple.png" />
       </NuxtLink>
 
       <NuxtLink>
-        <NuxtImg 
+        <NuxtImg
           class="w-2/5 mt-5"
           src="/images/logos/footer/google.png"
           to="https://play.google.com/store/apps/details?id=com.lluraferi.talkual"
@@ -22,16 +19,12 @@
 
     <div class="py-8 mt-6">
       <NuxtLink to="/">
-        <TalkualLogoLight
-          class="h-15 w-full"
-          :font-controlled="false"
-        />
+        <TalkualLogoLight class="h-15 w-full" :font-controlled="false" />
       </NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import TalkualLogoLight from '~/assets/images/svg/talkual-logo-light.svg'
+import TalkualLogoLight from "~/assets/images/svg/talkual-logo-light.svg";
 </script>
-

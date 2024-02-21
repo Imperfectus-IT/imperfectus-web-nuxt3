@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <HeaderDefault
-    class="h-[350px] overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px]"
+    class="h-[350px] overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px] before:content-[''] before:block before:bg-black before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[rgba(0,0,0,.3)]"
     :style="{
       backgroundImage: `url(${background})`,
       backgroundColor: backgroundColor,
@@ -11,12 +11,10 @@
       borderStyle: border ? 'solid' : ''
     }"
   >
-    <div class="w-full h-full absolute inset-0 block bg-[rgba(0,0,0,.3)]" />
-
     <Container
       class="content text-center flex flex-col items-center relative z-10"
     >
-      <h1 class="text-white font-recoleta-regular font-[500] text-[40px] leading-tight lg:text-[100px] lg:leading-none">
+      <h1 class="text-white font-recoleta-regular font-[500] text-[40px] leading-[1.125]  lg:text-[100px]">
         {{ title }}
       </h1>
 
@@ -38,49 +36,49 @@
 </template>
 
 <script setup>
-import {ref, computed, onMounted, onBeforeUnmount} from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
 const props = defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
     required: false,
-    default: ''
+    default: "",
   },
   backgroundColor: {
     type: String,
     required: false,
-    default: ''
+    default: "",
   },
   backgroundDesktop: {
     type: String,
-    required: true
+    required: true,
   },
   backgroundMobile: {
     type: String,
     required: false,
-    default: null
+    default: null,
   },
   round: {
     type: Boolean,
     required: false,
-    default: false
+    default: false,
   },
   full: {
     type: Boolean,
-    default: true
+    default: true,
   },
   border: {
     type: Boolean,
-    default: false
+    default: false,
   },
   descriptionIsH2: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const windowWidth = ref(null);
@@ -93,15 +91,15 @@ const background = computed(() => {
 });
 
 onMounted(() => {
-  window.addEventListener('resize', updateWidth);
+  window.addEventListener("resize", updateWidth);
   updateWidth();
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateWidth);
+  window.removeEventListener("resize", updateWidth);
 });
 
 const updateWidth = () => {
   windowWidth.value = window.innerWidth;
-}
+};
 </script>

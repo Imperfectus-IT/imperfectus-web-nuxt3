@@ -4,10 +4,10 @@
       v-if="!isHubspotButtonHidden"
       :class="
         'hubspot-banner__description ' +
-          (isInverse ? ' ' : ' has-text-secondary')
+        (isInverse ? ' ' : ' has-text-secondary')
       "
     >
-      {{ $t('hubspot.banner.description') }}
+      {{ $t("hubspot.banner.description") }}
     </p>
     <button
       id="hs_show_banner_button"
@@ -19,29 +19,29 @@
           _hsp.push(['showBanner']);
         })()"
     >
-      {{ $t('hubspot.banner.action') }}
+      {{ $t("hubspot.banner.action") }}
     </button>
   </div>
 </template>
-  
-  <script>
-  export default {
-    name: 'HubspotBannerButton',
-    props: {
-      isInverse: {
-        type: Boolean,
-        default: false
-      }
+
+<script>
+export default {
+  name: "HubspotBannerButton",
+  props: {
+    isInverse: {
+      type: Boolean,
+      default: false,
     },
-    data() {
-      return {
-        isHubspotButtonHidden: false
-      }
-    },
-    mounted() {
-      const button = this.$refs.hubspotButton
-      const buttonStyle = getComputedStyle(button)
-      this.isHubspotButtonHidden = buttonStyle.display === 'none'
-    }
-  }
-  </script>
+  },
+  data() {
+    return {
+      isHubspotButtonHidden: false,
+    };
+  },
+  mounted() {
+    const button = this.$refs.hubspotButton;
+    const buttonStyle = getComputedStyle(button);
+    this.isHubspotButtonHidden = buttonStyle.display === "none";
+  },
+};
+</script>

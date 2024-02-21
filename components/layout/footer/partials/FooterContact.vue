@@ -1,32 +1,27 @@
 <template>
   <div class="text-[14px] text-green-quaternary bg-green-tertiary py-4 pl-2">
     <h4 class="font-extrabold text-[18px] font-solina-extended-book mb-4 pt-4">
-      {{ $t('footerInfo.contact') }}
+      {{ $t("footerInfo.contact") }}
     </h4>
 
     <div class="">
-      <a
-        target="_blank"
-        href="mailto:info@talkualfoods.com"
-      >info@talkualfoods.com</a>
-      <br><span>O</span>
-      <NuxtLink
-        class="FooterInfo__contact"
-        target="_blank"
-        to="contact"
+      <a target="_blank" href="mailto:info@talkualfoods.com"
+        >info@talkualfoods.com</a
       >
-        {{ $t('FooterInfo.contact-here') }}
+      <br /><span>O</span>
+      <NuxtLink class="FooterInfo__contact" target="_blank" to="contact">
+        {{ $t("FooterInfo.contact-here") }}
       </NuxtLink>
     </div>
 
     <div class="mt-5">
-      <p>{{ $t('footerInfo.phone') }}</p>
+      <p>{{ $t("footerInfo.phone") }}</p>
       <a href="tel:+34722197452">+34 722 19 74 52</a>
     </div>
 
     <div class="mt-5">
-      <p>{{ $t('footerInfo.schedule.1') }}</p>
-      <p>{{ $t('footerInfo.schedule.2') }}</p>
+      <p>{{ $t("footerInfo.schedule.1") }}</p>
+      <p>{{ $t("footerInfo.schedule.2") }}</p>
     </div>
     <div class="text-[30px] flex flex-row gap-4 mt-6">
       <span class="mdi mdi-instagram" />
@@ -56,8 +51,4 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
-
+<script setup lang="ts"></script>
