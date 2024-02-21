@@ -3,6 +3,7 @@ import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 import { ref, computed } from "vue";
 
 const { t, locale, locales } = useI18n();
+const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 const visible = ref(false);
 const itemLinks = computed(() => [
@@ -88,13 +89,15 @@ const itemLinks = computed(() => [
       </template>
 
       <template #end>
-        <Button
-          icon="mdi mdi-account"
-          text
-          raised
-          aria-label="Account"
-          :pt="{ icon: 'text-xl' }"
-        />
+        <NuxtLink :to="localePath({ name: 'auth-login' })">
+          <Button
+              icon="mdi mdi-account"
+              text
+              raised
+              aria-label="Account"
+              :pt="{ icon: 'text-xl' }"
+          />
+        </NuxtLink>
       </template>
     </Toolbar>
     <Sidebar v-model:visible="visible">

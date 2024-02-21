@@ -24,7 +24,7 @@ import TalkualLogoDark from "assets/images/svg/talkual-logo-dark.svg";
         <div class="container mx-auto">
             <slot/>
         </div>
-        <FooterDefault class="mt-28"/>
+        <FooterDefault />
     </section>
 </template>
 

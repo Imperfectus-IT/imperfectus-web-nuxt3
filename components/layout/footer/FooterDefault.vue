@@ -1,9 +1,9 @@
 <template>
-  <footer class="mt-8">
+  <footer class="mt-28">
     <section class="bg-green-tertiary">
       <span class="footer-top"></span>
       <div class="flex text-green-quaternary px-8 lg:mt-10 lg:justify-between">
-        <div class="lg:flex lg:justify-between 2xl:gap-0 2xl:basis-full 2xl:px-[10%]">
+        <div class="lg:flex lg:justify-between lg:gap-8 2xl:gap-0 2xl:basis-full 2xl:px-[15%]">
           <FooterLinks />
           <FooterContact />
           <FooterLogos />

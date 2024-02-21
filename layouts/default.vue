@@ -1,11 +1,9 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<script setup lang="ts"></script>
-
 <template>
-  <div class="min-h-full">
+  <main>
+    <TopToolbar />
+    <MobileNavbarHeader class="lg:hidden" />
+    <DesktopNavbarHeader class="hidden lg:block" />
     <slot />
     <FooterDefault />
-  </div>
+  </main>
 </template>
-
-<style scoped lang="scss"></style>
