@@ -16,7 +16,7 @@
             'h-60 w-60']"
         >
           <p 
-            class="font-recoleta-regular text-[26px]"
+            class="font-recoleta-medium text-[26px]"
             :class="item.index % 2 !== 0 ? 'text-green-primary' : 'text-green-tertiary'"
           >
             {{ item.value }}
