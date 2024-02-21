@@ -3,14 +3,27 @@ import Link from "~/components/share/Link.vue";
 import { useI18n } from "vue-i18n";
 import { useScroll } from "~/composables/scroll/scroll.ts";
 
-const { t } = useI18n();
-const { scrollToById } = useScroll();
-
 defineI18nRoute({
   paths: {
     ca: "/empreses/",
     es: "/empresas/",
   },
+});
+
+const { t } = useI18n();
+const { scrollToById } = useScroll();
+const i18nHead = useLocaleHead();
+
+useHead({
+  title: t("pages.companies.title"),
+  meta: [
+    {
+      hid: "description",
+      name: "description",
+      content: t("pages.companies.description"),
+    },
+    ...i18nHead.value.meta,
+  ],
 });
 
 const pdfFilePath = computed(() => {
