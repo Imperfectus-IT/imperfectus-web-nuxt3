@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <p class="text-[26px] px-4 leading-9 my-12">
+  <div class="lg:grid lg:grid-cols-3 lg:grid-rows-[auto] lg:mt-6">
+    <p class="text-[26px] px-4 leading-9 my-12 lg:col-start-2 lg:col-span-2 h-[200px] lg:w-2/3 lg:mb-0">
       {{ $t('homeProducts.description') }}
     </p>
     
     <NuxtImg 
-      class="w-11/12 h-[auto] mx-auto"
+      class="w-11/12 h-[auto] mx-auto lg:col-start-1 lg:row-start-1 lg:row-span-3 lg:w-10/12"
       src="/images/landing/products/Bird_Woman_Dark.png"
       alt="bird_woman_dark"
     />
 
-    <div class="font-recoleta text-[26px] mt-16 mb-6 ml-4">
+    <div class="font-recoleta text-[26px] mt-16 mb-6 ml-4 lg:col-start-2 lg:row-start-2 lg:col-span-2 lg:my-auto">
       <ul class="flex">
         <div class="flex items-center mr-8">
           <div 
@@ -42,13 +42,14 @@
     </div>
     
     <TKCarousel
+      class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
       :data="classItemsToShow === 'fruits' ? fruits : vegetables"
-      :visible-items="1.4"
-      :show-pagination="true"
+      :visible-items="displayDesktop ? 4 : 1.4"
+      :show-pagination="displayDesktop ? false : true"
       :show-navigation="false"
-      :wrap-items="true"
+      :wrap-items="displayDesktop ? false : true"
       :image-class="'py-4 relative bottom-2 h-[32vh] w-[55vw] mx-auto'"
-      :slide-class="'bg-beige-secondary  rounded-[20px] w-[60vw] h-[35vh] mx-auto ml-2 relative'"
+      :slide-class="'bg-beige-secondary  rounded-[20px] w-[60vw] h-[35vh] lg:h-[32vh] mx-auto ml-2 relative'"
     >
       <template #SlideContent="{ item }">
         <p class=" bottom-4 text-[15px] absolute w-full text-center">
@@ -60,6 +61,13 @@
 </template>
 
 <script setup lang="ts">
+ defineProps({
+  displayDesktop: {
+    type: Boolean,
+    default: false
+  },
+  }
+ )
 
 const classItemsToShow = ref('fruits')
 

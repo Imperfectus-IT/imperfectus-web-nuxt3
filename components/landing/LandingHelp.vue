@@ -1,6 +1,6 @@
 <template>
   <div class="ml-4">
-    <h4 class="mb-6 text-[18px] font-solina-extended-medium font-bold">
+    <h4 class="mb-6 text-[18px] font-solina-extended-medium font-bold bg-red-primary">
       {{ $t('homeHelp.title') }}
     </h4>
     <p class="text-[20px] mr-4 mb-4">

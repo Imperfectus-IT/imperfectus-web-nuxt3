@@ -1,6 +1,6 @@
 <template>
   <div class="my-4 leading-10 bg-green-tertiary pb-10 mb-10">
-    <h2 class="mx-7 font-recoleta-regular text-[35px] text-green-primary mt-10 mb-3 ">
+    <h2 class="mx-7 font-recoleta-regular text-[35px] text-green-primary mt-10 mb-6 w-2/3">
       {{ $t('homeTribe.title') }}
     </h2>
     <TKCarousel
@@ -11,17 +11,15 @@
       :autoplay="3000"
     >
       <template #SlideContent="{ item }">
-        <div class="bg-red-primary h-full rounded-lg leading-6 text-left pl-2 mb-3">
+        <div class="bg-beige-primary h-full rounded-lg leading-6 text-left pl-2 mb-3">
           <div class="w-1/2 bg-[white]">
-            <Rating
-              class="bg-green-primary flex flex-row justify-between "
-              :model-value="item.rating"
-              :cancel="false"
-              :readonly="true"
-              :pt="{ item: 'text-red-primary' }"
-            />
-            <div class="w-1/2 bg-[white]">
-              icon
+            <div class="bg-beige-primary flex flex-row">
+              <Rating
+                class="py-2 w-2/3"
+        
+                :model-value="item.rating"
+                :cancel="false"
+              />
             </div>
           </div>
           <p>

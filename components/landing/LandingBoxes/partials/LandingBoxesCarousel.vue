@@ -1,7 +1,7 @@
 <template>
   <TKCarousel
     :slide-class="'w-full ml-4'"
-    :image-class="'rounded-t-[20px] w-full h-[30vh]'"
+    :image-class="'rounded-t-[20px] w-full h-[30vh] object-cover'"
     :data="boxes"
     :show-navigation="false"
     :show-pagination="false"

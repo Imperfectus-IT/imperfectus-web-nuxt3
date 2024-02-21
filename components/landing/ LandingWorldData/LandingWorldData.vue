@@ -1,55 +1,35 @@
 <template>
   <div class="mt-10 bg-green-tertiary text-green-quaternary relative">
-    <h2 class="text-[25px] leading-10 mt-10 mb-6 text-center">
+    <h2 class="text-[25px] leading-10 mt-10 mb-6 text-center lg:text-[35px]">
       {{ $t('homeSolutions.title') }}
     </h2>
 
-    <TKCarousel
+    <WorldDataCarousel
+      v-if="!displayDesktop"
       :data="data"
-      :show-pagination="true"
-      :show-navigation="false"
-      :slide-class="'h-full'"
-    >
-      <template #SlideContent="{ item }">
-        <div class="flex flex-col items-center w-5/6 mx-auto ">
-          <div
-            class="border-2 border-green-primary h-52 w-52 rounded-full flex flex-col justify-center m-0 p-0"
-            :class="item.index % 2 === 0 ? 'bg-green-primary' : 'bg-green-tertiary'"
-          >
-            <p
-              class="font-recoleta-medium text-xl"
-              :class="item.index % 2 === 0 ? 'text-green-tertiary' : 'text-green-quaternary'"
-            >
-              {{ item.value }}
-            </p>
-          </div>  
-          <div class="bg-green-primary h-10 w-0.5" />
-          <div class="bg-green-primary h-3 w-3 rounded-full" />
-          <p class="text-lg mt-4 mb-20">
-            {{ item['description_' + localeLanguage] }}
-          </p>
-        </div>
-      </template>
-    </TKCarousel>
+    />
+
+    <WorldDataCards
+      v-if="displayDesktop"
+      :data="data"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
 
-import { useI18n } from 'vue-i18n'
-onMounted(() => {
-  console.log('mounted')
-  console.log(window.innerWidth);
-  
-})
-
-const localeLanguage = computed(() => {
-  return useI18n().locale.value;
-})
-
+defineProps({
+  displayDesktop: {
+    type: Boolean,
+    required: true
+  }
+});
 
 
-const data =  [
+const data = ref<CarouselSlideObject[]> ([
         {
           index: 1,
           value: '1.300 M',
@@ -80,7 +60,7 @@ const data =  [
           description_es:
             '143.000 millones de euros desperdiciados en Europa cada año debido al desperdicio de alimentos'
         }
-      ]
+      ])
 
 
 const responsiveProductOptions = ref([

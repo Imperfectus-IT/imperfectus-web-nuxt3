@@ -1,6 +1,6 @@
 <template>
   <video
-    class="border-2 border-black w-full lg:h-[60vh] lg:object-cover"
+    class="border-2 border-black w-full lg:h-[60vh] lg:object-cover lg:rounded-xl"
     controls
     autoplay
     muted

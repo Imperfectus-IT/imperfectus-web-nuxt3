@@ -6,19 +6,24 @@
     <p>
       {{ $t('blogPosts.description') }}
     </p>
-    <div class="grid grid-cols-2 gap-4 mt-10 mb-10">
+    <div
+      class="grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:justify-center"
+      :style="displayDesktop ? { gridTemplateColumns: 'repeat(4, 300px)' } : ''"
+    >
       <template
         v-for="(post, index) in blogPosts"
         :key="index"
       >
-        <div class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-secondary shadow-md ">
-          <div>
+        <div class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[200px]">
+          <div class="">
             <NuxtImg
-              class="max-h-36 w-full rounded-t-lg"
+              class="w-[300px] h-[200px] rounded-t-lg  object-cover"
               :src="post.imageUrl"
               :alt="post.title"
             />
-            <p class="text-left mt-3 pl-3 font-bold text-sm">{{ post.title }}</p>
+            <p class="text-left mt-3 pl-3 font-bold text-sm">
+              {{ post.title }}
+            </p>
           </div>
           <NuxtLink
             :to="post.link"
@@ -42,6 +47,13 @@
 </template>
 
 <script setup lang="ts">
+
+  defineProps({
+    displayDesktop: {
+      type: Boolean,
+      required: true,
+    },
+  });
 
  
 const blogPosts = ref([

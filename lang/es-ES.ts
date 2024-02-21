@@ -1285,8 +1285,8 @@ export default {
 
   // HomeProducts
   'homeProducts.description': 'Estos son algunos de los productos de temporada que puedes encontrar actualmente en nuestras cajas en función de la disponibilidad del producto y de la limitación de peso de tu caja.', //
-  'homeProducts.fruit': 'Fruta',
-  'homeProducts.vegetable': 'Verdura',
+  'homeProducts.fruits': 'Fruta',
+  'homeProducts.vegetables': 'Verdura',
 
   // HomeKnowMore
   'homeKnowMore.description.1': 'Repartimos ',
@@ -1328,10 +1328,16 @@ export default {
   // HomeTribe
   'homeTribe.title': 'Algunos comentarios de la tribu...', //
   'homeTribe.review.verified': 'Verificado',
-
+  
   //HomeDonations
   'homeDonations.title': 'Además...', //
   'homeDonations.description': 'Colaboramos con varias ONGs para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.', //
+  'homeDonations.foundation1.title': 'Fundación Arrels Sant Ignasi',
+  'homeDonations.foundation1.description': 'Colaboramos con la Fundación Arrels Sant Ignasi para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.',
+  'homeDonations.foundation2.title': 'Fundación Arrels Sant Ignasi',
+  'homeDonations.foundation2.description': 'Colaboramos con la Fundación Arrels Sant Ignasi para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.',
+  'homeDonations.foundation3.title': 'Fundación Arrels Sant Ignasi',
+  'homeDonations.foundation3.description': 'Colaboramos con la Fundación Arrels Sant Ignasi para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.',
 
   // HomeHelp
   'homeHelp.title': 'ÚNETE A LA TRIBU Y AYUDA AL PLANETA', //

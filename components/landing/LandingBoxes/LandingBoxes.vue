@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <p class="my-10 text-left text-[30px] mx-10 lg:w-1/3 lg:ml-32">
+    <p class="my-10 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-32">
       {{ $t('homeBoxes.description') }}
     </p>
 
@@ -13,7 +13,6 @@
       </Nuxt-link>
     </div>
   </div>
-
   <LandingBoxesCarousel
     v-if="!displayDesktop"
     :boxes="boxes"
@@ -28,7 +27,14 @@
 import { ref, onMounted } from 'vue'; 
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+const { t } = useI18n();
+
+defineProps({
+  displayDesktop: {
+    type: Boolean,
+    required: true,
+  },
+});
 
 const boxes = ref<CarouselSlideObject[]>([
   {
@@ -57,13 +63,7 @@ const boxes = ref<CarouselSlideObject[]>([
   }
 ]);
 
-const displayDesktop = ref(false);
 
-onMounted(() => {
-  if (window.innerWidth > 768) {
-    displayDesktop.value = true;
-  }
-});
 
 </script>
 

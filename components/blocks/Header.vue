@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <HeaderDefault
     class="h-[350px] overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px]"

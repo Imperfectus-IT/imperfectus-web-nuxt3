@@ -13,7 +13,7 @@
     <div
       v-if="!form.displayMessageSent"
       id="form-newsletter-home"
-      class="mb-6"
+      class="mb-6 flex flex-col items-center justify-center"
     >
       <InputText
         v-model="form.email"
