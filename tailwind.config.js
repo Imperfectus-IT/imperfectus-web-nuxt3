@@ -16,6 +16,9 @@ export default {
         primary: "#FFFAE8",
         secondary: "#FFF2C1",
       },
+      blue: {
+        primary: "#2AA8D7"
+      },
       white: "#ffffff",
       black: {
         primary: "#000"

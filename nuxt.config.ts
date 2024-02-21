@@ -70,7 +70,7 @@ export default defineNuxtConfig({
                 "Rating",
                 "Sidebar",
                 "Toolbar",
-              "Rating"
+                "Rating"
       ],
         },
     },

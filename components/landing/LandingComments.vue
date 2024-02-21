@@ -1,30 +1,36 @@
 <template>
   <div
 class="my-4 leading-10 bg-green-tertiary pb-10 mb-10 
-     lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center">
-    <h2 class="mx-7 font-recoleta-regular text-[35px] text-green-primary mt-10 mb-6 lg:text-[67px] lg:leading-tight lg:w-1/3">
-      {{ $t('homeTribe.title') }}
-    </h2>
-    <TKCarousel
-      :carousel-class="'lg:w-1/3 lg:mt-6 lg:items-center'"
-      :data="reviews"
-      :show-navigation="false"
-      :slide-class="'w-5/6 h-[400px] lg:w-full lg:mt-6  lg:h-[300px]'"
-      :slot-class="'min-h-[200px]'"
-      :autoplay="3000"
-    >
-      <template #SlideContent="{ item }">
-        <div class="bg-beige-primary h-full rounded-lg leading-6 text-left pl-2 mb-3">
-          <div class="w-1/2 bg-[white]">
-            <div class="bg-beige-primary flex flex-row">
-              <Rating
-                class="py-2 w-2/3"
+lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center">
+<h2 class="mx-7 font-recoleta-regular text-[35px] text-green-primary mt-10 mb-6 lg:text-[67px] lg:leading-tight lg:w-1/3">
+  {{ $t('homeTribe.title') }}
+</h2>
+
+<TKCarousel
+:carousel-class="'lg:w-1/3 lg:mt-6 lg:items-center'"
+:data="reviews"
+:show-navigation="false"
+:slide-class="'w-5/6 h-[400px] lg:w-full lg:mt-6  lg:h-[300px]'"
+:slot-class="'min-h-[200px]'"
+:autoplay="3000"
+>
+<template #SlideContent="{ item }">
+  <div class=" bg-beige-primary h-full rounded-lg leading-6 text-left pl-2 mb-3">
+    
+      <div class=" w-full bg-beige-primary flex flex-row items-center">
+        <Rating
+        class="py-2 "
         
-                :model-value="item.rating"
-                :cancel="false"
-              />
+        :model-value="item.rating"
+        :cancel="false"
+        />
+        <span class="mdi mdi-check-decagram text-lg ml-4 text-blue-primary"></span>
+        <NuxtImg
+          src="/images/logos/landing/google-mini.webp"
+          class="w-5 h-5 ml-auto mr-4"
+          />
             </div>
-          </div>
+          
           <p>
             {{ item.description }}
           </p>
@@ -50,7 +56,7 @@ class="my-4 leading-10 bg-green-tertiary pb-10 mb-10
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n';
 import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes';
 const { t } = useI18n();
 
