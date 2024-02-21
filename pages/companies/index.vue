@@ -15,36 +15,6 @@ const pdfFilePath = computed(() => {
   return `/pdfs/${t("pages.companies.pdfFileName")}`;
 });
 
-const loading = ref(false);
-const validationsActive = ref(false);
-const marketingInfoComm = ref(false);
-const talkualLegalBasis = ref(false);
-const showErrorTermsAndConditions = ref(false);
-const isMessageSent = ref(false);
-
-const responsiveProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);
-
 const images = ref([
   {
     image: "/images/companies/caja_de_fruta.webp",
@@ -67,42 +37,13 @@ const images = ref([
     alt: "Companies.9.alt",
   },
 ]);
-const reasons = reactive([
-  {
-    title: "companies.why.1.title",
-    description: "companies.why.1.description",
-  },
-  {
-    title: "companies.why.2.title",
-    description: "companies.why.2.description",
-  },
-  {
-    title: "companies.why.3.title",
-    description: "companies.why.3.description",
-  },
-  {
-    title: "companies.why.4.title",
-    description: "companies.why.4.description",
-  },
-  {
-    title: "companies.why.5.title",
-    description: "companies.why.5.description",
-  },
-  {
-    title: "companies.why.6.title",
-    description: "companies.why.6.description",
-  },
-]);
-// const form = this.getFormInitData();
-// const validations = this.getValidationsInitData();
-// const fullForm = ref(false);
 
 const scrollIntoView = (id: string) => {
   console.info("scrollIntoView:", id);
 };
 </script>
 <template>
-  <div class="bg-[#fffae8] font-serif flex flex-col">
+  <div class="bg-[#fffae8] font-serif flex flex-col pb-[80px]">
     <Header
       :title="
         $t('companies.wantBeHealthy.1') + '\n' + $t('companies.wantBeHealthy.2')
@@ -298,6 +239,35 @@ const scrollIntoView = (id: string) => {
           />
         </a>
       </h3>
+    </div>
+
+    <div
+      id="request-box-form"
+      class="mt-12 block self-center text-center md:w-[650px] md:pr-0 md:pl-0"
+    >
+      <div class="pl-[15px] pr-[15px]">
+        <h2
+          class="text-center leading-none font-recoleta-regular text-[40px] mb-[18px]"
+        >
+          {{ $t("pages.companies.form.title") }}
+        </h2>
+
+        <span class="mb-6 block text-center font-solina-extended-book">
+          {{ $t("pages.companies.form.description") }}
+        </span>
+
+        <span class="mb-6 block text-center font-solina-extended-book">
+          {{ $t("pages.companies.form.availableFor") }}
+        </span>
+
+        <small
+          class="block italic font-solina-extended-book text-[14px] mb-[20px]"
+        >
+          {{ $t("pages.companies.all-required") }}
+        </small>
+      </div>
+
+      <HubSpotForm form="b2b" />
     </div>
   </div>
 </template>
