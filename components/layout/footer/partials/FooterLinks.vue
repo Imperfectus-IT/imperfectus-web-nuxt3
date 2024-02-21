@@ -10,22 +10,22 @@ const itemLinks = [
       {
         id: useId(),
         label: t("footerLinks.boxes"),
-        path: "boxes",
+        path: localePath("boxes"),
       },
       {
         id: useId(),
         label: t("footerLinks.deliver"),
-        path: "boxes",
+        path: localePath("boxes"),
       },
       {
         id: useId(),
         label: t("footerLinks.companies"),
-        path: "companies",
+        path: localePath("companies"),
       },
       {
         id: useId(),
         label: t("footerLinks.offices"),
-        path: "companies",
+        path: localePath("companies"),
       },
       {
         id: useId(),
@@ -99,7 +99,7 @@ const itemLinks = [
       {
         id: useId(),
         label: t("pages.legal.conditions.title"),
-        path: "legal-conditions",
+        path: localePath("legal-conditions"),
       },
       {
         id: useId(),
@@ -125,6 +125,6 @@ const itemLinks = [
     v-for="item in itemLinks"
     :key="item.id"
     :item="item"
-    class="mb-5"
+    class="mb-5 col-start-1 lg:col-start-1"
   />
 </template>

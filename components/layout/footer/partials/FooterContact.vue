@@ -23,7 +23,7 @@
       <p>{{ $t("footerInfo.schedule.2") }}</p>
     </div>
     <div class="text-[30px] flex flex-row gap-4 mt-6">
-      <span v-for="icon in socialLinkIcons" :class="['mdi', `mdi-${icon}`]" />
+      <span v-for="icon in socialLinkIcons" :key="icon" :class="['mdi', `mdi-${icon}`]" />
       <a
         class="relative top-3"
         title="Tiktok"
