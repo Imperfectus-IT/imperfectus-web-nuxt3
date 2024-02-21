@@ -9,17 +9,16 @@
       {{ $t('blogPosts.description') }}
     </p>
     <div
-      class="grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:justify-center"
-      :style="displayDesktop ? { gridTemplateColumns: 'repeat(4, 300px)' } : ''"
+      class="grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:flex lg:justify-center"
     >
       <template
-        v-for="(post, index) in blogPosts"
+      v-for="(post, index) in blogPosts"
         :key="index"
       >
         <div class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[200px]">
           <div class="">
             <NuxtImg
-              class="w-[300px] h-[200px] rounded-t-lg  object-cover"
+              class="w-[300px] h-[150px] lg:h-[175px] rounded-t-lg  object-cover"
               :src="post.imageUrl"
               :alt="post.title"
             />
@@ -27,14 +26,17 @@
               {{ post.title }}
             </p>
           </div>
-          <NuxtLink
+          <div class="text-[15px] flex mt-auto">
+            <NuxtLink
             :to="post.link"
             class="mt-auto mb-3"
           >
-            <p class="text-left pl-3 underline">
+            <p class="text-left pl-3 underline mt-2">
               {{ $t('blogPosts.read') }}
             </p>
           </NuxtLink>
+          <span class="mdi mdi-arrow-right ml-2 my-auto"></span>
+          </div>
         </div>
       </template>
     </div>

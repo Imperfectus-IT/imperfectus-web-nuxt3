@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="flex flex-col">
+    <NavbarHeader />
     <div>
       <Toolbar>
         <template #center>

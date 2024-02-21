@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="mt-4">
-      <div class="lg:grid lg:grid-cols-2 lg:grid-rows-1">
-        <h2 class="font-recoleta-regular text-[42px] ml-8 font-semibold lg:col-start-2 lg:row-start-1">
+      <div class="lg:grid lg:grid-cols-2 ">
+        <h2 class="font-recoleta-regular text-[50px] ml-8 font-semibold lg:col-start-2 lg:row-start-1 lg:mt-6">
           {{ $t('homeDonations.title') }}
         </h2>
         <NuxtImg
-          class="lg:col-start-1 lg:mx-auto lg:w-[400px] lg:row-start-1 lg:row-span-2"
+          class="lg:col-start-1 lg:mx-auto lg:w-[600px] lg:row-start-1 lg:row-span-2"
           src="/images/landing/donations/picture.webp"
           alt="Donations"
         />
         <p 
         class="mx-10 my-6 text-[17px] leading-7 
-          lg:col-start-2 lg:col-span-2 lg:text-[20px] lg:row-start-1 lg:mt-28
+          lg:col-start-2 lg:col-span-2 lg:text-[26px] lg:row-start-1 lg:mt-40
         ">
           {{ $t('homeDonations.description') }}
         </p>
