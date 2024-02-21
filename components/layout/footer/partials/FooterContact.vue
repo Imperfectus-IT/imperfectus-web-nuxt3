@@ -1,7 +1,7 @@
 <template>
   <div class="text-[14px] text-green-quaternary bg-green-tertiary py-4 pl-2">
     <h4 class="font-extrabold text-[18px] font-solina-extended-book mb-4 pt-4">
-      {{ $t("footerInfo.contact") }}
+      {{ $t('footerInfo.contact') }}
     </h4>
 
     <div class="">

@@ -3,7 +3,7 @@
     <div :class="containerClass">
       <h1
         v-if="isTitleH1"
-        class="font-solina-condensed text-base uppercase"
+        class="font-solina-extended-book-condensed text-base mb-4 pl-4 pr-4 uppercase"
         :class="titleClass"
       >
         {{ value }}

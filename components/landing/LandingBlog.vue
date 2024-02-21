@@ -1,9 +1,7 @@
 <template>
-  <div class="text-center">
-    <h2
-      class="font-recoleta-regular text-[35px] leading-10 mt-10 mb-6 text-wrap"
-    >
-      {{ $t("blogPosts.title") }}
+  <div class="text-center ">
+    <h2 class="font-recoleta-regular text-[35px] leading-10 mt-10 mb-6 text-wrap">
+      {{ $t('blogPosts.title') }}
     </h2>
     <p>
       {{ $t('blogPosts.description') }}
