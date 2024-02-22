@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 lg:flex justify-evenly">
+  <div class="px-4 lg:flex justify-evenly lg:-ml-10 lg:mt-10">
     <div 
       class="lg:w-1/2"
     >
@@ -7,10 +7,11 @@
       {{ $t('homeHelp.title') }}
     </h4>
 
-    <p class="text-[20px] mr-4 mb-4 lg:text-[30px]">
+    <p class="text-[20px] mr-4 mb-4 lg:text-[30px] leading-7 lg:leading-9">
       {{ $t("homeHelp.description") }}
     </p>
     <Button
+      class="mt-8"
       :label="$t('homeHelp.askBox')"
       raised
       :pt="{ label: 'text-[15px] font-bold py-1 px-4' }"

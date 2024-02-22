@@ -1,29 +1,36 @@
 <template>
-  <TKCarousel
-    :data="itemsToShow === 'fruits' ? fruits : vegetables"
-    :visible-items="1.4"
-    :show-pagination="true"
-    :show-navigation="false"
-    :wrap-items="true"
-    :image-class="'py-4 relative bottom-2 h-[32vh] w-[55vw] mx-auto'"
-    :slide-class="'bg-beige-secondary  rounded-[20px] w-[60vw] h-[35vh] mx-auto ml-2 relative'"
-  >
-    <template #SlideContent="{ item }">
-      <p class=" bottom-4 text-[15px] absolute w-full text-center">
-        {{ item.name }}
-      </p>
-    </template>
-  </TKCarousel>
+<TKCarousel
+      class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
+      :data="itemsType === 'fruits' ? fruits : vegetables"
+      :visible-items="displayDesktop ? 4 : 1.4"
+      :show-pagination="displayDesktop ? false : true"
+      :show-navigation="false"
+      :wrap-items="displayDesktop ? false : true"
+      :image-class="'py-4 relative bottom-2 h-[30vh] w-[55vw] mx-auto object-cover'"
+      :slide-class="'bg-beige-secondary  rounded-[20px] w-[60vw] h-[35vh] lg:h-[30vh] mx-auto ml-2 lg:mr-6 relative'"
+    >
+      <template #SlideContent="{ item }">
+        <p class=" bottom-4 text-[15px] absolute w-full text-center font-bold">
+          {{ item.name }}
+        </p>
+      </template>
+    </TKCarousel>
 </template>
 
 <script setup lang="ts">
 
 defineProps({
-  itemsToShow: {
+  itemsType: {
     type: String,
-    default: 'fruits'
+    default: 'vegetables'
+  },
+  displayDesktop: {
+    type: Boolean,
+    required: true
   }
 })
+
+const itemsToShow = ref('fruits')
 
 const fruits = [
     {

@@ -44,7 +44,7 @@
     </div>
 
     <LandingHeader />
-    <Divider class="before:border-t-2 before:border-green-primary" />
+    <Divider class="before:border-t-6 lg:mt-10 before:border-green-primary " />
     <LandingBoxes :display-desktop="displayDesktop" /> 
     
     <!-- Offer -->

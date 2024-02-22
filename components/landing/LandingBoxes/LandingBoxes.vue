@@ -1,12 +1,12 @@
 <template>
   <div class="">
-    <p class="my-10 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-32">
+    <p class="mb-6 mt-4 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-32 lg:mt-2">
       {{ $t('homeBoxes.description') }}
     </p>
 
     <div class="mb-8 lg:ml-28">
       <div
-        class="inline-block ml-4 w-3 h-3 !bg-green-primary rounded-xl mr-1 "
+        class="inline-block ml-4 w-3 h-3 !bg-green-primary rounded-xl mr-1 lg:ml-0 lg:mr-2 lg:h-3.5 lg:w-3.5"
       />
       <Nuxt-link to="boxes">
         {{ $t('homeBoxes.howToWorks') }}

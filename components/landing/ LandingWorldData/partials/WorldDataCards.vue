@@ -24,12 +24,12 @@
         </div>
         <div 
           class="w-0.5 h-1 bg-green-primary absolute " 
-          :class="item.index === 1 ? 'top-[340px] h-14' :
-            item.index === 2 ? 'top-[330px] h-16' :
-            item.index === 3 ? 'top-[318px] h-20' :
-            'top-[372px] h-5'"
+          :class="item.index === 1 ? 'top-[438px] h-14' :
+            item.index === 2 ? 'top-[430px] h-16' :
+            item.index === 3 ? 'top-[412px] h-20' :
+            'top-[470px] h-5'"
         />
-        <div class="w-2 h-2 rounded-full absolute top-[390px] bg-green-primary" />
+        <div class="w-2 h-2 rounded-full absolute top-[490px] bg-green-primary" />
       </div>
       <div>
         <p class="text-center mt-2 text-[20px]">

@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 bg-green-tertiary text-green-quaternary relative">
+  <div class="mt-10 bg-green-tertiary text-green-quaternary relative lg:py-24">
     <h2 class="text-[25px] leading-10 mt-10 mb-6 text-center lg:text-[35px]">
       {{ $t('homeSolutions.title') }}
     </h2>

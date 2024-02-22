@@ -19,9 +19,8 @@
           {{ box.title }}
         </template>
         <template #content>
-          <p class="ml-2">
-            Entre 6-7 kg de fruta y/o verdura de temporada. Ideal para 1-2
-            personas.
+          <p class="ml-2 lg:text-[14px]">
+           {{ box.description }}
           </p>
         </template>
         <template #footer>

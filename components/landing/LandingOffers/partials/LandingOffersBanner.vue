@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-green-tertiary text-green-quaternary text-[35px] p-8 leading-[43px] lg:text-[70px] lg:leading-[5rem] lg:p-20">
+  <div class="bg-green-tertiary text-green-quaternary text-[35px] p-8 leading-[43px] lg:text-[60px] lg:leading-[5rem] lg:px-28 py-12">
     <p class="inline">
       {{ $t('boxes.suppliers.description.1') }}
     </p>

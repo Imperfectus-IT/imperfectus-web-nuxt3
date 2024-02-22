@@ -43,7 +43,9 @@
       :label="$t('blogPosts.visit')"
       severity="secondary"
       :pt="{
-        label: 'px-6 text-green-primary font-solina-extended font-bold' }"
+        // label: 'px-6 text-green-primary font-solina-extended-medium hover:text-green-tertiary',
+        root: 'px-6 py-2.5 rounded-[5px] bg-green-tertiary text-green-primary font-solina-extended-medium hover:bg-green-primary hover:text-green-tertiary'
+        }"
     />
   </div>
 </template>
