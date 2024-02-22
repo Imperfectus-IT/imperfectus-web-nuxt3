@@ -7,7 +7,7 @@
           class="w-3 h-3 bg-green-primary rounded-xl mr-2"
         />
         <li
-          class="font-recoleta-regular"
+          class="font-recoleta-regular cursor-pointer"
           :class="itemsType === 'fruits' ? '' : 'text-grey-primary'"
           @click="handleItemToggle('fruits')"
         >
@@ -20,7 +20,7 @@
           class="w-3 h-3 bg-green-primary rounded-xl mr-2"
         />
         <li
-          class="font-recoleta-regular"
+          class="font-recoleta-regular cursor-pointer"
           :class="itemsType === 'vegetables' ? '' : 'text-grey-primary'"
           @click="handleItemToggle('vegetables')"
         >

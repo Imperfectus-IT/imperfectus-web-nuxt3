@@ -226,6 +226,7 @@ const images = ref([
           :data="images"
           :num-scroll="1"
           carousel-class="h-[400px] lg:h-[620px]"
+          slide-class="w-full"
           image-class="w-full object-cover h-[400px] lg:h-[620px]"
         />
       </div>

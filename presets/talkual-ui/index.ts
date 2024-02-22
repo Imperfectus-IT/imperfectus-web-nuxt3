@@ -7,6 +7,8 @@ import dialog from "./dialog/index.ts";
 import divider from "./divider/index.ts";
 import dropdown from "./dropdown/index.ts";
 import inputtext from "./inputtext/index.ts";
+import menu from "./menu/index.ts";
+import menubar from "./menubar/index.ts";
 import multiselect from "./multiselect/index.ts";
 import password from "./password/index.ts";
 import progressbar from "./progressbar/index.ts";
@@ -24,6 +26,8 @@ export default {
   divider,
   dropdown,
   inputtext,
+  menubar,
+  menu,
   multiselect,
   password,
   progressbar,

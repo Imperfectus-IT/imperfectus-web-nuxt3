@@ -64,13 +64,15 @@ export default defineNuxtConfig({
                 "Dropdown",
                 "Image",
                 "InputText",
+                "Menu",
+                "MenuBar",
                 "Multiselect",
                 "Password",
                 "ProgressBar",
                 "Rating",
                 "Sidebar",
                 "Toolbar",
-              "Rating"
+                "Rating"
       ],
         },
     },

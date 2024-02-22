@@ -4,6 +4,8 @@
     :wrap-around="wrapItems"
     :items-to-show="visibleItems"
     :autoplay="autoplay"
+    :items-to-scroll="numScroll"
+    
   >
     <Slide
       v-for="(item, index) in data"
@@ -87,6 +89,10 @@ defineProps({
     slotClass: {
         type: String,
         default: ''
+    },
+    numScroll: {
+        type: Number,
+        default: 1
     }
 })
 </script>

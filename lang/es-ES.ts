@@ -1592,7 +1592,7 @@ export default {
   // HomeTribe
   'homeTribe.title': 'Algunos comentarios de la tribu...', //
   'homeTribe.review.verified': 'Verificado',
-  
+
   //HomeDonations
   'homeDonations.title': 'Además...', //
   'homeDonations.description': 'Colaboramos con varias ONGs para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.', //
@@ -1629,7 +1629,7 @@ export default {
     "footerLinks.deliver": "Frutas y verduras a domicilio",
     "footerLinks.benefits": "Beneficios y propiedades",
     "footerLinks.contact": "Contacto",
-    "footerInfo.contact-here": "Escríbenos aquí",
+    "footerInfo.contact-here": "escríbenos aquí",
     "footerInfo.phone": "Llámanos o mándanos un WhatsApp:",
     "footerInfo.schedule.1": "Lunes 9h-19:30h",
     "footerInfo.schedule.2": "Martes-Viernes 9h-21h",
