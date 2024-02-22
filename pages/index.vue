@@ -26,7 +26,6 @@ const displayDesktop = ref(false);
 
 onBeforeMount(() => {
   if (window.innerWidth > 768) {
-    console.log(window.innerWidth)
     displayDesktop.value = true;
   }
 });

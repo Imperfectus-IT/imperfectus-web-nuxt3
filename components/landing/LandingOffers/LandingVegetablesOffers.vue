@@ -1,6 +1,6 @@
 <template>
   <div class="lg:grid lg:grid-cols-4 lg:grid-rows-layout lg:h-[80vh]">
-    <p class="text-[22px] px-4 leading-8 mb-8 mt-10 font-solina-condensed-bold lg:leading-normal lg:mt-20 lg:col-span-2  lg:text-[35px] lg:w-2/3 lg:ml-10">
+    <p class="text-[22px] px-4 leading-8 mb-8 mt-10 font-solina-extended-book lg:leading-normal lg:mt-20 lg:col-span-2  lg:text-[35px] lg:w-2/3 lg:ml-10">
       {{ $t('homeOffer.weOfferBoxes') }}
     </p>
     <LandingVegetablesCarousel 

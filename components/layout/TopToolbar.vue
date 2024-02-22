@@ -5,7 +5,6 @@ const { t } = useI18n();
 const freeShippingLabel = computed(() => {
   const smallBreakpoint = 1024;
   const currentWidth = window?.screen?.width;
-  console.log(currentWidth);
 
   return currentWidth <= smallBreakpoint
     ? t("string.misc.freeShipping-mobile")

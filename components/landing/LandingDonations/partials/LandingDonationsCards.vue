@@ -49,7 +49,6 @@ const display: Record<number, boolean> = reactive({
 
 const handleClickToDisplay = (index: number) => {
   display[index] = !display[index];
-  console.log(index, display[index]);
 }
 
 defineProps({
