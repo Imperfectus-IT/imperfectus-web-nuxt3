@@ -1,9 +1,13 @@
 <template>
   <main>
-    <TopToolbar />
-    <MobileNavbarHeader class="lg:hidden" />
-    <DesktopNavbarHeader class="hidden lg:block" />
+    <section class="sticky top-0 z-10">
+      <TopToolbar />
+      <MobileNavbarHeader class="lg:hidden bg-beige-primary" />
+      <DesktopNavbarHeader class="hidden lg:block bg-beige-primary" />
+    </section>
     <slot />
     <FooterDefault />
   </main>
 </template>
+<script setup lang="ts">
+</script>

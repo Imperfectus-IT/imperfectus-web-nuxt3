@@ -15,6 +15,7 @@
     <ProgressBarDemo />
     <RatingDemo />
     <MenuBarDemo />
+    <PanelMenuDemo />
   </div>
 </template>
 

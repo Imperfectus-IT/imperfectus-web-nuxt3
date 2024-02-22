@@ -10,6 +10,7 @@ import inputtext from "./inputtext/index.ts";
 import menu from "./menu/index.ts";
 import menubar from "./menubar/index.ts";
 import multiselect from "./multiselect/index.ts";
+import panelmenu from "./panelmenu/index.ts";
 import password from "./password/index.ts";
 import progressbar from "./progressbar/index.ts";
 import rating from "./rating/index.ts";
@@ -29,6 +30,7 @@ export default {
   menubar,
   menu,
   multiselect,
+  panelmenu,
   password,
   progressbar,
   rating,

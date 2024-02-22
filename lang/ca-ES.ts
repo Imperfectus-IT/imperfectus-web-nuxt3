@@ -203,6 +203,8 @@ export default {
   "layout.navbar.ourboxes": "Les nostres caixes",
   "layout.navbar.fruitsForCompanies": "Fruita per a oficines",
   "layout.navbar.boxes.companies": "Fruita per a empreses",
+  "layout.navbar.boxes.boxes": "Caixes fruites i verdures",
+  "layout.navbar.boxes.special": "Caixes estacionals",
   "layout.navbar.whatinbox": "Què hi ha a les caixes?",
   "layout.navbar.kitchen": "TALKUAL Kitchen",
   "layout.navbar.about": "Nosaltres",

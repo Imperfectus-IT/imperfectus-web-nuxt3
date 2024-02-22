@@ -7,9 +7,9 @@
           <FooterLinks />
           <FooterContact />
           <FooterLogos />
-          <FooterLocales class="hidden lg:flex"/>
+          <TKLocalesSwitcher class="hidden lg:flex"/>
         </div>
-        <FooterLocales class="lg:hidden" />
+        <TKLocalesSwitcher class="lg:hidden" />
       </div>
       <div class="text-center my-10 px-8 lg:px-20 xl:px-[25%]">
         <NuxtLink to="/">

@@ -1625,6 +1625,8 @@ export default {
     "footerLinks.whatinbox": "Mantente al día",
     "footerLinks.mission": "Sobre nosotros",
     "footerLinks.companies": "Fruta para empresas",
+    "layout.navbar.boxes.boxes": "Cajas frutas y verduras",
+    "layout.navbar.boxes.special": "Cajas estacionales",
     "footerLinks.offices": "Fruta para oficina",
     "footerLinks.deliver": "Frutas y verduras a domicilio",
     "footerLinks.benefits": "Beneficios y propiedades",
