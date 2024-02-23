@@ -29,6 +29,7 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
           src="/images/logos/landing/google-mini.webp"
           class="w-5 h-5 ml-auto mr-4"
           loading="lazy"
+          format="webp"
           />
             </div>
 
@@ -42,6 +43,7 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
             :alt="item.name"
             class="rounded-full "
             loading="lazy"
+            format="webp"
           />
           <div class="flex flex-col leading-6 justify-center ml-3">
             <p class="text-left text-green-primary">

@@ -118,4 +118,7 @@ export default defineNuxtConfig({
         },
         version: "v3",
     },
+    image: {
+        format: ["webp", "avif", "png"]
+    }
 });

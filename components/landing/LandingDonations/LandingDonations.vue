@@ -10,6 +10,7 @@
           src="/images/landing/donations/picture.webp"
           alt="Donations"
           loading="lazy"
+          format="webp"
         />
         <p
         class="mx-10 my-6 text-[17px] leading-normal

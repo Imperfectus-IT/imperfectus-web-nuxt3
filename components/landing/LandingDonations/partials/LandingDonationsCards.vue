@@ -13,6 +13,7 @@
         :alt="item.title"
         class=" h-[500px] w-[400px] object-cover"
         loading="lazy"
+        format="webp"
       />
       <div
         class="bg-green-tertiary w-auto absolute top-0 h-full text-white "

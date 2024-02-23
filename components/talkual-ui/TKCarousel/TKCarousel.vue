@@ -20,6 +20,7 @@
           :alt="item.name"
           :class="imageClass"
           loading="lazy"
+          format="webp"
         />
         <div :class="slotClass">
           <slot

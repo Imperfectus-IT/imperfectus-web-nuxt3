@@ -20,6 +20,7 @@
               :src="post.imageUrl"
               :alt="post.title"
               loading="lazy"
+              format="webp"
             />
             <p class="text-left mt-3 pl-3 font-bold text-sm">
               {{ post.title }}

@@ -8,6 +8,7 @@
         <NuxtImg
           class="w-2/3 mt-5"
           src="/images/logos/footer/apple.png"
+          format="webp"
           loading="lazy"
         />
       </NuxtLink>
@@ -18,6 +19,7 @@
           src="/images/logos/footer/google.png"
           to="https://play.google.com/store/apps/details?id=com.lluraferi.talkual"
           loading="lazy"
+          format="webp"
         />
       </NuxtLink>
     </div>

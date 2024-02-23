@@ -21,6 +21,7 @@
       class="w-full mt-6 lg:w-[500px] lg:m-0"
       src="/images/landing/help/help.png"
       loading="lazy"
+      format="webp"
     />
   </div>
 </template>

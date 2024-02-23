@@ -15,6 +15,7 @@
           :alt="item.name"
           :class="['lg:w-[50vw] h-full rounded-lg', optionalSlideClass]"
           loading="lazy"
+          format="webp"
         />
         <slot name="SlideContent" />
       </div>

@@ -14,6 +14,7 @@
             alt="user header"
             :src="box.image"
             loading="lazy"
+            format="webp"
           />
         </template>
         <template #title>

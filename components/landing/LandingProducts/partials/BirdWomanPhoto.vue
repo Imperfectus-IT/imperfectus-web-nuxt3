@@ -4,5 +4,6 @@
       src="/images/landing/products/Bird_Woman_Dark.png"
       alt="bird_woman_dark"
       loading="lazy"
+      format="webp"
     />
 </template>
