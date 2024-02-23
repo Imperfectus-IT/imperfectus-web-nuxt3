@@ -26,7 +26,7 @@ export default {
       green: {
         primary: "#D9EF52",
         secondary: "#007D08",
-        tertiary: "#002625",
+        tertiary: "#002423",
         quaternary: "#e5F8C4",
       },
       grey: {
