@@ -72,6 +72,7 @@ export default defineNuxtConfig({
                 "ProgressBar",
                 "Rating",
                 "Sidebar",
+                "Skeleton",
                 "Toolbar",
                 "Rating"
       ],

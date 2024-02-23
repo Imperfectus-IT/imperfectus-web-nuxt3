@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <div class="container flex flex-col gap-4">
@@ -16,6 +17,7 @@
     <RatingDemo />
     <MenuBarDemo />
     <PanelMenuDemo />
+    <SkeletonDemo />
   </div>
 </template>
 
