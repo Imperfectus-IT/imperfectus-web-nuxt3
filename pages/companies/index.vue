@@ -59,6 +59,7 @@ const images = ref([
       :title="
         $t('companies.wantBeHealthy.1') + '\n' + $t('companies.wantBeHealthy.2')
       "
+      
       background-color="#b79f85"
       background-desktop="/images/companies/header.jpg"
     />
