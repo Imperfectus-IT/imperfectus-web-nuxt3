@@ -1597,11 +1597,11 @@ export default {
   'homeDonations.title': 'Además...', //
   'homeDonations.description': 'Colaboramos con varias ONGs para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.', //
   'homeDonations.foundation1.title': 'Fundación Arrels Sant Ignasi',
-  'homeDonations.foundation1.description': 'Colaboramos con la Fundación Arrels Sant Ignasi para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.',
-  'homeDonations.foundation2.title': 'Fundación Arrels Sant Ignasi',
-  'homeDonations.foundation2.description': 'Colaboramos con la Fundación Arrels Sant Ignasi para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.',
-  'homeDonations.foundation3.title': 'Fundación Arrels Sant Ignasi',
-  'homeDonations.foundation3.description': 'Colaboramos con la Fundación Arrels Sant Ignasi para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.',
+  'homeDonations.foundation1.description': 'La donación de tu pedido TALKUAL irá destinado a las personas que hagan uso de su Servicio de distribución de alimentos "La Botigueta" donde se facilita el acceso a derechos básicos como la alimentación a personas en situación de vulnerabilidad. Además, también serán distribuidos a las personas que se alojen en alguno de nuestros pisos de apoyo de la fundación. ',
+  'homeDonations.foundation2.title': 'Fundación MONA',
+  'homeDonations.foundation2.description': 'Los primates rescatados que viven en nuestro Centro de Rehabilitación necesitan a la semana más de media tonelada de fruta y verdura variada, frutos secos, legumbres... Con tu donación colaboras a alimentarlos y ofrecerles la dieta sana y equilibrada que necesitan y sumas para que tengan una nueva vida mejor.',
+  'homeDonations.foundation3.title': 'Asociación Somos de Segundas Oportunidades',
+  'homeDonations.foundation3.description': 'La donación de tu pedido TALKUAL irá destinado a los usuarios de los diferentes programas que posee la Asociación que ayudarán a la recuperación, transformación e inclusión social de las personas en estado de riesgo y vulnerabilidad.',
 
     // HomeHelp
     "homeHelp.title": "ÚNETE A LA TRIBU Y AYUDA AL PLANETA", //
