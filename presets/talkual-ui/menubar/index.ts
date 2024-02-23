@@ -2,13 +2,14 @@ export default {
     root: {
         class: [
             'relative',
+            'font-solina-extended-medium font-normal',
 
             // Flexbox
             'flex',
             'items-center',
 
             // Spacing
-            'p-2',
+            'py-2 px-6',
 
             // Shape
             'rounded-md',
@@ -48,7 +49,8 @@ export default {
             'bg-transparent',
 
             // Misc
-            'outline-none'
+            'outline-none',
+            'text-normal uppercase'
         ]
     }),
     menuitem: {
@@ -82,8 +84,8 @@ export default {
             'items-center',
 
             // Spacing
-            'py-3',
-            'px-5',
+            'py-2',
+            'px-3',
 
             // Size
             {
@@ -97,6 +99,7 @@ export default {
             'cursor-pointer',
             'no-underline ',
             'overflow-hidden',
+            '!text-normal'
         ]
     }),
     icon: {
@@ -108,13 +111,13 @@ export default {
                 'ml-auto sm:ml-2': props.root,
                 'ml-auto': !props.root
             },
-            'text-green-tertiary'
+            'text-green-tertiary w-6 h-6'
         ]
     }),
     submenu: ({ props }) => ({
         class: [
             // Size
-            'w-full sm:w-48',
+            'w-full sm:w-60',
 
             // Spacing
             'py-1',
@@ -132,6 +135,8 @@ export default {
 
             // Color
             'bg-green-quaternary',
+            'rounded-lg',
+            'text-sm normal-case'
         ]
     }),
     separator: {

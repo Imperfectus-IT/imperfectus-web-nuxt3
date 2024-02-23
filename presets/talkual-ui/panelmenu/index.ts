@@ -5,10 +5,10 @@ export default {
     headercontent: ({ context, instance }) => ({
         class: [
             // Spacing
-            'py-1',
+            'py-1 lg:py-3',
 
             // Color
-            'text-green-quaternary text-xl lg:2xl',
+            'text-green-quaternary text-xl lg:text-[2.125rem]',
             { 'text-green-quaternary': context.active },
 
             // Transition

@@ -1,7 +1,7 @@
 <template>
   <footer class="mt-28">
     <section class="bg-green-tertiary">
-      <TKShape />
+      <TKTopFooterEffect />
       <div class="flex text-green-quaternary px-8 lg:mt-10 lg:justify-between">
         <div class="lg:flex lg:justify-between lg:gap-8 2xl:gap-0 2xl:basis-full 2xl:px-[15%]">
           <FooterLinks />
@@ -24,4 +24,3 @@
 <script setup lang="ts">
 import TalkualLogoLight from "assets/images/svg/talkual-logo-light.svg";
 </script>
-

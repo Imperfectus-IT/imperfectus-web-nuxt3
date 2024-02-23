@@ -2,7 +2,6 @@
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 
 const {t} = useI18n();
-const localePath = useLocalePath();
 const {visible, toggleVisible} = useVisibleSidebar();
 const items = ref([
   {
@@ -10,23 +9,6 @@ const items = ref([
     command: () => {
       toggleVisible()
     }
-  },
-  {
-    label: t("layout.navbar.boxes"),
-    items: [
-      {
-        label: t("layout.navbar.boxes.boxes"),
-        url: localePath("boxes")
-      },
-      {
-        label: t("layout.navbar.boxes.special"),
-        url: localePath("special")
-      },
-    ]
-  },
-  {
-    label: t("layout.navbar.boxes.companies"),
-    url: localePath("companies")
   }
 ]);
 </script>
@@ -43,18 +25,6 @@ const items = ref([
       </template>
       <template #end>
         <div class="flex items-center justify-center gap-x-5 pr-8">
-          <NuxtLink :to="localePath({ name: 'order' })">
-            <Button :label="$t('homeTitle.order')" raised/>
-          </NuxtLink>
-          <NuxtLink :to="localePath({ name: 'auth-login' })">
-            <Button
-                :label="$t('layout.navbar.account')"
-                icon="mdi mdi-account"
-                icon-pos="right"
-                link
-                :pt="{ label: { class: 'font-solina-extended-medium font-normal' }, icon: { class: 'text-lg ml-2 order-1' } }"
-            />
-          </NuxtLink>
           <TKLocalesSwitcher class="flex" :separator="true"/>
         </div>
       </template>

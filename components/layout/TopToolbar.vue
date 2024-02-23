@@ -1,21 +1,8 @@
-<script setup lang="ts">
-import { computed } from "vue";
-
-const { t } = useI18n();
-const freeShippingLabel = computed(() => {
-  const smallBreakpoint = 1024;
-  const currentWidth = window?.screen?.width;
-
-  return currentWidth <= smallBreakpoint
-    ? t("string.misc.freeShipping-mobile")
-    : t("string.misc.freeShipping");
-});
-</script>
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <Toolbar class="p-0">
+  <Toolbar class="p-0 lg:h-10">
     <template #center>
-      <span class="text-xs">{{ freeShippingLabel }}</span>
+      <span class="text-xs lg:hidden">{{ $t("string.misc.freeShipping-mobile") }}</span>
+      <span class="text-sm hidden lg:block">{{ $t("string.misc.freeShipping") }}</span>
     </template>
   </Toolbar>
 </template>
