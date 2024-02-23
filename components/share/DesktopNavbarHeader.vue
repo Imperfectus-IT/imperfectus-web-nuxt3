@@ -42,7 +42,7 @@ const items = ref([
         </NuxtLink>
       </template>
       <template #end>
-        <div class="flex items-center justify-center gap-x-5 mr-4">
+        <div class="flex items-center justify-center gap-x-5 pr-8">
           <NuxtLink :to="localePath({ name: 'order' })">
             <Button :label="$t('homeTitle.order')" raised/>
           </NuxtLink>
