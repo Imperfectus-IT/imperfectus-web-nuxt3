@@ -1,7 +1,9 @@
 <script setup lang="ts">
-const { separator } = defineProps<{
-  separator: boolean
-}>();
+const { separator } = withDefaults(defineProps<{
+  separator?: boolean
+}>(), {
+  separator: false
+})
 const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath()
 const selectedLocale = computed(() => {

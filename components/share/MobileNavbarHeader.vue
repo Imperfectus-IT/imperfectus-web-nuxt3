@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
-import { ref } from "vue";
 
 const localePath = useLocalePath();
-const visible = ref(false);
+const {visible, toggleVisible} = useVisibleSidebar();
 </script>
 
 <template>
@@ -16,7 +15,7 @@ const visible = ref(false);
           raised
           aria-label="Menu"
           :pt="{ icon: 'text-xl' }"
-          @click="visible = true"
+          @click="toggleVisible"
         />
       </template>
 
@@ -38,7 +37,7 @@ const visible = ref(false);
         </NuxtLink>
       </template>
     </Toolbar>
-    <AppSidebar v-model:visible="visible" @hide="visible = false"/>
+    <AppSidebar v-model:visible="visible" @hide="toggleVisible"/>
   </section>
 </template>
 

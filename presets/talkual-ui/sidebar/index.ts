@@ -90,7 +90,7 @@ export default {
   content: {
     class: [
       // Spacing and Size
-      "p-8 lg:p-24",
+      "p-8 lg:px-24 lg:py-9",
       "pt-0",
       "h-full",
       "w-full",
