@@ -3,15 +3,11 @@
   <div class="flex flex-col">
     <LandingHeader />
     <Divider class="before:border-t-2 before:border-green-primary" />
-    <LandingBoxes :display-desktop="displayDesktop" />
-
-    <!-- Offer -->
+    <LazyLandingBoxes :display-desktop="displayDesktop" />
     <LandingVegetablesOffers
       :vegetables="vegetables"
     />
-
-    <!-- Products -->
-    <LandingProducts :display-desktop="displayDesktop" />
+    <LazyLandingProducts :display-desktop="displayDesktop" />
     <LandingUpToDate />
     <LandingBlog :display-desktop="displayDesktop" />
     <LandingWorldData :display-desktop="displayDesktop"/>
