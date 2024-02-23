@@ -1,8 +1,8 @@
 <template>
-  <div 
+  <div
     class="flex flex-row justify-evenly"
   >
-    <div 
+    <div
       v-for="item in data"
       :key="item.index"
       class="w-auto relative h-[500px] overflow-hidden"
@@ -12,6 +12,7 @@
         :src="item.image"
         :alt="item.title"
         class=" h-[500px] w-[400px] object-cover"
+        loading="lazy"
       />
       <div
         class="bg-green-tertiary w-auto absolute top-0 h-full text-white "
@@ -22,7 +23,7 @@
           :style="item.index === 2 ? { 'word-spacing': '100vw' } : ''"
         >
           {{ item.title }}
-          
+
         </h4>
         <p
           class="text-lg text-left max-w-[400px] pt-8 px-4 "

@@ -5,13 +5,13 @@
     :items-to-show="visibleItems"
     :autoplay="autoplay"
     :items-to-scroll="numScroll"
-    
+
   >
     <Slide
       v-for="(item, index) in data"
       :key="index"
     >
-      <div 
+      <div
         :class="slideClass"
       >
         <NuxtImg
@@ -19,6 +19,7 @@
           :src="item.image"
           :alt="item.name"
           :class="imageClass"
+          loading="lazy"
         />
         <div :class="slotClass">
           <slot
@@ -29,7 +30,7 @@
         </div>
       </div>
     </Slide>
-    
+
     <template #addons>
       <Navigation v-if="showNavigation">
         <template #prev>
@@ -100,7 +101,7 @@ defineProps({
 <style lang="scss" scoped>
 .carousel__pagination {
   height: 0px;
-  
+
   :deep button {
     position: relative;
     bottom: 25px;

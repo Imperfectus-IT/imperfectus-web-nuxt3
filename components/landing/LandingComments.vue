@@ -1,6 +1,6 @@
 <template>
   <div
-class="my-4 leading-10 bg-green-tertiary pb-10 mb-10 
+class="my-4 leading-10 bg-green-tertiary pb-10 mb-10
 lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
 <h2 class="mx-7 font-recoleta-regular text-[35px] text-green-primary mt-10 mb-6 lg:text-[67px] lg:leading-tight lg:w-1/3 lg:pl-20 lg:py-20">
   {{ $t('homeTribe.title') }}
@@ -16,11 +16,11 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
 >
 <template #SlideContent="{ item }">
   <div class=" bg-beige-primary h-full rounded-lg leading-6 text-left pl-2 mb-3 lg:p-3">
-    
+
       <div class=" w-full bg-beige-primary flex flex-row items-center">
         <Rating
         class="py-2 "
-        
+
         :model-value="item.rating"
         :cancel="false"
         />
@@ -28,9 +28,10 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
         <NuxtImg
           src="/images/logos/landing/google-mini.webp"
           class="w-5 h-5 ml-auto mr-4"
+          loading="lazy"
           />
             </div>
-          
+
           <p>
             {{ item.description }}
           </p>
@@ -40,6 +41,7 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
             :src="item.authorPhoto"
             :alt="item.name"
             class="rounded-full "
+            loading="lazy"
           />
           <div class="flex flex-col leading-6 justify-center ml-3">
             <p class="text-left text-green-primary">

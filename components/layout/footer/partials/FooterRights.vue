@@ -27,7 +27,7 @@ const logoItems = [
       <span>All rights reserved.</span>
     </div>
     <div class="bg-green-primary flex items-center gap-5 p-4 lg:justify-center">
-      <NuxtImg v-for ="logo in logoItems" :key="logo.id" :src="logo.src" :alt="logo.alt" width="120"/>
+      <NuxtImg v-for ="logo in logoItems" :key="logo.id" :src="logo.src" :alt="logo.alt" width="120" loading="lazy"/>
     </div>
   </div>
 </template>

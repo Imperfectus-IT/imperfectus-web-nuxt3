@@ -12,7 +12,7 @@
     <LandingBlog :display-desktop="displayDesktop" />
     <LandingWorldData :display-desktop="displayDesktop"/>
     <LandingDonations :display-desktop="displayDesktop"/>
-    <LandingComments />
+    <LazyLandingComments />
     <LandingHelp />
   </div>
 </template>

@@ -14,11 +14,12 @@
         :key="index"
       >
         <div class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[200px]">
-          <div class="">
+          <div>
             <NuxtImg
               class="w-[300px] h-[150px] lg:h-[175px] rounded-t-lg  object-cover"
               :src="post.imageUrl"
               :alt="post.title"
+              loading="lazy"
             />
             <p class="text-left mt-3 pl-3 font-bold text-sm">
               {{ post.title }}
