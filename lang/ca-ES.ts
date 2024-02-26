@@ -1434,6 +1434,8 @@ export default {
   "companies.wantBeHealthy.1": "Fruites imperfectes ",
   // ++ break tag ++
   "companies.wantBeHealthy.2": "per a la teva empresa",
+  "companies.getYourFreeBox": "Aconsegueix la teva prova gratis",
+
   "companies.reasons.proximity": "Caixes de fruita de temporada i proximitat",
   "companies.reasons.healthy": "Hàbits i benestar saludable a l'empresa",
   "companies.reasons.no-waste": "NO al malbaratament alimentari",

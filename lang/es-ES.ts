@@ -1422,6 +1422,7 @@ export default {
   "companies.wantBeHealthy.1": "Frutas imperfectas",
   // ++ Br tag
   "companies.wantBeHealthy.2": "para tu empresa",
+  "companies.getYourFreeBox": "Consigue tu prueba gratis",
 
   "companies.reasons.proximity": "Cajas de fruta de temporada y proximidad",
   "companies.reasons.healthy": "Hábitos y bienestar saludable en la empresa",

@@ -17,9 +17,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex flex-col items-center rounded-xl p-5 bg-green-primary">
-    <p class="font-solina-extended-medium">{{ title }}</p>
-    <p class="mt-6 text-center font-solina-extended-book">{{ description }}</p>
+  <div class="flex flex-col items-center rounded-xl px-8 py-4 bg-green-primary">
+    <p class="text-base font-solina-extended-medium">{{ title }}</p>
+    <p class="mt-4 text-center text-base font-solina-extended-book">
+      {{ description }}
+    </p>
   </div>
 </template>
 

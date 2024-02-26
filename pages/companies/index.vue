@@ -62,7 +62,15 @@ const images = ref([
       class="h-[222px]"
       background-color="#b79f85"
       background-desktop="/images/companies/header.webp"
-    />
+    >
+      <template #action>
+        <Button
+          class="mt-5"
+          :label="$t('companies.getYourFreeBox')"
+          path="/contacte"
+        />
+      </template>
+    </Header>
 
     <Container
       class="flex flex-col gap-0 pr-4 pb-12 pl-4 lg:flex-row lg:gap-12"
@@ -154,10 +162,31 @@ const images = ref([
         </span>
 
         <ul class="mt-8 mr-0">
-          <li class="flex justify-center items-center gap-x-4">
+          <li class="flex items-center gap-x-4 mb-4">
             <span class="text-green-primary">⬤</span>
             <span class="font-solina-extended-medium">
               {{ $t("companies.whatYouGet.1") }}
+            </span>
+          </li>
+
+          <li class="flex items-center gap-x-4 mb-4">
+            <span class="text-green-primary">⬤</span>
+            <span class="font-solina-extended-medium">
+              {{ $t("companies.whatYouGet.2") }}
+            </span>
+          </li>
+
+          <li class="flex items-center gap-x-4 mb-4">
+            <span class="text-green-primary">⬤</span>
+            <span class="font-solina-extended-medium">
+              {{ $t("companies.whatYouGet.3") }}
+            </span>
+          </li>
+
+          <li class="flex items-center gap-x-4">
+            <span class="text-green-primary">⬤</span>
+            <span class="flex-1 font-solina-extended-medium">
+              {{ $t("companies.whatYouGet.4") }}
             </span>
           </li>
         </ul>

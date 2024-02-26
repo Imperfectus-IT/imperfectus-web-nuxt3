@@ -12,27 +12,29 @@
     }"
   >
     <Container
-      class="content text-center flex flex-col items-center relative z-10"
+      class="relative z-10 flex flex-col items-center text-center content"
     >
       <h1
-        class="text-white font-recoleta-regular font-[500] text-[40px] leading-[55px] lg:text-[100px]"
+        class="mt-3 text-white font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px]"
       >
         {{ title }}
       </h1>
 
       <h2
         v-if="descriptionIsH2"
-        class="Header__description text-white text-[18px] font-solina-extended-book lg:text-[30px]"
+        class="text-white Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
       >
         {{ description }}
       </h2>
 
       <p
         v-else
-        class="Header__description text-white text-[18px] font-solina-extended-book lg:text-[30px]"
+        class="text-white Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
       >
         {{ description }}
       </p>
+
+      <slot name="action"></slot>
     </Container>
   </HeaderDefault>
 </template>
