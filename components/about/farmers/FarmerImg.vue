@@ -1,17 +1,13 @@
 <template>
-    <div>
+    <div class="">
         <NuxtImg
             :src="image.url"
             :alt="'farmer_image'"
-            :height="image.height + 'px'"
             format="webp"
             loading="lazy"
-            class="rounded-xl border-2 border-green-primary absolute object-cover"
+            class="rounded-[30px] border-2 border-green-primary object-cover "
+            :class="image.class"
             :style="{
-                top: `${image.top}px`,
-                left: `${image.left}px`,
-                right: `${image.right}px`,
-                bottom: `${image.bottom}px`,
                 width: `${image.width}%`,
                 height: `${image.height}px`
             }"
