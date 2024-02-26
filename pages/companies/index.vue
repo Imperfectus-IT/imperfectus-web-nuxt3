@@ -59,37 +59,54 @@ const images = ref([
       :title="
         $t('companies.wantBeHealthy.1') + '\n' + $t('companies.wantBeHealthy.2')
       "
+      class="h-[222px]"
       background-color="#b79f85"
-      background-desktop="/images/companies/header.jpg"
+      background-desktop="/images/companies/header.webp"
     />
 
     <Container
       class="flex flex-col gap-0 pr-4 pb-12 pl-4 lg:flex-row lg:gap-12"
     >
-      <div class="flex flex-col text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl">
+      <div
+        class="flex flex-col items-center text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl"
+      >
         <SectionTitle
           :is-title-h1="true"
-          :value="$t('companies.title')"
-          class="mt-12 mb-6"
-          title-class="mb-4"
+          :value="$t('companies.mission')"
+          class="mt-12"
+          title-class="mb-4 font-solina-extended-medium"
         />
 
         <p
-          class="h-full mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]"
+          class="h-full mb-[35px] font-recoleta-regular text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]"
         >
           {{ $t("companies.description") }}
         </p>
 
-        <h3 @click="scrollToById('reasons')">
-          <Link :text="$t('companies.whoItWorks')" :show-dot="true" />
-        </h3>
+        <InfoCard
+          class="mb-5"
+          :title="$t('companies.mission.1.title')"
+          :description="$t('companies.mission.1.description')"
+        />
+
+        <InfoCard
+          :title="$t('companies.mission.2.title')"
+          :description="$t('companies.mission.2.description')"
+        />
+
+        <NuxtImg
+          class="mt-5"
+          width="290"
+          src="/images/companies/no-waste.webp"
+          alt="No waste"
+        />
+
+        <p class="mt-5 text-lg font-recoleta-regular">
+          {{ $t("companies.mission.join") }}
+        </p>
       </div>
 
-      <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] ml-[15px] bg-green-primary lg:h-full"
-      />
-
-      <div class="flex flex-col text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl">
+      <!--      <div class="flex flex-col text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl">
         <SectionTitle
           class="mt-12 mb-6"
           is-title-h2
@@ -113,12 +130,12 @@ const images = ref([
             :is-e-mail="true"
           />
         </h3>
-      </div>
+      </div>-->
     </Container>
 
     <div
       id="reasons"
-      class="flex flex-col gap-y-12 py-12 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-1 md:gap-x-5 md:gap-y-24 md:px-10 md:py-20 lg:grid-cols-2"
+      class="flex flex-col gap-y-12 py-12 pr-6 pl-6 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-1 md:gap-x-5 md:gap-y-24 md:px-10 md:py-20 lg:grid-cols-2"
     >
       <div class="flex flex-col items-center m-[5px] md:flex-row">
         <div class="ml-auto flex w-full justify-center md:w-[200px]">
@@ -126,15 +143,24 @@ const images = ref([
             class="object-scale-down h-[200px] lg:h-[140px]"
             format="webp"
             loading="lazy"
-            src="/images/companies/proximity.webp"
+            src="/images/companies/make-order.webp"
             :alt="$t('Companies.1.alt')"
           />
         </div>
         <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
+          class="mt-8 pr-2 pl-2 text-lg leading-[1.35] font-recoleta-regular md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
         >
-          {{ $t("companies.reasons.proximity") }}
+          {{ $t("companies.whatYouGet.title") }}
         </span>
+
+        <ul class="mt-8 mr-0">
+          <li class="flex justify-center items-center gap-x-4">
+            <span class="text-green-primary">⬤</span>
+            <span class="font-solina-extended-medium">
+              {{ $t("companies.whatYouGet.1") }}
+            </span>
+          </li>
+        </ul>
       </div>
 
       <div class="flex flex-col items-center m-[5px] md:flex-row">

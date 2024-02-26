@@ -420,46 +420,59 @@ export default {
   "order.steps.modifyData": "Fins:",
 
   // Content
-  'content.home.title': 'Naturalment imperfectes',
-  'content.home.description': 'Rep la teva caixa de verdures i fruites de temporada i ajuda a reduir el malbaratament alimentari. Del camp a casa teva.',
-  'content.home.why.title': 'PER QUÈ TALKUAL?',
-  'content.home.why.item1.title': 'FRESC I DELICIÓS',
-  'content.home.why.item1.content': 'Fruita i verdura de temporada directa del camp',
-  'content.home.why.item2.title': 'ECONÒMIC',
-  'content.home.why.item2.content': 'Estalvia fins a un 20%',
-  'content.home.why.item3.title': 'CÒMODE',
-  'content.home.why.item3.content': 'Producte directe a la porta de la teva casa',
-  'content.home.why.item4.title': 'SENSE COMPROMÍS',
-  'content.home.why.item4.content': 'Cancel·la subscripcions i elimina comandes sense compromís i gratuïtament',
-  'content.home.ourMission.title': 'LA NOSTRA MISSIÓ',
-  'content.home.ourMission.content': "TALKUAL té la missió d'eliminar el desperdici d'aliments, mentre oferim producte de qualitat i proximitat de petits agricultors. Oferim caixes de fruita i verdura imperfecta i delicioses, a preus similars o inferiors a les fruiteries i supermercats, portades directament a casa del client.",
-  'content.home.ourMission.link': "Informa't més",
-  'content.home.whyHelp.title': 'PER QUÈ AJUDAR AL PLANETA?',
-  'content.home.whyHelp.item1.title': '1.6 mil milions de tones',
-  'content.home.whyHelp.item1.content': 'de menjar desprofitat cada any',
-  'content.home.whyHelp.item2.title': '30%',
-  'content.home.whyHelp.item2.content': 'del menjar Mundial és malgastada',
-  'content.home.whyHelp.item3.title': '3.3 mil milions de tones',
-  'content.home.whyHelp.item3.content': 'de CO2 provinent del malbaratament alimentari',
-  'content.home.whyHelp.item4.title': '250,000 mil milions de litres',
-  'content.home.whyHelp.item4.content': "d'Aigua desaprofitada",
-  'content.home.how.title': 'COM FUNCIONA TALKUAL?',
-  'content.home.how.item1.title': 'Tria la teva caixa',
-  'content.home.how.item1.description': 'Tot tipus de caixa segons la teva necessitat; caixa de només fruita, fruita i verdura o només verdura.',
-  'content.home.how.item2.title': 'Tria el dia',
-  'content.home.how.item2.description': 'Tria el dia i hora que et vagi millor rebre-la',
-  'content.home.how.item3.title': 'Te la portem a casa',
-  'content.home.how.item3.description': "La teva caixa t'arribarà a la porta de la teva casa amb el nostre enviament gratuït.",
-  'content.home.how.item4.title': 'Menja i repeteix',
-  'content.home.how.item4.description': 'Més temps per a tu, més temps per a cuinar.',
-  'content.home.ourBoxes.title': 'LES NOSTRES CAIXES',
-  'content.home.ourBoxes.item0.title': 'Caixa petita',
-  'content.home.ourBoxes.item0.description': 'Entre 6-7 kg de fruita i/o verdura de temporada. Ideal per a 1-2 persones.',
-  'content.home.ourBoxes.item1.title': 'Caixa mitjana',
-  'content.home.ourBoxes.item1.description': 'Entre 9-10 kg de fruita i/o verdura de temporada. Ideal per a 2-3 persones.',
-  'content.home.ourBoxes.item2.title': 'Caixa gran',
-  'content.home.ourBoxes.item2.description': 'Entre 14-15 kg de fruita i/o verdura de temporada. Ideal per a 4 o +5 persones.',
-  'content.home.reviews.title': 'Comentaris dels nostres clients!',
+  "content.home.title": "Naturalment imperfectes",
+  "content.home.description":
+    "Rep la teva caixa de verdures i fruites de temporada i ajuda a reduir el malbaratament alimentari. Del camp a casa teva.",
+  "content.home.why.title": "PER QUÈ TALKUAL?",
+  "content.home.why.item1.title": "FRESC I DELICIÓS",
+  "content.home.why.item1.content":
+    "Fruita i verdura de temporada directa del camp",
+  "content.home.why.item2.title": "ECONÒMIC",
+  "content.home.why.item2.content": "Estalvia fins a un 20%",
+  "content.home.why.item3.title": "CÒMODE",
+  "content.home.why.item3.content":
+    "Producte directe a la porta de la teva casa",
+  "content.home.why.item4.title": "SENSE COMPROMÍS",
+  "content.home.why.item4.content":
+    "Cancel·la subscripcions i elimina comandes sense compromís i gratuïtament",
+  "content.home.ourMission.title": "LA NOSTRA MISSIÓ",
+  "content.home.ourMission.content":
+    "TALKUAL té la missió d'eliminar el desperdici d'aliments, mentre oferim producte de qualitat i proximitat de petits agricultors. Oferim caixes de fruita i verdura imperfecta i delicioses, a preus similars o inferiors a les fruiteries i supermercats, portades directament a casa del client.",
+  "content.home.ourMission.link": "Informa't més",
+  "content.home.whyHelp.title": "PER QUÈ AJUDAR AL PLANETA?",
+  "content.home.whyHelp.item1.title": "1.6 mil milions de tones",
+  "content.home.whyHelp.item1.content": "de menjar desprofitat cada any",
+  "content.home.whyHelp.item2.title": "30%",
+  "content.home.whyHelp.item2.content": "del menjar Mundial és malgastada",
+  "content.home.whyHelp.item3.title": "3.3 mil milions de tones",
+  "content.home.whyHelp.item3.content":
+    "de CO2 provinent del malbaratament alimentari",
+  "content.home.whyHelp.item4.title": "250,000 mil milions de litres",
+  "content.home.whyHelp.item4.content": "d'Aigua desaprofitada",
+  "content.home.how.title": "COM FUNCIONA TALKUAL?",
+  "content.home.how.item1.title": "Tria la teva caixa",
+  "content.home.how.item1.description":
+    "Tot tipus de caixa segons la teva necessitat; caixa de només fruita, fruita i verdura o només verdura.",
+  "content.home.how.item2.title": "Tria el dia",
+  "content.home.how.item2.description":
+    "Tria el dia i hora que et vagi millor rebre-la",
+  "content.home.how.item3.title": "Te la portem a casa",
+  "content.home.how.item3.description":
+    "La teva caixa t'arribarà a la porta de la teva casa amb el nostre enviament gratuït.",
+  "content.home.how.item4.title": "Menja i repeteix",
+  "content.home.how.item4.description":
+    "Més temps per a tu, més temps per a cuinar.",
+  "content.home.ourBoxes.title": "LES NOSTRES CAIXES",
+  "content.home.ourBoxes.item0.title": "Caixa petita",
+  "content.home.ourBoxes.item0.description":
+    "Entre 6-7 kg de fruita i/o verdura de temporada. Ideal per a 1-2 persones.",
+  "content.home.ourBoxes.item1.title": "Caixa mitjana",
+  "content.home.ourBoxes.item1.description":
+    "Entre 9-10 kg de fruita i/o verdura de temporada. Ideal per a 2-3 persones.",
+  "content.home.ourBoxes.item2.title": "Caixa gran",
+  "content.home.ourBoxes.item2.description":
+    "Entre 14-15 kg de fruita i/o verdura de temporada. Ideal per a 4 o +5 persones.",
+  "content.home.reviews.title": "Comentaris dels nostres clients!",
 
   "content.whatinbox.title": "Què hi ha a les caixes?",
   "content.whatinbox.description":
@@ -1392,8 +1405,25 @@ export default {
 
   // companies
   "companies.title": " EMPRESES",
+  "companies.mission": "Missió",
   "companies.description":
-    "Des de TALKUAL apostem perquè les empreses cuidin als seus treballadors, és per això que oferim fruites saludables del camp directament a la teva oficina. La quantitat que necessitis i quan ho necessitis. Fruites imperfectes per fora i brutals per dins!",
+    "La nostra missió és rescatar aliments que no compleixen els requisits estètics.",
+  "companies.mission.1.title": "7.7 milions de tones",
+  "companies.mission.1.description":
+    "d'aliments són desaprofitats cada any al nostre país.",
+  "companies.mission.2.title": "3 mil milions d'euros",
+  "companies.mission.2.description":
+    "d'aliments són desaprofitats cada any al nostre país.",
+  "companies.mission.join":
+    "Uneix-te a la lluita contra el malbaratament alimentari alhora que cuides del teu equip!",
+
+  "companies.whatYouGet.title": "Què aconsegueixes amb la teva subscripció?",
+  "companies.whatYouGet.1": "Lluitar contra el malbaratament alimentari",
+  "companies.whatYouGet.2": "Facilitat de gestió",
+  "companies.whatYouGet.3": "Fomentar hàbits saludables",
+  "companies.whatYouGet.4":
+    "T'ajudem a complir la Llei General de Discapacitat perquè col·laborem amb un Centre Especial d'Ocupació en la producció de les nostres caixes.",
+
   "companies.lgd.title": "LGD (LISMI)",
   "companies.lgd.description.1": "Podem ajudar-te a complir la ",
   "companies.lgd.description.2.bold": "Llei General de Discapacitat ",
@@ -1644,9 +1674,10 @@ export default {
   "homeTribe.review.verified": "Verificat",
 
   // HomeHelp
-  'homeHelp.title': 'UNEIX-TE A LA TRIBU I AJUDA AL PLANETA',
-  'homeHelp.description': "Ajuda'ns a reduir el malbaratament alimentari fent una comanda de la nostra fruita i verdura imperfecta. Ens encantaria que formessis part de la tribu per contribuir junts a la sostenibilitat del planeta.",
-  'homeHelp.askBox': 'Demana la teva caixa',
+  "homeHelp.title": "UNEIX-TE A LA TRIBU I AJUDA AL PLANETA",
+  "homeHelp.description":
+    "Ajuda'ns a reduir el malbaratament alimentari fent una comanda de la nostra fruita i verdura imperfecta. Ens encantaria que formessis part de la tribu per contribuir junts a la sostenibilitat del planeta.",
+  "homeHelp.askBox": "Demana la teva caixa",
 
   // FooterInfo
   "footerInfo.follow": "SEGUEIX-NOS",
