@@ -113,177 +113,102 @@ const images = ref([
           {{ $t("companies.mission.join") }}
         </p>
       </div>
-
-      <!--      <div class="flex flex-col text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl">
-        <SectionTitle
-          class="mt-12 mb-6"
-          is-title-h2
-          :value="$t('companies.lgd.title')"
-          title-class="mb-4"
-        />
-
-        <p
-          class="h-full mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]"
-        >
-          {{ $t("companies.lgd.description.1") }}
-          <strong>{{ $t("companies.lgd.description.2.bold") }}</strong>
-          {{ $t("companies.lgd.description.3") }}
-        </p>
-
-        <h3>
-          <Link
-            :text="$t('companies.lgd.ask')"
-            path="empresa@talkualfoods.com"
-            :show-dot="true"
-            :is-e-mail="true"
-          />
-        </h3>
-      </div>-->
     </Container>
 
     <div
-      id="reasons"
-      class="flex flex-col gap-y-12 py-12 pr-6 pl-6 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-1 md:gap-x-5 md:gap-y-24 md:px-10 md:py-20 lg:grid-cols-2"
+      class="flex flex-col items-center pt-14 pr-4 pb-10 pl-4 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-2 md:gap-x-5 md:px-10 md:py-20"
     >
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            format="webp"
-            loading="lazy"
-            src="/images/companies/make-order.webp"
-            :alt="$t('Companies.1.alt')"
-          />
-        </div>
-        <span
-          class="mt-8 pr-2 pl-2 text-lg leading-[1.35] font-recoleta-regular md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.whatYouGet.title") }}
-        </span>
-
-        <ul class="mt-8 mr-0">
-          <li class="mb-4">
-            <ListItem
-              :text="$t('companies.whatYouGet.1')"
-              text-class="flex-1 font-solina-extended-medium"
-            />
-          </li>
-
-          <li class="mb-4">
-            <ListItem
-              :text="$t('companies.whatYouGet.2')"
-              text-class="flex-1 font-solina-extended-medium"
-            />
-          </li>
-
-          <li class="mb-4">
-            <ListItem
-              :text="$t('companies.whatYouGet.3')"
-              text-class="flex-1 font-solina-extended-medium"
-            />
-          </li>
-
-          <li>
-            <ListItem
-              :text="$t('companies.whatYouGet.4')"
-              text-class="flex-1 font-solina-extended-medium"
-            />
-          </li>
-        </ul>
+      <div class="flex justify-center md:row-start-1 md:row-end-3">
+        <NuxtImg
+          class="object-scale-down h-[200px] md:h-[300px]"
+          format="webp"
+          loading="lazy"
+          src="/images/companies/make-order.webp"
+          :alt="$t('Companies.1.alt')"
+        />
       </div>
 
-      <!--
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            format="webp"
-            loading="lazy"
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            src="/images/companies/healthy.webp"
-            :alt="$t('Companies.2.alt')"
-          />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.healthy") }}
-        </span>
-      </div>
-      -->
+      <span
+        class="mt-8 pr-2 pl-2 text-lg leading-[1.35] font-recoleta-regular md:text-[40px] md:mt-0 md:pr-0 md:text-left"
+      >
+        {{ $t("companies.whatYouGet.title") }}
+      </span>
 
-      <!--
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            format="webp"
-            loading="lazy"
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            src="/images/companies/no-waste.webp"
-            :alt="$t('Companies.3.alt')"
+      <ul
+        class="mt-8 mr-0 text-beige-primary md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3"
+      >
+        <li class="mb-4">
+          <ListItem
+            :text="$t('companies.whatYouGet.1')"
+            text-class="flex-1 font-solina-extended-medium"
           />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.no-waste") }}
-        </span>
-      </div>
--->
-      <!--      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            format="webp"
-            loading="lazy"
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            src="/images/companies/solutions.webp"
-            :alt="$t('Companies.4.alt')"
+        </li>
+
+        <li class="mb-4">
+          <ListItem
+            :text="$t('companies.whatYouGet.2')"
+            text-class="flex-1 font-solina-extended-medium"
           />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.solutions") }}
-        </span>
-      </div>-->
+        </li>
+
+        <li class="mb-4">
+          <ListItem
+            :text="$t('companies.whatYouGet.3')"
+            text-class="flex-1 font-solina-extended-medium"
+          />
+        </li>
+
+        <li>
+          <ListItem
+            :text="$t('companies.whatYouGet.4')"
+            text-class="flex-1 font-solina-extended-medium"
+          />
+        </li>
+      </ul>
     </div>
 
     <div
-      class="mt-0 mr-0 mb-0 ml-0 pt-6 pb-6 flex flex-col pr-4 pl-4 md:flex-row"
+      class="mt-0 mr-0 mb-0 ml-0 flex flex-col pt-6 pr-4 pb-6 pl-4 md:grid md:grid-cols-2 md:grid-rows-4 md:content-center md:gap-y-5 md:pl-[50px] md:pr-[50px] md:pt-20 md:pb-20"
     >
       <SectionTitle
         :value="$t('companies.whoItWorks.title')"
-        class="mb-2"
-        title-class="mb-4 text-lg"
+        class="mb-2 md:mb-0"
+        title-class="mb-4 text-lg md:text-[40px] md:mb-0"
       />
 
       <ListItem
         :text="$t('companies.whoItWorks.1')"
-        class="gap-x-2"
-        text-class="flex-1 font-solina-extended-book text-base"
+        class="gap-x-2 md:col-start-1"
+        text-class="flex-1 text-base font-solina-extended-book md:text-[26px]"
       />
 
-      <div class="flex gap-4 mt-5">
-        <InfoCard :title="$t('string.day.tuesday')"></InfoCard>
-        <InfoCard :title="$t('string.day.wednesday')"></InfoCard>
-        <InfoCard :title="$t('string.day.thursday')"></InfoCard>
+      <div class="mt-5 flex gap-4 md:col-start-2 md:row-start-2 md:m-0">
+        <InfoCard :title="$t('string.day.tuesday')" class="flex-1" />
+        <InfoCard :title="$t('string.day.wednesday')" class="flex-1" />
+        <InfoCard :title="$t('string.day.thursday')" class="flex-1" />
       </div>
 
       <ListItem
         :text="$t('companies.frequency.title')"
-        class="gap-x-2 mt-6"
-        text-class="flex-1 font-solina-extended-book text-base"
+        class="mt-6 gap-x-2 md:mt-0"
+        text-class="flex-1 text-base font-solina-extended-book md:text-[26px]"
       />
 
-      <div class="flex flex-wrap gap-4 mt-5">
-        <InfoCard :title="$t('companies.frequency.weekly')"></InfoCard>
-        <InfoCard :title="$t('companies.frequency.biweekly')"></InfoCard>
-        <InfoCard :title="$t('companies.frequency.once')"></InfoCard>
+      <div
+        class="mt-5 flex flex-wrap gap-4 md:col-start-2 md:row-start-3 md:m-0"
+      >
+        <InfoCard :title="$t('companies.frequency.weekly')" class="md:flex-1" />
+        <InfoCard
+          :title="$t('companies.frequency.biweekly')"
+          class="md:flex-1"
+        />
+        <InfoCard :title="$t('companies.frequency.once')" class="md:flex-1" />
       </div>
 
       <ListItem
         :text="$t('companies.size')"
-        class="gap-x-2 mt-6"
-        text-class="flex-1 font-solina-extended-book text-base"
+        class="mt-6 gap-x-2 md:mt-0"
+        text-class="flex-1 text-base font-solina-extended-book md:text-[26px]"
       />
     </div>
 
