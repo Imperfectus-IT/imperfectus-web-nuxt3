@@ -1,36 +1,36 @@
 <template>
-   
-
-<div class="mb-32">
+<div class="lg:mb-32">
   <Header :title="t('farmers.header.title')" :description="t('farmers.header.description')" background-desktop="'/images/farmers/header.jpg'" />
-  <div class="absolute w-full top-[100vh]">
+  <div v-if="displayDesktop">
+    <div class="absolute w-full top-[100vh]">
     <TKTopFooterEffect class="lg:!top-0"/>
     <div class="bg-green-tertiary lg:h-[100vh] " />
   </div>
   <div class="w-full lg:h-[100vh] lg:absolute bg-green-quaternary lg:top-[315vh]" />
+  </div>
   
   <Container>
-    <div class="w-1/2 ">
-      <p class="font-solina-condensed-bold font-bold lg:mt-10 lg:text-[18px] uppercase">{{ t('farmers.title') }}</p>
-      <p class="lg:text-[26px] lg:leading-9 lg:my-6">{{ t('farmers.description') }}</p>
+    <div class="w-11/12 ml-4 mt-12 lg:w-1/2 lg:ml-0">
+      <p class="mt-6 text-[18px] font-solina-condensed-bold font-bold lg:mt-10 lg:text-[18px] uppercase">{{ t('farmers.title') }}</p>
+      <p class="my-10 leading-8 text-[26px] lg:leading-9">{{ t('farmers.description') }}</p>
     </div>
 
     <!-- All farmers -->
     <div
      v-for="(farmer, index) in farmers"
         :key="index"
-        :class="index === 1 ? '-mt-72' :
-                index ===  3 ? '-mt-64' : ''"
+        :class="index === 1 ? 'lg:-mt-72' :
+                index ===  3 ? 'lg:-mt-64' : ''"
         >
 
       <!-- First Farmer -->
       <div
-       
-        class="grid grid-cols-3 gap-y-6"
+        class="flex flex-col gap-y-2 lg:grid lg:grid-cols-3 lg:gap-y-6"
          style="grid-auto-rows: 145px;"
       >
         <div    
           :class="farmer.positionText"
+          class="ml-4 my-6 w-11/12 lg:ml-0 lg:my-0"
         >
           <p class="font-bold">{{ farmer.name }}</p>
           <p class="pt-4">{{ farmer.description }}</p>
@@ -41,6 +41,9 @@
           :key="index"
           :image="image"
           :class="image.class"
+          loading="lazy"
+          format="webp"
+          :alt="image.url"
         />
       </div>  
     </div>
@@ -50,9 +53,12 @@
 </template>
 
 <script setup lang="ts">
+import { displayPartsToString } from "typescript";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
+
+const displayDesktop = ref(false);
 
 defineI18nRoute({
   paths: {
@@ -61,6 +67,11 @@ defineI18nRoute({
   },
 });
 
+onMounted(() => {
+  if (process.client) {
+    displayDesktop.value = window.innerWidth > 768;
+  }
+});
 interface IFarmer {
   name: string;
   description: string;
@@ -80,29 +91,29 @@ export interface Image {
   bottom?: string,
 }
 
-const farmers: IFarmer[] = [
+const farmers = computed<IFarmer[]>(() => [
         {
           name: t('farmers.gallery.1.title'),
           description: t('farmers.gallery.1.description'),
-          positionText: 'col-start-3 row-start-1',
+          positionText: 'lg:col-start-3 lg:row-start-1 order-3',
           images: [{
-            width: 85,
-            height: 490,
+            width: displayDesktop.value ? 85 : 95,
+            height: displayDesktop.value ? 490 : 460,
             url: '/images/farmers/1.jpg',
-            class: 'col-start-1 row-start-1'
+            class: 'ml-1.5 lg:col-start-1 lg:row-start-1 order-1'
           },
           {
-            width: 100,
-            height: 490,
+            width: 95,
+            height: displayDesktop.value ? 490 : 630,
             url: '/images/farmers/2.jpg',
-            class: 'col-start-2 row-start-1 mx-auto'
+            class: 'ml-1.5 lg:mx-auto lg:col-start-2 lg:row-start-1 order-2'
 
             },
           {
-            width: 100,
-            height: 590,
+            width: displayDesktop.value ? 100 : 95,
+            height: displayDesktop.value ? 590 : 530,
             url: '/images/farmers/3.jpg',
-            class: 'col-start-3 row-start-2 row-span-4'
+            class: 'ml-2 lg:ml-0 lg:col-start-3 lg:row-start-2 lg:row-span-4 order-4'
             
           }
         ]
@@ -110,31 +121,31 @@ const farmers: IFarmer[] = [
         {
           name: t('farmers.gallery.2.title'),
           description: t('farmers.gallery.2.description'),
-          positionText: 'col-start-2 row-start-3 mt-10 text-green-quaternary',
+          positionText: 'lg:col-start-2 lg:row-start-3 lg:mt-10 lg:text-green-quaternary order-5',
            images: [
             {
-              width: 80,
-              height: 360,
+              width: displayDesktop.value ? 80 : 95,
+              height: displayDesktop.value ? 360 : 220,
               url: '/images/farmers/4.jpg',
-              class: 'row-start-1 col-span-2 col-start-1 row-span-2 ml-20'
+              class: 'ml-1.5 mt-1.5 lg:mt-0 lg:row-start-1 lg:row-span-2 lg:col-start-1 lg:col-span-2 lg:ml-20'
             },
             {
               width: 95,
-              height: 520,
+              height: displayDesktop.value ? 520 : 425,
               url: '/images/farmers/5.jpg',
-              class: 'row-start-3 col-start-1 row-span-4 mt-5'
+              class: 'ml-1.5 lg:ml-0 lg:row-start-3 lg:col-start-1 lg:row-span-4 lg:mt-5'
             },
             {
-              width: 100,
+              width: displayDesktop.value ? 100 : 95,
               height: 435,
               url: '/images/farmers/6.jpg',
-              class: 'row-start-4 col-start-2 mx-auto'
+              class: 'ml-1.5 lg:row-start-4 lg:col-start-2 lg:mx-auto'
             },
             {
-              width: 100,
-              height: 620,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 620 : 435,
               url: '/images/farmers/7.jpg',
-              class: 'row-start-3 col-start-3 row-span-3 -mt-10'
+              class: 'ml-1.5 lg:ml-0 lg:row-start-3 lg:col-start-3 lg:row-span-3 lg:-mt-10'
             }
            ]
         },
@@ -142,19 +153,19 @@ const farmers: IFarmer[] = [
           name: t('farmers.gallery.3.title'),
           description: t('farmers.gallery.3.description'),
           descriptionExtended: t('farmers.gallery.3.description.2'),
-          positionText: 'col-start-1 row-start-1',
+          positionText: 'lg:col-start-1 lg:row-start-1 order-3',
           images: [
              {
-              width: 100,
-              height: 490,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 490 : 210,
               url: '/images/farmers/9.jpg',
-              class: 'col-start-2 col-span-2 ml-auto'
+              class: ' ml-1.5 lg:col-start-2 lg:col-span-2 lg:ml-auto'
             },
             {
-              width: 100,
-              height: 545,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 545 : 469,
               url: '/images/farmers/8.jpg',
-              class: 'col-start-1 w-11/12 row-span-4'
+              class: 'ml-1.5 lg:ml-0 lg:col-start-1 lg:w-11/12 lg:row-span-4'
             }
            
           ]
@@ -162,53 +173,53 @@ const farmers: IFarmer[] = [
         {
           name: t('farmers.gallery.4.title'),
           description: t('farmers.gallery.4.description'),
-          positionText: 'row-start-4 w-3/4 mx-auto mt-5',
+          positionText: 'lg:row-start-4 lg:w-3/4 lg:mx-auto lg:-mt-7 order-4',
           images: [
             {
-              width: 300,
+              width: displayDesktop.value ? 100 : 95,
               height: 500,
               url: '/images/farmers/10.jpg',
-              class: 'col-start-1 row-start-2 mx-auto row-span-3'
+              class: 'ml-1.5 lg:ml-0 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:row-span-3 order-1'
             },
             {
-              width: 300,
-              height: 486,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 486 : 536,
               url: '/images/farmers/11.jpg',
-              class: 'col-start-2 row-start-1 mx-auto -mt-3'
+              class: 'ml-1.5 lg:ml-0 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:-mt-3 order-3'
             },
             {
-              width: 300,
-              height: 680,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 680 : 565,
               url: '/images/farmers/12.jpg',
-              class: 'col-start-3 row-start-1 mx-auto -mt-6'
+              class: 'ml-1.5 lg:col-start-3 lg:row-start-1 lg:mx-auto lg:-mt-6 order-2'
             }
           ]
         },
         {
           name: t('farmers.gallery.5.title'),
           description: t('farmers.gallery.5.description'),
-          positionText: 'col-start-2 row-start-5 w-5/6 mx-auto',
+          positionText: 'lg:col-start-2 lg:row-start-5 lg:w-5/6 lg:!mx-auto order-4',
           images: [
             {
-              width: 100,
-              height: 650,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 650 : 536,
               url: '/images/farmers/13.jpg',
-              class: 'col-start-1 row-start-1 row-span-4 mx-auto mt-4'
+              class: 'ml-1.5 lg:ml-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:mx-auto lg:mt-4 order-1'
             },
             {
-              width: 90,
-              height: 600,
+              width: displayDesktop.value ? 90 : 95,
+              height: displayDesktop.value ? 600 : 536,
               url: '/images/farmers/14.jpg',
-              class: 'col-start-2 row-start-1 row-span-4 mx-auto mt-6'
+              class: 'ml-1.5 lg:mx-auto lg:col-start-2 lg:row-start-1 lg:row-span-4 lg:mx-auto lg:mt-6 order-3'
             },
             {
-              width: 100,
-              height: 575,
+              width: displayDesktop.value ? 100 : 95,
+              height: displayDesktop.value ? 575 : 714,
               url: '/images/farmers/15.jpg',
-              class: 'col-start-3 row-start-1 row-span-4 mx-auto mt-12'
+              class: 'ml-1.5 lg:ml-auto lg:col-start-3 lg:row-start-1 lg:row-span-4 lg:mt-16 order-2'
             }
           ]
         }
-      ]
+      ])
 
 </script>
