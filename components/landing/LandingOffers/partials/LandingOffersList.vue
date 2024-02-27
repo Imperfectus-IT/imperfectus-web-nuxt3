@@ -16,7 +16,7 @@
         />
 
         <h3
-          class="text-[30px] ml-2 font-recoleta-regular"
+          class="text-[30px] ml-2 font-recoleta-regular "
           :class="currentOption !== $t(option.title) ? 'text-grey-primary' : '!text-grey-secondary'"
         >
           {{ $t(option.title) }}

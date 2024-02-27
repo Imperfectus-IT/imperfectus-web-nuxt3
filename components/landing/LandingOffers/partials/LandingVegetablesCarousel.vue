@@ -4,7 +4,7 @@
     :show-navigation="showNavigation"
     :autoplay="5000"
     :carousel-class="''"
-    :image-class="'lg:object-cover lg:h-[70vh] lg:w-full'"
+    :image-class="'lg:object-cover lg:h-[80vh] lg:w-full'"
     :slide-class="'lg:w-full'"
   />
 </template>

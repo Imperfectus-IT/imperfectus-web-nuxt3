@@ -1,16 +1,15 @@
 <template>
-  <div class="text-[14px] text-green-quaternary bg-green-tertiary py-4 pl-2">
-    <h4 class="font-extrabold text-[18px] font-solina-extended-book mb-4 pt-4">
+  <div>
+    <h4 class="text-[1.125rem] mb-4 font-extrabold uppercase">
       {{ $t("footerInfo.contact") }}
     </h4>
-
-    <div class="">
-      <a target="_blank" href="mailto:info@talkualfoods.com"
-        >info@talkualfoods.com</a
+    <div>
+      <NuxtLink target="_blank" to="mailto:info@talkualfoods.com"
+        >info@talkualfoods.com</NuxtLink
       >
-      <br /><span>O</span>
-      <NuxtLink class="FooterInfo__contact" target="_blank" to="contact">
-        {{ $t("FooterInfo.contact-here") }}
+      <br />O
+      <NuxtLink target="_blank" to="contact" class="underline">
+        {{ $t("footerInfo.contact-here") }}
       </NuxtLink>
     </div>
 
@@ -24,11 +23,7 @@
       <p>{{ $t("footerInfo.schedule.2") }}</p>
     </div>
     <div class="text-[30px] flex flex-row gap-4 mt-6">
-      <span class="mdi mdi-instagram" />
-      <span class="mdi mdi-linkedin" />
-      <span class="mdi mdi-facebook" />
-      <span class="mdi mdi-youtube" />
-      <span class="mdi mdi-twitter" />
+      <span v-for="icon in socialLinkIcons" :key="icon" :class="['mdi', `mdi-${icon}`]" />
       <a
         class="relative top-3"
         title="Tiktok"
@@ -51,4 +46,12 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const socialLinkIcons = [
+  "instagram",
+  "linkedin",
+  "facebook",
+  "youtube",
+  "twitter",
+];
+</script>

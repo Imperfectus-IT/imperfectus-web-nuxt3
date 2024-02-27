@@ -21,12 +21,12 @@ export default {
       },
       white: "#ffffff",
       black: {
-        primary: "#000"
+        primary: "#000",
       },
       green: {
         primary: "#D9EF52",
         secondary: "#007D08",
-        tertiary: "#002625",
+        tertiary: "#002423",
         quaternary: "#e5F8C4",
       },
       grey: {
@@ -73,9 +73,16 @@ export default {
         "recoleta-semibold": ["Recoleta SemiBold"],
         "solina-extended-book": ["Solina Extended Book"],
         "solina-extended-medium": ["Solina Extended Medium"],
-        "solina-condensed": ["Solina Condensed"],
+        "solina-condensed-bold": ["Solina Condensed Bold"],
       },
     },
   },
   plugins: [],
+  build: {
+    postcss: {
+      plugins: {
+        "autoprefixer": {}
+      }
+    }
+  }
 };

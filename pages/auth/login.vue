@@ -34,7 +34,7 @@ const handleLoginEvent = () => {
 </script>
 
 <template>
-    <LoginForm @login="handleLoginEvent">
+    <LoginForm class="mt-5" @login="handleLoginEvent">
         <template #header>
             <div class="mb-5 lg:mb-10 text-center">
         <span class="font-recoleta text-lg font-normal">{{

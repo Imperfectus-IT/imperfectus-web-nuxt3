@@ -9,13 +9,13 @@
       v-for="(item, index) in boxes"
       :key="index"
     >
-      <div class="">
+      <div>
         <NuxtImg
-          
           :src="item.image"
           :alt="item.name"
-          class="lg:w-[50vw] h-full rounded-lg "
-          :class="optionalSlideClass"
+          :class="['lg:w-[50vw] h-full rounded-lg', optionalSlideClass]"
+          loading="lazy"
+          format="webp"
         />
         <slot name="SlideContent" />
       </div>

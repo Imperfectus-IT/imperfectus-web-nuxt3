@@ -8,11 +8,12 @@
     <template #SlideContent="{ item }">
       <div 
         class="bg-green-tertiary w-[350px] h-[500px] absolute top-[390px] opacity-75 font-recoleta-regular text-white duration-1000"
-        :class="{'translate-y-0': !isClicked, '-translate-y-[390px]': isClicked}"
-        @click="isClicked = !isClicked"
+       :class="{'-translate-y-[390px] duration-1000 opacity-90': display[item.index], '-translate-y-[-0px] duration-700 opacity-55': !display[item.index]}"
+        @click="handleClickToDisplay(item.index)"
       >
         <h4
-          class="text-[30px] leading-[42px] pt-6 text-center"
+          class="text-[30px] leading-[42px] pt-2 text-center"
+          :style="item.index === 2 ? { 'word-spacing': '100vw' } : ''"
         >
           {{ item.title }}
         </h4>
@@ -36,6 +37,17 @@ defineProps({
     required: true
   }
 })
+
+const display: Record<number, boolean> = reactive({
+  1: false,
+  2: false,
+  3: false
+});
+
+const handleClickToDisplay = (index: number) => {
+  display[index] = !display[index];
+}
+
 
 const isClicked = ref(false);
 </script>

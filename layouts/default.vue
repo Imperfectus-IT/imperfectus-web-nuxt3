@@ -1,11 +1,11 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<script setup lang="ts"></script>
-
 <template>
-  <div class="">
+  <main>
+    <section class="sticky top-0 z-10">
+      <TopToolbar />
+      <MobileNavbarHeader class="lg:hidden bg-beige-primary" />
+      <DesktopNavbarHeader class="hidden lg:block bg-beige-primary" />
+    </section>
     <slot />
-    <FooterDefault />
-  </div>
+    <LazyFooterDefault />
+  </main>
 </template>
-
-<style scoped lang="scss"></style>

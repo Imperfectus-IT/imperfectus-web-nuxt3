@@ -64,11 +64,15 @@ export default defineNuxtConfig({
                 "Dropdown",
                 "Image",
                 "InputText",
+                "Menu",
+                "MenuBar",
                 "Multiselect",
+                "PanelMenu",
                 "Password",
                 "ProgressBar",
                 "Rating",
                 "Sidebar",
+                "Skeleton",
                 "Toolbar",
                 "Rating"
       ],
@@ -114,4 +118,7 @@ export default defineNuxtConfig({
         },
         version: "v3",
     },
+    image: {
+        format: ["webp", "avif", "png"]
+    }
 });
