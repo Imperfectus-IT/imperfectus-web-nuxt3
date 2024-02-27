@@ -1,39 +1,35 @@
 
 import type divider from '~/presets/talkual-ui/divider';
 <template>
-  <div>
+  <div class="relative">
     <NuxtImg
-      :class="'transform transition-all duration-300 hover:'"
-      width="300"
-      :src="`/images/about/team/${images[currentImage]}`"
+      class="w-auto h-[447px] mx-auto object-cover rounded-xl border-[1px] border-green-primary shadow-md"
+      :src="basePath + images[`${index}`]"
       loading="lazy"
       format="webp"
-      @mouseover="showTest"
-      @mouseout="currentImage = 0"
+      :alt="name"
+      @mouseover="index++"
+      @mouseout="index--"
     />
-    <NuxtImg
-      :alt="'test'"
-      :class="'transform transition-all duration-300 hover:'"
-      width="300"
-      :src="`/images/about/team/${images[currentImage]}`"
-      loading="lazy"
-      format="webp"
-      @mouseover="currentImage = 1"
-      @mouseout="currentImage = 0"
-    />
-    <div class="">
-      <p>{{ name }}</p>
-      <p>{{ position }}</p>
+ 
+    <div
+      v-if="index === 1" 
+      class="text-white-primary w-2/3 text-center absolute left-1/2 -translate-x-1/2 bottom-2">
+      <p class="font-recoleta-regular text-[25px]">{{ name }}</p>
+      <p class="text-[18px] font-bold">{{ position }}</p>
     </div>
-</div>
-  </template>
+  </div>
+</template>
 
 <script setup lang="ts">
 
-const test = ref(0);
+defineProps<{
+  name: string;
+  position: string;
+  images: string[];
+}>();
 
-const showTest = () => {
-  console.log(test.value);
-};
+const index = ref(0);
+const basePath = ref<string>('/images/about/team/')
 
 </script>
