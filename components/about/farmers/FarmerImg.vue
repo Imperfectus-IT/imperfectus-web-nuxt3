@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Image } from '~/pages/farmers.vue';
+import type { Image } from './farmers'
 
 defineProps({
     image: {
