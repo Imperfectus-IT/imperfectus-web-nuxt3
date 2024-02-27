@@ -1411,13 +1411,24 @@ export default {
   "companies.whatYouGet.4":
     "Te ayudamos a cumplir con la Ley General de Discapacidad porque colaboramos con un Centro Especial de Empleo en la producción de nuestras cajas.",
 
+  "companies.whoItWorks.title": "¿Cómo funciona?",
+  "companies.whoItWorks.1": "Elige el día de entrega (antes de las 15h)",
+  "companies.whoItWorks.2": "Elige la frecuencia de entrega",
+  "companies.whoItWorks.3": "Elige el tamaño",
+
+  "companies.frequency.title": "Elige la frecuencia de entrega",
+  "companies.frequency.once": "Compra única",
+  "companies.frequency.weekly": "Semanal",
+  "companies.frequency.biweekly": "Quincenal",
+
+  "companies.size": "Elige el tamaño",
+
   "companies.lgd.title": "LGD (LISMI)",
   "companies.lgd.description.1": "Podemos ayudarte a cumplir con la",
   "companies.lgd.description.2.bold": "Ley General de Discapacidad",
   "companies.lgd.description.3":
     "porque colaboramos con un Centro Especial de Empleo en la producción de nuestras cajas.",
   "companies.lgd.ask": "¡Pregúntanos!",
-  "companies.whoItWorks": "¿Cómo funciona?",
 
   "companies.wantBeHealthy.1": "Frutas imperfectas",
   // ++ Br tag

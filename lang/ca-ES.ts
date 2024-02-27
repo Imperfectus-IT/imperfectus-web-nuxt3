@@ -1430,7 +1430,18 @@ export default {
   "companies.lgd.description.3":
     "perquè col·laborem amb un Centre Especial d'Ocupació en la producció de les nostres caixes. ",
   "companies.lgd.ask": "Pregunta'ns!",
-  "companies.whoItWorks": "Com funciona?",
+  "companies.whoItWorks.title": "Com funciona?",
+  "companies.whoItWorks.1": "Tria el dia de lliurament (abans de les 15h)",
+  "companies.whoItWorks.2": "Tria la freqüència de lliurament",
+  "companies.whoItWorks.3": "Tria la mid",
+
+  "companies.frequency.title": "Escull la freqüència de lliurament",
+  "companies.frequency.once": "Compra única",
+  "companies.frequency.weekly": "Setmanal",
+  "companies.frequency.biweekly": "Quinzenal",
+
+  "companies.size": "Escull la mida",
+
   "companies.wantBeHealthy.1": "Fruites imperfectes ",
   // ++ break tag ++
   "companies.wantBeHealthy.2": "per a la teva empresa",

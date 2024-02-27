@@ -162,36 +162,37 @@ const images = ref([
         </span>
 
         <ul class="mt-8 mr-0">
-          <li class="flex items-center gap-x-4 mb-4">
-            <span class="text-green-primary">⬤</span>
-            <span class="font-solina-extended-medium">
-              {{ $t("companies.whatYouGet.1") }}
-            </span>
+          <li class="mb-4">
+            <ListItem
+              :text="$t('companies.whatYouGet.1')"
+              text-class="flex-1 font-solina-extended-medium"
+            />
           </li>
 
-          <li class="flex items-center gap-x-4 mb-4">
-            <span class="text-green-primary">⬤</span>
-            <span class="font-solina-extended-medium">
-              {{ $t("companies.whatYouGet.2") }}
-            </span>
+          <li class="mb-4">
+            <ListItem
+              :text="$t('companies.whatYouGet.2')"
+              text-class="flex-1 font-solina-extended-medium"
+            />
           </li>
 
-          <li class="flex items-center gap-x-4 mb-4">
-            <span class="text-green-primary">⬤</span>
-            <span class="font-solina-extended-medium">
-              {{ $t("companies.whatYouGet.3") }}
-            </span>
+          <li class="mb-4">
+            <ListItem
+              :text="$t('companies.whatYouGet.3')"
+              text-class="flex-1 font-solina-extended-medium"
+            />
           </li>
 
-          <li class="flex items-center gap-x-4">
-            <span class="text-green-primary">⬤</span>
-            <span class="flex-1 font-solina-extended-medium">
-              {{ $t("companies.whatYouGet.4") }}
-            </span>
+          <li>
+            <ListItem
+              :text="$t('companies.whatYouGet.4')"
+              text-class="flex-1 font-solina-extended-medium"
+            />
           </li>
         </ul>
       </div>
 
+      <!--
       <div class="flex flex-col items-center m-[5px] md:flex-row">
         <div class="ml-auto flex w-full justify-center md:w-[200px]">
           <NuxtImg
@@ -208,7 +209,9 @@ const images = ref([
           {{ $t("companies.reasons.healthy") }}
         </span>
       </div>
+      -->
 
+      <!--
       <div class="flex flex-col items-center m-[5px] md:flex-row">
         <div class="ml-auto flex w-full justify-center md:w-[200px]">
           <NuxtImg
@@ -225,8 +228,8 @@ const images = ref([
           {{ $t("companies.reasons.no-waste") }}
         </span>
       </div>
-
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
+-->
+      <!--      <div class="flex flex-col items-center m-[5px] md:flex-row">
         <div class="ml-auto flex w-full justify-center md:w-[200px]">
           <NuxtImg
             format="webp"
@@ -241,50 +244,47 @@ const images = ref([
         >
           {{ $t("companies.reasons.solutions") }}
         </span>
-      </div>
+      </div>-->
     </div>
 
-    <div class="mt-0 mr-0 mb-0 ml-0 flex flex-col md:flex-row">
-      <div
-        class="flex w-full flex-col justify-center pb-[30px] mt-[15px] pl-[5%] pr-[5%] md:mt-0 md:w-1/2 md:pb-0"
-      >
-        <h2 class="text-2xl font-recoleta-regular mt-[15px] md:mt-0">
-          {{ $t("companies.box.title") }}
-        </h2>
+    <div
+      class="mt-0 mr-0 mb-0 ml-0 pt-6 pb-6 flex flex-col pr-4 pl-4 md:flex-row"
+    >
+      <SectionTitle
+        :value="$t('companies.whoItWorks.title')"
+        class="mb-2"
+        title-class="mb-4 text-lg"
+      />
 
-        <div class="text-[25px] mt-[15px] mb-[5px]">
-          <span class="block text-[20px] font-solina-extended-book">
-            {{ $t("companies.box.description") }}
-          </span>
+      <ListItem
+        :text="$t('companies.whoItWorks.1')"
+        class="gap-x-2"
+        text-class="flex-1 font-solina-extended-book text-base"
+      />
 
-          <ul class="list-none mt-[15px]">
-            <li
-              class="font-solina-extended-book text-[20px] flex items-center before:content-['⬤'] before:text-green-primary before:inline-block before:w-4 before:mr-5 before:text-[14px] before:text-primary before:font-bold"
-            >
-              <span>{{ $t("companies.box.description.s") }}</span>
-            </li>
-            <li
-              class="font-solina-extended-book text-[20px] flex items-center before:content-['⬤'] before:text-green-primary before:inline-block before:w-4 before:mr-5 before:text-[14px] before:text-primary before:font-bold"
-            >
-              <span>{{ $t("companies.box.description.m") }}</span>
-            </li>
-            <li
-              class="font-solina-extended-book text-[20px] flex items-center before:content-['⬤'] before:text-green-primary before:inline-block before:w-4 before:mr-5 before:text-[14px] before:text-primary before:font-bold"
-            >
-              <span>{{ $t("companies.box.description.xl") }}</span>
-            </li>
-          </ul>
-        </div>
+      <div class="flex gap-4 mt-5">
+        <InfoCard :title="$t('string.day.tuesday')"></InfoCard>
+        <InfoCard :title="$t('string.day.wednesday')"></InfoCard>
+        <InfoCard :title="$t('string.day.thursday')"></InfoCard>
       </div>
-      <div class="w-full p-0 md:w-1/2">
-        <TKCarousel
-          :data="images"
-          :num-scroll="1"
-          carousel-class="h-[400px] lg:h-[620px]"
-          slide-class="w-full"
-          image-class="w-full object-cover h-[400px] lg:h-[620px]"
-        />
+
+      <ListItem
+        :text="$t('companies.frequency.title')"
+        class="gap-x-2 mt-6"
+        text-class="flex-1 font-solina-extended-book text-base"
+      />
+
+      <div class="flex flex-wrap gap-4 mt-5">
+        <InfoCard :title="$t('companies.frequency.weekly')"></InfoCard>
+        <InfoCard :title="$t('companies.frequency.biweekly')"></InfoCard>
+        <InfoCard :title="$t('companies.frequency.once')"></InfoCard>
       </div>
+
+      <ListItem
+        :text="$t('companies.size')"
+        class="gap-x-2 mt-6"
+        text-class="flex-1 font-solina-extended-book text-base"
+      />
     </div>
 
     <div class="flex flex-col items-center pt-12 pb-12 bg-green-quaternary">
