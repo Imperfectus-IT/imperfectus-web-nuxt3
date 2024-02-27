@@ -72,6 +72,7 @@ export default defineNuxtConfig({
                 "ProgressBar",
                 "Rating",
                 "Sidebar",
+                "Skeleton",
                 "Toolbar",
                 "Rating"
       ],
@@ -117,4 +118,7 @@ export default defineNuxtConfig({
         },
         version: "v3",
     },
+    image: {
+        format: ["webp", "avif", "png"]
+    }
 });

@@ -59,178 +59,157 @@ const images = ref([
       :title="
         $t('companies.wantBeHealthy.1') + '\n' + $t('companies.wantBeHealthy.2')
       "
-      
+      class="h-[222px]"
       background-color="#b79f85"
-      background-desktop="/images/companies/header.jpg"
-    />
+      background-desktop="/images/companies/header.webp"
+    >
+      <template #action>
+        <Button
+          class="mt-5"
+          :label="$t('companies.getYourFreeBox')"
+          path="/contacte"
+        />
+      </template>
+    </Header>
 
     <Container
       class="flex flex-col gap-0 pr-4 pb-12 pl-4 lg:flex-row lg:gap-12"
     >
-      <div class="flex flex-col text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl">
+      <div
+        class="flex flex-col items-center text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl"
+      >
         <SectionTitle
           :is-title-h1="true"
-          :value="$t('companies.title')"
-          class="mt-12 mb-6"
-          title-class="mb-4"
+          :value="$t('companies.mission')"
+          class="mt-12"
+          title-class="mb-4 font-solina-extended-medium"
         />
 
         <p
-          class="h-full mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]"
+          class="h-full mb-[35px] font-recoleta-regular text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]"
         >
           {{ $t("companies.description") }}
         </p>
 
-        <h3 @click="scrollToById('reasons')">
-          <Link :text="$t('companies.whoItWorks')" :show-dot="true" />
-        </h3>
-      </div>
-
-      <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] ml-[15px] bg-green-primary lg:h-full"
-      />
-
-      <div class="flex flex-col text-lg lg:max-w-[50%] lg:mt-[5px] lg:text-xl">
-        <SectionTitle
-          class="mt-12 mb-6"
-          is-title-h2
-          :value="$t('companies.lgd.title')"
-          title-class="mb-4"
+        <InfoCard
+          class="mb-5"
+          :title="$t('companies.mission.1.title')"
+          :description="$t('companies.mission.1.description')"
         />
 
-        <p
-          class="h-full mb-[35px] font-solina-extended-book text-[20px] leading-[30px] lg:text-[28px] lg:leading-[42px]"
-        >
-          {{ $t("companies.lgd.description.1") }}
-          <strong>{{ $t("companies.lgd.description.2.bold") }}</strong>
-          {{ $t("companies.lgd.description.3") }}
-        </p>
+        <InfoCard
+          :title="$t('companies.mission.2.title')"
+          :description="$t('companies.mission.2.description')"
+        />
 
-        <h3>
-          <Link
-            :text="$t('companies.lgd.ask')"
-            path="empresa@talkualfoods.com"
-            :show-dot="true"
-            :is-e-mail="true"
-          />
-        </h3>
+        <NuxtImg
+          class="mt-5"
+          width="290"
+          src="/images/companies/no-waste.webp"
+          alt="No waste"
+        />
+
+        <p class="mt-5 text-lg font-recoleta-regular">
+          {{ $t("companies.mission.join") }}
+        </p>
       </div>
     </Container>
 
     <div
-      id="reasons"
-      class="flex flex-col gap-y-12 py-12 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-1 md:gap-x-5 md:gap-y-24 md:px-10 md:py-20 lg:grid-cols-2"
+      class="flex flex-col items-center pt-14 pr-4 pb-10 pl-4 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-2 md:gap-x-5 md:px-10 md:py-20"
     >
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            format="webp"
-            loading="lazy"
-            src="/images/companies/proximity.webp"
-            :alt="$t('Companies.1.alt')"
-          />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.proximity") }}
-        </span>
-      </div>
-
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            format="webp"
-            loading="lazy"
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            src="/images/companies/healthy.webp"
-            :alt="$t('Companies.2.alt')"
-          />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.healthy") }}
-        </span>
-      </div>
-
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            format="webp"
-            loading="lazy"
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            src="/images/companies/no-waste.webp"
-            :alt="$t('Companies.3.alt')"
-          />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.no-waste") }}
-        </span>
-      </div>
-
-      <div class="flex flex-col items-center m-[5px] md:flex-row">
-        <div class="ml-auto flex w-full justify-center md:w-[200px]">
-          <NuxtImg
-            format="webp"
-            loading="lazy"
-            class="object-scale-down h-[200px] lg:h-[140px]"
-            src="/images/companies/solutions.webp"
-            :alt="$t('Companies.4.alt')"
-          />
-        </div>
-        <span
-          class="mr-auto w-full pr-2 pl-2 text-center text-[24px] leading-[1.35] font-solina-extended-book mt-[18px] md:w-[300px] md:mt-0 md:pr-0 md:pl-10 md:text-left lg:w-[250px]"
-        >
-          {{ $t("companies.reasons.solutions") }}
-        </span>
-      </div>
-    </div>
-
-    <div class="mt-0 mr-0 mb-0 ml-0 flex flex-col md:flex-row">
-      <div
-        class="flex w-full flex-col justify-center pb-[30px] mt-[15px] pl-[5%] pr-[5%] md:mt-0 md:w-1/2 md:pb-0"
-      >
-        <h2 class="text-2xl font-recoleta-regular mt-[15px] md:mt-0">
-          {{ $t("companies.box.title") }}
-        </h2>
-
-        <div class="text-[25px] mt-[15px] mb-[5px]">
-          <span class="block text-[20px] font-solina-extended-book">
-            {{ $t("companies.box.description") }}
-          </span>
-
-          <ul class="list-none mt-[15px]">
-            <li
-              class="font-solina-extended-book text-[20px] flex items-center before:content-['⬤'] before:text-green-primary before:inline-block before:w-4 before:mr-5 before:text-[14px] before:text-primary before:font-bold"
-            >
-              <span>{{ $t("companies.box.description.s") }}</span>
-            </li>
-            <li
-              class="font-solina-extended-book text-[20px] flex items-center before:content-['⬤'] before:text-green-primary before:inline-block before:w-4 before:mr-5 before:text-[14px] before:text-primary before:font-bold"
-            >
-              <span>{{ $t("companies.box.description.m") }}</span>
-            </li>
-            <li
-              class="font-solina-extended-book text-[20px] flex items-center before:content-['⬤'] before:text-green-primary before:inline-block before:w-4 before:mr-5 before:text-[14px] before:text-primary before:font-bold"
-            >
-              <span>{{ $t("companies.box.description.xl") }}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="w-full p-0 md:w-1/2">
-        <TKCarousel
-          :data="images"
-          :num-scroll="1"
-          carousel-class="h-[400px] lg:h-[620px]"
-          slide-class="w-full"
-          image-class="w-full object-cover h-[400px] lg:h-[620px]"
+      <div class="flex justify-center md:row-start-1 md:row-end-3">
+        <NuxtImg
+          class="object-scale-down h-[200px] md:h-[300px]"
+          format="webp"
+          loading="lazy"
+          src="/images/companies/make-order.webp"
+          :alt="$t('Companies.1.alt')"
         />
       </div>
+
+      <span
+        class="mt-8 pr-2 pl-2 text-lg leading-[1.35] font-recoleta-regular md:text-[40px] md:mt-0 md:pr-0 md:text-left"
+      >
+        {{ $t("companies.whatYouGet.title") }}
+      </span>
+
+      <ul
+        class="mt-8 mr-0 text-beige-primary md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3"
+      >
+        <li class="mb-4">
+          <ListItem
+            :text="$t('companies.whatYouGet.1')"
+            text-class="flex-1 font-solina-extended-medium"
+          />
+        </li>
+
+        <li class="mb-4">
+          <ListItem
+            :text="$t('companies.whatYouGet.2')"
+            text-class="flex-1 font-solina-extended-medium"
+          />
+        </li>
+
+        <li class="mb-4">
+          <ListItem
+            :text="$t('companies.whatYouGet.3')"
+            text-class="flex-1 font-solina-extended-medium"
+          />
+        </li>
+
+        <li>
+          <ListItem
+            :text="$t('companies.whatYouGet.4')"
+            text-class="flex-1 font-solina-extended-medium"
+          />
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="mt-0 mr-0 mb-0 ml-0 flex flex-col pt-6 pr-4 pb-6 pl-4 md:grid md:grid-cols-2 md:grid-rows-4 md:content-center md:gap-y-5 md:pl-[50px] md:pr-[50px] md:pt-20 md:pb-20"
+    >
+      <SectionTitle
+        :value="$t('companies.whoItWorks.title')"
+        class="mb-2 md:mb-0"
+        title-class="mb-4 text-lg md:text-[40px] md:mb-0"
+      />
+
+      <ListItem
+        :text="$t('companies.whoItWorks.1')"
+        class="gap-x-2 md:col-start-1"
+        text-class="flex-1 text-base font-solina-extended-book md:text-[26px]"
+      />
+
+      <div class="mt-5 flex gap-4 md:col-start-2 md:row-start-2 md:m-0">
+        <InfoCard :title="$t('string.day.tuesday')" class="flex-1" />
+        <InfoCard :title="$t('string.day.wednesday')" class="flex-1" />
+        <InfoCard :title="$t('string.day.thursday')" class="flex-1" />
+      </div>
+
+      <ListItem
+        :text="$t('companies.frequency.title')"
+        class="mt-6 gap-x-2 md:mt-0"
+        text-class="flex-1 text-base font-solina-extended-book md:text-[26px]"
+      />
+
+      <div
+        class="mt-5 flex flex-wrap gap-4 md:col-start-2 md:row-start-3 md:m-0"
+      >
+        <InfoCard :title="$t('companies.frequency.weekly')" class="md:flex-1" />
+        <InfoCard
+          :title="$t('companies.frequency.biweekly')"
+          class="md:flex-1"
+        />
+        <InfoCard :title="$t('companies.frequency.once')" class="md:flex-1" />
+      </div>
+
+      <ListItem
+        :text="$t('companies.size')"
+        class="mt-6 gap-x-2 md:mt-0"
+        text-class="flex-1 text-base font-solina-extended-book md:text-[26px]"
+      />
     </div>
 
     <div class="flex flex-col items-center pt-12 pb-12 bg-green-quaternary">

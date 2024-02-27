@@ -2,7 +2,7 @@
   <div
     class="flex flex-row justify-evenly h-auto mb-20"
   >
-    <div 
+    <div
       v-for="box in boxes"
       :key="box.index"
       class="w-1/5"
@@ -13,6 +13,8 @@
             class="rounded-t-lg border-b-[1px] border-green-tertiary w-full"
             alt="user header"
             :src="box.image"
+            loading="lazy"
+            format="webp"
           />
         </template>
         <template #title>

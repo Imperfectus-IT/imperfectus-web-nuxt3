@@ -15,6 +15,7 @@ import password from "./password/index.ts";
 import progressbar from "./progressbar/index.ts";
 import rating from "./rating/index.ts";
 import sidebar from "./sidebar/index.ts";
+import skeleton from "./skeleton/index.ts";
 import toolbar from "./toolbar/index.ts";
 
 export default {
@@ -35,5 +36,6 @@ export default {
   progressbar,
   rating,
   sidebar,
+  skeleton,
   toolbar,
 };

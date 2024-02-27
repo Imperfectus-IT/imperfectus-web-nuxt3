@@ -6,8 +6,6 @@
       <DesktopNavbarHeader class="hidden lg:block bg-beige-primary" />
     </section>
     <slot />
-    <FooterDefault />
+    <LazyFooterDefault />
   </main>
 </template>
-<script setup lang="ts">
-</script>

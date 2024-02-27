@@ -9,10 +9,12 @@
           class="lg:col-start-1 lg:mx-auto lg:w-[600px] lg:row-start-1 lg:row-span-2"
           src="/images/landing/donations/picture.webp"
           alt="Donations"
+          loading="lazy"
+          format="webp"
         />
-        <p 
-        class="mx-10 my-6 text-[17px] leading-normal 
-          lg:col-start-2 lg:col-span-2 lg:text-[26px] lg:row-start-1 lg:mt-32 lg:ml-0 lg:w-2/3 
+        <p
+        class="mx-10 my-6 text-[17px] leading-normal
+          lg:col-start-2 lg:col-span-2 lg:text-[26px] lg:row-start-1 lg:mt-32 lg:ml-0 lg:w-2/3
         ">
           {{ $t('homeDonations.description') }}
         </p>

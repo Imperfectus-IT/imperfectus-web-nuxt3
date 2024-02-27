@@ -1,6 +1,6 @@
 <template>
   <div class="px-4 lg:flex justify-evenly lg:-ml-10 lg:mt-10">
-    <div 
+    <div
       class="lg:w-1/2"
     >
       <h4 class="mb-6 text-[18px] text-wrap font-solina-extended-medium font-bold ">
@@ -20,6 +20,8 @@
     <NuxtImg
       class="w-full mt-6 lg:w-[500px] lg:m-0"
       src="/images/landing/help/help.png"
+      loading="lazy"
+      format="webp"
     />
   </div>
 </template>
