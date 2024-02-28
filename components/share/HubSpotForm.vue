@@ -74,9 +74,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <div id="HubSpotForm" class="bg-green-quaternary" />
-  </div>
+  <div id="HubSpotForm" class="bg-green-quaternary" />
 </template>
 
 <style lang="scss" scoped>

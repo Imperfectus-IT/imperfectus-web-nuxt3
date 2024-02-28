@@ -15,21 +15,21 @@
       class="relative z-10 flex flex-col items-center text-center content"
     >
       <h1
-        class="mt-3 text-white font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px]"
+        class="mt-3 text-white-primary font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px]"
       >
         {{ title }}
       </h1>
 
       <h2
         v-if="descriptionIsH2"
-        class="text-white Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
+        class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
       >
         {{ description }}
       </h2>
 
       <p
         v-else
-        class="text-white Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
+        class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
       >
         {{ description }}
       </p>

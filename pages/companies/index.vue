@@ -31,13 +31,12 @@ const pdfFilePath = computed(() => {
 });
 </script>
 <template>
-  <div class="bg-[#fffae8] font-serif flex flex-col pb-[80px]">
+  <div class="font-serif flex flex-col pb-[80px]">
     <Header
       :title="
         $t('companies.wantBeHealthy.1') + '\n' + $t('companies.wantBeHealthy.2')
       "
       class="h-[222px]"
-      background-color="#b79f85"
       background-desktop="/images/companies/header.webp"
     >
       <template #action>
