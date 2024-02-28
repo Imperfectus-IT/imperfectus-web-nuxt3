@@ -74,7 +74,8 @@ export default defineNuxtConfig({
                 "Sidebar",
                 "Skeleton",
                 "Toolbar",
-                "Rating"
+                "Rating",
+                'Fieldset'
       ],
         },
     },

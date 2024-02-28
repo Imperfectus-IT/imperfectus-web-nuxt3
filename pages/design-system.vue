@@ -18,6 +18,7 @@
     <MenuBarDemo />
     <PanelMenuDemo />
     <SkeletonDemo />
+    <FieldsetDemo />
   </div>
 </template>
 

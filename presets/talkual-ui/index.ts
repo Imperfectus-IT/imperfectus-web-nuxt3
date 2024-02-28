@@ -17,6 +17,7 @@ import rating from "./rating/index.ts";
 import sidebar from "./sidebar/index.ts";
 import skeleton from "./skeleton/index.ts";
 import toolbar from "./toolbar/index.ts";
+import fieldset from "./fieldset/index.ts";
 
 export default {
   global,
@@ -38,4 +39,5 @@ export default {
   sidebar,
   skeleton,
   toolbar,
+  fieldset
 };
