@@ -1078,7 +1078,8 @@ export default {
   "adminReferralsTable.empty": "No tienes ningún cupón",
 
   // ContactForm
-  "contactForm.title": "Aquí te escuchamos",
+  "contactForm.title1": "Aquí te",
+  "contactForm.title2": "escuchamos",
   "contactForm.subtitle": "Formulario de contacto",
   "contactForm.sentMessage": "Mensaje enviado correctamente",
   "contactForm.errorMessage": "Error al enviar.",
