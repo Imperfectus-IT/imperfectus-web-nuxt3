@@ -7,7 +7,7 @@
   >
     <template #SlideContent="{ item }">
       <div 
-        class="bg-green-tertiary w-[350px] h-[500px] absolute top-[390px] opacity-75 font-recoleta-regular text-white duration-1000"
+        class="bg-green-tertiary w-[350px] h-[500px] absolute top-[390px] opacity-75 font-recoleta-regular text-white-primary duration-1000"
        :class="{'-translate-y-[390px] duration-1000 opacity-90': display[item.index], '-translate-y-[-0px] duration-700 opacity-55': !display[item.index]}"
         @click="handleClickToDisplay(item.index)"
       >

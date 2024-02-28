@@ -16,7 +16,7 @@
         format="webp"
       />
       <div
-        class="bg-green-tertiary w-auto absolute top-0 h-full text-white "
+        class="bg-green-tertiary w-auto absolute top-0 h-full text-white-primary "
         :class="{'translate-y-0 duration-1000 opacity-90': display[item.index], '-translate-y-[-390px] duration-700 opacity-55': !display[item.index]}"
       >
         <h4
