@@ -29,29 +29,6 @@ useHead({
 const pdfFilePath = computed(() => {
   return `/pdfs/${t("pages.companies.pdfFileName")}`;
 });
-
-const images = ref([
-  {
-    image: "/images/companies/caja_de_fruta.webp",
-    alt: "Companies.5.alt",
-  },
-  {
-    image: "/images/companies/ISPROX.jpg",
-    alt: "Companies.6.alt",
-  },
-  {
-    image: "/images/companies/juices.jpg",
-    alt: "Companies.7.alt",
-  },
-  {
-    image: "/images/companies/MAPFRE.jpg",
-    alt: "Companies.8.alt",
-  },
-  {
-    image: "/images/companies/zumos-talkual-15.jpg",
-    alt: "Companies.9.alt",
-  },
-]);
 </script>
 <template>
   <div class="bg-[#fffae8] font-serif flex flex-col pb-[80px]">
@@ -168,7 +145,7 @@ const images = ref([
     </div>
 
     <div
-      class="mt-0 mr-0 mb-0 ml-0 flex flex-col pt-6 pr-4 pb-6 pl-4 md:grid md:grid-cols-2 md:grid-rows-4 md:content-center md:gap-y-5 md:pl-[50px] md:pr-[50px] md:pt-20 md:pb-20"
+      class="mt-0 mr-0 mb-0 ml-0 flex flex-col pt-6 pr-4 pb-6 pl-4 md:pl-[50px] md:pr-[50px] md:grid md:grid-cols-2 md:grid-rows-4 md:content-center md:gap-y-5 md:pt-20 md:pb-20"
     >
       <SectionTitle
         :value="$t('companies.whoItWorks.title')"
@@ -212,6 +189,12 @@ const images = ref([
       />
     </div>
 
+    <CompaniesOffer />
+
+    <HealthyCompanies />
+
+    <!--
+Remove
     <div class="flex flex-col items-center pt-12 pb-12 bg-green-quaternary">
       <h2 class="text-center leading-none font-recoleta-regular text-[40px]">
         {{ $t("companies.knowMore") }}
@@ -231,7 +214,7 @@ const images = ref([
           />
         </a>
       </h3>
-    </div>
+    </div>-->
 
     <div
       id="request-box-form"

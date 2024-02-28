@@ -1443,6 +1443,14 @@ export default {
   "companies.frequency.biweekly": "Quinzenal",
 
   "companies.size": "Escull la mida",
+  "companies.all-fruit": "Caixa 100% de fruita",
+  "companies.offer":
+    "Oferim tres mides de caixa de fruita variada i de temporada, directa del camp a la teva oficina:",
+  "companies.s": "Caixa petita (6-7 kg)",
+  "companies.im": "Caixa mitjana (9-10 kg)",
+  "companies.xl": "Caixa Gran (14-15 kg)",
+
+  "companies.healthy.title": "Tribu d'empreses saludables",
 
   "companies.wantBeHealthy.1": "Fruites imperfectes ",
   // ++ break tag ++
@@ -1684,16 +1692,20 @@ export default {
   // HomeSolutions
   "homeSolutions.title": "El planeta necessita solucions com la nostra",
 
-    //HomeDonations
-  'homeDonations.title': 'Además...', //
-  'homeDonations.description': 'Col·laborem amb diferents ONGs per donar les nostres caixes de fruites i verdures quan un subscriptor no pot o no vol rebre el seu producte d\'una setmana determinada.', //
-  'homeDonations.foundation1.title': 'Fundació Arrels Sant Ignasi',
-  'homeDonations.foundation1.description': 'La donació de la teva comanda TALKUAL anirá a les persones que utilitzin el seu Servei de distribució d\'aliments "La Botigueta" on es facilita l\'accés a drets bàsics com l\'alimentació a persones en situació de vulnerabilitat. A més, també seran distribuïts a les persones que s\'allotgin a algun dels nostres pisos de suport de la fundació.',
-  'homeDonations.foundation2.title': 'Fundació MONA',
-  'homeDonations.foundation2.description': 'Els primats rescatats que viuen al Centre de Rehabilitació necessiten més de mitja tonelada de fruita i verdura variades, fruits secs, llegums... a la setmana. Amb la teva donació col·labores a alimentar-los i oferir-los la dieta sana i equilibrada que necessiten i sumes perquè tinguin una nova vida millor.',
-  'homeDonations.foundation3.title': 'Associació Somos de Segundas Oportunidades',
-  'homeDonations.foundation3.description': 'La donació de la teva comanda TALKUAL anirá destinada als usuaris dels diferents programes que té l\'Associació que ajudaran a la recuperació, transformació i inclusió social de les persones en estat de risc i vulnerabilitat.',
-
+  //HomeDonations
+  "homeDonations.title": "Además...", //
+  "homeDonations.description":
+    "Col·laborem amb diferents ONGs per donar les nostres caixes de fruites i verdures quan un subscriptor no pot o no vol rebre el seu producte d'una setmana determinada.", //
+  "homeDonations.foundation1.title": "Fundació Arrels Sant Ignasi",
+  "homeDonations.foundation1.description":
+    "La donació de la teva comanda TALKUAL anirá a les persones que utilitzin el seu Servei de distribució d'aliments \"La Botigueta\" on es facilita l'accés a drets bàsics com l'alimentació a persones en situació de vulnerabilitat. A més, també seran distribuïts a les persones que s'allotgin a algun dels nostres pisos de suport de la fundació.",
+  "homeDonations.foundation2.title": "Fundació MONA",
+  "homeDonations.foundation2.description":
+    "Els primats rescatats que viuen al Centre de Rehabilitació necessiten més de mitja tonelada de fruita i verdura variades, fruits secs, llegums... a la setmana. Amb la teva donació col·labores a alimentar-los i oferir-los la dieta sana i equilibrada que necessiten i sumes perquè tinguin una nova vida millor.",
+  "homeDonations.foundation3.title":
+    "Associació Somos de Segundas Oportunidades",
+  "homeDonations.foundation3.description":
+    "La donació de la teva comanda TALKUAL anirá destinada als usuaris dels diferents programes que té l'Associació que ajudaran a la recuperació, transformació i inclusió social de les persones en estat de risc i vulnerabilitat.",
 
   // HomeTribe
   "homeTribe.title": "Alguns comentaris de la tribu...",
