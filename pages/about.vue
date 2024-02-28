@@ -14,7 +14,7 @@
 
     <TKTopFooterEffect class="transform rotate-180" />
 
-    <div class="lg:flex ml-16">
+    <div class="lg:flex lg:ml-16">
       <div class="flex flex-col space-y-6 mt-6 px-4 text-green-tertiary descriptions lg:w-1/2">
       <h4 class="font-solina-condensed-bold text-[18px] font-bold ">{{ t('about.title') }}</h4>
       <p

@@ -1,17 +1,24 @@
 <template>
   <div>
     <ContactForm />
-    <div 
+
+    <div class="lg:w-1/2 lg:mx-auto ">
+      <div 
     v-for="(contact, index) in contacts"
     :key="index"
+    
     >
       <ContactField :title="contact.title" :email="contact.email" :phone="contact.phone" />
     </div>
-    <div>
-      <h4>{{ t('string.misc.contact.address') }}</h4>
+
+    <div class="w-11/12 mx-auto leading-10 mb-6">
+      <h4 class="font-solina-extended-medium uppercase">{{ t('string.misc.contact.address') }}</h4>
+      <p class="font-recoleta-regular text-[22px]">Av. Lleida 32, Bellpuig (25250)</p>
     </div>
+    
   <ScheduleTable />
 
+    </div>
   </div>
 </template>
 

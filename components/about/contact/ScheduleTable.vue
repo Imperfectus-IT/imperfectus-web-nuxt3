@@ -4,10 +4,10 @@
     <div
       v-for="(item, index) in schedule"
       :key="index"
-      class="flex justify-between leading-10"
+      class="flex justify-between lg:justify-evenly leading-10"
     >
-    <span>{{ item.name }}</span>
-    <span>{{ item.hours }}</span>
+    <span class="flex-1 text-center">{{ item.name }}</span>
+    <span class="flex-1 text-center">{{ item.hours }}</span>
     </div>
   </div>
 </template>
