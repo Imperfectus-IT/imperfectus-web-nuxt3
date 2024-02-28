@@ -6,8 +6,8 @@
       :key="index"
       class="flex justify-between lg:justify-evenly leading-10"
     >
-    <span class="flex-1 text-center">{{ item.name }}</span>
-    <span class="flex-1 text-center">{{ item.hours }}</span>
+    <span class="lg:flex-1 lg:translate-x-1/2">{{ item.name }}</span>
+    <span class="lg:flex-1 lg:translate-x-1/2">{{ item.hours }}</span>
     </div>
   </div>
 </template>
