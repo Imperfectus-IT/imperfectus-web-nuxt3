@@ -10,7 +10,7 @@ export default {
             // Shape
             'rounded-md',
             // Color
-            'border-2 border-green-primary rounded-lg',
+            'border-[1px] border-green-primary rounded-lg',
             'bg-surface-0 dark:bg-surface-900',
             'text-surface-700 dark:text-surface-0/80'
         ]
@@ -71,7 +71,7 @@ export default {
         class: 'flex items-center justify-center leading-none'
     },
     content: {
-        class: 'p-5'
+        class: ''
     },
     transition: {
         enterFromClass: 'max-h-0',
