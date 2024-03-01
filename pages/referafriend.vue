@@ -45,11 +45,8 @@
     <ImageTextCard
       v-for="({ title, description, image }, index) in darkSection"
       :key="index"
-      class="lg:mb-10 last:pb-10"
-      :title="title"
-      :description="description"
       :image="image"
-      :container-class="'bg-green-tertiary text-green-quaternary text-center text-[20px] w-11/12 mx-auto'"
+      :container-class="'bg-green-tertiary text-green-quaternary text-center text-[20px] w-11/12 mx-auto lg:mb-10 last:pb-10'"
       :image-class="'w-full mb-8 lg:w-10/12 lg:mt-32'"
       >
       <template #text>

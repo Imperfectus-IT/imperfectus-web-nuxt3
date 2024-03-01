@@ -9,18 +9,14 @@
     />
     <div class="lg:w-9/12 mx-auto">
       <h4 class="my-14 ml-5 font-solina-condensed-bold uppercase font-bold text-[18px]">{{ t('team.header.title') }}</h4>
-      <div class="lg:grid lg:grid-cols-4">
-        <div 
-          v-for="({ name, position, images }, index) in team"
-          :key="index"
+      <div class="lg:grid lg:grid-cols-4 lg:gap-y-8 lg:gap-x-8">
+        <TeamMember 
+          v-for="({ name, position, images }, index) in team"   
+          :key="index" 
           class="mb-6"
-        >
-          <TeamMember 
-            :name="name"   
-            :position="position" 
-            :images="images" 
+          :name="name"
+          :position="position"  :images="images" 
           />
-        </div>
       </div>
     </div>
   </div>
@@ -28,15 +24,19 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+import type { TeamMember } from "@/components/about/team/types/TeamMember";
 
 const { t } = useI18n();
 
 const client = useStrapiClient();
-const team = ref<ITeamMember[]>([]);
-// const currentImage = ref<number>(1);
+const team = ref<TeamMember[]>([]);
+
+const getTeamInfo = async () => {
+  team.value = await client<TeamMember[]>('/options/team-members');
+};
 
 onMounted(async () => {
-  team.value = await client<ITeamMember[]>('/options/team-members');  
+  await getTeamInfo();  
 });
 
 defineI18nRoute({
@@ -46,10 +46,4 @@ defineI18nRoute({
   },
 });
 
-
-interface ITeamMember {
-  name: string;
-  position: string;
-  images: string[];
-}
 </script>

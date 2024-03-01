@@ -4,7 +4,7 @@
         loading="lazy"
         format="webp"
         :src="image"
-        :alt="title" 
+        :alt="image" 
         :class="imageClass"
       />
       <slot name="text" />

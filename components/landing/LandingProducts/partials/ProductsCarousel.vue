@@ -30,8 +30,6 @@ defineProps({
   }
 })
 
-const itemsToShow = ref('fruits')
-
 const fruits = [
     {
       index: 1,
