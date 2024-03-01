@@ -12,10 +12,10 @@
     }"
   >
     <Container
-      class="relative z-10 flex flex-col items-center text-center content"
+      class="relative flex flex-col items-center text-center content"
     >
       <h1
-        class="mt-3 text-white-primary font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px]"
+        class="mt-3 text-white-primary font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px] whitespace-break-spaces"
       >
         {{ title }}
       </h1>
