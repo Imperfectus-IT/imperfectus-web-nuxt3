@@ -26,35 +26,47 @@
   <NuxtImg
     loading="lazy"
     format="webp"
-    src="/images/refer-a-friend/Tribu_Dark.png" 
+    src="/images/refer-a-friend/Tribu_Dark.webp" 
     alt="Refer a friend" 
-    class="w-full lg:h-[90vh] object-fit lg:flex-1" 
+    class="w-full lg:h-[90vh] object-fit lg:flex-1 mb-10 lg:mb-0" 
     />
   </div>
    </Container>
   <!-- DARK SECTION -->
-  <div class="flex flex-col gap-y-14 bg-green-tertiary lg:flex-row lg:flex-wrap lg:relative">
-    <ListItem
-      class="mt-14 ml-4 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2"
+  <div class="bg-green-tertiary" >
+   <Container>
+    <div class="flex flex-col gap-y-14  lg:flex-row lg:relative">
+     <ListItem
+      class="mt-14 ml-4 lg:absolute lg:left-1"
       :text="t('pages.refer-a-friend.how-it-works')"
       text-class="text-green-quaternary text-[30px] font-bold flex-1 w-full"
     />
 
-    <ReferCard
+    <ImageTextCard
       v-for="({ title, description, image }, index) in darkSection"
       :key="index"
+      class="lg:mb-10 last:pb-10"
       :title="title"
       :description="description"
       :image="image"
-      class="last:pb-10 lg:w-1/3 lg:mt-32"
-  />
+      :container-class="'bg-green-tertiary text-green-quaternary text-center text-[20px] w-11/12 mx-auto'"
+      :image-class="'w-full mb-8 lg:w-10/12 lg:mt-32'"
+      >
+      <template #text>
+        <p class="font-bold">{{ title }}</p>
+        <p class="mt-3 leading-6 p-2">{{ description }}</p>
+      </template>
+    </ImageTextCard>
+      
+    </div>
+   </Container>
   </div>
 
 
 
     <!-- FAQS -->
     <Container>
-    <h4 class="uppercase font-solina-condensed-bold font-bold mt-14">{{ t('pages.refer-a-friend.faqs.title') }}</h4>
+    <h4 class="uppercase font-solina-condensed-bold font-bold mt-14 lg:ml-4 ml-4">{{ t('pages.refer-a-friend.faqs.title') }}</h4>
     <div class="px-4 lg:grid lg:grid-cols-2 lg:gap-x-6">
       <Fieldset
         v-for="({ question, answer, answerExt}, index) in faqs"
@@ -96,17 +108,17 @@ const darkSection = computed(() => {
     {
       title: t('pages.refer-a-friend.how-it-works.title-1'),
       description: t('pages.refer-a-friend.how-it-works.description-1'),
-      image: '/images/refer-a-friend/Tribu_Dark-1.png'
+      image: '/images/refer-a-friend/Tribu_Dark-1.webp'
     },
     {
       title: t('pages.refer-a-friend.how-it-works.title-2'),
       description: t('pages.refer-a-friend.how-it-works.description-2'),
-      image: '/images/refer-a-friend/Tribu_Dark-2.png'
+      image: '/images/refer-a-friend/Tribu_Dark-2.webp'
     },
     {
       title: t('pages.refer-a-friend.how-it-works.title-3'),
       description: t('pages.refer-a-friend.how-it-works.description-3'),
-      image: '/images/refer-a-friend/Tribu_Dark-3.png'
+      image: '/images/refer-a-friend/Tribu_Dark-3.webp'
     }
   ];
 });
