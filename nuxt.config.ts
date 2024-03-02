@@ -24,9 +24,8 @@ export default defineNuxtConfig({
             ],
             link: [
                 {
-                    rel: "preload",
+                    rel: "stylesheet",
                     href: "https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css?display=swap",
-                    as: 'style',
                 },
                 {
                     rel: 'icon',
