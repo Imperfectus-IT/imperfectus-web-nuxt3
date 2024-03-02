@@ -4,11 +4,35 @@ import * as path from "path";
 export default defineNuxtConfig({
     app: {
         head: {
+            title: 'TALKUAL',
+            titleTemplate: '%s | TALKUAL',
+            meta: [
+                { charset: 'utf-8' },
+                {
+                    name: 'viewport',
+                    content: 'width=device-width, initial-scale=1'
+                },
+                {
+                    'http-equiv': 'cache-control',
+                    content: 'no-cache'
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: ''
+                }
+            ],
             link: [
                 {
-                    rel: "stylesheet",
+                    rel: "preload",
                     href: "https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css?display=swap",
+                    as: 'style',
                 },
+                {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: '/talkual-favicon.png'
+                }
             ],
         },
     },
