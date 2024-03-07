@@ -1,5 +1,6 @@
 <template>
     <div>
+        {{ width }}
         <!-- <TKCarousel ></TKCarousel> -->
     </div>
 </template>
@@ -8,9 +9,20 @@
 
 defineI18nRoute({
     paths: {
-        ca: "/nuestras-cajas/",
-        es: "/les-nostres-caixes/",
-    },
+        ca: "/les-nostres-caixes/",
+        es: "/nuestras-cajas/",
+    }
+});
+
+const { addResize, removeResize, windowWidth } = useWindowSize();
+
+const width = ref(windowWidth);
+onMounted(() => {
+    addResize();
+});
+
+onBeforeUnmount(() => {
+    removeResize();
 });
 
 </script>
