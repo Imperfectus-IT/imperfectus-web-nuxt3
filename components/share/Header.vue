@@ -16,21 +16,25 @@
     >
       <h1
         class="mt-3 text-white-primary font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px] whitespace-break-spaces"
-      >
+        :class="titleClass"
+        >
         {{ title }}
       </h1>
 
       <h2
         v-if="descriptionIsH2"
         class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
-      >
+        :class="descriptionClass"
+        >
         {{ description }}
       </h2>
 
       <p
         v-else
         class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
-      >
+        :class="descriptionClass"
+
+        >
         {{ description }}
       </p>
 
@@ -82,6 +86,14 @@ const props = defineProps({
   descriptionIsH2: {
     type: Boolean,
     default: false,
+  },
+  titleClass: {
+    type: String,
+    default: "",
+  },
+  descriptionClass: {
+    type: String,
+    default: "",
   },
 });
 

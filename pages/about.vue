@@ -40,6 +40,13 @@
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
+defineI18nRoute({
+    paths: {
+        ca: "/historia/",
+        es: "/historia/",
+    }
+});
+
 const getTextClass = (index: number):string => {
   if (index === 0) {
     return 'text-[30px]'

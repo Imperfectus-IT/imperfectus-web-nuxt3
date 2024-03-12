@@ -100,6 +100,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
+
 .carousel__pagination {
   height: 0px;
 
