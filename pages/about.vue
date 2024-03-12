@@ -14,7 +14,7 @@
 
     <TKTopFooterEffect class="transform rotate-180" />
 
-    <div class="lg:flex lg:ml-16">
+    <div class="lg:flex lg:ml-16 ">
       <div class="flex flex-col space-y-6 mt-6 px-4 text-green-tertiary descriptions lg:w-1/2">
       <h4 class="font-solina-condensed-bold text-[18px] font-bold ">{{ t('about.title') }}</h4>
       <p
@@ -28,7 +28,7 @@
     <NuxtImg
       src="/images/about/we-are.webp"
       alt="Our team"
-      class="w-11/12 mx-auto mt-6 lg:w-1/2 lg:px-44 lg:mt-20"
+      class="w-11/12 mx-auto mt-6 lg:w-[490px] lg:h-[600px] lg:mt-20 lg:rounded-xl"
       loading="lazy"
       format="webp"
       />
