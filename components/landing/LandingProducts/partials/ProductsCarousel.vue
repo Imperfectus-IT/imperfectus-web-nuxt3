@@ -2,7 +2,7 @@
 <TKCarousel
       class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
       :data="itemsType === 'fruits' ? fruits : vegetables"
-      :visible-items="displayDesktop ? 4 : 1.4"
+      :visible-items="wrapItems()"
       :show-pagination="displayDesktop ? false : true"
       :show-navigation="false"
       :wrap-items="displayDesktop ? false : true"
@@ -18,6 +18,10 @@
 </template>
 
 <script setup lang="ts">
+import { useWindowSize } from '@/composables/useWindowSize';
+
+const { addResize, removeResize, windowWidth } = useWindowSize();
+
 
 defineProps({
   itemsType: {
@@ -30,9 +34,24 @@ defineProps({
   }
 })
 
+onMounted(() => {
+  addResize();
+});
+
+onBeforeUnmount(() => {
+  removeResize();
+});
+
+const wrapItems = () => {
+  return windowWidth.value < 768 ? 1.4
+    : windowWidth.value < 1450 ? 3
+    : 4
+}
+
+
 const fruits = [
-    {
-      index: 1,
+  {
+    index: 1,
       name: 'Fresas',
       image: '/images/landing/products/frutas/fresas.webp',
     },
