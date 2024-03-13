@@ -5,6 +5,7 @@
     :items-to-show="visibleItems"
     :autoplay="autoplay"
     :items-to-scroll="numScroll"
+    
 
   >
     <Slide
@@ -41,7 +42,7 @@
           <span class="mdi mdi-chevron-right bg-green-tertiary rounded-full  text-green-primary leading-none inline-flex justify-center items-center text-[24px]" />
         </template>
       </Navigation>
-      <Pagination v-if="showPagination" />
+      <Pagination v-if="showPagination" :class="paginationClass"/>
     </template>
   </Carousel>
 </template>
@@ -89,6 +90,10 @@ defineProps({
         default: ''
     },
     slotClass: {
+        type: String,
+        default: ''
+    },
+    paginationClass: {
         type: String,
         default: ''
     },

@@ -8,6 +8,7 @@
       :show-navigation="false"
       :vegetables="vegetables"
       :image-class="'lg:!h-[690px] lg:w-[720px] 2xl:w-full object-cover'"
+      :pagination-class="'absolute transform left-1/2 -translate-x-1/2 bottom-[1px] text-red-primary'"
     />
     <LandingOffersList class="lg:row-start-2 lg:col-span-2 lg: lg:flex lg:flex-col lg:justify-center lg:ml-9" />
   </div>

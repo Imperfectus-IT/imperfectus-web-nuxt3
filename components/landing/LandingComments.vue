@@ -49,7 +49,7 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
             <p class="text-left text-green-primary">
               {{ item.name }}
             </p>
-            <p class="text-left text-white">
+            <p class="text-left text-white-primary">
               {{ item.relativeTime }}
             </p>
           </div>

@@ -1,12 +1,12 @@
 <template>
-<div class="lg:mb-32">
+<div class="lg:mb-32 relative">
   <Header :title="t('farmers.header.title')" :description="t('farmers.header.description')" background-desktop="'/images/about/farmers/header.jpg'" />
   <div v-if="displayDesktop">
     <div class="absolute w-full top-[100vh]">
     <TKTopFooterEffect class="lg:!top-0"/>
     <div class="bg-green-tertiary lg:h-[100vh] " />
   </div>
-  <div class="w-full lg:h-[100vh] lg:absolute bg-green-quaternary lg:top-[315vh]" />
+  <div class="w-full lg:h-[950px] lg:absolute bg-green-quaternary lg:bottom-80" />
   </div>
   
   <Container>
@@ -15,7 +15,6 @@
       <p class="my-10 leading-8 text-[26px] lg:leading-9">{{ t('farmers.description') }}</p>
     </div>
 
-    <!-- All farmers -->
     <div
      v-for="(farmer, index) in farmers"
         :key="index"
@@ -23,7 +22,6 @@
                 index ===  3 ? 'lg:-mt-64' : ''"
         >
 
-      <!-- First Farmer -->
       <div
         class="flex flex-col gap-y-2 lg:grid lg:grid-cols-3 lg:gap-y-6"
          style="grid-auto-rows: 145px;"
