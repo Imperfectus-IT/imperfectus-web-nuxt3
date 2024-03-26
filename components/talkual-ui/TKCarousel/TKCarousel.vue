@@ -5,8 +5,6 @@
     :items-to-show="visibleItems"
     :autoplay="autoplay"
     :items-to-scroll="numScroll"
-    
-
   >
     <Slide
       v-for="(item, index) in data"

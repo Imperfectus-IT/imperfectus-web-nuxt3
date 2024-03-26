@@ -5,7 +5,12 @@
     </p>
     <BirdWomanPhoto />
     <ProductListSelector class="lg:mt-20" @toggle="handleToggleType" />
-    <ProductsCarousel class="mt-4"  :display-desktop="displayDesktop" :items-type="classItemsToShow"/>
+    <ProductsCarousel 
+    class="mt-4"  
+    :display-desktop="displayDesktop" 
+    :items-type="classItemsToShow" 
+    :pagination-class="'absolute transform left-1/2 -translate-x-1/2 bottom-[-10px] text-red-primary'"
+    />
   </div>
 </template>
 

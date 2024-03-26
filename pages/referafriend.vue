@@ -2,7 +2,7 @@
   <div class=" border-t-[1px]">
    <Container>
     <div class="px-4 lg:flex lg:flex-row">
-      <div class="flex flex-col gap-y-6 text-[20px] lg:text-[23px] lg:h-[90vh] justify-center lg:flex-1">
+      <div class="flex flex-col gap-y-6 text-[20px] lg:text-[23px] lg:h-[958px] justify-center lg:flex-1">
         <h4 class="mt-4 font-solina-extended-medium font-bold uppercase text-[16px] lg:text-[18px]">{{ t("layout.navbar.referrals") }}</h4>
         <h4 class="font-recoleta-regular text-[40px] leading-10 lg:text-[60px] lg:leading-[60px]">{{ t('pages.refer-a-friend.title') }}</h4>
         <p>{{ t("pages.refer-a-friend.main-description") }}</p>
@@ -28,7 +28,7 @@
     format="webp"
     src="/images/refer-a-friend/Tribu_Dark.webp" 
     alt="Refer a friend" 
-    class="w-full lg:h-[90vh] object-fit lg:flex-1 mb-10 lg:mb-0" 
+    class="w-full object-fit lg:flex-1 mb-10 lg:mb-0 md:w-[644px] md:h-[910px]" 
     />
   </div>
    </Container>

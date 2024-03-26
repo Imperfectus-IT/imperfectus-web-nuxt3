@@ -6,11 +6,11 @@
       :show-pagination="displayDesktop ? false : true"
       :show-navigation="false"
       :wrap-items="displayDesktop ? false : true"
-      :image-class="'py-4 relative bottom-2 h-[30vh] w-[55vw] mx-auto object-cover'"
-      :slide-class="'bg-beige-secondary  rounded-[20px] w-[60vw] h-[35vh] lg:h-[30vh] mx-auto ml-2 lg:mr-6 relative'"
+      :image-class="'py-4 relative bottom-2 w-[200px] h-[225px] mx-auto object-cover'"
+      :slide-class="'bg-beige-secondary  rounded-[20px] w-[230px] h-[240px] lg:w-[280px] lg:h-[250px] mx-auto lg:mr-2 relative'"
     >
       <template #SlideContent="{ item }">
-        <p class=" bottom-4 text-[15px] absolute w-full text-center font-bold">
+        <p class=" bottom-7 text-[15px] absolute w-full text-center font-bold">
           {{ item.name }}
         </p>
       </template>
