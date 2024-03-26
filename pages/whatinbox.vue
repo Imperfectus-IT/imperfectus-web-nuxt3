@@ -8,13 +8,13 @@
     />
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-y-6 lg:gap-x-0">
-        <span class="relative mx-auto mt-20 lg:row-start-1 lg:col-span-4">
+        <span class="relative mx-auto mt-10 mb-6 lg:mt-20 lg:row-start-1 lg:col-span-4">
           <i class="mdi mdi-magnify absolute top-2/4 -mt-2 left-3 text-base" />
           <InputText
             v-model="searchField"
             type="text"
             :pt="{
-              root: 'w-[50vw] border-[1px] border-gray-primary pl-10 py-2 rounded-lg', 
+              root: 'w-[80vw] lg:w-[50vw] border-[1px] border-gray-primary pl-10 py-2 rounded-lg', 
             }"
             :placeholder="t('content.whatinbox.searchPlaceholder')"
             @input="searchProducts"
