@@ -5,7 +5,7 @@
     autoplay
     muted
     loop
-    src="/videos/home.m4v?url"
+    src="/videos/home.m4v"
   />
    <div class="-mt-9 lg:flex lg:flex-row lg:justify-between lg:mt-16 lg:relative lg:right-20">
     <div class="lg:flex lg:flex-col">
