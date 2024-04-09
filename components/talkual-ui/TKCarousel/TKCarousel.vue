@@ -47,7 +47,6 @@
 
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
 import type { CarouselSlideObject } from './TKCarouselTypes';
 
 defineProps({
