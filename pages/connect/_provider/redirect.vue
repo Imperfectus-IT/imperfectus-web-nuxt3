@@ -25,4 +25,3 @@ onMounted(async () => {
   redirectToAction(redirectPaths.ADMIN);
 });
 </script>
-<template></template>

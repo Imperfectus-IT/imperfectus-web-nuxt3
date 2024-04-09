@@ -5,15 +5,11 @@
     <h4 class="font-solina-extended-medium text-[18px] uppercase font-bold mt-12 mb-4">{{ t('content.boxes.title') }}</h4>
     <p class="text-[25px] leading-8">{{ t("boxes.our-boxes.description") }}</p>
   </div>
-  <TKCarousel >
-
-  </TKCarousel>
-</div>  
+</div>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import TKCarousel from "~/components/talkual-ui/TKCarousel/TKCarousel.vue";
 
 const { t } = useI18n();
 
@@ -23,38 +19,4 @@ defineI18nRoute({
         es: "/nuestras-cajas/",
     }
 });
-
-const sBoxes = [
-    {
-        title: "Caja de 6 botellas",
-        price: 50,
-        description: "Caja de 6 botellas de vino",
-        image: ["/images/boxes/box-6.webp"]
-    },
-    {
-        title: "Caja de 12 botellas",
-        description: "Caja de 12 botellas de vino",
-        image: "/images/boxes/box-12.webp",
-        price: 100,
-    },
-    {
-        title: "Caja de 24 botellas",
-        description: "Caja de 24 botellas de vino",
-        image: "/images/boxes/box-24.webp",
-        price: 200,
-    },
-];
-
-// const { addResize, removeResize, windowWidth } = useWindowSize();
-
-// const width = ref(windowWidth);
-
-// onMounted(() => {
-//     addResize();
-// });
-
-// onBeforeUnmount(() => {
-//     removeResize();
-// });
-
 </script>

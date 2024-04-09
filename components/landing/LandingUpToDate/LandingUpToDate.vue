@@ -47,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-const showGDPRModal = ref(false);
 const form = reactive({
     email: '',
     confirmEmail: '',
@@ -55,25 +54,11 @@ const form = reactive({
     displayMessageSent: false
 })
 
-
 const emailIsMatched = computed(() => {
     return form.email === form.confirmEmail && form.email !== '' && form.confirmEmail !== '';
 })
 
-const displayGDPRModal = () => {
-  showGDPRModal.value = true;
-};
-
-const closeGDPRModal = () => {
-  showGDPRModal.value = false;
-};
-
 const displaySecondInput = () => {
   form.emailFocused = true;
 };
-
-const submitForm = () => {
-    form.email = '';
-    form.confirmEmail = '';
-}
 </script>

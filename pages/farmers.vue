@@ -8,7 +8,7 @@
   </div>
   <div class="w-full lg:h-[950px] lg:absolute bg-green-quaternary lg:bottom-80" />
   </div>
-  
+
   <Container>
     <div class="w-11/12 ml-4 mt-12 lg:w-1/2 lg:ml-0">
       <p class="mt-6 text-[18px] font-solina-condensed-bold font-bold lg:mt-10 lg:text-[18px] uppercase">{{ t('farmers.title') }}</p>
@@ -26,7 +26,7 @@
         class="flex flex-col gap-y-2 lg:grid lg:grid-cols-3 lg:gap-y-6"
          style="grid-auto-rows: 145px;"
       >
-        <div    
+        <div
           :class="farmer.positionText"
           class="ml-4 my-6 w-11/12 lg:ml-0 lg:my-0"
         >
@@ -34,20 +34,20 @@
           <p class="pt-4">{{ farmer.description }}</p>
           <p>{{ farmer.descriptionExtended }}</p>
         </div>
-        <FarmerImg 
-          v-for="(image, index) in farmer.images"
-          :key="index"
+        <FarmerImg
+          v-for="(image, indexImage) in farmer.images"
+          :key="indexImage"
           :image="image"
           :class="image.class"
           loading="lazy"
           format="webp"
           :alt="image.url"
         />
-      </div>  
+      </div>
     </div>
   </Container>
 </div>
-   
+
 </template>
 
 <script setup lang="ts">
@@ -93,7 +93,7 @@ const farmers = computed<IFarmer[]>(() => [
             height: displayDesktop.value ? 590 : 530,
             url: '/images/about/farmers/3.jpg',
             class: 'ml-2 lg:ml-0 lg:col-start-3 lg:row-start-2 lg:row-span-4 order-4'
-            
+
           }
         ]
         },
@@ -146,7 +146,7 @@ const farmers = computed<IFarmer[]>(() => [
               url: '/images/about/farmers/8.jpg',
               class: 'ml-1.5 lg:ml-0 lg:col-start-1 lg:w-11/12 lg:row-span-4'
             }
-           
+
           ]
         },
         {

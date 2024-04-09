@@ -61,9 +61,7 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28">
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
 import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes';
-const { t } = useI18n();
 
 const reviews: CarouselSlideObject[] = [
   {
@@ -107,7 +105,6 @@ const reviews: CarouselSlideObject[] = [
     relativeTime: "Hace 3 semanas"
   }
 ]
-
 </script>
 
 

@@ -18,7 +18,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
 
 defineProps({
@@ -61,28 +60,4 @@ const data = ref<CarouselSlideObject[]> ([
             '143.000 millones de euros desperdiciados en Europa cada año debido al desperdicio de alimentos'
         }
       ])
-
-
-const responsiveProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);
 </script>

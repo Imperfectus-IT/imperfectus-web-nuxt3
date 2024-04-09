@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locales } = useI18n();
+const { t } = useI18n();
 const localePath = useLocalePath();
 
 const { visible } = defineProps<{

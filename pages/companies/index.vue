@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { useScroll } from "~/composables/scroll/scroll.ts";
 
 defineI18nRoute({
   paths: {
@@ -10,7 +9,6 @@ defineI18nRoute({
 });
 
 const { t } = useI18n();
-const { scrollToById } = useScroll();
 const i18nHead = useLocaleHead();
 
 useHead({
@@ -28,29 +26,6 @@ useHead({
 const pdfFilePath = computed(() => {
   return `/pdfs/${t("pages.companies.pdfFileName")}`;
 });
-
-const images = ref([
-  {
-    image: "/images/companies/caja_de_fruta.webp",
-    alt: "Companies.5.alt",
-  },
-  {
-    image: "/images/companies/ISPROX.jpg",
-    alt: "Companies.6.alt",
-  },
-  {
-    image: "/images/companies/juices.jpg",
-    alt: "Companies.7.alt",
-  },
-  {
-    image: "/images/companies/MAPFRE.jpg",
-    alt: "Companies.8.alt",
-  },
-  {
-    image: "/images/companies/zumos-talkual-15.jpg",
-    alt: "Companies.9.alt",
-  },
-]);
 </script>
 <template>
   <div class="font-serif flex flex-col pb-[80px]">
