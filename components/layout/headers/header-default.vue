@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-
 defineProps({
   size: {
     type: String,
