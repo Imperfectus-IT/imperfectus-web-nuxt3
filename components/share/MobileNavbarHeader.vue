@@ -3,6 +3,12 @@ import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 
 const localePath = useLocalePath();
 const {visible, toggleVisible} = useVisibleSidebar();
+const router = useRouter();
+const routeToHidde = {
+'auth-login___es': true,
+'auth-login___ca': true,
+}
+const hiddeAccountLink = computed(() => routeToHidde[router.currentRoute.value.name as string] ?? false)
 </script>
 
 <template>
@@ -26,7 +32,7 @@ const {visible, toggleVisible} = useVisibleSidebar();
       </template>
 
       <template #end>
-        <NuxtLink :to="localePath({ name: 'auth-login' })">
+        <NuxtLink :class="{'invisible': hiddeAccountLink}" :to="localePath({ name: 'auth-login' })">
           <Button
               icon="mdi mdi-account"
               text
