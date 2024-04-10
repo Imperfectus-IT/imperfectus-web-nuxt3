@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="relative xl:bottom-10">
     <li
       v-for="(option, index) in options"
       :key="index"
@@ -17,7 +17,7 @@
 
         <h3
           class="text-[30px] ml-2 font-recoleta-regular "
-          :class="currentOption !== $t(option.title) ? 'text-grey-primary' : '!text-grey-secondary'"
+          :class="currentOption !== $t(option.title) ? 'text-grey-secondary' : 'text-grey-primary'"
         >
           {{ $t(option.title) }}
         </h3>

@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-row justify-evenly">
+  <div class="flex flex-row justify-evenly lg:w-11/12 lg:mx-auto">
+    
     <div
       v-for="item in data"
       :key="item.index"
@@ -32,7 +33,7 @@
         <div class="w-2 h-2 rounded-full absolute top-[490px] bg-green-primary" />
       </div>
       <div>
-        <p class="text-center mt-2 text-[20px]">
+        <p class="text-center mt-2 text-[20px] w-10/12 mx-auto">
           {{ item['description_' + localeLanguage] }}
         </p>
       </div>

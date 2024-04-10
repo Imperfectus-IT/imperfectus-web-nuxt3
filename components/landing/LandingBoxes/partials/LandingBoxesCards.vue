@@ -1,13 +1,14 @@
 <template>
   <div
-    class="flex flex-row justify-evenly h-auto mb-20"
+    class="flex justify-center flex-row gap-5 h-auto mb-20"
   >
     <div
       v-for="box in boxes"
       :key="box.index"
-      class="w-1/5"
+      class="w-1/4 max-w-[400px]"
     >
-      <Card>
+    
+      <Card class="">
         <template #header>
           <NuxtImg
             class="rounded-t-lg border-b-[1px] border-green-tertiary w-full"
@@ -27,7 +28,7 @@
         </template>
         <template #footer>
           <Button
-            class="lg:w-full lg:rounded-t-[0px]"
+            class="w-full lg:rounded-t-[0px]"
             label="Comprar"
             severity="secondary"
           />

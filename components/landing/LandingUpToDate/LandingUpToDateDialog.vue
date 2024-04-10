@@ -55,7 +55,7 @@
               class:
                 'bg-green-primary hover:bg-green-primary p-3 rounded-lg',
             },
-            label: 'text-xs text-green-tertiary',
+            label: 'text-md text-green-tertiary',
           }"
         />
         <Button
@@ -65,7 +65,7 @@
             root: {
               class: 'border border-green-primary p-3 rounded-lg',
             },
-            label: 'text-xs text-green-tertiary',
+            label: 'text-md text-green-tertiary',
           }"
           @click="visible = false"
         />

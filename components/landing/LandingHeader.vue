@@ -12,7 +12,7 @@
       <h4 class="text-2xl leading-10 text-center mt-16 font-recoleta-medium lg:text-left lg:ml-48 lg:mt-0  lg:text-[60px]">
           {{ $t('homeTitle.title') }}
       </h4>
-      <p class="text-center mt-8 lg:text-left lg:ml-[212px]">
+      <p class="text-center mt-8 w-11/12 mx-auto lg:text-left lg:ml-48">
         {{ $t('homeTitle.description') }}
       </p>
     </div>

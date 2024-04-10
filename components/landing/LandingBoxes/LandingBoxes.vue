@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <p class="mb-6 mt-4 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-32 lg:mt-2">
+    <p class="mb-6 mt-4 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-28 lg:mt-2">
       {{ $t('homeBoxes.description') }}
     </p>
 
