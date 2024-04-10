@@ -221,7 +221,7 @@ export default {
   "layout.navbar.companies": "Empreses",
   "layout.navbar.order": "Nova comanda",
   "layout.navbar.contact": "Contacte",
-  "layout.navbar.account": "Compte",
+  "layout.navbar.account": "COMPTE",
   "layout.navbar.menu": "MENÚ",
   "layout.navbar.history": "Història",
   "layout.navbar.team": "Equip",
@@ -1672,7 +1672,9 @@ export default {
   "homeUpToDate.emailsDontMatch": "Els emails no coincideixen",
   "homeUpToDate.error": "Error al subscriure't",
   "homeUpToDate.messageSent":
-    "Gràcies per subscriure't a la nostra newsletter! ",
+  "Gràcies per subscriure't a la nostra newsletter! ",
+  "homeUpToDate.confirm": "Em subscric!",
+  "homeUpToDate.cancel": "Més tard",
 
   // Blog posts
   "blogPosts.title": "Descobreix el nostre blog antirebuig",

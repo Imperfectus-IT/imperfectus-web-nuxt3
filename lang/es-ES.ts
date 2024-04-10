@@ -470,6 +470,7 @@ export default {
     "Entre 14-15 kg de fruta y/o verdura de temporada. Ideal para 4 o 5+ personas.", //
   "content.home.reviews.title": "¡Comentarios de nuestros clientes!",
 
+
   "content.whatinbox.title": "¿Qué hay en las cajas?",
   "content.whatinbox.description":
     "Aquí podéis ver los productos de esta semana. En nuestras cajas incluimos la mayoría de estos alimentos, dependemos del excedente del agricultor y a veces varían las proporciones pero siempre encontrando el equilibrio nutricional.",
@@ -1600,6 +1601,7 @@ export default {
   "homeOffer.noCommitment.title": "Sin compromiso", //
   "homeOffer.noCommitment.description":
     "Siempre puedes modificar, pausar o cancelar tu suscripción sin ningún compromiso ni coste. ",
+
   // HomeUpToDate
   "homeUpToDate.title": "Mantente al día", //
   "homeUpToDate.description":
@@ -1610,6 +1612,8 @@ export default {
   "homeUpToDate.emailsDontMatch": "Los emails no coinciden",
   "homeUpToDate.error": "Error al suscribirte",
   "homeUpToDate.messageSent": "¡Gracias por suscribirte a nuestra newsletter!",
+  "homeUpToDate.confirm": "¡Me suscribo!",
+  "homeUpToDate.cancel": "Más tarde",
 
   // Blog posts
   "blogPosts.title": "Descubre nuestro blog antidesperdicio", //
@@ -2197,4 +2201,6 @@ export default {
   "Companies.9.alt": "Zumos TALKUAL",
   "ReferAFriend.1.alt": "Ilustración de la tribu TALKUAL",
   "general.error": "Algo ha salido mal, inténtalo de nuevo más tarde",
+
+
 };
