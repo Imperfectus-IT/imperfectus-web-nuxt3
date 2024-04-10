@@ -32,18 +32,15 @@ export default {
         quaternary: "#e5F8C4",
       },
       grey: {
-        primary: "#E0E0E0",
+        primary: "#2F2F2F",
+        secondary: "#B1B1B1",
       },
       orange: {
         primary: "#F8CA8E",
-        secondary: "#F3A58F",
+        secondary: "#A3A3A3",
       },
       red: {
         primary: "#DC362E",
-      },
-      gray: {
-        primary: "#DADADA",
-        secondary: "#002423",
       },
       yellow: {
         primary: "gold",

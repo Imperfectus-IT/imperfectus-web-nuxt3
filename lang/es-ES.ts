@@ -1597,7 +1597,7 @@ export default {
     "Ahorra hasta un 20% en comparación a precios de supermercados. ", //
   "homeOffer.comfortable.title": "Cómodo", //
   "homeOffer.comfortable.description":
-    "Te lo llevamos directamente a la puerta de tu casa. Si tienes una suscripción con nosotrxs, no hace falta que te preocupes de nada, sólo de recibir la caja llena de fruta y verdura imperfecta el día y hora que hayas elegido, todo se realiza automáticamente.", //
+    "Te lo traemos directamente a la puerta de tu casa. Si tienes una suscripción con nosotros, no hace falta que te preocupes de nada, sólo de recibir la caja llena de fruta y verdura imperfecta el día y hora que hayas elegido, todo se realiza automáticamente.", //
   "homeOffer.noCommitment.title": "Sin compromiso", //
   "homeOffer.noCommitment.description":
     "Siempre puedes modificar, pausar o cancelar tu suscripción sin ningún compromiso ni coste. ",
