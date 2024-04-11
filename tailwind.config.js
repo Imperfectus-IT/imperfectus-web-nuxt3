@@ -74,9 +74,28 @@ export default {
         "solina-extended-medium": ["Solina Extended Medium"],
         "solina-condensed-bold": ["Solina Condensed Bold"],
       },
+      animation: {
+        scaleAnimation: 'scaleAnimation 1s ease-in-out forwards',
+      },
+      transitionDelay: {
+      '0': '0ms',
+      '1000': '1000ms',
+      '2000': '2000ms',
+      '3000': '3000ms',
+      },
+      animationDelay: {
+        '0': '0ms',
+        '500': '500ms',
+        '1000': '1000ms',
+        '1500': '1500ms',
+        '2000': '2000ms',
+        '3000': '3000ms',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animations')
+  ],
   build: {
     postcss: {
       plugins: {

@@ -3,7 +3,6 @@
     <Container class="has-text-centered">
       <h3
         class="FooterBannerOrder__title is-size-2 title"
-        v-html="$t('footer.order.title')"
       />
       <OrderButton size="is-large">
         {{ $t("footer.order.text") }}
