@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 lg:flex justify-evenly lg:-ml-10 lg:mt-10">
+  <div class="px-4 lg:flex justify-evenly lg:-ml-10 lg:-mb-20">
     <div
       class="lg:w-1/2"
     >
@@ -18,7 +18,7 @@
     />
     </div>
     <NuxtImg
-      class="w-full mt-6 lg:w-[500px] lg:m-0"
+      class="w-full mt-6 lg:w-[400px] lg:m-0 "
       src="/images/landing/help/help.png"
       loading="lazy"
       format="webp"

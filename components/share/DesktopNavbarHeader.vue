@@ -4,6 +4,14 @@ import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 const {t} = useI18n();
 const localePath = useLocalePath();
 const {visible, toggleVisible} = useVisibleSidebar();
+const route = useRoute();
+
+watch(() => route.fullPath, (to, from) => {
+  if (to !== from) {
+    toggleVisible()
+  }
+})
+
 const items = ref([
   {
     label: t("layout.navbar.menu"),

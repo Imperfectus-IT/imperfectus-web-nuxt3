@@ -34,7 +34,7 @@
             class="font-recoleta-medium text-[26px]"
             :class="
               item.index % 2 !== 0
-                ? 'text-green-primary'
+                ? 'text-green-quaternary'
                 : 'text-green-tertiary'
             "
           >

@@ -98,8 +98,8 @@ const itemLinks = [
     </template>
     <PanelMenu :model="itemLinks">
       <template #item="{ item }">
-        <NuxtLink :to="item.path">
-          <span @click="closeSidebar">{{ item.label }}</span>
+        <NuxtLink :to="item.path" @click="!item.items ? closeSidebar : ''">
+          <span >{{ item.label }}</span>
           <span v-if="item.items" class="mdi mdi-arrow-down ml-2" />
         </NuxtLink>
       </template>

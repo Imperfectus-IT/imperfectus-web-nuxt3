@@ -1588,7 +1588,7 @@ export default {
 
   // HomeOffer
   "homeOffer.weOfferBoxes":
-    "Ofrecemos cajas de fruta y verdura imperfecta por fuera y deliciosa por dentro, y te las llevamos directamente a tu casa.",
+    "Ofrecemos cajas de fruta y verdura imperfecta por fuera y deliciosa por dentro, y te las traemos directamente a tu casa.",
   "homeOffer.fresh.title": "Fresco", //
   "homeOffer.fresh.title.description":
     "Fruta y verdura deliciosa, de temporada y directa del campo.", //
