@@ -64,7 +64,7 @@
         >
           <template #text>
             <p class="font-bold w-10/12 mx-auto">{{ title }}</p>
-            <p class="mt-3 leading-6 p-2 w-10/12 mx-auto">{{ description }}</p>
+            <p class="mt-3 leading-6 p-2 w-11/12 mx-auto">{{ description }}</p>
           </template>
         </ImageTextCard>
       </div>
@@ -73,11 +73,11 @@
     <!-- FAQS -->
 
     <h4
-      class="uppercase font-solina-condensed-bold font-bold mt-14 lg:ml-4 ml-4"
+      class="uppercase font-solina-condensed-bold font-bold mt-14 lg:w-[93%] lg:mx-auto ml-4"
     >
       {{ t("pages.refer-a-friend.faqs.title") }}
     </h4>
-    <div class="px-4 lg:grid lg:grid-cols-2 lg:gap-x-6">
+    <div class="px-4 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:w-[95%] lg:mx-auto">
       <Fieldset
         v-for="({ question, answer, answerExt }, index) in faqs"
         :key="index"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center flex-row gap-5 h-auto mb-20"
+    class="flex justify-evenly flex-row  h-auto mb-20"
   >
     <div
       v-for="box in boxes"

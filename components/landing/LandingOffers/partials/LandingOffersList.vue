@@ -25,7 +25,7 @@
 
       <p
         v-if="currentOption === $t(option.title)"
-        class="ml-4 lg:w-1/2"
+        class="ml-4 lg:w-3/4"
       >
         {{ $t(option.description) }}
       </p>
