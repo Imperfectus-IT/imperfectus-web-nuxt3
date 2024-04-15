@@ -32,7 +32,12 @@ export default {
         quaternary: "#e5F8C4",
       },
       grey: {
+<<<<<<< Updated upstream
         primary: "#E0E0E0",
+=======
+        primary: "#2F2F2F",
+        secondary: "#7A7A7A",
+>>>>>>> Stashed changes
       },
       orange: {
         primary: "#F8CA8E",

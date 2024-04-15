@@ -4,7 +4,7 @@
       :title="t('layout.navbar.whatinbox')"
       :description="t('content.whatinbox.description')"
       :background-desktop="'/images/whatinbox/whatinbox-banner.webp'"
-      class="px-5 pb-16 pt-7 leading-5 lg:leading-8"
+      class="px-5 pb-16 pt-7 leading-5 lg:leading-8 mt-12"
     />
     <div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-y-6 lg:gap-x-0">
       <span class="relative mx-auto mt-20 lg:row-start-1 lg:col-span-4">
@@ -51,7 +51,7 @@ const searchProducts = () => {
   productsToShow.value = products.value.filter((product) => product.name.toLowerCase().includes(searchField.value.toLowerCase()));
 };
 
-//DONDE?
+//TODO WHERE TO PLACE THIS TYPE
 interface Product {
   name: string;
   image: string;

@@ -33,6 +33,7 @@
     </Slide>
 
     <template #addons>
+<<<<<<< Updated upstream
       <Navigation v-if="showNavigation">
         <template #prev>
           <span class="mdi mdi-chevron-left bg-green-tertiary rounded-full  text-green-primary leading-none inline-flex justify-center items-center text-[24px]" />
@@ -42,6 +43,25 @@
         </template>
       </Navigation>
       <Pagination v-if="showPagination" />
+=======
+      <div :class="navigationContainerClass">
+        <Navigation v-if="showNavigation">
+          <template #prev>
+            <span
+              :class="navigationPrevClass"
+              class="mdi mdi-chevron-left bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]"
+            />
+          </template>
+          <template #next>
+            <span
+              :class="navigationNextClass"
+              class="mdi mdi-chevron-right bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]"
+            />
+          </template>
+        </Navigation>
+      </div>
+      <Pagination v-if="showPagination" class="absolute left-[50%] -translate-x-1/2" :class="paginationClass" />
+>>>>>>> Stashed changes
     </template>
   </Carousel>
 </template>

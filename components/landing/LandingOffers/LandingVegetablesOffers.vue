@@ -1,7 +1,15 @@
 <template>
+<<<<<<< Updated upstream
   <div class="lg:grid lg:grid-cols-4 lg:grid-rows-layout lg:h-[80vh]">
     <p class="text-[22px] px-4 leading-8 mb-8 mt-10 font-solina-extended-book lg:leading-normal lg:mt-20 lg:col-span-2  lg:text-[35px] lg:w-2/3 lg:ml-10">
       {{ $t('homeOffer.weOfferBoxes') }}
+=======
+  <div class="mt-14 lg:mt-0 lg:grid lg:grid-cols-4">
+    <p
+      class="text-[22px] px-4 w-10/12 leading-8 mb-8 font-solina-extended-book lg:leading-normal lg:col-span-2 lg:text-[35px] 2xl:w-2/3 lg:ml-10 xl:mt-14"
+    >
+      {{ $t("homeOffer.weOfferBoxes") }}
+>>>>>>> Stashed changes
     </p>
     {{ currentWidth }}
     <LandingVegetablesCarousel 

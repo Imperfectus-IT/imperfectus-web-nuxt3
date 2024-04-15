@@ -26,7 +26,7 @@ onBeforeMount(() => {
   }
 });
 
-const vegetables = ref([
+const vegetables = [
   {
     index: 1,
     image: "/images/landing/vegetables-carousel/1-zanahoria.webp",
@@ -52,6 +52,6 @@ const vegetables = ref([
     image: "/images/landing/vegetables-carousel/5-tomate.webp",
     name: "Tomate-5",
   }
-]);
+];
 </script>
 

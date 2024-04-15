@@ -2,10 +2,10 @@
 </script>
 
 <template>
-  <div class="container flex flex-col gap-4">
+  <div class="container flex flex-col gap-4 mt-14">
     <ButtonDemo />
     <ToolbarDemo />
-    <CarouselDemo />
+    <!-- <CarouselDemo /> -->
     <CardDemo />
     <InputTextDemo />
     <DialogDemo />
