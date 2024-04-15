@@ -33,11 +33,11 @@ const submitLoginForm = async () => {
         <slot name="header"/>
         <SocialButtons/>
         <div class="flex items-center text-center py-3 lg:py-8">
-            <Divider class="w-[38%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50"/>
+            <Divider class="w-[36%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50"/>
             <span class="text-[10px] text-green-tertiary/50 w-full lg:w-4/5">{{
                     $t("socialProvider.loginWithEmail")
                 }}</span>
-            <Divider class="w-[38%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50"/>
+            <Divider class="w-[36%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50"/>
         </div>
         <form class="flex flex-col gap-y-4 lg:gap-y-8" @submit.prevent="submitLoginForm">
             <TKField :errors="validationErrors?.identifier?._errors">
@@ -68,22 +68,22 @@ const submitLoginForm = async () => {
                     type="submit"
                 />
             </div>
-            <NuxtLink class="text-start lg:text-center" :to="localePath({ 'name': 'auth-recovery' })">
+            <NuxtLink class="font-extended-book text-start lg:text-center" :to="localePath({ 'name': 'auth-recovery' })">
                 <Button
                     :label="$t('loginForm.forgotPassword')"
                     link
                     :pt="{
                         root: { class: 'px-0 py-0 lg:h-3' },
-                        label: { class: 'text-[0.625rem] lg:text-sm font-light underline' },
+                        label: { class: 'text-sm font-light underline' },
                     }"
                 />
             </NuxtLink>
-            <NuxtLink class="text-center">
+            <NuxtLink class="font-solina-extended-medium text-center">
                 <Button
                     :label="$t('orderStepAuth.hastAccount')"
                     :pt="{
                         root: { class: 'px-0 py-0' },
-                        label: { class: 'text-base font-medium underline' },
+                        label: { class: 'text-base underline' },
                     }"
                 />
             </NuxtLink>

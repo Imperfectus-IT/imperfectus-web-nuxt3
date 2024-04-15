@@ -11,7 +11,7 @@
         </div>
         <TKLocalesSwitcher class="lg:hidden" />
       </div>
-      <div class="text-center my-10 px-8 lg:px-20 xl:px-[25%]">
+      <div class="text-center my-10 px-8 lg:px-20 xl:px-10">
         <NuxtLink to="/">
           <TalkualLogoLight :font-controlled="false" />
         </NuxtLink>

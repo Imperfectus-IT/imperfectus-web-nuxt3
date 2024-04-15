@@ -221,7 +221,7 @@ export default {
   "layout.navbar.companies": "Empreses",
   "layout.navbar.order": "Nova comanda",
   "layout.navbar.contact": "Contacte",
-  "layout.navbar.account": "Compte",
+  "layout.navbar.account": "COMPTE",
   "layout.navbar.menu": "MENÚ",
   "layout.navbar.history": "Història",
   "layout.navbar.team": "Equip",
@@ -1672,7 +1672,9 @@ export default {
   "homeUpToDate.emailsDontMatch": "Els emails no coincideixen",
   "homeUpToDate.error": "Error al subscriure't",
   "homeUpToDate.messageSent":
-    "Gràcies per subscriure't a la nostra newsletter! ",
+  "Gràcies per subscriure't a la nostra newsletter! ",
+  "homeUpToDate.confirm": "Em subscric!",
+  "homeUpToDate.cancel": "Més tard",
 
   // Blog posts
   "blogPosts.title": "Descobreix el nostre blog antirebuig",
@@ -1873,10 +1875,11 @@ export default {
     "El Ramon és el nostre agricultor d'enciams, ens porta les millors varietats del mercat. Frescos i boníssims.",
   "farmers.gallery.3.title": "Mar, de la zona de Lleida",
   "farmers.gallery.3.description":
-    "La Mar és la nostra agricultora de bròquil, és de la zona de Lleida, estem a menys de 10 km i és per això que podem dir orgullosos que és de km 0. Producte 100% de proximitat.",
+  "La Mar és la nostra agricultora de bròquil, és de la zona de Lleida, estem a menys de 10 km i és per això que podem dir orgullosos que és de km 0.",
+  "farmers.gallery.3.description.2": " Producte 100% de proximitat.",
   "farmers.gallery.4.title": "Joan, de Vallverd",
   "farmers.gallery.4.description":
-    "El Joan és el nostre agricultor de bledes, bròquil i molts més productes... Amb el seu pare sempre ens porten el producte més fresc i més imperfecte.",
+  "El Joan és el nostre agricultor de bledes, bròquil i molts més productes... Amb el seu pare sempre ens porten el producte més fresc i més imperfecte.",
   "farmers.gallery.5.title": "Lluïsa, de Xerta",
   "farmers.gallery.5.description":
     "La Lluïsa ens porta les millors taronges de tota la península. Porta amb nosaltres des del 2020, no podia vendre les seves taronges imperfectes a la restauració a causa del tancament per COVID i llavors va començar a portar-nos-les a nosaltres.",

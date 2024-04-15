@@ -9,11 +9,10 @@
     />
     <div class="lg:w-9/12 mx-auto">
       <h4 class="my-14 ml-5 font-solina-condensed-bold uppercase font-bold text-[18px]">{{ t('team.header.title') }}</h4>
-      <div class="lg:grid lg:grid-cols-4 lg:gap-y-8 lg:gap-x-8">
+      <div class="lg:grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 lg:gap-y-12 lg:gap-x-12">
         <TeamMember 
           v-for="({ name, position, images }, index) in team"   
           :key="index" 
-          class="mb-6"
           :name="name"
           :position="position"  :images="images" 
           />

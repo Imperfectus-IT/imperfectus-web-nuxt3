@@ -1,12 +1,12 @@
 <template>
-  <TKCarousel 
+  <TKCarousel
     class=""
-    :data="data" 
+    :data="data"
     :show-navigation="false"
     :image-class="'w-[350px] h-[500px] mx-auto object-cover'"
   >
     <template #SlideContent="{ item }">
-      <div 
+      <div
         class="bg-green-tertiary w-[350px] h-[500px] absolute top-[390px] opacity-75 font-recoleta-regular text-white-primary duration-1000"
        :class="{'-translate-y-[390px] duration-1000 opacity-90': display[item.index], '-translate-y-[-0px] duration-700 opacity-55': !display[item.index]}"
         @click="handleClickToDisplay(item.index)"
@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
 
 defineProps({
@@ -47,7 +46,4 @@ const display: Record<number, boolean> = reactive({
 const handleClickToDisplay = (index: number) => {
   display[index] = !display[index];
 }
-
-
-const isClicked = ref(false);
 </script>

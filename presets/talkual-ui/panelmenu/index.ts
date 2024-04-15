@@ -2,7 +2,7 @@ export default {
     panel: {
         class: 'mb-1'
     },
-    headercontent: ({ context, instance }) => ({
+    headercontent: ({ context }) => ({
         class: [
             // Spacing
             'py-1 lg:py-3',
@@ -67,7 +67,7 @@ export default {
             'transition-shadow duration-100'
         ]
     },
-    action: ({ context }) => ({
+    action: () => ({
         class: [
             'relative',
 

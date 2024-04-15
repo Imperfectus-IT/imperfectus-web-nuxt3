@@ -30,15 +30,10 @@
 <script setup lang="ts">
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
 
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n();
-
 defineProps({
   boxes: {
     type: Array as () => CarouselSlideObject[],
     required: true
   }
 });
-
-
 </script>

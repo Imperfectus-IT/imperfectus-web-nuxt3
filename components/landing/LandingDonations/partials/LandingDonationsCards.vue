@@ -57,5 +57,3 @@ defineProps({
 })
 </script>
 
-
- <!-- :class="{'translate-y-0': !isClicked, '-translate-y-[390px]': isClicked}" -->

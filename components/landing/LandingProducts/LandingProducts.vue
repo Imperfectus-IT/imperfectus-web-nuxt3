@@ -5,7 +5,11 @@
     </p>
     <BirdWomanPhoto />
     <ProductListSelector class="lg:mt-20" @toggle="handleToggleType" />
-    <ProductsCarousel class="mt-4"  :display-desktop="displayDesktop" :items-type="classItemsToShow"/>
+    <ProductsCarousel 
+    class="mt-4"  
+    :display-desktop="displayDesktop" 
+    :items-type="classItemsToShow" 
+    />
   </div>
 </template>
 
