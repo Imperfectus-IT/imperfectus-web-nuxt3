@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { MenuItem } from 'primevue/menuitem';
+
 const { t } = useI18n();
 const localePath = useLocalePath();
 
@@ -12,6 +14,12 @@ const emit = defineEmits<{
 
 const closeSidebar = () => {
   emit("hide");
+};
+
+const hasCollapse = (item: MenuItem) => {
+  if (!item.items) {
+    closeSidebar();
+  }
 }
 
 const itemLinks = [
@@ -98,10 +106,12 @@ const itemLinks = [
     </template>
     <PanelMenu :model="itemLinks">
       <template #item="{ item }">
-        <NuxtLink :to="item.path" @click="!item.items ? closeSidebar : ''">
+        <div @click="hasCollapse(item)">
+        <NuxtLink :to="item.path" >
           <span >{{ item.label }}</span>
           <span v-if="item.items" class="mdi mdi-arrow-down ml-2" />
         </NuxtLink>
+        </div>
       </template>
     </PanelMenu>
     <TKLocalesSwitcher :separator="true" class="mt-10 !font-medium"/>

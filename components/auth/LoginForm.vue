@@ -74,7 +74,7 @@ const submitLoginForm = async () => {
                     link
                     :pt="{
                         root: { class: 'px-0 py-0 lg:h-3' },
-                        label: { class: 'text-[0.625rem] lg:text-sm font-light underline' },
+                        label: { class: 'text-sm font-light underline' },
                     }"
                 />
             </NuxtLink>
