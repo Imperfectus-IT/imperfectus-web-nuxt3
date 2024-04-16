@@ -34,6 +34,7 @@ export default {
       grey: {
         primary: "#2F2F2F",
         secondary: "#B1B1B1",
+        tertiary: "#B3B3B3",
       },
       orange: {
         primary: "#F8CA8E",
@@ -61,9 +62,13 @@ export default {
       md: "4px 4px 4px 0 rgba(0, 0, 0, 0.25)",
     },
     borderRadius: {
-      lg: "0.625rem",
-      xl: "0.9375rem",
-      xxl: "50%",
+      'none': '0',
+      'sm': '0.125rem',
+      DEFAULT: "0.25rem",
+      'md': '0.375rem',
+      'lg': "0.625rem",
+      'xl': "0.9375rem",
+      'xxl': "50%",
     },
     extend: {
       fontFamily: {
