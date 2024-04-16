@@ -1,10 +1,12 @@
 <template>
   <Carousel
+    ref="carousel"
     :class="carouselClass"
     :wrap-around="wrapItems"
     :items-to-show="visibleItems"
     :autoplay="autoplay"
     :items-to-scroll="numScroll"
+    @slide-start="$emit('navigation-clicked', $event)"
   >
     <Slide v-for="(item, index) in data" :key="index">
       <div :class="slideClass">
@@ -27,14 +29,12 @@
         <Navigation v-if="showNavigation">
           <template #prev>
             <span
-              :class="navigationPrevClass"
-              class="mdi mdi-chevron-left bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]"
+              :class="['mdi mdi-chevron-left bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]',navigationPrevClass]"
             />
           </template>
           <template #next>
             <span
-              :class="navigationNextClass"
-              class="mdi mdi-chevron-right bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]"
+              :class="['mdi mdi-chevron-right bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]', navigationNextClass]"
             />
           </template>
         </Navigation>
@@ -114,7 +114,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .carousel__pagination {
-  height: 0px;
+  height: 0;
 
   :deep button {
     position: relative;

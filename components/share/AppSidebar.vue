@@ -81,6 +81,11 @@ const itemLinks = [
       },
       {
         id: useId(),
+        label: t("layout.navbar.newsroom"),
+        path: localePath("newsroom"),
+      },
+      {
+        id: useId(),
         label: t("layout.navbar.contact"),
         path: localePath("contact"),
       },

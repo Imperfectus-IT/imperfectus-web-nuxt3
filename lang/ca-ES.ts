@@ -536,6 +536,7 @@ export default {
   "layout.navbar.impact": "Impacte",
   "layout.navbar.referrals": "Convida a un amic",
   "layout.navbar.giftcards": "Targeta regal",
+  "layout.navbar.newsroom": "Sala de premsa",
 
   // Layout Footer
   "footer.order.title": "Alimenta el canvi!",
@@ -2503,4 +2504,50 @@ export default {
   "referAFriend.1.alt": "Il·lustracio de la tribu TALKUAL",
 
   "general.error": "Alguna cosa ha sortit malament, intenta-ho de nou més tard",
+  newsroom: {
+    header: {
+      title: "Sala de prensa",
+      description: "En esta sección podrás ver el material gráfico, los medios en los que ha salido TALKUAL, descargar el dossier de prensa o ver nuestras redes y contactar con nosotrxs.",
+    },
+    multimedia: {
+      title: "Material gráfico",
+      images: {
+        title: "Imágenes",
+        first_slide: "Productos imperfectos",
+        second_slide: "Cajas",
+        third_slide: "Agricultores",
+        fourth_slide: "Equipo",
+      },
+      videos: {
+        title: "Vídeos",
+      },
+      logos: {
+        title: "Logos",
+      },
+      medios: {
+        title: "TALKUAL en Medios",
+        cope: "Gastrocope",
+        rtve: "Comer bien, tirar menos: el viaje de los productos...",
+        tv3: "90 kg de menjar per persona, a les escombraries.",
+        lasexta: "Ahorrar comprando fruta fea...",
+        lavanguardia: "Dos emprendedores fundan una empresa en Bellpuig...",
+        segre: "Una empresa leridana rescata del desperdicio más de...",
+        elpuntavui: "Una empresa de Bellpuig rescata del malbaratament...",
+        ondacero: "Setembre de bioeconomia a Lleida amb jornades...",
+        elpais: "La empresa que vende fruta y verdura que se tira solo...",
+      },
+    },
+    dossier: {
+      title: "Dossier de prensa",
+      description: "En el siguiente descargable encontrarás más información sobre TALKUAL, así como datos globales del desperdicio de alimentos y números exactos de la empresa.",
+      downloadButtonText: "Dossier prensa",
+    },
+    social_network: {
+      title: "Redes Sociales",
+    },
+    contact: {
+      title: "Contacto",
+      description: "Para cualquier información y/o solicitud de imágenes, no dudes en ponerte en contacto con nosotros a:",
+    }
+  },
 };

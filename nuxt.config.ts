@@ -97,6 +97,7 @@ export default defineNuxtConfig({
                 "Menu",
                 "MenuBar",
                 "Multiselect",
+                "OverlayPanel",
                 "PanelMenu",
                 "Password",
                 "ProgressBar",
