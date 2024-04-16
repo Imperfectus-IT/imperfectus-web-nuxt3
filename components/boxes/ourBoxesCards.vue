@@ -1,14 +1,14 @@
 <template>
   <div
-    class="bg-green-quaternary font-solina-extended-book text-[16px] flex flex-col gap-3 !rounded-b-[20px]"
+    class="bg-green-quaternary font-solina-extended-book text-[16px] flex flex-col gap-3 !rounded-b-[20px] lg:rounded-[20px]"
   >
-    <div class="px-4 flex flex-col gap-5">
-      <h4 class="text-[28px] mt-4">{{ data.title }}</h4>
+    <div class="px-4 flex flex-col gap-5 lg:ml-6">
+      <h4 class="text-[28px] mt-4 lg:mt-8">{{ data.title }}</h4>
       <p class="font-bold">{{ data.price }}</p>
       <p>{{ data.description }}</p>
 
       <div class="flex flex-col gap-6 font-solina-extended-medium">
-        <div>
+        <div class="flex flex-col">
           <span>{{ t("boxes.label.type") }}</span>
           <Dropdown
             :model-value="selectedBox.content"
@@ -23,7 +23,7 @@
             @update:model-value="updateContentOnParent"
           />
         </div>
-        <div>
+        <div class="flex flex-col">
           <span>{{ t("boxes.label.buy") }}</span>
           <Dropdown
             :model-value="selectedBox.frequency"
@@ -38,7 +38,7 @@
             @update:model-value="updateFrequencyOnParent"
           />
         </div>
-        <div>
+        <div class="flex flex-col">
           <span>{{ t("boxes.label.units") }}</span>
           <Dropdown
             :model-value="selectedBox.units"
@@ -56,7 +56,7 @@
       <p class="text-grey-secondary mb-4">{{ t("boxes.free-shipping") }}</p>
     </div>
     <Button
-      class="w-full py-5 border-t-0 rounded-t-[0px] rounded-b-[20px] font-solina-extended-medium"
+      class="w-full py-5 border-t-0 rounded-t-[0px] rounded-b-[20px] font-solina-extended-medium lg:mt-auto"
       :label="t('string.misc.buy.now')"
       severity="secondary"
     />

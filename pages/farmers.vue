@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import type { IFarmer } from "../components/about/farmers/farmers";
+import type { IFarmer } from "../components/about/farmers/types/farmers";
 const { t } = useI18n();
 
 const displayDesktop = ref(false);
