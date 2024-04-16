@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import * as path from "path";
+import primevueLocales from "./lang/primevue-locales.ts";
 
 export default defineNuxtConfig({
     app: {
@@ -71,7 +72,12 @@ export default defineNuxtConfig({
         "@nuxtjs/strapi",
     ],
     primevue: {
-        options: {unstyled: true},
+        options: {
+            unstyled: true,
+            locale: {
+                ...primevueLocales.es
+            }
+        },
         importPT: {
             as: "TalkualUI",
             from: path.resolve(__dirname, "./presets/talkual-ui/"),
@@ -79,6 +85,7 @@ export default defineNuxtConfig({
         components: {
             include: [
                 "Button",
+                "Calendar",
                 "Card",
                 "Carousel",
                 "Checkbox",
