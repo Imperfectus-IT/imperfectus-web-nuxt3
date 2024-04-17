@@ -8,7 +8,7 @@
 
   <div class="max-w-[1345px] mx-auto">
     <div class="">
-      <h4 class="font-solina-extended-book mt-8 mx-3 text-[26px] leading-8 lg:text-[35px] lg:leading-10 whitespace-break-spaces">
+      <h4 class="font-solina-extended-book mt-8 mx-3 text-[26px] leading-8 lg:text-[35px] lg:leading-10 lg:whitespace-break-spaces">
       {{ t("boxes.our-boxes.oranges-box.description.1") }}
     </h4>
     <p class="px-3 font-solina-condensed-bold font-bold text-[18px] my-5">

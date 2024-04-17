@@ -1,16 +1,16 @@
 <template>
+  <Header
+  class="h-[350px]"
+  title-class="mb-4"
+  description-class="px-3"
+  :title="t('boxes.header.title')"
+  :description="t('boxes.header.description')"
+  background-desktop="/images/boxes/header.webp"
+  background-mobile="/images/boxes/header-mobile.webp"
+  />
   <div class="mt-14 lg:mt-0 max-w-[1345px] mx-auto">
-    <Header
-      class="h-[350px]"
-      title-class="mb-4"
-      description-class="px-3"
-      :title="t('boxes.header.title')"
-      :description="t('boxes.header.description')"
-      background-desktop="/images/boxes/header.webp"
-      background-mobile="/images/boxes/header-mobile.webp"
-    />
 
-    <div class="mx-3 lg:w-2/3 lg:ml-12">
+    <div class="mx-3 lg:w-2/3 ">
       <h4
         class="font-solina-extended-medium text-[18px] uppercase font-bold mt-12 mb-4"
       >

@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-12 lg:flex lg:flex-row lg:gap-x-8 lg:mx-10">
+  <div class="mb-12 lg:flex lg:flex-row lg:gap-x-8">
     <TKCarousel
       :class="`lg:w-3/4 lg:order-${carouselOrder}`"
       slide-class="lg:w-full"
