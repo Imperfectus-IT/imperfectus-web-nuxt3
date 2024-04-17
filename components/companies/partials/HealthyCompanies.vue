@@ -17,7 +17,9 @@ const companies = [
 </script>
 
 <template>
-  <div class="p-8">
+  <div
+    class="pl-4 pr-4 pt-[30px] pb-[30px] md:flex md:max-w-screen-lg md:flex-col md:self-center md:p-8"
+  >
     <SectionTitle
       :value="$t('companies.healthy.title')"
       class="text-lg"

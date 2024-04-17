@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { isMobile } = useScreenSize();
+
 const images = [
   {
     image: "/images/boxes/Caixa-S.webp",
@@ -16,7 +18,9 @@ const images = [
 </script>
 
 <template>
-  <div class="bg-gray-secondary text-beige-primary font-solina-extended-book">
+  <div
+    class="bg-gray-secondary text-beige-primary font-solina-extended-book md:flex md:items-center"
+  >
     <div class="pt-6 pr-5 pb-6 pl-5">
       <SectionTitle
         :value="$t('companies.all-fruit')"
@@ -38,7 +42,8 @@ const images = [
     <TKCarousel
       :data="images"
       :show-pagination="true"
-      :show-navigation="false"
+      :show-navigation="!isMobile"
+      class="flex-1"
     ></TKCarousel>
   </div>
 </template>

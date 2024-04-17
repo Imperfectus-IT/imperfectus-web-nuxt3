@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import Link from "~/components/share/Link.vue";
 import { useI18n } from "vue-i18n";
+import { useScroll } from "~/composables/scroll/scroll.ts";
+import CompanyAskYourBox from "~/components/companies/partials/CompanyAskYourBox.vue";
 
 defineI18nRoute({
   paths: {
@@ -9,6 +12,7 @@ defineI18nRoute({
 });
 
 const { t } = useI18n();
+const { scrollToById } = useScroll();
 const i18nHead = useLocaleHead();
 
 useHead({
@@ -189,6 +193,8 @@ const pdfFilePath = computed(() => {
 
     <HealthyCompanies />
 
+    <CompanyAskYourBox />
+
     <!--
 Remove
     <div class="flex flex-col items-center pt-12 pb-12 bg-green-quaternary">
@@ -212,33 +218,6 @@ Remove
       </h3>
     </div>-->
 
-    <div
-      id="request-box-form"
-      class="mt-12 block self-center text-center md:w-[650px] md:pr-0 md:pl-0"
-    >
-      <div class="pl-[15px] pr-[15px]">
-        <h2
-          class="text-center leading-none font-recoleta-regular text-[40px] mb-[18px]"
-        >
-          {{ $t("pages.companies.form.title") }}
-        </h2>
-
-        <span class="mb-6 block text-center font-solina-extended-book">
-          {{ $t("pages.companies.form.description") }}
-        </span>
-
-        <span class="mb-6 block text-center font-solina-extended-book">
-          {{ $t("pages.companies.form.availableFor") }}
-        </span>
-
-        <small
-          class="block italic font-solina-extended-book text-[14px] mb-[20px]"
-        >
-          {{ $t("pages.companies.all-required") }}
-        </small>
-      </div>
-
-      <HubSpotForm form="b2b" />
-    </div>
+    <ScheduleTable />
   </div>
 </template>
