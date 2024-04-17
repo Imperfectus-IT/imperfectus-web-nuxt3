@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import Link from "~/components/share/Link.vue";
 import { useI18n } from "vue-i18n";
-import { useScroll } from "~/composables/scroll/scroll.ts";
 
 defineI18nRoute({
   paths: {
@@ -11,7 +9,6 @@ defineI18nRoute({
 });
 
 const { t } = useI18n();
-const { scrollToById } = useScroll();
 const i18nHead = useLocaleHead();
 
 useHead({

@@ -4,12 +4,14 @@ import type { ListItemTypes } from "~/components/companies/ListItem/ListItemType
 withDefaults(defineProps<ListItemTypes>(), {
   text: "",
   textClass: "",
+  dotClass: "",
+  mainClass: "",
 });
 </script>
 
 <template>
-  <div class="flex items-center gap-x-4">
-    <span class="text-green-primary">⬤</span>
+  <div :class="mainClass ? mainClass : 'flex items-center gap-x-4' ">
+    <span :class="dotClass" class="text-green-primary">⬤</span>
     <span :class="textClass">
       {{ text }}
     </span>

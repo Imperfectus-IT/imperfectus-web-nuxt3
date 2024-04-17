@@ -1,11 +1,9 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div class="container flex flex-col gap-4">
+  <div class="container flex flex-col gap-4 mt-5">
     <ButtonDemo />
+    <CalendarDemo />
     <ToolbarDemo />
-    <CarouselDemo />
+    <!-- <CarouselDemo /> -->
     <CardDemo />
     <InputTextDemo />
     <DialogDemo />
@@ -18,7 +16,10 @@
     <MenuBarDemo />
     <PanelMenuDemo />
     <SkeletonDemo />
+    <FieldsetDemo />
   </div>
 </template>
 
 
+<script setup lang="ts">
+</script>

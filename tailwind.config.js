@@ -32,18 +32,16 @@ export default {
         quaternary: "#e5F8C4",
       },
       grey: {
-        primary: "#E0E0E0",
+        primary: "#2F2F2F",
+        secondary: "#B1B1B1",
+        tertiary: "#B3B3B3",
       },
       orange: {
         primary: "#F8CA8E",
-        secondary: "#F3A58F",
+        secondary: "#A3A3A3",
       },
       red: {
         primary: "#DC362E",
-      },
-      gray: {
-        primary: "#DADADA",
-        secondary: "#002423",
       },
       yellow: {
         primary: "gold",
@@ -64,9 +62,13 @@ export default {
       md: "4px 4px 4px 0 rgba(0, 0, 0, 0.25)",
     },
     borderRadius: {
-      lg: "0.625rem",
-      xl: "0.9375rem",
-      xxl: "50%",
+      'none': '0',
+      'sm': '0.125rem',
+      DEFAULT: "0.25rem",
+      'md': '0.375rem',
+      'lg': "0.625rem",
+      'xl': "0.9375rem",
+      'xxl': "50%",
     },
     extend: {
       fontFamily: {
@@ -77,9 +79,28 @@ export default {
         "solina-extended-medium": ["Solina Extended Medium"],
         "solina-condensed-bold": ["Solina Condensed Bold"],
       },
+      animation: {
+        scaleAnimation: 'scaleAnimation 1s ease-in-out forwards',
+      },
+      transitionDelay: {
+      '0': '0ms',
+      '1000': '1000ms',
+      '2000': '2000ms',
+      '3000': '3000ms',
+      },
+      animationDelay: {
+        '0': '0ms',
+        '500': '500ms',
+        '1000': '1000ms',
+        '1500': '1500ms',
+        '2000': '2000ms',
+        '3000': '3000ms',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animations')
+  ],
   build: {
     postcss: {
       plugins: {

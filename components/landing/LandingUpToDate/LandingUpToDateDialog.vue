@@ -8,6 +8,7 @@
       @click="visible = true"
     />
     <Dialog
+    class="flex"
       :visible="visible"
       modal
       :closable="false"
@@ -17,7 +18,7 @@
       //  mask: { class: 'bg-[gray]' }
       }"
     >
-      <div class="flex justify-center items-center">
+      <div class="flex justify-start items-center">
         <Checkbox
           v-model="checked"
           input-id="checkbox"
@@ -47,24 +48,24 @@
 
       <template #footer>
         <Button
-          label="Actualizar tarjeta de credito"
+          :label="t('homeUpToDate.confirm')"
           raised
           :pt="{
             root: {
               class:
-                'bg-green-primary hover:bg-green-primary hover:text-green-primary p-2 rounded-lg',
+                'bg-green-primary hover:bg-green-primary p-3 rounded-lg',
             },
-            label: 'text-xs text-green-tertiary',
+            label: 'text-md text-green-tertiary',
           }"
         />
         <Button
-          label="Mas tarde"
+          :label="t('homeUpToDate.cancel')"
           outlined
           :pt="{
             root: {
-              class: 'border border-green-primary p-2 rounded-lg',
+              class: 'border border-green-primary p-3 rounded-lg',
             },
-            label: 'text-xs text-green-primary',
+            label: 'text-md text-green-tertiary',
           }"
           @click="visible = false"
         />
@@ -75,6 +76,9 @@
 
 <script setup>
 import { ref } from "vue";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const visible = ref(false);
 const checked = ref(false);

@@ -1,5 +1,6 @@
 <template>
-  <Carousel
+  <div></div>
+  <!-- <Carousel
     class=""
     :wrap-around="true"
     :items-to-show="1"
@@ -32,41 +33,41 @@
       </Navigation>
       <Pagination v-if="showPagination" />
     </template>
-  </Carousel>
+  </Carousel> -->
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue';
-import { ref } from 'vue';
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
-import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes';
+import type { PropType } from "vue";
+import { ref } from "vue";
+import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
+import type { CarouselSlideObject } from "../talkual-ui/TKCarousel/TKCarouselTypes";
 
 defineProps({
   data: {
     type: Array as PropType<CarouselSlideObject[]>,
-    default: () => []
+    default: () => [],
   },
-    visibleItems: {
-        type: Number,
-        default: 1
-    },
-    showNavigation: {
-        type: Boolean,
-        default: true
-    },
-    showPagination: {
-        type: Boolean,
-        default: true
-    },
-    autoplay: {
-        type: Number,
-        default: 0
-    },
-    optionalSlideClass: {
-        type: String,
-        default: ''
-    }
-})
+  visibleItems: {
+    type: Number,
+    default: 1,
+  },
+  showNavigation: {
+    type: Boolean,
+    default: true,
+  },
+  showPagination: {
+    type: Boolean,
+    default: true,
+  },
+  autoplay: {
+    type: Number,
+    default: 0,
+  },
+  optionalSlideClass: {
+    type: String,
+    default: "",
+  },
+});
 
 const boxes = ref<CarouselSlideObject[]>([
   {
@@ -98,51 +99,6 @@ const boxes = ref<CarouselSlideObject[]>([
     index: 6,
     image: "/images/landing/boxes-carousel/XL.webp",
     name: "XL-box",
-  }
-]);
-
-const responsiveProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-]);
-const responsiveOtherProductOptions = ref([
-  {
-    breakpoint: "1400px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "1199px",
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "767px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "575px",
-    numVisible: 1,
-    numScroll: 1,
   },
 ]);
 </script>
@@ -162,10 +118,10 @@ const responsiveOtherProductOptions = ref([
   }
 
   :deep button::after {
-    display: none!important;
+    display: none !important;
   }
 }
 :deep .carousel__pagination-button.carousel__pagination-button--active {
-  background-color: hsl(68 83% 63%)
+  background-color: hsl(68 83% 63%);
 }
 </style>

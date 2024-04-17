@@ -8,7 +8,7 @@
         />
         <li
           class="font-recoleta-regular cursor-pointer"
-          :class="itemsType === 'fruits' ? '' : 'text-grey-primary'"
+          :class="itemsType === 'fruits' ? '' : 'text-grey-secondary'"
           @click="handleItemToggle('fruits')"
         >
           {{ $t('homeProducts.fruits') }}
@@ -21,7 +21,7 @@
         />
         <li
           class="font-recoleta-regular cursor-pointer"
-          :class="itemsType === 'vegetables' ? '' : 'text-grey-primary'"
+          :class="itemsType === 'vegetables' ? '' : 'text-grey-secondary'"
           @click="handleItemToggle('vegetables')"
         >
           {{ $t('homeProducts.vegetables') }}

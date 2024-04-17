@@ -5,15 +5,9 @@
     :items-to-show="visibleItems"
     :autoplay="autoplay"
     :items-to-scroll="numScroll"
-
   >
-    <Slide
-      v-for="(item, index) in data"
-      :key="index"
-    >
-      <div
-        :class="slideClass"
-      >
+    <Slide v-for="(item, index) in data" :key="index">
+      <div :class="slideClass">
         <NuxtImg
           v-if="item.image"
           :src="item.image"
@@ -23,80 +17,99 @@
           format="webp"
         />
         <div :class="slotClass">
-          <slot
-            name="SlideContent"
-            :item="item"
-            :class="slotClass"
-          />
+          <slot name="SlideContent" :item="item" :class="slotClass" />
         </div>
       </div>
     </Slide>
 
     <template #addons>
-      <Navigation v-if="showNavigation">
-        <template #prev>
-          <span class="mdi mdi-chevron-left bg-green-tertiary rounded-full  text-green-primary leading-none inline-flex justify-center items-center text-[24px]" />
-        </template>
-        <template #next>
-          <span class="mdi mdi-chevron-right bg-green-tertiary rounded-full  text-green-primary leading-none inline-flex justify-center items-center text-[24px]" />
-        </template>
-      </Navigation>
-      <Pagination v-if="showPagination" />
+      <div :class="navigationContainerClass">
+        <Navigation v-if="showNavigation">
+          <template #prev>
+            <span
+              :class="navigationPrevClass"
+              class="mdi mdi-chevron-left bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]"
+            />
+          </template>
+          <template #next>
+            <span
+              :class="navigationNextClass"
+              class="mdi mdi-chevron-right bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]"
+            />
+          </template>
+        </Navigation>
+      </div>
+      <Pagination v-if="showPagination" class="absolute left-[50%] -translate-x-1/2" :class="paginationClass" />
     </template>
   </Carousel>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue';
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
-import type { CarouselSlideObject } from './TKCarouselTypes';
+import type { PropType } from "vue";
+import type { CarouselSlideObject } from "./TKCarouselTypes";
 
 defineProps({
   data: {
     type: Array as PropType<CarouselSlideObject[]>,
-    required: true
+    required: true,
   },
-    visibleItems: {
-        type: Number,
-        default: 1
-    },
-    showNavigation: {
-        type: Boolean,
-        default: true
-    },
-    showPagination: {
-        type: Boolean,
-        default: true
-    },
-    autoplay: {
-        type: Number,
-        default: 0
-    },
-    wrapItems: {
-        type: Boolean,
-        default: true
-    },
-    slideClass: {
-        type: String,
-        default: ''
-    },
-    carouselClass: {
-        type: String,
-        default: ''
-    },
-    imageClass: {
-        type: String,
-        default: ''
-    },
-    slotClass: {
-        type: String,
-        default: ''
-    },
-    numScroll: {
-        type: Number,
-        default: 1
-    }
-})
+  visibleItems: {
+    type: Number,
+    default: 1,
+  },
+  showNavigation: {
+    type: Boolean,
+    default: true,
+  },
+  showPagination: {
+    type: Boolean,
+    default: true,
+  },
+  autoplay: {
+    type: Number,
+    default: 0,
+  },
+  wrapItems: {
+    type: Boolean,
+    default: true,
+  },
+  slideClass: {
+    type: String,
+    default: "",
+  },
+  carouselClass: {
+    type: String,
+    default: "",
+  },
+  imageClass: {
+    type: String,
+    default: "",
+  },
+  slotClass: {
+    type: String,
+    default: "",
+  },
+  paginationClass: {
+    type: String,
+    default: "",
+  },
+  navigationPrevClass: {
+    type: String,
+    default: "",
+  },
+  navigationNextClass: {
+    type: String,
+    default: "",
+  },
+  navigationContainerClass: {
+    type: String,
+    default: "",
+  },
+  numScroll: {
+    type: Number,
+    default: 1,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -114,10 +127,11 @@ defineProps({
   }
 
   :deep button::after {
-    display: none!important;
+    display: none !important;
   }
 }
+
 :deep .carousel__pagination-button.carousel__pagination-button--active {
-  background-color: hsl(68 83% 63%)
+  background-color: hsl(68 83% 63%);
 }
 </style>

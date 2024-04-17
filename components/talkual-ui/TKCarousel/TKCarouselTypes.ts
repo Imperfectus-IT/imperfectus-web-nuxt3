@@ -1,5 +1,5 @@
 export interface CarouselSlideObject {
-  index: number;
+  index?: number;
   value?: string;
   description_ca?: string;
   description_es?: string;
@@ -11,5 +11,18 @@ export interface CarouselSlideObject {
   stars?: number;
   relativeTime?: string;
   rating?: number;
-  [key: string]: number | string | undefined;
+  [key: string]: any;
 }
+
+// export interface CarouselMultipleImagesObject {
+//   title: string,
+//   description: string,
+//   price: number,
+//   images: BoxImages
+// }
+
+// export interface BoxImages {
+//   MX: string[],
+//   FR: string[],
+//   VG: string[]
+// }

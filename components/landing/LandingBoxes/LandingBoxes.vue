@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <p class="mb-6 mt-4 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-32 lg:mt-2">
+    <p class="mb-6 mt-4 text-left text-[30px] mx-10 lg:w-[45vw] lg:ml-28 lg:mt-2">
       {{ $t('homeBoxes.description') }}
     </p>
 
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'; 
+import { ref } from 'vue';
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n();
@@ -43,7 +43,7 @@ const boxes = ref<CarouselSlideObject[]>([
     name: "S-box",
     title: t('content.home.ourBoxes.item0.title'),
     description: t('content.home.ourBoxes.item0.description')
-    
+
   },
   {
     index: 2,
@@ -51,7 +51,7 @@ const boxes = ref<CarouselSlideObject[]>([
     name: "M-box",
     title: t('content.home.ourBoxes.item1.title'),
     description: t('content.home.ourBoxes.item1.description')
-    
+
   },
   {
     index: 3,
@@ -59,12 +59,9 @@ const boxes = ref<CarouselSlideObject[]>([
     name: "XL-box",
     title: t('content.home.ourBoxes.item2.title'),
     description: t('content.home.ourBoxes.item2.description')
-    
+
   }
 ]);
-
-
-
 </script>
 
 

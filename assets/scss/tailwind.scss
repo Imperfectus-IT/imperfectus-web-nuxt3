@@ -13,11 +13,11 @@
       "Recoleta Regular",
       "Recoleta Medium",
       "Recoleta SemiBold",
+      "Solina Condensed", "Recoleta Regular", "Recoleta Medium",
+      "Recoleta SemiBold", -apple-system, sans-serif,
       -apple-system,
       sans-serif;
-    --font-family: "Solina Extended Book", "Solina Extended Medium",
-      "Solina Condensed", "Recoleta Regular", "Recoleta Medium",
-      "Recoleta SemiBold", -apple-system, sans-serif;
+    --font-family: "Solina Extended Book", "Solina Extended Medium", "Solina Condensed", "Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold", "Solina Condensed", "Recoleta Regular", "Recoleta Medium", "Recoleta SemiBold", sans-serif;
     /* For hsl(198deg 93% 60% / <alpha-value>) */
     --color-beige-primary: hsl(47deg 100% 95%);
     --color-beige-secondary: hsl(47, 100%, 88%);
@@ -28,7 +28,7 @@
     --color-orange-primary: hsla(13 81% 76%);
     --color-red-primary: hsla(3 71% 52%);
     --color-gray-primary: hsla(178, 100%, 7%);
-    --color-gray-secondary: hsla(0, 0, 85%);
+    --color-gray-secondary: hsla(0, 0%, 77%, 1);
     --color-blue-primary: hsl(42, 168, 215);
     --color-white-primary: hsl(0, 0%, 100%);
   }

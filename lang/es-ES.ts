@@ -470,6 +470,7 @@ export default {
     "Entre 14-15 kg de fruta y/o verdura de temporada. Ideal para 4 o 5+ personas.", //
   "content.home.reviews.title": "¡Comentarios de nuestros clientes!",
 
+
   "content.whatinbox.title": "¿Qué hay en las cajas?",
   "content.whatinbox.description":
     "Aquí podéis ver los productos de esta semana. En nuestras cajas incluimos la mayoría de estos alimentos, dependemos del excedente del agricultor y a veces varían las proporciones pero siempre encontrando el equilibrio nutricional.",
@@ -1595,7 +1596,7 @@ export default {
 
   // HomeOffer
   "homeOffer.weOfferBoxes":
-    "Ofrecemos cajas de fruta y verdura imperfecta por fuera y deliciosa por dentro, y te las llevamos directamente a tu casa.",
+    "Ofrecemos cajas de fruta y verdura imperfecta por fuera y deliciosa por dentro, y te las traemos directamente a tu casa.",
   "homeOffer.fresh.title": "Fresco", //
   "homeOffer.fresh.title.description":
     "Fruta y verdura deliciosa, de temporada y directa del campo.", //
@@ -1604,10 +1605,11 @@ export default {
     "Ahorra hasta un 20% en comparación a precios de supermercados. ", //
   "homeOffer.comfortable.title": "Cómodo", //
   "homeOffer.comfortable.description":
-    "Te lo llevamos directamente a la puerta de tu casa. Si tienes una suscripción con nosotrxs, no hace falta que te preocupes de nada, sólo de recibir la caja llena de fruta y verdura imperfecta el día y hora que hayas elegido, todo se realiza automáticamente.", //
+    "Te lo traemos directamente a la puerta de tu casa. Si tienes una suscripción con nosotros, no hace falta que te preocupes de nada, sólo de recibir la caja llena de fruta y verdura imperfecta el día y hora que hayas elegido, todo se realiza automáticamente.", //
   "homeOffer.noCommitment.title": "Sin compromiso", //
   "homeOffer.noCommitment.description":
     "Siempre puedes modificar, pausar o cancelar tu suscripción sin ningún compromiso ni coste. ",
+
   // HomeUpToDate
   "homeUpToDate.title": "Mantente al día", //
   "homeUpToDate.description":
@@ -1618,6 +1620,8 @@ export default {
   "homeUpToDate.emailsDontMatch": "Los emails no coinciden",
   "homeUpToDate.error": "Error al suscribirte",
   "homeUpToDate.messageSent": "¡Gracias por suscribirte a nuestra newsletter!",
+  "homeUpToDate.confirm": "¡Me suscribo!",
+  "homeUpToDate.cancel": "Más tarde",
 
   // Blog posts
   "blogPosts.title": "Descubre nuestro blog antidesperdicio", //
@@ -1801,9 +1805,9 @@ export default {
     "Actualmente ofrecemos tres tipos de cajas que combinan fruta y/o verdura imperfecta de diferentes tamaños",
   "boxes.our-boxes.oranges-box.title": "CAJA DE NARANJAS",
   "boxes.our-boxes.oranges-box.description.1":
-    "Ha llegado la época de las naranjas, esta caja especial",
+    "Estas cajas estacionales estarán disponibles hasta que se termine su temporada",
   "boxes.our-boxes.oranges-box.description.2":
-    "estará disponible hasta que se termine la temporada.",
+    "¡Naranjas de la mejor calidad! Imperfectas por fuera y deliciosas por dentro. Rechazadas por calibre, cicatrices o por excedente de producción",
   // Add payment result
   "pages.payment.add.status.title": "Estado nuevo método de pago",
   "pages.payment.add.status.error": "Error al añadir el método de pago",
@@ -2210,4 +2214,6 @@ export default {
   "Companies.9.alt": "Zumos TALKUAL",
   "ReferAFriend.1.alt": "Ilustración de la tribu TALKUAL",
   "general.error": "Algo ha salido mal, inténtalo de nuevo más tarde",
+
+
 };
