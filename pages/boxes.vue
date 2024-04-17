@@ -23,10 +23,40 @@
       </p>
     </div>
     <div class="mx-3">
-      <LazyOurBoxesCarousel />
+      <CarouselAndCard
+        :card-data="sBoxData"
+        :carousel-data="imagesForCarousel('s').value"
+        :selected-box="boxSelected.s"
+        card-order="1"
+        carousel-order="2"
+        @update-item-on-parent="
+          (payload: SelectedBox) => updateBoxSelected('s', payload)
+        "
+      />
+
+      <CarouselAndCard
+        :card-data="mBoxData"
+        :carousel-data="imagesForCarousel('m').value"
+        :selected-box="boxSelected.m"
+        card-order="2"
+        carousel-order="1"
+        @update-item-on-parent="
+          (payload: SelectedBox) => updateBoxSelected('m', payload)
+        "
+      />
+      <CarouselAndCard
+        :card-data="xlBoxData"
+        :carousel-data="imagesForCarousel('xl').value"
+        :selected-box="boxSelected.xl"
+        card-order="1"
+        carousel-order="2"
+        @update-item-on-parent="
+          (payload: SelectedBox) => updateBoxSelected('xl', payload)
+        "
+      />
     </div>
 
-    <div class="mx-3 font-solina-extended-medium lg:ml-12">
+    <div class="mx-3 font-solina-extended-medium lg:ml-12 lg:mb-4">
       <h4 class="font-solina-condensed-bold font-bold text-[18px] mb-8">
         {{ t("boxes.title") }}
       </h4>
@@ -37,91 +67,42 @@
         {{ t("boxes.description.2") }}
       </p>
 
-      <div class="lg:grid lg:grid-cols-4 lg:grid-rows-2">
-        <Fieldset
-          v-if="isDisplayDesktop"
-          class="lg:mb-12 lg:row-start-1 lg:col-span-2"
-          :pt="{ legend: 'hidden' }"
-        >
-          <h4 class="ml-5 font-solina-extended-medium mb-4 font-bold lg:ml-0 lg:mt-6">
-            {{ t("boxes.subscription-description.1.title") }}
-          </h4>
-          <ul>
-            <li v-for="(item, index) in subscriptionList" :key="index">
-              <ListItem
-                main-class="flex gap-x-4"
-                dot-class="text-[12px]"
-                text-class="-ml-2"
-                :text="t(item)"
-              />
-            </li>
-          </ul>
-        </Fieldset>
+      <div
+        class="lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:-mb-24"
+        :style="{
+          gridTemplateColumns: '1fr 1fr 1fr 1fr',
+          gridTemplateRows: '320px 320px',
+          gridColumnGap: '20px',
+          gridRowGap: '20px',
+        }"
+      >
+        <BoxesBuyOptions
+          class="mb-12 lg:row-start-1 lg:col-span-2 lg:my-auto"
+          :is-display-desktop="isDisplayDesktop"
+          :list-items="subscriptionList"
+          :title="t('boxes.subscription-description.1.title')"
+        />
 
-        <template v-else>
-          <h4 class="ml-5 font-solina-extended-medium mb-4 font-bold">
-            {{ t("boxes.subscription-description.1.title") }}
-          </h4>
-          <ul>
-            <li v-for="(item, index) in subscriptionList" :key="index">
-              <ListItem
-                main-class="flex gap-x-4"
-                dot-class="text-[12px]"
-                text-class="-ml-2"
-                :text="t(item)"
-              />
-            </li>
-          </ul>
-        </template>
+        <BoxesBuyOptions
+          class="mb-12 lg:row-start-2 lg:col-span-2"
+          :is-display-desktop="isDisplayDesktop"
+          :list-items="uniqueOrderList"
+          :title="t('boxes.subscription-description.2.title')"
+        />
 
-        <Fieldset
-          v-if="isDisplayDesktop"
-          class="lg:row-start-2 lg:col-span-2"
-          :pt="{ legend: 'hidden' }"
-        >
-          <h4 class="mt-12 mb-4 lg:mt-6">
-            {{ t("boxes.subscription-description.2.title") }}
-          </h4>
-          <ul>
-            <li v-for="(item, index) in uniqueOrderList" :key="index">
-              <ListItem
-                main-class="flex gap-x-4"
-                dot-class="text-[12px]"
-                text-class="-ml-2"
-                :text="t(item)"
-              />
-            </li>
-          </ul>
-        </Fieldset>
-
-        <template v-else>
-          <h4 class="ml-5 font-solina-extended-medium mb-4 font-bold mt-10 lg:mt-0">
-            {{ t("boxes.subscription-description.2.title") }}
-          </h4>
-          <ul>
-            <li v-for="(item, index) in uniqueOrderList" :key="index">
-              <ListItem
-                main-class="flex gap-x-4"
-                dot-class="text-[12px]"
-                text-class="-ml-2"
-                :text="t(item)"
-              />
-            </li>
-          </ul>
-        </template>
         <NuxtImg
           class="my-12 lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-2 lg:my-auto lg:mx-auto"
           src="/images/boxes/shop_dark.webp"
           alt="Shop dark"
           format="webp"
           loading="lazy"
-          :width="isDisplayDesktop ? '440' : '375'"
+          :width="440"
           height="auto"
         />
       </div>
     </div>
 
-    <Divider class="before:border-t-2 before:border-green-primary lg:mt-28 " />
+    <Divider class="before:border-t-2 before:border-green-primary lg:mt-28" />
 
     <p
       class="font-recoleta-regular text-[35px] mx-4 leading-10 lg:w-3/5 lg:mt-16 2xl:ml-0"
@@ -147,6 +128,10 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+import BoxesBuyOptions from "~/components/boxes/BoxesBuyOptions.vue";
+import type { BoxImages } from "~/components/boxes/types/BoxImages";
+import type { SelectedBox } from "~/components/boxes/types/BoxSelected";
+import type { Size } from "~/components/boxes/types/Size";
 
 const { t } = useI18n();
 
@@ -170,8 +155,190 @@ onBeforeUnmount(() => {
 const isDisplayDesktop = computed(() => windowWidth.value > 768);
 const classItemsToShow = ref("fruits");
 
+const boxSelected = reactive({
+  s: {
+    content: "mixed",
+    frequency: "weekly",
+    units: 1,
+  },
+  m: {
+    content: "mixed",
+    frequency: "weekly",
+    units: 1,
+  },
+  xl: {
+    content: "mixed",
+    frequency: "weekly",
+    units: 1,
+  },
+});
+
 const handleToggleType = (type: string) => {
   classItemsToShow.value = type;
+};
+
+const imagesForCarousel = (size: Size) =>
+  computed(() => {
+    return boxImages[size][boxSelected[size].content as keyof BoxImages[Size]];
+  });
+
+const updateBoxSelected = (size: Size, payload: SelectedBox) =>
+  Object.assign(boxSelected[size], payload);
+
+const boxImages = {
+  s: {
+    mixed: [
+      {
+        image: "/images/boxes/sBox/S_1.webp",
+        title: "S_1",
+      },
+
+      {
+        image: "/images/boxes/sBox/S_2.webp",
+        title: "S_2",
+      },
+      {
+        image: "/images/boxes/sBox/S_3.webp",
+        title: "S_3",
+      },
+    ],
+    fruits: [
+      {
+        image: "/images/boxes/sBox/SFR_1.webp",
+        title: "SFR_1",
+      },
+
+      {
+        image: "/images/boxes/sBox/SFR_2.webp",
+        title: "SFR_2",
+      },
+      {
+        image: "/images/boxes/sBox/SFR_3.webp",
+        title: "SFR_3",
+      },
+    ],
+    vegetables: [
+      {
+        image: "/images/boxes/sBox/SVG_1.webp",
+        title: "SVG_1",
+      },
+
+      {
+        image: "/images/boxes/sBox/SVG_2.webp",
+        title: "SVG_2",
+      },
+      {
+        image: "/images/boxes/sBox/SVG_3.webp",
+        title: "SVG_3",
+      },
+    ],
+  },
+  m: {
+    mixed: [
+      {
+        image: "/images/boxes/mBox/M_1.webp",
+        title: "M_1",
+      },
+
+      {
+        image: "/images/boxes/mBox/M_2.webp",
+        title: "M_2",
+      },
+      {
+        image: "/images/boxes/mBox/M_3.webp",
+        title: "M_3",
+      },
+    ],
+    fruits: [
+      {
+        image: "/images/boxes/mBox/MFR_1.webp",
+        title: "MFR_1",
+      },
+
+      {
+        image: "/images/boxes/mBox/MFR_2.webp",
+        title: "MFR_2",
+      },
+      {
+        image: "/images/boxes/mBox/MFR_3.webp",
+        title: "MFR_3",
+      },
+    ],
+    vegetables: [
+      {
+        image: "/images/boxes/mBox/MVG_1.webp",
+        title: "MVG_1",
+      },
+
+      {
+        image: "/images/boxes/mBox/MVG_2.webp",
+        title: "MVG_2",
+      },
+      {
+        image: "/images/boxes/mBox/MVG_3.webp",
+        title: "MVG_3",
+      },
+    ],
+  },
+  xl: {
+    mixed: [
+      {
+        image: "/images/boxes/xlBox/XL_1.webp",
+        title: "XL_1",
+      },
+
+      {
+        image: "/images/boxes/xlBox/XL_2.webp",
+        title: "XL_2",
+      },
+      {
+        image: "/images/boxes/xlBox/XL_3.webp",
+        title: "XL_3",
+      },
+    ],
+    fruits: [
+      {
+        image: "/images/boxes/xlBox/XLFR_1.webp",
+        title: "XLFR_1",
+      },
+      {
+        image: "/images/boxes/xlBox/XLFR_2.webp",
+        title: "XLFR_2",
+      },
+    ],
+    vegetables: [
+      {
+        image: "/images/boxes/xlBox/XLVG_1.webp",
+        title: "XLVG_1",
+      },
+      {
+        image: "/images/boxes/xlBox/XLVG_2.webp",
+        title: "XLVG_2",
+      },
+      {
+        image: "/images/boxes/xlBox/XLVG_3.webp",
+        title: "XLVG_3",
+      },
+    ],
+  },
+};
+
+const sBoxData = {
+  title: t("content.home.ourBoxes.item0.title"),
+  description: t("content.home.ourBoxes.item0.description"),
+  price: "19.18€",
+};
+
+const mBoxData = {
+  title: t("content.home.ourBoxes.item1.title"),
+  description: t("content.home.ourBoxes.item1.description"),
+  price: "23.99€",
+};
+
+const xlBoxData = {
+  title: t("content.home.ourBoxes.item2.title"),
+  description: t("content.home.ourBoxes.item2.description"),
+  price: "30.72€",
 };
 
 const subscriptionList = [

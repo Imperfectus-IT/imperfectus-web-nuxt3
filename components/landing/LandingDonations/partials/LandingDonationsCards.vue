@@ -6,7 +6,7 @@
       v-for="item in data"
       :key="item.index"
       class="w-auto relative h-[500px] overflow-hidden"
-      @click="handleClickToDisplay(item.index)"
+      @click="handleClickToDisplay(item.index as number)"
     >
       <NuxtImg
         :src="item.image"
@@ -17,7 +17,7 @@
       />
       <div
         class="bg-green-tertiary w-auto absolute top-0 h-full text-white-primary "
-        :class="{'translate-y-0 duration-1000 opacity-90': display[item.index], '-translate-y-[-390px] duration-700 opacity-55': !display[item.index]}"
+        :class="{'translate-y-0 duration-1000 opacity-90': display[item.index as number], '-translate-y-[-390px] duration-700 opacity-55': !display[item.index as number]}"
       >
         <h4
           class="text-center mt-4 max-w-[400px] font-recoleta-semibold text-[30px] w-11/12 mx-auto hover:cursor-pointer"

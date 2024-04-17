@@ -1792,9 +1792,9 @@ export default {
     "Actualmente ofrecemos tres tipos de cajas que combinan fruta y/o verdura imperfecta de diferentes tamaños",
   "boxes.our-boxes.oranges-box.title": "CAJA DE NARANJAS",
   "boxes.our-boxes.oranges-box.description.1":
-    "Ha llegado la época de las naranjas, esta caja especial",
+    "Estas cajas estacionales estarán disponibles hasta que se termine su temporada",
   "boxes.our-boxes.oranges-box.description.2":
-    "estará disponible hasta que se termine la temporada.",
+    "¡Naranjas de la mejor calidad! Imperfectas por fuera y deliciosas por dentro. Rechazadas por calibre, cicatrices o por excedente de producción",
   // Add payment result
   "pages.payment.add.status.title": "Estado nuevo método de pago",
   "pages.payment.add.status.error": "Error al añadir el método de pago",

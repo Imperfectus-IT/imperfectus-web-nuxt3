@@ -1856,10 +1856,9 @@ export default {
     "Actualment oferim tres tipus de caixes que combinen fruita i/o verdura imperfecta de diferents mides",
   "boxes.our-boxes.oranges-box.title": "CAIXA DE TARONGES",
   "boxes.our-boxes.oranges-box.description.1":
-    "Ha arribat l'època de les taronges, aquesta caixa especial",
-  "boxes.our-boxes.oranges-box.description.2":
-    "estarà disponible fins que s'acabi la temporada.",
-
+    "Aquestes caixes estacionals estaran disponibles fins que s'acabi la seva temporada",
+     "boxes.our-boxes.oranges-box.description.2":
+     "Taronges de la millor qualitat! Imperfectes per fora i delicioses per dins. Rebutjades per calibre, cicatrius o per excedent de producció",
   // Farmers
   "farmers.header.title": "Agricultors",
   "farmers.header.description":

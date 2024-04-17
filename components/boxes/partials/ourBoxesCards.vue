@@ -12,7 +12,7 @@
           <span>{{ t("boxes.label.type") }}</span>
           <Dropdown
             :model-value="selectedBox.content"
-            :options="boxOptions"
+            :options="getSelectedBoxData"
             :pt="{
               input: 'font-solina-extended-medium text-[16px]',
               trigger: 'ml-auto',
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <p class="text-grey-secondary mb-4">{{ t("boxes.free-shipping") }}</p>
+      <p class="text-grey-secondary">{{ t("boxes.free-shipping") }}</p>
     </div>
     <Button
       class="w-full py-5 border-t-0 rounded-t-[0px] rounded-b-[20px] font-solina-extended-medium lg:mt-auto"
@@ -65,7 +65,8 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import type { BoxSelectedType } from "./ourBoxesCarousel.vue";
+import type { SelectedBox } from "../types/BoxSelected";
+
 const { t } = useI18n();
 
 const props = defineProps<{
@@ -73,11 +74,14 @@ const props = defineProps<{
     title: string;
     description: string;
     price: string;
-  };
-  selectedBox: BoxSelectedType;
+  },
+  selectedBox: SelectedBox,
+  boxOptions: Array<{ name: string; value: string }>,
 }>();
 
-
+const getSelectedBoxData = computed(() => {
+  return props.boxOptions.length > 0 ? props.boxOptions : TKBoxOptions;
+})
 
 const emit = defineEmits(["updateItemOnParent"]);
 
@@ -93,9 +97,7 @@ const updateUnitsOnParent = (newUnits: string) => {
   emit("updateItemOnParent", { ...props.selectedBox, units: newUnits });
 };
 
-//  TODO OPTIONS
-
-const boxOptions = [
+const TKBoxOptions = [
   {
     name: t("string.box.mixed"),
     value: "mixed",
@@ -109,6 +111,7 @@ const boxOptions = [
     value: "fruits",
   },
 ];
+
 
 const purchaseOptions = [
   {
