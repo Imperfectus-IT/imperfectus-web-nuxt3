@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="bg-gray-secondary flex flex-col text-beige-primary">
+  <div class="bg-green-tertiary flex flex-col text-beige-primary">
     <div
       id="request-box-form"
       class="mt-12 block self-center text-center md:w-[650px] md:pr-0 md:pl-0"
@@ -22,7 +22,7 @@
         </span>
       </div>
 
-      <HubSpotForm class="rounded-b-lg" form="b2b" />
+      <HubSpotForm class="rounded-md ml-4 mr-4 mb-12" form="b2b" />
     </div>
   </div>
 </template>

@@ -19,7 +19,7 @@ const images = [
 
 <template>
   <div
-    class="bg-gray-secondary text-beige-primary font-solina-extended-book md:flex md:items-center"
+    class="bg-green-tertiary text-beige-primary font-solina-extended-book md:flex md:items-center"
   >
     <div class="pt-6 pr-5 pb-6 pl-5">
       <SectionTitle

@@ -93,7 +93,7 @@ const pdfFilePath = computed(() => {
     </Container>
 
     <div
-      class="flex flex-col items-center pt-14 pr-4 pb-10 pl-4 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-2 md:gap-x-5 md:px-10 md:py-20"
+      class="flex flex-col items-center pt-14 pr-4 pb-10 pl-4 bg-green-tertiary text-green-quaternary md:grid md:grid-cols-2 md:gap-x-5 md:px-10 md:py-20"
     >
       <div class="flex justify-center md:row-start-1 md:row-end-3">
         <NuxtImg
