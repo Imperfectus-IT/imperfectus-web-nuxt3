@@ -11,9 +11,7 @@
       borderStyle: border ? 'solid' : '',
     }"
   >
-    <Container
-      class="relative flex flex-col items-center text-center content"
-    >
+    <Container class="relative flex flex-col items-center text-center content">
       <h1
         :class="['mt-3 font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px] whitespace-break-spaces ', titleClass]"
         >

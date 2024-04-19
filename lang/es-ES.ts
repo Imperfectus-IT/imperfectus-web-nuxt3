@@ -1651,6 +1651,14 @@ export default {
   "companies.frequency.biweekly": "Quincenal",
 
   "companies.size": "Elige el tamaño",
+  "companies.all-fruit": "Caja 100% de fruta",
+  "companies.offer":
+    "Ofrecemos tres tamaños de caja de fruta variada y de temporada, directa del campo a tu oficina:",
+  "companies.s": "Caja pequeña (6-7 kg)",
+  "companies.im": "Caja mediana (9-10 kg)",
+  "companies.xl": "Caja Grande (14-15 kg)",
+
+  "companies.healthy.title": "Tribu de empresas saludables",
 
   "companies.lgd.title": "LGD (LISMI)",
   "companies.lgd.description.1": "Podemos ayudarte a cumplir con la",
@@ -1852,18 +1860,23 @@ export default {
   // HomeSolutions
   "homeSolutions.title": "El planeta necesita soluciones como la nuestra", //
   // HomeTribe
-  'homeTribe.title': 'Algunos comentarios de la tribu...', //
-  'homeTribe.review.verified': 'Verificado',
+  "homeTribe.title": "Algunos comentarios de la tribu...", //
+  "homeTribe.review.verified": "Verificado",
 
   //HomeDonations
-  'homeDonations.title': 'Además...', //
-  'homeDonations.description': 'Colaboramos con varias ONGs para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.', //
-  'homeDonations.foundation1.title': 'Fundación Arrels Sant Ignasi',
-  'homeDonations.foundation1.description': 'La donación de tu pedido TALKUAL irá destinado a las personas que hagan uso de su Servicio de distribución de alimentos "La Botigueta" donde se facilita el acceso a derechos básicos como la alimentación a personas en situación de vulnerabilidad. Además, también serán distribuidos a las personas que se alojen en alguno de nuestros pisos de apoyo de la fundación. ',
-  'homeDonations.foundation2.title': 'Fundación MONA',
-  'homeDonations.foundation2.description': 'Los primates rescatados que viven en nuestro Centro de Rehabilitación necesitan a la semana más de media tonelada de fruta y verdura variada, frutos secos, legumbres... Con tu donación colaboras a alimentarlos y ofrecerles la dieta sana y equilibrada que necesitan y sumas para que tengan una nueva vida mejor.',
-  'homeDonations.foundation3.title': 'Asociación Somos de Segundas Oportunidades',
-  'homeDonations.foundation3.description': 'La donación de tu pedido TALKUAL irá destinado a los usuarios de los diferentes programas que posee la Asociación que ayudarán a la recuperación, transformación e inclusión social de las personas en estado de riesgo y vulnerabilidad.',
+  "homeDonations.title": "Además...", //
+  "homeDonations.description":
+    "Colaboramos con varias ONGs para donar nuestras cajas de frutas y verduras en los casos en que un suscriptor no pueda o no desee recibir la entrega en una semana determinada.", //
+  "homeDonations.foundation1.title": "Fundación Arrels Sant Ignasi",
+  "homeDonations.foundation1.description":
+    'La donación de tu pedido TALKUAL irá destinado a las personas que hagan uso de su Servicio de distribución de alimentos "La Botigueta" donde se facilita el acceso a derechos básicos como la alimentación a personas en situación de vulnerabilidad. Además, también serán distribuidos a las personas que se alojen en alguno de nuestros pisos de apoyo de la fundación. ',
+  "homeDonations.foundation2.title": "Fundación MONA",
+  "homeDonations.foundation2.description":
+    "Los primates rescatados que viven en nuestro Centro de Rehabilitación necesitan a la semana más de media tonelada de fruta y verdura variada, frutos secos, legumbres... Con tu donación colaboras a alimentarlos y ofrecerles la dieta sana y equilibrada que necesitan y sumas para que tengan una nueva vida mejor.",
+  "homeDonations.foundation3.title":
+    "Asociación Somos de Segundas Oportunidades",
+  "homeDonations.foundation3.description":
+    "La donación de tu pedido TALKUAL irá destinado a los usuarios de los diferentes programas que posee la Asociación que ayudarán a la recuperación, transformación e inclusión social de las personas en estado de riesgo y vulnerabilidad.",
 
   // HomeHelp
   "homeHelp.title": "ÚNETE A LA TRIBU Y AYUDA AL PLANETA", //
@@ -1881,22 +1894,22 @@ export default {
   "footerLegal.title": "Legal",
   "footerLegal.claim": "Naturalmente imperfectos",
 
-    // FooterLinks
-    "footerLinks.boxes": "Nuestras cajas",
-    "footerLinks.faq": "Cómo funciona",
-    "footerLinks.whatinbox": "Mantente al día",
-    "footerLinks.mission": "Sobre nosotros",
-    "footerLinks.companies": "Fruta para empresas",
-    "layout.navbar.boxes.boxes": "Cajas frutas y verduras",
-    "layout.navbar.boxes.special": "Cajas estacionales",
-    "footerLinks.offices": "Fruta para oficina",
-    "footerLinks.deliver": "Frutas y verduras a domicilio",
-    "footerLinks.benefits": "Beneficios y propiedades",
-    "footerLinks.contact": "Contacto",
-    "footerInfo.contact-here": "escríbenos aquí",
-    "footerInfo.phone": "Llámanos o mándanos un WhatsApp:",
-    "footerInfo.schedule.1": "Lunes 9h-19:30h",
-    "footerInfo.schedule.2": "Martes-Viernes 9h-21h",
+  // FooterLinks
+  "footerLinks.boxes": "Nuestras cajas",
+  "footerLinks.faq": "Cómo funciona",
+  "footerLinks.whatinbox": "Mantente al día",
+  "footerLinks.mission": "Sobre nosotros",
+  "footerLinks.companies": "Fruta para empresas",
+  "layout.navbar.boxes.boxes": "Cajas frutas y verduras",
+  "layout.navbar.boxes.special": "Cajas estacionales",
+  "footerLinks.offices": "Fruta para oficina",
+  "footerLinks.deliver": "Frutas y verduras a domicilio",
+  "footerLinks.benefits": "Beneficios y propiedades",
+  "footerLinks.contact": "Contacto",
+  "footerInfo.contact-here": "escríbenos aquí",
+  "footerInfo.phone": "Llámanos o mándanos un WhatsApp:",
+  "footerInfo.schedule.1": "Lunes 9h-19:30h",
+  "footerInfo.schedule.2": "Martes-Viernes 9h-21h",
 
   // FooterNewsletter
   "footerNewsletter.title": "NEWSLETTER",

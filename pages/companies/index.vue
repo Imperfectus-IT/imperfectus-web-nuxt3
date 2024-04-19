@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import Link from "~/components/share/Link.vue";
 import { useI18n } from "vue-i18n";
+import { useScroll } from "~/composables/scroll/scroll.ts";
+import CompanyAskYourBox from "~/components/companies/partials/CompanyAskYourBox.vue";
 
 defineI18nRoute({
   paths: {
@@ -9,6 +12,7 @@ defineI18nRoute({
 });
 
 const { t } = useI18n();
+const { scrollToById } = useScroll();
 const i18nHead = useLocaleHead();
 
 useHead({
@@ -89,7 +93,7 @@ const pdfFilePath = computed(() => {
     </Container>
 
     <div
-      class="flex flex-col items-center pt-14 pr-4 pb-10 pl-4 bg-gray-secondary text-green-quaternary md:grid md:grid-cols-2 md:gap-x-5 md:px-10 md:py-20"
+      class="flex flex-col items-center pt-14 pr-4 pb-10 pl-4 bg-green-tertiary text-green-quaternary md:grid md:grid-cols-2 md:gap-x-5 md:px-10 md:py-20"
     >
       <div class="flex justify-center md:row-start-1 md:row-end-3">
         <NuxtImg
@@ -141,7 +145,7 @@ const pdfFilePath = computed(() => {
     </div>
 
     <div
-      class="mt-0 mr-0 mb-0 ml-0 flex flex-col pt-6 pr-4 pb-6 pl-4 md:grid md:grid-cols-2 md:grid-rows-4 md:content-center md:gap-y-5 md:pl-[50px] md:pr-[50px] md:pt-20 md:pb-20"
+      class="mt-0 mr-0 mb-0 ml-0 flex flex-col pt-6 pr-4 pb-6 pl-4 md:pl-[50px] md:pr-[50px] md:grid md:grid-cols-2 md:grid-rows-4 md:content-center md:gap-y-5 md:pt-20 md:pb-20"
     >
       <SectionTitle
         :value="$t('companies.whoItWorks.title')"
@@ -185,6 +189,14 @@ const pdfFilePath = computed(() => {
       />
     </div>
 
+    <CompaniesOffer />
+
+    <HealthyCompanies />
+
+    <CompanyAskYourBox />
+
+    <!--
+Remove
     <div class="flex flex-col items-center pt-12 pb-12 bg-green-quaternary">
       <h2 class="text-center leading-none font-recoleta-regular text-[40px]">
         {{ $t("companies.knowMore") }}
@@ -204,35 +216,8 @@ const pdfFilePath = computed(() => {
           />
         </a>
       </h3>
-    </div>
+    </div>-->
 
-    <div
-      id="request-box-form"
-      class="mt-12 block self-center text-center md:w-[650px] md:pr-0 md:pl-0"
-    >
-      <div class="pl-[15px] pr-[15px]">
-        <h2
-          class="text-center leading-none font-recoleta-regular text-[40px] mb-[18px]"
-        >
-          {{ $t("pages.companies.form.title") }}
-        </h2>
-
-        <span class="mb-6 block text-center font-solina-extended-book">
-          {{ $t("pages.companies.form.description") }}
-        </span>
-
-        <span class="mb-6 block text-center font-solina-extended-book">
-          {{ $t("pages.companies.form.availableFor") }}
-        </span>
-
-        <small
-          class="block italic font-solina-extended-book text-[14px] mb-[20px]"
-        >
-          {{ $t("pages.companies.all-required") }}
-        </small>
-      </div>
-
-      <HubSpotForm form="b2b" />
-    </div>
+    <ScheduleTable />
   </div>
 </template>
