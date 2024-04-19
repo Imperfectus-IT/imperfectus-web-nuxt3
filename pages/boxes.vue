@@ -1,7 +1,7 @@
 <template>
   <Header
   class="h-[350px]"
-  title-class="mb-4"
+  title-class="mb-4 text-white-primary"
   description-class="px-3"
   :title="t('boxes.header.title')"
   :description="t('boxes.header.description')"

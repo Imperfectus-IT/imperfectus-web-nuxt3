@@ -21,8 +21,7 @@
         v-for="(description, index) in ourDescriptions"
         :key="index"
         :class="getTextClass(index)"
-        v-html="description"
-        />
+        >{{ description }}</p>
     </div>
 
     <NuxtImg
