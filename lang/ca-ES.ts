@@ -166,21 +166,90 @@ export default {
   "pages.legal.conditions.terms1": "Acepto els",
   "pages.legal.conditions.description":
     "Coneix les condicions d'ús del lloc web de TALKUAL, així com les condicions de compra dels productes.",
-  "pages.legal.notice.title": "Avís legal",
-  "pages.legal.notice.description":
-    "Informació legal sobre la web de TALKUAL. Coneix tota la informació sobre les nostres polítiques de protecció de dades aquí.",
+  pages: {
+    legal: {
+      notice: {
+        title: "Avís legal",
+        description: "Informació legal sobre la web de TALKUAL. Coneix tota la informació sobre les nostres polítiques de protecció de dades aquí.",
+        owner: {
+          title: "TITULAR DE LA WEB",
+          paragraph_1: "En compliment del deure d’informar recollit en article 10 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i del Comerç Electrònic, a continuació es reflecteixen les següents dades:",
+          items: {
+            item_1: "Empresa titular d'aquesta web: IMPERFECTUSBOX, S.L.",
+            item_2: "C.I.F.: B25859273",
+            item_3: "Domicili: AV. LLEIDA, 32 - 25250 - BELLPUIG (LLEIDA)",
+            item_4: "Inscrita en el Registre Mercantil de Lleida, Tom 1581, Foli 1, Fulla 32245, Inscripció 1, Data 30/12/2019",
+            item_5: "Teléfono: 722369247",
+            item_6: "Correu electrònic: {'info@talkualfoods.com'}",
+          }
+        },
+        object: {
+          title: "OBJECTE",
+          paragraph_1: "El responsable posa a disposició dels usuaris el present document amb el qual pretén donar compliment del que disposa la normativa vigent en matèria de protecció de dades, i en el context del nou marc normatiu establert en virtut del qual disposa el Reglament (UE) 2016/679 del Parlament Europeu i del Consell, de 27 d'abril de 2016, relatiu a la protecció de les persones físiques pel que fa al tractament de dades personals i a la lliure circulació d'aquestes dades (en endavant, el \"RGPD\"), i la normativa nacional Llei Orgànica de Protecció de Dades i Garantia dels Drets Digitals (en endavant, el \"LOPDGDD”), així com informar a tots els usuaris del lloc web respecte a quines són les condicions d'ús d'aquest.",
+          paragraph_2: "Tota persona que accedeixi a aquest lloc web assumeix el paper d'usuari, comprometent-se a l'observança i compliment rigorós de les disposicions aquí disposades, així com a qualsevol altra disposició legal aplicable.",
+          paragraph_3: "El Responsable es reserva el dret a modificar qualsevol tipus d'informació publicada al lloc web, sense que hi hagi obligació de preavisar o posar en coneixement dels usuaris aquestes obligacions, entenent-se com suficient amb la publicació al lloc web del Responsable.",
+        },
+        responsibility: {
+          title: "RESPONSABILITAT",
+          paragraph_1: "El Responsable s'eximeix de qualsevol tipus de responsabilitat derivada de la informació publicada al seu lloc web que hagi estat manipulada o introduïda per un tercer aliè a aquest.",
+        },
+        ip_address: {
+          title: "ADRECES IP",
+          paragraph_1: "Els servidors del lloc web detecten de manera automàtica l'adreça IP i el nom de domini utilitzats per l'usuari.",
+          paragraph_2: "Una adreça IP és un nombre assignat automàticament a un ordinador quan aquest es connecta a Internet. Tota aquesta informació és registrada en un fitxer d'activitat del servidor, que permet el posterior processament de les dades amb la finalitat d'obtenir mesures únicament estadístiques que permetin conèixer el nombre d'impressions de pàgines, el nombre de visites realitzades als servidors web, l'ordre de visites, el punt d'accés, etc.",
+        },
+        link_policies: {
+          title: "POLÍTICA DE ENLLAÇOS",
+          paragraph_1: "Des del present lloc web és possible que es redirigeixi a continguts de tercers llocs web. Atès que El Responsable no pot controlar sempre els continguts introduïts pels tercers en els seus llocs web, aquest no assumeix cap tipus de responsabilitat respecte a aquests continguts. En tot cas, El Responsable manifesta que procedirà a la retirada immediata de qualsevol contingut que pogués contravenir la legislació nacional o internacional, la moral o l'ordre públic, procedint a la retirada immediata de la redirecció a dit lloc web, posant en coneixement de les autoritats competents el contingut en qüestió.",
+          paragraph_2: "El Responsable no es fa responsable de la informació i continguts emmagatzemats, a títol enunciatiu però no limitatiu, en fòrums, xat, generadors de blocs, comentaris, xarxes socials o qualsevol altre mitjà que permeti a tercers publicar continguts de forma independent en la pàgina web del Responsable. No obstant això i en compliment del que disposa l'art. 11 i 16 de la LSSICE, El Responsable es posa a disposició de tots els usuaris, autoritats i forces de seguretat, col·laborant de forma activa en la retirada o si escau bloqueig de tots aquells continguts que puguin afectar o contravenir la legislació nacional, o internacional, drets de tercers o la moral i l'ordre públic. En cas que l'usuari consideri que existeix en el lloc web algun contingut que pogués ser susceptible d'aquesta classificació, es prega que ho faci saber de forma immediata a l'administrador del lloc web.",
+          paragraph_3: "Aquest lloc web ha estat revisat i provat perquè funcioni correctament. En principi, pot garantir-se el correcte funcionament els 365 dies de l'any, 24 hores al dia. No obstant això, El Responsable no descarta la possibilitat que existeixin certs errors de programació, o que esdevinguin causes de força major, catàstrofes naturals, vagues, o circumstàncies semblants que facin impossible l'accés a la pàgina web.",
+        },
+        data_privacy: {
+          title: "PROTECCIÓ DE DADES",
+          paragraph_1: "El Responsable compleix el que disposa el Reglament (UE) 2016/679 del Parlament Europeu i del Consell, de 27 d'abril de 2016, relatiu a la protecció de les persones físiques pel que fa al tractament de dades personals i a la lliure circulació d'aquestes dades (RGPD), i la normativa nacional Llei Orgànica de Protecció de Dades y Garantia dels Drets Digitals (LOPDGDD).",
+          paragraph_2: "Així mateix, El Responsable informa que donar compliment a la Llei 34/2002 d'11 de juliol, de Serveis de la Societat de la Informació i el Comerç Electrònic i li sol·licitarà el seu consentiment al tractament de les seves dades amb fins comercials en cada moment.",
+        },
+        intellectual_property: {
+          title: "PROPIETAT INTEL·LECTUAL I INDUSTRIAL",
+          paragraph_1: "El lloc web, inclòs el títol enunciatiu però no limitatiu la seva programació, edició, compilació i altres elements necessaris per al seu funcionament, els dissenys, logotips, text i/o gràfics són propietat del responsable o, si escau disposa de llicència o autorització expressa per part dels autors.",
+          paragraph_2: "Tots els continguts del lloc web es troben degudament protegits per la normativa de propietat intel·lectual i industrial.",
+          paragraph_3: "Independentment de la finalitat per a la qual fossin destinats, la reproducció total o parcial, ús, explotació, distribució i comercialització, requereix en tot cas de l'autorització escrita prèvia per part del responsable. Qualsevol ús no autoritzat prèviament per part del responsable serà considerat un incompliment greu dels drets de propietat intel·lectual o industrial de l'autor.",
+          paragraph_4: "Els dissenys, logotips, text i / o gràfics aliens al prestador i que poguessin aparèixer en el lloc web, pertanyen als seus respectius propietaris, sent ells mateixos responsables de qualsevol possible controvèrsia que pogués suscitar respecte a aquests. En tot cas, El Responsable compta amb l'autorització expressa i prèvia per part d'aquests.",
+          paragraph_5: "El responsable autoritza expressament a què tercers puguin redirigir directament als continguts concrets del lloc web, i en tot cas redirigir a la pàgina principal del lloc web del responsable.",
+          paragraph_6: "El Responsable reconeix a favor dels seus titulars els corresponents drets de propietat intel·lectual i industrial. Que aquesta propietat s’esmenti o aparegui al lloc web no implica que el Responsable hi tingui cap dret ni responsabilitat, ni tampoc que hi doni suport, la patrocini o la recomani.",
+          paragraph_7: "Per a totes aquelles imatges en què el programari de disseny ho permet, s'han inclòs les referències corresponents a l'autoria i llicència corresponent.",
+          paragraph_8: "Per realitzar qualsevol tipus d'observació respecte a possibles incompliments dels drets de propietat intel·lectual o industrial, així com sobre qualsevol dels continguts del lloc web, pot fer-ho per escrit o indicat a l’encapçalament.",
+        },
+        ssl: {
+          title: "SSL",
+          paragraph_1: "El responsable ha contractat per al seu lloc web un certificat SSL ( \"Secure Sockets Layer\").",
+          paragraph_2: "Un certificat SSL permet protegir tota la informació personal i confidencial que es pugui gestionar en un lloc web, independentment de la informació que es transmeti, com per exemple, des de qualsevol dels formularis de contacte de la web fins al servidor, o les dades introduïts per a la subscripció de butlletins de notícies o accessos a les àrees protegides, etc.",
+          paragraph_3: "La direcció del lloc web apareixerà en color verd, activant el protocol \"https\" que permet connexions segures des d'un servidor web al navegador de l'usuari.",
+        },
+      }
+    },
+    auth: {
+      login: {
+        title: "Iniciar sessió",
+        description: "Inicia sessió per continuar",
+        recovery: {
+          title: "Recuperar contrasenya",
+        },
+      },
+    },
+  },
 
   // Pages Terms and Conditions
     "pages.legal.terms.title": "CONDICIONS GENERALS DE VENDA",
   "pages.legal.terms.description1":
     "El convidem a revisar les condicions generals de compra que regulen el servei de",
-  "pages.legal.terms.description1.bold1": "IMPERFECTUSBOX, S.L.", 
+  "pages.legal.terms.description1.bold1": "IMPERFECTUSBOX, S.L.",
   "pages.legal.terms.description1continue": "inclòs en aquest lloc web",
   "pages.legal.terms.description1.bold2": "https://www.talkualfoods.com.",
-  
+
   "pages.legal.terms.description2":
   "Al sol·licitar l'adquisició d'una caixa, una subscripció o una targeta regal a través d'aquest lloc web, l'Usuari queda vinculat a aquestes Condicions.",
-  
+
   "pages.legal.terms.title1": "1. DISPOSICIONS PRELIMINARS",
   "pages.legal.terms.content1" : "Les presents condicions de venda són aplicables per a totes les vendes que hagin estat realitzades a través del lloc web",
   "pages.legal.terms.content1.bold": "https://www.talkualfoods.com.",
@@ -191,17 +260,17 @@ export default {
   "pages.legal.terms.content5": "Podem actualitzar les presents condicions de venda, així com l'Avís Legal / Política de Privacitat en qualsevol moment. Vostè podrà consultar i imprimir la versió actualitzada de tots dos textos prement els vincles “Condicions generals de venda”,",
   "pages.legal.terms.content5.link1": "“Avís Legal”",
   "pages.legal.terms.content5continue": "i",
-  "pages.legal.terms.content5.link2": "“Política de Privacitat”",  
+  "pages.legal.terms.content5.link2": "“Política de Privacitat”",
   "pages.legal.terms.subtitle1.1": "Obligacions de l'usuari",
   "pages.legal.terms.content6": "Com a usuari està obligat a comunicar a TALKUAL totes les dades necessàries per a l'accés i utilització dels serveis d'aquest lloc web. Aquests hauran de ser veraços i actuals i consent que podem fer ús d'ells per a posar-nos en contacte amb vostè si és necessari.",
   "pages.legal.terms.content7":"És indispensable que faciliti tota la informació que cataloguem com a obligatòria, ja que, de no fer-ho, no podrem cursar la seva comanda. No serem responsables en cap cas de possibles retards o errors en el lliurament a conseqüència de l'error o omissió de dades.",
   "pages.legal.terms.content8": "L'usuari haurà de fer un ús adequat dels serveis inclosos al lloc web, sempre de conformitat amb l'ordenament jurídic i no durà a terme cap activitat que dificulti o interfereixi el seu funcionament.",
- 
+
   "pages.legal.terms.subtitle1.2": "Mesures de seguretat",
   "pages.legal.terms.content9": "Establirem tots els mecanismes raonables al nostre abast per a garantir que les seves dades personals es conserven amb seguretat en tot moment.",
   "pages.legal.terms.content10": "Així mateix, vostè haurà d'adoptar les mesures de seguretat necessàries, tant personals com materials, per a mantenir la confidencialitat del seu nom d'usuari i contrasenya i notificar-nos immediatament la pèrdua, extraviament, sostracció, robatori o accés il·legítim del seu nom d'usuari i contrasenya, així com el seu coneixement per terceres persones.",
   "pages.legal.terms.title2": "2.CONDICIONS APLICABLES A LES COMANDES",
-  
+
   "pages.legal.terms.subtitle2.1":"Identificació",
   "pages.legal.terms.content11": "En compliment de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic, l'informa que tots els productes que s'ofereixen en aquest lloc web són venuts directament per:",
   "pages.legal.terms.content12": "Denominació social: Imperfectusbox, S.L.",
@@ -215,12 +284,12 @@ export default {
   "pages.legal.terms.content19.mailto": "{'info@talkualfoods.com'}",
   "pages.legal.terms.content20": "Direcció postal: Av. Lleida, 32 - 25250 Bellpuig (Lleida).",
   "pages.legal.terms.content21": "Totes les notificacions i comunicacions entre els usuaris de la web i TALKUAL es considerarán eficaces, quan es realitzin a través de qualsevol mitjà dels detallats anteriorment.",
-  
+
   "pages.legal.terms.subtitle2.3": "Productes y serveis",
   "pages.legal.terms.content22": "TALKUAL és un servei online de caixes a domicili, amb productes tal qual, directes del camp. Cada caixa és diferent, amb fruites i verdures de temporada. ",
   "pages.legal.terms.content23": "Els productes de les caixes provenen d'una agricultura respectuosa amb el medi ambient, per a ajudar al màxim als agricultors amb els seus excedents de fruites i verdures.",
   "pages.legal.terms.content24": "TALKUAL ofereix tres opcions de compra segons les teves necessitats:",
-  
+
   "pages.legal.terms.list.title1": "COMPRA ÚNICA",
   "pages.legal.terms.list1.item1": "Ideal pels qui no ens coneixen i volen provar la qualitat del producte",
   "pages.legal.terms.list1.item2": "Recepta inclosa",
@@ -260,7 +329,7 @@ export default {
   "pages.legal.terms.content37": "Caixa petita - Entre 6-7 kg de fruita i/o verdura de temporada. Ideal per a 1-2 persones.",
   "pages.legal.terms.content38": "Caixa mitjana - Entre 9-10 kg de fruita i/o verdura de temporada. Ideal per a 2-3 persones.",
   "pages.legal.terms.content39": "Caixa gran - Entre 14-15 kg de fruita i/o verdura de temporada. Ideal per a 4 o +5 persones.",
-  
+
   "pages.legal.terms.subtitle2.6": "Tipus de contratació",
   "pages.legal.terms.content40": "1. Compra única - Compra d'una caixa puntual.",
   "pages.legal.terms.content41": "1. Subscripcions",
@@ -286,19 +355,19 @@ export default {
   "pages.legal.terms.content51": "Tots els preus es mostren en Euros (€) i inclouen els impostos, tret que per exigència legal, especialment quant a l'IVA, s'assenyali i apliqui qüestió diferent.",
   "pages.legal.terms.content52": "TALKUAL es reserva el dret a modificar els seus preus en qualsevol moment, però els productes es facturaran sobre la base de les tarifes en vigor en el moment del registre de les comandes (a reserva de la disponibilitat que hi hagi del producte).",
   "pages.legal.terms.content53": "TALKUAL podrà canviar el preu de les subscripcions amb dues setmanes d'antelació i sempre avisant al client via l'email proporcionat en el moment de la subscripció.",
-  
+
   "pages.legal.terms.subtitle2.9": "Forma de pago",
   "pages.legal.terms.content54": "El pagament de les compres s'ha de fer amb targeta bancària.",
   "pages.legal.terms.content55": "Les targetes bancàries acceptades són: Visa, Mastercard i American Express. L'import de la comanda es carregarà a la seva targeta, de manera que haurà d'indicar-nos el número, la data de caducitat així com el codi de seguretat CW2 (al revers de la seva targeta). En cas que la seva targeta estigui escaritzada, se li demanaran els codis de seguretat pertinents.",
   "pages.legal.terms.content56": "Aquestes dades no seran guardades o manipulades per nosaltres, sinó seran registrades directament a la passarel·la de pagaments de l'entitat financera corresponent. El càrrec es durà a terme en temps real a través d'aquesta passarel·la de pagament. En cas que el càrrec no pugui dur-se a terme finalment (per qualsevol causa), la comanda quedarà anul·lada automàticament.",
-  
+
   "pages.legal.terms.subtitle2.10": "Cobertura de l'oferta",
   "pages.legal.terms.content57": "El territori on es realitzen entregues físiques dels productes és Espanya Península.",
   "pages.legal.terms.content58": "En aquests moments encara no efectuem lliuraments de comandes a les Illes Balears, Ceuta, Melilla i les Illes Canàries.",
   "pages.legal.terms.content59": "Si un usuari estigués interessat a rebre les nostres caixes en una altra zona aconsellem que contactin amb nosaltres a través del formulari de contacte o enviant un correu a ",
   "pages.legal.terms.content59.mailto":"{ 'info@talkualfoods.com' } ",
   "pages.legal.terms.content59.continue": "i l'informarem sobre aquest tema.",
-  
+
   "pages.legal.terms.subtitle2.11": "Lliurament",
   "pages.legal.terms.content60": "Una vegada rebut el pagament, es prepararà la seva comanda.",
   "pages.legal.terms.content61": "El día de entrega lo elige el usuario, siempre basándose en la disponibilidad que se muestra en la web. El usuario puede definir sus preferencias horarias y de entrega en el proceso de compra. Las empresas repartidoras contratadas se van a intentar adaptar, pero no pueden garantizar la franja horaria específica.",
@@ -347,14 +416,14 @@ export default {
   "pages.legal.terms.content84": "i vols cancel·lar o canviar qualsevol detall d'enviament o tipus de caixa, assegura't de comunicar-ho a ",
   "pages.legal.terms.content84.mailto": "{'info@talkualfoods.com'} ",
   "pages.legal.terms.content84.continue": "amb un mínim de dos dies hàbils abans del lliurament de la teva comanda.",
-  
+
   "pages.legal.terms.subtitle2.18": "Pausar entregues",
   "pages.legal.terms.list7.item1": "1. Inicia sessió a la página principal",
   "pages.legal.terms.list7.item2": "2. Accedeix al teu compte",
   "pages.legal.terms.list7.item3": "3. El meu compte - Fes clic en “Subscripcions” - Pròxima entrega - Gestionar propera entrega",
   "pages.legal.terms.list7.item4": "4. Podràs veure tots els lliuraments actius i els seus detalls i les podràs cancel·lar.",
-  
-  
+
+
   "pages.legal.terms.subtitle2.19": "Devolucions - Drets de desistiment",
   "pages.legal.terms.content85": "Conforme a la normativa vigent de consum, ",
   "pages.legal.terms.content85.bold": "l dret de desistiment NO aplica a la contractació de béns que puguin deteriorar-se o caducar amb rapidesa (productes que siguin peribles), ",
@@ -1626,21 +1695,6 @@ export default {
   // OrderItemExclusions
   "orderItemExclusions.manage": "Gestiona les exclusions",
   "orderItemExclusions.done": "Fet!",
-
-  // login
-
-  pages: {
-    auth: {
-      login: {
-        title: "Iniciar sessió",
-        description: "Inicia sessió per continuar",
-      },
-    },
-  },
-
-  "pages.auth.login.title": "Iniciar sessió",
-  "pages.auth.login.description": "Inicia sessió per continuar",
-  "pages.auth.recovery.title": "Recuperar contrasenya",
 
   // companies
   "companies.title": " EMPRESES",

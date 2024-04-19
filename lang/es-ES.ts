@@ -166,20 +166,89 @@ export default {
   "pages.legal.conditions.title": "Términos y condiciones",
   "pages.legal.conditions.description":
     "Conoce las condiciones de uso del sitio web de TALKUAL, así como las condiciones de compra de productos.",
-  "pages.legal.notice.title": "Aviso legal",
-  "pages.legal.notice.description":
-    "Información legal sobre la web de TALKUAL. Conoce toda la información sobre nuestras políticas de protección de datos aquí.",
+    pages: {
+      legal: {
+            notice: {
+                title: "Aviso legal",
+                description: "Información legal sobre la web de TALKUAL. Conoce toda la información sobre nuestras políticas de protección de datos aquí.",
+                owner: {
+                    title: "TITULAR DE LA WEB",
+                    paragraph_1: "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los siguientes datos:",
+                    items: {
+                        item_1: "Empresa titular de esta web: IMPERFECTUSBOX, S.L.",
+                        item_2: "C.I.F.: B25859273",
+                        item_3: "Domicilio: AV. LLEIDA, 32 - 25250 - BELLPUIG",
+                        item_4: "Inscrita en el Registro Mercantil de Lérida en el Tomo 1581, Folio 1, Hoja 32245, Inscripción 1, Fecha 30/12/2019.",
+                        item_5: "Teléfono: 722369247",
+                        item_6: "Correo electrónico: {'info@talkualfoods.com'}",
+                    }
+                },
+                object: {
+                    title: "OBJETO",
+                    paragraph_1: "El Responsable pone a disposición de los usuarios el presente documento con el que pretende dar cumplimiento de lo dispuesto por la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico y las normativas vigentes en materia de Protección de Datos, así como informar a todos los usuarios del sitio web respecto a cuáles son las condiciones de uso del mismo.",
+                    paragraph_2: "Toda persona que acceda a este sitio web asume el papel de usuario, comprometiéndose a la observancia y cumplimiento riguroso de las disposiciones aquí dispuestas, así como a cualquier otra disposición legal que fuera de aplicación.",
+                    paragraph_3: "El Responsable se reserva el derecho a modificar cualquier tipo de información que pudiera aparecer en el sitio web, sin que exista obligación de preavisar o poner en conocimiento de los usuarios dichas obligaciones, entendiéndose como suficiente con la publicación en el sitio web del Responsable.",
+                },
+                responsibility: {
+                    title: "RESPONSABILIDAD",
+                    paragraph_1: "El Responsable se exime de cualquier tipo de responsabilidad derivada de la información publicada en su sitio web, siempre que esta información haya sido manipulada o introducida por un tercero ajeno al mismo.",
+                },
+                ip_address: {
+                    title: "DIRECCIONES IP",
+                    paragraph_1: "Los servidores del sitio web podrán detectar de manera automática la dirección IP y el nombre de dominio utilizados por el usuario.",
+                    paragraph_2: "Una dirección IP es un número asignado automáticamente a un ordenador cuando éste se conecta a Internet. Toda esta información es registrada en un fichero de actividad del servidor, que permite el posterior procesamiento de los datos con el fin de obtener mediciones únicamente estadísticas que permitan conocer el número de impresiones de páginas, el número de visitas realizadas a los servidores web, el orden de visitas, el punto de acceso, etc.",
+                },
+                link_policies: {
+                    title: "POLÍTICA DE ENLACES",
+                    paragraph_1: "Desde el presente sitio web es posible que se redirija a contenidos de terceros sitios web. Dado que El Responsable no puede controlar siempre los contenidos introducidos por los terceros en sus sitios web, éste no asume ningún tipo de responsabilidad respecto a dichos contenidos. En todo caso, El Responsable manifiesta que procederá a la retirada inmediata de cualquier contenido que pudiera contravenir la legislación nacional o internacional, la moral o el orden público, procediendo a la retirada inmediata de la redirección a dicho sitio web, poniendo en conocimiento de las autoridades competentes el contenido en cuestión.",
+                    paragraph_2: "El Responsable no se hace responsable de la información y contenidos almacenados, a título enunciativo, pero no limitativo, en foros, chats, generadores de blogs, comentarios, redes sociales o cualquier otro medio que permita a terceros publicar contenidos de forma independiente en la página web del Responsable. No obstante y en cumplimiento de lo dispuesto en el art. 11 y 16 de la LSSICE, El Responsable se pone a disposición de todos los usuarios, autoridades y fuerzas de seguridad, colaborando de forma activa en la retirada o en su caso bloqueo de todos aquellos contenidos que pudieran afectar o contravenir la legislación nacional, o internacional, derechos de terceros o la moral y el orden público. En caso de que el usuario considere que existe en el sitio web algún contenido que pudiera ser susceptible de esta clasificación, se ruega lo notifique de forma inmediata al administrador del sitio web.",
+                    paragraph_3: "Este sitio web ha sido revisado y probado para que funcione correctamente. En principio, puede garantizarse el correcto funcionamiento los 365 días del año, 24 horas al día. No obstante, El Responsable no descarta la posibilidad de que existan ciertos errores de programación, o que acontezcan causas de fuerza mayor, catástrofes naturales, huelgas, o circunstancias semejantes que hagan imposible el acceso a la página web.",
+                },
+                data_privacy: {
+                    title: "PROTECCIÓN DE DATOS",
+                    paragraph_1: "El Responsable se encuentra profundamente comprometido en el cumplimiento de lo dispuesto por la normativa vigente en materia de protección de datos, y en el contexto del nuevo marco normativo establecido en virtud de lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos (en adelante, el “RGPD”), y la normativa Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (en adelante, el “LOPDGDD”).",
+                    paragraph_2: "Asimismo, El Responsable informa que da cumplimiento a la Ley 34/2002 de 11 de julio, de Servicios de la Sociedad de la Información y el Comercio Electrónico y le solicitará su consentimiento al tratamiento de sus datos con fines comerciales en cada momento.",
+                },
+                intellectual_property: {
+                    title: "PROPIEDAD INTELECTUAL E INDUSTRIAL",
+                    paragraph_1: "El sitio web, incluyendo a título enunciativo pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, texto y/o gráficos son propiedad del Responsable o en su caso dispone de licencia o autorización expresa por parte de los autores.",
+                    paragraph_2: "Todos los contenidos del sitio web se encuentran debidamente protegidos por la normativa de propiedad intelectual e industrial.",
+                    paragraph_3: "Independientemente de la finalidad para la que fueran destinados, la reproducción total o parcial, uso, explotación, distribución y comercialización, requiere en todo caso de la autorización escrita previa por parte del Responsable. Cualquier uso no autorizado previamente por parte del Responsable será considerado un incumplimiento grave de los derechos de propiedad intelectual o industrial del autor.",
+                    paragraph_4: "Los diseños, logotipos, texto y/o gráficos ajenos al prestador y que pudieran aparecer en el sitio web, pertenecen a sus respectivos propietarios, siendo ellos mismos responsables de cualquier posible controversia que pudiera suscitarse respecto a los mismos. En todo caso, El Responsable cuenta con la autorización expresa y previa por parte de los mismos.",
+                    paragraph_5: "El Responsable autoriza expresamente a que terceros puedan redirigir directamente a los contenidos concretos del sitio web, debiendo en todo caso redirigir a la página principal del sitio web del Responsable.",
+                    paragraph_6: "El Responsable reconoce a favor de sus titulares los correspondientes derechos de propiedad intelectual e industrial, no implicando su sola mención o aparición en el sitio web la existencia de derechos o responsabilidad alguna del Responsable sobre los mismos, como tampoco respaldo, patrocinio o recomendación por su parte.",
+                    paragraph_7: "Para todas aquellas imágenes en las que el software de diseño lo permite, se han incluido las referencias correspondientes a la autoría y licencia correspondiente.",
+                    paragraph_8: "Para realizar cualquier tipo de observación respecto a posibles incumplimientos de los derechos de propiedad intelectual o industrial, así como sobre cualquiera de los contenidos del sitio web, puede hacerlo por escrito o correo electrónico indicado en el encabezamiento.",
+                },
+              ssl: {
+                title: "SSL",
+                paragraph_1: "El Responsable ha contratado para su sitio web un certificado SSL (Secure Sockets Layer).",
+                paragraph_2: "Un certificado SSL permite proteger toda la información personal y confidencial que se pueda manejar en un sitio web, independientemente de la información que se esté transmitiendo, como por ejemplo, desde cualquiera de los formularios de contacto del sitio web hasta el servidor, o los datos introducidos para la suscripción de boletines de noticias o accesos a las áreas protegidas, etc.",
+                paragraph_3: "La dirección del sitio web aparecerá en color verde, activándose el protocolo “https” que permite conexiones seguras desde un servidor web al navegador del usuario.",
+              },
+            }
+        },
+      auth: {
+        login: {
+          title: "Iniciar sesión",
+          description: "Iniciar sesión para continuar",
+          recovery: {
+            title: "Recuperar contraseña",
+          },
+        },
+      },
+    },
 
   //Terms and conditions
   "pages.legal.terms.title": "CONDICIONES GENERALES DE VENTA",
   "pages.legal.terms.description1":
     "Le invitamos a revisar las condiciones generales de compra que regulan el servicio de ",
-  "pages.legal.terms.description1.bold1": "IMPERFECTUSBOX, S.L.", 
+  "pages.legal.terms.description1.bold1": "IMPERFECTUSBOX, S.L.",
   "pages.legal.terms.description1continue": "incluido en este sitio web",
   "pages.legal.terms.description1.bold2": "https://www.talkualfoods.com.",
   "pages.legal.terms.description2":
   "Al solicitar la adquisición de una caja, una suscripción o una tarjeta regalo a través de este sitio web, el Usuario queda vinculado a estas Condiciones.",
-  
+
   "pages.legal.terms.title1": "1. DISPOSICIONES PRELIMINARES",
   "pages.legal.terms.content1" : "Las presentes condiciones de venta son de aplicación para todas las ventas que hayan sido realizadas a través del sitio web",
   "pages.legal.terms.content1.bold": "https://www.talkualfoods.com.",
@@ -190,7 +259,7 @@ export default {
   "pages.legal.terms.content5": "Podemos actualizar las presentes condiciones de venta, así como el Aviso Legal / Política de Privacidad en cualquier momento. Usted podrá consultar e imprimir la versión actualizada de ambos textos pulsando los vínculos “Condiciones generales de venta”,",
   "pages.legal.terms.content5.link1": "“Aviso Legal”",
   "pages.legal.terms.content5continue": "y",
-  "pages.legal.terms.content5.link2": "“Política de Privacidad”",  
+  "pages.legal.terms.content5.link2": "“Política de Privacidad”",
   "pages.legal.terms.subtitle1.1": "Obligaciones del usuario",
   "pages.legal.terms.content6": "Como usuario está obligado a comunicar a TALKUAL todos los datos necesarios para el acceso y utilización de los servicios de este sitio web. Estos deberán ser veraces y actuales y consiente que podemos hacer uso de ellos para ponern0os en contacto con usted si es necesario.",
   "pages.legal.terms.content7":"Es indispensable que facilite toda la información que catalogamos como obligatoria, ya que, de no hacerlo, no podremos cursar su pedido. No seremos responsables en ningún caso de posibles retrasos o fallos en la entrega como consecuencia del error u omisión de datos.",
@@ -254,7 +323,7 @@ export default {
   "pages.legal.terms.content37": "Caja pequeña - Entre 6-7 kg de fruta y/o verdura de temporada. Ideal para 1-2 personas.",
   "pages.legal.terms.content38": "Caja mediana - Entre 9-10 kg de fruta y/o verdura de temporada. Ideal para 2-3 personas.",
   "pages.legal.terms.content39": "Caja grande - Entre 14-15 kg de fruta y/o verdura de temporada. Ideal para 4 o +5 personas.",
-  
+
   "pages.legal.terms.subtitle2.6": "Tipos de contratación",
   "pages.legal.terms.content40": "1. Compra única - Compra de una caja puntual.",
   "pages.legal.terms.content41": "1. Suscripciones",
@@ -280,19 +349,19 @@ export default {
   "pages.legal.terms.content51": "Todos los precios se muestran en Euros (€) e incluyen los impuestos, salvo que por exigencia legal, especialmente en lo relativo al IVA, se señale y aplique cuestión distinta.",
   "pages.legal.terms.content52": "TALKUAL se reserva el derecho a modificar sus precios en cualquier momento, pero los productos se facturarán sobre la base de las tarifas en vigor en el momento del registro de los pedidos (a reserva de la disponibilidad que haya del producto).",
   "pages.legal.terms.content53": "TALKUAL va a poder cambiar el precio de las suscripciones con dos semanas de antelación y siempre avisando al cliente vía el email proporcionado en el momento de la suscripción.",
-  
+
   "pages.legal.terms.subtitle2.9": "Forma de pago",
   "pages.legal.terms.content54": "El pago de las compras se debe efectuar con tarjeta bancaria. ",
   "pages.legal.terms.content55": "Las tarjetas bancarias aceptadas son: Visa, MasterCard y American Express. El importe del pedido se cargará en su tarjeta, de forma que deberá indicarnos el número, la fecha de caducidad así como el código de seguridad CW2 (en el reverso de su tarjeta). En el caso de que su tarjeta esté escarizada, se le pedirán los códigos de seguridad pertinentes.",
   "pages.legal.terms.content56": "Estos datos no serán guardados o manipulados por nosotros, sino serán registrados directamente en la pasarela de pagos de la entidad financiera correspondiente. El cargo se llevará a cabo en tiempo real a través de esta pasarela de pago. En caso de que el cargo no pueda llevarse a cabo finalmente (por cualquier causa), el pedido quedará anulado automáticamente.",
-  
+
   "pages.legal.terms.subtitle2.10": "Cobertura de la oferta",
   "pages.legal.terms.content57": "El territorio en el que se realizan entregas físicas de los productos es España Península.",
   "pages.legal.terms.content58": "En estos momentos todavía no efectuamos entregas de pedidos en las Islas Baleares, Ceuta, Melilla y las Islas Canarias.",
   "pages.legal.terms.content59": "Si un usuario estuviera interesado en recibir nuestras cajas en otra zona aconsejamos que contacten con nosotros a través del formulario de contacto o enviando un correo a ",
   "pages.legal.terms.content59.mailto":"{ 'info@talkualfoods.com' } ",
   "pages.legal.terms.content59.continue": "y le informaremos al respecto.",
-  
+
   "pages.legal.terms.subtitle2.11": "Entrega",
   "pages.legal.terms.content60": "Una vez recibido el pago, se preparará su pedido. ",
   "pages.legal.terms.content61": "El día de entrega lo elige el usuario, siempre basándose en la disponibilidad que se muestra en la web. El usuario puede definir sus preferencias horarias y de entrega en el proceso de compra. Las empresas repartidoras contratadas se van a intentar adaptar, pero no pueden garantizar la franja horaria específica.",
@@ -341,14 +410,14 @@ export default {
   "pages.legal.terms.content84": "Si quieres cancelar o cambiar cualquier detalle del pedido ya procesado, asegúrate de comunicarlo a ",
   "pages.legal.terms.content84.mailto": "{'info@talkualfoods.com'} ",
   "pages.legal.terms.content84.continue": "con un mínimo de dos días hábiles antes de la entrega de tu pedido.",
-  
+
   "pages.legal.terms.subtitle2.18": "Pausar entregas",
   "pages.legal.terms.list7.item1": "1. Inicia sesión en la página principal",
   "pages.legal.terms.list7.item2": "2. Accede a tu cuenta.",
   "pages.legal.terms.list7.item3": "3. Mi cuenta - Haz clic en “Suscripciones” - Próxima entrega - Gestionar próximas entrega",
   "pages.legal.terms.list7.item4": "4. Podrás ver todas las entregas activas y sus detalles y las podrás cancelar.",
-  
-  
+
+
   "pages.legal.terms.subtitle2.19": "Devoluciones - Derecho de desistimiento",
   "pages.legal.terms.content85": "Conforme a la normativa vigente de consumo, ",
   "pages.legal.terms.content85.bold": "el derecho de desistimiento NO aplica a la contratación de bienes que puedan deteriorarse o caducar con rapidez (productos que sean perecederos), ",
@@ -1614,11 +1683,6 @@ export default {
   "orderItemExclusions.manage": "Gestiona las exclusiones",
   "orderItemExclusions.done": "Hecho!",
 
-  // login
-  "pages.auth.login.title": "Iniciar sesión",
-  "pages.auth.login.description": "Iniciar sesión para continuar",
-  "pages.auth.recovery.title": "Recuperar contraseña",
-
   // companies
   "companies.title": "EMPRESAS",
   "companies.mission": "Misión",
@@ -2441,6 +2505,4 @@ export default {
   "Companies.9.alt": "Zumos TALKUAL",
   "ReferAFriend.1.alt": "Ilustración de la tribu TALKUAL",
   "general.error": "Algo ha salido mal, inténtalo de nuevo más tarde",
-
-
 };
