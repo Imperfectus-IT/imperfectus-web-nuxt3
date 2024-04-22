@@ -35,6 +35,7 @@ export default defineNuxtConfig({
         baseUrl: process.env.BASE_URL,
         STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
         public: {
+            baseUrl: process.env.BASE_URL,
             STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
         },
     },
