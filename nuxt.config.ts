@@ -106,7 +106,8 @@ export default defineNuxtConfig({
                 "Skeleton",
                 "Toolbar",
                 "Rating",
-                'Fieldset'
+                'Fieldset',
+                'DataTable'
       ],
         },
     },

@@ -466,6 +466,382 @@ export default {
   "pages.legal.terms.content114": "(*)Firma del consumidor/usuario (solo si el presente formulario se presenta en papel): ",
   "pages.legal.terms.content115": "(*) Campos obligatorios.",
 
+  "pages.cookies.title": 'Hola',
+
+cookies: {
+  header: "Política de cookies",
+  introduction: 'Este sitio web utiliza cookies propias y de terceros para ofrecerle una mejor experiencia y servicio. Al navegar o utilizar nuestros servicios el usuario acepta el uso que hacemos de las cookies. Sin embargo, el usuario tiene la opción de impedir la generación de cookies y la eliminación de las mismas.',
+  what: {
+    title: '¿QUÉ ES UNA COOKIE?',
+    description: 'Una cookie es un pequeño fragmento de texto que los sitios Web envían al navegador y que se almacenan en el terminal del usuario, el cual puede ser un ordenador personal, un teléfono móvil, tablet, etc. Estos archivos permiten que el sitio Web recuerde información sobre su visita, como el idioma y las opciones preferidas, lo que puede facilitar su próxima visita y hacer que el sitio resulte más útil al personalizar su contenido. Las cookies desempeñan un papel muy importante, al mejorar la experiencia de uso de la Web.'
+  },
+  types: {
+    title: 'TIPOS DE COOKIES',
+    who: {
+      title: 'Según la entidad que las gestione, las cookies pueden ser:',
+      item_1: 'Cookies propias: Son aquellas que se envían al equipo terminal del interesado desde un equipo o dominio gestionado por el propio editor y desde el que se presta el servicio solicitado por el usuario.',
+      item_2: 'Cookies de tercero: Son aquellas que se envían al equipo terminal del usuario desde un equipo o dominio que no es gestionado por el editor, sino por otra entidad que trata los datos obtenidos a través de las cookies.'
+    },
+    time: {
+      title: 'Según el plazo de tiempo que permanecen activadas:',
+      item_1: 'Cookies de sesión : Son un tipo de cookies diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.', 
+      item_2: 'Cookies persistentes: Son un tipo de cookies en el que los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un durationo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.'
+    },
+    what: {
+      title: 'Según la finalidad para la que se traten los datos obtenidos a través de las cookies, la web puede utilizar:',
+      item_1: 'Cookies técnicas - Son aquellas que permiten al usuario la navegación a través de la página web o aplicación y la utilización de las diferentes opciones o servicios que en ella existen. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión, acceder a las partes web de acceso restringido, recordar los elementos que integran un pedido, realizar la solicitud de inscripción o participación en un evento, utilizar elementos de seguridad durante la navegación y almacenar contenidos para la difusión de videos o sonido.', 
+      item_2: 'Cookies de personalización - Son aquéllas que permiten al usuario acceder al servicio con algunas características de carácter general predefinidas en su terminal o que el propio usuario defina. Por ejemplo, el idioma, el tipo de navegador a través del cual accede al servicio, el diseño de contenidos seleccionado, geolocalización del terminal y la configuración regional desde donde se accede al servicio.',
+      item_3: 'Cookies publicitarias - Son aquellas que permiten la gestión eficaz de los espacios publicitarios que se han incluido en la página web o aplicación desde la que se presta el servicio. Permiten adecuar el contenido de la publicidad para que esta sea relevante para el usuario y para evitar mostrar anuncios que el usuario ya haya visto.',
+      item_4: 'Cookies de análisis estadístico - Son aquellas que permiten realizar el seguimiento y análisis del comportamiento de los usuarios en los sitios web. La información recogida mediante este tipo de cookies se utiliza en la medición de la actividad de los sitios web, aplicación o plataforma y para la elaboración de perfiles de navegación de los usuarios de dichos sitios, con el fin de introducir mejoras en el servicio en función de los datos de uso que hacen los usuarios.',
+    },
+    paragraph_1: 'Las cookies utilizadas en este sitio web las puede ver en el panel de configuración y ajustar su configuración en cualquier momento.',
+    paragraph_2: 'La identificación de quién utiliza las cookies, el tipo de cookies utilizadas y demás detalles, se indica a continuación:',
+    columns: {
+      column_1: 'Cookies',
+      column_2: 'Entidad',
+      column_3: 'Propóstio',
+      column_4: 'Período de conservación'
+    },
+    own_cookies: {
+      title: 'Cookies propias',
+      item_1: {
+        name: 'i18n_redirected',
+        purpose: 'Permite al usuario ser redirigido al idioma de preferencia cada vez que accede a la web',
+        duration: '1 año'
+      },
+      item_2: {
+        name: 'strapi.sid',
+        purpose: 'Permite a los usuarios acceder a sus pedidos y a su cuenta de usuario',
+        duration: 'Sesión'
+      },
+      item_3: {
+        name: 'strapi.sid.sig',
+        purpose: 'Permite a los usuarios acceder a sus pedidos y a su cuenta de usuario',
+        duration: 'Sesión'
+      },
+      item_4: {
+        name: 'strapi_jwt',
+        purpose: 'Permite a los usuarios acceder a sus pedidos y a su cuenta de usuario',
+        duration: 'Sesión'
+      }
+    },
+    needed_cookies: {
+      title: 'Cookies necesarias',
+      item_1: {
+        name: 'AEC',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_2: {
+        name: 'APISID',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_3: {
+        name: 'HSID',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_4: {
+        name: 'NID',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_5: {
+        name: 'OGP',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_6: {
+        name: 'OGPC',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_7: {
+        name: 'OTZ',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_8: {
+        name: 'SAPISID',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_9: {
+        name: 'SEARCH_SAMESITE',
+        entity: 'Google',
+        purpose: 'Esta cookie se utiliza para el correcto envío de datos a Google',
+        duration: '5 meses'
+      },
+      item_10: {
+        name: 'SID',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_11: {
+        name: 'SIDCC',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_12: {
+        name: 'SSID',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_13: {
+        name: 'UULE',
+        entity: 'Google',
+        purpose: 'Google las utiliza para almacenar las preferencias y la información del usuario durante la visualización de páginas que contienen Google Maps.',
+        duration: '2 años'
+      },
+      item_14: {
+        name: '__cf_bm',
+        entity: 'Hubspot',
+        purpose: 'Esta cookie la establece el proveedor de CDN de HubSpot y es una cookie necesaria para la protección de bots',
+        duration: '30 minutos'
+      },
+      item_15: {
+        name: '_abck',
+        entity: 'Tiktok',
+        purpose: 'Esta cookie ofrece protección contra los hackers',
+        duration: '1 año'
+      }
+    },
+    functional_cookies: {
+      title: 'Cookies Funcionales',
+      item_1: {
+        name: '_b',
+        entity: 'Pinterest',
+        purpose: 'Cookie para compartir contenidos',
+        duration: '1 año'
+      },
+      item_2: {
+        name: '_derived_epik',
+        entity: 'Pinterest',
+        purpose: 'Es colocada por la etiqueta de Pinterest cuando se identifica una coincidencia cuando no hay cookies presentes, como por ejemplo una coincidencia mejorada.',
+        duration: '1 año'
+      },
+      item_3: {
+        name: '_ga, _ga_[id]',
+        entity: '',
+        purpose: 'Esta cookie se utiliza para distinguir usuarios únicos mediante la asignación de un número generado aleatoriamente como identificador de cliente. Se incluye en cada solicitud de página de un sitio y se utiliza para calcular los datos de visitantes, sesiones y campañas para los informes analíticos de los sitios.',
+        duration: '2 años'
+      },
+      item_4: {
+        name: '_pin_unauth',
+        entity: 'Pinterest',
+        purpose: 'Es una cookie de origen que agrupa acciones para usuarios que no pueden ser identificados por Pinterest.',
+        duration: '1 año'
+      },
+      item_5: {
+        name: '_pinterest_ct_rt',
+        entity: 'Pinterest',
+        purpose: 'Contiene un identificador de usuario y la fecha y hora de creación de la cookie.',
+        duration: '1 año'
+      },
+      item_6: {
+        name: '_pinterest_ct_ua',
+        entity: 'Pinterest',
+        purpose: '	Es una cookie de origen que agrupa acciones para usuarios que no pueden ser identificados por Pinterest.',
+        duration: '1 año'
+      },
+      item_7: {
+        name: '_pinterest_sess',
+        entity: 'Pinterest',
+        purpose: '	Es la cookie de inicio de sesión de Pinterest. Contiene ID(s) de usuario, token(s) de autenticación y marcas de tiempo. Si la persona cierra la sesión, los tokens de autenticación se eliminan pero dejamos la cookie presente. Utilizamos los ID de usuario desconectado para optimizar la experiencia y la medición de la persona.',
+        duration: '1 año'
+      },
+      item_8: {
+        name: 'c_user',
+        entity: 'Facebook',
+        purpose: 'La cookie contiene el ID de usuario del usuario conectado en ese momento.',
+        duration: '3 meses'
+      },
+      item_9: {
+        name: 'cookie-consent',
+        entity: 'Tiktok',
+        purpose: '(?)',
+        duration: ''
+      },
+      item_10: {
+        name: 'wd, dpr',
+        entity: 'Facebook',
+        purpose: '	Esta cookie almacena las dimensiones de la ventana del navegador y es utilizada por Facebook para optimizar la representación de la página.',
+        duration: '1 semana'
+      },
+      item_11: {
+        name: 'xs',
+        entity: 'Facebook',
+        purpose: 'Esta cookie contiene varias piezas de información, separadas por dos puntos (los dos puntos se codifican con el valor %3A para su transmisión).',
+        duration: '3 meses'
+      }
+    },
+    advertising_cookies: {
+      title: 'Cookies de publicidad',
+      item_1: {
+        name: '1P_JAR',
+        entity: 'Google',
+        purpose: 'Proporcionar entrega de anuncios o retargeting',
+        duration: '1 mes'
+      },
+      item_2: {
+        name: '__Secure-1PAPISID',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+      item_3: {
+        name: '__Secure-1PSID',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+        item_4: {
+        name: '__Secure-1PSIDCC',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+        item_5: {
+        name: '__Secure-3PAPISID',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+        item_6: {
+        name: '__Secure-3PSID',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+        item_7: {
+        name: '__Secure-3PSIDCC',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+        item_8: {
+        name: '__Secure-ENID',
+        entity: 'Google',
+        purpose: 'Estas cookies se utilizan para ofrecer anuncios más relevantes para usted y sus intereses.',
+        duration: '2 años'
+      },
+      item_9: {
+        name: '_fbp',
+        entity: 'Facebook',
+        purpose: 'Esta cookie es instalada por Facebook para ofrecer anuncios cuando están en Facebook o una plataforma digital impulsada por la publicidad de Facebook después de visitar este sitio web.',
+        duration: '2 meses'
+      },
+      item_10: {
+        name: 'fr',
+        entity: 'Facebbok',
+        purpose: 'La cookie es instalada por Facebook para mostrar anuncios relevantes a los usuarios y medir y mejorar los anuncios. La cookie también rastrea el comportamiento del usuario a través de la web en los sitios que tienen el píxel de Facebook o el plugin social de Facebook.',
+        duration: '2 meses'
+      },
+      item_11: {
+        name: 'sb',
+        entity: 'Facebook',
+        purpose: '(?)',
+        duration: '2 años'
+      },
+      item_12: {
+        name: 'ttwid',
+        entity: 'Tiktok',
+        purpose: '(?)',
+        duration: '(?)'
+      }
+    },
+    analysis_cookies: {
+      title: 'Cookies de análisis',
+      item_1: {
+        name: '__hssc',
+        entity: 'Hubspot',
+        purpose: 'Esta cookie realiza un seguimiento de las sesiones.',
+        duration: '30 minutos'
+      },
+      item_2: {
+        name: '__hssrc',
+        entity: 'Hubspot',
+        purpose: 'Cada vez que HubSpot cambia la cookie de sesión, esta cookie también se establece para determinar si el visitante ha reiniciado su navegador.',
+        duration: 'Sesión'
+      },
+      item_3: {
+        name: '__hstc',
+        entity: 'Hubspot',
+        purpose: 'Esta cookie realiza un seguimiento de las sesiones',
+        duration: '30 minutos'
+      },
+      item_4: {
+        name: '_auth',
+        entity: 'Pinterest',
+        purpose: 'Cookie para la funcionalidad de Pinterest',
+        duration: '1 año'
+      },
+      item_5: {
+        name: '_tt_enable_cookie, _ttp',
+        entity: 'Tiktok',
+        purpose: 'Utilizamos TikTok para promocionarnos utilizando la cookie de TikTok que recopila datos sobre el comportamiento y las compras en nuestro sitio web y para medir el efecto de nuestra publicidad. Este seguimiento se utiliza para evaluar y medir cómo funcionan las diferentes campañas y estrategias de marketing en TikTok. Se utiliza para identificar a un visitante.',
+        duration: '13 meses'
+      },
+      item_6: {
+        name: 'datr',
+        entity: 'Facebook',
+        purpose: 'La finalidad de la cookie es identificar el navegador web que se utiliza para conectarse a Facebook independientemente del usuario que haya iniciado sesión. Esta cookie desempeña un papel fundamental en las funciones de seguridad e integridad del sitio de Facebook.',
+        duration: '2 años'
+      },
+      item_7: {
+        name: 'hubspotutk',
+        entity: 'Hubspot',
+        purpose: 'Esta cookie es utilizada por Hubspot para rastrear la identidad y las sesiones de los visitantes.',
+        duration: '13 meses'
+      }
+    }
+
+  },
+  handle: {
+    title: '¿CÓMO ADMINISTRAR COOKIES EN EL NAVEGADOR?',
+    introduction: 'El usuario tiene la opción de permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su terminal:',
+    item_1: {
+      label: 'Firefox',
+      to: 'https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias?redirectslug=habilitar-y-deshabilitar-cookies-que-los-sitios-we&redirectlocale=es'
+    },
+    item_2: { 
+      label: 'Chrome',
+      to: 'https://support.google.com/chrome/answer/95647?hl=es'
+    },
+    item_3: {
+      label: 'Internet Explorer',
+      to: 'https://support.microsoft.com/es-es/topic/c%C3%B3mo-eliminar-archivos-de-cookies-en-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc'
+    },
+    item_4: {
+      label: 'Microsoft Edge',
+      to: 'https://support.microsoft.com/es-es/windows/microsoft-edge-datos-de-exploraci%C3%B3n-y-privacidad-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd'
+    },
+    item_5: {
+      label: 'Safari',
+      to: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac'
+    },
+    item_6: {
+      label: 'Opera',
+      to: 'https://help.opera.com/en/latest/web-preferences/#cookies'
+    },
+    paragraph_1: 'En caso de bloquear el uso de cookies en su navegador es posible que algunos servicios o funcionalidades de la página web no estén disponibles.',
+    paragraph_2: 'En algunos navegadores se pueden configurar reglas específicas para administrar cookies por sitio web, lo que ofrece un control más preciso sobre la privacidad. Esto significa que se puede inhabilitar cookies de todos los sitios salvo de aquellos en los que se confíe.',
+    paragraph_3: 'En este enlace puedes desactivar, habilitar y gestionar las cookies de TALKUAL.'
+  }
+},  
+
   // Pages About
   "pages.about.title": "Historia del proyecto ",
   "pages.about.description":
@@ -885,7 +1261,7 @@ export default {
   // AdminOrderSteps
   "adminOrderSteps.orderReceived": "Pedido recibido",
   "adminOrderSteps.orderPayed": "Pagado",
-  "adminOrderSteps.orderModificationPeriod": "Periodo de modificación",
+  "adminOrderSteps.orderModificationduration": "durationo de modificación",
   "adminOrderSteps.orderBeenPrepared": "Preparando el envío",
   "adminOrderSteps.orderOnShipment": "En reparto",
   "adminOrderSteps.orderDelivered": "Entregado",
@@ -1087,7 +1463,7 @@ export default {
   "adminSubscriptionNextDelivery.discountof.percent": "del",
 
   // AdminSubscriptionSettings
-  "adminSubscriptionSettings.title": "Periodicidad",
+  "adminSubscriptionSettings.title": "durationicidad",
   "adminSubscriptionSettings.frequency": "Frecuencia",
   "adminSubscriptionSettings.preferredDay": "Día de entrega",
   "adminSubscriptionSettings.timeSlot": "Franja horaria",
@@ -1648,7 +2024,7 @@ export default {
   // AdminOrdersSteps
   "adminOrdersSteps.pending": "Pedido recibido",
   "adminOrdersSteps.payed": "Pagado",
-  "adminOrdersSteps.modify": "Periodo de modificación",
+  "adminOrdersSteps.modify": "durationo de modificación",
   "adminOrdersSteps.processing": "Preparando el envío",
   "adminOrdersSteps.on_shipment": "En reparto",
   "adminOrdersSteps.completed": "Entregado",

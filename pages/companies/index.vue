@@ -37,7 +37,7 @@ const pdfFilePath = computed(() => {
       :title="
         $t('companies.wantBeHealthy.1') + '\n' + $t('companies.wantBeHealthy.2')
       "
-      class="h-[222px]"
+      class="h-[222px] mt-10 lg:mt-0"
       background-desktop="/images/companies/header.webp"
     >
       <template #action>

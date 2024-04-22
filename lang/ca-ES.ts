@@ -475,6 +475,365 @@ export default {
   "pages.legal.terms.content115": "(*) Camps obligatoris.",
 
 
+  // Page Cookies
+
+  cookies: {
+  header: "Política de cookies",
+  introduction: "Aquest lloc web utilitza cookies pròpies i de tercers per a oferir-li una millor experiència i servei. En navegar o utilitzar els nostres serveis l'usuari accepta l'ús que fem de les cookies. No obstant això, l'usuari té l'opció d'impedir la generació de cookies i l'eliminació de les mateixes mitjançant la selecció de la corresponent.",
+  what: {
+    title: 'Què és una cookie?',
+    description: "Una cookie és un petit fragment de text que els llocs web envien al navegador i que s'emmagatzemen en el terminal de l'usuari, el qual pot ser un ordinador personal, un telèfon mòbil, tauleta, etc. Aquests arxius permeten que el lloc web recordi informació sobre la seva visita, com l'idioma i les opcions preferides, la qual cosa pot facilitar la seva pròxima visita i fer que el lloc resulti més útil en personalitzar el seu contingut. Les cookies exerceixen un paper molt important, en millorar l'experiència d'ús de la Web."
+  },
+  types: {
+    title: 'Tipus de cookies',
+    who: {
+      title: "Segons l'entitat que les gestioni, les cookies poden ser:",
+      item_1: "Cookies pròpies: Són aquelles que s'envien a l'equip terminal de l'interessat des d'un equip o domini gestionat pel propi editor i des del qual es presta el servei sol·licitat per l'usuari.",
+      item_2: "Cookies de tercers: Són aquelles que s'envien a l'equip terminal de l'usuari des d'un equip o domini que no és gestionat per l'editor, sinó per una altra entitat que tracta les dades obtingudes través de les cookies."
+    },
+    time: {
+      title: "Segons el termini de temps que romanen activades:",
+      item_1: "Cookies de sessió: Són un tipus de cookies dissenyades per a recaptar i emmagatzemar dades mentre l'usuari accedeix a una pàgina web. Se solen emprar per a emmagatzemar informació que només interessa conservar per a la prestació del servei sol·licitat per l'usuari en una sola ocasió.", 
+      item_2: "Cookies persistents: Són un tipus de cookies en el qual les dades segueixen emmagatzemats en el terminal i poden ser accedits i tractats durant un període definit pel responsable de la cookie, i que pot anar d'uns minuts a diversos anys."
+    },
+    what: {
+      title: "Segons la finalitat per a la qual es tractin les dades obtingudes a través de les cookies, la web pot utilitzar:",
+      item_1: "Cookies tècniques - Són aquelles que permeten a l'usuari la navegació a través de la pàgina web o aplicació i la utilització de les diferents opcions o serveis que en ella existeixen. Per exemple, controlar el trànsit i la comunicació de dades, identificar la sessió, accedir a les parts web d'accés restringit, recordar els elements que integren una comanda, realitzar la sol·licitud d'inscripció o participació en un esdeveniment, utilitzar elements de seguretat durant la navegació i emmagatzemar continguts per a la difusió de vídeos o so.", 
+      item_2: "Cookies de personalització - Són aquelles que permeten a l'usuari accedir al servei amb algunes característiques de caràcter general predefinides en la seva terminal o que el propi usuari defineixi. Per exemple, l'idioma, el tipus de navegador a través del qual accedeix al servei, el disseny de continguts seleccionat, geolocalització del terminal i la configuració regional des d'on s'accedeix al servei.Cookies de personalització - Són aquelles que permeten a l'usuari accedir al servei amb algunes característiques de caràcter general predefinides en la seva terminal o que el propi usuari defineixi. Per exemple, l'idioma, el tipus de navegador a través del qual accedeix al servei, el disseny de continguts seleccionat, geolocalització del terminal i la configuració regional des d'on s'accedeix al servei.",
+      item_3: "Cookies publicitàries - Són aquelles que permeten la gestió eficaç dels espais publicitaris que s'han inclòs en la pàgina web o aplicació des de la qual es presta el servei. Permeten adequar el contingut de la publicitat perquè aquesta sigui rellevant per a l'usuari i per a evitar mostrar anuncis que l'usuari ja hagi vist.",
+      item_4: "Cookies d'anàlisi estadística - Són aquelles que permeten realitzar el seguiment i anàlisi del comportament dels usuaris en els llocs web. La informació recollida mitjançant aquesta mena de cookies s'utilitza en el mesurament de l'activitat dels llocs web, aplicació o plataforma i per a l'elaboració de perfils de navegació dels usuaris d'aquests llocs, amb la finalitat d'introduir millores en el servei en funció de les dades d'ús que fan els usuaris.",
+    },
+    paragraph_1: 'Les cookies utilitzades en aquest lloc web les pot veure al panell de configuració i ajustar la seva configuració en qualsevol moment.',
+    paragraph_2: "La identificació de qui utilitza les cookies, el tipus de cookies utilitzades i altres detalls, s'indica a continuació:",
+    columns: {
+      column_1: 'Cookies',
+      column_2: 'Entitat',
+      column_3: 'Propòsit',
+      column_4: 'Període de conservació'
+    },
+    own_cookies: {
+      title: 'Cookies pròpies',
+      item_1: {
+        name: 'i18n_redirected',
+        purpose: "Permet a l'usuari ser redirigit a l'idioma de preferència cada vegada que accedeix a la web",
+        duration: '1 any'
+      },
+      item_2: {
+        name: 'strapi.sid',
+        purpose: "Permet als usuaris accedir a les seves comandes i al seu compte d'usuari",
+        duration: 'Sessió'
+      },
+      item_3: {
+        name: 'strapi.sid.sig',
+        purpose: "Permet als usuaris accedir a les seves comandes i al seu compte d'usuari",
+        duration: 'Sessió'
+      },
+      item_4: {
+        name: 'strapi_jwt',
+        purpose: "Permet als usuaris accedir a les seves comandes i al seu compte d'usuari",
+        duration: 'Sessió'
+      }
+    },
+    needed_cookies: {
+      title: 'Cookies necessàries',
+      item_1: {
+        name: 'AEC',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",
+        duration: '2 anys'
+      },
+      item_2: {
+        name: 'APISID',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_3: {
+        name: 'HSID',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_4: {
+        name: 'NID',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",                
+        duration: '2 anys'
+      },
+      item_5: {
+        name: 'OGP',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_6: {
+        name: 'OGPC',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_7: {
+        name: 'OTZ',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_8: {
+        name: 'SAPISID',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_9: {
+        name: 'SEARCH_SAMESITE',
+        entity: 'Google',
+        purpose: "Aquesta cookie s'utilitza per l'enviament de dades a Google",
+        duration: '5 mesos'
+      },
+      item_10: {
+        name: 'SID',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_11: {
+        name: 'SIDCC',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_12: {
+        name: 'SSID',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_13: {
+        name: 'UULE',
+        entity: 'Google',
+        purpose: "Google les utilitza per a guardar les preferències i la informació de l'usuari durant la visualització de pàgines que contenen Google Maps.",        
+        duration: '2 anys'
+      },
+      item_14: {
+        name: '__cf_bm',
+        entity: 'Hubspot',
+        purpose: "Aquesta cookie s'estableix des del proveidor de CDN de Hubspot i és una cookie necessària per la protecció de bots",
+        duration: '30 minuts'
+      },
+      item_15: {
+        name: '_abck',
+        entity: 'Tiktok',
+        purpose: 'Aquest cookie ofereix protecció contra els hacekrs',
+        duration: '1 any'
+      }
+    },
+    functional_cookies: {
+      title: 'Cookies funcionals',
+      item_1: {
+        name: '_b',
+        entity: 'Pinterest',
+        purpose: 'Cookie per a compartir continguts',
+        duration: '1 any'
+      },
+      item_2: {
+        name: '_derived_epik',
+        entity: 'Pinterest',
+        purpose: "S'inicialitza per l'etiqueta de Pinterest quan s'identifiqua una coincidència quan no hi ha cookies presents, com per exemple una coincidència millorada.",
+        duration: '1 any'
+      },
+      item_3: {
+        name: '_ga, _ga_[id]',
+        entity: '',
+        purpose: "Aquest cookie s'utilitza per a distringir usuaris mitjançant l'assignació d'un número generat aleatòriament com a identificador de client. S'inclou en cada sol·licitud de pàgina d'un lloc i s'utiliza per calcular les dades de visitants, sessions i campanyes pels informes analítics dels llocs.",
+        duration: '2 anys'
+      },
+      item_4: {
+        name: '_pin_unauth',
+        entity: 'Pinterest',
+        purpose: "És una cookie d'origen que agrupa accions per a usuaris que no poden ser identificats per Pinterest.",
+        duration: '1 any'
+      },
+      item_5: {
+        name: '_pinterest_ct_rt',
+        entity: 'Pinterest',
+        purpose: "Conté un identificador d'usuari i la data i hora de creació de la cookie.",
+        duration: '1 any'
+      },
+      item_6: {
+        name: '_pinterest_ct_ua',
+        entity: 'Pinterest',
+        purpose: "És una cookie d'origen que agrupa accions per a usuaris que no poden ser identificats per Pinterest.",
+        duration: '1 any'
+      },
+      item_7: {
+        name: '_pinterest_sess',
+        entity: 'Pinterest',
+        purpose: "És la cookie d'inici de sessió de Pinterest. Conté ID(s) d'usuari, token(s) d'autenticació y marques de temps. Si la persona tanca la sessió, els tokens d'autenticació s'eliminen però deixem la cookie present. Utilizem els ID d'usuari desconectat per a optimitzar l'experiència i la medició de la persona.",
+        duration: '1 any'
+      },
+      item_8: {
+        name: 'c_user',
+        entity: 'Facebook',
+        purpose: "La cookie conté l'ID d'usuari de l'usuari conectat en aquell moment.",
+        duration: '3 mesos'
+      },
+      item_9: {
+        name: 'cookie-consent',
+        entity: 'Tiktok',
+        purpose: '(?)',
+        duration: ''
+      },
+      item_10: {
+        name: 'wd, dpr',
+        entity: 'Facebook',
+        purpose: 'Aquesta cookie guarda les dimensions de la finestra del navegador i també la utilitza Facebook per optimitzar la representació de la pàgina.',
+        duration: '1 setmana'
+      },
+      item_11: {
+        name: 'xs',
+        entity: 'Facebook',
+        purpose: "Aquest cookie conté varies seccions d'informació separades per dos punts (els dos puntos es codifiquen amb el valor %3A per la seva transmissió).",
+        duration: '3 mesos'
+      }
+    },
+    advertising_cookies: {
+      title: 'Cookies de publicitat',
+      item_1: {
+        name: '1P_JAR',
+        entity: 'Google',
+        purpose: "Proporcionar entrega d'anuncis o retargeting",
+        duration: '1 mes'
+      },
+      item_2: {
+        name: '__Secure-1PAPISID',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+      item_3: {
+        name: '__Secure-1PSID',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+        item_4: {
+        name: '__Secure-1PSIDCC',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+        item_5: {
+        name: '__Secure-3PAPISID',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+        item_6: {
+        name: '__Secure-3PSID',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+        item_7: {
+        name: '__Secure-3PSIDCC',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+        item_8: {
+        name: '__Secure-ENID',
+        entity: 'Google',
+        purpose: "Aquestes cookies s'utilitzen per a oferir anuncis més rellevants per a vostè i els seus interesos.",
+        duration: '2 anys'
+      },
+      item_9: {
+        name: '_fbp',
+        entity: 'Facebook',
+        purpose: 'Aquesta cookie és instal·lada per Facebook per a oferir anuncis quan estan a Facebook o a una plataforma digital impulsada per la publicitat de Facebook després de visitar aquest lloc web.',
+        duration: '2 mesos'
+      },
+      item_10: {
+        name: 'fr',
+        entity: 'Facebbok',
+        purpose: "Aquest cookie és instal·lada per Facebook per a mostrar anuncis rellevant als usuaris i medir i millorar els anuncis. La cookie també rastreja el comportament de l'usuari a través de la web als llocs que tenen el píxel de Facebook o el plugin social de Facebook.",
+        duration: '2 mesos'
+      },
+      item_11: {
+        name: 'sb',
+        entity: 'Facebook',
+        purpose: '(?)',
+        duration: '2 anys'
+      },
+      item_12: {
+        name: 'ttwid',
+        entity: 'Tiktok',
+        purpose: '(?)',
+        duration: '(?)'
+      }
+    },
+    analysis_cookies: {
+      title: "Cookies d'anàlisis",
+      item_1: {
+        name: '__hssc',
+        entity: 'Hubspot',
+        purpose: 'Aquesta cookie realitza un seguiment de les sessions.',
+        duration: '30 minuts'
+      },
+      item_2: {
+        name: '__hssrc',
+        entity: 'Hubspot',
+        purpose: "Cada vegada que HubSpot canvia la cookie de sessió, aquesta cookie també s'estableix per a determinar si el visitant ha reiniciat el seu navegador.",
+        duration: 'Sessió'
+      },
+      item_3: {
+        name: '__hstc',
+        entity: 'Hubspot',
+        purpose: 'Aquesta cookie realitza un seguiment de les sessions',
+        duration: '30 minuts'
+      },
+      item_4: {
+        name: '_auth',
+        entity: 'Pinterest',
+        purpose: 'Cookie per a la funcionalitat de Pinterest',
+        duration: '1 any'
+      },
+      item_5: {
+        name: '_tt_enable_cookie, _ttp',
+        entity: 'Tiktok',
+        purpose: 'Utilizamos TikTok para promocionarnos utilizando la cookie de TikTok que recopila datos sobre el comportamiento y las compras en nuestro sitio web y para medir el efecto de nuestra publicidad. Este seguimiento se utiliza para evaluar y medir cómo funcionan las diferentes campañas y estrategias de marketing en TikTok. Se utiliza para identificar a un visitante.',
+        duration: '13 mesos'
+      },
+      item_6: {
+        name: 'datr',
+        entity: 'Facebook',
+        purpose: "La finalitat de la cookie és identificar el navegador web que s'utiliza per a connectar-se a Facebook independentement de l'usuari que hagi iniciat sessió. Aquesta cookie desenvolupa un paper fonamental en les funcions de seguritat i integritat del lloc de Facebook.",
+        duration: '2 años'
+      },
+      item_7: {
+        name: 'hubspotutk',
+        entity: 'Hubspot',
+        purpose: 'Aquesta cookie és utilitzada per Hubspot per a rastrejar la identitat i les sessions dels visitants.',
+        duration: '13 meses'
+      }
+    }
+
+  },
+  handle: {
+    title: '¿COM ADMINISTRAR COOKIES AL NAVEGADOR?',
+    introduction: "L'usuari té l'opció de permetre, bloquejar o eliminar les cookies instal·lades al seu equip mitjançant la configuració de les opcions del navegador instal·lat al seu dispositiu:",
+    item_1: 'Firefox',
+    item_2: 'Chrome',
+    item_3: 'Internet Explorer',
+    item_4: 'Microsoft Edge',
+    item_5: 'Safari',
+    item_6: 'Opera',
+    paragraph_1: "En cas de bloquejar l'ús de les cookies al seu navegador és possible que alguns serveis o funcionalitats de la pàgina web no estiguin disponibles.",
+    paragraph_2: "En alguns navegadors es poden configurar normes específiques per a administrar cookies per lloc web, la qual cosa ofereix un control més precís sobre la privacitat. Això vol dir que es pot inhabilitar cookies de tots els llocs excepte d'aquells en els que s'hi confia.",
+    paragraph_3: "En aquest enllaç pots desactivar, habilitar i gestionar les cookies de TALKUAL."
+  }
+},  
+
+
 
   // Pages About
   "pages.about.title": "Història del projecte",

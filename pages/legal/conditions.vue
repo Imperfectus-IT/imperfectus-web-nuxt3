@@ -2,7 +2,7 @@
   <Header
     class="text-green-tertiary my-12 !h-[205px] lg:!h-[180px] lg:mb-0 lg:relative lg:-top-10 bg-green-primary"
     :title="t('pages.legal.conditions.title')"
-    title-class="text-green-tertiary !text-[48px] font-bold"
+    title-class="!text-green-tertiary !text-[48px] font-bold"
     background-color="green-primary"
   />
 

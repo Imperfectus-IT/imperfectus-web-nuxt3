@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <HeaderDefault
-    :class="`overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px] before:content-[''] before:block before:bg-${backgroundColor ? backgroundColor : 'black'} before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-${backgroundColor ? backgroundColor : '[rgba(0,0,0,.3)]'}`"
+    :class="`overflow-hidden bg-center relative bg-cover flex items-center justify-center lg:h-[500px] before:content-[''] before:block before:bg-${backgroundColor === '' ? 'black' : backgroundColor} before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-${backgroundColor === '' ? '[rgba(0,0,0,.3)]' : backgroundColor}`"
     :style="{
       backgroundImage: `url(${background})`,
       backgroundColor: '',
@@ -13,21 +13,24 @@
   >
     <Container class="relative flex flex-col items-center text-center content">
       <h1
-        :class="['mt-3 font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px] whitespace-break-spaces ', titleClass]"
+        :class="[titleClass, 'mt-3 font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px] whitespace-break-spaces']"
         >
         {{ title }}
       </h1>
 
       <h2
         v-if="descriptionIsH2"
-        :class="['text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]', descriptionClass]"
+        class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
+        :class="descriptionClass"
         >
         {{ description }}
       </h2>
 
       <p
         v-else
-        :class="['text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]', descriptionClass]"
+        class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
+        :class="descriptionClass"
+
         >
         {{ description }}
       </p>
