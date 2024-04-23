@@ -485,7 +485,7 @@ cookies: {
     time: {
       title: 'Según el plazo de tiempo que permanecen activadas:',
       item_1: 'Cookies de sesión : Son un tipo de cookies diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.',
-      item_2: 'Cookies persistentes: Son un tipo de cookies en el que los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un durationo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.'
+      item_2: 'Cookies persistentes: Son un tipo de cookies en el que los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.'
     },
     what: {
       title: 'Según la finalidad para la que se traten los datos obtenidos a través de las cookies, la web puede utilizar:',
