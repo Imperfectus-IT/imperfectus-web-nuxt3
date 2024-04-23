@@ -484,12 +484,12 @@ cookies: {
     },
     time: {
       title: 'Según el plazo de tiempo que permanecen activadas:',
-      item_1: 'Cookies de sesión : Son un tipo de cookies diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.', 
+      item_1: 'Cookies de sesión : Son un tipo de cookies diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.',
       item_2: 'Cookies persistentes: Son un tipo de cookies en el que los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un durationo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.'
     },
     what: {
       title: 'Según la finalidad para la que se traten los datos obtenidos a través de las cookies, la web puede utilizar:',
-      item_1: 'Cookies técnicas - Son aquellas que permiten al usuario la navegación a través de la página web o aplicación y la utilización de las diferentes opciones o servicios que en ella existen. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión, acceder a las partes web de acceso restringido, recordar los elementos que integran un pedido, realizar la solicitud de inscripción o participación en un evento, utilizar elementos de seguridad durante la navegación y almacenar contenidos para la difusión de videos o sonido.', 
+      item_1: 'Cookies técnicas - Son aquellas que permiten al usuario la navegación a través de la página web o aplicación y la utilización de las diferentes opciones o servicios que en ella existen. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión, acceder a las partes web de acceso restringido, recordar los elementos que integran un pedido, realizar la solicitud de inscripción o participación en un evento, utilizar elementos de seguridad durante la navegación y almacenar contenidos para la difusión de videos o sonido.',
       item_2: 'Cookies de personalización - Son aquéllas que permiten al usuario acceder al servicio con algunas características de carácter general predefinidas en su terminal o que el propio usuario defina. Por ejemplo, el idioma, el tipo de navegador a través del cual accede al servicio, el diseño de contenidos seleccionado, geolocalización del terminal y la configuración regional desde donde se accede al servicio.',
       item_3: 'Cookies publicitarias - Son aquellas que permiten la gestión eficaz de los espacios publicitarios que se han incluido en la página web o aplicación desde la que se presta el servicio. Permiten adecuar el contenido de la publicidad para que esta sea relevante para el usuario y para evitar mostrar anuncios que el usuario ya haya visto.',
       item_4: 'Cookies de análisis estadístico - Son aquellas que permiten realizar el seguimiento y análisis del comportamiento de los usuarios en los sitios web. La información recogida mediante este tipo de cookies se utiliza en la medición de la actividad de los sitios web, aplicación o plataforma y para la elaboración de perfiles de navegación de los usuarios de dichos sitios, con el fin de introducir mejoras en el servicio en función de los datos de uso que hacen los usuarios.',
@@ -816,7 +816,7 @@ cookies: {
       label: 'Firefox',
       to: 'https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias?redirectslug=habilitar-y-deshabilitar-cookies-que-los-sitios-we&redirectlocale=es'
     },
-    item_2: { 
+    item_2: {
       label: 'Chrome',
       to: 'https://support.google.com/chrome/answer/95647?hl=es'
     },
@@ -840,7 +840,7 @@ cookies: {
     paragraph_2: 'En algunos navegadores se pueden configurar reglas específicas para administrar cookies por sitio web, lo que ofrece un control más preciso sobre la privacidad. Esto significa que se puede inhabilitar cookies de todos los sitios salvo de aquellos en los que se confíe.',
     paragraph_3: 'En este enlace puedes desactivar, habilitar y gestionar las cookies de TALKUAL.'
   }
-},  
+},
 
   // Pages About
   "pages.about.title": "Historia del proyecto ",
@@ -1143,7 +1143,6 @@ cookies: {
     "Entre 14-15 kg de fruta y/o verdura de temporada. Ideal para 4 o 5+ personas.", //
   "content.home.reviews.title": "¡Comentarios de nuestros clientes!",
 
-
   "content.whatinbox.title": "¿Qué hay en las cajas?",
   "content.whatinbox.description":
     "Aquí podéis ver los productos de esta semana. En nuestras cajas incluimos la mayoría de estos alimentos, dependemos del excedente del agricultor y a veces varían las proporciones pero siempre encontrando el equilibrio nutricional.",
@@ -1261,7 +1260,7 @@ cookies: {
   // AdminOrderSteps
   "adminOrderSteps.orderReceived": "Pedido recibido",
   "adminOrderSteps.orderPayed": "Pagado",
-  "adminOrderSteps.orderModificationduration": "durationo de modificación",
+  "adminOrderSteps.orderModificationPeriod": "Periodo de modificación",
   "adminOrderSteps.orderBeenPrepared": "Preparando el envío",
   "adminOrderSteps.orderOnShipment": "En reparto",
   "adminOrderSteps.orderDelivered": "Entregado",
@@ -1463,7 +1462,7 @@ cookies: {
   "adminSubscriptionNextDelivery.discountof.percent": "del",
 
   // AdminSubscriptionSettings
-  "adminSubscriptionSettings.title": "durationicidad",
+  "adminSubscriptionSettings.title": "Periodicidad",
   "adminSubscriptionSettings.frequency": "Frecuencia",
   "adminSubscriptionSettings.preferredDay": "Día de entrega",
   "adminSubscriptionSettings.timeSlot": "Franja horaria",
@@ -1836,7 +1835,7 @@ cookies: {
   "recoveryForm.email": "Correo electrónico",
   "recoveryForm.submit": "Enviar",
   "recoveryForm.successMessage":
-    "Hemos enviado un código de confirmación al correo electronico indicado. Por favor, compruebe su bandeja de entrada e introduzca el código junto a su nueva contraseña.",
+    "Hemos enviado un código de confirmación al correo electrónico indicado. Por favor, compruebe su bandeja de entrada e introduzca el código junto a su nueva contraseña.",
   "recoveryForm.confirmationCode": "Código de confirmación",
   "recoveryForm.newPassword": "Nueva contraseña",
   "recoveryForm.confirmNewPassword": "Confirmar contraseña",
@@ -2024,7 +2023,7 @@ cookies: {
   // AdminOrdersSteps
   "adminOrdersSteps.pending": "Pedido recibido",
   "adminOrdersSteps.payed": "Pagado",
-  "adminOrdersSteps.modify": "durationo de modificación",
+  "adminOrdersSteps.modify": "Periodo de modificación",
   "adminOrdersSteps.processing": "Preparando el envío",
   "adminOrdersSteps.on_shipment": "En reparto",
   "adminOrdersSteps.completed": "Entregado",
