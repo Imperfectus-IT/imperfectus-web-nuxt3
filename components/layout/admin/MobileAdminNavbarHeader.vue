@@ -11,6 +11,8 @@ const routeToHidde = {
 const hiddeAccountLink = computed(
   () => routeToHidde[router.currentRoute.value.name as string] ?? false
 );
+
+
 </script>
 
 <template>
@@ -32,7 +34,7 @@ const hiddeAccountLink = computed(
         />
       </template>
     </Toolbar>
-    <AppAdminSidebar v-model:visible="visible" @hide="toggleVisible" />
+    <SideMenu v-if="visible" v-model:hidden="visible" @hide="toggleVisible" />
   </section>
 </template>
 

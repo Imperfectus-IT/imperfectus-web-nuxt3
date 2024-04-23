@@ -14,5 +14,7 @@ defineI18nRoute({
 </script>
 
 <template>
-  <h2>Admin page</h2>
+  <div>
+    
+  </div>
 </template>

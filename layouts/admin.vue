@@ -6,7 +6,7 @@
     <TopToolbar class="h-14"/>
     <MobileAdminNavbarHeader class="lg:hidden bg-beige-primary" />
     <DesktopAdminNavbarHeader class="hidden lg:block bg-beige-primary mb-0" />
-    <SideMenu />
+    <SideMenu class="hidden lg:block" />
     <slot />
     <LazyFooterDefault />
   </div>

@@ -80,7 +80,7 @@ export default {
         "solina-condensed-bold": ["Solina Condensed Bold"],
       },
       animation: {
-        scaleAnimation: 'scaleAnimation 1s ease-in-out forwards',
+        scaleAnimation: 'scaleAnimation 1s ease-in-out',
       },
       transitionDelay: {
       '0': '0ms',
