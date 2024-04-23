@@ -25,6 +25,12 @@ useHead({
     ...i18nHead.value.meta,
   ],
 });
+
+const handleRecoveryEvent = () => {
+  const localeRoute = useLocaleRoute();
+  const route = localeRoute({ name: "admin" });
+  navigateTo(route.fullPath);
+};
 </script>
 
 <template>
@@ -43,7 +49,7 @@ useHead({
         />
       </div>
 
-      <RecoveryForm :data="data" @recover="recover" />
+      <RecoveryForm @recovery="handleRecoveryEvent" />
     </div>
   </main>
 </template>

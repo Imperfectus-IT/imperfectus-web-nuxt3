@@ -4,11 +4,11 @@ export const useStrapiRecovery = () => {
   const recoveryFormData = ref({
     email: "",
     password: "",
-    configPassword: "",
+    confirmPassword: "",
     code: "",
   });
 
-  const { forgotPassword } = useStrapiAuth();
+  const { forgotPassword, resetPassword } = useStrapiAuth();
 
   const handleRecovery = async (): Promise<Boolean> => {
     await forgotPassword({
@@ -18,5 +18,15 @@ export const useStrapiRecovery = () => {
     return true;
   };
 
-  return { recoveryFormData, handleRecovery };
+  const handleReset = async (): Promise<Boolean> => {
+    await resetPassword({
+      code: recoveryFormData.value.code,
+      password: recoveryFormData.value.password,
+      passwordConfirmation: recoveryFormData.value.confirmPassword,
+    });
+
+    return true;
+  };
+
+  return { recoveryFormData, handleRecovery, handleReset };
 };

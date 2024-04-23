@@ -4,7 +4,7 @@ import { ref } from "vue";
 export const useValidateRecovery = () => {
   const recoveryFormSchema = z
     .object({
-      email: z.string().email(),
+      email: z.string().email().min(1),
     })
     .required();
   type RecoveryFormSchema = z.infer<typeof recoveryFormSchema>;
