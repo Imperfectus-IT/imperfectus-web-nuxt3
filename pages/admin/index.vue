@@ -4,6 +4,13 @@ definePageMeta({
   layout: "admin",
   middleware: ["auth"],
 });
+
+defineI18nRoute({
+  paths: {
+    es: "/mi-cuenta",
+    ca: "/el-meu-compte",
+  },
+})
 </script>
 
 <template>

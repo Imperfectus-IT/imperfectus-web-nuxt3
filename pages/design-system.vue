@@ -17,9 +17,11 @@
     <PanelMenuDemo />
     <SkeletonDemo />
     <FieldsetDemo />
+    <StepsDemo />
   </div>
 </template>
 
 
 <script setup lang="ts">
+
 </script>

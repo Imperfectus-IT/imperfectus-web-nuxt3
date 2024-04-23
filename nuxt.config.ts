@@ -102,7 +102,8 @@ export default defineNuxtConfig({
                 "Toolbar",
                 "Rating",
                 'Fieldset',
-                'DataTable'
+                'DataTable',
+                'Steps'
       ],
         },
     },

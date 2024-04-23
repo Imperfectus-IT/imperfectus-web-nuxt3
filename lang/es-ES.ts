@@ -891,14 +891,14 @@ cookies: {
   "layout.navbar.companies": "Empresas",
   "layout.navbar.order": "Nuevo pedido",
   "layout.navbar.contact": "Contacto",
-  "layout.navbar.account": "MI CUENTA",
+  "layout.navbar.account": "CUENTA",
   "layout.navbar.menu": "MENÚ",
   "layout.navbar.history": "Historia",
   "layout.navbar.team": "Equipo",
   "layout.navbar.foodWaste": "Desperdicio alimentario",
   "layout.navbar.commitment": "Compromiso",
   "layout.navbar.impact": "Impacto",
-  "layout.navbar.referrals": "Invita a un amigo",
+  "layout.navbar.referrals": "Invita a un amigx",
   "layout.navbar.giftcards": "Tarjeta regalo",
   "layout.navbar.newsroom": "Sala de prensa",
 
@@ -2928,4 +2928,43 @@ cookies: {
       description: "Para cualquier información y/o solicitud de imágenes, no dudes en ponerte en contacto con nosotros a:",
     }
   },
+  side_menu: {
+    title: 'Mi cuenta',
+    item_1: {
+      label: 'Datos personales',
+      link: '/'
+    },
+    item_2: {
+      label: 'Mis pedidos',
+      link: ''
+    },
+    item_3: {
+      label: 'Mis suscripciones',
+      link: ''
+    },
+    item_4: {
+      label: 'Regala 15%, gana 15%',
+      link: ''
+    },
+    item_5: {
+      label: 'Tarjeta regalo',
+      link: ''
+    },
+    item_6: {
+      label: 'Newsletter',
+      link: ''
+    },
+    item_7: {
+      label: 'FAQ',
+      link: ''
+    },
+    item_8: {
+      label: 'Contacto',
+      link: ''
+    },
+    item_9: {
+      label: 'Cerrar sesión',
+      link: ''
+    }
+  }
 };

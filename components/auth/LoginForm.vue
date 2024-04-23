@@ -80,6 +80,7 @@ const submitLoginForm = async () => {
             </NuxtLink>
             <NuxtLink class="font-solina-extended-medium text-center">
                 <Button
+                
                     :label="$t('orderStepAuth.hastAccount')"
                     :pt="{
                         root: { class: 'px-0 py-0' },
