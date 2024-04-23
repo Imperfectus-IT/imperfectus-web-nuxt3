@@ -43,7 +43,6 @@ const submitLoginForm = async () => {
             <TKField :errors="validationErrors?.identifier?._errors">
                 <InputText
                     v-model="loginFormData.identifier"
-                    size="small"
                     class="rounded-xl"
                     type="text"
                     :placeholder="$t('loginForm.email')"
@@ -51,11 +50,10 @@ const submitLoginForm = async () => {
                 />
             </TKField>
             <TKField :errors="validationErrors?.password?._errors">
-                <InputText
+                <Password
                     v-model="loginFormData.password"
-                    size="small"
-                    class="rounded-xl"
                     type="password"
+                    :feedback="false"
                     :placeholder="$t('loginForm.password')"
                     :invalid="!!validationErrors?.password?._errors?.length"
                 />
