@@ -36,6 +36,7 @@ export default {
   menubar,
   menu,
   multiselect,
+  overlaypanel,
   panelmenu,
   password,
   progressbar,
