@@ -159,16 +159,13 @@ export default {
   "pages.legal.cookies.title": "Política de cookies",
   "pages.legal.cookies.description":
     "Utilizamos cookies para mejorar el servicio y experiencia de navegación en nuestro sitio web. Conoce toda la información sobre nuestras políticas aquí.",
-  "pages.legal.privacy.title": "Política de privacidad",
-  "pages.legal.privacy.description":
-    "Conoce aquí toda la información sobre las políticas y las condiciones de uso de la web de TALKUAL.",
   "pages.legal.conditions.terms1": "Acepto los",
   "pages.legal.conditions.title": "Términos y condiciones",
   "pages.legal.conditions.description":
     "Conoce las condiciones de uso del sitio web de TALKUAL, así como las condiciones de compra de productos.",
     pages: {
       legal: {
-            notice: {
+          notice: {
                 title: "Aviso legal",
                 description: "Información legal sobre la web de TALKUAL. Conoce toda la información sobre nuestras políticas de protección de datos aquí.",
                 owner: {
@@ -226,7 +223,120 @@ export default {
                 paragraph_2: "Un certificado SSL permite proteger toda la información personal y confidencial que se pueda manejar en un sitio web, independientemente de la información que se esté transmitiendo, como por ejemplo, desde cualquiera de los formularios de contacto del sitio web hasta el servidor, o los datos introducidos para la suscripción de boletines de noticias o accesos a las áreas protegidas, etc.",
                 paragraph_3: "La dirección del sitio web aparecerá en color verde, activándose el protocolo “https” que permite conexiones seguras desde un servidor web al navegador del usuario.",
               },
-            }
+            },
+          privacy: {
+            title: "Política de privacidad",
+            description: "Conoce aquí toda la información sobre las políticas y las condiciones de uso de la web de TALKUAL.",
+            header: {
+              first_paragraph: "Nuestra dirección web es: ",
+              paragraph_1: "IMPERFECTUSBOX, S.L., informa a los usuarios del sitio web sobre su política respecto al tratamiento y protección de los datos de carácter personal de los usuarios y clientes. ",
+              paragraph_2: "Y garantiza en todo momento el íntegro y pleno cumplimiento de las obligaciones dispuestas por la normativa de protección de datos y servicios de la sociedad de la información: Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos (RGPD), la normativa Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD) y la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSIce).",
+            },
+            person_in_charge: {
+              title: "RESPONSABLE DEL TRATAMIENTO",
+              paragraph_1: "IMPERFECTUSBOX, S.L.",
+              paragraph_2: "C.I.F.: B25859273",
+              paragraph_3: "Domicilio: AV. LLEIDA, 32 - 25250 - BELLPUIG",
+              paragraph_4: "Inscrita en el Registro Mercantil de Lérida en el Tomo 1581, Folio 1, Hoja 32245, Fecha 30/12/2019.",
+              paragraph_5: "Teléfono: 722369247",
+              paragraph_6: "Correo electrónico: {'info@talkualfoods.com'}",
+            },
+            data_processing: {
+              title: "FINALIDADES DEL TRATAMIENTO DE LOS DATOS",
+              paragraph_1: "Los datos facilitados por el Usuario son utilizados con diversas finalidades que se enumeran a continuación:",
+              table_items: {
+                thead_1: "Finalidad del tratamiento",
+                thead_2: "Base jurídica para el tratamiento",
+                row_1_1: "Gestionar las consultas planteadas a través de los formularios web.",
+                row_1_2: "Interés legítimo de la Sociedad para atender a los requerimientos de información a través de la web.Consentimiento prestado de forma expresa en el momento de recogida de los datos a través de los formularios web..",
+                row_2_1: "Envío de newsletters, comunicaciones comerciales y promociones.",
+                row_2_2: "Consentimiento prestado de forma expresa en el momento de recogida de los datos a través de los formularios web.",
+                row_3_1: "Crear y gestionar tu registro como Usuario.",
+                row_3_2: "Consentimiento prestado de forma expresa en el momento de recogida de los datos a través de los formularios web.",
+                row_4_1: "Para el desarrollo, cumplimiento y ejecución del contrato de compraventa o de servicios que hayas contratado a través de nuestra web.",
+                row_4_2: "Consentimiento prestado de forma expresa en el momento de recogida de los datos a través de los formularios web. Consideramos que tenemos un interés legítimo para realizar las comprobaciones necesarias para detectar y prevenir posibles fraudes cuando realizas una compra.Ejecución de un contrato.",
+                row_5_1: "Realizar la gestión contable.",
+                row_5_2: "Ejecución de un contrato.",
+                row_6_1: "Cumplir con las obligaciones fiscales vigentes.",
+                row_6_2: "Cumplimiento de obligaciones legales que nos sean de aplicación.",
+                row_7_1: "Gestionar las incidencias y el mantenimiento de la web.",
+                row_7_2: "Interés legítimo de la Sociedad.",
+              },
+            },
+            data_retention: {
+              title: "PLAZO DE CONSERVACIÓN DE LOS DATOS",
+              paragraph_1: "Los datos facilitados por el Usuario son utilizados con diversas finalidades que se enumeran a continuación:",
+              table_items: {
+                thead_1: "Finalidad del tratamiento",
+                thead_2: "Plazo de conservación",
+                row_1_1: "Gestionar las consultas planteadas a través de los formularios web.",
+                row_1_2: "Trataremos tus datos durante el tiempo que sea necesario para atender tu solicitud o petición.",
+                row_2_1: "Envío de newsletters, comunicaciones comerciales y promociones.",
+                row_2_2: "Trataremos tus datos hasta que te des de baja.",
+                row_3_1: "Crear y gestionar tu registro como Usuario.",
+                row_3_2: "Trataremos tus datos durante el tiempo en que mantengas la condición de usuario registrado (es decir, hasta que decidas darte de baja).",
+                row_4_1: "Para el desarrollo, cumplimiento y ejecución del contrato de compraventa o de servicios que hayas contratado a través de nuestra web.",
+                row_4_2: "Trataremos tus datos durante el tiempo necesario para gestionar la compra de los productos o servicios que hayas adquirido, incluyendo posibles devoluciones, quejas o reclamaciones asociadas a la compra del producto o servicio en particular.",
+                row_5_1: "Realizar la gestión contable.",
+                row_5_2: "Trataremos sus datos durante el tiempo necesario para cumplir los plazos legales de prescripción que le resulten de aplicación.",
+                row_6_1: "Cumplir con las obligaciones fiscales vigentes.",
+                row_6_2: "Trataremos sus datos durante el tiempo necesario para cumplir los plazos legales de prescripción que le resulten de aplicación.",
+                row_7_1: "Gestionar las incidencias y el mantenimiento de la web.",
+                row_7_2: "Trataremos sus datos durante el tiempo necesario para cumplir los plazos legales de prescripción que le resulten de aplicación.",
+              },
+            },
+            data_destination: {
+              title: "DESTINATARIOS DE LOS DATOS",
+              paragraph_1: "Para cumplir las finalidades indicadas en la presente Política de Privacidad, es necesario que demos acceso a tus datos personales a terceras partes que nos presten apoyo en los servicios que te ofrecemos (Encargados de Tratamiento), a saber:",
+              paragraph_2: "Los encargados de tratamiento para la ejecución de un contrato o prestación de un servicio al Responsable, siguiendo por ello sus instrucciones en todo momento y asegurando los mismos niveles de seguridad.",
+              items: {
+                item_1: "Entidades financieras",
+                item_2: "Proveedores de servicios tecnológicos",
+                item_3: "Proveedores y colaboradores de servicios de logística, transporte y entrega.",
+                item_4: "Proveedores y colaboradores de servicios relacionados con marketing y publicidad.",
+              }
+            },
+            user_rights: {
+              title: "DERECHOS DE LOS USUARIOS",
+              paragraph_1: "El usuario tiene derecho a:",
+              paragraph_2: "El Usuario puede ejercitar los derechos anteriormente indicados a la dirección de correo postal o electrónica del Responsable, acreditando su identidad con una copia escaneada de su DNI o documento equivalente, y especificando el derecho que desea ejercer.",
+              items: {
+                item_1: "Solicitar el acceso a sus datos personales que se están tratando y recibir dicha información por escrito por el medio solicitado.",
+                item_2: "Solicitar la rectificación de los datos personales inexactos o, en su caso, solicitar su supresión cuando, entre otros motivos, los datos ya no sean necesarios para la finalidad por los que fueron recogidos.",
+                item_3: "Solicitar la limitación del tratamiento de sus datos.",
+                item_4: "Oponerse al tratamiento de sus datos personales cuando proceda, en cuyo caso se dejarán de tratar sus datos salvo por motivos legítimos.",
+                item_5: "Derecho a la portabilidad de sus datos personales cuando el tratamiento esté basado en un consentimiento y se efectúe por medios automatizados. los datos se entregaran de forma estructurada, uso común y lectura mecánica.",
+                item_6: "Derecho a retirar el consentimiento prestado.",
+                item_7: "Derecho a reclamar ante la agencia española de protección de datos.",
+              }
+            },
+            data_origin: {
+              title: "PROCEDENCIA DE LOS DATOS",
+              paragraph_1: "Los datos personales serán facilitados por el propio interesado de forma absolutamente voluntaria.  La carencia de facilitar determinados datos o preguntas que pudieran formularse en los procesos de registro o en los distintos formularios electrónicos que se le presenten al Usuario, puede provocar la imposibilidad de acceso a determinados servicios para cuya prestación es imprescindible disponer de los datos de carácter personal, en tal caso El Responsable informará del carácter obligatorio y/o necesario de facilitar los datos personales para el funcionamiento del servicio.",
+              paragraph_2: "El Responsable le asegura la confidencialidad de sus datos personales y le garantiza la seguridad de los mismos, adoptando las medidas necesarias para evitar su alteración, pérdida, tratamiento o acceso no autorizado.",
+            },
+            user_information: {
+              title: "INFORMACIÓN FACILITADA POR EL USUARIO",
+              paragraph_1: "Los y las menores de 18 años no pueden ceder sus datos personales sin el previo consentimiento de su padre/madre y/o tutores legales.",
+              paragraph_2: "Los Usuarios, introduciendo sus datos en los formularios de contacto o presentados en formularios de descarga, aceptan expresamente y de forma libre e inequívoca, que sus datos son necesarios para atender su petición, por parte del Responsable, siendo voluntaria la inclusión de datos en los campos restantes.",
+              paragraph_3: "El Usuario garantiza que los datos personales facilitados son veraces y se hace responsable de comunicar cualquier modificación de los mismos.",
+              paragraph_4: "Todos los datos solicitados a través del sitio web son necesarios para la prestación de un servicio óptimo al Usuario. En caso de que no sean facilitados todos los datos, no se garantiza que la información y servicios que El Responsable le facilite, sean completamente ajustados a sus necesidades.",
+            },
+            security_measures: {
+              title: "MEDIDAS DE SEGURIDAD",
+              paragraph_1: "Que de conformidad con lo dispuesto en las normativas vigentes en materia de protección de datos personales, El Responsable está cumpliendo con todas las disposiciones de las normativas RGPD y LOPDGDD para el tratamiento de los datos personales de su responsabilidad, los cuales son tratados de manera lícita, leal y transparente en relación con el interesado y adecuados, pertinentes y limitados a lo necesario en relación con los fines para los que son tratados.",
+              paragraph_2: "El Responsable garantiza que ha implementado políticas técnicas y organizativas apropiadas para aplicar las medidas de seguridad que establecen el RGPD y la LOPDGDD con el fin de proteger los derechos y libertades de los Usuarios y les ha comunicado la información adecuada para que puedan ejercerlos.",
+            },
+            security_issues: {
+              title: "BRECHAS DE SEGURIDAD",
+              paragraph_1: "El Responsable informará sobre cualquier brecha de seguridad que afecte a la base de datos que utiliza este sitio web, o que afecte a cualquiera de nuestros servicios de terceros, a todas y cada una de las personas, datos de los cuales puedan haber sido afectadas, y autoridades, dentro de las 72 horas siguientes a la detección de la brecha.",
+            },
+            applicable_law: {
+              title: "LEGISLACIÓN APLICABLE Y JURISDICCIÓN",
+              paragraph_1: "Se reserva la facultad de presentar las acciones civiles o penales que considere necesarias por la utilización indebida del Sitio Web y Contenidos.",
+              paragraph_2: "La relación entre el Usuario y el Responsable se regirá por la normativa vigente y de aplicación en el territorio español. De surgir cualquier controversia en relación con la interpretación y/o a la aplicación, las partes someterán sus conflictos a la jurisdicción ordinaria sometiéndose a los jueces y tribunales que correspondan conforme a derecho.",
+            },
+          },
         },
       auth: {
         login: {
@@ -484,12 +594,12 @@ cookies: {
     },
     time: {
       title: 'Según el plazo de tiempo que permanecen activadas:',
-      item_1: 'Cookies de sesión : Son un tipo de cookies diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.', 
-      item_2: 'Cookies persistentes: Son un tipo de cookies en el que los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un durationo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.'
+      item_1: 'Cookies de sesión : Son un tipo de cookies diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.',
+      item_2: 'Cookies persistentes: Son un tipo de cookies en el que los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.'
     },
     what: {
       title: 'Según la finalidad para la que se traten los datos obtenidos a través de las cookies, la web puede utilizar:',
-      item_1: 'Cookies técnicas - Son aquellas que permiten al usuario la navegación a través de la página web o aplicación y la utilización de las diferentes opciones o servicios que en ella existen. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión, acceder a las partes web de acceso restringido, recordar los elementos que integran un pedido, realizar la solicitud de inscripción o participación en un evento, utilizar elementos de seguridad durante la navegación y almacenar contenidos para la difusión de videos o sonido.', 
+      item_1: 'Cookies técnicas - Son aquellas que permiten al usuario la navegación a través de la página web o aplicación y la utilización de las diferentes opciones o servicios que en ella existen. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión, acceder a las partes web de acceso restringido, recordar los elementos que integran un pedido, realizar la solicitud de inscripción o participación en un evento, utilizar elementos de seguridad durante la navegación y almacenar contenidos para la difusión de videos o sonido.',
       item_2: 'Cookies de personalización - Son aquéllas que permiten al usuario acceder al servicio con algunas características de carácter general predefinidas en su terminal o que el propio usuario defina. Por ejemplo, el idioma, el tipo de navegador a través del cual accede al servicio, el diseño de contenidos seleccionado, geolocalización del terminal y la configuración regional desde donde se accede al servicio.',
       item_3: 'Cookies publicitarias - Son aquellas que permiten la gestión eficaz de los espacios publicitarios que se han incluido en la página web o aplicación desde la que se presta el servicio. Permiten adecuar el contenido de la publicidad para que esta sea relevante para el usuario y para evitar mostrar anuncios que el usuario ya haya visto.',
       item_4: 'Cookies de análisis estadístico - Son aquellas que permiten realizar el seguimiento y análisis del comportamiento de los usuarios en los sitios web. La información recogida mediante este tipo de cookies se utiliza en la medición de la actividad de los sitios web, aplicación o plataforma y para la elaboración de perfiles de navegación de los usuarios de dichos sitios, con el fin de introducir mejoras en el servicio en función de los datos de uso que hacen los usuarios.',
@@ -816,7 +926,7 @@ cookies: {
       label: 'Firefox',
       to: 'https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias?redirectslug=habilitar-y-deshabilitar-cookies-que-los-sitios-we&redirectlocale=es'
     },
-    item_2: { 
+    item_2: {
       label: 'Chrome',
       to: 'https://support.google.com/chrome/answer/95647?hl=es'
     },
@@ -840,7 +950,7 @@ cookies: {
     paragraph_2: 'En algunos navegadores se pueden configurar reglas específicas para administrar cookies por sitio web, lo que ofrece un control más preciso sobre la privacidad. Esto significa que se puede inhabilitar cookies de todos los sitios salvo de aquellos en los que se confíe.',
     paragraph_3: 'En este enlace puedes desactivar, habilitar y gestionar las cookies de TALKUAL.'
   }
-},  
+},
 
   // Pages About
   "pages.about.title": "Historia del proyecto ",
@@ -1143,7 +1253,6 @@ cookies: {
     "Entre 14-15 kg de fruta y/o verdura de temporada. Ideal para 4 o 5+ personas.", //
   "content.home.reviews.title": "¡Comentarios de nuestros clientes!",
 
-
   "content.whatinbox.title": "¿Qué hay en las cajas?",
   "content.whatinbox.description":
     "Aquí podéis ver los productos de esta semana. En nuestras cajas incluimos la mayoría de estos alimentos, dependemos del excedente del agricultor y a veces varían las proporciones pero siempre encontrando el equilibrio nutricional.",
@@ -1261,7 +1370,7 @@ cookies: {
   // AdminOrderSteps
   "adminOrderSteps.orderReceived": "Pedido recibido",
   "adminOrderSteps.orderPayed": "Pagado",
-  "adminOrderSteps.orderModificationduration": "durationo de modificación",
+  "adminOrderSteps.orderModificationPeriod": "Periodo de modificación",
   "adminOrderSteps.orderBeenPrepared": "Preparando el envío",
   "adminOrderSteps.orderOnShipment": "En reparto",
   "adminOrderSteps.orderDelivered": "Entregado",
@@ -1463,7 +1572,7 @@ cookies: {
   "adminSubscriptionNextDelivery.discountof.percent": "del",
 
   // AdminSubscriptionSettings
-  "adminSubscriptionSettings.title": "durationicidad",
+  "adminSubscriptionSettings.title": "Periodicidad",
   "adminSubscriptionSettings.frequency": "Frecuencia",
   "adminSubscriptionSettings.preferredDay": "Día de entrega",
   "adminSubscriptionSettings.timeSlot": "Franja horaria",
@@ -1836,7 +1945,7 @@ cookies: {
   "recoveryForm.email": "Correo electrónico",
   "recoveryForm.submit": "Enviar",
   "recoveryForm.successMessage":
-    "Hemos enviado un código de confirmación al correo electronico indicado. Por favor, compruebe su bandeja de entrada e introduzca el código junto a su nueva contraseña.",
+    "Hemos enviado un código de confirmación al correo electrónico indicado. Por favor, compruebe su bandeja de entrada e introduzca el código junto a su nueva contraseña.",
   "recoveryForm.confirmationCode": "Código de confirmación",
   "recoveryForm.newPassword": "Nueva contraseña",
   "recoveryForm.confirmNewPassword": "Confirmar contraseña",
@@ -2024,7 +2133,7 @@ cookies: {
   // AdminOrdersSteps
   "adminOrdersSteps.pending": "Pedido recibido",
   "adminOrdersSteps.payed": "Pagado",
-  "adminOrdersSteps.modify": "durationo de modificación",
+  "adminOrdersSteps.modify": "Periodo de modificación",
   "adminOrdersSteps.processing": "Preparando el envío",
   "adminOrdersSteps.on_shipment": "En reparto",
   "adminOrdersSteps.completed": "Entregado",
