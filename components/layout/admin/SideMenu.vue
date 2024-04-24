@@ -3,7 +3,7 @@
     class="lg:max-w-[22vw] border-[1px] border-green-ternary flex flex-col font-solina-extended-book text-[20px] p-6 rounded-xl lg:ml-16 lg:mt-10"
   >
     <h4 class="font-recoleta-regular text-[32px] mb-4">
-      {{ $t("side_menu.title") }}
+      {{ $t("side_admin_menu.title") }}
     </h4>
     <NuxtLink
       v-for="(item, index) in items"
@@ -37,7 +37,7 @@ const generateItemsArray = (items: number, index: number = 1) => {
   const data = [];
   for(let i = index; i <= items; i++) {
     data.push({
-      label: t(`side_menu.item_${i}.label`),
+      label: t(`side_admin_menu.item_${i}.label`),
       link: ''
     })
   }

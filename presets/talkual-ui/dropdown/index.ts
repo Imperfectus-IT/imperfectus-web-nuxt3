@@ -35,7 +35,7 @@ export default {
   input: ({ props }) => ({
     class: [
       //Font
-      "leading-none text-sm font-normal",
+      "leading-none text-md font-normal",
 
       // Display
       "block",

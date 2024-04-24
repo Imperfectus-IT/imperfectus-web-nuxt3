@@ -2991,6 +2991,7 @@ cookies: {
   "Companies.9.alt": "Zumos TALKUAL",
   "ReferAFriend.1.alt": "Ilustración de la tribu TALKUAL",
   "general.error": "Algo ha salido mal, inténtalo de nuevo más tarde",
+
   newsroom: {
     header: {
       title: "Sala de prensa",
@@ -3037,7 +3038,8 @@ cookies: {
       description: "Para cualquier información y/o solicitud de imágenes, no dudes en ponerte en contacto con nosotros a:",
     }
   },
-  side_menu: {
+
+  side_admin_menu: {
     title: 'Mi cuenta',
     item_1: {
       label: 'Datos personales',
@@ -3075,5 +3077,42 @@ cookies: {
       label: 'Cerrar sesión',
       link: ''
     }
+  },
+
+profile: {
+  my_acount: {
+    title: '¡Hola, {name}!',
+    help: '¿Necesitas ayuda?',
+    link_1: 'Preguntas frecuentes',
+    link_2: 'contáctanos',
+    info_1: 'Gracias a ti hemos rescatado más de {kgs} Kg',
+    info_2: 'Tu has contribuido con {kgs} Kg',
+    next_order: {
+      title: 'Tu próximo pedido',
+      exclusions: 'Exclusiones:',
+      open_order: 'Ver pedido'
+    },
+    next_deliveries: {
+      paragraph_1: 'En esta sección puedes cancelar, donar o regalar cualquiera de tus próximos pedidos',
+      handle_next_deliveries: 'Gestionar próximas entregas'
+    },
+    preferred_products: {
+      title: '¿Cuál es tu fruta y verdura preferida?',
+      fruits: {
+        title: '¿Cuál es tu fruta preferida? Puedes elegir 2',
+        placeholder: 'Elige tus dos frutas preferidas'
+      },
+      vegetables: {
+        title: 'Cuál es tu verdura preferida? Puedes elegir 2',
+        placeholder: 'Elige tus dos verduras preferidas'
+        
+      },
+      paragraph_1: ' Te preguntamos esto para que tus mensajes y recomendaciones se ajusten más a ti',
+      save_preferred: 'Guardar preferencias',
+      saved_paragraph: 'Tus preferencias han sido guardadas. Has seleccionado: {products}',
+      modify_button: 'Modificar preferencias'
+    }
+
   }
+}
 };

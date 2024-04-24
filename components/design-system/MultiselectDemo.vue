@@ -5,7 +5,7 @@
       :options="cities"
       option-label="name"
       placeholder="Seleccione ciudades"
-      :max-selected-labels="6"
+      :selection-limit="1"
       class="w-full md:w-[20rem]"
     />
     <MultiSelect
