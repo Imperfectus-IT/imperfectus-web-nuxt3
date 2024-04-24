@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col gap-4 mt-5">
+  <div class="container flex flex-col gap-4 mt-5  p-3">
     <ButtonDemo />
     <CalendarDemo />
     <ToolbarDemo />
