@@ -5,6 +5,7 @@
     <ToolbarDemo />
     <!-- <CarouselDemo /> -->
     <CardDemo />
+    <InputOtpDemo />
     <InputTextDemo />
     <DialogDemo />
     <PasswordDemo />

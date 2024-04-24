@@ -88,7 +88,9 @@ export default defineNuxtConfig({
                 "Dialog",
                 "Divider",
                 "Dropdown",
+                'Fieldset',
                 "Image",
+                "InputOtp",
                 "InputText",
                 "Menu",
                 "MenuBar",
@@ -102,8 +104,6 @@ export default defineNuxtConfig({
                 "Skeleton",
                 "Toolbar",
                 "Rating",
-                'Fieldset',
-                'DataTable',
                 'Steps'
       ],
         },
