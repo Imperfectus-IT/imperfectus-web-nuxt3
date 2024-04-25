@@ -121,7 +121,7 @@ export default {
 
             // Colors
             'text-green-tertiary',
-            'bg-surface-0 dark:bg-surface-800',
+            'bg-transparent',
             'border-surface-200 dark:border-surface-700'
         ]
     },
@@ -262,7 +262,7 @@ export default {
     day: {
         class: [
             // Spacing
-            'p-0 md:p-2'
+            'p-1 md:p-2'
         ]
     },
     weeklabelcontainer: ({ context }) => ({

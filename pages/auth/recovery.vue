@@ -35,21 +35,13 @@ const handleRecoveryEvent = () => {
 
 <template>
   <Divider />
-  <main class="page-recovery">
-    <div class="page-recovery__wrapper">
-      <div class="page-recovery__logo">
-        <nuxt-img
-          format="webp"
-          loading="lazy"
-          src="/images/logos/talkual-logo-dark.svg"
-          width="280"
-          height="50"
-          :placeholder="[280, 200, 10]"
-          alt="TALKUAL"
-        />
+  <RecoveryForm @recovery="handleRecoveryEvent">
+    <template #header>
+      <div class="mb-5 lg:mb-10 text-center">
+        <span class="font-recoleta-regular text-lg font-normal">
+            {{ $t("recoveryForm.recoverPassword") }}
+        </span>
       </div>
-
-      <RecoveryForm @recovery="handleRecoveryEvent" />
-    </div>
-  </main>
+    </template>
+  </RecoveryForm>
 </template>

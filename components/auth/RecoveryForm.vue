@@ -73,10 +73,7 @@ const submitResetPasswordForm = async () => {
 
 <template>
   <section class="px-10 md:px-[24%] lg:px-[30%] 2xl:px-[36%]">
-    <h3 class="font-solina-extended-medium mb-5">
-      {{ $t("recoveryForm.recoverPassword") }}
-    </h3>
-
+    <slot name="header"/>
     <transition name="fade" mode="out-in">
       <form
         v-if="step === 'email'"
@@ -143,8 +140,6 @@ const submitResetPasswordForm = async () => {
               <Password
                 id="mewPassword"
                 v-model="recoveryFormData.password"
-                :feedback="false"
-                :toggle-mask="true"
                 class="w-full rounded-xl"
                 :placeholder="$t('recoveryForm.newPassword')"
               />
@@ -157,8 +152,6 @@ const submitResetPasswordForm = async () => {
               <Password
                 id="confirmNewPassword"
                 v-model="recoveryFormData.confirmPassword"
-                :toggle-mask="true"
-                :feedback="false"
                 class="w-full"
                 :placeholder="$t('recoveryForm.confirmNewPassword')"
               />
