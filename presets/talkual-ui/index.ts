@@ -14,6 +14,7 @@ import menu from "./menu/index.ts";
 import menubar from "./menubar/index.ts";
 import multiselect from "./multiselect/index.ts";
 import overlaypanel from "./overlaypanel/index.ts";
+import panel from "./panel/index.ts";
 import panelmenu from "./panelmenu/index.ts";
 import password from "./password/index.ts";
 import progressbar from "./progressbar/index.ts";
@@ -41,6 +42,7 @@ export default {
   menu,
   multiselect,
   overlaypanel,
+  panel,
   panelmenu,
   password,
   progressbar,

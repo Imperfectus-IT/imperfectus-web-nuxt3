@@ -15,6 +15,7 @@
     <ProgressBarDemo />
     <RatingDemo />
     <MenuBarDemo />
+    <PanelDemo />
     <PanelMenuDemo />
     <SkeletonDemo />
     <FieldsetDemo />
