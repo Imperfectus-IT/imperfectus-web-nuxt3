@@ -53,7 +53,7 @@
     </div>
 
     <div v-if="componentLayers.confirmView" class="w-full flex items-center flex-col">
-      <p>{{ $t('profile.my_acount.preferred_products.saved_paragraph', {products: preferredProducts.fruits.join(', ') + preferredProducts.vegetables.join(', ')}) }}</p>
+      <p class="whitespace-normal">{{ $t('profile.my_acount.preferred_products.saved_paragraph', {products: preferredProducts.fruits.join(', ') + preferredProducts.vegetables.join(', ')}) }}</p>
       <Button class="w-3/4 mt-5 mb-3" outlined :label="$t('profile.my_acount.preferred_products.modify_button')" @click="toggleComponentLayers()" />
     </div>
   </div>
@@ -105,15 +105,15 @@ const fruits = [
 const vegetables = [
   {
     label: "Zanahoria",
-    value: "carrot",
+    value: "zanahoria",
   },
   {
     label: "Pepino",
-    value: "cucumber",
+    value: "zanahoria",
   },
   {
     label: "Calabacín",
-    value: "zucchini",
+    value: "calabacín",
   },
 ];
 </script>
