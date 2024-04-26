@@ -27,7 +27,7 @@ const order = {
 </script>
 
 <template>
-  <div class="lg:col-span-3 lg:mt-2">
+  <div class="lg:col-span-3 lg:mt-2 relative -left-10">
     <Introduction :user="user" />
     <ImagesAndData :kgs="'50'" />
     <NextOrder :order="order" />

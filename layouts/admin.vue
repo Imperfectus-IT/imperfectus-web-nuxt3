@@ -7,7 +7,7 @@
     <MobileAdminNavbarHeader class="lg:hidden bg-beige-primary" />
     <DesktopAdminNavbarHeader class="hidden lg:block bg-beige-primary mb-0" />
     <div class="lg:grid lg:grid-cols-4 ">
-      <SideMenu class="hidden lg:block lg:h-[450px]" />
+      <SideMenu class="hidden lg:block lg:h-[450px] xl:max-w-[350px]" />
       <slot />
     </div>
     <LazyFooterDefault />
