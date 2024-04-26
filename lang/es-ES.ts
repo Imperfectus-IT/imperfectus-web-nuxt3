@@ -1642,10 +1642,11 @@ cookies: {
   "adminSubscriptionPayment.cardBrand": "Marca de tarjeta",
   "adminSubscriptionPayment.cardMonth": "Mes de caducidad",
   "adminSubscriptionPayment.cardYear": "Año de caducidad",
+  "adminSubscriptionPayment.expiryDate": "Caducidad",
   "adminSubscriptionPayment.paymentMethod": "Método de pago",
   "adminSubscriptionPayment.anyPaymentMethod":
     "No tienes ningun método de pago asociado.",
-  "adminSubscriptionPayment.addPaymentMethod": "Añadir nuevo método de pago",
+  "adminSubscriptionPayment.addPaymentMethod": "Añadir método de pago",
   "adminSubscriptionPayment.update.success": "Datos actualizados correctamente",
   "adminSubscriptionPayment.update.error": "Error al actualizar",
 
@@ -3041,78 +3042,67 @@ cookies: {
 
   side_admin_menu: {
     title: 'Mi cuenta',
-    item_1: {
-      label: 'Datos personales',
-      link: '/'
-    },
-    item_2: {
-      label: 'Mis pedidos',
-      link: ''
-    },
-    item_3: {
-      label: 'Mis suscripciones',
-      link: ''
-    },
-    item_4: {
-      label: 'Regala 15%, gana 15%',
-      link: ''
-    },
-    item_5: {
-      label: 'Tarjeta regalo',
-      link: ''
-    },
-    item_6: {
-      label: 'Newsletter',
-      link: ''
-    },
-    item_7: {
-      label: 'FAQ',
-      link: ''
-    },
-    item_8: {
-      label: 'Contacto',
-      link: ''
-    },
-    item_9: {
-      label: 'Cerrar sesión',
-      link: ''
-    }
+    personal_data: 'Datos personales',
+    orders: 'Mis pedidos',
+    subscriptions: 'Mis suscripciones',
+    referrals: 'Regala 15%, gana 15%',
+    giftcard: 'Tarjeta regalo',
+    newsletter: 'Newsletter',
+    faq: 'FAQ',
+    contact: 'Contacto',
+    logout: 'Cerrar sesión',
   },
 
-profile: {
-  my_acount: {
-    title: '¡Hola, {name}!',
-    help: '¿Necesitas ayuda?',
-    link_1: 'Preguntas frecuentes',
-    link_2: 'contáctanos',
-    info_1: 'Gracias a ti hemos rescatado más de',
-    info_2: 'Tu has contribuido con',
-    next_order: {
-      title: 'Tu próximo pedido',
-      exclusions: 'Exclusiones:',
-      open_order: 'Ver pedido'
-    },
-    next_deliveries: {
-      paragraph_1: 'En esta sección puedes cancelar, donar o regalar cualquiera de tus próximos pedidos',
-      handle_next_deliveries: 'Gestionar próximas entregas'
-    },
-    preferred_products: {
-      title: '¿Cuál es tu fruta y verdura preferida?',
-      fruits: {
-        title: '¿Cuál es tu fruta preferida? Puedes elegir 2',
-        placeholder: 'Elige tus dos frutas preferidas'
-      },
-      vegetables: {
-        title: 'Cuál es tu verdura preferida? Puedes elegir 2',
-        placeholder: 'Elige tus dos verduras preferidas'
-        
-      },
-      paragraph_1: ' Te preguntamos esto para que tus mensajes y recomendaciones se ajusten más a ti',
-      save_preferred: 'Guardar preferencias',
-      saved_paragraph: 'Tus preferencias han sido guardadas. Has seleccionado: {products}',
-      modify_button: 'Modificar preferencias'
-    }
+    profile: {
+      my_account: {
+        title: '¡Hola, {name}!',
+        help: '¿Necesitas ayuda?',
+        link_1: 'Preguntas frecuentes',
+        link_2: 'contáctanos',
+        info_1: 'Gracias a ti hemos rescatado más de',
+        info_2: 'Tu has contribuido con',
+        next_order: {
+          title: 'Tu próximo pedido',
+          exclusions: 'Exclusiones:',
+          open_order: 'Ver pedido'
+        },
+        next_deliveries: {
+          paragraph_1: 'En esta sección puedes cancelar, donar o regalar cualquiera de tus próximos pedidos',
+          handle_next_deliveries: 'Gestionar próximas entregas'
+        },
+        preferred_products: {
+          title: '¿Cuál es tu fruta y verdura preferida?',
+          fruits: {
+            title: '¿Cuál es tu fruta preferida? Puedes elegir 2',
+            placeholder: 'Elige tus dos frutas preferidas'
+          },
+          vegetables: {
+            title: 'Cuál es tu verdura preferida? Puedes elegir 2',
+            placeholder: 'Elige tus dos verduras preferidas'
 
-  }
-}
+          },
+          paragraph_1: ' Te preguntamos esto para que tus mensajes y recomendaciones se ajusten más a ti',
+          save_preferred: 'Guardar preferencias',
+          saved_paragraph: 'Tus preferencias han sido guardadas. Has seleccionado: {products}',
+          modify_button: 'Modificar preferencias'
+        }
+      },
+      personal_data: {
+        modify_data_button: 'Modificar datos',
+        change_password_button: 'Cambiar contraseña',
+      },
+      language_preference: {
+        title: 'Preferencias de idioma',
+        description: '¿Tienes alguna preferencia de idioma a la hora de recibir las distintas comunicaciones?',
+        modify_language_button: 'Editar idioma',
+      },
+      address: {
+        title: 'Direcciones guardadas',
+        street: 'Dirección (calle y número)',
+        floor: 'Piso y puerta',
+        postal_code: 'Código postal',
+        city: 'Localidad',
+        add_address_button: 'Añadir dirección',
+      },
+    }
 };

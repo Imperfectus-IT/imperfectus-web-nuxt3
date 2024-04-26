@@ -1,18 +1,7 @@
 <script setup lang="ts">
 import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
 
-const localePath = useLocalePath();
 const { visible, toggleVisible } = useVisibleSidebar();
-const router = useRouter();
-const routeToHidde = {
-  "auth-login___es": true,
-  "auth-login___ca": true,
-};
-const hiddeAccountLink = computed(
-  () => routeToHidde[router.currentRoute.value.name as string] ?? false
-);
-
-
 </script>
 
 <template>
@@ -37,5 +26,3 @@ const hiddeAccountLink = computed(
     <SideMenu v-if="visible" v-model:hidden="visible" @hide="toggleVisible" />
   </section>
 </template>
-
-<style scoped lang="scss"></style>

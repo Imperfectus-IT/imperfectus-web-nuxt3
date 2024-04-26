@@ -14,7 +14,7 @@ export default {
             // Colors
             'text-green-tertiary',
             'bg-transparent',
-            'pt-3 pb-2 px-4',
+            'pt-4 pb-2 px-4',
             {
                 'border rounded-tl-lg rounded-tr-lg': props.toggleable,
             },
@@ -27,7 +27,7 @@ export default {
         ]
     }),
     title: {
-        class: 'solina-extended-book text-base lg:text-lg font-semibold leading-5'
+        class: 'font-recoleta-semibold text-xl font-medium leading-5'
     },
     toggler: {
         class: [

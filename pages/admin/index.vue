@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 definePageMeta({
   layout: "admin",
@@ -27,9 +26,9 @@ const order = {
 </script>
 
 <template>
-  <div class="lg:col-span-3 lg:mt-2 xl:relative 2xl:-left-10">
+  <div class="lg:mt-2 xl:w-full 2xl:px-64">
     <Introduction :user="user" />
-    <ImagesAndData :kgs="'50'" />
+    <ImagesAndData kgs="50" />
     <NextOrder :order="order" />
     <HandleNextDeliveries :subscription-id="1234" />
     <PreferredProducts />
