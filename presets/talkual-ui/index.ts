@@ -24,6 +24,7 @@ import skeleton from "./skeleton/index.ts";
 import toolbar from "./toolbar/index.ts";
 import stepper from "./stepper/index.ts";
 import steps from "./steps/index.ts";
+import timeline from "./timeline/index.ts";
 
 export default {
   global,
@@ -49,6 +50,7 @@ export default {
   rating,
   sidebar,
   skeleton,
+  timeline,
   toolbar,
   stepper,
   steps

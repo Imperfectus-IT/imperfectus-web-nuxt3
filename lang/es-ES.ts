@@ -3085,8 +3085,8 @@ profile: {
     help: '¿Necesitas ayuda?',
     link_1: 'Preguntas frecuentes',
     link_2: 'contáctanos',
-    info_1: 'Gracias a ti hemos rescatado más de {kgs} Kg',
-    info_2: 'Tu has contribuido con {kgs} Kg',
+    info_1: 'Gracias a ti hemos rescatado más de',
+    info_2: 'Tu has contribuido con',
     next_order: {
       title: 'Tu próximo pedido',
       exclusions: 'Exclusiones:',

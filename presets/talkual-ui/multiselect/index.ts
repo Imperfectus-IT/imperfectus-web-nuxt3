@@ -6,7 +6,7 @@ export default {
       "relative",
 
       // Shape
-      "w-full md:max-w-[20rem]",
+      "w-full ",
       "rounded-md",
 
       // Color and Background

@@ -2,12 +2,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="mx-auto">
-    <TopToolbar class="h-14"/>
+  <div class="mx-auto ">
+    <TopToolbar class="h-14" />
     <MobileAdminNavbarHeader class="lg:hidden bg-beige-primary" />
     <DesktopAdminNavbarHeader class="hidden lg:block bg-beige-primary mb-0" />
-    <SideMenu class="hidden lg:block" />
-    <slot />
+    <div class="lg:grid lg:grid-cols-4 ">
+      <SideMenu class="hidden lg:block lg:h-[450px]" />
+      <slot />
+    </div>
     <LazyFooterDefault />
   </div>
 </template>

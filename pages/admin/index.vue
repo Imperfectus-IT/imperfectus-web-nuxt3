@@ -14,7 +14,7 @@ defineI18nRoute({
 
 const user = useStrapiUser();
 
-// TODO THIS ORDER HAS TO BE WITH STATUS PROCESSING AND DELIVERY DATE > TODAY. IF NOT, THIS SECTION WILL NOT BE DISPLAYED
+// TODO THIS ORDER HAS TO BE WITH STATUS PROCESSING AND DELIVERY DATE > TODAY. IF NOT, NEXT ORDER SECTION WILL NOT BE DISPLAYED
 const order = {
   id: 45765,
   order_id: 4676,
@@ -27,9 +27,11 @@ const order = {
 </script>
 
 <template>
-  <Introduction :user="user" />
-  <ImagesAndData />
-  <NextOrder :order="order" />
-  <HandleNextDeliveries />
-  <PreferredProducts />
+  <div class="lg:col-span-3 lg:mt-2">
+    <Introduction :user="user" />
+    <ImagesAndData :kgs="'50'" />
+    <NextOrder :order="order" />
+    <HandleNextDeliveries :subscription-id="1234" />
+    <PreferredProducts />
+  </div>
 </template>

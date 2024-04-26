@@ -20,7 +20,7 @@
     <SkeletonDemo />
     <FieldsetDemo />
     <StepsDemo />
-
+    <TimeLineDemo />
   </div>
 </template>
 

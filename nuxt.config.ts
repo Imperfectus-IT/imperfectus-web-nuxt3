@@ -103,6 +103,7 @@ export default defineNuxtConfig({
                 "Rating",
                 "Sidebar",
                 "Skeleton",
+                "Timeline",
                 "Toolbar",
                 "Rating",
                 'Steps'
