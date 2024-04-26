@@ -18,7 +18,7 @@
           width="110"
           height="120"
           alt="next-order"
-          class="rounded-lg my-auto"
+          class="rounded-lg "
         />
         <div>
           <h4 class="font-semibold mb-2 text-[20px]">

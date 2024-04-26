@@ -1,5 +1,6 @@
 <template>
-  <div class="card w-10/12 mx-auto">
+  <div class="card border-[1px] p-6 rounded-lg">
+    <h4>STEPS</h4>
     <Steps
       :model="items"
       :active-step="activeStep"
