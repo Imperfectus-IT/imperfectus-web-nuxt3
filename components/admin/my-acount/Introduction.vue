@@ -7,8 +7,8 @@ defineProps<{
 </script>
 
 <template>
-  <div class="font-solina-extended-book m-6">
-    <h4 v-if="user" class="font-recoleta-regular text-[40px]">
+  <div class="font-solina-extended-book m-6 mb-14">
+    <h4 v-if="user" class="font-recoleta-regular text-[40px] break-words mb-4">
       {{ $t("profile.my_acount.title", { name: user.username }) }}
     </h4>
     <p>{{ $t("profile.my_acount.help") }}</p>
