@@ -3,20 +3,21 @@
     <h4>TIMELINE</h4>
     <!-- DESKTOP VERSION -->
     <Timeline :value="timeLineValue()">
-      <template #marker="slotProps">
+      <template #marker="{ item }">
         <div
-          :class="`mx-auto flex self-baseline h-7 w-7 rounded-full border-[1px] border-green-tertiary bg-${slotProps.item.background} z-10`"
+          :class="`mx-auto flex self-baseline h-7 w-7 rounded-full border-[1px] border-green-tertiary bg-${item.background} z-10`"
         >
-          <NuxtImg
-            v-if="slotProps.item.background === 'green-tertiary'"
-            format="webp"
-            class="w-[14px] h-[12px] mx-auto my-auto"
-            src="icons/steps/check.webp"
+          <span
+            v-if="
+              item.background === 'green-tertiary' ||
+              item.background === 'red-primary'
+            "
+            :class="`mdi mdi-${item.icon} ${item.icon === 'check' ? 'text-green-primary' : 'text-white-primary'}  mx-auto my-auto`"
           />
         </div>
       </template>
-      <template #content="slotProps">
-        {{ slotProps.item.status }}
+      <template #content="{ item }">
+        {{ item.status }}
       </template>
     </Timeline>
 
@@ -26,30 +27,28 @@
       :value="timeLineValue()"
       layout="horizontal"
     >
-      <template #marker="slotProps">
+      <template #marker="{ item }">
         <div
-          :class="`mx-auto flex self-baseline h-7 w-7 rounded-full border-[1px] border-green-tertiary bg-${slotProps.item.background} z-10`"
+          :class="`mx-auto flex self-baseline h-7 w-7 rounded-full border-[1px] border-green-tertiary bg-${item.background} z-10`"
         >
-          <NuxtImg
+          <span
             v-if="
-              slotProps.item.background === 'green-tertiary' ||
-              slotProps.item.background === 'red-primary'
+              item.background === 'green-tertiary' ||
+              item.background === 'red-primary'
             "
-            format="webp"
-            class="w-[14px] h-[12px] mx-auto my-auto object-cover"
-            :src="slotProps.item.icon"
+            :class="`mdi mdi-${item.icon} ${item.icon === 'check' ? 'text-green-primary' : 'text-white-primary'}  mx-auto my-auto`"
           />
         </div>
       </template>
-      <template #content="slotProps">
+      <template #content="{ item }">
         <div class="text-center">
-          {{ slotProps.item.status }}
+          {{ item.status }}
         </div>
       </template>
-      <template #connector="slotProps">
+      <template #connector="{ index }">
         <div
           :class="
-            slotProps.index !== 2
+            index !== 2
               ? `absolute left-1/2 h-[1px] w-full bg-green-tertiary`
               : ''
           "
@@ -59,18 +58,20 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
-
+<script setup lang="ts">
 import Timeline from "primevue/timeline";
 
 const order = {
-  status: "failed",
+  status: "on_shipment",
 };
 
 const oneStepStatuses = ["replaced", "cancelled", "refunded", "other"];
 
-const orderStatuses = {
+interface StatusesObject {
+  [key: number]: string;
+}
+
+const orderStatuses: StatusesObject = {
   0: "pending",
   1: "failed",
   2: "processing",
@@ -81,7 +82,7 @@ const orderStatuses = {
 
 const timeLineValue = () => {
   if (oneStepStatuses.includes(order.status)) {
-    return [oneStepEvents[order.status]];
+    return [oneStepEvents[order.status as keyof OneStepEvents]];
   } else {
     return events;
   }
@@ -89,51 +90,61 @@ const timeLineValue = () => {
 
 const activeStep = computed(() => {
   return Object.keys(orderStatuses).findIndex(
-    (key) => orderStatuses[key] === order.status
+    (key: string) => orderStatuses[parseInt(key)] === order.status
   );
 });
 
+interface Event {
+  status: string;
+  background: string;
+  icon: string;
+}
 
+interface OneStepEvents {
+  replaced: Event;
+  cancelled: Event;
+  refunded: Event;
+  other: Event;
+}
 
-
-const oneStepEvents = {
+const oneStepEvents: OneStepEvents = {
   replaced: {
     status: "Pedido reemplazado",
     background: "green-tertiary",
-    icon: "icons/steps/check.webp",
+    icon: "check",
   },
   cancelled: {
     status: "Pedido cancelado",
     background: "red-primary",
-    icon: "icons/steps/cross.webp",
+    icon: "close",
   },
   refunded: {
     status: "Pedido reembolsado",
     background: "green-tertiary",
-    icon: "icons/steps/check.webp",
+    icon: "check",
   },
   other: {
     status: "Otro",
     background: "red-primary",
-    icon: "icons/steps/cross.webp",
+    icon: "close",
   },
 };
 
-const events = [
+const events: Event[] = [
   {
     status: "Pedido creado",
-    background: activeStep.value === 0 ? "green-primary" : "green-tertiary",
-    icon: "icons/steps/check.webp",
+    background: "green-tertiary",
+    icon: "check",
   },
   {
     status: "Pedido pagado",
     background:
       activeStep.value < 1
-        ? "beige-primary"
+        ? "green-primary"
         : activeStep.value === 1
           ? "red-primary"
           : "green-tertiary",
-    icon: "icons/steps/cross.webp",
+    icon: activeStep.value === 1 ? "close" : "check",
   },
   {
     status: "Período de modificación",
@@ -143,7 +154,7 @@ const events = [
         : activeStep.value === 2
           ? "green-primary"
           : "green-tertiary",
-    icon: "icons/steps/check.webp",
+    icon: "check",
   },
   {
     status: "Preparando envío",
@@ -153,7 +164,7 @@ const events = [
         : activeStep.value === 3
           ? "green-primary"
           : "green-tertiary",
-    icon: "icons/steps/check.webp",
+    icon: "check",
   },
   {
     status: "En reparto",
@@ -163,12 +174,12 @@ const events = [
         : activeStep.value === 4
           ? "green-primary"
           : "green-tertiary",
-    icon: "icons/steps/check.webp",
+    icon: "check",
   },
   {
     status: "Entregado",
     background: activeStep.value < 5 ? "beige-primary" : "green-tertiary",
-    icon: "icons/steps/check.webp",
+    icon: "check",
   },
-]
+];
 </script>
