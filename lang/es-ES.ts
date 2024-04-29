@@ -3106,5 +3106,25 @@ cookies: {
         city: 'Localidad',
         add_address_button: 'Añadir dirección',
       },
+      payment: {
+        active: 'Método de pago activo para la suscripción',
+        list: 'Tus métodos de pago',
+        deleteModal: {
+          title: 'Eliminar método de pago',
+          description: '¿Estás seguro de que quieres eliminar este método de pago? Recuerda tener un método de pago guardado para poder cobrarte tu pedido o suscripción.',
+          confirm: 'Eliminar',
+          cancel: 'Cancelar'
+        },
+        confirmDeleteModal: {
+          description: 'El método de pago ha sido eliminado correctamente. Recuerda tener un método de pago guardado para poder cobrarte tu pedido o suscripción.',
+          confirm: 'OK'
+        },
+        card: {
+          number: 'Número de tarjeta',
+          brand: 'Marca de tarjeta',
+          month: 'Mes de caducidad',
+          year: 'Año de caducidad'
+        }
+      },
     }
 };

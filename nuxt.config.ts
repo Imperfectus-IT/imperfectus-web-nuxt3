@@ -104,6 +104,7 @@ export default defineNuxtConfig({
                 "Sidebar",
                 "Skeleton",
                 "Timeline",
+                "Toast",
                 "Toolbar",
                 "Rating",
                 'Steps'
