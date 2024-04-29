@@ -11,7 +11,8 @@
         loading="lazy"
         :width="imageWidth"
         :height="imageHeight"
-      />
+        fit="cover"
+        />
       <div class="flex flex-col w-1/2 lg:w-full">
         <p
           class="p-3 pb-0 mb-0 text-[18px] font-recoleta-medium text-center lg:w-full lg:text-[22px]"
@@ -35,6 +36,7 @@
         loading="lazy"
         :width="imageWidth"
         :height="imageHeight"
+        fit="cover"
       />
       <!-- TODO User Kgs must be calculated! -->
       <div class="flex flex-col w-1/2 lg:w-full">
