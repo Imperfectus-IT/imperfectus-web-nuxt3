@@ -1,9 +1,9 @@
 <template>
   <div
-    class="border-green-tertiary border-[1px] rounded-lg p-4 m-6 flex flex-col justify-center"
+    class="border-green-tertiary border-[1px] rounded-lg p-4 mt-6 flex flex-col justify-center"
   >
     <h4 class="font-recoleta-regular text-[30px]">
-      {{ $t("profile.my_acount.preferred_products.title") }}
+      {{ $t("profile.my_account.preferred_products.title") }}
     </h4>
     <Divider />
 
@@ -11,7 +11,7 @@
       <div class='lg:flex lg:flex-row lg:gap-5'>
         <div class="flex flex-col w-full">
           <p class="mt-2 lg:mt-0">
-            {{ $t("profile.my_acount.preferred_products.fruits.title") }}
+            {{ $t("profile.my_account.preferred_products.fruits.title") }}
           </p>
           <MultiSelect
             v-model="preferredProducts.fruits"
@@ -20,7 +20,7 @@
             option-label="label"
             option-value="value"
             :placeholder="
-              $t('profile.my_acount.preferred_products.fruits.placeholder')
+              $t('profile.my_account.preferred_products.fruits.placeholder')
             "
             :selection-limit="2"
             class="w-full border-[1px] rounded-md text-[16px] mt-3"
@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-col w-full">
           <p class="mt-6 lg:mt-0">
-            {{ $t("profile.my_acount.preferred_products.vegetables.title") }}
+            {{ $t("profile.my_account.preferred_products.vegetables.title") }}
           </p>
           <MultiSelect
             v-model="preferredProducts.vegetables"
@@ -37,7 +37,7 @@
             option-label="label"
             option-value="value"
             :placeholder="
-              $t('profile.my_acount.preferred_products.vegetables.placeholder')
+              $t('profile.my_account.preferred_products.vegetables.placeholder')
             "
             :selection-limit="2"
             class="w-full border-[1px] rounded-md text-[16px] mt-3"
@@ -46,13 +46,13 @@
       </div>
       <div class="lg:flex lg:flex-row lg:justify-between lg:mt-5">
         <p class="mt-6">
-          {{ $t("profile.my_acount.preferred_products.paragraph_1") }}
+          {{ $t("profile.my_account.preferred_products.paragraph_1") }}
         </p>
         <div class="flex flex-col items-center">
           <Button
             :disabled="disabledButton"
             outlined
-            :label="$t('profile.my_acount.preferred_products.save_preferred')"
+            :label="$t('profile.my_account.preferred_products.save_preferred')"
             class="w-3/4 mt-5 mb-3 lg:h-10 lg:w-full"
             @click="savePreferredProducts"
           />
@@ -66,7 +66,7 @@
     >
       <p class="whitespace-normal">
         {{
-          $t("profile.my_acount.preferred_products.saved_paragraph", {
+          $t("profile.my_account.preferred_products.saved_paragraph", {
             products:
               preferredProducts.fruits.join(", ") +
               preferredProducts.vegetables.join(", "),
@@ -76,7 +76,7 @@
       <Button
         class="w-3/4 mt-5 mb-3"
         outlined
-        :label="$t('profile.my_acount.preferred_products.modify_button')"
+        :label="$t('profile.my_account.preferred_products.modify_button')"
         @click="toggleComponentLayers()"
       />
     </div>

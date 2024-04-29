@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="order"
-    class="border-green-tertiary border-[1px] rounded-lg p-4 mt-6 font-solina-extended-book m-6"
+    class="border-green-tertiary border-[1px] rounded-lg p-4 mt-6 font-solina-extended-book"
   >
     <h4 class="font-recoleta-regular text-[30px]">
-      {{ $t("profile.my_acount.next_order.title") }}
+      {{ $t("profile.my_account.next_order.title") }}
     </h4>
     <Divider />
     <div class="lg:flex lg:flex-row lg:justify-between lg:items-center"> 
@@ -39,7 +39,7 @@
               main-class="flex gap-x-2"
               dot-class="text-[8px] my-auto text-green-tertiary"
               :text="
-                $t('profile.my_acount.next_order.exclusions') +
+                $t('profile.my_account.next_order.exclusions') +
                 order.exclusions.length.toString()
               "
             />
@@ -49,7 +49,7 @@
       </div>
       <Button
         outlined
-        :label="$t('profile.my_acount.next_order.open_order')"
+        :label="$t('profile.my_account.next_order.open_order')"
         class="ml-3 mt-6 bg-beige-primary lg:mt-0 lg:h-10 mr-4"
         @click="toggleOrderDataDisplayed"
       />

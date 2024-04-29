@@ -3018,4 +3018,17 @@ export default {
             description: "Para cualquier información y/o solicitud de imágenes, no dudes en ponerte en contacto con nosotros a:",
         }
     },
+
+    side_admin_menu: {
+        title: 'El meu compte',
+        personal_data: 'Dades personals',
+        orders: 'Les meves comandes',
+        subscriptions: 'Les meves subscripcions',
+        referrals: 'Regala 15%, guanya 15%',
+        giftcard: 'Targeta regal',
+        newsletter: 'Butlletí',
+        faq: 'PMF',
+        contact: 'Contacte',
+        logout: 'Tancar sessió',
+    },
 };
