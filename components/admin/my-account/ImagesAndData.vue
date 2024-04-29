@@ -4,7 +4,7 @@
   >
     <div class="flex flex-row lg:flex-col">
       <NuxtImg
-        :key="`${imageWidth}-${imageHeight}`"
+        :key="imageWidth"
         src="images/admin/my-account/mi-cuenta-1.webp"
         alt="mi-cuenta-1"
         format="webp"
@@ -46,7 +46,7 @@
         <p
           class="p-3 pt-0 text-[18px] mt-0 font-recoleta-medium text-center my-auto lg:w-full lg:text-[30px]"
         >
-          {{kgs}} Kgs
+          {{kgs}} Kgs 
         </p>
       </div>
     </div>
@@ -62,8 +62,8 @@ defineProps<{
 
 const { addResize, removeResize, windowWidth } = useWindowSize();
 
-const imageWidth = computed(() => (windowWidth.value > 1024 ? 480 : 150));
-const imageHeight = computed(() => (windowWidth.value > 1024 ? 500 : 150));
+const imageWidth = computed(() => (windowWidth.value > 1024 ? '425': 150));
+const imageHeight = computed(() => (windowWidth.value > 1024 ? '440' : 150));
 
 onMounted(() => {
   addResize();

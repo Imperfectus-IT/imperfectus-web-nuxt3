@@ -3095,6 +3095,8 @@ cookies: {
         title: 'Preferencias de idioma',
         description: '¿Tienes alguna preferencia de idioma a la hora de recibir las distintas comunicaciones?',
         modify_language_button: 'Editar idioma',
+        cancel_modify_language_button: 'Cancelar',
+        save_modify_language_button: 'Guardar preferencia',
       },
       address: {
         title: 'Direcciones guardadas',
