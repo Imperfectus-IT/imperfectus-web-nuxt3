@@ -62,14 +62,14 @@
 import Timeline from "primevue/timeline";
 import type { OneStepEvents, StatusesObject, Event} from "../share/types/TimelineTypes";
 
-
-const order = {
-  status: "on_shipment",
-};
+const props = defineProps({
+  orderStatus: {
+    type: String,
+    required: true
+  }
+});
 
 const oneStepStatuses: string[] = ["replaced", "cancelled", "refunded", "other"];
-
-
 
 const orderStatuses: StatusesObject = {
   0: "pending",
@@ -81,8 +81,8 @@ const orderStatuses: StatusesObject = {
 };
 
 const timeLineValue = () => {
-  if (oneStepStatuses.includes(order.status)) {
-    return [oneStepEvents[order.status as keyof OneStepEvents]];
+  if (oneStepStatuses.includes(props.orderStatus)) {
+    return [oneStepEvents[props.orderStatus as keyof OneStepEvents]];
   } else {
     return events;
   }
@@ -90,9 +90,11 @@ const timeLineValue = () => {
 
 const activeStep = computed(() => {
   return Object.keys(orderStatuses).findIndex(
-    (key: string) => orderStatuses[parseInt(key)] === order.status
+    (key: string) => orderStatuses[parseInt(key)] === props.orderStatus
   );
 });
+
+
 
 const oneStepEvents: OneStepEvents = {
   replaced: {
