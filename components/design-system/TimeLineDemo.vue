@@ -42,7 +42,7 @@
       </template>
       <template #content="{ item }">
         <div class="text-center">
-          {{ item.status }}
+          {{ item.status }} 
         </div>
       </template>
       <template #connector="{ index }">
@@ -64,12 +64,10 @@ import type { OneStepEvents, StatusesObject, Event} from "../share/types/Timelin
 
 
 const order = {
-  status: "on_shipment",
+  status: "failed",
 };
 
 const oneStepStatuses: string[] = ["replaced", "cancelled", "refunded", "other"];
-
-
 
 const orderStatuses: StatusesObject = {
   0: "pending",
@@ -119,19 +117,15 @@ const oneStepEvents: OneStepEvents = {
 
 const events: Event[] = [
   {
-    status: "Pedido creado",
-    background: "green-tertiary",
-    icon: "check",
+    status: "Pagado",
+    background: activeStep.value === 0 || activeStep.value === 1 ? 'red-primary' : 'green-tertiary' ,
+    icon: activeStep.value === 0 || activeStep.value === 1 ? 'close' : 'check' ,
   },
   {
-    status: "Pedido pagado",
+    status: "Pedido recibido",
     background:
-      activeStep.value < 1
-        ? "green-primary"
-        : activeStep.value === 1
-          ? "red-primary"
-          : "green-tertiary",
-    icon: activeStep.value === 1 ? "close" : "check",
+      activeStep.value < 2 ? 'beige-primary' : 'green-tertiary',
+    icon: 'check',
   },
   {
     status: "Período de modificación",

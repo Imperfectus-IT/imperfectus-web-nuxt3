@@ -20,10 +20,10 @@ export default {
     }),
     opposite: ({ props, context }) => ({
         class: [
-            'flex-1',
+            '',
             {
-                'px-4': props.layout === 'vertical',
-                'py-4': props.layout === 'horizontal'
+                'px-0': props.layout === 'vertical',
+                'py-0': props.layout === 'horizontal'
             },
             {
                 'text-right': props.align === 'left' || (props.layout === 'vertical' && props.align === 'alternate' && context.index % 2 === 0),
@@ -66,7 +66,7 @@ export default {
             'flex-1',
             {
                 'px-4': props.layout === 'vertical',
-                'py-4': props.layout === 'horizontal'
+                'py-2': props.layout === 'horizontal'
             },
             {
                 'text-left': props.align === 'left' || (props.layout === 'vertical' && props.align === 'alternate' && context.index % 2 === 0),

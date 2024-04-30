@@ -1,18 +1,17 @@
 <template>
-  <div class="card border-[1px] border-green-tertiary p-3 rounded-lg relative">
-    <h4>TIMELINE</h4>
+  <div class="card">
     <!-- DESKTOP VERSION -->
-    <Timeline :value="timeLineValue()">
+    <Timeline :value="timeLineValue()" class="hidden lg:block">
       <template #marker="{ item }">
         <div
-          :class="`mx-auto flex self-baseline h-7 w-7 rounded-full border-[1px] border-green-tertiary bg-${item.background} z-10`"
+          :class="` flex self-baseline  h-6 w-6 rounded-full border-[1px] border-green-tertiary bg-${item.background} z-10`"
         >
           <span
             v-if="
               item.background === 'green-tertiary' ||
-              item.background === 'red-primary'
+              item.background === 'red-secondary'
             "
-            :class="`mdi mdi-${item.icon} ${item.icon === 'check' ? 'text-green-primary' : 'text-white-primary'}  mx-auto my-auto`"
+            :class="`mdi mdi-${item.icon} ${ item.icon === 'check' ? 'text-green-primary' : 'text-white-primary' }  mx-auto my-auto`"
           />
         </div>
       </template>
@@ -23,26 +22,26 @@
 
     <!-- MOBILE VERSION -->
     <Timeline
-      class="grid grid-cols-3 relative left-[]"
+      class="grid grid-cols-3"
       :value="timeLineValue()"
       layout="horizontal"
     >
       <template #marker="{ item }">
         <div
-          :class="`mx-auto flex self-baseline h-7 w-7 rounded-full border-[1px] border-green-tertiary bg-${item.background} z-10`"
+          :class="`mx-auto flex self-baseline h-6 w-6 rounded-full border-[1px] border-${item.background !== 'green-primary' ? item.background : 'green-tertiary'} bg-${item.background} z-10 lg:hidden`"
         >
-          <span
-            v-if="
+        <span
+        v-if="
               item.background === 'green-tertiary' ||
-              item.background === 'red-primary'
-            "
-            :class="`mdi mdi-${item.icon} ${item.icon === 'check' ? 'text-green-primary' : 'text-white-primary'}  mx-auto my-auto`"
-          />
+              item.background === 'red-secondary'
+              "
+            :class="`mdi mdi-${item.icon} ${item.icon === 'check' ? 'text-green-primary' : 'text-white-primary'}  mx-auto my-auto text-[15px]`"
+            />
         </div>
       </template>
       <template #content="{ item }">
-        <div class="text-center">
-          {{ item.status }}
+        <div class="text-center ">
+          <span :class="item.background === 'beige-primary' ? 'text-grey-secondary' : 'text-green-tertiary'">{{ item.status }}</span>
         </div>
       </template>
       <template #connector="{ index }">
@@ -102,11 +101,6 @@ const oneStepEvents: OneStepEvents = {
     background: "green-tertiary",
     icon: "check",
   },
-  cancelled: {
-    status: "Pedido cancelado",
-    background: "red-primary",
-    icon: "close",
-  },
   refunded: {
     status: "Pedido reembolsado",
     background: "green-tertiary",
@@ -114,26 +108,22 @@ const oneStepEvents: OneStepEvents = {
   },
   other: {
     status: "Otro",
-    background: "red-primary",
+    background: "red-secondary",
     icon: "close",
   },
 };
 
 const events: Event[] = [
   {
-    status: "Pedido creado",
-    background: "green-tertiary",
-    icon: "check",
+    status: "Pagado",
+    background: activeStep.value === 0 || activeStep.value === 1 ? 'red-secondary' : 'green-tertiary' ,
+    icon: activeStep.value === 0 || activeStep.value === 1 ? 'close' : 'check' ,
   },
   {
-    status: "Pedido pagado",
+    status: "Pedido recibido",
     background:
-      activeStep.value < 1
-        ? "green-primary"
-        : activeStep.value === 1
-          ? "red-primary"
-          : "green-tertiary",
-    icon: activeStep.value === 1 ? "close" : "check",
+      activeStep.value < 2 ? 'beige-primary' : 'green-tertiary',
+    icon: 'check',
   },
   {
     status: "Período de modificación",

@@ -10,7 +10,6 @@ export interface Event {
 
 export interface OneStepEvents {
   replaced: Event;
-  cancelled: Event;
   refunded: Event;
   other: Event;
 }

@@ -16,9 +16,9 @@
           format="webp"
           src="images/boxes/Caixa-S.webp"
           width="110"
-          height="120"
+          height="100"
           alt="next-order"
-          class="rounded-lg "
+          class="rounded-lg h-[100px] my-auto"
         />
         <div>
           <h4 class="font-semibold mb-2 text-[20px]">
@@ -57,7 +57,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Order } from "./types/Order";
+import type { Order } from "../my-orders/types/OrderType";
 
 defineProps<{
   order: Order;

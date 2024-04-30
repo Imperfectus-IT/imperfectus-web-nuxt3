@@ -42,6 +42,7 @@ export default {
       },
       red: {
         primary: "#DC362E",
+        secondary: "#F3A58F"
       },
       yellow: {
         primary: "gold",
