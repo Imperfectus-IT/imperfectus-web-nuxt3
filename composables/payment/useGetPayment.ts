@@ -1,13 +1,17 @@
 import type { Payment } from "./types/Payment.ts";
+const paymentMethods = ref<Payment[]>([]);
+export const useGetPayment = async () => {
+    const { findPaymentByAuthenticatedUser } = usePaymentRepository();
+    const fetchPaymentMethods = async (): Promise<void> => {
+        paymentMethods.value = await findPaymentByAuthenticatedUser();
+    }
 
-export const useGetPayment = () => {
-    const getPaymentsFromAuthenticatedUser = async () => {
-        const { find } = useStrapi();
-        const user = useStrapiUser();
-        return await find<Payment>('payments', {user: user.value.id});
-    };
+    onMounted(async () => {
+        await fetchPaymentMethods();
+    })
 
     return {
-        getPaymentsFromAuthenticatedUser
+        paymentMethods,
+        fetchPaymentMethods
     }
-}
+};

@@ -3,6 +3,8 @@ import dialogPanelStyles from '@/presets/talkual-ui/dialog/dialogPanelStyle.ts';
 const { visible } = defineProps({
   visible: { type: Boolean, default: false }
 })
+
+defineEmits(["delete", "hide"]);
 </script>
 
 <template>

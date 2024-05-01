@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import {useDeletePaymentDialog} from "~/composables/payment/useDeletePaymentDialog.ts";
-
 const {
-  isVisibleDeletePaymentDialog,
-  openDeletePaymentDialog,
-  closeDeletePaymentDialog
-} = useDeletePaymentDialog();
-const {getPaymentsFromAuthenticatedUser} = useGetPayment();
-const paymentMethods = await getPaymentsFromAuthenticatedUser();
+  isDialogOpen,
+  openDialog,
+  closeDialog
+} = useDialogService();
 
-const onHandleDeletePayment = async (id: number) => {
-  const { handleDeletePayment } = useDeletePayment();
-  await handleDeletePayment(id);
-  closeDeletePaymentDialog();
-}
+const { paymentMethods } = await useGetPayment();
+const { handleDeletePayment } = useDeletePaymentHandler();
 </script>
 
 <template>
@@ -34,16 +27,16 @@ const onHandleDeletePayment = async (id: number) => {
         <div class="flex gap-8 mb-5">
       <span
           class="underline underline-offset-2 cursor-pointer"
-          @click.prevent="openDeletePaymentDialog"
+          @click.prevent="openDialog"
       >
         {{ $t("adminSubscriptionItems.remove") }}
       </span>
         </div>
         <LazyDeletePaymentMethodDialog
-            v-if="isVisibleDeletePaymentDialog"
-            :visible="isVisibleDeletePaymentDialog"
-            @hide="closeDeletePaymentDialog"
-            @delete="onHandleDeletePayment(item.id)"
+            v-if="isDialogOpen"
+            :visible="isDialogOpen"
+            @hide="closeDialog"
+            @delete="handleDeletePayment(item.id)"
         />
       </div>
       <Button

@@ -3039,7 +3039,6 @@ cookies: {
       description: "Para cualquier información y/o solicitud de imágenes, no dudes en ponerte en contacto con nosotros a:",
     }
   },
-
   side_admin_menu: {
     title: 'Mi cuenta',
     personal_data: 'Datos personales',
@@ -3052,8 +3051,7 @@ cookies: {
     contact: 'Contacto',
     logout: 'Cerrar sesión',
   },
-
-    profile: {
+  profile: {
       my_account: {
         title: '¡Hola, {name}!',
         help: '¿Necesitas ayuda?',
