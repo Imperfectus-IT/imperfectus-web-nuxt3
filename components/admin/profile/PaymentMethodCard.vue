@@ -5,8 +5,8 @@ const {
   closeDialog
 } = useDialogService();
 
-const { paymentMethods } = await useGetPayment();
 const { canDeletePayment } = useDeletePaymentValidator();
+const { payments: paymentMethods } = useGetAllPaymentsHandler();
 const { handleDeletePayment } = useDeletePaymentHandler();
 </script>
 

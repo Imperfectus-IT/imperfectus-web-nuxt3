@@ -1,10 +1,10 @@
 export const useDeletePaymentValidator = () => {
     const canDeletePayment = (payments: Payment[]) => {
-        const min_payment_limit = 1
-        return payments.length > min_payment_limit
-    }
+        const MIN_PAYMENT_LIMIT: number = 1;
+        return payments.length > MIN_PAYMENT_LIMIT
+    };
 
     return {
         canDeletePayment
-    }
+    };
 }

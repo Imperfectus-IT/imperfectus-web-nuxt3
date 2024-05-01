@@ -1,13 +1,13 @@
 export const useDeletePayment = () => {
+    const { payments } = usePaymentState();
+    const { deletePayment } = usePaymentRepository();
     const executeDeletePayment = async (id: number): Promise<void> => {
         const { canDeletePayment } = useDeletePaymentValidator();
-        const { paymentMethods } = await useGetPayment();
-        if (!canDeletePayment(paymentMethods.value)) {
+        if (!canDeletePayment(payments.value)) {
             throw new Error('No puede borrar un pago si no tiene más de uno');
         }
-        const { deletePayment } = usePaymentRepository();
         await deletePayment(id);
-    }
+    };
 
     return {
         executeDeletePayment

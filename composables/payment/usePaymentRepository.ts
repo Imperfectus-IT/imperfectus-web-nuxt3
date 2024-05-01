@@ -1,10 +1,9 @@
 import type { Payment } from "./types/Payment.ts";
 
 export const usePaymentRepository = () => {
-    const findPaymentByAuthenticatedUser = async (): Promise<Payment[]> => {
+    const findPaymentsByUserId = async (id: number): Promise<Payment[]> => {
         const { find } = useStrapi();
-        const user = useStrapiUser();
-        return await find<Payment[]>('payments', {user: user?.value?.id});
+        return await find<Payment[]>('payments', {user: id});
     };
     const deletePayment = async (id: number): Promise<Payment> => {
         const { delete: _delete } = useStrapi();
@@ -12,7 +11,7 @@ export const usePaymentRepository = () => {
     };
 
     return {
-        findPaymentByAuthenticatedUser,
+        findPaymentsByUserId,
         deletePayment
     };
 };
