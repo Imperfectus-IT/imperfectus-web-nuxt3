@@ -6,6 +6,7 @@ const {
 } = useDialogService();
 
 const { paymentMethods } = await useGetPayment();
+const { canDeletePayment } = useDeletePaymentValidator();
 const { handleDeletePayment } = useDeletePaymentHandler();
 </script>
 
@@ -24,7 +25,7 @@ const { handleDeletePayment } = useDeletePaymentHandler();
         <p class="font-solina-extended-book text-sm">
           {{ $t('adminSubscriptionPayment.expiryDate') }}: {{ item.expiryMonth }}/{{ item.expiryYear }}
         </p>
-        <div class="flex gap-8 mb-5">
+        <div v-if="canDeletePayment(paymentMethods)" class="flex gap-8 mb-5">
       <span
           class="underline underline-offset-2 cursor-pointer"
           @click.prevent="openDialog"

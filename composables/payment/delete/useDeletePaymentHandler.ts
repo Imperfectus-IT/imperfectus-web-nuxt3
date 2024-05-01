@@ -4,10 +4,14 @@ export const useDeletePaymentHandler = () => {
     const toast = useToast();
     const handleDeletePayment = async (id: number): Promise<void> => {
         const { executeDeletePayment } = useDeletePayment();
-        const { fetchPaymentMethods } = await useGetPayment();
+        const { canDeletePayment } = useDeletePaymentValidator();
+        const { paymentMethods, fetchPaymentMethods } = await useGetPayment();
         const { successToast, errorToast } = useToastService();
 
         try {
+            if (!canDeletePayment(paymentMethods.value)) {
+                throw new Error('No puede borrar un pago si no tiene más de uno');
+            }
             await executeDeletePayment(id);
             closeDialog();
             await fetchPaymentMethods();
