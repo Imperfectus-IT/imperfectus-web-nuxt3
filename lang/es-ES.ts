@@ -3053,58 +3053,103 @@ cookies: {
     logout: 'Cerrar sesión',
   },
 
-    profile: {
-      my_account: {
-        title: '¡Hola, {name}!',
-        help: '¿Necesitas ayuda?',
-        link_1: 'Preguntas frecuentes',
-        link_2: 'contáctanos',
-        info_1: 'Gracias a ti hemos rescatado más de',
-        info_2: 'Tu has contribuido con',
-        next_order: {
-          title: 'Tu próximo pedido',
-          exclusions: 'Exclusiones:',
-          open_order: 'Ver pedido'
+  profile: {
+    my_account: {
+      title: '¡Hola, {name}!',
+      help: '¿Necesitas ayuda?',
+      link_1: 'Preguntas frecuentes',
+      link_2: 'contáctanos',
+      info_1: 'Gracias a ti hemos rescatado más de',
+      info_2: 'Tu has contribuido con',
+      next_order: {
+        title: 'Tu próximo pedido',
+        exclusions: 'Exclusiones:',
+        open_order: 'Ver pedido'
+      },
+      next_deliveries: {
+        paragraph_1: 'En esta sección puedes cancelar, donar o regalar cualquiera de tus próximos pedidos',
+        handle_next_deliveries: 'Gestionar próximas entregas'
+      },
+      preferred_products: {
+        title: '¿Cuál es tu fruta y verdura preferida?',
+        fruits: {
+          title: '¿Cuál es tu fruta preferida? Puedes elegir 2',
+          placeholder: 'Elige tus dos frutas preferidas'
         },
-        next_deliveries: {
-          paragraph_1: 'En esta sección puedes cancelar, donar o regalar cualquiera de tus próximos pedidos',
-          handle_next_deliveries: 'Gestionar próximas entregas'
+        vegetables: {
+          title: 'Cuál es tu verdura preferida? Puedes elegir 2',
+          placeholder: 'Elige tus dos verduras preferidas'
         },
-        preferred_products: {
-          title: '¿Cuál es tu fruta y verdura preferida?',
-          fruits: {
-            title: '¿Cuál es tu fruta preferida? Puedes elegir 2',
-            placeholder: 'Elige tus dos frutas preferidas'
-          },
-          vegetables: {
-            title: 'Cuál es tu verdura preferida? Puedes elegir 2',
-            placeholder: 'Elige tus dos verduras preferidas'
+        paragraph_1: ' Te preguntamos esto para que tus mensajes y recomendaciones se ajusten más a ti',
+        save_preferred: 'Guardar preferencias',
+        saved_paragraph: 'Tus preferencias han sido guardadas. Has seleccionado: {products}',
+        modify_button: 'Modificar preferencias'
+      }
+    },
+    personal_data: {
+      modify_data_button: 'Modificar datos',
+      change_password_button: 'Cambiar contraseña',
+    },
+    language_preference: {
+      title: 'Preferencias de idioma',
+      description: '¿Tienes alguna preferencia de idioma a la hora de recibir las distintas comunicaciones?',
+      modify_language_button: 'Editar idioma',
+      cancel_modify_language_button: 'Cancelar',
+      save_modify_language_button: 'Guardar preferencia',
+    },
+    address: {
+      title: 'Direcciones guardadas',
+      street: 'Dirección (calle y número)',
+      floor: 'Piso y puerta',
+      postal_code: 'Código postal',
+      city: 'Localidad',
+      add_address_button: 'Añadir dirección',
+    },
+  },
 
-          },
-          paragraph_1: ' Te preguntamos esto para que tus mensajes y recomendaciones se ajusten más a ti',
-          save_preferred: 'Guardar preferencias',
-          saved_paragraph: 'Tus preferencias han sido guardadas. Has seleccionado: {products}',
-          modify_button: 'Modificar preferencias'
-        }
+  orders: {
+    title: 'Mis Pedidos',
+    order: {
+      billing: {
+        header: 'Facturación',
+        item_0: 'Estado:',
+        item_1: 'Precio:',
+        item_2: 'Gastos de envío:',
+        item_3: 'Total:',
+        free_shipping: 'Gratuito',
+        order_paid: 'Pagado',
+        order_pending: 'Pendiente de pago',
       },
-      personal_data: {
-        modify_data_button: 'Modificar datos',
-        change_password_button: 'Cambiar contraseña',
+      order_delivery: {
+        header: 'Datos de entrega',
+        item_0: 'Día de entrega:',
+        item_1: 'Empresa de transporte',
+        item_2: 'Hora de entrega estimada:',
+        item_3: 'ID de seguimiento',
+        item_4: 'Enlace: '
       },
-      language_preference: {
-        title: 'Preferencias de idioma',
-        description: '¿Tienes alguna preferencia de idioma a la hora de recibir las distintas comunicaciones?',
-        modify_language_button: 'Editar idioma',
-        cancel_modify_language_button: 'Cancelar',
-        save_modify_language_button: 'Guardar preferencia',
+      order_shipping: {
+        header: 'Direccióon de envío',
+        item_0: 'Nombre',
+        item_1: 'Email:',
+        item_2: 'Teléfono de contacto:',
+        item_3: 'Dirección (calle y número)',
+        item_4: 'Código postal:',
+        item_5: 'Localidad:',
+        button_label: 'Modificar datos'
       },
-      address: {
-        title: 'Direcciones guardadas',
-        street: 'Dirección (calle y número)',
-        floor: 'Piso y puerta',
-        postal_code: 'Código postal',
-        city: 'Localidad',
-        add_address_button: 'Añadir dirección',
-      },
+      order_billing_info: {
+        header: 'Dirección de facturación',
+        item_0: 'Nombre',
+        item_1: 'Email:',
+        item_2: 'Teléfono de contacto:',
+        item_3: 'Dirección (calle y número)',
+        item_4: 'Código postal:',
+        item_5: 'Localidad:',
+        button_label: 'Modificar datos'
+      }
     }
+  }
+
+
 };

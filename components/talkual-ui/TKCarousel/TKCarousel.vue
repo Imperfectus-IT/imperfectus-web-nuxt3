@@ -122,8 +122,8 @@ defineProps({
     background-color: white;
     margin-left: 6px;
     border-radius: 100%;
-    height: 11px;
-    width: 11px;
+    height: 9px;
+    width: 9px;
   }
 
   :deep button::after {
@@ -132,6 +132,11 @@ defineProps({
 }
 
 :deep .carousel__pagination-button.carousel__pagination-button--active {
-  background-color: hsl(68 83% 63%);
+  background-color: hsl(68 83% 63%)!important;
+  border: 1px solid hsl(68 83% 63%)!important;
+}
+
+:deep .carousel__pagination-button.carousel__pagination-button {
+  border: 1px solid hsl(0, 0%, 31%)
 }
 </style>

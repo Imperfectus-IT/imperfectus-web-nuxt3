@@ -4,7 +4,7 @@
     <Timeline :value="timeLineValue()" class="hidden lg:block">
       <template #marker="{ item }">
         <div
-          :class="` flex self-baseline  h-6 w-6 rounded-full border-[1px] border-green-tertiary bg-${item.background} z-10`"
+          :class="` flex self-baseline  h-6 w-6 rounded-full border-[1px] border-${item.background !== 'green-primary' ? item.background : 'green-tertiary'} bg-${item.background} z-10`"
         >
           <span
             v-if="
