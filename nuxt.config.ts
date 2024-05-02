@@ -66,6 +66,7 @@ export default defineNuxtConfig({
         "@nuxtjs/eslint-module",
         'vue3-carousel-nuxt',
         "@nuxtjs/strapi",
+        "@nuxt/test-utils/module",
     ],
     primevue: {
         options: {
