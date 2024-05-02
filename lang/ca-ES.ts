@@ -3033,4 +3033,77 @@ export default {
         contact: 'Contacte',
         logout: 'Tancar sessió',
     },
+    profile: {
+        my_account: {
+            title: 'Hola, {name}!',
+            help: 'Necessites ajuda?',
+            link_1: 'Preguntes freqüents',
+            link_2: 'contacta\'ns',
+            info_1: 'Gràcies a tu hem rescatat més de',
+            info_2: 'Tu has contribuït amb',
+            next_order: {
+                title: 'La teva pròxima comanda',
+                exclusions: 'Exclusions:',
+                open_order: 'Veure comanda'
+            },
+            next_deliveries: {
+                paragraph_1: 'En aquesta secció pots cancel·lar, donar o regalar qualsevol dels teus pròxims comandes',
+                handle_next_deliveries: 'Gestionar pròximes entregues'
+            },
+            preferred_products: {
+                title: 'Quina és la teva fruita i verdura preferida?',
+                fruits: {
+                    title: 'Quina és la teva fruita preferida? Pots triar 2',
+                    placeholder: 'Tria les teves dues fruites preferides'
+                },
+                vegetables: {
+                    title: 'Quina és la teva verdura preferida? Pots triar 2',
+                    placeholder: 'Tria les teves dues verdures preferides'
+                },
+                paragraph_1: 'Et preguntem això perquè els teus missatges i recomanacions s\'ajustin més a tu',
+                save_preferred: 'Guardar preferències',
+                saved_paragraph: 'Les teves preferències han estat guardades. Has seleccionat: {products}',
+                modify_button: 'Modificar preferències'
+            }
+        },
+        personal_data: {
+            modify_data_button: 'Modificar dades',
+            change_password_button: 'Canviar contrasenya',
+        },
+        language_preference: {
+            title: 'Preferències d\'idioma',
+            description: 'Tens alguna preferència d\'idioma a l\'hora de rebre les diferents comunicacions?',
+            modify_language_button: 'Editar idioma',
+            cancel_modify_language_button: 'Cancel·lar',
+            save_modify_language_button: 'Guardar preferència',
+        },
+        address: {
+            title: 'Adreces guardades',
+            street: 'Adreça (carrer i número)',
+            floor: 'Pis i porta',
+            postal_code: 'Codi postal',
+            city: 'Localitat',
+            add_address_button: 'Afegir adreça',
+        },
+        payment: {
+            active: 'Mètode de pagament actiu per a la subscripció',
+            list: 'Els teus mètodes de pagament',
+            deleteModal: {
+                title: 'Eliminar mètode de pagament',
+                description: 'Estàs segur de que vols eliminar aquest mètode de pagament? Recorda tenir un mètode de pagament guardat per poder cobrar-te la teva comanda o subscripció.',
+                confirm: 'Eliminar',
+                cancel: 'Cancel·lar'
+            },
+            confirmDeleteModal: {
+                description: 'El mètode de pagament ha estat eliminat correctament. Recorda tenir un mètode de pagament guardat per poder cobrar-te la teva comanda o subscripció.',
+                confirm: 'D\'acord'
+            },
+            card: {
+                number: 'Número de targeta',
+                brand: 'Marca de targeta',
+                month: 'Mes de caducitat',
+                year: 'Any de caducitat'
+            }
+        },
+    }
 };

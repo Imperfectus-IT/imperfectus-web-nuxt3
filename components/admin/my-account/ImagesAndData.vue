@@ -11,15 +11,16 @@
         loading="lazy"
         :width="imageWidth"
         :height="imageHeight"
-      />
+        fit="cover"
+        />
       <div class="flex flex-col w-1/2 lg:w-full">
         <p
-          class="p-3 pb-0 mb-0 text-[18px] font-recoleta-medium text-center my-auto lg:w-full lg:text-[22px]"
+          class="p-3 pb-0 mb-0 text-[18px] font-recoleta-medium text-center lg:w-full lg:text-[22px]"
         >
           {{ $t("profile.my_account.info_1") }}
         </p>
         <p
-          class="p-3 pt-0 text-[18px] mt-0 font-recoleta-medium text-center my-auto lg:w-full lg:text-[30px]"
+          class="p-3 pt-0 text-[18px] mt-0 font-recoleta-medium text-center lg:w-full lg:text-[30px]"
         >
           1.5000.000 Kgs
         </p>
@@ -35,6 +36,7 @@
         loading="lazy"
         :width="imageWidth"
         :height="imageHeight"
+        fit="cover"
       />
       <!-- TODO User Kgs must be calculated! -->
       <div class="flex flex-col w-1/2 lg:w-full">
@@ -62,8 +64,8 @@ defineProps<{
 
 const { addResize, removeResize, windowWidth } = useWindowSize();
 
-const imageWidth = computed(() => (windowWidth.value > 1024 ? '425': 150));
-const imageHeight = computed(() => (windowWidth.value > 1024 ? '440' : 150));
+const imageWidth = computed(() => (windowWidth.value > 1024 ? '425': '150'));
+const imageHeight = computed(() => (windowWidth.value > 1024 ? '440' : '150'));
 
 onMounted(() => {
   addResize();

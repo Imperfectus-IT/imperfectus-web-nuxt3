@@ -57,7 +57,7 @@ export default {
     togglerIcon: {
         class: 'inline-block'
     },
-    content: ({ props, state }) => ({
+    content: ({ props }) => ({
         class: [
             {
                 'border border-t-0 last:rounded-br-lg last:rounded-bl-lg': props.toggleable
