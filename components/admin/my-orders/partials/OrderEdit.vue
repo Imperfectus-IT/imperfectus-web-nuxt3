@@ -18,20 +18,41 @@
         placeholder="Selecciona un tipo de caja"
         class="w-72"
       />
-      {{ editOrderData }}
+    </div>
+    <div>
+      <h4>Quieres excluir algun alimento</h4>
+      <p class="font-bold">Puedes excluir hasta 6 alimentos</p>
+      <p>
+        Aún así, cada viernes enviamos un email con las frutas y verduras que
+        habrá en la caja de la siguitente semana para que así puedas editar las
+        exclusiones dependiendo del contenido de la caja.
+      </p>
+      {{ editOrderData.exclusions }}
+      <MultiSelect
+        v-model="editOrderData.exclusions"
+        :options="products"
+        filter
+        option-label=""
+        option-value=""
+        placeholder="Buscar producto"
+        :selection-limit="6"
+        class="w-full border-[1px] rounded-md text-[16px] mt-3"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-  // order: Order;
+  products: string[];
   exclusions: string[];
   sku: string;
 }>();
 
 const editOrderData = reactive({
   sku: props.sku,
+  exclusions: props.exclusions,
+  coupon: null,
 });
 
 const displayEditOrder = ref(true);
@@ -41,4 +62,6 @@ const boxes = [
   { name: "Sólo fruta", code: "FR" },
   { name: "Sólo verdura", code: "VG" },
 ];
+
+const products = props.products;
 </script>

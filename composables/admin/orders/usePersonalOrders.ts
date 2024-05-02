@@ -19,10 +19,10 @@ export const usePersonalOrders = async () => {
     _sort: "created_at:desc",
     _limit: 10,
   });
-  
+
   const personalOrders: Order[] = orders.map((order) => {
+
     return {
-      
       id: order.id,
       order_id: order.order_id,
       status: order.status,
@@ -51,7 +51,6 @@ export const usePersonalOrders = async () => {
             trackingLink: order_item.trackingUrl,
             boxType: order_item.product.SKU
           }
-        
         })
       },
       shippingInfo: {
@@ -72,7 +71,5 @@ export const usePersonalOrders = async () => {
       }
     }
   })
-
   userOrders.orders = personalOrders;
-  
 };

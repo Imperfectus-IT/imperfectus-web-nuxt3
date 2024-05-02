@@ -6,7 +6,7 @@
       {{ $t("profile.my_account.next_order.title") }}
     </h4>
     <Divider />
-    <OrderItemCard :order-items="order.orderItems" />
+    <OrderItemCard v-for="(item, index) in order.orderItems" :key="index" :order-item="item" />
     <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
       <Button
         outlined
@@ -17,36 +17,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { userOrders } from "~/composables/admin/orders/useOrders";
-import dayjs from "dayjs";
-
-let lastOrder: Order[];
 
 defineProps<{
   order: Order;
 }>();
 
-// const isOrderDataDisplayed = ref<boolean>(false);
-
-// const getBoxSize = (sku: string) => {
-//   return sku.includes("IM")
-//     ? "Caja mediana"
-//     : sku.includes("XL")
-//       ? "Caja grande"
-//       : "Caja pequeña";
-// };
-
-// const getBoxType = (sku: string) => {
-//   return sku.includes("FR")
-//     ? "Fruta"
-//     : sku.includes("VG")
-//       ? "Verdura"
-//       : sku.includes("Orange")
-//         ? "Naranjas"
-//         : "Verdura y fruta";
-// };
-
-// const getBoxFrequency = (sku: string) => {
-//   return sku.includes("1") ? "Cada semana" : "Cada 2 semanas";
-// };
 </script>

@@ -2,10 +2,23 @@
   <div>
     <Panel :header="`Pedido ${order.id}`">
       <Divider class="mt-2" />
-      <OrderItemCard :order-items="order.orderItems" />
+
+      <div v-for="(orderItem, index) in order.orderItems" :key="index">
+        <OrderItemCard :order-item="orderItem" />
+        <OrderProductsCarousel
+          v-if="!isCollapsed"
+          :products="filteredProductsByExclusions(orderItem)"
+        />
+        <OrderEdit
+          v-if="!isCollapsed"
+          :exclusions="orderItem.exclusions"
+          :sku="orderItem.sku"
+          :products="products.map((product) => product.name)"
+        />
+      </div>
 
       <div v-if="order.status !== 'cancelled'">
-        <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+        <NuxtLink v-if="isCollapsed" :to="`/mi-cuenta/pedidos/${order.id}`">
           <Button
             outlined
             label="Detalles del pedido"
@@ -16,6 +29,7 @@
           />
         </NuxtLink>
         <TKTimeline class="mt-4" :order-status="order.status" />
+        
       </div>
 
       <div v-else>
@@ -24,11 +38,9 @@
         >
           {{ $t("string.status.order.cancelled") }}
         </div>
+        <!-- TODO This is not stored in DB -->
         <p class="mt-3">Fecha de cancelacion: ********</p>
       </div>
-<!-- /////////////////////////////////////////////////////// -->
-     <OrderProductsCarousel v-if="!isCollapsed" :products="products" />
-     <OrderEdit v-if="!isCollapsed"/>
     </Panel>
 
     <div v-if="!isCollapsed" class="flex flex-col gap-5 text-green-tertiary">
@@ -58,11 +70,16 @@
 </template>
 
 <script setup lang="ts">
-
 defineProps<{
   order: Order;
   isCollapsed: boolean;
 }>();
+
+const filteredProductsByExclusions = (orderItem: OrderItem) => {
+  return products.filter((product) => {
+    return !orderItem.exclusions.includes(product.name);
+  })
+}
 
 const products = [
   {
@@ -102,22 +119,22 @@ const products = [
   },
   {
     index: 1,
-    name: "Acelgas",
+    name: "Acelga",
     image: "/images/landing/products/verduras/acelgas.webp",
   },
   {
     index: 2,
-    name: "Alcachofas",
+    name: "Alcachofa",
     image: "/images/landing/products/verduras/alcachofas.webp",
   },
   {
     index: 3,
-    name: "Acelgas",
+    name: "Acelga",
     image: "/images/landing/products/verduras/acelgas.webp",
   },
   {
     index: 4,
-    name: "Alcachofas",
+    name: "Alcachofa",
     image: "/images/landing/products/verduras/alcachofas.webp",
   },
 ];
