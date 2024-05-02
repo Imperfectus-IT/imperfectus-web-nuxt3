@@ -3,7 +3,6 @@
     <Panel :header="`Pedido ${order.id}`">
       <Divider class="mt-2" />
       <OrderItemCard :order-items="order.orderItems" />
-      {{ order.status }}
 
       <div v-if="order.status !== 'cancelled'">
         <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
@@ -30,8 +29,6 @@
 <!-- /////////////////////////////////////////////////////// -->
      <OrderProductsCarousel v-if="!isCollapsed" :products="products" />
      <OrderEdit v-if="!isCollapsed"/>
-
-        
     </Panel>
 
     <div v-if="!isCollapsed" class="flex flex-col gap-5 text-green-tertiary">

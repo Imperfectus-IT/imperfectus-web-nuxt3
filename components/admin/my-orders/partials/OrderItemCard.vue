@@ -45,7 +45,6 @@ defineProps<{
 }>();
 
 const getBoxImage = (sku: string) => {
-  console.log(sku);
   return sku.includes("IM") ? "M" : sku.includes("XL") ? "XL" : "S";
 };
 

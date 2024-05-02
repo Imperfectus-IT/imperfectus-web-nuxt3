@@ -25,8 +25,11 @@ export interface OrderDelivery {
   deliveryDate: string,
   coverage: string,
   deliveryTime: string,
-  trackingID: string,
-  trackingLink: string
+  tracking: {
+    trackingID: string,
+    trackingLink: string,
+    boxType: string
+  }[]
 }
 
 export interface OrderBilling {

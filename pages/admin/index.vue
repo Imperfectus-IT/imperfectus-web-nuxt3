@@ -26,7 +26,7 @@ onBeforeMount(async () => {
 
 const getLastOrder = () => {
   lastOrder = userOrders.orders.filter((order: Order) => {
-    return order.deliveryInfo.deliveryDate > dayjs().format("YYYY-MM-DD");
+    return order.deliveryInfo.deliveryDate > dayjs().format("YYYY-MM-DD") && order.status === 'processing';
   })[0];
   isLoading.value = false; 
 };

@@ -1083,7 +1083,9 @@ cookies: {
   "string.hour.none": "Indiferente",
   "string.hour.full": "Entre les 8.00 y las 22.00",
   "string.hour.morning": "Entre las 10:00 y las 14:00",
+  "string.hour.b2b_morning": "Entre las 10:00 y las 13:00",
   "string.hour.afternoon": "Entre las 14:00 y las 18:00",
+  "string.hour.b2b_afternoon": "Entre las 16:00 y las 20:00",
   "string.hour.night": "Entre las 18:00 y las 22:00",
   "string.hour.timeSlot": "Entre las {0} y las {1}",
   "string.frequency.weekly": "cada semana",
@@ -3129,7 +3131,7 @@ cookies: {
         item_4: 'Enlace: '
       },
       order_shipping: {
-        header: 'Direccióon de envío',
+        header: 'Dirección de envío',
         item_0: 'Nombre',
         item_1: 'Email:',
         item_2: 'Teléfono de contacto:',

@@ -12,7 +12,6 @@ defineI18nRoute({
 
 // TODO handle save language on backend
 const saveLanguage = (language: string) => {
-  console.log(language);
 }
 </script>
 

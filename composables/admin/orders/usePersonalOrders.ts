@@ -8,7 +8,7 @@ const shippingSuplementsAmount = (shippingSupplements: any) => {
   return shippingSupplements.reduce((acc: number, supplement: any) => {
     return acc + supplement.amount
   }, 0)
-}
+};
 
 export const usePersonalOrders = async () => {
   const { t } = useI18n();
@@ -21,7 +21,6 @@ export const usePersonalOrders = async () => {
   });
   
   const personalOrders: Order[] = orders.map((order) => {
-
     return {
       
       id: order.id,
@@ -45,9 +44,15 @@ export const usePersonalOrders = async () => {
       deliveryInfo: {
         deliveryDate: order.deliveryDate,
         coverage: order.order_meta.shipping_coverage.toUpperCase(),
-        deliveryTime: '',
-        trackingID: '',
-        trackingLink: ''
+        deliveryTime: order.deliveryHour,
+        tracking: order.order_items.map((order_item) => { 
+          return {
+            trackingID: order_item.trackingId,
+            trackingLink: order_item.trackingUrl,
+            boxType: order_item.product.SKU
+          }
+        
+        })
       },
       shippingInfo: {
         shippingFullName: order.order_meta.shipping_firstname + ' ' + order.order_meta.shipping_lastname,
