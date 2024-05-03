@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { userOrders } from "~/composables/admin/orders/useOrders";
 import dayjs from "dayjs";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 definePageMeta({
   layout: "admin",
@@ -16,21 +18,26 @@ defineI18nRoute({
 });
 
 const user = useStrapiUser();
-let lastOrder: Order | null = null;
-const isLoading = ref(true); 
+const lastOrder: Ref<Order> = ref({} as Order);
+const isLoading = ref(true);
 
-onBeforeMount(async () => {
-  await usePersonalOrders();
+const { orders } = useGetOrdersHandler(t);
+const { products } = useGetProductsHandler()
+
+watch(orders, () => {
+  console.log('products', products.value)
   getLastOrder();
 });
 
 const getLastOrder = () => {
-  lastOrder = userOrders.orders.filter((order: Order) => {
-    return order.deliveryInfo.deliveryDate > dayjs().format("YYYY-MM-DD") && order.status === 'processing';
+  lastOrder.value = orders.value.filter((order: Order) => {
+    return (
+      order.deliveryInfo.deliveryDate > dayjs().format("YYYY-MM-DD") &&
+      order.status === "processing"
+    );
   })[0];
-  isLoading.value = false; 
+  isLoading.value = false;
 };
-
 </script>
 
 <template>

@@ -18,7 +18,8 @@ export interface OrderItem {
 export interface Billing {
   state: string,
   amount: number,
-  shippingCosts: string
+  shippingCosts: string,
+  total: number
 }
 
 export interface OrderDelivery {

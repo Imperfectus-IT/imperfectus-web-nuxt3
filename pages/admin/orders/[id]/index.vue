@@ -1,8 +1,10 @@
 <template>
-    <Order :is-collapsed="false" :order="order" />
+  <Order :is-collapsed="false" :order="order" />
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 definePageMeta({
   layout: "admin",
@@ -10,16 +12,17 @@ definePageMeta({
 });
 
 defineI18nRoute({
-    paths: {
-        es: "/mi-cuenta/pedidos/[id]",
-        ca: "/el-meu-compte/comandes/[id]",
-    }
+  paths: {
+    es: "/mi-cuenta/pedidos/[id]",
+    ca: "/el-meu-compte/comandes/[id]",
+  },
 });
 
-import { userOrders } from '~/composables/admin/orders/useOrders';
+const { orders } = useGetOrdersHandler(t);
 
 const route = useRoute();
 const orderId = parseInt(route.params.id as string);
-const order: Order = userOrders.orders.find((order) => order.id === orderId) as Order;  
-
+const order: Order = orders.value.find(
+  (order) => order.id === orderId
+) as Order;
 </script>
