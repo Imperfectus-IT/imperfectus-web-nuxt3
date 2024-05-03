@@ -29,6 +29,7 @@
     "path": "^0.12.7",
     "sass": "^1.74.1",
     "typescript": "^5.4.4",
+    "vite-plugin-eslint2": "^4.4.0",
     "vitest": "^1.5.3",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
