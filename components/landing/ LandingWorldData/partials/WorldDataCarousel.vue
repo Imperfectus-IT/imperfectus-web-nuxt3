@@ -17,7 +17,7 @@
           >
             {{ item.value }}
           </p>
-        </div>  
+        </div>
         <div class="bg-green-primary h-10 w-0.5" />
         <div class="bg-green-primary h-3 w-3 rounded-full" />
         <p class="text-lg mt-4 mb-20">
@@ -30,16 +30,16 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
+
 const localeLanguage = computed(() => {
-  return useI18n().locale.value;
+  return useI18n().locale.value
 })
 
 defineProps({
   data: {
     type: Array as PropType<CarouselSlideObject[]>,
-    required: true
-  }
+    required: true,
+  },
 })
-
 </script>

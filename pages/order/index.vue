@@ -1,3 +1,3 @@
 <template>
-NEW ORDER
+  NEW ORDER
 </template>

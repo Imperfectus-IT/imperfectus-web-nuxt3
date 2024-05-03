@@ -1,19 +1,19 @@
 <script setup lang="ts">
 const companies = [
-  "alohas.webp",
-  "alsa.webp",
-  "chep.webp",
-  "cooltra.webp",
-  "decathlon.webp",
-  "hannlin.webp",
-  "ilerna.webp",
-  "innovamat.webp",
-  "mail-boxes.webp",
-  "motor-tarrega.webp",
-  "nomad-coffee.webp",
-  "oriols.webp",
-  "ondara.webp",
-];
+  'alohas.webp',
+  'alsa.webp',
+  'chep.webp',
+  'cooltra.webp',
+  'decathlon.webp',
+  'hannlin.webp',
+  'ilerna.webp',
+  'innovamat.webp',
+  'mail-boxes.webp',
+  'motor-tarrega.webp',
+  'nomad-coffee.webp',
+  'oriols.webp',
+  'ondara.webp',
+]
 </script>
 
 <template>

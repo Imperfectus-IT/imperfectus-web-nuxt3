@@ -2,22 +2,26 @@
 const addresses = [
   {
     id: useId(),
-    billing_address1: "Calle Margarita",
-    billing_address2: "45, 1A",
+    billing_address1: 'Calle Margarita',
+    billing_address2: '45, 1A',
     billing_postcode: 28005,
-    billing_city: "Madrid",
-    shipping_address1: "Calle Amalgama",
-    shipping_address2: "105, 2B",
+    billing_city: 'Madrid',
+    shipping_address1: 'Calle Amalgama',
+    shipping_address2: '105, 2B',
     shipping_postcode: 28015,
-    shipping_city: "Madrid",
-  }
+    shipping_city: 'Madrid',
+  },
 ]
 </script>
 
 <template>
   <Panel :header="$t('profile.address.title')">
-    <Divider/>
-    <div v-for="item in addresses" :key="item.id" class="flex flex-col gap-3 mb-5">
+    <Divider />
+    <div
+      v-for="item in addresses"
+      :key="item.id"
+      class="flex flex-col gap-3 mb-5"
+    >
       <p class="font-solina-extended-book text-sm">
         {{ $t('profile.address.street') }}: {{ item.billing_address1 }}
       </p>
@@ -32,12 +36,18 @@ const addresses = [
       </p>
     </div>
     <div class="flex gap-8 mb-5">
-      <NuxtLink class="underline underline-offset-2">{{ $t('adminSubscriptionUpdateItem.edit') }}</NuxtLink>
-      <NuxtLink class="underline underline-offset-2">{{ $t('adminSubscriptionItems.remove') }}</NuxtLink>
+      <NuxtLink class="underline underline-offset-2">
+        {{ $t('adminSubscriptionUpdateItem.edit') }}
+      </NuxtLink>
+      <NuxtLink class="underline underline-offset-2">
+        {{ $t('adminSubscriptionItems.remove') }}
+      </NuxtLink>
     </div>
     <Button
-        class="h-[3.125rem]" :label="$t('profile.address.add_address_button')"
-        :pt="{ label: 'text-sm' }" outlined
+      class="h-[3.125rem]"
+      :label="$t('profile.address.add_address_button')"
+      :pt="{ label: 'text-sm' }"
+      outlined
     />
   </Panel>
 </template>

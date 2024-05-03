@@ -14,8 +14,7 @@
       :to="localePath({ name: item.route })"
       class="pb-1 active:font-bold cursor-pointer flex flex-col"
       @click="hideTopNavbar"
-      >{{ item.label }}</NuxtLink
-    >
+    >{{ item.label }}</NuxtLink>
     <Divider />
     <NuxtLink
       v-for="item in secondaryMenu"
@@ -23,70 +22,70 @@
       :to="localePath({ name: item.route })"
       class="pb-1 text-[1.125rem] flex flex-col"
       @click="hideTopNavbar"
-      >{{ item.label }}</NuxtLink
-    >
+    >{{ item.label }}</NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-const localePath = useLocalePath();
-const { t } = useI18n();
+import { useI18n } from 'vue-i18n'
 
-const emit = defineEmits(["hide"]);
+const localePath = useLocalePath()
+const { t } = useI18n()
+
+const emit = defineEmits(['hide'])
 
 const hideTopNavbar = () => {
-  emit("hide");
-};
+  emit('hide')
+}
 
 const mainMenu = [
   {
     id: useId(),
-    label: t("side_admin_menu.personal_data"),
-    route: "admin-profile",
+    label: t('side_admin_menu.personal_data'),
+    route: 'admin-profile',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.orders"),
-    route: "admin-orders",
+    label: t('side_admin_menu.orders'),
+    route: 'admin-orders',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.subscriptions"),
-    route: "admin-subscriptions",
+    label: t('side_admin_menu.subscriptions'),
+    route: 'admin-subscriptions',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.referrals"),
-    route: "admin-referrals",
+    label: t('side_admin_menu.referrals'),
+    route: 'admin-referrals',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.giftcard"),
-    route: "admin-gift-cards",
+    label: t('side_admin_menu.giftcard'),
+    route: 'admin-gift-cards',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.newsletter"),
-    route: "admin-newsletter",
+    label: t('side_admin_menu.newsletter'),
+    route: 'admin-newsletter',
   },
-];
+]
 
 const secondaryMenu = [
   {
     id: useId(),
-    label: t("side_admin_menu.faq"),
-    route: "faq",
+    label: t('side_admin_menu.faq'),
+    route: 'faq',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.contact"),
-    route: "contact",
+    label: t('side_admin_menu.contact'),
+    route: 'contact',
   },
   {
     id: useId(),
-    label: t("side_admin_menu.logout"),
-    route: "logout",
+    label: t('side_admin_menu.logout'),
+    route: 'logout',
   },
-];
+]
 </script>

@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted } from 'vue'
 
-const client = useStrapiClient();
-const { redirectPaths } = useRedirectPaths();
-const { redirectProvider, redirectToAction } = useRedirectProvider();
+const client = useStrapiClient()
+const { redirectPaths } = useRedirectPaths()
+const { redirectProvider, redirectToAction } = useRedirectProvider()
 
 const googleCallback = async () => {
-  return await client("/auth/google/callback", {
-    method: "GET",
+  return await client('/auth/google/callback', {
+    method: 'GET',
     query: { access_token: route.query.access_token },
-  });
-};
+  })
+}
 
 onMounted(async () => {
-  const { jwt } = await googleCallback();
-  const { authenticateProvider } = useStrapiAuth();
-  await authenticateProvider("google", jwt);
+  const { jwt } = await googleCallback()
+  const { authenticateProvider } = useStrapiAuth()
+  await authenticateProvider('google', jwt)
 
   if (redirectProvider) {
-    redirectToAction(redirectProvider.value);
-    return;
+    redirectToAction(redirectProvider.value)
+    return
   }
 
-  redirectToAction(redirectPaths.ADMIN);
-});
+  redirectToAction(redirectPaths.ADMIN)
+})
 </script>

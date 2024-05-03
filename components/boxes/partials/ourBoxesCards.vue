@@ -3,8 +3,12 @@
     class="bg-green-quaternary font-solina-extended-book text-[16px] flex flex-col gap-3 !rounded-b-[20px] lg:rounded-[20px]"
   >
     <div class="px-4 flex flex-col gap-5 lg:ml-6">
-      <h4 class="text-[28px] mt-4 lg:mt-8">{{ data.title }}</h4>
-      <p class="font-bold">{{ data.price }}</p>
+      <h4 class="text-[28px] mt-4 lg:mt-8">
+        {{ data.title }}
+      </h4>
+      <p class="font-bold">
+        {{ data.price }}
+      </p>
       <p>{{ data.description }}</p>
 
       <div class="flex flex-col gap-6 font-solina-extended-medium">
@@ -53,7 +57,9 @@
         </div>
       </div>
 
-      <p class="text-grey-secondary">{{ t("boxes.free-shipping") }}</p>
+      <p class="text-grey-secondary">
+        {{ t("boxes.free-shipping") }}
+      </p>
     </div>
     <Button
       class="w-full py-5 border-t-0 rounded-t-[0px] rounded-b-[20px] font-solina-extended-medium lg:mt-auto"
@@ -64,67 +70,66 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import type { SelectedBox } from "../types/BoxSelected";
+import { useI18n } from 'vue-i18n'
+import type { SelectedBox } from '../types/BoxSelected'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 const props = defineProps<{
   data: {
-    title: string;
-    description: string;
-    price: string;
-  },
-  selectedBox: SelectedBox,
-  boxOptions: Array<{ name: string; value: string }>,
-}>();
+    title: string
+    description: string
+    price: string
+  }
+  selectedBox: SelectedBox
+  boxOptions: Array<{ name: string, value: string }>
+}>()
 
 const getSelectedBoxData = computed(() => {
-  return props.boxOptions.length > 0 ? props.boxOptions : TKBoxOptions;
+  return props.boxOptions.length > 0 ? props.boxOptions : TKBoxOptions
 })
 
-const emit = defineEmits(["updateItemOnParent"]);
+const emit = defineEmits(['updateItemOnParent'])
 
 const updateContentOnParent = (newContent: string) => {
-  emit("updateItemOnParent", { ...props.selectedBox, content: newContent });
-};
+  emit('updateItemOnParent', { ...props.selectedBox, content: newContent })
+}
 
 const updateFrequencyOnParent = (newFrequency: string) => {
-  emit("updateItemOnParent", { ...props.selectedBox, frequency: newFrequency });
-};
+  emit('updateItemOnParent', { ...props.selectedBox, frequency: newFrequency })
+}
 
 const updateUnitsOnParent = (newUnits: string) => {
-  emit("updateItemOnParent", { ...props.selectedBox, units: newUnits });
-};
+  emit('updateItemOnParent', { ...props.selectedBox, units: newUnits })
+}
 
 const TKBoxOptions = [
   {
-    name: t("string.box.mixed"),
-    value: "mixed",
+    name: t('string.box.mixed'),
+    value: 'mixed',
   },
   {
-    name: t("string.box.vegetables"),
-    value: "vegetables",
+    name: t('string.box.vegetables'),
+    value: 'vegetables',
   },
   {
-    name: t("string.box.fruits"),
-    value: "fruits",
+    name: t('string.box.fruits'),
+    value: 'fruits',
   },
-];
-
+]
 
 const purchaseOptions = [
   {
-    name: t("content.boxes.purchaseOption2"),
-    value: "weekly",
+    name: t('content.boxes.purchaseOption2'),
+    value: 'weekly',
   },
   {
-    name: t("content.boxes.purchaseOption3"),
-    value: "biweekly",
+    name: t('content.boxes.purchaseOption3'),
+    value: 'biweekly',
   },
   {
-    name: t("content.boxes.purchaseOption1"),
-    value: "once",
+    name: t('content.boxes.purchaseOption1'),
+    value: 'once',
   },
-];
+]
 </script>

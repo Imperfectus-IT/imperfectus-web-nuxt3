@@ -8,7 +8,10 @@
     :items-to-scroll="numScroll"
     @slide-start="$emit('navigation-clicked', $event)"
   >
-    <Slide v-for="(item, index) in data" :key="index">
+    <Slide
+      v-for="(item, index) in data"
+      :key="index"
+    >
       <div :class="slideClass">
         <NuxtImg
           v-if="item.image"
@@ -19,7 +22,11 @@
           format="webp"
         />
         <div :class="slotClass">
-          <slot name="SlideContent" :item="item" :class="slotClass" />
+          <slot
+            name="SlideContent"
+            :item="item"
+            :class="slotClass"
+          />
         </div>
       </div>
     </Slide>
@@ -29,7 +36,7 @@
         <Navigation v-if="showNavigation">
           <template #prev>
             <span
-              :class="['mdi mdi-chevron-left bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]',navigationPrevClass]"
+              :class="['mdi mdi-chevron-left bg-green-tertiary rounded-full text-green-primary leading-none text-[24px]', navigationPrevClass]"
             />
           </template>
           <template #next>
@@ -39,14 +46,18 @@
           </template>
         </Navigation>
       </div>
-      <Pagination v-if="showPagination" class="absolute left-[50%] -translate-x-1/2" :class="paginationClass" />
+      <Pagination
+        v-if="showPagination"
+        class="absolute left-[50%] -translate-x-1/2"
+        :class="paginationClass"
+      />
     </template>
   </Carousel>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
-import type { CarouselSlideObject } from "./TKCarouselTypes";
+import type { PropType } from 'vue'
+import type { CarouselSlideObject } from './TKCarouselTypes'
 
 defineProps({
   data: {
@@ -75,41 +86,41 @@ defineProps({
   },
   slideClass: {
     type: String,
-    default: "",
+    default: '',
   },
   carouselClass: {
     type: String,
-    default: "",
+    default: '',
   },
   imageClass: {
     type: String,
-    default: "",
+    default: '',
   },
   slotClass: {
     type: String,
-    default: "",
+    default: '',
   },
   paginationClass: {
     type: String,
-    default: "",
+    default: '',
   },
   navigationPrevClass: {
     type: String,
-    default: "",
+    default: '',
   },
   navigationNextClass: {
     type: String,
-    default: "",
+    default: '',
   },
   navigationContainerClass: {
     type: String,
-    default: "",
+    default: '',
   },
   numScroll: {
     type: Number,
     default: 1,
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

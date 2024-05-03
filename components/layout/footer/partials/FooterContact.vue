@@ -4,11 +4,16 @@
       {{ $t("footerInfo.contact") }}
     </h4>
     <div>
-      <NuxtLink target="_blank" to="mailto:info@talkualfoods.com"
-        >info@talkualfoods.com</NuxtLink
+      <NuxtLink
+        target="_blank"
+        to="mailto:info@talkualfoods.com"
+      >info@talkualfoods.com</NuxtLink>
+      <br>O
+      <NuxtLink
+        target="_blank"
+        to="contact"
+        class="underline"
       >
-      <br />O
-      <NuxtLink target="_blank" to="contact" class="underline">
         {{ $t("footerInfo.contact-here") }}
       </NuxtLink>
     </div>
@@ -23,7 +28,11 @@
       <p>{{ $t("footerInfo.schedule.2") }}</p>
     </div>
     <div class="text-[30px] flex flex-row gap-4 mt-6">
-      <span v-for="icon in socialLinkIcons" :key="icon" :class="['mdi', `mdi-${icon}`]" />
+      <span
+        v-for="icon in socialLinkIcons"
+        :key="icon"
+        :class="['mdi', `mdi-${icon}`]"
+      />
       <a
         class="relative top-3"
         title="Tiktok"
@@ -48,10 +57,10 @@
 
 <script setup lang="ts">
 const socialLinkIcons = [
-  "instagram",
-  "linkedin",
-  "facebook",
-  "youtube",
-  "twitter",
-];
+  'instagram',
+  'linkedin',
+  'facebook',
+  'youtube',
+  'twitter',
+]
 </script>

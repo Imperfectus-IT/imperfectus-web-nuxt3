@@ -9,19 +9,16 @@
 </template>
 
 <script setup lang="ts">
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
-
-
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps({
   vegetables: {
     type: Array as PropType<CarouselSlideObject[]>,
-    required: true
+    required: true,
   },
   showNavigation: {
     type: Boolean,
-    default: false
-  }
-});
-
+    default: false,
+  },
+})
 </script>

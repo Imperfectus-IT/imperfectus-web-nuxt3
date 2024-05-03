@@ -9,11 +9,11 @@
   <div class="max-w-[1345px] mx-auto">
     <div class="">
       <h4 class="font-solina-extended-book mt-8 mx-3 text-[26px] leading-8 lg:text-[35px] lg:leading-10 lg:whitespace-break-spaces">
-      {{ t("boxes.our-boxes.oranges-box.description.1") }}
-    </h4>
-    <p class="px-3 font-solina-condensed-bold font-bold text-[18px] my-5">
-      {{ t("boxes.our-boxes.oranges-box.title") }}
-    </p>
+        {{ t("boxes.our-boxes.oranges-box.description.1") }}
+      </h4>
+      <p class="px-3 font-solina-condensed-bold font-bold text-[18px] my-5">
+        {{ t("boxes.our-boxes.oranges-box.title") }}
+      </p>
     </div>
 
     <CarouselAndCard
@@ -41,123 +41,126 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import type { OrangeBoxImages } from "./types/OrangeBoxImages";
-import type { SelectedOrangeBox } from "./types/OrangeBoxSelected";
-const { t } = useI18n();
+import { useI18n } from 'vue-i18n'
+import type { OrangeBoxImages } from './types/OrangeBoxImages'
+import type { SelectedOrangeBox } from './types/OrangeBoxSelected'
+
+const { t } = useI18n()
 
 defineI18nRoute({
   paths: {
-    ca: "/caixes-estacionals/",
-    es: "/cajas-estacionales/",
+    ca: '/caixes-estacionals/',
+    es: '/cajas-estacionales/',
   },
-});
+})
 
-const { addResize, removeResize, windowWidth } = useWindowSize();
+const { addResize, removeResize, windowWidth } = useWindowSize()
 onMounted(() => {
-  addResize();
-});
+  addResize()
+})
 
 onBeforeUnmount(() => {
-  removeResize();
-});
+  removeResize()
+})
 
-const displayDesktop = computed(() => windowWidth.value > 768);
+const displayDesktop = computed(() => windowWidth.value > 768)
 
 const orangeBoxData = {
   s: {
-    title: t("content.home.ourBoxes.item0.title"),
-    description: t("boxes.our-boxes.oranges-box.description.2"),
-    price: "18.00€",
+    title: t('content.home.ourBoxes.item0.title'),
+    description: t('boxes.our-boxes.oranges-box.description.2'),
+    price: '18.00€',
   },
   im: {
-    title: t("content.home.ourBoxes.item1.title"),
-    description: t("boxes.our-boxes.oranges-box.description.2"),
-    price: "22.00€",
+    title: t('content.home.ourBoxes.item1.title'),
+    description: t('boxes.our-boxes.oranges-box.description.2'),
+    price: '22.00€',
   },
   xl: {
-    title: t("content.home.ourBoxes.item2.title"),
-    description: t("boxes.our-boxes.oranges-box.description.2"),
-    price: "30.00€",
+    title: t('content.home.ourBoxes.item2.title'),
+    description: t('boxes.our-boxes.oranges-box.description.2'),
+    price: '30.00€',
   },
-};
+}
 
 const boxSelected = reactive({
   orange: {
-    content: "IM",
-    frequency: "weekly",
+    content: 'IM',
+    frequency: 'weekly',
     units: 1,
   },
-});
+})
 
 const getCardData = computed(() => {
-  if (boxSelected.orange.content === "S") {
-    return orangeBoxData.s;
-  } else if (boxSelected.orange.content === "IM") {
-    return orangeBoxData.im;
-  } else {
-    return orangeBoxData.xl;
+  if (boxSelected.orange.content === 'S') {
+    return orangeBoxData.s
   }
-});
+  else if (boxSelected.orange.content === 'IM') {
+    return orangeBoxData.im
+  }
+  else {
+    return orangeBoxData.xl
+  }
+})
 
 const getImagesForCarousel = () => {
   return orangeBoxesImages[
     boxSelected.orange.content.toLowerCase() as keyof OrangeBoxImages
-  ];
-};
+  ]
+}
 
 const updateSelectedBox = (payload: SelectedOrangeBox) => {
-  Object.assign(boxSelected.orange, payload);
-};
+  Object.assign(boxSelected.orange, payload)
+}
 
 const orangeBoxOptions = [
   {
-    name: t("orderItemSize.small"),
-    value: "S",
+    name: t('orderItemSize.small'),
+    value: 'S',
   },
   {
-    name: t("orderItemSize.medium"),
-    value: "IM",
+    name: t('orderItemSize.medium'),
+    value: 'IM',
   },
   {
-    name: t("orderItemSize.large"),
-    value: "XL",
+    name: t('orderItemSize.large'),
+    value: 'XL',
   },
-];
+]
 
 const orangeBoxesImages: OrangeBoxImages = {
   s: [
     {
-      image: "/images/special/oranges/boxes/S-Orange.webp",
-      title: "Orange Box S",
+      image: '/images/special/oranges/boxes/S-Orange.webp',
+      title: 'Orange Box S',
     },
   ],
   im: [
     {
-      image: "/images/special/oranges/boxes/IM-Orange.webp",
-      title: "Orange Box M",
+      image: '/images/special/oranges/boxes/IM-Orange.webp',
+      title: 'Orange Box M',
     },
   ],
   xl: [
     {
-      image: "/images/special/oranges/boxes/XL-Orange.webp",
-      title: "Orange Box L",
+      image: '/images/special/oranges/boxes/XL-Orange.webp',
+      title: 'Orange Box L',
     },
   ],
-};
+}
 
 const orangeImages = [
   {
-    image: "/images/special/oranges/oranges-1.webp",
-    title: "Orange 1",
+    image: '/images/special/oranges/oranges-1.webp',
+    title: 'Orange 1',
   },
   {
-    image: "/images/special/oranges/oranges-2.webp",
-    title: "Orange 2",
+    image: '/images/special/oranges/oranges-2.webp',
+    title: 'Orange 2',
   },
   {
-    image: "/images/special/oranges/oranges-3.webp",
-    title: "Orange 3",
+    image: '/images/special/oranges/oranges-3.webp',
+    title: 'Orange 3',
   },
-];
+]
 </script>

@@ -5,7 +5,7 @@
       :key="index"
       class="p-2"
       :pt="{
-        hr: 'display-none'
+        hr: 'display-none',
       }"
       @click="currentOption = $t(option.title)"
     >
@@ -35,21 +35,22 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+
 const { t } = useI18n()
 
-const currentOption = ref(t('homeOffer.comfortable.title'));
+const currentOption = ref(t('homeOffer.comfortable.title'))
 const options = [
-        {
-          title: 'homeOffer.comfortable.title',
-          description: 'homeOffer.comfortable.description'
-        },
-        {
-          title: 'homeOffer.fresh.title',
-          description: 'homeOffer.fresh.title.description'
-        },
-        {
-          title: 'homeOffer.noCommitment.title',
-          description: 'homeOffer.noCommitment.description'
-        }
-      ];
+  {
+    title: 'homeOffer.comfortable.title',
+    description: 'homeOffer.comfortable.description',
+  },
+  {
+    title: 'homeOffer.fresh.title',
+    description: 'homeOffer.fresh.title.description',
+  },
+  {
+    title: 'homeOffer.noCommitment.title',
+    description: 'homeOffer.noCommitment.description',
+  },
+]
 </script>

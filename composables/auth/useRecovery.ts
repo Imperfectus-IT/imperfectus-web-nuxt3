@@ -1,32 +1,32 @@
-import { ref } from "vue";
+import { ref } from 'vue'
 
 export const useStrapiRecovery = () => {
   const recoveryFormData = ref({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    code: "",
-  });
+    email: '',
+    password: '',
+    confirmPassword: '',
+    code: '',
+  })
 
-  const { forgotPassword, resetPassword } = useStrapiAuth();
+  const { forgotPassword, resetPassword } = useStrapiAuth()
 
-  const handleRecovery = async (): Promise<Boolean> => {
+  const handleRecovery = async (): Promise<boolean> => {
     await forgotPassword({
       email: recoveryFormData.value.email,
-    });
+    })
 
-    return true;
-  };
+    return true
+  }
 
-  const handleReset = async (): Promise<Boolean> => {
+  const handleReset = async (): Promise<boolean> => {
     await resetPassword({
       code: recoveryFormData.value.code,
       password: recoveryFormData.value.password,
       passwordConfirmation: recoveryFormData.value.confirmPassword,
-    });
+    })
 
-    return true;
-  };
+    return true
+  }
 
-  return { recoveryFormData, handleRecovery, handleReset };
-};
+  return { recoveryFormData, handleRecovery, handleReset }
+}

@@ -1,4 +1,3 @@
-
 import type divider from '~/presets/talkual-ui/divider';
 <template>
   <div class="relative my-6 lg:my-0">
@@ -13,25 +12,28 @@ import type divider from '~/presets/talkual-ui/divider';
       @mouseover="index++"
       @mouseout="index--"
     />
- 
+
     <div
-      v-if="index === 1" 
-      class="text-white-primary w-full text-center absolute left-1/2 -translate-x-1/2 bottom-2">
-      <p class="font-recoleta-regular text-[25px]">{{ name }}</p>
-      <p class="text-[18px] font-bold">{{ position }}</p>
+      v-if="index === 1"
+      class="text-white-primary w-full text-center absolute left-1/2 -translate-x-1/2 bottom-2"
+    >
+      <p class="font-recoleta-regular text-[25px]">
+        {{ name }}
+      </p>
+      <p class="text-[18px] font-bold">
+        {{ position }}
+      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
 defineProps<{
-  name: string;
-  position: string;
-  images: string[];
-}>();
+  name: string
+  position: string
+  images: string[]
+}>()
 
-const index = ref(0);
+const index = ref(0)
 const basePath = ref<string>('/images/about/team/')
-
 </script>

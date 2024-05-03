@@ -45,7 +45,10 @@
       </div>
     </div>
     <!-- DARK SECTION -->
-    <div id="dark" class="bg-green-tertiary">
+    <div
+      id="dark"
+      class="bg-green-tertiary"
+    >
       <div
         class="flex flex-col gap-y-14 lg:flex-row lg:relative lg:w-11/12 lg:mx-auto"
       >
@@ -63,8 +66,12 @@
           :image-class="'w-full mb-8 lg:w-8/12 lg:mx-auto lg:mt-32'"
         >
           <template #text>
-            <p class="font-bold w-10/12 mx-auto">{{ title }}</p>
-            <p class="mt-3 leading-6 p-2 w-11/12 mx-auto">{{ description }}</p>
+            <p class="font-bold w-10/12 mx-auto">
+              {{ title }}
+            </p>
+            <p class="mt-3 leading-6 p-2 w-11/12 mx-auto">
+              {{ description }}
+            </p>
           </template>
         </ImageTextCard>
       </div>
@@ -84,11 +91,16 @@
         class="mt-6 text-[20px] lg:text-[23px]"
         :pt="{ legend: 'hidden' }"
       >
-        <h4 class="font-bold pt-3 whitespace-normal">{{ question }}</h4>
+        <h4 class="font-bold pt-3 whitespace-normal">
+          {{ question }}
+        </h4>
         <p class="mt-4 p-1.5">
           {{ answer }}
         </p>
-        <p v-if="answerExt" class="mt-4 p-1.5">
+        <p
+          v-if="answerExt"
+          class="mt-4 p-1.5"
+        >
           {{ answerExt }}
         </p>
       </Fieldset>
@@ -97,66 +109,65 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
-const localePath = useLocalePath();
-const { t } = useI18n();
+const localePath = useLocalePath()
+const { t } = useI18n()
 
 defineI18nRoute({
   paths: {
-    ca: "/invita-a-un-amic/",
-    es: "/invita-a-un-amigo/",
+    ca: '/invita-a-un-amic/',
+    es: '/invita-a-un-amigo/',
   },
-});
+})
 
 const darkSection = computed(() => {
   return [
     {
-      title: t("pages.refer-a-friend.how-it-works.title-1"),
-      description: t("pages.refer-a-friend.how-it-works.description-1"),
-      image: "/images/refer-a-friend/Tribu_Dark-1.webp",
+      title: t('pages.refer-a-friend.how-it-works.title-1'),
+      description: t('pages.refer-a-friend.how-it-works.description-1'),
+      image: '/images/refer-a-friend/Tribu_Dark-1.webp',
     },
     {
-      title: t("pages.refer-a-friend.how-it-works.title-2"),
-      description: t("pages.refer-a-friend.how-it-works.description-2"),
-      image: "/images/refer-a-friend/Tribu_Dark-2.webp",
+      title: t('pages.refer-a-friend.how-it-works.title-2'),
+      description: t('pages.refer-a-friend.how-it-works.description-2'),
+      image: '/images/refer-a-friend/Tribu_Dark-2.webp',
     },
     {
-      title: t("pages.refer-a-friend.how-it-works.title-3"),
-      description: t("pages.refer-a-friend.how-it-works.description-3"),
-      image: "/images/refer-a-friend/Tribu_Dark-3.webp",
+      title: t('pages.refer-a-friend.how-it-works.title-3'),
+      description: t('pages.refer-a-friend.how-it-works.description-3'),
+      image: '/images/refer-a-friend/Tribu_Dark-3.webp',
     },
-  ];
-});
+  ]
+})
 
 const faqs = computed(() => {
   return [
     {
-      question: t("pages.refer-a-friend.faqs.title-1"),
-      answer: t("pages.refer-a-friend.faqs.description-1"),
+      question: t('pages.refer-a-friend.faqs.title-1'),
+      answer: t('pages.refer-a-friend.faqs.description-1'),
     },
     {
-      question: t("pages.refer-a-friend.faqs.title-2"),
-      answer: t("pages.refer-a-friend.faqs.description-2"),
+      question: t('pages.refer-a-friend.faqs.title-2'),
+      answer: t('pages.refer-a-friend.faqs.description-2'),
     },
     {
-      question: t("pages.refer-a-friend.faqs.title-3"),
-      answer: t("pages.refer-a-friend.faqs.description-3"),
+      question: t('pages.refer-a-friend.faqs.title-3'),
+      answer: t('pages.refer-a-friend.faqs.description-3'),
     },
     {
-      question: t("pages.refer-a-friend.faqs.title-4"),
-      answer: t("pages.refer-a-friend.faqs.description-4"),
+      question: t('pages.refer-a-friend.faqs.title-4'),
+      answer: t('pages.refer-a-friend.faqs.description-4'),
     },
     {
-      question: t("pages.refer-a-friend.faqs.title-5"),
-      answer: t("pages.refer-a-friend.faqs.description-5.p1"),
-      answerExt: t("pages.refer-a-friend.faqs.description-5.p2"),
+      question: t('pages.refer-a-friend.faqs.title-5'),
+      answer: t('pages.refer-a-friend.faqs.description-5.p1'),
+      answerExt: t('pages.refer-a-friend.faqs.description-5.p2'),
     },
     {
-      question: t("pages.refer-a-friend.faqs.title-6"),
-      answer: t("pages.refer-a-friend.faqs.description-6"),
+      question: t('pages.refer-a-friend.faqs.title-6'),
+      answer: t('pages.refer-a-friend.faqs.description-6'),
     },
-  ];
-});
+  ]
+})
 </script>
-

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h4 class="!font-bold text-[14px] mt-4">¿Quieres editar tu pedido?</h4>
+    <h4 class="!font-bold text-[14px] mt-4">
+      ¿Quieres editar tu pedido?
+    </h4>
     <Divider class="mt-2 !w-2/3" />
     <Button
       v-if="!displayEditOrder"
@@ -21,7 +23,9 @@
     </div>
     <div>
       <h4>Quieres excluir algun alimento</h4>
-      <p class="font-bold">Puedes excluir hasta 6 alimentos</p>
+      <p class="font-bold">
+        Puedes excluir hasta 6 alimentos
+      </p>
       <p>
         Aún así, cada viernes enviamos un email con las frutas y verduras que
         habrá en la caja de la siguitente semana para que así puedas editar las
@@ -44,24 +48,24 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  products: string[];
-  exclusions: string[];
-  sku: string;
-}>();
+  products: string[]
+  exclusions: string[]
+  sku: string
+}>()
 
 const editOrderData = reactive({
   sku: props.sku,
   exclusions: props.exclusions,
   coupon: null,
-});
+})
 
-const displayEditOrder = ref(true);
+const displayEditOrder = ref(true)
 
 const boxes = [
-  { name: "Verdura y fruta", code: "MX" },
-  { name: "Sólo fruta", code: "FR" },
-  { name: "Sólo verdura", code: "VG" },
-];
+  { name: 'Verdura y fruta', code: 'MX' },
+  { name: 'Sólo fruta', code: 'FR' },
+  { name: 'Sólo verdura', code: 'VG' },
+]
 
-const products = props.products;
+const products = props.products
 </script>

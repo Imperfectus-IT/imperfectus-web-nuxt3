@@ -6,7 +6,11 @@
       {{ $t("profile.my_account.next_order.title") }}
     </h4>
     <Divider />
-    <OrderItemCard v-for="(item, index) in order.orderItems" :key="index" :order-item="item" />
+    <OrderItemCard
+      v-for="(item, index) in order.orderItems"
+      :key="index"
+      :order-item="item"
+    />
     <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
       <Button
         outlined
@@ -16,10 +20,9 @@
     </NuxtLink>
   </div>
 </template>
+
 <script setup lang="ts">
-
 defineProps<{
-  order: Order;
-}>();
-
+  order: Order
+}>()
 </script>

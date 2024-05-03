@@ -18,8 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CarouselSlideObject } from "../talkual-ui/TKCarousel/TKCarouselTypes";
-import type { SelectedBox } from "./types/BoxSelected";
+import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes'
+import type { SelectedBox } from './types/BoxSelected'
 
 defineProps({
   carouselData: {
@@ -43,26 +43,25 @@ defineProps({
     required: true,
   },
   boxOptions: {
-    type: Array as PropType<{ name: string; value: string }[]>,
+    type: Array as PropType<{ name: string, value: string }[]>,
     default: () => [],
-  }
-});
+  },
+})
 
-const { addResize, removeResize, windowWidth} = useWindowSize();
+const { addResize, removeResize, windowWidth } = useWindowSize()
 onMounted(() => {
-  addResize();
-});
+  addResize()
+})
 
 onBeforeUnmount(() => {
-  removeResize();
-});
+  removeResize()
+})
 
-const displayDesktop = computed(() => windowWidth.value > 768);
+const displayDesktop = computed(() => windowWidth.value > 768)
 
-const emit = defineEmits(["update-item-on-parent"]);
+const emit = defineEmits(['update-item-on-parent'])
 
 const updateItemOnParent = (payload: SelectedBox) => {
-  emit("update-item-on-parent", payload);
-};
+  emit('update-item-on-parent', payload)
+}
 </script>
-

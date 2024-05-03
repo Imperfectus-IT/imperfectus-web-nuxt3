@@ -22,7 +22,10 @@
         </span>
       </div>
 
-      <HubSpotForm class="rounded-md ml-4 mr-4 mb-12" form="b2b" />
+      <HubSpotForm
+        class="rounded-md ml-4 mr-4 mb-12"
+        form="b2b"
+      />
     </div>
   </div>
 </template>

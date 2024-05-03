@@ -1,6 +1,8 @@
 <template>
   <div class="mb-12">
-    <h4 class="!font-bold text-[14px] mt-4">¿Qué lleva tu pedido?</h4>
+    <h4 class="!font-bold text-[14px] mt-4">
+      ¿Qué lleva tu pedido?
+    </h4>
     <Divider class="mt-2 !w-2/3" />
     <TKCarousel
       :data="products"
@@ -12,18 +14,18 @@
       pagination-class="-bottom-9 bg-red-primary"
     >
       <template #SlideContent="{ item }">
-        <p class="text-[10px]">{{ item.name }}</p>
+        <p class="text-[10px]">
+          {{ item.name }}
+        </p>
       </template>
     </TKCarousel>
   </div>
 </template>
 
 <script setup lang='ts'>
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps<{
   products: CarouselSlideObject[]
 }>()
-
-
 </script>

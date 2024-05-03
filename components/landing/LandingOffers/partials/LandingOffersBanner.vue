@@ -1,6 +1,7 @@
 <template>
   <div
-    class="bg-green-tertiary text-green-quaternary text-[35px] p-8 leading-[43px] lg:text-[60px] lg:leading-[5rem] lg:px-28 py-12">
+    class="bg-green-tertiary text-green-quaternary text-[35px] p-8 leading-[43px] lg:text-[60px] lg:leading-[5rem] lg:px-28 py-12"
+  >
     <p class="inline">
       {{ $t('boxes.suppliers.description.1') }}
     </p>
@@ -21,7 +22,10 @@
     </p>
     <div class="flex flex-row items-center mt-4">
       <div class="h-3 w-3 bg-green-primary rounded-xl mr-2" />
-      <NuxtLink to="boxes" class="text-[16px]">
+      <NuxtLink
+        to="boxes"
+        class="text-[16px]"
+      >
         <p>{{ $t('homeKnowMore.more') }}</p>
       </NuxtLink>
     </div>

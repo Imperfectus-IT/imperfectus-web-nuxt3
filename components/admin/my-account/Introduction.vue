@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { StrapiUser } from "@nuxtjs/strapi";
+import type { StrapiUser } from '@nuxtjs/strapi'
 
 defineProps<{
-  user: StrapiUser;
-}>();
+  user: StrapiUser
+}>()
 </script>
 
 <template>
@@ -26,12 +26,15 @@ defineProps<{
           <span>{{ $t("profile.my_account.link_1") }}</span>
         </NuxtLink>
         <p>o</p>
-        <NuxtLink class="underline" to="contact">
+        <NuxtLink
+          class="underline"
+          to="contact"
+        >
           <span>{{ $t("profile.my_account.link_2") }}</span>
         </NuxtLink>
       </div>
     </div>
-    <NuxtLink to="order" >
+    <NuxtLink to="order">
       <Button
         class="hidden lg:block lg:h-12 lg:w-[200px]"
         :label="$t('string.misc.order')"
@@ -39,4 +42,3 @@ defineProps<{
     </NuxtLink>
   </div>
 </template>
-

@@ -1,80 +1,87 @@
 <script setup lang="ts">
-import { useValidateResetPassword } from "~/composables/auth/useValidateResetPassword.ts";
-import { z } from "zod";
+import { z } from 'zod'
+import { useValidateResetPassword } from '~/composables/auth/useValidateResetPassword.ts'
 
-const { validationErrors, validateSchema } = useValidateRecovery();
-const { recoveryFormData, handleRecovery, handleReset } = useStrapiRecovery();
-const { validationErrorsResetPassword, validateSchemaResetPassword } =
-  useValidateResetPassword();
-const localePath = useLocalePath();
+const { validationErrors, validateSchema } = useValidateRecovery()
+const { recoveryFormData, handleRecovery, handleReset } = useStrapiRecovery()
+const { validationErrorsResetPassword, validateSchemaResetPassword }
+  = useValidateResetPassword()
+const localePath = useLocalePath()
 
-type stepType = "email" | "password";
+type stepType = 'email' | 'password'
 
-const step = ref<stepType>("email");
-const loading = ref(false);
+const step = ref<stepType>('email')
+const loading = ref(false)
 
 const emit = defineEmits<{
-  (e: "recovery"): void;
-}>();
+  (e: 'recovery'): void
+}>()
 
 const submitRecoveryForm = async () => {
   try {
-    loading.value = true;
-    validateSchema(recoveryFormData.value);
+    loading.value = true
+    validateSchema(recoveryFormData.value)
 
     if (!validationErrors.value) {
-      const isOk = await handleRecovery();
+      const isOk = await handleRecovery()
       if (isOk) {
-        step.value = "password";
+        step.value = 'password'
       }
     }
-  } catch (err) {
-    console.error("Error submitting recovery form:", err);
-  } finally {
-    loading.value = false;
   }
-};
+  catch (err) {
+    console.error('Error submitting recovery form:', err)
+  }
+  finally {
+    loading.value = false
+  }
+}
 
 const submitResetPasswordForm = async () => {
   try {
-    loading.value = true;
-    validateSchemaResetPassword(recoveryFormData.value);
+    loading.value = true
+    validateSchemaResetPassword(recoveryFormData.value)
 
     if (!validationErrorsResetPassword.value) {
-      await handleReset();
-      emit("recovery");
+      await handleReset()
+      emit('recovery')
     }
-  } catch (err) {
+  }
+  catch (err) {
     const errorAuthCode = err.data.find(
-      (item) => item.messages[0].id === "Auth.form.error.code.provide",
-    );
+      item => item.messages[0].id === 'Auth.form.error.code.provide',
+    )
     if (errorAuthCode) {
       const error = new z.ZodError([
         {
           message: errorAuthCode.messages[0].id,
-          path: ["code"],
+          path: ['code'],
           code: z.ZodIssueCode.custom,
-          params: { custom: "Auth.form.error.code.provide" },
+          params: { custom: 'Auth.form.error.code.provide' },
         },
-      ]);
+      ])
 
       validationErrorsResetPassword.value = {
         ...validationErrorsResetPassword.code,
-        code: error.errors.some((e) => e.path.includes("code"))
-          ? { _errors: ["Code is invalid"] }
+        code: error.errors.some(e => e.path.includes('code'))
+          ? { _errors: ['Code is invalid'] }
           : undefined,
-      };
+      }
     }
-  } finally {
-    loading.value = false;
   }
-};
+  finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>
   <section class="px-10 md:px-[24%] lg:px-[30%] 2xl:px-[36%]">
-    <slot name="header"/>
-    <transition name="fade" mode="out-in">
+    <slot name="header" />
+    <transition
+      name="fade"
+      mode="out-in"
+    >
       <form
         v-if="step === 'email'"
         key="email"
@@ -103,8 +110,13 @@ const submitResetPasswordForm = async () => {
         </TKField>
       </form>
 
-      <div v-else-if="step === 'password'" key="password">
-        <p class="mt-2 mb-6">{{ $t("recoveryForm.successMessage") }}</p>
+      <div
+        v-else-if="step === 'password'"
+        key="password"
+      >
+        <p class="mt-2 mb-6">
+          {{ $t("recoveryForm.successMessage") }}
+        </p>
 
         <form
           class="flex flex-col gap-y-5"

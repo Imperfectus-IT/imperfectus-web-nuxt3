@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
+import TalkualLogoDark from '~/assets/images/svg/talkual-logo-dark.svg'
 
-const { t } = useI18n();
-const localePath = useLocalePath();
-const { visible, toggleVisible } = useVisibleSidebar();
+const { t } = useI18n()
+const localePath = useLocalePath()
+const { visible, toggleVisible } = useVisibleSidebar()
 
 const items = ref([
   {
-    label: t("layout.navbar.menu"),
+    label: t('layout.navbar.menu'),
     command: () => {
-      toggleVisible();
+      toggleVisible()
     },
   },
-]);
+])
 </script>
 
 <template>
@@ -25,28 +25,34 @@ const items = ref([
       </template>
       <template #center>
         <NuxtLink to="/">
-          <TalkualLogoDark class="w-[156] h-7" :font-controlled="false" />
+          <TalkualLogoDark
+            class="w-[156] h-7"
+            :font-controlled="false"
+          />
         </NuxtLink>
       </template>
       <template #end>
         <div class="flex items-center justify-center pr-8">
           <NuxtLink :to="localePath({ name: 'admin' })">
             <Button
-            :label="$t('layout.navbar.account')"
-            link
-            :pt="{
-              label: { class: 'font-solina-extended-medium font-normal' },
-            }"
+              :label="$t('layout.navbar.account')"
+              link
+              :pt="{
+                label: { class: 'font-solina-extended-medium font-normal' },
+              }"
             />
           </NuxtLink>
-          <div class="bg-green-tertiary h-4 w-[1px] mr-4"></div>
+          <div class="bg-green-tertiary h-4 w-[1px] mr-4" />
           <NuxtLink :to="'/'">
-          <span class="mdi mdi-shopping text-[20px]"></span>
-            
+            <span class="mdi mdi-shopping text-[20px]" />
+
           </NuxtLink>
         </div>
       </template>
     </Toolbar>
-    <AppAdminSidebar v-model:visible="visible" @hide="toggleVisible" />
+    <AppAdminSidebar
+      v-model:visible="visible"
+      @hide="toggleVisible"
+    />
   </section>
 </template>

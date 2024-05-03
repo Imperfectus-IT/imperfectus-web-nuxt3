@@ -5,8 +5,12 @@
       :key="index"
       class="text-[14px] flex flex-col"
     >
-      <p class="mt-5">{{ $t(`${props.labelKey}.item_${index}`) }}</p>
-      <p class="font-bold mt-1">{{ getShippingValue(key) }}</p>
+      <p class="mt-5">
+        {{ $t(`${props.labelKey}.item_${index}`) }}
+      </p>
+      <p class="font-bold mt-1">
+        {{ getShippingValue(key) }}
+      </p>
     </div>
 
     <Button
@@ -20,18 +24,18 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  data: OrderShipping;
-  header?: string;
-  labelKey: string;
-}>();
+  data: OrderShipping
+  header?: string
+  labelKey: string
+}>()
 
-const emit = defineEmits(["editShippingInfo"]);
+const emit = defineEmits(['editShippingInfo'])
 
 const displayShippingInfoForm = () => {
-  emit("editShippingInfo");
-};
+  emit('editShippingInfo')
+}
 
 const getShippingValue = (key: string) => {
-  return props.data[key as keyof OrderShipping];
-};
+  return props.data[key as keyof OrderShipping]
+}
 </script>

@@ -1,26 +1,24 @@
 <script setup lang="ts">
-import {  defineProps } from 'vue'
+import { defineProps } from 'vue'
 
 defineProps({
   text: {
     type: String,
-    required: true
+    required: true,
   },
   path: {
     type: String,
-    default: null
+    default: null,
   },
   showDot: {
     type: Boolean,
-    default: false
+    default: false,
   },
   isEMail: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
-
-
 </script>
 
 <template>

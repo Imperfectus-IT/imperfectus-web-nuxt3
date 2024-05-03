@@ -14,7 +14,7 @@
     <Container class="relative flex flex-col items-center text-center content">
       <h1
         :class="[titleClass, 'mt-3 font-recoleta-regular font-[500] text-[40px] leading-[1.25] lg:text-[100px] whitespace-break-spaces']"
-        >
+      >
         {{ title }}
       </h1>
 
@@ -22,7 +22,7 @@
         v-if="descriptionIsH2"
         class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
         :class="descriptionClass"
-        >
+      >
         {{ description }}
       </h2>
 
@@ -30,18 +30,17 @@
         v-else
         class="text-white-primary Header__description text-[18px] font-solina-extended-book lg:text-[30px]"
         :class="descriptionClass"
-
-        >
+      >
         {{ description }}
       </p>
 
-      <slot name="action"></slot>
+      <slot name="action" />
     </Container>
   </HeaderDefault>
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount } from "vue";
+import { onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   title: {
@@ -51,12 +50,12 @@ const props = defineProps({
   description: {
     type: String,
     required: false,
-    default: "",
+    default: '',
   },
   backgroundColor: {
     type: String,
     required: false,
-    default: "",
+    default: '',
   },
   backgroundDesktop: {
     type: String,
@@ -86,33 +85,33 @@ const props = defineProps({
   },
   titleClass: {
     type: String,
-    default: "text-white-primary",
+    default: 'text-white-primary',
   },
   descriptionClass: {
     type: String,
-    default: "",
+    default: '',
   },
-});
+})
 
-const windowWidth = ref(null);
+const windowWidth = ref(null)
 
 const background = computed(() => {
   if (props.backgroundMobile && windowWidth.value < 960) {
-    return props.backgroundMobile;
+    return props.backgroundMobile
   }
-  return props.backgroundDesktop;
-});
+  return props.backgroundDesktop
+})
 
 onMounted(() => {
-  window.addEventListener("resize", updateWidth);
-  updateWidth();
-});
+  window.addEventListener('resize', updateWidth)
+  updateWidth()
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", updateWidth);
-});
+  window.removeEventListener('resize', updateWidth)
+})
 
 const updateWidth = () => {
-  windowWidth.value = window.innerWidth;
-};
+  windowWidth.value = window.innerWidth
+}
 </script>

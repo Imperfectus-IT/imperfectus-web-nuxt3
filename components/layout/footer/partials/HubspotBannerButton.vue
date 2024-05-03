@@ -2,14 +2,13 @@
 const { isInverse } = withDefaults(defineProps<{
   isInverse?: boolean
 }>(), {
-  isInverse: false
+  isInverse: false,
 })
 
-const isHubspotButtonHidden = useState("isHubspotButtonHidden", () => false)
+const isHubspotButtonHidden = useState('isHubspotButtonHidden', () => false)
 </script>
 
 <template>
-
 </template>
 
 <style scoped lang="scss">

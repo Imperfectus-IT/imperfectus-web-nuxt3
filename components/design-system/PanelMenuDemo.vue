@@ -1,15 +1,25 @@
-
 <template>
   <div class="flex justify-center p-5 bg-green-tertiary">
     <PanelMenu :model="items">
       <template #item="{ item }">
-        <NuxtLink v-if="item.route" :to="item.route">
+        <NuxtLink
+          v-if="item.route"
+          :to="item.route"
+        >
           {{ item.label }}
         </NuxtLink>
-        <a v-else v-ripple :href="item.url" :target="item.target">
+        <a
+          v-else
+          v-ripple
+          :href="item.url"
+          :target="item.target"
+        >
           <span :class="item.icon" />
           <span class="ml-2">{{ item.label }}</span>
-          <span v-if="item.items" class="mdi mdi-arrow-down ml-2" />
+          <span
+            v-if="item.items"
+            class="mdi mdi-arrow-down ml-2"
+          />
         </a>
       </template>
     </PanelMenu>
@@ -17,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
 const items = ref([
   {
@@ -27,21 +37,21 @@ const items = ref([
       {
         label: 'Styled',
         icon: 'mdi mdi-arrow-top-right-thick',
-        route: '/theming'
+        route: '/theming',
       },
       {
         label: 'Unstyled',
         icon: 'pi pi-heart',
-        route: '/unstyled'
-      }
-    ]
+        route: '/unstyled',
+      },
+    ],
   },
   {
     label: 'Programmatic',
     icon: 'pi pi-link',
     command: () => {
-      router.push('/introduction');
-    }
+      router.push('/introduction')
+    },
   },
   {
     label: 'External',
@@ -50,14 +60,14 @@ const items = ref([
       {
         label: 'Vue.js',
         icon: 'mdi mdi-arrow-top-right-thick',
-        url: 'https://vuejs.org/'
+        url: 'https://vuejs.org/',
       },
       {
         label: 'Vite.js',
         icon: 'pi pi-bookmark',
-        url: 'https://vuejs.org/'
-      }
-    ]
-  }
-]);
+        url: 'https://vuejs.org/',
+      },
+    ],
+  },
+])
 </script>

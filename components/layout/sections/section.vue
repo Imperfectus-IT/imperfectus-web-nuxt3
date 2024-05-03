@@ -1,7 +1,7 @@
 <template>
   <section
     class="bg-cover"
-    :class="{'bg-cover py-24 px-6': isMedium}"
+    :class="{ 'bg-cover py-24 px-6': isMedium }"
   >
     <slot />
   </section>
@@ -11,7 +11,7 @@
 defineProps({
   isMedium: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 </script>
