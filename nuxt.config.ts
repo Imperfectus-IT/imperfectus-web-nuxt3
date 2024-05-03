@@ -63,10 +63,10 @@ export default defineNuxtConfig({
         "nuxt-primevue",
         "@nuxt/image",
         "nuxt-svgo",
-        "@nuxtjs/eslint-module",
         'vue3-carousel-nuxt',
         "@nuxtjs/strapi",
         "@nuxt/test-utils/module",
+        "@nuxt/eslint"
     ],
     primevue: {
         options: {
@@ -154,5 +154,10 @@ export default defineNuxtConfig({
     },
     image: {
         format: ["webp", "avif", "png"]
+    },
+    eslint: {
+        config: {
+            stylistic: true
+        }
     }
 });
