@@ -93,6 +93,7 @@ export default defineNuxtConfig({
                 "Image",
                 "InputOtp",
                 "InputText",
+                "InputGroup",
                 "Menu",
                 "MenuBar",
                 "Multiselect",

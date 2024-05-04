@@ -13,6 +13,7 @@ export interface OrderItem {
   amount: number,
   sku: string,
   exclusions: string[],
+  image: string,
 }
 
 export interface Billing {

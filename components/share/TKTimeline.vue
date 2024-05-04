@@ -22,7 +22,7 @@
 
     <!-- MOBILE VERSION -->
     <Timeline
-      class="grid grid-cols-3"
+      class="grid grid-cols-3 lg:hidden"
       :value="timeLineValue()"
       layout="horizontal"
     >

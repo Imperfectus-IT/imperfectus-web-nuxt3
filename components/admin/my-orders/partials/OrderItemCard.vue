@@ -4,7 +4,7 @@
       <NuxtImg
         loading="lazy"
         format="webp"
-        :src="`images/boxes/Caixa-${getBoxImage(orderItem.sku)}.webp`"
+        :src="orderItem.image"
         width="130"
         height="100"
         alt="next-order"
@@ -43,10 +43,6 @@
 defineProps<{
   orderItem: OrderItem;
 }>();
-
-const getBoxImage = (sku: string) => {
-  return sku.includes("IM") ? "M" : sku.includes("XL") ? "XL" : "S";
-};
 
 const getBoxSize = (sku: string) => {
   return sku.includes("IM")

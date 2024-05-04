@@ -10,7 +10,9 @@ export interface ItemProduct {
   id: number,    
   name: string,
   type: string, 
-  itemType: string
+  itemType: string,
+  image: string,
+  isActive: boolean
 }
 
 export interface BoxProduct {

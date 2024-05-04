@@ -22,10 +22,8 @@ const lastOrder: Ref<Order> = ref({} as Order);
 const isLoading = ref(true);
 
 const { orders } = useGetOrdersHandler(t);
-const { products } = useGetProductsHandler()
 
 watch(orders, () => {
-  console.log('products', products.value)
   getLastOrder();
 });
 

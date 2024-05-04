@@ -8,6 +8,7 @@ export const useOrdersFactory = (order: any, t:any): Order => {
          return {
            amount: order_item.final_amount ? order_item.final_amount : order_item.amount,
            sku: order_item.product.SKU,
+           image: `images/boxes/Caixa-${getBoxImage(order_item.product.SKU)}.webp`,
            exclusions: order_item.exclusions.map((exclusion: any) => {
              return exclusion.name_es
            })
@@ -56,6 +57,12 @@ const shippingSuplementsAmount = (shippingSupplements: any) => {
   return shippingSupplements.reduce((acc: number, supplement: any) => {
     return acc + supplement.amount
   }, 0)
+};
+
+
+const getBoxImage = (sku: string) => {
+  console.log('SKU', sku)
+  return sku.includes("IM") ? "M" : sku.includes("XL") ? "XL" : "S";
 };
 
 const unpaidOrderStates = ['pending', 'failed'];

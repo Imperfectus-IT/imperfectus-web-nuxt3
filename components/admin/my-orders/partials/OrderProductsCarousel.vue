@@ -8,8 +8,8 @@
       :show-pagination="true"
       :show-navigation="false"
       image-class="w-[50px] h-[50px] object-cover"
-      slide-class="w-[1/2] "
-      pagination-class="-bottom-9 bg-red-primary"
+      slide-class="w-[1/2] h-20"
+      pagination-class="-bottom-9"
     >
       <template #SlideContent="{ item }">
         <p class="text-[10px]">{{ item.name }}</p>
