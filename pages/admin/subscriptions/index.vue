@@ -1,3 +1,3 @@
 <template>
-    subscription
+  subscription
 </template>

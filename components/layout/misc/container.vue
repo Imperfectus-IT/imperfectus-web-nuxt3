@@ -1,14 +1,13 @@
 <template>
   <div
-      class="flex-grow mx-auto relative w-auto"
-      :class="{
-        'lg:max-w-[960px]': !isFull,
-        'xl:max-w-[1152px]': !isFull,
-        '2xl:max-w-[1344px]': !isFull,
-      }"
+    class="flex-grow mx-auto relative w-auto"
+    :class="{
+      'lg:max-w-[960px]': !isFull,
+      'xl:max-w-[1152px]': !isFull,
+      '2xl:max-w-[1344px]': !isFull,
+    }"
   >
-
-    <slot/>
+    <slot />
   </div>
 </template>
 
@@ -18,6 +17,5 @@ defineProps({
     type: Boolean,
     default: false,
   },
-});
-
+})
 </script>

@@ -34,9 +34,7 @@
         class="rounded-xl"
         aria-describedby="username-help"
       />
-      <small id="username-help"
-        >Enter your username to reset your password.</small
-      >
+      <small id="username-help">Enter your username to reset your password.</small>
     </div>
     <span class="relative">
       <InputText
@@ -50,8 +48,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const value1 = ref(null);
-const value2 = ref(null);
+const value1 = ref(null)
+const value2 = ref(null)
 </script>

@@ -10,7 +10,7 @@
       class="grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:flex lg:justify-center"
     >
       <template
-      v-for="(post, index) in blogPosts"
+        v-for="(post, index) in blogPosts"
         :key="index"
       >
         <div class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[200px]">
@@ -28,14 +28,14 @@
           </div>
           <div class="text-[15px] flex mt-auto">
             <NuxtLink
-            :to="post.link"
-            class="mt-auto mb-3"
-          >
-            <p class="text-left pl-3 underline mt-2">
-              {{ $t('blogPosts.read') }}
-            </p>
-          </NuxtLink>
-          <span class="mdi mdi-arrow-right ml-2 my-auto"></span>
+              :to="post.link"
+              class="mt-auto mb-3"
+            >
+              <p class="text-left pl-3 underline mt-2">
+                {{ $t('blogPosts.read') }}
+              </p>
+            </NuxtLink>
+            <span class="mdi mdi-arrow-right ml-2 my-auto" />
           </div>
         </div>
       </template>
@@ -46,47 +46,44 @@
       severity="secondary"
       :pt="{
         // label: 'px-6 text-green-primary font-solina-extended-medium hover:text-green-tertiary',
-        root: 'px-6 py-2.5 rounded-[5px] bg-green-tertiary text-green-primary font-solina-extended-medium hover:bg-green-primary hover:text-green-tertiary'
-        }"
+        root: 'px-6 py-2.5 rounded-[5px] bg-green-tertiary text-green-primary font-solina-extended-medium hover:bg-green-primary hover:text-green-tertiary',
+      }"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-
-  defineProps({
-    displayDesktop: {
-      type: Boolean,
-      required: true,
-    },
-  });
-
+defineProps({
+  displayDesktop: {
+    type: Boolean,
+    required: true,
+  },
+})
 
 const blogPosts = ref([
   {
     index: 1,
-    imageUrl: "https://blog.talkualfoods.com/hubfs/Caja%20XL.png",
-    link: "https://blog.talkualfoods.com/beneficios-comer-fruta-verdura",
-    title: "Beneficios de comer fruta y verdura"
+    imageUrl: 'https://blog.talkualfoods.com/hubfs/Caja%20XL.png',
+    link: 'https://blog.talkualfoods.com/beneficios-comer-fruta-verdura',
+    title: 'Beneficios de comer fruta y verdura',
   },
   {
     index: 2,
     title: 'Propiedades de las verduras',
     imageUrl: 'https://blog.talkualfoods.com/hubfs/Caja%20M_Verdura%283%29.jpg',
-    link: 'https://blog.talkualfoods.com/propiedades-verduras'
+    link: 'https://blog.talkualfoods.com/propiedades-verduras',
   },
   {
     index: 3,
     title: 'Propiedades de las frutas',
     imageUrl: 'https://blog.talkualfoods.com/hubfs/Frutas.jpg',
-    link: 'https://blog.talkualfoods.com/propiedades-frutas'
+    link: 'https://blog.talkualfoods.com/propiedades-frutas',
   },
   {
     index: 4,
     title: 'Beneficios y propiedades de la chirimoya',
     imageUrl: 'https://blog.talkualfoods.com/hubfs/Chirimoya.png',
-    link: 'https://blog.talkualfoods.com/beneficios-chirimoya'
-  }
+    link: 'https://blog.talkualfoods.com/beneficios-chirimoya',
+  },
 ])
-
 </script>

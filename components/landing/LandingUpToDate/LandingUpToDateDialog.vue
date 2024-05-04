@@ -3,12 +3,12 @@
     <Button
       :label="$t('homeUpToDate.subscribe')"
       raised
-      :pt="{label: 'px-10 py-1'}"
+      :pt="{ label: 'px-10 py-1' }"
       :disabled="buttonDisabled"
       @click="visible = true"
     />
     <Dialog
-    class="flex"
+      class="flex"
       :visible="visible"
       modal
       :closable="false"
@@ -28,7 +28,7 @@
           class="text-green-tertiary ml-2"
           for="checkbox"
         >
-          {{ $t('gdpr-modal.communications.label') }} 
+          {{ $t('gdpr-modal.communications.label') }}
         </label>
       </div>
       <div class="flex flex-row justify-center items-center">
@@ -75,14 +75,14 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useI18n } from 'vue-i18n';
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
-const visible = ref(false);
-const checked = ref(false);
+const visible = ref(false)
+const checked = ref(false)
 defineProps({
-  buttonDisabled: Boolean
+  buttonDisabled: Boolean,
 })
 </script>

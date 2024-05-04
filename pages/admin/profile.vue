@@ -1,14 +1,14 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: "admin",
-  middleware: ["auth"],
-});
+  layout: 'admin',
+  middleware: ['auth'],
+})
 defineI18nRoute({
   paths: {
-    ca: "/el-meu-compte/perfil/",
-    es: "/mi-cuenta/perfil/",
+    ca: '/el-meu-compte/perfil/',
+    es: '/mi-cuenta/perfil/',
   },
-});
+})
 
 // TODO handle save language on backend
 const saveLanguage = (language: string) => {

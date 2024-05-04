@@ -1,20 +1,20 @@
 <script setup lang="ts">
-const { isMobile } = useScreenSize();
+const { isMobile } = useScreenSize()
 
 const images = [
   {
-    image: "/images/boxes/Caixa-S.webp",
-    alt: "boxes.s.alt",
+    image: '/images/boxes/Caixa-S.webp',
+    alt: 'boxes.s.alt',
   },
   {
-    image: "/images/boxes/Caixa-M.webp",
-    alt: "boxes.m.alt",
+    image: '/images/boxes/Caixa-M.webp',
+    alt: 'boxes.m.alt',
   },
   {
-    image: "/images/boxes/Caixa-XL.webp",
-    alt: "boxes.xl.alt",
+    image: '/images/boxes/Caixa-XL.webp',
+    alt: 'boxes.xl.alt',
   },
-];
+]
 </script>
 
 <template>
@@ -44,7 +44,7 @@ const images = [
       :show-pagination="true"
       :show-navigation="!isMobile"
       class="flex-1"
-    ></TKCarousel>
+    />
   </div>
 </template>
 

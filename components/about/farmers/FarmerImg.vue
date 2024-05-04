@@ -16,12 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Image } from "./types/farmers";
+import type { Image } from './types/farmers'
 
 defineProps({
   image: {
     type: Object as () => Image,
     required: true,
   },
-});
+})
 </script>

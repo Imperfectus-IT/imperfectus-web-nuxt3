@@ -7,7 +7,10 @@
       {{ title }}
     </h4>
     <ul>
-      <li v-for="(item, index) in listItems" :key="index">
+      <li
+        v-for="(item, index) in listItems"
+        :key="index"
+      >
         <ListItem
           main-class="flex gap-x-4"
           dot-class="text-[12px]"
@@ -23,7 +26,10 @@
       {{ title }}
     </h4>
     <ul>
-      <li v-for="(item, index) in listItems" :key="index">
+      <li
+        v-for="(item, index) in listItems"
+        :key="index"
+      >
         <ListItem
           main-class="flex gap-x-4"
           dot-class="text-[10px] mt-1"
@@ -32,18 +38,17 @@
         />
       </li>
     </ul>
-</div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
 defineProps<{
-    isDisplayDesktop: boolean,
-    listItems: string[],
-    title: string
-}>();
+  isDisplayDesktop: boolean
+  listItems: string[]
+  title: string
+}>()
 
-const { t } = useI18n();
-
+const { t } = useI18n()
 </script>

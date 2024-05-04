@@ -1,8 +1,8 @@
 export interface Products {
   itemProducts: {
-    fruits: ItemProduct[],
-    vegetables: ItemProduct[],
-  },
+    fruits: ItemProduct[]
+    vegetables: ItemProduct[]
+  }
   boxProducts: BoxProduct[]
 }
 
@@ -16,11 +16,11 @@ export interface ItemProduct {
 }
 
 export interface BoxProduct {
-  id: number,
-  name: string,
-  type: string,
-  itemType: string,
-  boxType: string,
-  sku: string,
-  amount: number,
+  id: number
+  name: string
+  type: string
+  itemType: string
+  boxType: string
+  sku: string
+  amount: number
 }

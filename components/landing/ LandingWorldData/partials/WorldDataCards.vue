@@ -1,6 +1,10 @@
 <template>
   <div class="flex flex-row justify-evenly lg:w-11/12 lg:mx-auto">
-    <div v-for="item in data" :key="item.index" class="w-1/4 mx-2">
+    <div
+      v-for="item in data"
+      :key="item.index"
+      class="w-1/4 mx-2"
+    >
       <div
         id="dark"
         class="h-[300px] flex flex-col justify-center items-center"
@@ -11,23 +15,23 @@
             item.index % 2 === 0 ? 'bg-green-primary' : 'bg-green-tertiary',
             item.index === 1
               ? [
-                  'h-44 w-44',
-                  playAnimation ? animateClasses[item.index - 1] : '',
-                ]
+                'h-44 w-44',
+                playAnimation ? animateClasses[item.index - 1] : '',
+              ]
               : item.index === 2
                 ? [
-                    'h-40 w-40',
-                    playAnimation ? animateClasses[item.index - 1] : '',
-                  ]
+                  'h-40 w-40',
+                  playAnimation ? animateClasses[item.index - 1] : '',
+                ]
                 : item.index === 3
                   ? [
-                      'h-32 w-32',
-                      playAnimation ? animateClasses[item.index - 1] : '',
-                    ]
+                    'h-32 w-32',
+                    playAnimation ? animateClasses[item.index - 1] : '',
+                  ]
                   : [
-                      'h-60 w-60',
-                      playAnimation ? animateClasses[item.index - 1] : '',
-                    ],
+                    'h-60 w-60',
+                    playAnimation ? animateClasses[item.index - 1] : '',
+                  ],
           ]"
         >
           <p
@@ -67,54 +71,55 @@
 </template>
 
 <script setup lang="ts">
-import type { CarouselSlideObject } from "~/components/talkual-ui/TKCarousel/TKCarouselTypes";
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps({
   data: {
     type: Array as PropType<CarouselSlideObject[]>,
     required: true,
   },
-});
+})
 
 const localeLanguage = computed(() => {
-  return useI18n().locale.value;
-});
+  return useI18n().locale.value
+})
 
-const playAnimation: Ref<boolean> = ref(false);
+const playAnimation: Ref<boolean> = ref(false)
 
 const animateClasses: Record<number, string> = {
-  0: "animate-scaleAnimation animation-delay-500",
-  1: "animate-scaleAnimation animation-delay-1000",
-  2: "animate-scaleAnimation animation-delay-1500",
-  3: "animate-scaleAnimation animation-delay-2000",
-};
+  0: 'animate-scaleAnimation animation-delay-500',
+  1: 'animate-scaleAnimation animation-delay-1000',
+  2: 'animate-scaleAnimation animation-delay-1500',
+  3: 'animate-scaleAnimation animation-delay-2000',
+}
 
-let worldDataObserver: IntersectionObserver | null = null;
+let worldDataObserver: IntersectionObserver | null = null
 
 onMounted(() => {
-  setObserver();
-});
+  setObserver()
+})
 
 onBeforeUnmount(() => {
-  disconnectObserver();
-});
+  disconnectObserver()
+})
 
 const setObserver = () => {
-  const target = document.querySelector("#dark");
+  const target = document.querySelector('#dark')
   worldDataObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting === true) {
-      playAnimation.value = true;
-    } else {
-      playAnimation.value = false;
+      playAnimation.value = true
     }
-  });
-  worldDataObserver?.observe(target as HTMLElement);
-};
+    else {
+      playAnimation.value = false
+    }
+  })
+  worldDataObserver?.observe(target as HTMLElement)
+}
 
 const disconnectObserver = () => {
-  worldDataObserver?.disconnect();
-};
+  worldDataObserver?.disconnect()
+}
 </script>
 
 <style>

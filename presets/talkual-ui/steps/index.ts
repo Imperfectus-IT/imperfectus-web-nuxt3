@@ -1,46 +1,46 @@
 export default {
-    root: {
-        class: 'relative'
-    },
-    menu: {
-        class: 'p-0 m-0 list-none flex'
-    },
-    menuitem: {
-        class: [
-            // Flexbox and Position
-            'relative',
-            'flex',
-        ]
-        
-    },
-    action: ({ props }) => ({
-        class: [
-            // Flexbox
+  root: {
+    class: 'relative',
+  },
+  menu: {
+    class: 'p-0 m-0 list-none flex',
+  },
+  menuitem: {
+    class: [
+      // Flexbox and Position
+      'relative',
+      'flex',
+    ],
 
-            // Transitions and Shape
+  },
+  action: ({ props }) => ({
+    class: [
+      // Flexbox
 
-            // Colors
+      // Transitions and Shape
 
-            // States
+      // Colors
 
-            // Misc
+      // States
 
-        ]
-    }),
-    step: ({ context, props }) => ({
-        class: []
-    }),
-    label: ({ context }) => ({
-        class: [
-            // Font
+      // Misc
 
-            // Display
+    ],
+  }),
+  step: ({ context, props }) => ({
+    class: [],
+  }),
+  label: ({ context }) => ({
+    class: [
+      // Font
 
-            // Spacing
+      // Display
 
-            // Colors
+      // Spacing
 
-            // Text and Overflow
-        ]
-    })
-};
+      // Colors
+
+      // Text and Overflow
+    ],
+  }),
+}

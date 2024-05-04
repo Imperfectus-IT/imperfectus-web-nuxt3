@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div />
   <!-- <Carousel
     class=""
     :wrap-around="true"
@@ -37,10 +37,10 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
-import { ref } from "vue";
-import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
-import type { CarouselSlideObject } from "../talkual-ui/TKCarousel/TKCarouselTypes";
+import type { PropType } from 'vue'
+import { ref } from 'vue'
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps({
   data: {
@@ -65,42 +65,42 @@ defineProps({
   },
   optionalSlideClass: {
     type: String,
-    default: "",
+    default: '',
   },
-});
+})
 
 const boxes = ref<CarouselSlideObject[]>([
   {
     index: 1,
-    image: "/images/landing/boxes-carousel/S.webp",
-    name: "S-box",
+    image: '/images/landing/boxes-carousel/S.webp',
+    name: 'S-box',
   },
   {
     index: 2,
-    image: "/images/landing/boxes-carousel/M.webp",
-    name: "M-box",
+    image: '/images/landing/boxes-carousel/M.webp',
+    name: 'M-box',
   },
   {
     index: 3,
-    image: "/images/landing/boxes-carousel/XL.webp",
-    name: "XL-box",
+    image: '/images/landing/boxes-carousel/XL.webp',
+    name: 'XL-box',
   },
   {
     index: 4,
-    image: "/images/landing/boxes-carousel/S.webp",
-    name: "S-box",
+    image: '/images/landing/boxes-carousel/S.webp',
+    name: 'S-box',
   },
   {
     index: 5,
-    image: "/images/landing/boxes-carousel/M.webp",
-    name: "M-box",
+    image: '/images/landing/boxes-carousel/M.webp',
+    name: 'M-box',
   },
   {
     index: 6,
-    image: "/images/landing/boxes-carousel/XL.webp",
-    name: "XL-box",
+    image: '/images/landing/boxes-carousel/XL.webp',
+    name: 'XL-box',
   },
-]);
+])
 </script>
 
 <style lang="scss" scoped>

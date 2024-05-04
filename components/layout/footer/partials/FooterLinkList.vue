@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const { item } = defineProps<{
   item: {
-    id: string;
-    label: string;
-    path: string;
+    id: string
+    label: string
+    path: string
     childrens: {
-      id: string;
-      label: string;
-      path: string;
-    }[];
-  };
-}>();
+      id: string
+      label: string
+      path: string
+    }[]
+  }
+}>()
 </script>
 
 <template>

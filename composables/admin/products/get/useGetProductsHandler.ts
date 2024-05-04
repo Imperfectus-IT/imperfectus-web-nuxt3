@@ -1,11 +1,11 @@
 export const useGetProductsHandler = () => {
-  const { executeGetProducts, products } = useGetProducts();
+  const { executeGetProducts, products } = useGetProducts()
 
   onMounted(async () => {
-    await executeGetProducts();
+    await executeGetProducts()
   })
 
   return {
-    products
+    products,
   }
 }

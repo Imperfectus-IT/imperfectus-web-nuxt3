@@ -1,27 +1,27 @@
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const selectedCity = ref();
+const selectedCity = ref()
 const cities = ref([
-  { name: "New York", code: "NY" },
-  { name: "Rome", code: "RM" },
-  { name: "London", code: "LDN" },
-  { name: "Istanbul", code: "IST" },
-  { name: "Paris", code: "PRS" },
-]);
-const selectedCountry = ref();
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' },
+])
+const selectedCountry = ref()
 const countries = ref([
-  { name: "Australia", code: "AU" },
-  { name: "Brazil", code: "BR" },
-  { name: "China", code: "CN" },
-  { name: "Egypt", code: "EG" },
-  { name: "France", code: "FR" },
-  { name: "Germany", code: "DE" },
-  { name: "India", code: "IN" },
-  { name: "Japan", code: "JP" },
-  { name: "Spain", code: "ES" },
-  { name: "United States", code: "US" },
-]);
+  { name: 'Australia', code: 'AU' },
+  { name: 'Brazil', code: 'BR' },
+  { name: 'China', code: 'CN' },
+  { name: 'Egypt', code: 'EG' },
+  { name: 'France', code: 'FR' },
+  { name: 'Germany', code: 'DE' },
+  { name: 'India', code: 'IN' },
+  { name: 'Japan', code: 'JP' },
+  { name: 'Spain', code: 'ES' },
+  { name: 'United States', code: 'US' },
+])
 </script>
 
 <template>
@@ -43,7 +43,10 @@ const countries = ref([
       class="w-72"
     >
       <template #value="slotProps">
-        <div v-if="slotProps.value" class="flex items-center">
+        <div
+          v-if="slotProps.value"
+          class="flex items-center"
+        >
           <div>{{ slotProps.value.name }}</div>
         </div>
         <span v-else>

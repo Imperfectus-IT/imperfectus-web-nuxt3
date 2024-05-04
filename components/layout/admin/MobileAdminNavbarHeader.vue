@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TalkualLogoDark from "~/assets/images/svg/talkual-logo-dark.svg";
+import TalkualLogoDark from '~/assets/images/svg/talkual-logo-dark.svg'
 
-const { visible, toggleVisible } = useVisibleSidebar();
+const { visible, toggleVisible } = useVisibleSidebar()
 </script>
 
 <template>
@@ -9,7 +9,10 @@ const { visible, toggleVisible } = useVisibleSidebar();
     <Toolbar class="px-4 bg-transparent border-none">
       <template #start>
         <NuxtLink to="/">
-          <TalkualLogoDark class="w-[156] h-8" :font-controlled="false" />
+          <TalkualLogoDark
+            class="w-[156] h-8"
+            :font-controlled="false"
+          />
         </NuxtLink>
       </template>
       <template #end>
@@ -23,6 +26,10 @@ const { visible, toggleVisible } = useVisibleSidebar();
         />
       </template>
     </Toolbar>
-    <SideMenu v-if="visible" v-model:hidden="visible" @hide="toggleVisible" />
+    <SideMenu
+      v-if="visible"
+      v-model:hidden="visible"
+      @hide="toggleVisible"
+    />
   </section>
 </template>

@@ -18,21 +18,22 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-const { t } = useI18n();
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const { orders } = useGetOrdersHandler(t);
 const { products } = useGetProductsHandler();
 
 definePageMeta({
-  layout: "admin",
-  middleware: ["auth"],
-});
+  layout: 'admin',
+  middleware: ['auth'],
+})
 
 defineI18nRoute({
   paths: {
-    es: "/mi-cuenta/pedidos/",
-    ca: "/el-meu-compte/comandes/",
+    es: '/mi-cuenta/pedidos/',
+    ca: '/el-meu-compte/comandes/',
   },
-});
+})
 </script>

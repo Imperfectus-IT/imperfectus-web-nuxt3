@@ -11,7 +11,9 @@
         class="rounded-lg h-[100px] my-auto"
       />
       <div class="text-[15px]">
-        <h4 class="font-semibold mb-2">{{ getBoxSize(orderItem.sku) }}</h4>
+        <h4 class="font-semibold mb-2">
+          {{ getBoxSize(orderItem.sku) }}
+        </h4>
         <ul class="ml-2">
           <ListItem
             main-class="flex gap-x-2 mb-1 whitespace-nowrap"
@@ -27,13 +29,15 @@
             main-class="flex gap-x-2 mb-1"
             dot-class="text-[8px] my-auto text-green-tertiary"
             :text="
-              $t('profile.my_account.next_order.exclusions') +
-              ' ' +
-              orderItem.exclusions.length
+              $t('profile.my_account.next_order.exclusions')
+                + ' '
+                + orderItem.exclusions.length
             "
           />
         </ul>
-        <p class="font-bold text-[14px] mt-2 lg:text-[16px]">{{orderItem.amount}}€</p>
+        <p class="font-bold text-[14px] mt-2 lg:text-[16px]">
+          {{ orderItem.amount }}€
+        </p>
       </div>
     </div>
   </div>
@@ -45,24 +49,24 @@ defineProps<{
 }>();
 
 const getBoxSize = (sku: string) => {
-  return sku.includes("IM")
-    ? "Caja mediana"
-    : sku.includes("XL")
-      ? "Caja grande"
-      : "Caja pequeña";
-};
+  return sku.includes('IM')
+    ? 'Caja mediana'
+    : sku.includes('XL')
+      ? 'Caja grande'
+      : 'Caja pequeña'
+}
 
 const getBoxType = (sku: string) => {
-  return sku.includes("FR")
-    ? "Fruta"
-    : sku.includes("VG")
-      ? "Verdura"
-      : sku.includes("Orange")
-        ? "Naranjas"
-        : "Verdura y fruta";
-};
+  return sku.includes('FR')
+    ? 'Fruta'
+    : sku.includes('VG')
+      ? 'Verdura'
+      : sku.includes('Orange')
+        ? 'Naranjas'
+        : 'Verdura y fruta'
+}
 
 const getBoxFrequency = (sku: string) => {
-  return sku.includes("1") ? "Cada semana" : "Cada 2 semanas";
-};
+  return sku.includes('1') ? 'Cada semana' : 'Cada 2 semanas'
+}
 </script>

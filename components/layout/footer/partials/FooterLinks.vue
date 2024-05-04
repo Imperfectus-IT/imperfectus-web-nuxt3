@@ -1,125 +1,126 @@
 <script setup lang="ts">
-const { t } = useI18n();
-const localePath = useLocalePath();
+const { t } = useI18n()
+const localePath = useLocalePath()
 const itemLinks = [
   {
     id: useId(),
-    label: t("string.misc.talkual"),
-    path: "#",
+    label: t('string.misc.talkual'),
+    path: '#',
     childrens: [
       {
         id: useId(),
-        label: t("footerLinks.boxes"),
-        path: localePath("boxes"),
+        label: t('footerLinks.boxes'),
+        path: localePath('boxes'),
       },
       {
         id: useId(),
-        label: t("footerLinks.deliver"),
-        path: localePath("boxes"),
+        label: t('footerLinks.deliver'),
+        path: localePath('boxes'),
       },
       {
         id: useId(),
-        label: t("footerLinks.companies"),
-        path: localePath("companies"),
+        label: t('footerLinks.companies'),
+        path: localePath('companies'),
       },
       {
         id: useId(),
-        label: t("footerLinks.offices"),
-        path: localePath("companies"),
+        label: t('footerLinks.offices'),
+        path: localePath('companies'),
       },
       {
         id: useId(),
-        label: t("footerLinks.benefits"),
-        path: "https://blog.talkualfoods.com/tag/beneficios-y-propiedades",
+        label: t('footerLinks.benefits'),
+        path: 'https://blog.talkualfoods.com/tag/beneficios-y-propiedades',
       },
       {
         id: useId(),
-        label: t("layout.navbar.blog.title"),
-        path: t("layout.navbar.blog.url"),
+        label: t('layout.navbar.blog.title'),
+        path: t('layout.navbar.blog.url'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.faqs.title"),
-        path: t("layout.navbar.faqs.url"),
+        label: t('layout.navbar.faqs.title'),
+        path: t('layout.navbar.faqs.url'),
       },
     ],
   },
   {
     id: useId(),
-    label: t("footerLinks.mission"),
-    path: "#",
+    label: t('footerLinks.mission'),
+    path: '#',
     childrens: [
       {
         id: useId(),
-        label: t("layout.navbar.history"),
-        path: localePath("about"),
+        label: t('layout.navbar.history'),
+        path: localePath('about'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.farmers"),
-        path: localePath("farmers"),
+        label: t('layout.navbar.farmers'),
+        path: localePath('farmers'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.team"),
-        path: localePath("team"),
+        label: t('layout.navbar.team'),
+        path: localePath('team'),
       },
       {
         id: useId(),
-        label: t("pages.mission.title"),
-        path: localePath("food-waste"),
+        label: t('pages.mission.title'),
+        path: localePath('food-waste'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.commitment"),
-        path: localePath("commitment"),
+        label: t('layout.navbar.commitment'),
+        path: localePath('commitment'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.impact"),
-        path: localePath("impact"),
+        label: t('layout.navbar.impact'),
+        path: localePath('impact'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.referrals"),
-        path: localePath("referafriend"),
+        label: t('layout.navbar.referrals'),
+        path: localePath('referafriend'),
       },
       {
         id: useId(),
-        label: t("layout.navbar.giftcards"),
-        path: localePath("gift-card-gift-card-create"),
+        label: t('layout.navbar.giftcards'),
+        path: localePath('gift-card-gift-card-create'),
       },
     ],
   },
   {
     id: useId(),
-    label: t("footerLegal.title"),
-    path: "#",
+    label: t('footerLegal.title'),
+    path: '#',
     childrens: [
       {
         id: useId(),
-        label: t("pages.legal.conditions.title"),
-        path: localePath("legal-conditions"),
+        label: t('pages.legal.conditions.title'),
+        path: localePath('legal-conditions'),
       },
       {
         id: useId(),
-        label: t("pages.legal.privacy.title"),
-        path: localePath("legal-privacy"),
+        label: t('pages.legal.privacy.title'),
+        path: localePath('legal-privacy'),
       },
       {
         id: useId(),
-        label: t("pages.legal.cookies.title"),
-        path: localePath("legal-cookies"),
+        label: t('pages.legal.cookies.title'),
+        path: localePath('legal-cookies'),
       },
       {
         id: useId(),
-        label: t("pages.legal.notice.title"),
-        path: localePath("legal-notice"),
+        label: t('pages.legal.notice.title'),
+        path: localePath('legal-notice'),
       },
     ],
   },
-];
+]
 </script>
+
 <template>
   <FooterLinkList
     v-for="item in itemLinks"

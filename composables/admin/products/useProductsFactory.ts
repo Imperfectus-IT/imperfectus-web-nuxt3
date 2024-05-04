@@ -24,7 +24,7 @@ export const useProductsFactory = (product: any) => {
 
   return {
     itemProductFactory,
-    boxProductFactory
+    boxProductFactory,
   }
 }
 

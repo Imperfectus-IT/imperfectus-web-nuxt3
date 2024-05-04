@@ -1,36 +1,37 @@
 <script setup lang="ts">
-import Link from "~/components/share/Link.vue";
-import { useI18n } from "vue-i18n";
-import { useScroll } from "~/composables/scroll/scroll.ts";
-import CompanyAskYourBox from "~/components/companies/partials/CompanyAskYourBox.vue";
+import { useI18n } from 'vue-i18n'
+import Link from '~/components/share/Link.vue'
+import { useScroll } from '~/composables/scroll/scroll.ts'
+import CompanyAskYourBox from '~/components/companies/partials/CompanyAskYourBox.vue'
 
 defineI18nRoute({
   paths: {
-    ca: "/empreses/",
-    es: "/empresas/",
+    ca: '/empreses/',
+    es: '/empresas/',
   },
-});
+})
 
-const { t } = useI18n();
-const { scrollToById } = useScroll();
-const i18nHead = useLocaleHead();
+const { t } = useI18n()
+const { scrollToById } = useScroll()
+const i18nHead = useLocaleHead()
 
 useHead({
-  title: t("pages.companies.title"),
+  title: t('pages.companies.title'),
   meta: [
     {
-      hid: "description",
-      name: "description",
-      content: t("pages.companies.description"),
+      hid: 'description',
+      name: 'description',
+      content: t('pages.companies.description'),
     },
     ...i18nHead.value.meta,
   ],
-});
+})
 
 const pdfFilePath = computed(() => {
-  return `/pdfs/${t("pages.companies.pdfFileName")}`;
-});
+  return `/pdfs/${t('pages.companies.pdfFileName')}`
+})
 </script>
+
 <template>
   <div class="font-serif flex flex-col pb-[80px]">
     <Header
@@ -160,9 +161,18 @@ const pdfFilePath = computed(() => {
       />
 
       <div class="mt-5 flex gap-4 md:col-start-2 md:row-start-2 md:m-0">
-        <InfoCard :title="$t('string.day.tuesday')" class="flex-1" />
-        <InfoCard :title="$t('string.day.wednesday')" class="flex-1" />
-        <InfoCard :title="$t('string.day.thursday')" class="flex-1" />
+        <InfoCard
+          :title="$t('string.day.tuesday')"
+          class="flex-1"
+        />
+        <InfoCard
+          :title="$t('string.day.wednesday')"
+          class="flex-1"
+        />
+        <InfoCard
+          :title="$t('string.day.thursday')"
+          class="flex-1"
+        />
       </div>
 
       <ListItem
@@ -174,12 +184,18 @@ const pdfFilePath = computed(() => {
       <div
         class="mt-5 flex flex-wrap gap-4 md:col-start-2 md:row-start-3 md:m-0"
       >
-        <InfoCard :title="$t('companies.frequency.weekly')" class="md:flex-1" />
+        <InfoCard
+          :title="$t('companies.frequency.weekly')"
+          class="md:flex-1"
+        />
         <InfoCard
           :title="$t('companies.frequency.biweekly')"
           class="md:flex-1"
         />
-        <InfoCard :title="$t('companies.frequency.once')" class="md:flex-1" />
+        <InfoCard
+          :title="$t('companies.frequency.once')"
+          class="md:flex-1"
+        />
       </div>
 
       <ListItem
@@ -216,7 +232,7 @@ Remove
           />
         </a>
       </h3>
-    </div>-->
+    </div> -->
 
     <ScheduleTable />
   </div>

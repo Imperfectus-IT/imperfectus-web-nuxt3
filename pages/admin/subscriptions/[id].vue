@@ -1,3 +1,3 @@
 <template>
-    subscription by id
+  subscription by id
 </template>

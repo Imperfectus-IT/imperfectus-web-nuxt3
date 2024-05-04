@@ -56,7 +56,7 @@ const editOrderData = reactive({
       : "MX",
   exclusions: props.exclusions,
   coupon: null,
-});
+})
 
 const displayEditOrder = ref(false);
 
@@ -65,10 +65,10 @@ const toggleDisplayEditOrder = () => {
 };
 
 const boxes = [
-  { name: "Verdura y fruta", code: "MX" },
-  { name: "Sólo fruta", code: "FR" },
-  { name: "Sólo verdura", code: "VG" },
-];
+  { name: 'Verdura y fruta', code: 'MX' },
+  { name: 'Sólo fruta', code: 'FR' },
+  { name: 'Sólo verdura', code: 'VG' },
+]
 
 const { products } = useGetProductsHandler();
 

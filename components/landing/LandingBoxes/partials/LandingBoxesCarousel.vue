@@ -28,12 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps({
   boxes: {
     type: Array as () => CarouselSlideObject[],
-    required: true
-  }
-});
+    required: true,
+  },
+})
 </script>

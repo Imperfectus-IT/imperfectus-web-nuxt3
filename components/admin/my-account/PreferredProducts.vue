@@ -8,7 +8,7 @@
     <Divider />
 
     <div v-if="componentLayers.mainView">
-      <div class='lg:flex lg:flex-row lg:gap-5'>
+      <div class="lg:flex lg:flex-row lg:gap-5">
         <div class="flex flex-col w-full">
           <p class="mt-2 lg:mt-0">
             {{ $t("profile.my_account.preferred_products.fruits.title") }}
@@ -68,8 +68,8 @@
         {{
           $t("profile.my_account.preferred_products.saved_paragraph", {
             products:
-              preferredProducts.fruits.join(", ") +
-              preferredProducts.vegetables.join(", "),
+              preferredProducts.fruits.join(", ")
+              + preferredProducts.vegetables.join(", "),
           })
         }}
       </p>
@@ -86,58 +86,58 @@
 <script setup lang="ts">
 const savePreferredProducts = () => {
   // TODO fetch API
-  console.log("Fetching API...");
-  return toggleComponentLayers();
-};
+  console.log('Fetching API...')
+  return toggleComponentLayers()
+}
 
 const toggleComponentLayers = () => {
-  componentLayers.confirmView = !componentLayers.confirmView;
-  componentLayers.mainView = !componentLayers.mainView;
-};
+  componentLayers.confirmView = !componentLayers.confirmView
+  componentLayers.mainView = !componentLayers.mainView
+}
 
 const preferredProducts = reactive({
   fruits: [],
   vegetables: [],
-});
+})
 
 const disabledButton = computed(() => {
   return (
-    preferredProducts.fruits.length === 0 &&
-    preferredProducts.vegetables.length === 0
-  );
-});
+    preferredProducts.fruits.length === 0
+    && preferredProducts.vegetables.length === 0
+  )
+})
 
 const componentLayers = reactive({
   mainView: true,
   confirmView: false,
-});
+})
 
 const fruits = [
   {
-    label: "Manzana",
-    value: "manzana",
+    label: 'Manzana',
+    value: 'manzana',
   },
   {
-    label: "Plátano",
-    value: "plátano",
+    label: 'Plátano',
+    value: 'plátano',
   },
   {
-    label: "Naranja",
-    value: "naranja",
+    label: 'Naranja',
+    value: 'naranja',
   },
-];
+]
 const vegetables = [
   {
-    label: "Zanahoria",
-    value: "zanahoria",
+    label: 'Zanahoria',
+    value: 'zanahoria',
   },
   {
-    label: "Pepino",
-    value: "zanahoria",
+    label: 'Pepino',
+    value: 'zanahoria',
   },
   {
-    label: "Calabacín",
-    value: "calabacín",
+    label: 'Calabacín',
+    value: 'calabacín',
   },
-];
+]
 </script>

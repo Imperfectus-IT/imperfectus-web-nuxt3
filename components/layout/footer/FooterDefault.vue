@@ -7,7 +7,7 @@
           <FooterLinks />
           <FooterContact />
           <FooterLogos />
-          <TKLocalesSwitcher class="hidden lg:flex"/>
+          <TKLocalesSwitcher class="hidden lg:flex" />
         </div>
         <TKLocalesSwitcher class="lg:hidden" />
       </div>
@@ -22,5 +22,5 @@
 </template>
 
 <script setup lang="ts">
-import TalkualLogoLight from "assets/images/svg/talkual-logo-light.svg";
+import TalkualLogoLight from 'assets/images/svg/talkual-logo-light.svg'
 </script>

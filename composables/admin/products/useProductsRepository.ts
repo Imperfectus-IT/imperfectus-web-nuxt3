@@ -22,6 +22,6 @@ export const useProductsRepository = () => {
   }
   
   return {
-    getProducts
+    getProducts,
   }
 }

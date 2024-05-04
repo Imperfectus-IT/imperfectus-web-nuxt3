@@ -15,7 +15,11 @@
       >
         {{ value }}
       </h2>
-      <p v-else class="font-recoleta-regular" :class="titleClass">
+      <p
+        v-else
+        class="font-recoleta-regular"
+        :class="titleClass"
+      >
         {{ value }}
       </p>
     </div>
@@ -30,7 +34,7 @@ defineProps({
   },
   containerClass: {
     type: String,
-    default: "",
+    default: '',
   },
   isTitleH1: {
     type: Boolean,
@@ -42,9 +46,9 @@ defineProps({
   },
   titleClass: {
     type: String,
-    default: "",
+    default: '',
   },
-});
+})
 </script>
 
 <style scoped lang="scss"></style>

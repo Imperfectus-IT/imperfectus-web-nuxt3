@@ -22,14 +22,14 @@ watch(orders, () => {
 });
 
 definePageMeta({
-  layout: "admin",
-  middleware: ["auth"],
-});
+  layout: 'admin',
+  middleware: ['auth'],
+})
 
 defineI18nRoute({
   paths: {
-    es: "/mi-cuenta/pedidos/[id]",
-    ca: "/el-meu-compte/comandes/[id]",
+    es: '/mi-cuenta/pedidos/[id]',
+    ca: '/el-meu-compte/comandes/[id]',
   },
 });
 </script>

@@ -12,10 +12,9 @@
 defineProps({
   size: {
     type: String,
-    default: null
-  }
+    default: null,
+  },
 })
-
 </script>
 
 <style scoped lang="scss">

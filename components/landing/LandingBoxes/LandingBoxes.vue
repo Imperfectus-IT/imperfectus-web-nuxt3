@@ -24,44 +24,43 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n();
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
+
+const { t } = useI18n()
 
 defineProps({
   displayDesktop: {
     type: Boolean,
     required: true,
   },
-});
+})
 
 const boxes = ref<CarouselSlideObject[]>([
   {
     index: 1,
-    image: "/images/landing/boxes-carousel/S.webp",
-    name: "S-box",
+    image: '/images/landing/boxes-carousel/S.webp',
+    name: 'S-box',
     title: t('content.home.ourBoxes.item0.title'),
-    description: t('content.home.ourBoxes.item0.description')
+    description: t('content.home.ourBoxes.item0.description'),
 
   },
   {
     index: 2,
-    image: "/images/landing/boxes-carousel/M.webp",
-    name: "M-box",
+    image: '/images/landing/boxes-carousel/M.webp',
+    name: 'M-box',
     title: t('content.home.ourBoxes.item1.title'),
-    description: t('content.home.ourBoxes.item1.description')
+    description: t('content.home.ourBoxes.item1.description'),
 
   },
   {
     index: 3,
-    image: "/images/landing/boxes-carousel/XL.webp",
-    name: "XL-box",
+    image: '/images/landing/boxes-carousel/XL.webp',
+    name: 'XL-box',
     title: t('content.home.ourBoxes.item2.title'),
-    description: t('content.home.ourBoxes.item2.description')
+    description: t('content.home.ourBoxes.item2.description'),
 
-  }
-]);
+  },
+])
 </script>
-
-

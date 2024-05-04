@@ -1,5 +1,5 @@
 export interface ImageTextCardType {
-  image: string;
-  containerClass?: string;
-  imageClass?: string;
+  image: string
+  containerClass?: string
+  imageClass?: string
 }

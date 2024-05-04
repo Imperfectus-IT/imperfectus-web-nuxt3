@@ -20,22 +20,22 @@
 </template>
 
 <script setup lang="ts">
-import type { CarouselSlideObject } from "~/components/talkual-ui/TKCarousel/TKCarouselTypes";
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps({
   vegetables: {
     type: Array as PropType<CarouselSlideObject[]>,
     required: true,
   },
-});
+})
 
-const currentWidth = ref<boolean>(false);
+const currentWidth = ref<boolean>(false)
 
 onMounted(() => {
-  setDeviceType();
-});
+  setDeviceType()
+})
 
 const setDeviceType = () => {
-  currentWidth.value = window.innerWidth > 768 ? true : false;
-};
+  currentWidth.value = window.innerWidth > 768 ? true : false
+}
 </script>

@@ -1,5 +1,4 @@
-
-export const useOrdersFactory = (order: any, t:any): Order => {
+export const useOrdersFactory = (order: any, t: any): Order => {
   return {
     id: order.id,
     order_id: order.order_id,
@@ -50,9 +49,6 @@ export const useOrdersFactory = (order: any, t:any): Order => {
         }
   } 
 
-}
-
-
 const shippingSuplementsAmount = (shippingSupplements: any) => {
   return shippingSupplements.reduce((acc: number, supplement: any) => {
     return acc + supplement.amount
@@ -65,4 +61,4 @@ const getBoxImage = (sku: string) => {
   return sku.includes("IM") ? "M" : sku.includes("XL") ? "XL" : "S";
 };
 
-const unpaidOrderStates = ['pending', 'failed'];
+const unpaidOrderStates = ['pending', 'failed']

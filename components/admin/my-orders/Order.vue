@@ -17,7 +17,10 @@
       </div>
 
       <div v-if="order.status !== 'cancelled'">
-        <NuxtLink v-if="isCollapsed" :to="`/mi-cuenta/pedidos/${order.id}`">
+        <NuxtLink
+          v-if="isCollapsed"
+          :to="`/mi-cuenta/pedidos/${order.id}`"
+        >
           <Button
             outlined
             label="Detalles del pedido"
@@ -39,11 +42,16 @@
           {{ $t("string.status.order.cancelled") }}
         </div>
         <!-- TODO This is not stored in DB -->
-        <p class="mt-3">Fecha de cancelacion: ********</p>
+        <p class="mt-3">
+          Fecha de cancelacion: ********
+        </p>
       </div>
     </Panel>
 
-    <div v-if="!isCollapsed" class="flex flex-col gap-5 text-green-tertiary">
+    <div
+      v-if="!isCollapsed"
+      class="flex flex-col gap-5 text-green-tertiary"
+    >
       <OrderBillingPanel
         class="mt-5"
         :data="order.billing"

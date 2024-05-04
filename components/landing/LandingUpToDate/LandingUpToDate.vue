@@ -9,7 +9,6 @@
       {{ $t("homeUpToDate.description") }}
     </p>
 
-
     <div
       v-if="!form.displayMessageSent"
       id="form-newsletter-home"
@@ -30,7 +29,7 @@
         class="rounded-none border-0 border-b border-green-tertirary mt-4"
         type="text"
         placeholder="Repite tu email"
-        :pt="{label: 'text-[18px]'}"
+        :pt="{ label: 'text-[18px]' }"
       />
 
       <LandingUpToDateDialog
@@ -48,17 +47,17 @@
 
 <script setup lang="ts">
 const form = reactive({
-    email: '',
-    confirmEmail: '',
-    emailFocused: false,
-    displayMessageSent: false
+  email: '',
+  confirmEmail: '',
+  emailFocused: false,
+  displayMessageSent: false,
 })
 
 const emailIsMatched = computed(() => {
-    return form.email === form.confirmEmail && form.email !== '' && form.confirmEmail !== '';
+  return form.email === form.confirmEmail && form.email !== '' && form.confirmEmail !== ''
 })
 
 const displaySecondInput = () => {
-  form.emailFocused = true;
-};
+  form.emailFocused = true
+}
 </script>

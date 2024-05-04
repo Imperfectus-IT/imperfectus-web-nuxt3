@@ -4,28 +4,30 @@
       {{ $t('homeProducts.description') }}
     </p>
     <BirdWomanPhoto />
-    <ProductListSelector class="lg:mt-20" @toggle="handleToggleType" />
-    <ProductsCarousel 
-    class="mt-4"  
-    :display-desktop="displayDesktop" 
-    :items-type="classItemsToShow" 
+    <ProductListSelector
+      class="lg:mt-20"
+      @toggle="handleToggleType"
+    />
+    <ProductsCarousel
+      class="mt-4"
+      :display-desktop="displayDesktop"
+      :items-type="classItemsToShow"
     />
   </div>
 </template>
 
 <script setup lang="ts">
- defineProps({
+defineProps({
   displayDesktop: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  }
- )
+},
+)
 
 const classItemsToShow = ref('fruits')
 
 const handleToggleType = (type: string) => {
   classItemsToShow.value = type
 }
-
 </script>

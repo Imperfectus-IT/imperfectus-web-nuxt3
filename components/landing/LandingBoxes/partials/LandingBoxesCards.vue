@@ -7,7 +7,6 @@
       :key="box.index"
       class="w-1/4 max-w-[400px]"
     >
-    
       <Card class="">
         <template #header>
           <NuxtImg
@@ -23,7 +22,7 @@
         </template>
         <template #content>
           <p class="ml-2 lg:text-[14px]">
-           {{ box.description }}
+            {{ box.description }}
           </p>
         </template>
         <template #footer>
@@ -39,12 +38,12 @@
 </template>
 
 <script setup lang="ts">
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 defineProps({
   boxes: {
     type: Array as PropType<CarouselSlideObject[]>,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 </script>

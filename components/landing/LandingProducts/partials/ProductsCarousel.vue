@@ -21,91 +21,91 @@
 </template>
 
 <script setup lang="ts">
-import { useWindowSize } from "@/composables/useWindowSize";
+import { useWindowSize } from '@/composables/useWindowSize'
 
-const { addResize, removeResize, windowWidth } = useWindowSize();
+const { addResize, removeResize, windowWidth } = useWindowSize()
 
 defineProps({
   itemsType: {
     type: String,
-    default: "vegetables",
+    default: 'vegetables',
   },
   displayDesktop: {
     type: Boolean,
     required: true,
   },
-});
+})
 
 onMounted(() => {
-  addResize();
-});
+  addResize()
+})
 
 onBeforeUnmount(() => {
-  removeResize();
-});
+  removeResize()
+})
 
 const wrapItems = () => {
-  return windowWidth.value < 768 ? 1.4 : windowWidth.value < 1450 ? 3 : windowWidth.value < 1950 ? 4 : 5;
-};
+  return windowWidth.value < 768 ? 1.4 : windowWidth.value < 1450 ? 3 : windowWidth.value < 1950 ? 4 : 5
+}
 
 const fruits = [
   {
     index: 1,
-    name: "Fresas",
-    image: "/images/landing/products/frutas/fresas.webp",
+    name: 'Fresas',
+    image: '/images/landing/products/frutas/fresas.webp',
   },
   {
     index: 2,
-    name: "Ciruela",
-    image: "/images/landing/products/frutas/ciruela.webp",
+    name: 'Ciruela',
+    image: '/images/landing/products/frutas/ciruela.webp',
   },
   {
     index: 3,
-    name: "Kiwi",
-    image: "/images/landing/products/frutas/kiwi.webp",
+    name: 'Kiwi',
+    image: '/images/landing/products/frutas/kiwi.webp',
   },
   {
     index: 4,
-    name: "Mango",
-    image: "/images/landing/products/frutas/mango.webp",
+    name: 'Mango',
+    image: '/images/landing/products/frutas/mango.webp',
   },
   {
     index: 5,
-    name: "Manzana",
-    image: "/images/landing/products/frutas/manzana.webp",
+    name: 'Manzana',
+    image: '/images/landing/products/frutas/manzana.webp',
   },
   {
     index: 6,
-    name: "Naranja",
-    image: "/images/landing/products/frutas/naranja.webp",
+    name: 'Naranja',
+    image: '/images/landing/products/frutas/naranja.webp',
   },
   {
     index: 7,
-    name: "Limón",
-    image: "/images/landing/products/frutas/limon.webp",
+    name: 'Limón',
+    image: '/images/landing/products/frutas/limon.webp',
   },
-];
+]
 
 const vegetables = [
   {
     index: 1,
-    name: "Acelgas",
-    image: "/images/landing/products/verduras/acelgas.webp",
+    name: 'Acelgas',
+    image: '/images/landing/products/verduras/acelgas.webp',
   },
   {
     index: 2,
-    name: "Alcachofas",
-    image: "/images/landing/products/verduras/alcachofas.webp",
+    name: 'Alcachofas',
+    image: '/images/landing/products/verduras/alcachofas.webp',
   },
   {
     index: 3,
-    name: "Acelgas",
-    image: "/images/landing/products/verduras/acelgas.webp",
+    name: 'Acelgas',
+    image: '/images/landing/products/verduras/acelgas.webp',
   },
   {
     index: 4,
-    name: "Alcachofas",
-    image: "/images/landing/products/verduras/alcachofas.webp",
+    name: 'Alcachofas',
+    image: '/images/landing/products/verduras/alcachofas.webp',
   },
-];
+]
 </script>

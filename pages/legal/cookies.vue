@@ -17,8 +17,13 @@
     <h4 class="text-[28px] whitespace-normal mt-10 mb-4">
       {{ $t("cookies.types.title") }}
     </h4>
-    <div v-for="(fragment, index) in listsSections" :key="index">
-      <p class="my-6">{{ $t(`cookies.types.${fragment.fragment}.title`) }}</p>
+    <div
+      v-for="(fragment, index) in listsSections"
+      :key="index"
+    >
+      <p class="my-6">
+        {{ $t(`cookies.types.${fragment.fragment}.title`) }}
+      </p>
       <ul>
         <ListItem
           v-for="n in fragment.items"
@@ -30,11 +35,20 @@
       </ul>
     </div>
 
-    <p class="mb-2">{{ $t("cookies.types.paragraph_1") }}</p>
-    <p class="mb-2">{{ $t("cookies.types.paragraph_2") }}</p>
+    <p class="mb-2">
+      {{ $t("cookies.types.paragraph_1") }}
+    </p>
+    <p class="mb-2">
+      {{ $t("cookies.types.paragraph_2") }}
+    </p>
 
-    <div v-for="(tableData, index) in dataForTables" :key="index">
-      <h4 class="text-[24px] mb-2 mt-6">{{ tableData.tableTitle }}</h4>
+    <div
+      v-for="(tableData, index) in dataForTables"
+      :key="index"
+    >
+      <h4 class="text-[24px] mb-2 mt-6">
+        {{ tableData.tableTitle }}
+      </h4>
       <DataTable
         :value="tableData.data"
         :lazy="true"
@@ -51,7 +65,10 @@
         />
       </DataTable>
     </div>
-    <div v-for="(section, index) in handleSection" :key="index">
+    <div
+      v-for="(section, index) in handleSection"
+      :key="index"
+    >
       <h4 class="text-[28px] mb-4 whitespace-normal leading-9">
         {{ $t(`cookies.${section.fragment}.title`) }}
       </h4>
@@ -96,61 +113,61 @@
 </template>
 
 <script setup lang="ts">
-import DataTable from "primevue/datatable";
-import Column from "primevue/column";
-import { useI18n } from "vue-i18n";
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
+import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 defineI18nRoute({
   paths: {
-    ca: "/politica-de-cookies/",
-    es: "/politica-de-cookies/",
+    ca: '/politica-de-cookies/',
+    es: '/politica-de-cookies/',
   },
-});
+})
 
 declare global {
   interface Window {
-    _hsp: any;
+    _hsp: any
   }
 }
 
-const isHubspotButtonHidden = ref<boolean>(false);
+const isHubspotButtonHidden = ref<boolean>(false)
 const showBanner = () => {
-  window._hsp = window._hsp || [];
-  window._hsp.push(["showBanner"]);
-};
+  window._hsp = window._hsp || []
+  window._hsp.push(['showBanner'])
+}
 
 const tableSections = [
   {
-    fragment: "own_cookies",
+    fragment: 'own_cookies',
     columns: 3,
     items: 4,
   },
   {
-    fragment: "needed_cookies",
+    fragment: 'needed_cookies',
     columns: 4,
     items: 15,
   },
   {
-    fragment: "functional_cookies",
+    fragment: 'functional_cookies',
     columns: 4,
     items: 11,
   },
   {
-    fragment: "advertising_cookies",
+    fragment: 'advertising_cookies',
     columns: 4,
     items: 12,
   },
   {
-    fragment: "analysis_cookies",
+    fragment: 'analysis_cookies',
     columns: 4,
     items: 7,
   },
-];
+]
 
 const dataForTables = tableSections.map((section) => {
-  const data = [];
+  const data = []
   for (let i = 1; i <= section.items; i++) {
     data.push({
       name: t(`cookies.types.${section.fragment}.item_${i}.name`),
@@ -159,8 +176,8 @@ const dataForTables = tableSections.map((section) => {
       entity:
         section.columns === 4
           ? t(`cookies.types.${section.fragment}.item_${i}.entity`)
-          : "",
-    });
+          : '',
+    })
   }
   return {
     tableTitle: t(`cookies.types.${section.fragment}.title`),
@@ -168,39 +185,39 @@ const dataForTables = tableSections.map((section) => {
     columns:
       section.columns === 3
         ? [
-            { header: t("cookies.types.columns.column_1"), field: "name" },
-            { header: t("cookies.types.columns.column_3"), field: "purpose" },
-            { header: t("cookies.types.columns.column_4"), field: "duration" },
+            { header: t('cookies.types.columns.column_1'), field: 'name' },
+            { header: t('cookies.types.columns.column_3'), field: 'purpose' },
+            { header: t('cookies.types.columns.column_4'), field: 'duration' },
           ]
         : [
-            { header: t("cookies.types.columns.column_1"), field: "name" },
-            { header: t("cookies.types.columns.column_2"), field: "entity" },
-            { header: t("cookies.types.columns.column_3"), field: "purpose" },
-            { header: t("cookies.types.columns.column_4"), field: "duration" },
+            { header: t('cookies.types.columns.column_1'), field: 'name' },
+            { header: t('cookies.types.columns.column_2'), field: 'entity' },
+            { header: t('cookies.types.columns.column_3'), field: 'purpose' },
+            { header: t('cookies.types.columns.column_4'), field: 'duration' },
           ],
-  };
-});
+  }
+})
 
 const listsSections = [
   {
-    fragment: "who",
+    fragment: 'who',
     items: 2,
   },
   {
-    fragment: "time",
+    fragment: 'time',
     items: 2,
   },
   {
-    fragment: "what",
+    fragment: 'what',
     items: 4,
   },
-];
+]
 
 const handleSection = [
   {
-    fragment: "handle",
+    fragment: 'handle',
     items: 6,
     paragraphs: 3,
   },
-];
+]
 </script>

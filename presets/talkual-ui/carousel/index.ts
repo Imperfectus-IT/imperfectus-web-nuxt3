@@ -2,132 +2,132 @@ export default {
   root: {
     class: [
       // Flexbox
-      "flex flex-col",
+      'flex flex-col',
     ],
   },
   content: {
     class: [
       // Flexbox & Overflow
-      "flex flex-col overflow-auto",
+      'flex flex-col overflow-auto',
     ],
   },
   container: ({ props }) => ({
     class: [
       // Flexbox
-      "flex",
+      'flex',
 
       // Orientation
       {
-        "flex-row": props.orientation !== "vertical",
-        "flex-col": props.orientation == "vertical",
+        'flex-row': props.orientation !== 'vertical',
+        'flex-col': props.orientation == 'vertical',
       },
     ],
   }),
   previousbutton: {
     class: [
       // Flexbox & Alignment
-      "flex justify-center items-center self-center",
+      'flex justify-center items-center self-center',
 
       // Sizing & Overflow
-      "overflow-hidden w-[30px] h-[25px]",
+      'overflow-hidden w-[30px] h-[25px]',
 
       // Spacing
-      "mx-2",
+      'mx-2',
 
       // Shape
-      "rounded-full",
+      'rounded-full',
 
       // Border & Background
-      "border-0 bg-green-tertiary",
+      'border-0 bg-green-tertiary',
 
       // Color
-      "text-green-primary",
+      'text-green-primary',
 
       // Transitions
-      "transition duration-200 ease-in-out",
+      'transition duration-200 ease-in-out',
     ],
   },
   nextbutton: {
     class: [
       // Flexbox & Alignment
-      "flex justify-center items-center self-center",
+      'flex justify-center items-center self-center',
 
       // Sizing & Overflow
-      "overflow-hidden w-[30px] h-[25px]",
+      'overflow-hidden w-[30px] h-[25px]',
 
       // Spacing
-      "mx-2",
+      'mx-2',
 
       // Shape
-      "rounded-full",
+      'rounded-full',
 
       // Border & Background
-      "border-0 bg-green-tertiary",
+      'border-0 bg-green-tertiary',
 
       // Color
-      "text-green-primary",
+      'text-green-primary',
 
       // Transitions
-      "transition duration-200 ease-in-out",
+      'transition duration-200 ease-in-out',
     ],
   },
   itemscontent: {
     class: [
       // Overflow & Width
-      "overflow-hidden w-full",
+      'overflow-hidden w-full',
     ],
   },
   itemscontainer: ({ props }) => ({
     class: [
       // Flexbox
-      "flex",
+      'flex',
 
       // Orientation & Sizing
       {
-        "flex-row": props.orientation !== "vertical",
-        "flex-col h-full": props.orientation == "vertical",
+        'flex-row': props.orientation !== 'vertical',
+        'flex-col h-full': props.orientation == 'vertical',
       },
     ],
   }),
   item: () => ({
     class: [
       // Flexbox
-      "flex shrink-0 grow gap-3",
+      'flex shrink-0 grow gap-3',
 
       // Width
-      "w-full h-full",
+      'w-full h-full',
     ],
   }),
   indicators: {
     class: [
-      //Position
-      " inset-x-0 bottom-8 relative",
+      // Position
+      ' inset-x-0 bottom-8 relative',
       // Flexbox & Alignment
-      "flex flex-row justify-center flex-wrap",
+      'flex flex-row justify-center flex-wrap',
     ],
   },
   indicator: {
     class: [
       // Spacing
-      "mr-2 mb-2",
+      'mr-2 mb-2',
     ],
   },
   indicatorbutton: ({ context }) => ({
     class: [
       // Sizing & Shape
-      "w-2.5 h-2.5 rounded-full",
+      'w-2.5 h-2.5 rounded-full',
 
       // Transitions
-      "transition duration-200",
+      'transition duration-200',
 
       // Focus Styles
-      "focus:outline-none focus:outline-offset-0 focus:ring focus:ring-green-primary ",
+      'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-green-primary ',
 
       // Color & Background
       {
-        "bg-white hover:white": !context.highlighted,
-        "bg-green-primary hover:bg-green-primary": context.highlighted,
+        'bg-white hover:white': !context.highlighted,
+        'bg-green-primary hover:bg-green-primary': context.highlighted,
       },
     ],
   }),
-};
+}

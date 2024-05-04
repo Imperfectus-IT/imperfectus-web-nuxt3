@@ -7,10 +7,10 @@
     loop
     src="/videos/home.mp4"
   />
-   <div class="-mt-9 lg:flex lg:flex-row lg:justify-between lg:mt-16 lg:relative lg:right-20">
+  <div class="-mt-9 lg:flex lg:flex-row lg:justify-between lg:mt-16 lg:relative lg:right-20">
     <div class="lg:flex lg:flex-col">
       <h4 class="text-2xl leading-10 text-center mt-16 font-recoleta-medium lg:text-left lg:ml-48 lg:mt-0  lg:text-[60px]">
-          {{ $t('homeTitle.title') }}
+        {{ $t('homeTitle.title') }}
       </h4>
       <p class="text-center mt-8 w-11/12 mx-auto lg:text-left lg:ml-48">
         {{ $t('homeTitle.description') }}

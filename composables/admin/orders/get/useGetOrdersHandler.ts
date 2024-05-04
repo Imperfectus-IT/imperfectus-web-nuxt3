@@ -1,11 +1,11 @@
-export const useGetOrdersHandler = (t:any) => {
-  const { executeGetOrdersByUser, orders } = useGetOrders(t);
+export const useGetOrdersHandler = (t: any) => {
+  const { executeGetOrdersByUser, orders } = useGetOrders(t)
 
   onMounted(async () => {
-    await executeGetOrdersByUser();
+    await executeGetOrdersByUser()
   })
 
   return {
-    orders
+    orders,
   }
 }

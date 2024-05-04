@@ -1,15 +1,15 @@
 export default {
   root: ({ props }) => ({
     class: [
-      "relative",
+      'relative',
 
       // Flex & Alignment
-      "flex items-center",
-      "gap-2",
+      'flex items-center',
+      'gap-2',
 
       // Misc
       {
-        "opacity-60 select-none pointer-events-none cursor-default":
+        'opacity-60 select-none pointer-events-none cursor-default':
           props.disabled,
       },
     ],
@@ -17,77 +17,77 @@ export default {
   cancelitem: ({ context }) => ({
     class: [
       // Flex & Alignment
-      "inline-flex items-center",
+      'inline-flex items-center',
 
-      //State
+      // State
       {
-        "outline-none ring ring-green-tertiary": context.focused,
+        'outline-none ring ring-green-tertiary': context.focused,
       },
 
       // Misc
-      "cursor-pointer",
+      'cursor-pointer',
     ],
   }),
   cancelicon: {
     class: [
       // Size
-      "w-5 h-5",
+      'w-5 h-5',
 
       // Color
-      "text-red-primary",
+      'text-red-primary',
 
       // State
-      "hover:text-red-primary",
+      'hover:text-red-primary',
 
       // Transition
-      "transition duration-200 ease-in",
+      'transition duration-200 ease-in',
     ],
   },
   item: ({ props, context }) => ({
     class: [
       // Flex & Alignment
-      "inline-flex items-center",
+      'inline-flex items-center',
 
       // State
       {
-        "outline-none ring-none": context.focused,
+        'outline-none ring-none': context.focused,
       },
 
       // Misc
       {
-        "cursor-pointer": !props.readonly,
-        "cursor-default": props.readonly,
+        'cursor-pointer': !props.readonly,
+        'cursor-default': props.readonly,
       },
     ],
   }),
   officon: ({ props }) => ({
     class: [
       // Size
-      "w-5 h-5",
+      'w-5 h-5',
 
       // Color
-      "text-green-tertiary",
+      'text-green-tertiary',
 
       // State
-      { "hover:text-green-tertiary": !props.readonly },
+      { 'hover:text-green-tertiary': !props.readonly },
 
       // Transition
-      "transition duration-200 ease-in",
+      'transition duration-200 ease-in',
     ],
   }),
   onicon: ({ props }) => ({
     class: [
       // Size
-      "w-5 h-5",
+      'w-5 h-5',
 
       // Color
-      "text-yellow-primary",
+      'text-yellow-primary',
 
       // State
-      { "hover:text-yellow-primary": !props.readonly },
+      { 'hover:text-yellow-primary': !props.readonly },
 
       // Transition
-      "transition duration-200 ease-in",
+      'transition duration-200 ease-in',
     ],
   }),
-};
+}

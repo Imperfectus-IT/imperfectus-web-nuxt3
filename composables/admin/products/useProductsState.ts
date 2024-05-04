@@ -2,11 +2,11 @@ export const useProductsState = () => {
   const products: Ref<Products> = useState('products', () => ({
     itemProducts: {
       fruits: [],
-      vegetables: []
+      vegetables: [],
     },
-    boxProducts: []
-  }));
+    boxProducts: [],
+  }))
   return {
-    products
-  };
+    products,
+  }
 }
