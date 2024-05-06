@@ -3,6 +3,7 @@ export const useOrdersFactory = (order: any, t: any): Order => {
     id: order.id,
     order_id: order.order_id,
     status: order.status,
+    deliveryDate: order.deliveryDate,
     orderItems: order.order_items.map((order_item: any) => {
          return {
            amount: order_item.final_amount ? order_item.final_amount : order_item.amount,
