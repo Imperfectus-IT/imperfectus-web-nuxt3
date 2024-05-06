@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-">
+  <div class="mx-auto">
     <h4 class="font-recoleta-regular text-[28px]">
       Mis Pedidos
     </h4>

@@ -1,6 +1,6 @@
 <template>
   <Header
-    class="h-[350px] mt-12"
+    class="h-[350px]"
     :title="t('layout.navbar.boxes.special')"
     background-desktop="/images/special/oranges/orange_header.webp"
     background-mobile="/images/special/oranges/orange_header.webp"
