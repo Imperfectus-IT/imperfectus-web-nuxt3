@@ -11,9 +11,10 @@ export interface Order {
 }
 
 export interface OrderItem {
-  amount: number
-  sku: string
-  exclusions: string[]
+  amount: number,
+  sku: string,
+  exclusions: string[],
+  image: string,
 }
 
 export interface Billing {

@@ -1,22 +1,18 @@
 <template>
-  <div>
+  <div class=" lg:min-w-[900px] lg:max-w-[1500px] lg:mx-auto">
     <Panel :header="`Pedido ${order.id}`">
       <Divider class="mt-2" />
 
-      <div
-        v-for="(orderItem, index) in order.orderItems"
-        :key="index"
-      >
+      <div v-for="(orderItem, index) in order.orderItems" :key="index" >
         <OrderItemCard :order-item="orderItem" />
         <OrderProductsCarousel
           v-if="!isCollapsed"
-          :products="filteredProductsByExclusions(orderItem)"
+          :products="filteredProducts(orderItem)"
         />
         <OrderEdit
           v-if="!isCollapsed"
           :exclusions="orderItem.exclusions"
-          :sku="orderItem.sku"
-          :products="products.map((product) => product.name)"
+          :order-item="orderItem"
         />
       </div>
 
@@ -34,10 +30,9 @@
             class="mt-8 w-2/3"
           />
         </NuxtLink>
-        <TKTimeline
-          class="mt-4"
-          :order-status="order.status"
-        />
+        <TKTimeline class="mt-4" :order-status="order.status" />
+        <OrderCoupon v-if="!isCollapsed"/>
+        
       </div>
 
       <div v-else>
@@ -83,72 +78,19 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  order: Order
-  isCollapsed: boolean
-}>()
+const props = defineProps<{
+  order: Order;
+  isCollapsed: boolean;
+  products: ItemProduct[]
+}>();
 
-const filteredProductsByExclusions = (orderItem: OrderItem) => {
-  return products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name)
+const filteredProducts = (orderItem: OrderItem) => {
+  return props.products.filter((product) => {
+    return !orderItem.exclusions.includes(product.name) && product.isActive;
   })
-}
 
-const products = [
-  {
-    index: 1,
-    name: 'Fresas',
-    image: '/images/landing/products/frutas/fresas.webp',
-  },
-  {
-    index: 2,
-    name: 'Ciruela',
-    image: '/images/landing/products/frutas/ciruela.webp',
-  },
-  {
-    index: 3,
-    name: 'Kiwi',
-    image: '/images/landing/products/frutas/kiwi.webp',
-  },
-  {
-    index: 4,
-    name: 'Mango',
-    image: '/images/landing/products/frutas/mango.webp',
-  },
-  {
-    index: 5,
-    name: 'Manzana',
-    image: '/images/landing/products/frutas/manzana.webp',
-  },
-  {
-    index: 6,
-    name: 'Naranja',
-    image: '/images/landing/products/frutas/naranja.webp',
-  },
-  {
-    index: 7,
-    name: 'Limón',
-    image: '/images/landing/products/frutas/limon.webp',
-  },
-  {
-    index: 1,
-    name: 'Acelga',
-    image: '/images/landing/products/verduras/acelgas.webp',
-  },
-  {
-    index: 2,
-    name: 'Alcachofa',
-    image: '/images/landing/products/verduras/alcachofas.webp',
-  },
-  {
-    index: 3,
-    name: 'Acelga',
-    image: '/images/landing/products/verduras/acelgas.webp',
-  },
-  {
-    index: 4,
-    name: 'Alcachofa',
-    image: '/images/landing/products/verduras/alcachofas.webp',
-  },
-]
+}
+onMounted(() => {
+  console.log(props.products)
+})
 </script>
