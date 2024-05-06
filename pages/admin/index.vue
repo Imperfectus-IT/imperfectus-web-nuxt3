@@ -21,11 +21,11 @@ const user = useStrapiUser()
 const lastOrder: Ref<Order> = ref({} as Order)
 const isLoading = ref(true)
 
-const { orders } = useGetOrdersHandler(t);
+const { orders } = useGetOrdersHandler(t)
 
 watch(orders, () => {
-  getLastOrder();
-});
+  getLastOrder()
+})
 
 const getLastOrder = () => {
   lastOrder.value = orders.value.filter((order: Order) => {

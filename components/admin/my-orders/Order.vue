@@ -3,7 +3,10 @@
     <Panel :header="`Pedido ${order.id}`">
       <Divider class="mt-2" />
 
-      <div v-for="(orderItem, index) in order.orderItems" :key="index" >
+      <div
+        v-for="(orderItem, index) in order.orderItems"
+        :key="index"
+      >
         <OrderItemCard :order-item="orderItem" />
         <OrderProductsCarousel
           v-if="!isCollapsed"
@@ -30,9 +33,11 @@
             class="mt-8 w-2/3"
           />
         </NuxtLink>
-        <TKTimeline class="mt-4" :order-status="order.status" />
-        <OrderCoupon v-if="!isCollapsed"/>
-        
+        <TKTimeline
+          class="mt-4"
+          :order-status="order.status"
+        />
+        <OrderCoupon v-if="!isCollapsed" />
       </div>
 
       <div v-else>
@@ -79,16 +84,15 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  order: Order;
-  isCollapsed: boolean;
+  order: Order
+  isCollapsed: boolean
   products: ItemProduct[]
-}>();
+}>()
 
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name) && product.isActive;
+    return !orderItem.exclusions.includes(product.name) && product.isActive
   })
-
 }
 onMounted(() => {
   console.log(props.products)
