@@ -1,4 +1,6 @@
-export const useGetOrders = (t: any) => {
+import type { ComposerTranslation } from 'vue-i18n'
+
+export const useGetOrders = (t: ComposerTranslation) => {
   const { orders } = useOrdersState()
   const { findOrdersByUser } = useOrderRepository(t)
 

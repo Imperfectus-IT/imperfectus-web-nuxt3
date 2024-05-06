@@ -46,7 +46,11 @@
           </template>
         </Navigation>
       </div>
-      <Pagination v-if="showPagination" class="absolute left-[50%] -translate-x-1/2 " :class="paginationClass" />
+      <Pagination
+        v-if="showPagination"
+        class="absolute left-[50%] -translate-x-1/2 "
+        :class="paginationClass"
+      />
     </template>
   </Carousel>
 </template>

@@ -7,11 +7,11 @@ export interface Products {
 }
 
 export interface ItemProduct {
-  id: number,    
-  name: string,
-  type: string, 
-  itemType: string,
-  image: string,
+  id: number
+  name: string
+  type: string
+  itemType: string
+  image: string
   isActive: boolean
 }
 

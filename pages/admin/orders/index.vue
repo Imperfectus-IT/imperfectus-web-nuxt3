@@ -1,6 +1,8 @@
 <template>
   <div class="2xl:px-">
-    <h4 class="font-recoleta-regular text-[28px]">Mis Pedidos</h4>
+    <h4 class="font-recoleta-regular text-[28px]">
+      Mis Pedidos
+    </h4>
     <div class="flex flex-col">
       <Order
         v-for="order in orders"
@@ -22,8 +24,8 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-const { orders } = useGetOrdersHandler(t);
-const { products } = useGetProductsHandler();
+const { orders } = useGetOrdersHandler(t)
+const { products } = useGetProductsHandler()
 
 definePageMeta({
   layout: 'admin',

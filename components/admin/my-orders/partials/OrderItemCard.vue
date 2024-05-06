@@ -45,8 +45,8 @@
 
 <script lang="ts" setup>
 defineProps<{
-  orderItem: OrderItem;
-}>();
+  orderItem: OrderItem
+}>()
 
 const getBoxSize = (sku: string) => {
   return sku.includes("IM")

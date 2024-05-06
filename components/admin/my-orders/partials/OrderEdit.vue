@@ -1,6 +1,8 @@
 <template>
   <div class="text-[16px]">
-    <h4 class="!font-bold text-[16px] mt-4">¿Quieres editar tu caja?</h4>
+    <h4 class="!font-bold text-[16px] mt-4">
+      ¿Quieres editar tu caja?
+    </h4>
     <Divider class="mt-2 !w-2/3" />
     <Button
       v-if="!displayEditOrder"
@@ -10,7 +12,9 @@
       @click="toggleDisplayEditOrder"
     />
     <div v-if="displayEditOrder">
-      <h4 class="font-bold mb-3">Tipo de caja</h4>
+      <h4 class="font-bold mb-3">
+        Tipo de caja
+      </h4>
       <Dropdown
         v-model="editOrderData.sku"
         :options="boxes"
@@ -20,8 +24,12 @@
         class="w-72"
       />
       <div>
-        <h4 class="font-bold mt-5">¿Quieres excluir algun alimento?</h4>
-        <p class="font-bold mt-4">Puedes excluir hasta 6 alimentos.</p>
+        <h4 class="font-bold mt-5">
+          ¿Quieres excluir algun alimento?
+        </h4>
+        <p class="font-bold mt-4">
+          Puedes excluir hasta 6 alimentos.
+        </p>
         <p class="leading-7">
           Aún así, cada viernes enviamos un email con las frutas y verduras que
           habrá en la caja de la siguitente semana para que así puedas editar
@@ -44,25 +52,25 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  exclusions: string[];
-  orderItem: OrderItem;
-}>();
+  exclusions: string[]
+  orderItem: OrderItem
+}>()
 
 const editOrderData = reactive({
-  sku: props.orderItem.sku.includes("FR")
-    ? "FR"
-    : props.orderItem.sku.includes("VG")
-      ? "VG"
-      : "MX",
+  sku: props.orderItem.sku.includes('FR')
+    ? 'FR'
+    : props.orderItem.sku.includes('VG')
+      ? 'VG'
+      : 'MX',
   exclusions: props.exclusions,
   coupon: null,
 })
 
-const displayEditOrder = ref(false);
+const displayEditOrder = ref(false)
 
 const toggleDisplayEditOrder = () => {
-  displayEditOrder.value = !displayEditOrder.value;
-};
+  displayEditOrder.value = !displayEditOrder.value
+}
 
 const boxes = [
   { name: 'Verdura y fruta', code: 'MX' },
@@ -70,16 +78,16 @@ const boxes = [
   { name: 'Sólo verdura', code: 'VG' },
 ]
 
-const { products } = useGetProductsHandler();
+const { products } = useGetProductsHandler()
 
-const listProducts: Ref<ItemProduct[]> = ref([]);
+const listProducts: Ref<ItemProduct[]> = ref([])
 
 watch(products, () => {
   if (products.value.itemProducts) {
     listProducts.value = [
       ...products.value.itemProducts.fruits,
       ...products.value.itemProducts.vegetables,
-    ].sort((a, b) => a.name.localeCompare(b.name));
+    ].sort((a, b) => a.name.localeCompare(b.name))
   }
-});
+})
 </script>
