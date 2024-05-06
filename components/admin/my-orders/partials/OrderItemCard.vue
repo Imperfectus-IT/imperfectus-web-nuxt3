@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8">
+
     <div class="flex flex-row gap-4">
       <NuxtImg
         loading="lazy"
@@ -29,9 +29,9 @@
             main-class="flex gap-x-2 mb-1"
             dot-class="text-[8px] my-auto text-green-tertiary"
             :text="
-              $t('profile.my_account.next_order.exclusions')
-                + ' '
-                + orderItem.exclusions.length
+              $t('profile.my_account.next_order.exclusions') +
+              ' ' +
+              orderItem.exclusions.length
             "
           />
         </ul>
@@ -40,7 +40,7 @@
         </p>
       </div>
     </div>
-  </div>
+ 
 </template>
 
 <script lang="ts" setup>
@@ -49,24 +49,24 @@ defineProps<{
 }>();
 
 const getBoxSize = (sku: string) => {
-  return sku.includes('IM')
-    ? 'Caja mediana'
-    : sku.includes('XL')
-      ? 'Caja grande'
-      : 'Caja pequeña'
-}
+  return sku.includes("IM")
+    ? "Caja mediana"
+    : sku.includes("XL")
+    ? "Caja grande"
+    : "Caja pequeña";
+};
 
 const getBoxType = (sku: string) => {
-  return sku.includes('FR')
-    ? 'Fruta'
-    : sku.includes('VG')
-      ? 'Verdura'
-      : sku.includes('Orange')
-        ? 'Naranjas'
-        : 'Verdura y fruta'
-}
+  return sku.includes("FR")
+    ? "Fruta"
+    : sku.includes("VG")
+    ? "Verdura"
+    : sku.includes("Orange")
+    ? "Naranjas"
+    : "Verdura y fruta";
+};
 
 const getBoxFrequency = (sku: string) => {
-  return sku.includes('1') ? 'Cada semana' : 'Cada 2 semanas'
-}
+  return sku.includes("1") ? "Cada semana" : "Cada 2 semanas";
+};
 </script>
