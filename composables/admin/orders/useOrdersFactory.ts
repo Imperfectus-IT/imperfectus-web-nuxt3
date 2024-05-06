@@ -48,6 +48,7 @@ export const useOrdersFactory = (order: any, t: any): Order => {
           billingCity: order.order_meta.billing_city,
         }
   } 
+}
 
 const shippingSuplementsAmount = (shippingSupplements: any) => {
   return shippingSupplements.reduce((acc: number, supplement: any) => {

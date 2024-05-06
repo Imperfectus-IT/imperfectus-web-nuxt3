@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class=" lg:min-w-[900px] lg:max-w-[1500px] lg:mx-auto">
     <Panel :header="`Pedido ${order.id}`">
       <Divider class="mt-2" />
 
