@@ -7,7 +7,14 @@ export const useOrderRepository = (t: any) => {
     return orders
   }
 
+  const findById = async (id: number): Promise<Order> => {
+    const { find } = useStrapi()
+    const [order] = await find<Array<Order>>('orders', { id })
+    return order
+  }
+
   return {
     findOrdersByUser,
+    findById,
   }
 }

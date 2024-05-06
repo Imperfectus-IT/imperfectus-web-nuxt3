@@ -2,6 +2,7 @@ export interface Order {
   id: number
   order_id: number
   status: string
+  deliveryDate: string
   orderItems: OrderItem[]
   billing: Billing
   deliveryInfo: OrderDelivery
