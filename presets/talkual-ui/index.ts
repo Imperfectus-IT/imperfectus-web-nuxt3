@@ -12,6 +12,7 @@ import inputotp from './inputotp/index.ts'
 import inputtext from './inputtext/index.ts'
 import menu from './menu/index.ts'
 import menubar from './menubar/index.ts'
+import message from './message/index.ts'
 import multiselect from './multiselect/index.ts'
 import overlaypanel from './overlaypanel/index.ts'
 import panel from './panel/index.ts'
@@ -42,6 +43,7 @@ export default {
   inputtext,
   menubar,
   menu,
+  message,
   multiselect,
   overlaypanel,
   panel,
