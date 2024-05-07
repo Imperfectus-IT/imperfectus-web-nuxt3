@@ -13,6 +13,7 @@ export const useValidateRecovery = () => {
   )
 
   const validateSchema = (data: RecoveryFormSchema) => {
+    console.info('test...')
     const validSchema = recoveryFormSchema.safeParse(data)
 
     if (!validSchema.success) {
