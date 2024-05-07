@@ -58,7 +58,6 @@ const shippingSuplementsAmount = (shippingSupplements: any) => {
 }
 
 const getBoxImage = (sku: string) => {
-  console.log('SKU', sku)
   return sku.includes('IM') ? 'M' : sku.includes('XL') ? 'XL' : 'S'
 }
 

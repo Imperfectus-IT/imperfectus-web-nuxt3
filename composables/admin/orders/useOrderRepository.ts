@@ -1,4 +1,6 @@
-export const useOrderRepository = (t: any) => {
+import type { ComposerTranslation } from 'vue-i18n'
+
+export const useOrderRepository = (t: ComposerTranslation) => {
   const findOrdersByUser = async (): Promise<Order[]> => {
     const { find } = useStrapi()
     const user = useStrapiUser()

@@ -104,7 +104,4 @@ const filteredProducts = (orderItem: OrderItem) => {
     return !orderItem.exclusions.includes(product.name) && product.isActive
   })
 }
-onMounted(() => {
-  console.log(props.products)
-})
 </script>
