@@ -1,7 +1,9 @@
 <template>
   subscription
 
-  <div v-for="subscription in subscriptions" >{{subscription}}</div>
+  <div v-for="subscription in subscriptions">
+    {{ subscription }}
+  </div>
 </template>
 
 <script setup lang='ts'>
@@ -17,7 +19,6 @@ defineI18nRoute({
   },
 })
 
-const { subscriptions } = useGetSubscriptionsHandler();
+const { subscriptions } = useGetSubscriptionsHandler()
 console.log(subscriptions)
-
 </script>

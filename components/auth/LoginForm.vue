@@ -32,47 +32,55 @@ const submitLoginForm = async () => {
       <Divider class="w-[36%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50" />
     </div>
     <form
-        class="flex flex-col gap-y-4 lg:gap-y-8"
-        @submit.prevent="submitLoginForm"
+      class="flex flex-col gap-y-4 lg:gap-y-8"
+      @submit.prevent="submitLoginForm"
     >
       <TKField :errors="validationErrors?.identifier?._errors">
         <InputText
-            v-model="userLogin.identifier"
-            class="rounded-xl"
-            type="text"
-            :placeholder="$t('loginForm.email')"
-            :invalid="!!validationErrors?.identifier?._errors?.length"
+          v-model="userLogin.identifier"
+          class="rounded-xl"
+          type="text"
+          :placeholder="$t('loginForm.email')"
+          :invalid="!!validationErrors?.identifier?._errors?.length"
         />
       </TKField>
       <TKField :errors="validationErrors?.password?._errors">
         <Password
-            v-model="userLogin.password"
-            type="password"
-            :feedback="false"
-            :placeholder="$t('loginForm.password')"
-            :invalid="!!validationErrors?.password?._errors?.length"
+          v-model="userLogin.password"
+          type="password"
+          :feedback="false"
+          :placeholder="$t('loginForm.password')"
+          :invalid="!!validationErrors?.password?._errors?.length"
         />
       </TKField>
       <div class="text-center">
         <Button
-            class="w-full lg:w-[9rem]"
-            :label="$t('loginForm.login')"
-            severity="secondary"
-            type="submit"
-            :disabled="isButtonDisabled"
+          class="w-full lg:w-[9rem]"
+          :label="$t('loginForm.login')"
+          severity="secondary"
+          type="submit"
+          :disabled="isButtonDisabled"
         />
-        <Message v-if="validationErrorsLoginResponse.length" severity="error">
-          <p v-for="error in validationErrorsLoginResponse" :key="error">{{ error }}</p>
+        <Message
+          v-if="validationErrorsLoginResponse.length"
+          severity="error"
+        >
+          <p
+            v-for="error in validationErrorsLoginResponse"
+            :key="error"
+          >
+            {{ error }}
+          </p>
         </Message>
       </div>
       <NuxtLink
-          class="font-extended-book text-start lg:text-center"
-          :to="localePath({ name: 'auth-recovery' })"
+        class="font-extended-book text-start lg:text-center"
+        :to="localePath({ name: 'auth-recovery' })"
       >
         <Button
-            :label="$t('loginForm.forgotPassword')"
-            link
-            :pt="{
+          :label="$t('loginForm.forgotPassword')"
+          link
+          :pt="{
             root: { class: 'px-0 py-0 lg:h-3' },
             label: { class: 'text-sm font-light underline' },
           }"
@@ -80,8 +88,8 @@ const submitLoginForm = async () => {
       </NuxtLink>
       <NuxtLink class="font-solina-extended-medium text-center">
         <Button
-            :label="$t('orderStepAuth.hastAccount')"
-            :pt="{
+          :label="$t('orderStepAuth.hastAccount')"
+          :pt="{
             root: { class: 'px-0 py-0' },
             label: { class: 'text-base underline' },
           }"

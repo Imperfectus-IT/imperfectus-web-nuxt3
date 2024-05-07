@@ -4,6 +4,6 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
     status: subscription.status,
     frequency: subscription.frequency,
     subscriptionItems: [],
-    skip: []
+    skip: [],
   }
 }

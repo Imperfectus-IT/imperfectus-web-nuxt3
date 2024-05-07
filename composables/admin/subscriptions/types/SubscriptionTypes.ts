@@ -1,8 +1,8 @@
 export type Subscription = {
-  id: number,
-  status: string,
-  frequency: string,
-  subscriptionItems: SubscriptionItem[],
+  id: number
+  status: string
+  frequency: string
+  subscriptionItems: SubscriptionItem[]
   skip: string[]
 }
 
