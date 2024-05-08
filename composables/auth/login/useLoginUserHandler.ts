@@ -9,11 +9,19 @@ export const useLoginUserHandler = () => {
 
       if (!validationErrors.value) {
         await executeLoginUser(userLogin.value)
+        resetLoginUser()
       }
     }
     catch (err: any) {
       setValidationErrorsLoginResponse(err)
       console.error(err)
+    }
+  }
+
+  const resetLoginUser = (): void => {
+    userLogin.value = {
+      identifier: '',
+      password: '',
     }
   }
 

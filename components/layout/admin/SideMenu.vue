@@ -20,9 +20,13 @@
       v-for="item in secondaryMenu"
       :key="item.id"
       :to="localePath({ name: item.route })"
-      class="pb-1 text-[1.125rem] flex flex-col"
+      class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
       @click="hideTopNavbar"
     >{{ item.label }}</NuxtLink>
+    <NuxtLink
+        class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
+        @click.prevent="handleLogoutUser"
+    >{{ $t('side_admin_menu.logout') }}</NuxtLink>
   </div>
 </template>
 
@@ -37,6 +41,8 @@ const emit = defineEmits(['hide'])
 const hideTopNavbar = () => {
   emit('hide')
 }
+
+const { handleLogoutUser } = useLogoutUserHandler()
 
 const mainMenu = [
   {
@@ -81,11 +87,6 @@ const secondaryMenu = [
     id: useId(),
     label: t('side_admin_menu.contact'),
     route: 'contact',
-  },
-  {
-    id: useId(),
-    label: t('side_admin_menu.logout'),
-    route: 'logout',
-  },
+  }
 ]
 </script>

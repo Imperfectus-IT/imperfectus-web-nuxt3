@@ -7,7 +7,13 @@ export const useAuthRepository = () => {
     return await login(userData)
   }
 
+  const logout = (): void => {
+    const { logout } = useStrapiAuth()
+    logout()
+  }
+
   return {
     login,
+    logout,
   }
 }
