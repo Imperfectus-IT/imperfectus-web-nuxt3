@@ -8,7 +8,7 @@
         {{ $t("profile.language_preference.description") }}
       </p>
       <Dropdown
-        v-if="isFormShown"
+        v-if="isOpen"
         v-model="selectedLanguage"
         class="mt-4"
         :options="languages"
@@ -17,19 +17,19 @@
       />
       <div class="flex flex-row gap-2 mt-5">
         <Button
-          v-if="isFormShown"
+          v-if="isOpen"
           class="w-[11.5rem] h-[3.125rem]"
           :label="$t('profile.language_preference.save_modify_language_button')"
           :pt="{ label: 'text-sm' }"
           outlined
-          @click="saveLanguage"
+          @click.prevent="handleUpdateLanguage"
         />
         <Button
           class="w-[8.5rem] h-[3.125rem]"
-          :label="isFormShown ? $t('profile.language_preference.cancel_modify_language_button') : $t('profile.language_preference.modify_language_button')"
+          :label="isOpen ? $t('profile.language_preference.cancel_modify_language_button') : $t('profile.language_preference.modify_language_button')"
           :pt="{ label: 'text-sm' }"
           outlined
-          @click="toggleForm"
+          @click.prevent="handleToggle"
         />
       </div>
     </div>
@@ -37,32 +37,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  userLanguage: 'ca' | 'es'
-}>()
-
-const emit = defineEmits(['save_language'])
-
-const isFormShown = ref(false)
-const selectedLanguage = ref(props.userLanguage)
-
-const toggleForm = () => {
-  isFormShown.value = !isFormShown.value
-}
-
-const saveLanguage = () => {
-  emit('save_language', selectedLanguage.value)
-  isFormShown.value = false
-}
-
-const languages = ref([
-  {
-    name: 'Català',
-    code: 'ca',
-  },
-  {
-    name: 'Castellano',
-    code: 'es',
-  },
-])
+const { selectedLanguage } = useProfileState()
+const { languages } = useGetAllLanguagesHandler()
+const {  isOpen, handleToggle } = useToggle()
+const { handleUpdateLanguage } = useUpdateProfileLanguageHandler()
 </script>
