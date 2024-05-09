@@ -64,58 +64,48 @@ interface Product {
 const products: ComputedRef<Product[]> = computed(() => {
   return [
     {
-
       name: 'Fresas',
-      image: '/images/landing/products/frutas/fresas.webp',
+      image: '/images/landing/products/frutas/Fresas.webp',
     },
     {
-
       name: 'Ciruela',
-      image: '/images/landing/products/frutas/ciruela.webp',
+      image: '/images/landing/products/frutas/Ciruela.webp',
     },
     {
-
       name: 'Kiwi',
-      image: '/images/landing/products/frutas/kiwi.webp',
+      image: '/images/landing/products/frutas/Kiwi.webp',
     },
     {
-
       name: 'Mango',
-      image: '/images/landing/products/frutas/mango.webp',
+      image: '/images/landing/products/frutas/Mango.webp',
     },
     {
-
       name: 'Manzana',
-      image: '/images/landing/products/frutas/manzana.webp',
+      image: '/images/landing/products/frutas/Manzana.webp',
     },
     {
-
       name: 'Naranja',
-      image: '/images/landing/products/frutas/naranja.webp',
+      image: '/images/landing/products/frutas/Naranja.webp',
     },
     {
-
       name: 'Limón',
-      image: '/images/landing/products/frutas/limon.webp',
-    },
-    {
-
-      name: 'Acelgas',
-      image: '/images/landing/products/verduras/acelgas.webp',
-    },
-    {
-
-      name: 'Alcachofas',
-      image: '/images/landing/products/verduras/alcachofas.webp',
+      image: '/images/landing/products/frutas/Limon.webp',
     },
     {
       name: 'Acelgas',
-      image: '/images/landing/products/verduras/acelgas.webp',
+      image: '/images/landing/products/verduras/Acelga.webp',
     },
     {
-
       name: 'Alcachofas',
-      image: '/images/landing/products/verduras/alcachofas.webp',
+      image: '/images/landing/products/verduras/Alcachofa.webp',
+    },
+    {
+      name: 'Acelgas',
+      image: '/images/landing/products/verduras/Acelga.webp',
+    },
+    {
+      name: 'Alcachofas',
+      image: '/images/landing/products/verduras/Alcachofa.webp',
     },
   ]
 })
