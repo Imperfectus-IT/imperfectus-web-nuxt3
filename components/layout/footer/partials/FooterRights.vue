@@ -2,18 +2,23 @@
 const logoItems = [
   {
     id: useId(),
-    src: '/images/logos/footer/logo1.png',
+    src: '/images/logos/footer/logo1.webp',
     alt: 'logo1',
   },
   {
     id: useId(),
-    src: '/images/logos/footer/logo2.png',
+    src: '/images/logos/footer/logo2.webp',
     alt: 'logo2',
   },
   {
     id: useId(),
-    src: '/images/logos/footer/logo3.png',
+    src: '/images/logos/footer/logo3.webp',
     alt: 'logo3',
+  },
+  {
+    id: useId(),
+    src: '/images/logos/footer/logo4.webp',
+    alt: 'logo4',
   },
 ]
 </script>
@@ -24,7 +29,7 @@ const logoItems = [
       <span class="mr-2">{{ new Date().getFullYear() }} TALKUAL. </span>
       <span>All rights reserved.</span>
     </div>
-    <h4 class="order-1 lg:order-2 text-[30px] font-recoleta-regular text-center lg:text-2xl">
+    <h4 class="order-1 lg:order-2 text-[30px] font-recoleta-regular text-center lg:text-[32px]">
       {{ $t("footerLegal.claim") }}
     </h4>
     <div class="order-3 bg-green-primary flex items-center gap-5 p-4 lg:justify-center">

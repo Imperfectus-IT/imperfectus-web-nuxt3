@@ -7,7 +7,7 @@
       <NuxtLink>
         <NuxtImg
           class="w-2/3 mt-5"
-          src="/images/logos/footer/apple.png"
+          src="/images/logos/footer/apple.webp"
           format="webp"
           loading="lazy"
         />
@@ -16,7 +16,7 @@
       <NuxtLink>
         <NuxtImg
           class="w-2/3 mt-5"
-          src="/images/logos/footer/google.png"
+          src="/images/logos/footer/google.webp"
           to="https://play.google.com/store/apps/details?id=com.lluraferi.talkual"
           loading="lazy"
           format="webp"

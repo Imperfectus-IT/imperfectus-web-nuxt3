@@ -9,10 +9,6 @@ defineI18nRoute({
     es: '/mi-cuenta/perfil/',
   },
 })
-
-// TODO handle save language on backend
-const saveLanguage = (language: string) => {
-}
 </script>
 
 <template>
@@ -23,11 +19,7 @@ const saveLanguage = (language: string) => {
       <PersonalData />
     </div>
     <div class="w-full">
-      <LanguagePreference
-        :user-language="'es'"
-        class="mt-5 lg:mt-10"
-        @save_language="saveLanguage"
-      />
+      <LanguagePreference class="mt-5 lg:mt-10" />
       <PaymentMethodCard class="mt-5 lg:mt-10" />
       <AddressProfile class="mt-5 lg:mt-10" />
     </div>

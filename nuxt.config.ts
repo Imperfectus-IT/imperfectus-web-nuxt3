@@ -96,6 +96,7 @@ export default defineNuxtConfig({
         'InputGroup',
         'Menu',
         'MenuBar',
+        'Message',
         'Multiselect',
         'OverlayPanel',
         'Panel',

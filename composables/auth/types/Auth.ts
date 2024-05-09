@@ -1,4 +1,4 @@
-export interface User {
+export type User = {
   id: number
   username: string
   email: string
@@ -21,4 +21,9 @@ export interface User {
   device_tokens: string[]
   first_connection_date_app: string
   last_connection_date_app: string
+}
+
+export type UserLogin = {
+  identifier: string
+  password: string
 }

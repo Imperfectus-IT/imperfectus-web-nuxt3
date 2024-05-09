@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { ref } from 'vue'
 
 export const useValidateLogin = () => {
   const loginFormSchema = z
@@ -15,6 +14,7 @@ export const useValidateLogin = () => {
 
   const validateSchema = (data: LoginFormSchema) => {
     const validSchema = loginFormSchema.safeParse(data)
+    setValidationErrorsLoginResponse([])
 
     if (!validSchema.success) {
       validationErrors.value = validSchema.error.format()
@@ -24,5 +24,10 @@ export const useValidateLogin = () => {
     }
   }
 
-  return { validationErrors, validateSchema }
+  const validationErrorsLoginResponse = useState('validationErrorsLoginResponse', () => [])
+  const setValidationErrorsLoginResponse = (err: any) => {
+    validationErrorsLoginResponse.value = err?.message?.length ? err?.message.map((error: any) => error.messages.map((item: any) => item.message)).flat() : []
+  }
+
+  return { validationErrors, validationErrorsLoginResponse, setValidationErrorsLoginResponse, validateSchema }
 }

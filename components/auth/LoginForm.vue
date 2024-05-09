@@ -1,31 +1,22 @@
 <script setup lang="ts">
-import { watch } from 'vue'
-
-const { validationErrors, validateSchema } = useValidateLogin()
-const { loginFormData, handleLogin } = useStrapiLogin()
+const { validationErrors, validationErrorsLoginResponse, validateSchema } = useValidateLogin()
+const { userLogin, handleLoginUser } = useLoginUserHandler()
 const localePath = useLocalePath()
 
-watch(loginFormData.value, (newValue) => {
+watch(userLogin.value, (newValue) => {
   validateSchema(newValue)
 })
-
 const emit = defineEmits<{
   (e: 'login'): void
 }>()
 
+const isButtonDisabled = computed(() => {
+  return !userLogin.value.identifier?.length || !userLogin.value.password?.length
+})
+
 const submitLoginForm = async () => {
-  try {
-    validateSchema(loginFormData.value)
-
-    if (!validationErrors.value) {
-      await handleLogin()
-    }
-
-    emit('login')
-  }
-  catch (err) {
-    console.error(err)
-  }
+  await handleLoginUser()
+  emit('login')
 }
 </script>
 
@@ -46,7 +37,7 @@ const submitLoginForm = async () => {
     >
       <TKField :errors="validationErrors?.identifier?._errors">
         <InputText
-          v-model="loginFormData.identifier"
+          v-model="userLogin.identifier"
           class="rounded-xl"
           type="text"
           :placeholder="$t('loginForm.email')"
@@ -55,7 +46,7 @@ const submitLoginForm = async () => {
       </TKField>
       <TKField :errors="validationErrors?.password?._errors">
         <Password
-          v-model="loginFormData.password"
+          v-model="userLogin.password"
           type="password"
           :feedback="false"
           :placeholder="$t('loginForm.password')"
@@ -68,7 +59,19 @@ const submitLoginForm = async () => {
           :label="$t('loginForm.login')"
           severity="secondary"
           type="submit"
+          :disabled="isButtonDisabled"
         />
+        <Message
+          v-if="validationErrorsLoginResponse.length"
+          severity="error"
+        >
+          <p
+            v-for="error in validationErrorsLoginResponse"
+            :key="error"
+          >
+            {{ error }}
+          </p>
+        </Message>
       </div>
       <NuxtLink
         class="font-extended-book text-start lg:text-center"
@@ -85,7 +88,6 @@ const submitLoginForm = async () => {
       </NuxtLink>
       <NuxtLink class="font-solina-extended-medium text-center">
         <Button
-
           :label="$t('orderStepAuth.hastAccount')"
           :pt="{
             root: { class: 'px-0 py-0' },

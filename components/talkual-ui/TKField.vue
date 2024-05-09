@@ -10,7 +10,7 @@ defineProps<{
     <small
       v-for="error in errors"
       :key="error"
-      class="text-red-primary text-xs"
+      class="text-red-primary text-xs mt-1"
     >
       {{ error }}
     </small>
