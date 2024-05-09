@@ -16,20 +16,19 @@
             root: 'w-[80vw] lg:w-[50vw] border-[1px] border-grey-primary pl-10 py-2 rounded-lg',
           }"
           :placeholder="t('content.whatinbox.searchPlaceholder')"
-          @input="searchProducts"
         />
       </span>
       <ImageTextCard
         v-for="(product, index) in productsToShow"
         :key="index"
-        :image="product.image"
-        :title="product.name"
+        :image="product?.image"
+        :title="product?.name"
         container-class="w-10/12 mx-auto bg-beige-secondary my-5 lg:my-4 rounded-xl"
-        image-class="mx-auto py-4 w-11/12 h-[280px] object-cover"
+        image-class="mx-auto py-4 w-[250px] h-[250px] object-cover"
       >
         <template #text>
           <p class="text-center pb-3">
-            {{ product.name }}
+            {{ product?.name }}
           </p>
         </template>
       </ImageTextCard>
@@ -50,75 +49,22 @@ defineI18nRoute({
 const { t } = useI18n()
 
 const searchField = ref<string>('')
+const products = useGetProductsHandler().products.value.itemProducts
+const activeProducts = ref<Product[]> ([...products.fruits, ...products.vegetables].filter(product => product.isActive))
 
-const searchProducts = () => {
-  productsToShow.value = products.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
-}
-
-// TODO WHERE TO PLACE THIS TYPE
-interface Product {
-  name: string
-  image: string
-}
-
-const products: ComputedRef<Product[]> = computed(() => {
-  return [
-    {
-
-      name: 'Fresas',
-      image: '/images/landing/products/frutas/fresas.webp',
-    },
-    {
-
-      name: 'Ciruela',
-      image: '/images/landing/products/frutas/ciruela.webp',
-    },
-    {
-
-      name: 'Kiwi',
-      image: '/images/landing/products/frutas/kiwi.webp',
-    },
-    {
-
-      name: 'Mango',
-      image: '/images/landing/products/frutas/mango.webp',
-    },
-    {
-
-      name: 'Manzana',
-      image: '/images/landing/products/frutas/manzana.webp',
-    },
-    {
-
-      name: 'Naranja',
-      image: '/images/landing/products/frutas/naranja.webp',
-    },
-    {
-
-      name: 'Limón',
-      image: '/images/landing/products/frutas/limon.webp',
-    },
-    {
-
-      name: 'Acelgas',
-      image: '/images/landing/products/verduras/acelgas.webp',
-    },
-    {
-
-      name: 'Alcachofas',
-      image: '/images/landing/products/verduras/alcachofas.webp',
-    },
-    {
-      name: 'Acelgas',
-      image: '/images/landing/products/verduras/acelgas.webp',
-    },
-    {
-
-      name: 'Alcachofas',
-      image: '/images/landing/products/verduras/alcachofas.webp',
-    },
-  ]
+const productsToShow: ComputedRef<Product[]> = computed(() => {
+  if (searchField.value) {
+    return activeProducts.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
+  } else {
+    console.log(activeProducts.value)
+    return activeProducts.value
+  }
 })
 
-const productsToShow = ref<Product[]>([...products.value])
+type Product = {
+  name: string
+  image: string
+
+}
+
 </script>

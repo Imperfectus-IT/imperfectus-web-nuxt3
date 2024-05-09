@@ -4,7 +4,7 @@
     <LandingHeader />
     <Divider class="before:border-t-2 before:border-green-primary" />
     <LazyLandingBoxes :display-desktop="displayDesktop" />
-    <LandingVegetablesOffers
+    <LazyLandingVegetablesOffers
       :vegetables="vegetables"
     />
     <LazyLandingProducts :display-desktop="displayDesktop" />

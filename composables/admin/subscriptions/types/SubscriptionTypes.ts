@@ -1,9 +1,14 @@
+import type { DayMapping } from "~/components/admin/my-subscriptions/types/DayMapping"
+
 export type Subscription = {
   id: number,
   status: string,
   frequency: string,
+  skip: string[],
+  nextPayment: string,
+  cancelledAt: string,
+  preferredDay: keyof DayMapping,
   subscriptionItems: SubscriptionItem[],
-  skip: string[]
 }
 
 export type SubscriptionItem = {

@@ -1,23 +1,27 @@
 <template>
-  subscription
-
-  <div v-for="subscription in subscriptions" >{{subscription}}</div>
+  <h4 class="font-recoleta-regular text-[30px]">Mis suscripciones</h4>
+  <Subscription
+    v-for="subscription in subscriptions"
+    :subscription="subscription"
+  />
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
 definePageMeta({
-  layout: 'admin',
-  middleware: ['auth'],
-})
+  layout: "admin",
+  middleware: ["auth"],
+});
 
 defineI18nRoute({
   paths: {
-    es: '/mi-cuenta/suscripciones/',
-    ca: '/el-meu-compte/subscripcions/',
+    es: "/mi-cuenta/suscripciones/",
+    ca: "/el-meu-compte/subscripcions/",
   },
-})
+});
 
 const { subscriptions } = useGetSubscriptionsHandler();
-console.log(subscriptions)
 
+watch(subscriptions, () =>
+  console.log("subscriptions", JSON.parse(JSON.stringify(subscriptions.value)))
+);
 </script>
