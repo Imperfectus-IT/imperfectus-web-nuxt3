@@ -23,8 +23,3 @@ defineProps<{
 }>()
 </script>
 
-<!-- :to="
-              localePath({
-                name: 'admin-subscriptions-id',
-                params: { id: subscriptionId }
-              }) -->

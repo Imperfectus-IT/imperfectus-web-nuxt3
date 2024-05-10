@@ -7,13 +7,13 @@
       width="140"
       height="100"
       alt="next-order"
-      class="rounded-lg h-[100px] my-auto"
+      class="rounded-lg h-[100px] my-auto !w-[140px]"
     />
-    <div class="text-[14px]">
-      <h4 class="font-semibold mb-2">
-        {{ getBoxSize(orderItem.sku) }}
+    <div class="text-[14px] w-1/2 flex flex-col justify-center">
+      <h4 class="font-semibold mb-2 ">
+        {{ getBoxSize(orderItem.sku) + ' - ' + getBoxType(orderItem.sku) }}
       </h4>
-      <ul class="ml-2">
+      <ul v-if="subscriptionStatus === 'active'" class="ml-[3px]">
         <ListItem
           main-class="flex gap-x-2 mb-1 font-bold"
           dot-class="text-[8px] -mt-[1px] text-green-tertiary"
@@ -45,7 +45,8 @@ import type { DayMapping } from '../types/DayMapping';
 const props = defineProps<{
   orderItem: OrderItem,
   preferredDay: keyof DayMapping,
-  nextPayment: string
+  nextPayment: string,
+  subscriptionStatus: string
 }>()
 
 const getBoxSize = (sku: string) => {
@@ -70,5 +71,15 @@ const getBoxSize = (sku: string) => {
   const dayNumber: number = dayMapping[props?.preferredDay]
   return dayjs(props.nextPayment).day(dayNumber).format('DD/MM/YYYY')
   })
+
+  const getBoxType = (sku: string) => {
+  return sku.includes('FR')
+    ? 'Fruta'
+    : sku.includes('VG')
+      ? 'Verdura'
+      : sku.includes('Orange')
+        ? 'Naranjas'
+        : 'Fruta y verdura'
+}
 
 </script>

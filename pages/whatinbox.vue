@@ -64,7 +64,6 @@ const productsToShow: ComputedRef<Product[]> = computed(() => {
 type Product = {
   name: string
   image: string
-
 }
 
 </script>

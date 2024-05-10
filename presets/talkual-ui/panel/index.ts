@@ -3,7 +3,7 @@ export default {
     class: [
       {
         'rounded-lg border': !props.toggleable,
-        'border-0': props.toggleable,
+        'border-0 ': props.toggleable,
       },
     ],
   }),
@@ -67,7 +67,7 @@ export default {
 
       // Color
       'bg-transparent',
-      'text-tertiary solina-extended-book text-xs lg:text-base font-light leading-5',
+      'flex flex-col text-tertiary solina-extended-book text-xs lg:text-base font-light leading-5',
     ],
   }),
   footer: {
