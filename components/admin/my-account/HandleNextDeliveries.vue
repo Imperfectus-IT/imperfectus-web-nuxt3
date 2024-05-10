@@ -22,4 +22,3 @@ defineProps<{
   subscriptionId: number
 }>()
 </script>
-

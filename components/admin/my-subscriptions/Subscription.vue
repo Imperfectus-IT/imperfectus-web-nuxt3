@@ -56,11 +56,14 @@
         }"
       />
     </div>
-    <Divider v-if="subscription.status !== 'cancelled'" class="lg:order-3" />
+    <Divider
+      v-if="subscription.status !== 'cancelled'"
+      class="lg:order-3"
+    />
 
     <div
-      class="-mt-2 text-[14px] lg:order-4 flex flex-col lg:flex-row lg:justify-between lg:items-center"
       v-if="subscription.status === 'active'"
+      class="-mt-2 text-[14px] lg:order-4 flex flex-col lg:flex-row lg:justify-between lg:items-center"
     >
       <div class="flex flex-col lg:w-1/2 lg:py-4">
         <p class="leading-4">
@@ -69,13 +72,12 @@
         <p class="leading-4 mt-2">
           En esta sección puedes <span class="font-bold">cancelar</span>,<span
             class="font-bold"
-            >donar</span
-          >
+          >donar</span>
           o <span class="font-bold">regalar</span> cualquiera de tus próximos
           pedidos
         </p>
       </div>
-      <NuxtLink  :to="`/mi-cuenta/suscripciones/proximas-entregas/${subscription.id}`">
+      <NuxtLink :to="`/mi-cuenta/suscripciones/proximas-entregas/${subscription.id}`">
         <Button
           primary
           :label="'Gestionar próximas entregas'"
@@ -88,8 +90,8 @@
     </div>
 
     <div
-      class="-mt-2 text-[14px] lg:order-4 flex flex-col lg:flex-row lg:justify-between lg:items-center"
       v-if="subscription.status === 'paused'"
+      class="-mt-2 text-[14px] lg:order-4 flex flex-col lg:flex-row lg:justify-between lg:items-center"
     >
       <div class="flex flex-col lg:w-1/2 lg:py-4">
         <p class="leading-4">
@@ -125,40 +127,40 @@
 </template>
 
 <script setup lang="ts">
-import type { SubscriptionStatus } from "./types/SubscriptionStatus";
-import dayjs from "dayjs";
+import dayjs from 'dayjs'
+import type { SubscriptionStatus } from './types/SubscriptionStatus'
 
 const localePath = useLocalePath()
 
 const props = defineProps<{
-  subscription: Subscription;
-}>();
+  subscription: Subscription
+}>()
 
-console.log("subscription from props", props.subscription.status);
+console.log('subscription from props', props.subscription.status)
 
 const frequency = computed(() =>
-  props.subscription.frequency === "weekly" ? "Semanal" : "Quincenal"
-);
+  props.subscription.frequency === 'weekly' ? 'Semanal' : 'Quincenal',
+)
 const status = computed(
   () =>
-    subscriptionStatuses[props.subscription.status as keyof SubscriptionStatus]
-);
+    subscriptionStatuses[props.subscription.status as keyof SubscriptionStatus],
+)
 const backgroundColor = () =>
-  props.subscription.status === "active"
-    ? "green-quaternary"
-    : props.subscription.status === "paused"
-    ? "orange-primary"
-    : "red-secondary";
+  props.subscription.status === 'active'
+    ? 'green-quaternary'
+    : props.subscription.status === 'paused'
+      ? 'orange-primary'
+      : 'red-secondary'
 
 const subscriptionStatuses: SubscriptionStatus = {
-  active: "Activa",
-  paused: "Pausada",
-  cancelled: "Cancelada",
-  failed: "Failed",
-  waiting: "Esperando..."
-};
+  active: 'Activa',
+  paused: 'Pausada',
+  cancelled: 'Cancelada',
+  failed: 'Failed',
+  waiting: 'Esperando...',
+}
 
 const cancelDate = computed(() =>
-  dayjs(props.subscription.cancelledAt).format("DD/MM/YYYY")
-);
+  dayjs(props.subscription.cancelledAt).format('DD/MM/YYYY'),
+)
 </script>

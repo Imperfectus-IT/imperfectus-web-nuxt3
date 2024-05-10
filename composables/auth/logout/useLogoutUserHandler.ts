@@ -1,10 +1,10 @@
 export const useLogoutUserHandler = () => {
-    const { executeLogoutUser } = useLogoutUser()
+  const { executeLogoutUser } = useLogoutUser()
 
-    const handleLogoutUser = (): void => {
-        executeLogoutUser()
-        navigateTo('/')
-    }
+  const handleLogoutUser = (): void => {
+    executeLogoutUser()
+    navigateTo('/')
+  }
 
-    return { handleLogoutUser }
+  return { handleLogoutUser }
 }

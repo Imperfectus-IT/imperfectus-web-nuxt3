@@ -1,7 +1,7 @@
 export type SubscriptionStatus = {
-  active: string,
-  paused: string,
-  cancelled: string,
-  failed: string,
+  active: string
+  paused: string
+  cancelled: string
+  failed: string
   waiting: string
 }

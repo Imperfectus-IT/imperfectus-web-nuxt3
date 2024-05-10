@@ -55,7 +55,8 @@ const activeProducts = ref<Product[]> ([...products.fruits, ...products.vegetabl
 const productsToShow: ComputedRef<Product[]> = computed(() => {
   if (searchField.value) {
     return activeProducts.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
-  } else {
+  }
+  else {
     console.log(activeProducts.value)
     return activeProducts.value
   }
@@ -65,5 +66,4 @@ type Product = {
   name: string
   image: string
 }
-
 </script>

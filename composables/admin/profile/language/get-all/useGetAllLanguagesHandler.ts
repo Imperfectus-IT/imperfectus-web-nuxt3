@@ -1,13 +1,13 @@
-import type { ComputedRef } from "vue";
+import type { ComputedRef } from 'vue'
 
 export const useGetAllLanguagesHandler = (): any => {
-    const { executeGetAllLanguages } = useGetAllLanguages()
+  const { executeGetAllLanguages } = useGetAllLanguages()
 
-    const languages = computed(() => {
-        return executeGetAllLanguages()
-    })
+  const languages = computed(() => {
+    return executeGetAllLanguages()
+  })
 
-    return {
-        languages
-    }
+  return {
+    languages,
+  }
 }

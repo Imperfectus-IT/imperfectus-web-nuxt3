@@ -39,6 +39,6 @@
 <script setup lang="ts">
 const { selectedLanguage } = useProfileState()
 const { languages } = useGetAllLanguagesHandler()
-const {  isOpen, handleToggle } = useToggle()
+const { isOpen, handleToggle } = useToggle()
 const { handleUpdateLanguage } = useUpdateProfileLanguageHandler()
 </script>

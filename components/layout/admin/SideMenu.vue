@@ -24,8 +24,8 @@
       @click="hideTopNavbar"
     >{{ item.label }}</NuxtLink>
     <NuxtLink
-        class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
-        @click.prevent="handleLogoutUser"
+      class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
+      @click.prevent="handleLogoutUser"
     >{{ $t('side_admin_menu.logout') }}</NuxtLink>
   </div>
 </template>
@@ -87,6 +87,6 @@ const secondaryMenu = [
     id: useId(),
     label: t('side_admin_menu.contact'),
     route: 'contact',
-  }
+  },
 ]
 </script>

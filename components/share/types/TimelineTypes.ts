@@ -5,12 +5,12 @@ export interface StatusesObject {
 export interface Event {
   status: string
   background: string
-  icon: string
+  icon: string,
+  border: string
 }
 
 export interface OneStepEvents {
-  replaced: Event,
-  refunded: Event,
-  other: Event,
-  cancelled: Event
+  replaced: Event
+  refunded: Event
+  other: Event
 }

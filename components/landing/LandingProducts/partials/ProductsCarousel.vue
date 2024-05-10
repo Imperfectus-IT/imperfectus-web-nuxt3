@@ -48,7 +48,7 @@ const wrapItems = () => {
   return windowWidth.value < 768 ? 1.4 : windowWidth.value < 1450 ? 3 : windowWidth.value < 1950 ? 4 : 5
 }
 
-const { products } = useGetProductsHandler();
+const { products } = useGetProductsHandler()
 
 const fruits = computed(() => {
   return products.value.itemProducts.fruits.filter(product => product.isActive)
@@ -56,5 +56,4 @@ const fruits = computed(() => {
 const vegetables = computed(() => {
   return products.value.itemProducts.vegetables.filter(product => product.isActive)
 })
-
 </script>

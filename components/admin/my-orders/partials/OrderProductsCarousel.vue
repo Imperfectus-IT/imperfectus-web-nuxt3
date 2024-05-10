@@ -26,9 +26,9 @@
 </template>
 
 <script setup lang='ts'>
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
-const { isMobile } = useScreenSize();
+const { isMobile } = useScreenSize()
 
 defineProps<{
   products: CarouselSlideObject[]

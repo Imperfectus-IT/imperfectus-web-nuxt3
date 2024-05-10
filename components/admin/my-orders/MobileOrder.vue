@@ -2,12 +2,14 @@
   <div class="lg:min-w-[900px] lg:max-w-[1500px]">
     <Panel :header="`Pedido ${order.id}`" class="relative lg:min-h-[500px]">
       <Divider class="mt-2" />
-
-      <div
-        v-for="(orderItem, index) in order.orderItems"
-        :key="index"
-        class="mt-7"
+      <p
+        v-if="order.status === 'pending'"
+        class="bg-orange-primary  px-2 py-2 rounded-lg mb-3"
       >
+        Este pedido está pendiente de pago
+      </p>
+
+      <div v-for="(orderItem, index) in order.orderItems" :key="index">
         <OrderItemCard :order-item="orderItem" />
         <OrderProductsCarousel
           v-if="!isCollapsed"
@@ -24,16 +26,52 @@
         v-if="order.status !== 'cancelled'"
         class="lg:absolute lg:bottom-3 lg:w-full"
       >
-        <NuxtLink v-if="isCollapsed" :to="`/mi-cuenta/pedidos/${order.id}`">
-          <Button
-            outlined
-            label="Detalles del pedido"
-            :pt="{
-              label: 'text-[14px]',
-            }"
-            class="mt-8 w-2/3 lg:w-1/3"
-          />
-        </NuxtLink>
+        <div v-if="isCollapsed && order.status !== 'pending'">
+          <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+            <Button
+              outlined
+              label="Detalles del pedido"
+              :pt="{
+                label: 'text-[14px]',
+              }"
+              class="mt-8 w-2/3"
+            />
+          </NuxtLink>
+        </div>
+        <div v-else-if="isCollapsed" class="flex flex-col gap-3 my-7">
+          <div class="flex flex-row gap-3">
+            <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+            <Button
+              outlined
+              label="Detalles del pedido"
+              :pt="{
+                label: 'text-[12px]',
+                root: 'text-green-tertiary border-[1px] bg-beige-primary px-4 py-2 rounded-lg',
+              }"
+            />
+          </NuxtLink>
+          <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+            <Button
+              outlined
+              label="Finalizar pago"
+              :pt="{
+                label: 'text-[12px]',
+                root: 'text-green-tertiary border-[1px] bg-green-primary px-4 py-2 rounded-lg',
+              }"
+            />
+          </NuxtLink>
+          </div>
+          <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+            <Button
+              outlined
+              label="Descartar pedido"
+              :pt="{
+                label: 'text-[12px]',
+                root: 'text-green-tertiary border-[1px] bg-red-secondary px-4 py-2 rounded-lg',
+              }"
+            />
+          </NuxtLink>
+        </div>
       </div>
 
       <div v-else>

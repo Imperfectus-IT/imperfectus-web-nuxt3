@@ -5,8 +5,8 @@
     </h4>
     <div class="flex flex-col">
       <MobileOrder
-        v-if="isMobile"
         v-for="order in orders"
+        v-if="isMobile"
         :key="order.id"
         :order="order"
         class="my-2 "
@@ -17,8 +17,8 @@
         ]"
       />
       <DesktopOrder
-        v-else
         v-for="order in orders"
+        v-else
         :key="order.id + 1"
         :order="order"
         class="my-2 "

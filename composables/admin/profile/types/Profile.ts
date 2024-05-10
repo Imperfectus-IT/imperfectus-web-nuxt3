@@ -1,15 +1,15 @@
 export type ProfileLanguage = {
-    language: 'es' | 'ca'
+  language: 'es' | 'ca'
 }
 
 export type ProfileLanguages = {
-    name: string
-    code: string
+  name: string
+  code: string
 }
 
 export type Profile = {
-    company?: string
-    email: string
-    language: ProfileLanguage
-    username: string
+  company?: string
+  email: string
+  language: ProfileLanguage
+  username: string
 }

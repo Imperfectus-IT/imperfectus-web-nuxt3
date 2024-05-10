@@ -1,24 +1,25 @@
-import type { ProfileLanguage, Profile, ProfileLanguages } from "~/composables/admin/profile/types/Profile.ts";
-export const useProfileLanguageRepository = () => {
-    const getAll = (): ProfileLanguages[] => {
-        return [
-            {
-                name: 'Català',
-                code: 'ca',
-            },
-            {
-                name: 'Castellano',
-                code: 'es',
-            },
-        ]
-    }
-    const update = async (id: number, language: ProfileLanguage): Promise<Profile> => {
-        const { update } = useStrapi()
-        return await update<Profile>('profile', id,{ language })
-    }
+import type { ProfileLanguage, Profile, ProfileLanguages } from '~/composables/admin/profile/types/Profile.ts'
 
-    return {
-        getAll,
-        update
-    }
+export const useProfileLanguageRepository = () => {
+  const getAll = (): ProfileLanguages[] => {
+    return [
+      {
+        name: 'Català',
+        code: 'ca',
+      },
+      {
+        name: 'Castellano',
+        code: 'es',
+      },
+    ]
+  }
+  const update = async (id: number, language: ProfileLanguage): Promise<Profile> => {
+    const { update } = useStrapi()
+    return await update<Profile>('profile', id, { language })
+  }
+
+  return {
+    getAll,
+    update,
+  }
 }

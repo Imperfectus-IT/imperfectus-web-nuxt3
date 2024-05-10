@@ -13,10 +13,10 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
         image: `images/boxes/Caixa-${getBoxImage(item?.product.SKU)}.webp`,
         exclusions: item.exclusions.map((exclusion: any) => {
           return exclusion.name_es
-        })
+        }),
       }
-     }),
-    skip: []
+    }),
+    skip: [],
   }
   return test
 }
