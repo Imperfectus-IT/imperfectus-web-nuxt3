@@ -155,6 +155,7 @@ const subscriptionStatuses: SubscriptionStatus = {
   paused: "Pausada",
   cancelled: "Cancelada",
   failed: "Failed",
+  waiting: "Esperando..."
 };
 
 const cancelDate = computed(() =>
