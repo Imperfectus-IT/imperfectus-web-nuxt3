@@ -9,7 +9,8 @@ export interface Event {
 }
 
 export interface OneStepEvents {
-  replaced: Event
-  refunded: Event
-  other: Event
+  replaced: Event,
+  refunded: Event,
+  other: Event,
+  cancelled: Event
 }

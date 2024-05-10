@@ -4,9 +4,22 @@
       Mis Pedidos
     </h4>
     <div class="flex flex-col">
-      <Order
+      <MobileOrder
+        v-if="isMobile"
         v-for="order in orders"
         :key="order.id"
+        :order="order"
+        class="my-2 "
+        :is-collapsed="true"
+        :products="[
+          ...products.itemProducts.fruits,
+          ...products.itemProducts.vegetables,
+        ]"
+      />
+      <DesktopOrder
+        v-else
+        v-for="order in orders"
+        :key="order.id + 1"
         :order="order"
         class="my-2 "
         :is-collapsed="true"
@@ -26,6 +39,8 @@ const { t } = useI18n()
 
 const { orders } = useGetOrdersHandler(t)
 const { products } = useGetProductsHandler()
+
+const { isDesktop, isMobile } = useScreenSize()
 
 definePageMeta({
   layout: 'admin',

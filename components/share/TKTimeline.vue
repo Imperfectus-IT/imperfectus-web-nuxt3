@@ -113,6 +113,11 @@ const oneStepEvents: OneStepEvents = {
     background: 'red-secondary',
     icon: 'close',
   },
+  cancelled: {
+    status: 'Otro',
+    background: 'red-secondary',
+    icon: 'close',
+  },
 }
 
 const events: Event[] = [

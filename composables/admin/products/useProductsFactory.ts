@@ -5,7 +5,7 @@ export const useProductsFactory = (product: any) => {
       name: product.name_es,
       type: product.type, // item | box
       itemType: product.itemType, // vegetable | fruit
-      image: product.itemType === 'fruit' ? `/images/landing/products/frutas/${product.name_es}.webp` : `/images/landing/products/verduras/${product.name_es}.webp`,
+      image: product.imagePath,
       isActive: product.isActive,
     }
   }

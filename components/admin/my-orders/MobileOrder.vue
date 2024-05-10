@@ -1,9 +1,6 @@
 <template>
-  <div class="lg:min-w-[900px] lg:max-w-[1500px ">
-    <Panel
-      :header="`Pedido ${order.id}`"
-      class="relative lg:min-h-[500px]"
-    >
+  <div class="lg:min-w-[900px] lg:max-w-[1500px]">
+    <Panel :header="`Pedido ${order.id}`" class="relative lg:min-h-[500px]">
       <Divider class="mt-2" />
 
       <div
@@ -22,34 +19,31 @@
           :order-item="orderItem"
         />
       </div>
-      <!-- //////////// -->
+
       <div
         v-if="order.status !== 'cancelled'"
         class="lg:absolute lg:bottom-3 lg:w-full"
       >
-        <NuxtLink
-          v-if="isCollapsed"
-          :to="`/mi-cuenta/pedidos/${order.id}`"
-        >
+        <NuxtLink v-if="isCollapsed" :to="`/mi-cuenta/pedidos/${order.id}`">
           <Button
             outlined
             label="Detalles del pedido"
             :pt="{
               label: 'text-[14px]',
             }"
-            class="mt-8 w-2/3"
+            class="mt-8 w-2/3 lg:w-1/3"
           />
         </NuxtLink>
       </div>
-      <!-- //////////// -->
 
       <div v-else>
-        <div class="bg-red-secondary w-1/2 h-9 rounded-lg flex items-center justify-center text-[12px] mt-6">
+        <div
+          class="bg-red-secondary w-1/2 h-9 rounded-lg flex items-center justify-center text-[12px] mt-6"
+        >
           {{ $t("string.status.order.cancelled") }}
         </div>
-        <p class="mt-3">
-          Fecha de cancelacion: ********
-        </p> <!-- TODO This is not stored in DB -->
+        <p class="mt-3">Fecha de cancelacion: **********</p>
+        <!-- TODO This is not stored in DB -->
       </div>
 
       <TKTimeline
@@ -58,7 +52,6 @@
       />
       <OrderCoupon v-if="!isCollapsed" />
     </Panel>
-    <!-- //////////// -->
 
     <div
       v-if="!isCollapsed"
@@ -94,14 +87,14 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  order: Order
-  isCollapsed: boolean
-  products: ItemProduct[]
-}>()
+  order: Order;
+  isCollapsed: boolean;
+  products: ItemProduct[];
+}>();
 
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name) && product.isActive
-  })
-}
+    return !orderItem.exclusions.includes(product.name) && product.isActive;
+  });
+};
 </script>

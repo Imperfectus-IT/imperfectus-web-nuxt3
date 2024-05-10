@@ -1,20 +1,23 @@
 <template>
-  <div class="mb-12">
+  <div class=" mt-12 lg:my-12 ">
     <h4 class="!font-bold text-[14px] mt-4">
-      ¿Qué lleva tu pedido?
+      ¿Qué lleva tu caja?
     </h4>
     <Divider class="mt-2 !w-2/3" />
     <TKCarousel
       :data="products"
-      :visible-items="5"
-      :show-pagination="true"
-      :show-navigation="false"
-      image-class="w-[50px] h-[50px] object-cover"
-      slide-class="w-[1/2] h-20"
-      pagination-class="-bottom-9"
+      :visible-items="isMobile ? 5 : 3.5"
+      :show-pagination="false"
+      :show-navigation="true"
+      :image-class="getImageClass"
+      slide-class="h-20 lg:h-auto"
+      navigation-prev-class="absolute right-8 bg-transparent text-green-tertiary !text-2xl"
+      navigation-next-class="absolute left-8 bg-transparent text-green-tertiary !text-2xl"
+      class="w-11/12 mx-auto"
+      slot-class="leading-3"
     >
       <template #SlideContent="{ item }">
-        <p class="text-[10px]">
+        <p class="text-[10px] ">
           {{ item.name }}
         </p>
       </template>
@@ -23,9 +26,16 @@
 </template>
 
 <script setup lang='ts'>
-import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
+import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes';
+
+const { isMobile } = useScreenSize();
 
 defineProps<{
   products: CarouselSlideObject[]
 }>()
+
+const getImageClass = computed(() => {
+  console.log(isMobile)
+  return isMobile.value ? ' w-[50px] h-[50px] object-cover' : ' w-[140px] h-[140px] object-cover'
+})
 </script>

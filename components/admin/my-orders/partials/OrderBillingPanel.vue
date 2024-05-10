@@ -1,10 +1,10 @@
 <template>
   <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')">
-    <div class="flex flex-col">
+    <div class="flex flex-col !justify-center !h-full">
       <div
         v-for="(key, index) in Object.keys(props.data)"
         :key="index"
-        class="text-[14px]"
+        class="text-[14px] my-auto"
       >
         <Divider v-if="index === Object.keys(props.data).length -1" />
         <p class="mt-5">

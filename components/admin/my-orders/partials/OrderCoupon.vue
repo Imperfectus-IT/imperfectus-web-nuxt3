@@ -4,13 +4,13 @@
   </h4>
   <InputGroup class="mb-2">
     <InputText
-      class="rounded-l-xl max-h-[42px] mt-4"
+      class="rounded-l-xl max-h-[42px] mt-4 lg:w-1/2"
       placeholder="Cupón"
     />
     <InputGroupAddon class="h-2">
       <Button
         label="Aplicar"
-        :pt="{ label: '', root: 'max-h-[42px] font-solina-extended-book text-[14px] px-4 p-2.5 bg-green-primary border-[1px] border-green-tertiary rounded-r-lg  hover:bg-green-tertiary hover:text-green-primary focus:bg-green-tertiary focus:text-green-primary' }"
+        :pt="{ label: '', root: 'max-h-[42px] font-solina-extended-book text-[14px] px-4 p-2.5 lg:py-[11px] bg-green-primary border-[1px] border-green-tertiary rounded-r-lg  hover:bg-green-tertiary hover:text-green-primary focus:bg-green-tertiary focus:text-green-primary' }"
       />
     </InputGroupAddon>
   </InputGroup>
