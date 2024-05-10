@@ -114,7 +114,7 @@ const oneStepEvents: OneStepEvents = {
     icon: 'close',
   },
   cancelled: {
-    status: 'Otro',
+    status: 'Cancelado',
     background: 'red-secondary',
     icon: 'close',
   },
