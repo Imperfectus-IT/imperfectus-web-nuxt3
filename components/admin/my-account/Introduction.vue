@@ -15,7 +15,7 @@ defineProps<{
         v-if="user"
         class="font-recoleta-regular text-[40px] break-words mb-4 leading-[45px]"
       >
-        {{ $t("profile.my_account.title", { name: user.username }) }}
+        {{ $t("profile.my_account.title", { name: user.username?.split('@')[0] }) }}
       </h4>
       <p>{{ $t("profile.my_account.help") }}</p>
       <div class="flex flex-row gap-1 mt-1 mb-6">

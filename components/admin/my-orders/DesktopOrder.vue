@@ -48,7 +48,7 @@
                 :pt="{
                   label: 'text-[14px]',
                 }"
-                class="mt-8 w-2/3 w-1/3"
+                class="mt-8 w-1/3"
               />
             </NuxtLink>
           </div>

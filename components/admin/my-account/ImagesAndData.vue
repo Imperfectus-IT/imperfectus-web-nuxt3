@@ -15,7 +15,7 @@
       />
       <div class="flex flex-col w-1/2 lg:w-full">
         <p
-          class="p-3 pb-0 mb-0 text-[18px] font-recoleta-medium text-center lg:w-full lg:text-[22px]"
+          class="p-3 pb-0 mb-0 text-[18px] font-recoleta-medium text-center lg:w-full lg:text-[22px] lg:whitespace-nowrap"
         >
           {{ $t("profile.my_account.info_1") }}
         </p>
