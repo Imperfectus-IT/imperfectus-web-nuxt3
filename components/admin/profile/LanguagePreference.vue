@@ -2,6 +2,9 @@
   <Panel
     :header="$t('profile.language_preference.title')"
     class="lg:w-full"
+    :pt="{
+      title: 'font-recoleta-medium text-xl font-medium leading-5',
+    }"
   >
     <div class="flex flex-col gap-3 mb-5">
       <p class="font-solina-extended-book text-sm mt-2 lg:mt-8">

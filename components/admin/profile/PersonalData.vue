@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { usePersonalDataFactory } from '~/composables/admin/profile/personalData/usePersonalDataFactory.ts'
-
 const { personalData } = usePersonalDataFactory()
 
 const items = [
@@ -21,19 +19,22 @@ const items = [
   <Panel
     :header="$t('adminProfileForm.title')"
     class="lg:w-full"
+    :pt="{
+      title: 'font-recoleta-medium text-xl font-medium leading-5',
+    }"
   >
-    <Divider />
+    <Divider class="lg:invisible" />
     <div
       v-for="item in items"
       :key="item.id"
-      class="flex items-center gap-3 mb-5"
+      class="flex items-center gap-3 mb-5 lg:mb-10 lg:gap-5"
     >
-      <span :class="['text-lg', item.icon]" />
-      <p class="font-solina-extended-book text-sm">
+      <span :class="['text-lg lg:text-[2rem]', item.icon]" />
+      <p class="font-solina-extended-book text-sm lg:text-lg">
         {{ item.label }}
       </p>
     </div>
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 lg:flex-row lg:justify-around lg:align-items-end lg:mt-10">
       <Button
         class="w-[11.5rem] h-[3.125rem]"
         :label="$t('profile.personal_data.modify_data_button')"

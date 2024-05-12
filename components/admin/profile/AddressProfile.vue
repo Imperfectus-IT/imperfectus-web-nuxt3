@@ -15,8 +15,13 @@ const addresses = [
 </script>
 
 <template>
-  <Panel :header="$t('profile.address.title')">
-    <Divider />
+  <Panel
+    :header="$t('profile.address.title')"
+    :pt="{
+      title: 'font-recoleta-medium text-xl font-medium leading-5',
+    }"
+  >
+    <Divider class="lg:invisible" />
     <div
       v-for="item in addresses"
       :key="item.id"
@@ -43,10 +48,11 @@ const addresses = [
         {{ $t('adminSubscriptionItems.remove') }}
       </NuxtLink>
     </div>
+    <Divider class="invisible lg:visible !my-0 !mb-8" />
     <Button
-      class="h-[3.125rem]"
+      class="h-[3.125rem] lg:w-64"
       :label="$t('profile.address.add_address_button')"
-      :pt="{ label: 'text-sm' }"
+      :pt="{ label: 'text-sm lg:text-lg' }"
       outlined
     />
   </Panel>
