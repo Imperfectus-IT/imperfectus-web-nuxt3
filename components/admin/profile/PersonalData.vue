@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { personalData } = usePersonalDataFactory()
+const { personalData } = defineProps<{
+  personalData: PersonalData
+}>()
 
 const items = [
   {
@@ -40,6 +42,7 @@ const items = [
         :label="$t('profile.personal_data.modify_data_button')"
         :pt="{ label: 'text-sm' }"
         outlined
+        @click.prevent="$emit('on-modify-data', personalData)"
       />
       <Button
         class="w-[11.5rem] h-[3.125rem]"
