@@ -9,9 +9,8 @@
         alt="mi-cuenta-1"
         format="webp"
         loading="lazy"
-        :width="imageWidth"
-        :height="imageHeight"
         fit="cover"
+        class="w-[150px] h-[150px] lg:w-[330px] lg:h-[366px]"
       />
       <div class="flex flex-col w-1/2 lg:w-full">
         <p
@@ -34,9 +33,8 @@
         alt="mi-cuenta-2"
         format="webp"
         loading="lazy"
-        :width="imageWidth"
-        :height="imageHeight"
         fit="cover"
+        class="w-[150px] h-[150px] lg:w-[330px] lg:h-[366px]"
       />
       <!-- TODO User Kgs must be calculated! -->
       <div class="flex flex-col w-1/2 lg:w-full">
@@ -56,22 +54,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
 defineProps<{
-  kgs: string
-}>()
+  kgs: string;
+}>();
 
-const { addResize, removeResize, windowWidth } = useWindowSize()
+const { addResize, removeResize, windowWidth } = useWindowSize();
 
-const imageWidth = computed(() => (windowWidth.value > 1024 ? '330' : '150'))
-const imageHeight = computed(() => (windowWidth.value > 1024 ? '366' : '150'))
+const imageWidth = computed(() => (windowWidth.value > 1024 ? "330" : "150"));
+const imageHeight = computed(() => (windowWidth.value > 1024 ? "366" : "150"));
 
 onMounted(() => {
-  addResize()
-})
+  addResize();
+});
 
 onBeforeUnmount(() => {
-  removeResize()
-})
+  removeResize();
+});
 </script>
