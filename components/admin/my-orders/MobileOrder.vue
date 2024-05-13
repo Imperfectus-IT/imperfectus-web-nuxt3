@@ -1,16 +1,20 @@
 <template>
   <div class="lg:min-w-[900px] lg:max-w-[1500px]">
-    <Panel :header="`Pedido ${order.id}`" class="relative lg:min-h-[500px]">
+    <Panel
+      :header="`Pedido ${order.id}`"
+      :style="{ minHeight: isOneStepOrder }"
+      class="relative lg:min-h-[500px]"
+    >
       <Divider class="mt-2" />
       <p
         v-if="order.status === 'pending'"
-        class="bg-orange-primary  px-2 py-2 rounded-lg mb-3"
+        class="bg-orange-primary px-2 py-2 rounded-lg mb-3"
       >
         Este pedido está pendiente de pago
       </p>
 
       <div v-for="(orderItem, index) in order.orderItems" :key="index">
-        <OrderItemCard :order-item="orderItem" />
+        <OrderItemCard :order-item="orderItem" :order-status="order.status" />
         <OrderProductsCarousel
           v-if="!isCollapsed"
           :products="filteredProducts(orderItem)"
@@ -41,25 +45,25 @@
         <div v-else-if="isCollapsed" class="flex flex-col gap-3 my-7">
           <div class="flex flex-row gap-3">
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
-            <Button
-              outlined
-              label="Detalles del pedido"
-              :pt="{
-                label: 'text-[12px]',
-                root: 'text-green-tertiary border-[1px] bg-beige-primary px-4 py-2 rounded-lg',
-              }"
-            />
-          </NuxtLink>
-          <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
-            <Button
-              outlined
-              label="Finalizar pago"
-              :pt="{
-                label: 'text-[12px]',
-                root: 'text-green-tertiary border-[1px] bg-green-primary px-4 py-2 rounded-lg',
-              }"
-            />
-          </NuxtLink>
+              <Button
+                outlined
+                label="Detalles del pedido"
+                :pt="{
+                  label: 'text-[12px]',
+                  root: 'text-green-tertiary border-[1px] bg-beige-primary px-4 py-2 rounded-lg',
+                }"
+              />
+            </NuxtLink>
+            <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+              <Button
+                outlined
+                label="Finalizar pago"
+                :pt="{
+                  label: 'text-[12px]',
+                  root: 'text-green-tertiary border-[1px] bg-green-primary px-4 py-2 rounded-lg',
+                }"
+              />
+            </NuxtLink>
           </div>
           <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
             <Button
@@ -85,9 +89,11 @@
       </div>
 
       <TKTimeline
-        class="mt-4 lg:absolute lg:top-16 lg:right-0"
+        v-if="order.status !== 'cancelled'"
+        class="mt-6 left-0"
         :order-status="order.status"
       />
+
       <OrderCoupon v-if="!isCollapsed" />
     </Panel>
 
@@ -135,4 +141,9 @@ const filteredProducts = (orderItem: OrderItem) => {
     return !orderItem.exclusions.includes(product.name) && product.isActive;
   });
 };
+
+const isOneStepOrder = computed(() => {
+  const oneStepStatuses = ["refunded", "cancelled", "failed", "replaced"];
+  return oneStepStatuses.includes(props.order.status) ? "150px" : "420px";
+});
 </script>

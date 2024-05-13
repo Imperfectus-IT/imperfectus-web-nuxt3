@@ -14,7 +14,7 @@
           class="mt-7 w-2/3"
         >
           <div class="flex flex-col">
-            <OrderItemCard :order-item="orderItem" />
+            <OrderItemCard :order-item="orderItem" :order-status="order.status" />
             <OrderProductsCarousel
               v-if="!isCollapsed"
               :products="filteredProducts(orderItem)"
@@ -85,13 +85,13 @@
           </div>
         </div>
 
-        <div v-else>
+        <div class="flex flex-row justify-between w-full items-center mt-7" v-else>
           <div
-            class="bg-red-secondary w-1/2 h-9 rounded-lg flex items-center justify-center text-[12px] mt-6"
+            class="bg-red-secondary w-1/4 h-9 rounded-lg flex items-center justify-center text-[12px]"
           >
             {{ $t("string.status.order.cancelled") }}
           </div>
-          <p class="mt-3">Fecha de cancelacion: **********</p>
+          <p>Fecha de cancelacion: **********</p>
           <!-- TODO This is not stored in DB -->
         </div>
       </div>

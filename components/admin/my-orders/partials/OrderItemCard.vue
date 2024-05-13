@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row gap-4 mt-2">
+  <div class="flex flex-row gap-2 mt-2">
     <NuxtImg
       loading="lazy"
       format="webp"
@@ -9,11 +9,11 @@
       alt="next-order"
       class="rounded-lg h-[100px] my-auto"
     />
-    <div class="text-[15px]">
+    <div class="text-[15px] my-auto">
       <h4 class="font-semibold mb-2">
         {{ getBoxSize(orderItem.sku) }}
       </h4>
-      <ul class="ml-2">
+      <ul v-if="orderStatus !== 'cancelled'" class="ml-2">
         <ListItem
           main-class="flex gap-x-2 mb-1 whitespace-nowrap"
           dot-class="text-[8px] my-auto text-green-tertiary"
@@ -21,7 +21,7 @@
         />
         <ListItem
           main-class="flex gap-x-2 mb-1"
-          dot-class="text-[8px] my-auto text-green-tertiary"
+          dot-class="text-[8px] my-auto text-green-tertiary whitespace-nowrap"
           :text="getBoxType(orderItem.sku)"
         />
         <ListItem
@@ -34,7 +34,7 @@
           "
         />
       </ul>
-      <p class="font-bold text-[14px] mt-2 lg:text-[16px]">
+      <p v-if="orderStatus !== 'cancelled'" class="font-bold text-[14px] mt-2 lg:text-[16px]">
         {{ orderItem.amount }}€
       </p>
     </div>
@@ -43,7 +43,8 @@
 
 <script lang="ts" setup>
 defineProps<{
-  orderItem: OrderItem
+  orderItem: OrderItem,
+  orderStatus: string
 }>()
 
 const getBoxSize = (sku: string) => {
