@@ -13,8 +13,13 @@ const { handleDeletePayment } = useDeletePaymentHandler()
 <template>
   <div>
     <Toast />
-    <Panel :header="$t('pages.admin.subscription.adminSubscriptionPaymentTitle')">
-      <Divider />
+    <Panel
+      :header="$t('pages.admin.subscription.adminSubscriptionPaymentTitle')"
+      :pt="{
+        title: 'font-recoleta-medium text-xl font-medium leading-5',
+      }"
+    >
+      <Divider class="lg:invisible" />
       <div
         v-for="item in paymentMethods"
         :key="item.id"
@@ -47,10 +52,11 @@ const { handleDeletePayment } = useDeletePaymentHandler()
           @delete="handleDeletePayment(item.id)"
         />
       </div>
+      <Divider class="invisible lg:visible !my-0 !mb-8" />
       <Button
-        class="h-[3.125rem]"
+        class="h-[3.125rem] lg:w-72"
         :label="$t('adminSubscriptionPayment.addPaymentMethod')"
-        :pt="{ label: 'text-sm' }"
+        :pt="{ label: 'text-sm lg:text-lg' }"
         outlined
       />
     </Panel>

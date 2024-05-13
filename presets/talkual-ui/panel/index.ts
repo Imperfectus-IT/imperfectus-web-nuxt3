@@ -14,7 +14,7 @@ export default {
       // Colors
       'text-green-tertiary',
       'bg-transparent',
-      'pt-4 pb-2 px-4',
+      'pt-6 pb-2 px-6',
       {
         'border rounded-tl-lg rounded-tr-lg': props.toggleable,
       },
@@ -63,7 +63,7 @@ export default {
         'border border-t-0 last:rounded-br-lg last:rounded-bl-lg': props.toggleable,
       },
       // Spacing
-      'px-4 pb-3',
+      'px-6 pb-3',
 
       // Color
       'bg-transparent',
