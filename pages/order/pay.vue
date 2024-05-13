@@ -7,6 +7,13 @@ definePageMeta({
   middleware: ['auth'],
 })
 
+// defineI18nRoute({
+//   paths: {
+//     es: '/order/pay?order=[order]',
+//     ca: '/el-meu-compte/subscripcions/properes-entregues/[id]',
+//   },
+// })
+
 const { t } = useI18n()
 const route = useRoute()
 

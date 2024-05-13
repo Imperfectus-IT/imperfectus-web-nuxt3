@@ -1,7 +1,7 @@
 <template>
   <Panel class="my-5 flex flex-col lg:p-2">
     <div
-      class="flex flex-row gap-1 justify-between lg:order-2 lg:justify-start lg:gap-3 lg:mt-6 relative"
+      class="flex flex-row gap-1 justify-between lg:order-2 lg:justify-start lg:gap-3 lg:mt-6 relative lg:items-center"
     >
       <Button
         :label="status"
@@ -28,7 +28,7 @@
       />
       <p
         v-if="subscription.status === 'cancelled'"
-        class="mt-5 lg:order-3 text-[14px] hidden lg:block lg:mt-0 lg:relative left-[35%]"
+        class="mt-5 lg:order-3 text-[14px] hidden lg:block lg:mt-0 lg:relative left-[35%] "
       >
         Fecha de cancelación: {{ cancelDate }}
       </p>
@@ -45,21 +45,21 @@
     />
 
     <div class="flex justify-end">
-      <Button
+      <NuxtLink :to="`/mi-cuenta/suscripciones/${subscription.id}`">
+        <Button
         v-if="subscription.status === 'active'"
-        class="text-right mt-4 lg:absolute lg:mt-0"
+        class="text-right mt-4 lg:mt-0"
         outlined
         :label="'Editar'"
         :pt="{
           root: 'border-[1px] border-[green-tertiary] px-4  py-2 rounded-lg text-[14px]',
           label: '',
         }"
-      />
+        />
+      </NuxtLink>
+      
     </div>
-    <Divider
-      v-if="subscription.status !== 'cancelled'"
-      class="lg:order-3"
-    />
+    <Divider v-if="subscription.status !== 'cancelled'" class="lg:order-3" />
 
     <div
       v-if="subscription.status === 'active'"
@@ -72,12 +72,15 @@
         <p class="leading-4 mt-2">
           En esta sección puedes <span class="font-bold">cancelar</span>,<span
             class="font-bold"
-          >donar</span>
+            >donar</span
+          >
           o <span class="font-bold">regalar</span> cualquiera de tus próximos
           pedidos
         </p>
       </div>
-      <NuxtLink :to="`/mi-cuenta/suscripciones/proximas-entregas/${subscription.id}`">
+      <NuxtLink
+        :to="`/mi-cuenta/suscripciones/proximas-entregas/${subscription.id}`"
+      >
         <Button
           primary
           :label="'Gestionar próximas entregas'"
@@ -127,40 +130,38 @@
 </template>
 
 <script setup lang="ts">
-import dayjs from 'dayjs'
-import type { SubscriptionStatus } from './types/SubscriptionStatus'
-
-const localePath = useLocalePath()
+import dayjs from "dayjs";
+import type { SubscriptionStatus } from "./types/SubscriptionStatus";
 
 const props = defineProps<{
-  subscription: Subscription
-}>()
+  subscription: Subscription;
+}>();
 
-console.log('subscription from props', props.subscription.status)
+console.log("subscription from props", props.subscription.status);
 
 const frequency = computed(() =>
-  props.subscription.frequency === 'weekly' ? 'Semanal' : 'Quincenal',
-)
+  props.subscription.frequency === "weekly" ? "Semanal" : "Quincenal"
+);
 const status = computed(
   () =>
-    subscriptionStatuses[props.subscription.status as keyof SubscriptionStatus],
-)
+    subscriptionStatuses[props.subscription.status as keyof SubscriptionStatus]
+);
 const backgroundColor = () =>
-  props.subscription.status === 'active'
-    ? 'green-quaternary'
-    : props.subscription.status === 'paused'
-      ? 'orange-primary'
-      : 'red-secondary'
+  props.subscription.status === "active"
+    ? "green-quaternary"
+    : props.subscription.status === "paused"
+    ? "orange-primary"
+    : "red-secondary";
 
 const subscriptionStatuses: SubscriptionStatus = {
-  active: 'Activa',
-  paused: 'Pausada',
-  cancelled: 'Cancelada',
-  failed: 'Failed',
-  waiting: 'Esperando...',
-}
+  active: "Activa",
+  paused: "Pausada",
+  cancelled: "Cancelada",
+  failed: "Failed",
+  waiting: "Esperando...",
+};
 
 const cancelDate = computed(() =>
-  dayjs(props.subscription.cancelledAt).format('DD/MM/YYYY'),
-)
+  dayjs(props.subscription.cancelledAt).format("DD/MM/YYYY")
+);
 </script>

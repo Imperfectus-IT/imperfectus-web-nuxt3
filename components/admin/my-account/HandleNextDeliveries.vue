@@ -8,7 +8,7 @@
     <p>
       {{ $t("profile.my_account.next_deliveries.paragraph_1") }}
     </p>
-    <NuxtLink :to="`admin/subscriptions/upcoming_orders/${subscriptionId}`">
+    <NuxtLink :to="`mi-cuenta/suscripciones/proximas-entregas/${subscriptionId}`">
       <Button
         :label="$t('profile.my_account.next_deliveries.handle_next_deliveries')"
         class="mt-3 mb-2 lg:mt-5"

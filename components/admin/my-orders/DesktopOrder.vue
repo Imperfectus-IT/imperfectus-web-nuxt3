@@ -62,7 +62,7 @@
                 }"
               />
             </NuxtLink>
-            <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
+            <NuxtLink :to="`/order/pay?order=${order.order_id}`">
               <Button
                 outlined
                 label="Finalizar pago"

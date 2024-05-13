@@ -1,4 +1,4 @@
-<template>
+.<template>
   <div
     class="border-green-tertiary border-[1px] rounded-lg p-4 mt-6 font-solina-extended-book"
   >
