@@ -31,7 +31,7 @@
       <NuxtImg
         :key="imageWidth"
         src="images/admin/my-account/mi-cuenta-2.webp"
-        alt="mi-cuenta-1"
+        alt="mi-cuenta-2"
         format="webp"
         loading="lazy"
         :width="imageWidth"
