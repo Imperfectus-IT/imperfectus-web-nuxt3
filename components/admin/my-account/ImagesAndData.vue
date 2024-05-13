@@ -64,8 +64,8 @@ defineProps<{
 
 const { addResize, removeResize, windowWidth } = useWindowSize()
 
-const imageWidth = computed(() => (windowWidth.value > 1024 ? '425' : '150'))
-const imageHeight = computed(() => (windowWidth.value > 1024 ? '440' : '150'))
+const imageWidth = computed(() => (windowWidth.value > 1024 ? '330' : '150'))
+const imageHeight = computed(() => (windowWidth.value > 1024 ? '366' : '150'))
 
 onMounted(() => {
   addResize()
