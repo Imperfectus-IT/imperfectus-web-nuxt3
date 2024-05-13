@@ -3086,6 +3086,8 @@ export default {
     personal_data: {
       modify_data_button: 'Modificar datos',
       change_password_button: 'Cambiar contraseña',
+      save_changes_button: 'Guardar cambios',
+      cancel_changes_button: 'Cancelar',
     },
     language_preference: {
       title: 'Preferencias de idioma',

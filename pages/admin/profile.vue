@@ -9,6 +9,8 @@ defineI18nRoute({
     es: '/mi-cuenta/perfil/',
   },
 })
+const { personalData } = useProfileState()
+const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle()
 </script>
 
 <template>
@@ -16,7 +18,15 @@ defineI18nRoute({
     <HeaderProfile />
     <div class="grid grid-cols-1 gap-5 lg:gap-0 lg:flex lg:flex-col-2 lg:mt-10">
       <ImageProfile />
-      <PersonalData />
+      <PersonalData
+          v-if="!isModifyingProfile"
+          @on-modify-data="handleToggleModifyProfile"
+          :personal-data="personalData"
+      />
+      <PersonalDataForm
+          v-if="isModifyingProfile"
+          @on-modify-data="handleToggleModifyProfile"
+      />
     </div>
     <div class="w-full">
       <LanguagePreference class="mt-5 lg:mt-10" />

@@ -7,7 +7,13 @@ export type ProfileLanguages = {
   code: string
 }
 
+export interface PersonalData {
+  username?: string
+  email: string
+}
+
 export type Profile = {
+  id: number
   company?: string
   email: string
   language: ProfileLanguage

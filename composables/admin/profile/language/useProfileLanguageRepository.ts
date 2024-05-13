@@ -1,5 +1,3 @@
-import type { ProfileLanguage, Profile, ProfileLanguages } from '~/composables/admin/profile/types/Profile.ts'
-
 export const useProfileLanguageRepository = () => {
   const getAll = (): ProfileLanguages[] => {
     return [

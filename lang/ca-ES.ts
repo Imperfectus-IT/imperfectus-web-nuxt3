@@ -3063,6 +3063,8 @@ export default {
     personal_data: {
       modify_data_button: 'Modificar dades',
       change_password_button: 'Canviar contrasenya',
+      save_changes_button: 'Guardar canvis',
+      cancel_changes_button: 'Cancelar',
     },
     language_preference: {
       title: 'Preferències d\'idioma',
