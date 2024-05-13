@@ -23,6 +23,7 @@
     "@vue/test-utils": "^2.4.5",
     "autoprefixer": "^10.4.19",
     "nuxt": "^3.11.2",
+    "nuxt-mdi": "^1.1.6",
     "nuxt-primevue": "^0.3.1",
     "nuxt-svgo": "^4.0.0",
     "nuxt-zod-i18n": "^1.6.0",
