@@ -1,5 +1,5 @@
 <template>
-  <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')">
+  <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')" toggleable>
     <div class="flex flex-col !justify-center !h-full">
       <div
         v-for="(key, index) in Object.keys(props.data)"
