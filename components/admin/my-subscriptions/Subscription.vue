@@ -12,7 +12,7 @@
       />
       <Button
         outlined
-        :label="'Identificador ' + subscription.id"
+        :label="'ID ' + subscription.id"
         :pt="{
           label: 'text-[12px]',
           root: 'p-1.5 border-[green-tertiary] border-[1px] rounded-lg',

@@ -4,10 +4,8 @@
       loading="lazy"
       format="webp"
       :src="orderItem.image"
-      width="140"
-      height="100"
       alt="next-order"
-      class="rounded-lg h-[100px] my-auto !w-[140px]"
+      class="rounded-lg h-[100px] my-auto !w-[130px] "
     />
     <div class="text-[14px] w-1/2 flex flex-col justify-center">
       <h4 class="font-semibold mb-2 ">
@@ -37,6 +35,7 @@
           :text="'Próxima entrega: ' + calculateNextDeliveryDate"
         />
       </ul>
+      ssss
     </div>
   </div>
 </template>
