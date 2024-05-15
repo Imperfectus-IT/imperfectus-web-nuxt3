@@ -32,7 +32,7 @@ const items = [
       class="flex items-center gap-3 mb-5 lg:mb-10 lg:gap-5"
     >
       <span :class="['text-lg lg:text-[2rem]', item.icon]" />
-      <p class="font-solina-extended-book text-sm lg:text-lg">
+      <p class="font-solina-extended-book text-sm lg:text-lg overflow-hidden">
         {{ item.label }}
       </p>
     </div>
