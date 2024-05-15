@@ -1,10 +1,10 @@
 <template>
-  <h4 class="text-[14px] whitespace-normal font-bold mt-2">
+  <h4 class="text-[14px] whitespace-normal font-bold mt-4">
     ¿Tienes un descuento que quieras aplicar?
   </h4>
-  <InputGroup class="mb-2">
+  <InputGroup class="my-2 lg:w-ful flex flex-row">
     <InputText
-      class="rounded-l-xl max-h-[42px] mt-4 lg:w-1/2"
+      class="rounded-l-xl max-h-[42px] lg:w-1/2"
       placeholder="Cupón"
     />
     <InputGroupAddon class="h-2">

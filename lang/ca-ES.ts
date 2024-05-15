@@ -1795,7 +1795,7 @@ export default {
   'adminPaymentMethod.delete': 'Eliminar',
 
   // AdminProfileForm
-  'adminProfileForm.title': 'Dades personals',
+  'adminProfileForm.title': 'Les meves dades personals',
   'adminProfileForm.email': 'Email',
   'adminProfileForm.username': 'Nom a mostrar',
   'adminProfileForm.languagePreference': 'Preferencia d\'idioma',

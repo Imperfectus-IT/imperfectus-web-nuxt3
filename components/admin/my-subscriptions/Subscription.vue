@@ -1,7 +1,7 @@
 <template>
   <Panel class="my-5 flex flex-col lg:p-2">
     <div
-      class="flex flex-row gap-1 justify-between lg:order-2 lg:justify-start lg:gap-3 lg:mt-6 relative lg:items-center"
+      class="flex flex-row gap-1 justify-start lg:order-2 lg:justify-start lg:gap-3 lg:mt-6 relative lg:items-center"
     >
       <Button
         :label="status"
@@ -15,7 +15,7 @@
         :label="'ID ' + subscription.id"
         :pt="{
           label: 'text-[12px]',
-          root: 'p-1.5 border-[green-tertiary] border-[1px] rounded-lg',
+          root: 'p-1.5 bg-grey-quaternary rounded-lg',
         }"
       />
       <Button
@@ -23,7 +23,7 @@
         :label="frequency"
         :pt="{
           label: 'text-[12px]',
-          root: 'px-2 py-1.5 border-[green-tertiary] border-[1px] rounded-lg',
+          root: 'px-2 py-1.5 bg-grey-quaternary rounded-lg',
         }"
       />
       <p

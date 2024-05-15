@@ -1,5 +1,5 @@
 <template>
-  <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')" toggleable>
+  <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')" :toggleable="isToggleable" :collapsed="isToggleable">
     <div class="flex flex-col !justify-center !h-full">
       <div
         v-for="(key, index) in Object.keys(props.data)"
@@ -24,6 +24,12 @@ const props = defineProps<{
   header?: string
   labelKey: string
 }>()
+
+const { isMobile } = useScreenSize();
+
+const isToggleable = computed(() => {
+  return isMobile.value;
+});
 
 const getBillingValue = (key: string) => {
   return props.data[key as keyof Billing]

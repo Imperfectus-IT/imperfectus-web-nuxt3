@@ -90,7 +90,7 @@
 
       <TKTimeline
         v-if="order.status !== 'cancelled'"
-        class="mt-6 left-0"
+        class="mt-3 left-0"
         :order-status="order.status"
       />
 
@@ -101,15 +101,15 @@
       v-if="!isCollapsed"
       class="flex flex-col gap-5 text-green-tertiary lg:grid lg:grid-cols-2 lg:gap-x-5 lg:gap-y-0"
     >
+    <OrderDeliveryPanel
+      class="mt-5"
+      :data="order.deliveryInfo"
+      :label-key="'orders.order.order_delivery'"
+    />
       <OrderBillingPanel
         class="mt-5"
         :data="order.billing"
         :label-key="'orders.order.billing'"
-      />
-      <OrderDeliveryPanel
-        class="mt-5"
-        :data="order.deliveryInfo"
-        :label-key="'orders.order.order_delivery'"
       />
 
       <OrderShippingPanel

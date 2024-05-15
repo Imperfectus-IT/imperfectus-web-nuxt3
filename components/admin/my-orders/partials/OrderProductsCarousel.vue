@@ -1,12 +1,12 @@
 <template>
   <div class=" mt-12 lg:my-12 ">
-    <h4 class="!font-bold text-[14px] mt-4">
+    <h4 class="!font-bold text-[16px] mt-4">
       ¿Qué lleva tu caja?
     </h4>
     <Divider class="mt-2 !w-2/3" />
     <TKCarousel
       :data="products"
-      :visible-items="isMobile ? 5 : 3.5"
+      :visible-items="isMobile ? 4 : 3.5"
       :show-pagination="false"
       :show-navigation="true"
       :image-class="getImageClass"

@@ -35,7 +35,6 @@
           :text="'Próxima entrega: ' + calculateNextDeliveryDate"
         />
       </ul>
-      ssss
     </div>
   </div>
 </template>

@@ -19,9 +19,7 @@
             filter
             option-label="label"
             option-value="value"
-            :placeholder="
-              $t('profile.my_account.preferred_products.fruits.placeholder')
-            "
+            :placeholder="$t('profile.my_account.preferred_products.fruits.placeholder')"
             :selection-limit="2"
             class="w-full border-[1px] rounded-md text-[16px] mt-3"
           />
@@ -133,7 +131,7 @@ const vegetables = [
   },
   {
     label: 'Pepino',
-    value: 'zanahoria',
+    value: 'pepino',
   },
   {
     label: 'Calabacín',

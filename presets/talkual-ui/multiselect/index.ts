@@ -118,7 +118,7 @@ export default {
   panel: {
     class: [
       // Position
-      'absolute top-0 left-0',
+      'absolute top-0 left-0 w-full lg:w-1/2',
 
       // Shape
       'border-0',
@@ -128,7 +128,7 @@ export default {
       // Color
       'bg-beige-primary',
       'text-green-tertiary',
-      'border-none',
+      'border-[1px] border-green-tertiary',
     ],
   },
   header: {

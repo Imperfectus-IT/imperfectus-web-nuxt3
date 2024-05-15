@@ -52,6 +52,5 @@ const getLastOrder = () => {
       />
     </div>
     <HandleNextDeliveries :subscription-id="1234" />
-    <PreferredProducts />
   </div>
 </template>
