@@ -1,6 +1,6 @@
 <template>
   <div v-if="!subscription">cargando...</div>
-  <div v-else class=" lg:w-3/4">
+  <div v-else class="lg:w-3/4">
     <MobileHeader v-if="isMobile" />
     <DesktopHeader v-if="!isMobile" />
     <Panel v-for="nextDeliveryDate in nextDeliveries" class="mt-2 lg:mt-6">
@@ -62,6 +62,13 @@ const getNextDatesFromFrequency = (frequency: string): string[] => {
     dates.push(lowerLimit.format("YYYY-MM-DD"));
     while (lowerLimit.isBefore(upperLimit)) {
       lowerLimit = lowerLimit.add(1, "week");
+      dates.push(lowerLimit.format("YYYY-MM-DD"));
+    }
+    dates.push(upperLimit.format("YYYY-MM-DD"));
+  } else if (frequency === 'biweekly') {
+    dates.push(lowerLimit.format("YYYY-MM-DD"));
+    while (lowerLimit.isBefore(upperLimit)) {
+      lowerLimit = lowerLimit.add(2, "week");
       dates.push(lowerLimit.format("YYYY-MM-DD"));
     }
     dates.push(upperLimit.format("YYYY-MM-DD"));

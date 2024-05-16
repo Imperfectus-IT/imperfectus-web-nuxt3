@@ -6,7 +6,7 @@
       <Button
         :label="status"
         :pt="{
-          root: ` bg-${backgroundColor()} py-1.5 px-4 rounded-lg text-[12px] lg:px-8`,
+          root: ` bg-${backgroundColor()} py-1.5 px-4 rounded-lg text-[12px] lg:px-8 cursor-default`,
           label: '',
         }"
       />
@@ -15,7 +15,7 @@
         :label="'ID ' + subscription.id"
         :pt="{
           label: 'text-[12px]',
-          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8',
+          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 cursor-default',
         }"
       />
       <Button
@@ -23,7 +23,7 @@
         :label="frequency"
         :pt="{
           label: 'text-[12px]',
-          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8',
+          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 cursor-default',
         }"
       />
       <p
