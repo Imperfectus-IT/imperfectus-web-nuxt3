@@ -5,13 +5,15 @@
     <DesktopHeader v-if="!isMobile" />
     <Panel v-for="nextDeliveryDate in nextDeliveries" class="mt-2 lg:mt-6">
       <div class="flex flex-col lg:flex-row lg:justify-between">
-        <SubscriptionItemCard
+        <div class="flex flex-col">
+          <SubscriptionItemCard
           v-for="subscriptionItem in subscription.subscriptionItems"
           :subscription-item="subscriptionItem"
           :preferred-day="subscription.preferredDay"
           :subscription-status="subscription.status"
           :next-delivery-date="calculateNextDeliveryDate(nextDeliveryDate)"
         />
+        </div>
         <div class="flex flex-col gap-2 mt-3">
           <Button
             :disabled="deactivateButtons"
