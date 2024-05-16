@@ -574,7 +574,7 @@ export default {
 
   'pages.cookies.title': 'Hola',
 
-  'cookies': {
+  cookies: {
     header: 'Política de cookies',
     introduction: 'Este sitio web utiliza cookies propias y de terceros para ofrecerle una mejor experiencia y servicio. Al navegar o utilizar nuestros servicios el usuario acepta el uso que hacemos de las cookies. Sin embargo, el usuario tiene la opción de impedir la generación de cookies y la eliminación de las mismas.',
     what: {

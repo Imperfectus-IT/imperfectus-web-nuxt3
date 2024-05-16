@@ -10,8 +10,7 @@ defineI18nRoute({
   },
 });
 const { personalData } = useProfileState();
-const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } =
-  useToggle();
+const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle();
 </script>
 
 <template>
