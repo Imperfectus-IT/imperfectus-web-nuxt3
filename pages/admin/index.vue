@@ -39,7 +39,7 @@ const getLastOrder = () => {
 </script>
 
 <template>
-  <div class="lg:mt-2 xl:w-full 2xl:px-64">
+  <div class="lg:mt-2 xl:w-full">
     <Introduction :user="user" />
     <ImagesAndData kgs="50" />
     <div v-if="isLoading">

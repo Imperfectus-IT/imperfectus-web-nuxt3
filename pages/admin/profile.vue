@@ -15,7 +15,7 @@ const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } =
 </script>
 
 <template>
-  <section class="w-full 2xl:px-64">
+  <section class="w-full">
     <HeaderProfile />
     <div class="grid grid-cols-1 gap-5 lg:gap-0 lg:flex lg:flex-col-2">
       <ImageProfile class="hidden lg:block" />

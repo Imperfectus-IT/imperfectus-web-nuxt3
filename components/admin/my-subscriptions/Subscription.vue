@@ -1,5 +1,5 @@
 <template>
-  <Panel class="my-5 flex flex-col lg:p-2 lg:relative">
+  <Panel class="my-5 flex flex-col lg:p-2 lg:relative min-w-[900px]">
     <div
       class="flex flex-row gap-1 justify-start lg:order-2 lg:justify-start lg:gap-4 lg:mt-6 relative lg:items-center"
     >
