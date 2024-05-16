@@ -34,7 +34,9 @@ defineI18nRoute({
 
 const { subscriptions } = useGetSubscriptionsHandler()
 
-watch(subscriptions, () =>
-  console.log('subscriptions', JSON.parse(JSON.stringify(subscriptions.value))),
-)
 </script>
+
+1x caja pequeña
+sin exlcusiones
+entrega: jueves
+Proxima entrega

@@ -66,6 +66,6 @@ const getBoxType = (sku: string) => {
 }
 
 const getBoxFrequency = (sku: string) => {
-  return sku.includes('1') ? 'Cada semana' : 'Cada 2 semanas'
+  return sku.includes('1') ? 'Cada semana' : sku.includes('2') ? 'Cada 2 semanas' : 'Compra única'
 }
 </script>

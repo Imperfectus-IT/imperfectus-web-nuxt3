@@ -35,7 +35,6 @@ defineProps<{
 }>()
 
 const getImageClass = computed(() => {
-  console.log(isMobile)
   return isMobile.value ? ' w-[50px] h-[50px] object-cover' : ' w-[140px] h-[140px] object-cover'
 })
 </script>

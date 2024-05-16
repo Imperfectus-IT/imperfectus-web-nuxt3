@@ -57,7 +57,6 @@ const productsToShow: ComputedRef<Product[]> = computed(() => {
     return activeProducts.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
   }
   else {
-    console.log(activeProducts.value)
     return activeProducts.value
   }
 })

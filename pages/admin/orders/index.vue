@@ -73,7 +73,6 @@ watch(orders, (newOrders) => {
 });
 
 const filterSelectedOrders = (payload: string) => {
-  console.log(payload)
   if(payload === 'all') {
     return ordersToShow.value = [...orders.value]
   } else if(payload === 'current') {

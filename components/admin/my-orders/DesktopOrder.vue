@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-[900px] max-w-[1100px] 2xl:max-w-[1400px]">
+  <div class="min-w-[600px] max-w-[1100px] 2xl:max-w-[1400px]">
     <Panel
       :header="`Pedido ${order.id}`"
       :style="{ minHeight: isOneStepOrder }"

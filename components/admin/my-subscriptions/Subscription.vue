@@ -1,12 +1,12 @@
 <template>
-  <Panel class="my-5 flex flex-col lg:p-2">
+  <Panel class="my-5 flex flex-col lg:p-2 lg:relative">
     <div
-      class="flex flex-row gap-1 justify-start lg:order-2 lg:justify-start lg:gap-3 lg:mt-6 relative lg:items-center"
+      class="flex flex-row gap-1 justify-start lg:order-2 lg:justify-start lg:gap-4 lg:mt-6 relative lg:items-center"
     >
       <Button
         :label="status"
         :pt="{
-          root: ` bg-${backgroundColor()} py-1.5 px-2 rounded-lg text-[12px]`,
+          root: ` bg-${backgroundColor()} py-1.5 px-4 rounded-lg text-[12px] lg:px-8`,
           label: '',
         }"
       />
@@ -15,7 +15,7 @@
         :label="'ID ' + subscription.id"
         :pt="{
           label: 'text-[12px]',
-          root: 'p-1.5 bg-grey-quaternary rounded-lg',
+          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8',
         }"
       />
       <Button
@@ -23,7 +23,7 @@
         :label="frequency"
         :pt="{
           label: 'text-[12px]',
-          root: 'px-2 py-1.5 bg-grey-quaternary rounded-lg',
+          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8',
         }"
       />
       <p
@@ -35,20 +35,20 @@
     </div>
 
     <SubscriptionItemCard
-      v-for="(orderItem, index) in subscription.subscriptionItems"
+      v-for="(subscriptionItem, index) in subscription.subscriptionItems"
       :key="index"
-      :order-item="orderItem"
-      :next-payment="subscription.nextPayment"
+      :next-delivery-date="subscription.nextPayment"
+      :subscription-item="subscriptionItem"
       :preferred-day="subscription.preferredDay"
       :subscription-status="subscription.status"
       class="mt-8 lg:mt-2 lg:order-1"
     />
 
-    <div class="flex justify-end">
-      <NuxtLink :to="`/mi-cuenta/suscripciones/${subscription.id}`">
+    <div class="flex justify-end ">
+      <NuxtLink class="lg:absolute lg:top-5" :to="`/mi-cuenta/suscripciones/${subscription.id}`">
         <Button
         v-if="subscription.status === 'active'"
-        class="text-right mt-4 lg:mt-0"
+        class="text-right mt-4 lg:mt-0 "
         outlined
         :label="'Editar'"
         :pt="{
@@ -136,8 +136,6 @@ import type { SubscriptionStatus } from "./types/SubscriptionStatus";
 const props = defineProps<{
   subscription: Subscription;
 }>();
-
-console.log("subscription from props", props.subscription.status);
 
 const frequency = computed(() =>
   props.subscription.frequency === "weekly" ? "Semanal" : "Quincenal"

@@ -8,7 +8,7 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
     cancelledAt: subscription.cancelledAt,
     subscriptionItems: subscription.subscription_items.map((item: any) => {
       return {
-        price: item.price,
+        amount: item.amount,
         sku: item.product.SKU,
         image: `images/boxes/Caixa-${getBoxImage(item?.product.SKU)}.webp`,
         exclusions: item.exclusions.map((exclusion: any) => {

@@ -504,7 +504,7 @@ export default {
     ],
   },
   filtericon: {
-    class: ['absolute', 'top-1/2 left-3', '-mt-2'],
+    class: ['absolute', 'top-1/2 right-4', '-mt-2'],
   },
   clearicon: {
     class: [
