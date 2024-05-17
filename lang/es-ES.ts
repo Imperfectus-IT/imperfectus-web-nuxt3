@@ -3217,6 +3217,8 @@ export default {
     donate_to_ong: {
       title: 'Donar a una ONG',
       description: 'En TALKUAL colaboramos con varias ONGs, elige la que quieras para donar esta entrega.',
+      donate_button: 'Donar',
+      cancel_button: 'Cancelar',
       ong_1: {
         title: 'Fundació Arrels',
         description: 'Su misión es acoger, acompañar y defender a las personas en situación de más vulnerabilidad en Lérida.',
@@ -3246,5 +3248,11 @@ export default {
         description_link: 'http://fundacionmona.org/'
       }
     },
+    skip_order: {
+      title: 'Cancelar pedido',
+      description: '¿Quieres cancelar esta entrega?',
+      cancel_button: 'Cancelar',
+      skip_button: 'Cancelar entrega'
+    }
   }
 }

@@ -17,45 +17,79 @@
             :next-delivery-date="calculateNextDeliveryDate(nextDeliveryDate)"
           />
         </div>
-        <div class="flex flex-col gap-2 mt-3">
+        <div
+          v-if="!isSkipped(nextDeliveryDate)"
+          class="flex flex-col gap-2 mt-3"
+        >
           <Button
-            :disabled="deactivateButtons"
+            :disabled="
+              displayDonateToONG[index] || displayCancelDelivery[index]
+            "
             outlined
             label="Regalar a un amigx"
             :pt="{
-              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48',
+              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48 disabled:opacity-50',
             }"
-            @click="toggleDisplayGiftToFriend(index)"
+            @click="setDisplayGiftToFriend(index, true)"
           />
           <Button
+            :disabled="
+              displayGiftToFriend[index] || displayCancelDelivery[index]
+            "
             outlined
             :pt="{
-              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48',
+              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48 disabled:opacity-50',
             }"
             label="Donar a ONG"
-            @click="toggleDisplayDonateToONG(index)"
+            @click="setDisplayDonateToONG(index, true)"
           />
           <Button
+            :disabled="displayGiftToFriend[index] || displayDonateToONG[index]"
             outlined
             :pt="{
-              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48',
+              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48 disabled:opacity-50',
             }"
             label="Cancelar entrega"
-            @click=toggleDisplayCancelDelivery(index)
+            @click="setDisplayCancelDelivery(index, true)"
           />
         </div>
+        <div class="lg:my-auto text-[16px] mt-4" v-else>
+          <div class="flex flex-row lg:relative">
+            <span class="mdi mdi-close border-[2px] border-red-primary text-red-primary rounded-full w-[24px] h-[24px] text-center lg:absolute lg:-left-8 "></span>
+            <p class="text-end ml-2 lg:ml-0">Pedido cancelado</p>
+          </div>
+          <p @click="removeSkip(nextDeliveryDate)" class="underline mt-2 lg:text-right lg:mt-5 cursor-pointer">Editar pedido</p>
+        </div>
       </div>
-      <GiftToFriend v-if="displayGiftToFriend[index]" />
-      <DonateONG v-if="displayDonateToONG[index]" />
-      <SkipAnOrder v-if="displayCancelDelivery[index]" />
+      <GiftToFriend
+        v-if="displayGiftToFriend[index]"
+        @close-form="setDisplayGiftToFriend(index, false)"
+        @gift-to-friend="((payload: FormData) => giftToFriend(payload, index))"
+      />
+      <DonateONG
+        :subscription-id="subscription.id"
+        v-if="displayDonateToONG[index]"
+        @close-form="setDisplayDonateToONG(index, false)"
+        @donate-to-ong="(ong: string) => donateOrder(subscription.id, ong, index)"
+      />
+      <SkipAnOrder
+        v-if="displayCancelDelivery[index]"
+        @close-form="setDisplayCancelDelivery(index, false)"
+        @skip-order="skipOrder(subscription.id, nextDeliveryDate, index)"
+      />
     </Panel>
   </div>
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
 import dayjs from "dayjs";
 import type { DayMapping } from "~/components/admin/my-subscriptions/types/DayMapping";
+
+const skips = ref<string[]>(["2024-06-09"]);
+
+const isSkipped = (date: string) => {
+  return skips.value.includes(date);
+};
 
 definePageMeta({
   layout: "admin",
@@ -69,6 +103,7 @@ defineI18nRoute({
   },
 });
 
+const route = useRoute();
 const { isMobile } = useScreenSize();
 const { subscriptions } = useGetSubscriptionsHandler();
 const subscription = ref<Subscription>({} as Subscription);
@@ -77,34 +112,35 @@ const displayGiftToFriend = ref<Record<string, boolean>>({});
 const displayDonateToONG = ref<Record<string, boolean>>({});
 const displayCancelDelivery = ref<Record<string, boolean>>({});
 
-const toggleDisplayGiftToFriend = (index: number) => {
-  if (index in displayGiftToFriend.value) {
-    displayGiftToFriend.value[index] = !displayGiftToFriend.value[index];
-  } else {
-    displayGiftToFriend.value[index] = true;
-  }
+const skipOrder = (subscriptionID: number, paymentDate: string, index: number) => {
+  skips.value.push(paymentDate)
+
+  setDisplayCancelDelivery(index, false);
 };
 
-const toggleDisplayDonateToONG = (index: number) => {
-  console.log(index);
-  if (index in displayDonateToONG.value) {
-    displayDonateToONG.value[index] = !displayDonateToONG.value[index];
-  } else {
-    displayDonateToONG.value[index] = true;
-  }
+const removeSkip = (paymentDate: string) => {
+  skips.value = skips.value.filter(skip => skip !== paymentDate)
+}
+
+const donateOrder = (subscriptionID: number, ong: string, index: number) => {
+  setDisplayDonateToONG(index, false);
 };
 
-const toggleDisplayCancelDelivery = (index: number) => {
-  if (index in displayCancelDelivery.value) {
-    displayCancelDelivery.value[index] = !displayCancelDelivery.value[index];
-  } else {
-    displayCancelDelivery.value[index] = true;
-  }
+const giftToFriend = (formData: FormData, index: number) => {
+  setDisplayGiftToFriend(index, false);
 };
 
-const deactivateButtons = computed(() => {
-  return dayjs(subscription.value?.nextPayment).isBefore(dayjs());
-});
+const setDisplayGiftToFriend = (index: number, value: boolean) => {
+  displayGiftToFriend.value[index] = value;
+};
+
+const setDisplayDonateToONG = (index: number, value: boolean) => {
+  displayDonateToONG.value[index] = value;
+};
+
+const setDisplayCancelDelivery = (index: number, value: boolean) => {
+  displayCancelDelivery.value[index] = value;
+};
 
 const getNextDatesFromFrequency = (frequency: string): string[] => {
   const upperLimit = dayjs(subscription.value?.nextPayment).add(6, "months");
