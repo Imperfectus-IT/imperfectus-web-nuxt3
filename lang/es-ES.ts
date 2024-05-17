@@ -3169,5 +3169,82 @@ export default {
       },
     },
   },
-
+  upcoming_orders: {
+    title: 'Próximas entregas',
+    description_1: '',
+    gift_to_friend: {
+      title: 'Regala a un amigx',
+      description: 'Introduce los datos de tu amigx para poder enviarle esta entrega:',
+      field_1: {
+        label: 'Nombre',
+        value: 'name'
+      },
+      field_2: {
+        label: 'Apellidos',
+        value: 'surname'
+      }, 
+      field_3: {
+        label: 'Email',
+        value: 'email'
+      }, 
+      field_4: {
+        label: 'Teléfono de contacto',
+        value: 'phone'
+      }, 
+      field_5: {
+        label: 'Dirección (calle y número)',
+        value: 'address'
+      }, 
+      field_6: {
+        label: 'Piso y puerta',
+        value: 'addressDetails'
+      }, 
+      field_7: {
+        label: 'Código Postal',
+        value: 'cp'
+      }, 
+      field_8: {
+        label: 'Localidad',
+        value: 'city'
+      }, 
+      field_9: {
+        label: 'Observaciones',
+        value: 'comments'
+      },
+      gift_button: 'Regalar',
+      cancel_button: 'Cancelar'
+    },
+    donate_to_ong: {
+      title: 'Donar a una ONG',
+      description: 'En TALKUAL colaboramos con varias ONGs, elige la que quieras para donar esta entrega.',
+      ong_1: {
+        title: 'Fundació Arrels',
+        description: 'Su misión es acoger, acompañar y defender a las personas en situación de más vulnerabilidad en Lérida.',
+        description_title: '¿A quién irá destinado mi pedido?',
+        description_1: 'La donación de tu pedido TALKUAL irá destinado a las personas que hagan uso del ',
+        description_2_bold: 'Servicio de distribución de alimentos “La Botigueta” ',
+        description_3: 'donde se facilita el acceso a derechos básicos como la alimentación a personas en situación de vulnerabilidad. Además, también serán distribuidos a las personas que se alojen en alguno de los ',
+        description_4_bold: 'pisos de apoyo de la fundación ',
+        description_5: 'para personas que, por su situación, necesitan un alojamiento digno para poder continuar su camino hacia una vida autónoma. ',
+        description_6: 'Para más info, visítanos en ',
+        description_link: 'https://arrelssantignasi.cat/',
+        button: 'Más info',
+      },
+      ong_2: {
+        title: 'Asociación Somos de Segundas Oportunidades',
+        description: 'Su misión es restaurar vidas dañadas. Están dirigidos a todas aquellas personas en exclusión social, centrándose en dos áreas de influencia: Centros Penitenciarios y Poblados Marginales, principalmente en la ciudad de Madrid.',
+        description_title: '¿A quién irá destinado mi pedido?',
+        description_1: 'La donación de tu pedido TALKUAL irá destinado los usuarios de los diferentes programas que posee la Asociación que ayudarán a la recuperación, transformación e inclusión social de las personas en estado de riesgo y vulnerabilidad. Trabajamos con familias donde hay mucha necesidad de alimentos, tu donación será distribuida a cada familia usuaria del programa Brazos de Amor (Construyendo Legado), sabiendo que la familia es el núcleo de la sociedad, ayudando así a construir familias sanas, lo que ayuda a la prevención de exclusión social en un futuro. ',
+        description_2: 'Para más info visita ',
+        description_link: 'https://www.somosdesegundasoportunidades.org'
+      },
+      ong_3: {
+        title: 'Fundació Mona',
+        description: 'Rescatan primates que fueron artistas de circo, televisión o incluso mascotas. Muchos sufrieron años de soledad y maltrato. Su centro de rehabilitación les brinda un hogar para toda la vida, donde se recuperan en compañía de sus congéneres, en un entorno natural y respetuoso.',
+        description_title: '¿A quién irá destinado mi pedido?',
+        description_1: 'Los primates rescatados que viven en su Centro de Recuperación necesitan a la semana más de media tonelada de fruta y verdura variada, frutos secos, legumbres... Además de vitaminas y otros suplementos para los chimpancés que superan los 40 años. Con tu donación colaboras a alimentarlos y sumas para que tengan una nueva vida mejor. Para más info: ',
+        description_link: 'http://fundacionmona.org/'
+      }
+    },
+  }
 }

@@ -26,7 +26,9 @@ import toast from './toast/index.ts'
 import toolbar from './toolbar/index.ts'
 import stepper from './stepper/index.ts'
 import steps from './steps/index.ts'
+import textarea from './textarea/index.ts'
 import timeline from './timeline/index.ts'
+
 
 export default {
   global,
@@ -53,6 +55,7 @@ export default {
   rating,
   sidebar,
   skeleton,
+  textarea,
   timeline,
   toast,
   toolbar,

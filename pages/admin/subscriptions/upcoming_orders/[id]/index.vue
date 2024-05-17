@@ -3,27 +3,51 @@
   <div v-else class="lg:w-3/4">
     <MobileHeader v-if="isMobile" />
     <DesktopHeader v-if="!isMobile" />
-    <Panel v-for="nextDeliveryDate in nextDeliveries" class="mt-2 lg:mt-6">
+    <Panel
+      v-for="(nextDeliveryDate, index) in nextDeliveries"
+      class="mt-2 lg:mt-6"
+    >
       <div class="flex flex-col lg:flex-row lg:justify-between">
         <div class="flex flex-col">
           <SubscriptionItemCard
-          v-for="subscriptionItem in subscription.subscriptionItems"
-          :subscription-item="subscriptionItem"
-          :preferred-day="subscription.preferredDay"
-          :subscription-status="subscription.status"
-          :next-delivery-date="calculateNextDeliveryDate(nextDeliveryDate)"
-        />
+            v-for="subscriptionItem in subscription.subscriptionItems"
+            :subscription-item="subscriptionItem"
+            :preferred-day="subscription.preferredDay"
+            :subscription-status="subscription.status"
+            :next-delivery-date="calculateNextDeliveryDate(nextDeliveryDate)"
+          />
         </div>
         <div class="flex flex-col gap-2 mt-3">
           <Button
             :disabled="deactivateButtons"
             outlined
             label="Regalar a un amigx"
+            :pt="{
+              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48',
+            }"
+            @click="toggleDisplayGiftToFriend(index)"
           />
-          <Button outlined label="Donar a ONG" />
-          <Button outlined label="Cancelar entrega" />
+          <Button
+            outlined
+            :pt="{
+              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48',
+            }"
+            label="Donar a ONG"
+            @click="toggleDisplayDonateToONG(index)"
+          />
+          <Button
+            outlined
+            :pt="{
+              root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48',
+            }"
+            label="Cancelar entrega"
+            @click=toggleDisplayCancelDelivery(index)
+          />
         </div>
       </div>
+      <GiftToFriend v-if="displayGiftToFriend[index]" />
+      <DonateONG v-if="displayDonateToONG[index]" />
+      <SkipAnOrder v-if="displayCancelDelivery[index]" />
     </Panel>
   </div>
 </template>
@@ -46,11 +70,37 @@ defineI18nRoute({
 });
 
 const { isMobile } = useScreenSize();
-
 const { subscriptions } = useGetSubscriptionsHandler();
-
 const subscription = ref<Subscription>({} as Subscription);
 const nextDeliveries = ref<string[]>([]);
+const displayGiftToFriend = ref<Record<string, boolean>>({});
+const displayDonateToONG = ref<Record<string, boolean>>({});
+const displayCancelDelivery = ref<Record<string, boolean>>({});
+
+const toggleDisplayGiftToFriend = (index: number) => {
+  if (index in displayGiftToFriend.value) {
+    displayGiftToFriend.value[index] = !displayGiftToFriend.value[index];
+  } else {
+    displayGiftToFriend.value[index] = true;
+  }
+};
+
+const toggleDisplayDonateToONG = (index: number) => {
+  console.log(index);
+  if (index in displayDonateToONG.value) {
+    displayDonateToONG.value[index] = !displayDonateToONG.value[index];
+  } else {
+    displayDonateToONG.value[index] = true;
+  }
+};
+
+const toggleDisplayCancelDelivery = (index: number) => {
+  if (index in displayCancelDelivery.value) {
+    displayCancelDelivery.value[index] = !displayCancelDelivery.value[index];
+  } else {
+    displayCancelDelivery.value[index] = true;
+  }
+};
 
 const deactivateButtons = computed(() => {
   return dayjs(subscription.value?.nextPayment).isBefore(dayjs());
@@ -67,7 +117,7 @@ const getNextDatesFromFrequency = (frequency: string): string[] => {
       dates.push(lowerLimit.format("YYYY-MM-DD"));
     }
     dates.push(upperLimit.format("YYYY-MM-DD"));
-  } else if (frequency === 'biweekly') {
+  } else if (frequency === "biweekly") {
     dates.push(lowerLimit.format("YYYY-MM-DD"));
     while (lowerLimit.isBefore(upperLimit)) {
       lowerLimit = lowerLimit.add(2, "week");

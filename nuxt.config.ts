@@ -108,6 +108,7 @@ export default defineNuxtConfig({
         'Sidebar',
         'Skeleton',
         'Steps',
+        'Textarea',
         'Timeline',
         'Toast',
         'Toolbar',
