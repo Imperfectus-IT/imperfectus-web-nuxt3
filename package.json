@@ -12,16 +12,19 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
-    "test-e2e": "playwright test"
+    "test-e2e": "playwright test",
+    "test-e2e-ui": "playwright test --ui"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.3.10",
     "@nuxt/test-utils": "^3.12.1",
     "@nuxtjs/i18n": "^8.3.1",
     "@nuxtjs/tailwindcss": "^6.12.0",
-    "@playwright/test": "^1.43.1",
-    "@vue/test-utils": "^2.4.5",
+    "@playwright/test": "^1.44.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.19",
+    "happy-dom": "^14.11.1",
     "nuxt": "^3.11.2",
     "nuxt-mdi": "^1.1.6",
     "nuxt-primevue": "^0.3.1",
@@ -31,17 +34,17 @@
     "sass": "^1.74.1",
     "typescript": "^5.4.4",
     "vite-plugin-eslint2": "^4.4.0",
-    "vitest": "^1.5.3",
+    "vitest": "^1.6.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vue-tsc": "^1.8.27",
     "zod": "^3.22.4"
   },
   "dependencies": {
-    "@nuxt/image": "^1.5.0",
+    "@nuxt/image": "^1.7.0",
     "@nuxtjs/strapi": "^1.12.0",
     "dayjs": "^1.11.11",
-    "primevue": "^3.51.0",
+    "primevue": "^3.52.0",
     "tailwindcss-animations": "^2.0.0",
     "vue3-carousel-nuxt": "^1.1.1"
   },
