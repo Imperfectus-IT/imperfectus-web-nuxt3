@@ -31,6 +31,7 @@
     "nuxt-svgo": "^4.0.0",
     "nuxt-zod-i18n": "^1.6.0",
     "path": "^0.12.7",
+    "playwright": "^1.44.1",
     "sass": "^1.74.1",
     "typescript": "^5.4.4",
     "vite-plugin-eslint2": "^4.4.0",

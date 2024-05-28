@@ -4,7 +4,7 @@ import type { ConfigOptions } from '@nuxt/test-utils/playwright'
 
 const devicesToTest = [
   'Desktop Chrome',
-  'iPhone 12',
+  'Mobile Chrome',
 ] satisfies Array<string | typeof devices[string]>
 
 /* See https://playwright.dev/docs/test-configuration. */
