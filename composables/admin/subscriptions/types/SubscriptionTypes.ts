@@ -8,7 +8,9 @@ export type Subscription = {
   nextPayment: string
   cancelledAt: string
   preferredDay: keyof DayMapping
-  subscriptionItems: SubscriptionItem[]
+  subscriptionItems: SubscriptionItem[],
+  donations: string[],
+  subscriptionMeta: SubscriptionMeta
 }
 
 export type SubscriptionItem = {
@@ -16,4 +18,17 @@ export type SubscriptionItem = {
   sku: string
   exclusions: string[]
   image: string
+}
+
+export type SubscriptionMeta = {
+  shipping_address1: string,
+  shipping_address2: string,
+  shipping_city: string,
+  shipping_country: string,
+  shipping_email: string,
+  shipping_firstname: string,
+  shipping_lastname: string,
+  shipping_phone: string,
+  shipping_postcode: string,
+  shipping_state: string,
 }

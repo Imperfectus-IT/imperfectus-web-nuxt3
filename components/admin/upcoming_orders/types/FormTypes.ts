@@ -1,5 +1,5 @@
-export type Payload = {
-  payload: string;
+export type InputPayload = {
+  data: string;
   id: string;
 }
 

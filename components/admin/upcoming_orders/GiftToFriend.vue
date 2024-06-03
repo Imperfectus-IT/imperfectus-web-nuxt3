@@ -6,7 +6,7 @@
   <div class="lg:grid lg:grid-cols-3">
     <InputFriendForm
       v-for="field in inputText.fields"
-      @update-value="(payload: Payload) => updateDataFormValue(payload)"
+      @update-value="(payload: InputPayload) => updateDataFormValue(payload)"
       :label-text="$t(`${inputText.fragment}.field_${field}.label`)"
       :id="$t(`${inputText.fragment}.field_${field}.value`)"
       :input-class="'text-[15px] !h-14'"
@@ -20,7 +20,7 @@
       :textarea-class="'text-[15px] !mt-1 lg:w-11/12'"
       :rows="6"
       class="lg:row-start-4 lg:col-start-1"
-      @update-value="(payload: Payload) => updateDataFormValue(payload)"
+      @update-value="(payload: InputPayload) => updateDataFormValue(payload)"
     />
   </div>
   <div class="mt-5 mb-2 flex flex-row gap-2">
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FriendForm, Payload } from "./types/FormTypes";
+import type { FriendForm, InputPayload } from "./types/FormTypes";
 
 const emit = defineEmits(["close-form", "gift-to-friend"]);
 const closeForm = () => emit("close-form");
@@ -69,8 +69,8 @@ const formData: FriendForm = reactive({
   comments: "",
 });
 
-const updateDataFormValue = (payload: Payload) => {
-  formData[payload.id as keyof FriendForm] = payload.payload;
+const updateDataFormValue = (payload: InputPayload) => {
+  formData[payload.id as keyof FriendForm] = payload.data;
 };
 
 const inputText = {

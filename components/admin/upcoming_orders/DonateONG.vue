@@ -5,12 +5,9 @@
   </div>
 
   <Panel
-    v-for="(ong, index) in ONGsData"
-    :class="['mt-4 cursor-pointer lg:flex lg:flex-row lg:jus lg:w-3/4', getBackgroundColor(ong.name)]"
-    :pt="!isMobile ? {
-      content: 'flex flex-row'
-    } : {}"
-    @click="selectONG(ong.name)"
+    v-for="(ong, index) in ONGsData" :class="['mt-4 cursor-pointer lg:flex lg:flex-row lg:jus lg:w-3/4', getBackgroundColor(ong.name)]"
+    :pt="!isMobile ? { content: 'flex flex-row' } : {} "
+    @click="selectONG(ong)"
   >
     <div class="flex flex-row items-center lg:block mt-3">
       <NuxtImg
@@ -25,7 +22,7 @@
     </div>
 
     <div class="text-[14px] mt-3 lg:w-3/4 lg:text-[16px] lg:mx-auto">
-      <p v-if=!isMobile class="text-[18px] font-bold leading-8">
+      <p v-if="!isMobile" class="text-[18px] font-bold leading-8">
         {{ $t(`${ong.fragment}.title`) }}
       </p>
       <p>{{ $t(`${ong.fragment}.description`) }}</p>
@@ -87,19 +84,17 @@
 </template>
 
 <script setup lang="ts">
-
-
 const { isMobile } = useScreenSize();
-const imageWidth = computed(() => isMobile ? '100px' : '130px')
-const imageHeight = computed(() => isMobile ? '90px' : '120px')
 
-const selectedONG = ref<string>("");
-const selectONG = (ong: string) => {
-  selectedONG.value = ong;
+const selectedONG = ref<ONG>();
+const selectONG = (ongData: ONG) => {
+  selectedONG.value = ONGsData.find((ong: ONG) => ongData.name === ong.name)
 };
 
 const getBackgroundColor = (name: string) => {
-  return selectedONG.value === name ? "bg-green-quaternary" : "";
+  if(selectedONG.value){
+    return selectedONG.value.name === name ? "bg-green-quaternary" : "";
+  }
 };
 
 const isCollapsed = ref<Record<string, boolean>>({});
@@ -116,7 +111,7 @@ const toggleIsCollapsed = (index: number) => {
 };
 
 const createHandleDisplayObject = () => {
-  ONGsData.forEach((ong, index) => {
+  ONGsData.forEach((_, index) => {
     isCollapsed.value[index] = true;
   });
 };
@@ -125,8 +120,26 @@ onMounted(() => {
   createHandleDisplayObject();
 });
 
+export type ONG = {
+  name: string;
+  fragment: string;
+  description_sections: string[];
+  image: string;
+  link: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  country: string;
+  postcode: string;
+  phone: string;
+};
+
 const fragmentName = "upcoming_orders.donate_to_ong";
-const ONGsData = [
+const ONGsData: ONG[] = [
   {
     name: "Arrels",
     fragment: `${fragmentName}.ong_1`,
@@ -140,6 +153,16 @@ const ONGsData = [
     ],
     image: "arrels.webp",
     link: "description_link",
+    firstname: "Arrels Sant Ignasi",
+    lastname: "",
+    email: "aliments@arrelssantignasi.cat",
+    address1: "Carrer del Bruc, 2 bajos",
+    address2: "",
+    city: "Lleida",
+    state: "Lleida",
+    country: "ES",
+    postcode: "25001",
+    phone: "+34973289000",
   },
   {
     name: "Segundas Oportunidades",
@@ -147,6 +170,16 @@ const ONGsData = [
     description_sections: ["description_1", "description_2"],
     image: "segundas_oportunidades.webp",
     link: "description_link",
+    firstname: "Rosmar",
+    lastname: "Colmenter Fernández",
+    email: "somosdesegundasoportunidades@gmail.com",
+    address1: "Calle de La Rioja 7, escalera D, 6f",
+    address2: "Barrio Alameda de Osuna",
+    city: "Madrid",
+    state: "Madrid",
+    country: "ES",
+    postcode: "28042",
+    phone: "+34635096588",
   },
   {
     name: "Mona",
@@ -154,6 +187,16 @@ const ONGsData = [
     description_sections: ["description_1"],
     image: "mona.webp",
     link: "description_link",
+    firstname: "Cristina",
+    lastname: "Valsera",
+    email: "c.valsera@fundacionmona.org",
+    address1: "Carretera de Riudellots a Cassà, km1",
+    address2: "",
+    city: "Riudellots de la Selva",
+    state: "Girona",
+    country: "ES",
+    postcode: "17457",
+    phone: "972477618",
   },
 ];
 </script>
