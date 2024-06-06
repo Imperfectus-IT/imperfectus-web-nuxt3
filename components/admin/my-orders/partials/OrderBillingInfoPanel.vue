@@ -1,5 +1,9 @@
 <template>
-  <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')" toggleable collapsed>
+  <Panel
+    :header="props.header ? props.header : $t(props.labelKey + '.header')"
+    toggleable
+    collapsed
+  >
     <div
       v-for="(key, index) in Object.keys(props.data)"
       :key="index"
@@ -26,9 +30,7 @@ const props = defineProps<{
   data: OrderBilling
   header?: string
   labelKey: string
-}>();
-
-
+}>()
 
 const emit = defineEmits(['editBillingInfo'])
 

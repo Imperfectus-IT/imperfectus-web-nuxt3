@@ -54,22 +54,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue'
 
 defineProps<{
-  kgs: string;
-}>();
+  kgs: string
+}>()
 
-const { addResize, removeResize, windowWidth } = useWindowSize();
+const { addResize, removeResize, windowWidth } = useWindowSize()
 
-const imageWidth = computed(() => (windowWidth.value > 1024 ? "330" : "150"));
-const imageHeight = computed(() => (windowWidth.value > 1024 ? "366" : "150"));
+const imageWidth = computed(() => (windowWidth.value > 1024 ? '330' : '150'))
+const imageHeight = computed(() => (windowWidth.value > 1024 ? '366' : '150'))
 
 onMounted(() => {
-  addResize();
-});
+  addResize()
+})
 
 onBeforeUnmount(() => {
-  removeResize();
-});
+  removeResize()
+})
 </script>

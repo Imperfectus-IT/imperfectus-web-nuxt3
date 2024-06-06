@@ -33,7 +33,6 @@ defineI18nRoute({
 })
 
 const { subscriptions } = useGetSubscriptionsHandler()
-
 </script>
 
 1x caja pequeña

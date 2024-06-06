@@ -25,19 +25,18 @@
 <script setup lang="ts">
 defineProps<{
   availableOrders: {
-    past: Ref<number>;
-    current: Ref<number>;
-    total: Ref<number>;
-  };
-}>();
+    past: Ref<number>
+    current: Ref<number>
+    total: Ref<number>
+  }
+}>()
 
-const emit = defineEmits(["selectedOrders"]);
-type OrdersSelectedOptions = "all" | "current" | "past";
-const ordersSelected = ref<OrdersSelectedOptions>("all");
+const emit = defineEmits(['selectedOrders'])
+type OrdersSelectedOptions = 'all' | 'current' | 'past'
+const ordersSelected = ref<OrdersSelectedOptions>('all')
 
 const selectOrders = (type: OrdersSelectedOptions) => {
-  ordersSelected.value = type;
-  emit("selectedOrders", ordersSelected.value);
-};
-
+  ordersSelected.value = type
+  emit('selectedOrders', ordersSelected.value)
+}
 </script>

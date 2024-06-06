@@ -5,6 +5,6 @@ export const useUpdatePersonalData = () => {
   }
 
   return {
-    executeUpdatePersonalData
+    executeUpdatePersonalData,
   }
 }

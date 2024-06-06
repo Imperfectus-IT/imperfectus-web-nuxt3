@@ -1,6 +1,6 @@
 export const useUpdateSubscriptionHandler = () => {
-  const { executeDonateToONG } = useUpdateSubscription();
+  const { executeDonateToONG } = useUpdateSubscription()
   return {
-    executeDonateToONG
-  };
+    executeDonateToONG,
+  }
 }

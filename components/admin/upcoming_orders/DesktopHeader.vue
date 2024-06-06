@@ -1,8 +1,16 @@
 <template>
   <div class="flex flex-row items-center justify-between ">
-    <h4 class="font-recoleta-regular text-[40px]">Próximas entregas</h4>
+    <h4 class="font-recoleta-regular text-[40px]">
+      Próximas entregas
+    </h4>
     <NuxtLink>
-      <Button primary class="" :label="'Volver a la suscripción'"><span class="mdi mdi-arrow-left mr-3"></span>Volver a la suscripción</Button>
+      <Button
+        primary
+        class=""
+        :label="'Volver a la suscripción'"
+      >
+        <span class="mdi mdi-arrow-left mr-3" />Volver a la suscripción
+      </Button>
     </NuxtLink>
   </div>
   <div class="flex flex-row 2xl:justify-around my-10">

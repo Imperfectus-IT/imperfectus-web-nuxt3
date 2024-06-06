@@ -1,4 +1,4 @@
-import type { SubscriptionMeta } from "./SubscriptionTypes"
+import type { SubscriptionMeta } from './SubscriptionTypes'
 
 export type DonationPayload = {
   subscriptionId: number

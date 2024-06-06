@@ -39,9 +39,13 @@ export interface OrderBilling {
   billingFullName: string
   billingEmail: string
   billingPhone: string
-  billingAddress: string
+  billingAddress: string,
+  billingAddress2: string,
   billingCP: string
-  billingCity: string
+  billingCity: string,
+  billingState: string,
+  billingNif: string,
+  billingCountry: string
 }
 
 export interface OrderShipping {

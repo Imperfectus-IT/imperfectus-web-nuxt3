@@ -13,7 +13,10 @@
       <h4 class="font-semibold mb-2">
         {{ getBoxSize(orderItem.sku) }}
       </h4>
-      <ul v-if="orderStatus !== 'cancelled'" class="ml-2">
+      <ul
+        v-if="orderStatus !== 'cancelled'"
+        class="ml-2"
+      >
         <ListItem
           main-class="flex gap-x-2 mb-1 whitespace-nowrap"
           dot-class="text-[8px] my-auto text-green-tertiary"
@@ -34,7 +37,10 @@
           "
         />
       </ul>
-      <p v-if="orderStatus !== 'cancelled'" class="font-bold text-[14px] mt-2 lg:text-[16px]">
+      <p
+        v-if="orderStatus !== 'cancelled'"
+        class="font-bold text-[14px] mt-2 lg:text-[16px]"
+      >
         {{ orderItem.amount }}€
       </p>
     </div>
@@ -43,7 +49,7 @@
 
 <script lang="ts" setup>
 defineProps<{
-  orderItem: OrderItem,
+  orderItem: OrderItem
   orderStatus: string
 }>()
 

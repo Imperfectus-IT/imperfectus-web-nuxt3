@@ -1,7 +1,8 @@
 <template>
   <TKCarousel
+    tabindex="0"
     :data="cardsData"
-    :image-class="'w-[284px] h-[190px]'"
+    :image-class="'w-[284px] h-[190px] hover:scale-105 focus:outline-none focus:border-2 focus:border-green-primary cursor-pointer'"
     :show-pagination="!isDesktop"
     :show-navigation="isDesktop"
     :visible-items="!isDesktop ? 1.1 : 4"
@@ -11,20 +12,20 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
-const { locale, t } = useI18n();
-const language = computed(() => locale.value);
-const { isDesktop } = useScreenSize();
+const { locale, t } = useI18n()
+const language = computed(() => locale.value)
+const { isDesktop } = useScreenSize()
 
-const section = t("gift-card.create.images");
-const cards = 6;
+const section = t('gift-card.create.images')
+const cards = 6
 
-const cardsData = ref<{ image: string }[]>([]);
+const cardsData = ref<{ image: string }[]>([])
 
 onMounted(() => {
   cardsData.value = Array.from({ length: cards }, (_, i) => ({
     image: `${section}${language.value}/${i + 1}.webp`,
-  }));
-});
+  }))
+})
 </script>
