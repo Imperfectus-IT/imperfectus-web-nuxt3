@@ -2855,10 +2855,10 @@ export default {
         field_quantity: {
           title: 'Número de cajas',
         },
-        field_resume: {
+        field_amount: {
           title: 'Resumen precio',
         },
-        field_receiver: {
+        field_forWho: {
           title: '¿Para quién es?',
           placeholder: 'Nombre del destinatario',
         },
@@ -2866,11 +2866,11 @@ export default {
           title: 'Añade un mensaje personalizado',
           placeholder: 'Mensaje para la tarjeta de regalo',
         },
-        field_sender: {
+        field_whoSend: {
           title: '¿Quién la envía?',
           placeholder: 'Nombre del remitente',
         },
-        field_email: {
+        field_sendMethod: {
           title: 'Método de envío',
           placeholder: 'Mail del remitente',
         },
@@ -2921,6 +2921,15 @@ export default {
         label: 'País',
         value: 'country'
       },
+    },
+    payment: {
+      title: 'Resumen de compra',
+      delete: 'Borrar',
+      edit: 'Editar',
+      price: 'Importe:',
+      amount: 'TOTAL: ',
+      add: 'Añadir otra tarjeta regalo',
+      pay: 'Realiza el pago de {amount}€',
     }
   },
   'gift-card-create.title': 'Compra una tarjeta regalo de TALKUAL.',

@@ -8,12 +8,11 @@
       <Button
         v-for="button in textData.priceButtons"
         :key="button"
-        v-model="formData.price"
+        v-model="formData.amount"
         class="w-full shadow-sm bg-green-quaternary mb-2 lg:mb-0"
         :class="{
           'bg-green-tertiary text-green-primary':
-            formData.price
-            === $t(`${textData.section}price.option_${button}.price`),
+            formData.amount.toString() === $t(`${textData.section}price.option_${button}.price`),
         }"
         @click="setPrice($t(`${textData.section}price.option_${button}.price`))"
       >
@@ -39,7 +38,7 @@
         class="w-full mb-2 shadow-sm bg-green-quaternary"
         :class="{
           'bg-green-tertiary text-green-primary':
-            parseInt(formData.quantity) === quantity,
+            formData.quantity === quantity,
         }"
         @click="setQuantity(quantity.toString())"
       >
@@ -52,13 +51,9 @@
 
   <!-- RESUMEN DE PRECIO -->
   <p class="font-bold mb-4 mt-8">
-    {{ $t(`${textData.section}resume.title`) }}
+    {{ $t(`${textData.section}amount.title`) }}
   </p>
-  <InputText
-    class="rounded-xl w-full"
-    type="text"
-    :value="getTotalPrice"
-  />
+  <InputText class="rounded-xl w-full" type="text" :value="getTotalPrice" />
 
   <div
     v-for="(field, index) in textData.fields"
@@ -70,38 +65,33 @@
     </p>
     <InputText
       v-if="index !== 1"
-      v-model="formData[field as keyof FormData]"
+      v-model="formData[field as keyof GiftCardForm]"
       class="rounded-xl"
       type="text"
       :placeholder="$t(`${textData.section}${field}.placeholder`)"
     />
-    <p
-      v-if="index !== 1"
-      class="text-red-primary"
-    >
-      {{ getValidationError(field as keyof FormData) }}
+    <p v-if="index !== 1" class="text-red-primary">
+      {{ getValidationError(field as keyof GiftCardForm) }}
     </p>
     <Textarea
       v-if="index === 1"
       v-model="formData.message"
       :pt="{
-        root: 'placeholder:text-green-tertiary placeholder:opacity-50 border rounded-xl p-3 focus:outline-none',
+        root:
+          'placeholder:text-green-tertiary placeholder:opacity-50 border rounded-xl p-3 focus:outline-none',
       }"
       class="bg-transparent text-green-tertiary"
       rows="5"
       :placeholder="$t(`${textData.section}${field}.placeholder`)"
     />
-    <p
-      v-if="index === 1"
-      class="text-red-primary"
-    >
-      {{ getValidationError(field as keyof FormData) }}
+    <p v-if="index === 1" class="text-red-primary">
+      {{ getValidationError(field as keyof GiftCardForm) }}
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { type FormData } from '../types/types'
+import { type GiftCardForm } from '../types/types'
 
 const emit = defineEmits(['formUpdated'])
 
@@ -110,35 +100,35 @@ const { validateSchema, validationErrors } = useGiftFormValidator()
 const textData = {
   priceButtons: 3,
   quantityButtons: [1, 2, 4, 8],
-  fields: ['receiver', 'message', 'sender', 'email'],
+  fields: ['forWho', 'message', 'whoSend', 'sendMethod'],
   section: 'gift-card.create.form.field_',
 }
 
-const formData: FormData = reactive({
-  price: '21.07',
-  quantity: '1',
+const formData: GiftCardForm = reactive({
+  amount: 21.07,
+  quantity: 1,
   message: '',
-  sender: '',
-  receiver: '',
-  email: '',
+  whoSend: '',
+  forWho: '',
+  sendMethod: '',
 })
 
 watch(formData, () => {
   validateSchema(formData)
-  emit('formUpdated', validationErrors)
+  emit('formUpdated', { formData, errors: validationErrors})
 })
 
 const setPrice = (price: string) => {
-  formData.price = price
+  formData.amount = parseFloat(price)
 }
 
 const setQuantity = (quantity: string) => {
-  formData.quantity = quantity
+  formData.quantity = parseInt(quantity)
 }
 
-const getValidationError = (field: keyof FormData) => {
+const getValidationError = (field: keyof GiftCardForm) => {
   const errors = validationErrors.value as unknown as {
-    [K in keyof FormData]?: { _errors: string[] };
+    [K in keyof GiftCardForm]?: { _errors: string[] };
   }
   if (errors && errors[field]) {
     return errors[field]?._errors[0]
@@ -147,6 +137,6 @@ const getValidationError = (field: keyof FormData) => {
 }
 
 const getTotalPrice = computed(() => {
-  return parseFloat(formData.quantity) * parseFloat(formData.price) + '€'
+  return formData.quantity * formData.amount + '€'
 })
 </script>

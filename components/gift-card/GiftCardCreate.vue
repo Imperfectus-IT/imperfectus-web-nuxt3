@@ -9,21 +9,19 @@
       {{ $t("gift-card.create.choose_design") }}
     </p>
 
-    <GiftCardCarousel />
-    <GiftCardCreateForm @form-updated="(formErrors) => setIsFormErrored(formErrors)" />
+
+    <GiftCardCarousel @update-designId="(designId) => updateDesignId(designId)" />
+      {{ giftCard }}
+    <GiftCardCreateForm @form-updated="(payload) => updateFormData(payload)" />
 
     <div class="mt-8">
-      <span class="text-[20px]">{{
-        $t("gift-card.create.form.description")
-      }}</span>
+      <span class="text-[20px]">{{ $t("gift-card.create.form.description") }}</span>
       <NuxtLink :to="localePath({ name: 'legal-conditions' })">
-        <span class="underline text-[20px]">{{
-          " " + $t("gift-card.create.form.description_link")
-        }}</span>
+        <span class="underline text-[20px]">{{ " " + $t("gift-card.create.form.description_link") }}</span>
       </NuxtLink>
     </div>
     <Button
-      :disabled="!isFormErrored"
+      
       :pt="{
         root: 'bg-green-primary w-2/3 mt-12 font-bold py-1 lg:py-2 lg:w-1/4 rounded-md disabled:opacity-50',
       }"
@@ -34,29 +32,40 @@
 </template>
 
 <script setup lang="ts">
+import type { GiftCardForm } from './types/types';
+
 
 const router = useRouter()
 const localePath = useLocalePath()
 const userLoggedIn = useStrapiUser()
-
 const isFormErrored = ref<boolean>(true)
+const { giftCard } = useCreateGiftCardHandler()
 
 const submitForm = () => {
-  console.log(userLoggedIn.value)
   if (!userLoggedIn.value) {
     router.push(localePath('auth-login'))
   }
   else {
     router.push(localePath('gift-card-gift-card-billing-form'))
-    // router.push(localePath('auth-login'));
   }
 }
 
+const updateFormData = (payload: { formData: GiftCardForm, errors: any }) => {
+  setIsFormErrored(payload.errors)
+  giftCard.value[0] = { ...giftCard.value[0], ...payload.formData}
+}
+
+const updateDesignId = (designId: number) => {
+  giftCard.value[0].designId = designId
+}
+
 const setIsFormErrored = (formErrors: any) => {
-  if (!formErrors) {
+  if (!formErrors.value) {
+    console.log('if', formErrors.value)
     isFormErrored.value = false
   }
   else {
+    console.log('ELSE', formErrors.value)
     isFormErrored.value = true
   }
 }

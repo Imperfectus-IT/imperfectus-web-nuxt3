@@ -3,7 +3,7 @@ export const useGiftCard = () => {
   const { create } = useGiftCardRepository()
 
   const executeCreateGiftCard = async () => {
-    await create(giftCard.value)
+    // await create(giftCard.value)
   }
 
   return {

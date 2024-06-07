@@ -8,6 +8,7 @@
     :visible-items="!isDesktop ? 1.1 : 4"
     :navigation-next-class="'absolute text-[40px] left-12'"
     :navigation-prev-class="'absolute text-[40px] right-12'"
+    @click="($event) => handleClick($event)"
   />
 </template>
 
@@ -16,12 +17,22 @@ import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
 const language = computed(() => locale.value)
-const { isDesktop } = useScreenSize()
+const { isDesktop } = useScreenSize();
+const { giftCard } = useCreateGiftCardHandler();
 
 const section = t('gift-card.create.images')
-const cards = 6
+const cards = 6;
+const emits = defineEmits(['update-designId'])
 
-const cardsData = ref<{ image: string }[]>([])
+const cardsData = ref<{ image: string }[]>([]);
+
+const handleClick = (event: MouseEvent) => {
+  const target = event.target as HTMLImageElement; 
+  const match = target.src.match(/(\d)\.webp$/);
+  if(match) {
+    emits('update-designId', parseInt(match[1]));
+  }
+}
 
 onMounted(() => {
   cardsData.value = Array.from({ length: cards }, (_, i) => ({

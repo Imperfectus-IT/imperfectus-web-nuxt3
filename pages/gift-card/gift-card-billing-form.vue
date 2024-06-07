@@ -1,5 +1,6 @@
 <template>
-  <h4 class="font-recoleta-regular text-center text-[30px] mb-4">
+  <div class="lg:w-1/2 lg:mx-auto">
+    <h4 class="font-recoleta-regular text-center text-[30px] lg:text-[50px] mb-4">
     {{ $t(`${textData.section}.title`) }}
   </h4>
   <div
@@ -14,13 +15,21 @@
       :disabled="field === 10"
       :id="$t(`${textData.section}.field_${field}.label`)"
       class="rounded-xl"
-      v-model="formData[$t(`${textData.section}.field_${field}.value`)]"
+      v-model="formData[$t(`${textData.section}.field_${field}.value`) as keyof BillingForm]"
     />
+  </div>
+  <NuxtLink :to="localePath({ name: 'gift-card-gift-card-payment'})">
+    <Button
+      :label="$t('gift-card.create.form.button')"
+      class="w-1/2 ml-[25%]"
+    />
+  </NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+import type { BillingForm } from "~/components/gift-card/types/types";
 const { t } = useI18n();
 
 defineI18nRoute({
@@ -30,10 +39,9 @@ defineI18nRoute({
   },
 });
 
-const user = useStrapiUser();
-
+const localePath = useLocalePath()
 const { orders } = useGetOrdersHandler(t);
-const { giftCard } = useGiftCardHandler();
+const { giftCard } = useCreateGiftCardHandler();
 
 const textData = {
   fields: 10,
@@ -57,8 +65,8 @@ watchEffect(() => {
   if (orders) {
     const billingData = orders.value[0]?.billingInfo;
     if (billingData) {
-      const name = billingData.billingFullName.split(" ")[0]
-      const surname = billingData.billingFullName.split(" ")[1]
+      const name = billingData.billingFullName.split(" ")[0];
+      const surname = billingData.billingFullName.split(" ")[1];
       formData.value = {
         name,
         surname,
@@ -70,28 +78,9 @@ watchEffect(() => {
         city: billingData.billingCity,
         state: billingData.billingState,
         country: billingData.billingCountry,
-
       };
     }
   }
 });
 
-// const setBillingData = () => {
-//   formData.value = {
-//     nif: orders.value[0]?.billingInfo.billingNif
-//   }
-// }
-
-export type BillingForm = {
-  name: string;
-  surname: string;
-  nif: string;
-  email: string;
-  address1: string;
-  address2: string;
-  postalCode: string;
-  city: string;
-  state: string;
-  country: string;
-};
 </script>
