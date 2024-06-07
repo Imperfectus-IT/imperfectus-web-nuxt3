@@ -37,6 +37,7 @@ const submitLoginForm = async () => {
     >
       <TKField :errors="validationErrors?.identifier?._errors">
         <InputText
+          id="identifier"
           v-model="userLogin.identifier"
           class="rounded-xl"
           type="text"
@@ -46,6 +47,7 @@ const submitLoginForm = async () => {
       </TKField>
       <TKField :errors="validationErrors?.password?._errors">
         <Password
+          id="password"
           v-model="userLogin.password"
           type="password"
           :feedback="false"
