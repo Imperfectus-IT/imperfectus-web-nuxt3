@@ -26,7 +26,7 @@ export const useValidateLogin = () => {
 
   const validationErrorsLoginResponse = useState('validationErrorsLoginResponse', () => [])
   const setValidationErrorsLoginResponse = (err: any) => {
-    validationErrorsLoginResponse.value = err?.message?.length ? err?.message.map((error: any) => error.messages.map((item: any) => item.message)).flat() : []
+    validationErrorsLoginResponse.value = err?.message?.length ? err?.message?.map((error: any) => error.messages?.map((item: any) => item.message)).flat() : []
   }
 
   return { validationErrors, validationErrorsLoginResponse, setValidationErrorsLoginResponse, validateSchema }

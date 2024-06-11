@@ -34,9 +34,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     baseUrl: process.env.BASE_URL,
     STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
+    NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     public: {
       baseUrl: process.env.BASE_URL,
       STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
+      NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     },
   },
   routeRules: {
