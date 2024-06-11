@@ -574,7 +574,7 @@ export default {
 
   'pages.cookies.title': 'Hola',
 
-  cookies: {
+  'cookies': {
     header: 'Política de cookies',
     introduction: 'Este sitio web utiliza cookies propias y de terceros para ofrecerle una mejor experiencia y servicio. Al navegar o utilizar nuestros servicios el usuario acepta el uso que hacemos de las cookies. Sin embargo, el usuario tiene la opción de impedir la generación de cookies y la eliminación de las mismas.',
     what: {
@@ -3169,7 +3169,7 @@ export default {
       },
     },
   },
-  upcoming_orders: {
+  'upcoming_orders': {
     title: 'Próximas entregas',
     description_1: '',
     gift_to_friend: {
@@ -3177,42 +3177,42 @@ export default {
       description: 'Introduce los datos de tu amigx para poder enviarle esta entrega:',
       field_1: {
         label: 'Nombre',
-        value: 'name'
+        value: 'name',
       },
       field_2: {
         label: 'Apellidos',
-        value: 'surname'
-      }, 
+        value: 'surname',
+      },
       field_3: {
         label: 'Email',
-        value: 'email'
-      }, 
+        value: 'email',
+      },
       field_4: {
         label: 'Teléfono de contacto',
-        value: 'phone'
-      }, 
+        value: 'phone',
+      },
       field_5: {
         label: 'Dirección (calle y número)',
-        value: 'address'
-      }, 
+        value: 'address',
+      },
       field_6: {
         label: 'Piso y puerta',
-        value: 'addressDetails'
-      }, 
+        value: 'addressDetails',
+      },
       field_7: {
         label: 'Código Postal',
-        value: 'cp'
-      }, 
+        value: 'cp',
+      },
       field_8: {
         label: 'Localidad',
-        value: 'city'
-      }, 
+        value: 'city',
+      },
       field_9: {
         label: 'Observaciones',
-        value: 'comments'
+        value: 'comments',
       },
       gift_button: 'Regalar',
-      cancel_button: 'Cancelar'
+      cancel_button: 'Cancelar',
     },
     donate_to_ong: {
       title: 'Donar a una ONG',
@@ -3238,21 +3238,21 @@ export default {
         description_title: '¿A quién irá destinado mi pedido?',
         description_1: 'La donación de tu pedido TALKUAL irá destinado los usuarios de los diferentes programas que posee la Asociación que ayudarán a la recuperación, transformación e inclusión social de las personas en estado de riesgo y vulnerabilidad. Trabajamos con familias donde hay mucha necesidad de alimentos, tu donación será distribuida a cada familia usuaria del programa Brazos de Amor (Construyendo Legado), sabiendo que la familia es el núcleo de la sociedad, ayudando así a construir familias sanas, lo que ayuda a la prevención de exclusión social en un futuro. ',
         description_2: 'Para más info visita ',
-        description_link: 'https://www.somosdesegundasoportunidades.org'
+        description_link: 'https://www.somosdesegundasoportunidades.org',
       },
       ong_3: {
         title: 'Fundació Mona',
         description: 'Rescatan primates que fueron artistas de circo, televisión o incluso mascotas. Muchos sufrieron años de soledad y maltrato. Su centro de rehabilitación les brinda un hogar para toda la vida, donde se recuperan en compañía de sus congéneres, en un entorno natural y respetuoso.',
         description_title: '¿A quién irá destinado mi pedido?',
         description_1: 'Los primates rescatados que viven en su Centro de Recuperación necesitan a la semana más de media tonelada de fruta y verdura variada, frutos secos, legumbres... Además de vitaminas y otros suplementos para los chimpancés que superan los 40 años. Con tu donación colaboras a alimentarlos y sumas para que tengan una nueva vida mejor. Para más info: ',
-        description_link: 'http://fundacionmona.org/'
-      }
+        description_link: 'http://fundacionmona.org/',
+      },
     },
     skip_order: {
       title: 'Cancelar pedido',
       description: '¿Quieres cancelar esta entrega?',
       cancel_button: 'Cancelar',
-      skip_button: 'Cancelar entrega'
-    }
-  }
+      skip_button: 'Cancelar entrega',
+    },
+  },
 }

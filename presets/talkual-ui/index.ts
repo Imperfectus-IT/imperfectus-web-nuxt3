@@ -29,7 +29,6 @@ import steps from './steps/index.ts'
 import textarea from './textarea/index.ts'
 import timeline from './timeline/index.ts'
 
-
 export default {
   global,
   button,

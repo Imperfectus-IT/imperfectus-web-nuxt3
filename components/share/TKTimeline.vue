@@ -1,15 +1,18 @@
 <template>
   <div class="card">
     <!-- DESKTOP VERSION -->
-    <Timeline :value="timeLineValue()" class="hidden lg:block">
+    <Timeline
+      :value="timeLineValue()"
+      class="hidden lg:block"
+    >
       <template #marker="{ item }">
         <div
           :class="` flex self-baseline  h-6 w-6 rounded-full border-[1px] ${item.border} bg-${item.background} z-10`"
         >
           <span
             v-if="
-              item.background === 'green-tertiary' ||
-              item.background === 'red-secondary'
+              item.background === 'green-tertiary'
+                || item.background === 'red-secondary'
             "
             :class="`mdi mdi-${item.icon} ${
               item.icon === 'check'
@@ -39,8 +42,8 @@
         >
           <span
             v-if="
-              item.background === 'green-tertiary' ||
-              item.background === 'red-secondary'
+              item.background === 'green-tertiary'
+                || item.background === 'red-secondary'
             "
             :class="`mdi mdi-${item.icon} ${
               item.icon === 'check'
@@ -58,8 +61,7 @@
                 ? 'text-grey-secondary'
                 : 'text-green-tertiary'
             "
-            >{{ item.status }}</span
-          >
+          >{{ item.status }}</span>
         </div>
       </template>
       <template #connector="{ index }">
@@ -76,125 +78,126 @@
 </template>
 
 <script setup lang="ts">
-import Timeline from "primevue/timeline";
+import Timeline from 'primevue/timeline'
 import type {
   OneStepEvents,
   StatusesObject,
   Event,
-} from "../share/types/TimelineTypes";
+} from '../share/types/TimelineTypes'
 
 const props = defineProps({
   orderStatus: {
     type: String,
     required: true,
   },
-});
+})
 
 const oneStepStatuses: string[] = [
-  "replaced",
-  "cancelled",
-  "refunded",
-  "other",
-];
+  'replaced',
+  'cancelled',
+  'refunded',
+  'other',
+]
 
 const orderStatuses: StatusesObject = {
-  0: "pending",
-  1: "failed",
-  2: "processing",
-  3: "label_created",
-  4: "on_shipment",
-  5: "completed",
-};
+  0: 'pending',
+  1: 'failed',
+  2: 'processing',
+  3: 'label_created',
+  4: 'on_shipment',
+  5: 'completed',
+}
 
 const timeLineValue = () => {
   if (oneStepStatuses.includes(props.orderStatus)) {
-    return [oneStepEvents[props.orderStatus as keyof OneStepEvents]];
-  } else {
-    return events;
+    return [oneStepEvents[props.orderStatus as keyof OneStepEvents]]
   }
-};
+  else {
+    return events
+  }
+}
 
 const activeStep = computed(() => {
   return Object.keys(orderStatuses).findIndex(
-    (key: string) => orderStatuses[parseInt(key)] === props.orderStatus
-  );
-});
+    (key: string) => orderStatuses[parseInt(key)] === props.orderStatus,
+  )
+})
 
 const oneStepEvents: OneStepEvents = {
   replaced: {
-    status: "Pedido reemplazado",
-    background: "green-tertiary",
-    icon: "check",
-    border: "border-green-tertiary",
+    status: 'Pedido reemplazado',
+    background: 'green-tertiary',
+    icon: 'check',
+    border: 'border-green-tertiary',
   },
   refunded: {
-    status: "Pedido reembolsado",
-    background: "green-tertiary",
-    icon: "check",
-    border: "border-green-tertiary",
+    status: 'Pedido reembolsado',
+    background: 'green-tertiary',
+    icon: 'check',
+    border: 'border-green-tertiary',
   },
   other: {
-    status: "Otro",
-    background: "red-secondary",
-    icon: "close",
-    border: "border-red-secondary",
+    status: 'Otro',
+    background: 'red-secondary',
+    icon: 'close',
+    border: 'border-red-secondary',
   },
-};
+}
 
 const events: Event[] = [
   {
-    status: "Pagado",
+    status: 'Pagado',
     background:
       activeStep.value === 0 || activeStep.value === 1
-        ? "red-secondary"
-        : "green-tertiary",
-    icon: activeStep.value === 0 || activeStep.value === 1 ? "close" : "check",
+        ? 'red-secondary'
+        : 'green-tertiary',
+    icon: activeStep.value === 0 || activeStep.value === 1 ? 'close' : 'check',
     border: activeStep.value === 0 ? 'border-red-secondary' : 'border-green-tertiary',
   },
   {
-    status: "Pedido recibido",
-    background: activeStep.value < 2 ? "beige-primary" : "green-tertiary",
-    icon: "check",
-    border: activeStep.value < 2 ? "border-grey-secondary" : "border-green-tertiary"
+    status: 'Pedido recibido',
+    background: activeStep.value < 2 ? 'beige-primary' : 'green-tertiary',
+    icon: 'check',
+    border: activeStep.value < 2 ? 'border-grey-secondary' : 'border-green-tertiary',
   },
   {
-    status: "Período de modificación",
+    status: 'Período de modificación',
     background:
       activeStep.value < 2
-        ? "beige-primary"
+        ? 'beige-primary'
         : activeStep.value === 2
-        ? "green-primary"
-        : "green-tertiary",
-    icon: "check",
-    border: activeStep.value < 2 ? "border-grey-secondary" : "border-green-tertiary"
+          ? 'green-primary'
+          : 'green-tertiary',
+    icon: 'check',
+    border: activeStep.value < 2 ? 'border-grey-secondary' : 'border-green-tertiary',
   },
   {
-    status: "Preparando envío",
+    status: 'Preparando envío',
     background:
       activeStep.value < 3
-        ? "beige-primary"
+        ? 'beige-primary'
         : activeStep.value === 3
-        ? "green-primary"
-        : "green-tertiary",
-    icon: "check",
-    border: activeStep.value < 3 ? "border-grey-secondary" : "border-green-tertiary"
+          ? 'green-primary'
+          : 'green-tertiary',
+    icon: 'check',
+    border: activeStep.value < 3 ? 'border-grey-secondary' : 'border-green-tertiary',
   },
   {
-    status: "En reparto",
+    status: 'En reparto',
     background:
       activeStep.value < 4
-        ? "beige-primary"
+        ? 'beige-primary'
         : activeStep.value === 4
-        ? "green-primary"
-        : "green-tertiary",
-    icon: "check",
-    border: activeStep.value < 4 ? "border-grey-secondary" : "border-green-tertiary"
+          ? 'green-primary'
+          : 'green-tertiary',
+    icon: 'check',
+    border: activeStep.value < 4 ? 'border-grey-secondary' : 'border-green-tertiary',
   },
   {
-    status: "Entregado",
-    background: activeStep.value < 5 ? "beige-primary" : "green-tertiary",
-    icon: "check",
-    border: activeStep.value < 5 ? "border-grey-secondary" : "border-green-tertiary"
+    status: 'Entregado',
+    background: activeStep.value < 5 ? 'beige-primary' : 'green-tertiary',
+    icon: 'check',
+    border: activeStep.value < 5 ? 'border-grey-secondary' : 'border-green-tertiary',
   },
-];
+]
 </script>

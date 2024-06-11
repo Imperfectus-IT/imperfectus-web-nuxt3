@@ -3,7 +3,10 @@
     <h4 class="font-recoleta-regular text-[28px]">
       Mis Pedidos
     </h4>
-    <OrdersSelector :available-orders="ordersSelectorCountRef" @selected-orders="(payload: string) => filterSelectedOrders(payload)" />
+    <OrdersSelector
+      :available-orders="ordersSelectorCountRef"
+      @selected-orders="(payload: string) => filterSelectedOrders(payload)"
+    />
     <div class="flex flex-col">
       <MobileOrder
         v-for="order in ordersToShow"
@@ -52,16 +55,16 @@ defineI18nRoute({
 const { t } = useI18n()
 const { orders } = useGetOrdersHandler(t)
 const { products } = useGetProductsHandler()
-const { isMobile } = useScreenSize();
+const { isMobile } = useScreenSize()
 const ordersToShow = ref([...orders.value])
 
-let ordersSelectorCount = reactive({
+const ordersSelectorCount = reactive({
   current: 0,
   past: 0,
-  total: 0
+  total: 0,
 })
 
-let ordersSelectorCountRef = toRefs(ordersSelectorCount)
+const ordersSelectorCountRef = toRefs(ordersSelectorCount)
 
 watch(orders, (newOrders) => {
   if (newOrders.length > 0) {
@@ -70,16 +73,17 @@ watch(orders, (newOrders) => {
     ordersSelectorCount.total = newOrders.length
     ordersToShow.value = [...newOrders]
   }
-});
+})
 
 const filterSelectedOrders = (payload: string) => {
-  if(payload === 'all') {
+  if (payload === 'all') {
     return ordersToShow.value = [...orders.value]
-  } else if(payload === 'current') {
+  }
+  else if (payload === 'current') {
     return ordersToShow.value = orders.value.filter((order: Order) => dayjs(order.deliveryDate) >= dayjs())
-  } else {
+  }
+  else {
     return ordersToShow.value = orders.value.filter((order: Order) => dayjs(order.deliveryDate) < dayjs())
   }
 }
-
 </script>

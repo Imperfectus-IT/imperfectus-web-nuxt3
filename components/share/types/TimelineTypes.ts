@@ -5,7 +5,7 @@ export interface StatusesObject {
 export interface Event {
   status: string
   background: string
-  icon: string,
+  icon: string
   border: string
 }
 

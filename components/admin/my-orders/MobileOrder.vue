@@ -13,8 +13,14 @@
         Este pedido está pendiente de pago
       </p>
 
-      <div v-for="(orderItem, index) in order.orderItems" :key="index">
-        <OrderItemCard :order-item="orderItem" :order-status="order.status" />
+      <div
+        v-for="(orderItem, index) in order.orderItems"
+        :key="index"
+      >
+        <OrderItemCard
+          :order-item="orderItem"
+          :order-status="order.status"
+        />
         <OrderProductsCarousel
           v-if="!isCollapsed"
           :products="filteredProducts(orderItem)"
@@ -42,7 +48,10 @@
             />
           </NuxtLink>
         </div>
-        <div v-else-if="isCollapsed" class="flex flex-col gap-3 my-7">
+        <div
+          v-else-if="isCollapsed"
+          class="flex flex-col gap-3 my-7"
+        >
           <div class="flex flex-row gap-3">
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
               <Button
@@ -84,7 +93,9 @@
         >
           {{ $t("string.status.order.cancelled") }}
         </div>
-        <p class="mt-3">Fecha de cancelacion: **********</p>
+        <p class="mt-3">
+          Fecha de cancelacion: **********
+        </p>
         <!-- TODO This is not stored in DB -->
       </div>
 
@@ -101,11 +112,11 @@
       v-if="!isCollapsed"
       class="flex flex-col gap-5 text-green-tertiary lg:grid lg:grid-cols-2 lg:gap-x-5 lg:gap-y-0"
     >
-    <OrderDeliveryPanel
-      class="mt-5"
-      :data="order.deliveryInfo"
-      :label-key="'orders.order.order_delivery'"
-    />
+      <OrderDeliveryPanel
+        class="mt-5"
+        :data="order.deliveryInfo"
+        :label-key="'orders.order.order_delivery'"
+      />
       <OrderBillingPanel
         class="mt-5"
         :data="order.billing"
@@ -131,19 +142,19 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  order: Order;
-  isCollapsed: boolean;
-  products: ItemProduct[];
-}>();
+  order: Order
+  isCollapsed: boolean
+  products: ItemProduct[]
+}>()
 
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name) && product.isActive;
-  });
-};
+    return !orderItem.exclusions.includes(product.name) && product.isActive
+  })
+}
 
 const isOneStepOrder = computed(() => {
-  const oneStepStatuses = ["refunded", "cancelled", "failed", "replaced"];
-  return oneStepStatuses.includes(props.order.status) ? "150px" : "420px";
-});
+  const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
+  return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
+})
 </script>

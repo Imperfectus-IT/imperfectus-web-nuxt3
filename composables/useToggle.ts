@@ -1,5 +1,5 @@
 export const useToggle = () => {
-  const isOpen = ref<Boolean>(false)
+  const isOpen = ref<boolean>(false)
   const handleToggle = () => {
     isOpen.value = !isOpen.value
   }

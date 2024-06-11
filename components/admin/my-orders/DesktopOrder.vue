@@ -6,7 +6,12 @@
       :class="`p-2 relative `"
     >
       <Divider class="mt-2 !w-1/2" />
-      <p v-if="order.status === 'pending'" class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg ">Este pedido está pendiente de pago</p>
+      <p
+        v-if="order.status === 'pending'"
+        class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg "
+      >
+        Este pedido está pendiente de pago
+      </p>
       <div class="flex flex-row justify-between flex-wrap -mt-6 ">
         <div
           v-for="(orderItem, index) in order.orderItems"
@@ -14,7 +19,10 @@
           class="mt-7 w-2/3"
         >
           <div class="flex flex-col">
-            <OrderItemCard :order-item="orderItem" :order-status="order.status" />
+            <OrderItemCard
+              :order-item="orderItem"
+              :order-status="order.status"
+            />
             <OrderProductsCarousel
               v-if="!isCollapsed"
               :products="filteredProducts(orderItem)"
@@ -39,7 +47,7 @@
         <div
           v-if="order.status !== 'cancelled'"
           class="bottom-3 w-full"
-          >
+        >
           <div v-if="isCollapsed && order.status !== 'pending'">
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
               <Button
@@ -52,7 +60,10 @@
               />
             </NuxtLink>
           </div>
-          <div v-else-if="isCollapsed" class="flex flex-row gap-4 mt-4">
+          <div
+            v-else-if="isCollapsed"
+            class="flex flex-row gap-4 mt-4"
+          >
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
               <Button
                 outlined
@@ -85,7 +96,10 @@
           </div>
         </div>
 
-        <div class="flex flex-row justify-between w-full items-center mt-7" v-else>
+        <div
+          v-else
+          class="flex flex-row justify-between w-full items-center mt-7"
+        >
           <div
             class="bg-red-secondary w-1/4 h-9 rounded-lg flex items-center justify-center text-[12px]"
           >
@@ -133,19 +147,19 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  order: Order;
-  isCollapsed: boolean;
-  products: ItemProduct[];
-}>();
+  order: Order
+  isCollapsed: boolean
+  products: ItemProduct[]
+}>()
 
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name) && product.isActive;
-  });
-};
+    return !orderItem.exclusions.includes(product.name) && product.isActive
+  })
+}
 
 const isOneStepOrder = computed(() => {
-  const oneStepStatuses = ["refunded", "cancelled", "failed", "replaced"];
-  return oneStepStatuses.includes(props.order.status) ? "150px" : "420px";
-});
+  const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
+  return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
+})
 </script>

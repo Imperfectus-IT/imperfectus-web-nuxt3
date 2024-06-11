@@ -1,16 +1,16 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: "admin",
-  middleware: ["auth"],
-});
+  layout: 'admin',
+  middleware: ['auth'],
+})
 defineI18nRoute({
   paths: {
-    ca: "/el-meu-compte/perfil/",
-    es: "/mi-cuenta/perfil/",
+    ca: '/el-meu-compte/perfil/',
+    es: '/mi-cuenta/perfil/',
   },
-});
-const { personalData } = useProfileState();
-const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle();
+})
+const { personalData } = useProfileState()
+const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle()
 </script>
 
 <template>
@@ -21,9 +21,9 @@ const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = 
       <div class="w-full my-auto">
         <PersonalData
           v-if="!isModifyingProfile"
-          @on-modify-data="handleToggleModifyProfile"
           :personal-data="personalData"
           class="mt-6 lg:mt-0"
+          @on-modify-data="handleToggleModifyProfile"
         />
         <PersonalDataForm
           v-if="isModifyingProfile"
