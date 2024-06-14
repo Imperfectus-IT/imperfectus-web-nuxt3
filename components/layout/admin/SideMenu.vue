@@ -68,7 +68,7 @@ const mainMenu = [
   {
     id: useId(),
     label: t('side_admin_menu.giftcard'),
-    route: 'admin-gift-cards',
+    route: 'admin-gift',
   },
   {
     id: useId(),

@@ -1,8 +1,10 @@
 export const useCreateGiftCardHandler = () => {
-  const { giftCard, executeCreateGiftCard } = useGiftCard()
+  const { giftCard, executeCreateGiftCard, executeAddGiftCard, executeRemoveGiftCard } = useGiftCard()
 
   return {
     giftCard,
-    executeCreateGiftCard
+    executeCreateGiftCard,
+    addGiftCard: executeAddGiftCard,
+    removeGiftCard: executeRemoveGiftCard
   }
 }

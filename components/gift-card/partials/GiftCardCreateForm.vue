@@ -4,6 +4,8 @@
     <p class="font-bold">
       {{ $t(`${textData.section}price.title`) }}
     </p>
+    gift{{giftCard}}
+    form{{formData}}
     <div class="lg:flex lg:flex-row lg:gap-5">
       <Button
         v-for="button in textData.priceButtons"
@@ -92,10 +94,12 @@
 
 <script setup lang="ts">
 import { type GiftCardForm } from '../types/types'
+import {useCreateGiftCardHandler} from "~/composables/gift-card/create/useCreateGiftCardHandler.ts";
 
 const emit = defineEmits(['formUpdated'])
 
-const { validateSchema, validationErrors } = useGiftFormValidator()
+const { validateSchema, validationErrors } = useGiftFormValidator();
+const { giftCard } = useCreateGiftCardHandler();
 
 const textData = {
   priceButtons: 3,
@@ -111,6 +115,15 @@ const formData: GiftCardForm = reactive({
   whoSend: '',
   forWho: '',
   sendMethod: '',
+})
+
+watchEffect(() => {
+  formData.amount = giftCard.value[0].amount;
+  formData.quantity = giftCard.value[0].quantity;
+  formData.message = giftCard.value[0].message;
+  formData.whoSend = giftCard.value[0].whoSend;
+  formData.forWho = giftCard.value[0].forWho;
+  formData.sendMethod = giftCard.value[0].sendMethod;
 })
 
 watch(formData, () => {

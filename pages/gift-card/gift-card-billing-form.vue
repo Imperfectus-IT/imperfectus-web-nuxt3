@@ -1,29 +1,24 @@
 <template>
   <div class="lg:w-1/2 lg:mx-auto">
     <h4 class="font-recoleta-regular text-center text-[30px] lg:text-[50px] mb-4">
-    {{ $t(`${textData.section}.title`) }}
-  </h4>
-  <div
-    v-for="field in textData.fields"
-    :key="field"
-    class="flex flex-col gap-1 px-8 mb-6"
-  >
-    <label for="username">{{
-      $t(`${textData.section}.field_${field}.label`)
-    }}</label>
-    <InputText
-      :disabled="field === 10"
-      :id="$t(`${textData.section}.field_${field}.label`)"
-      class="rounded-xl"
-      v-model="formData[$t(`${textData.section}.field_${field}.value`) as keyof BillingForm]"
-    />
-  </div>
-  <NuxtLink :to="localePath({ name: 'gift-card-gift-card-payment'})">
-    <Button
-      :label="$t('gift-card.create.form.button')"
-      class="w-1/2 ml-[25%]"
-    />
-  </NuxtLink>
+      {{ $t(`${textData.section}.title`) }}
+    </h4>
+    <div
+      v-for="field in textData.fields"
+      :key="field"
+      class="flex flex-col gap-1 px-8 mb-6"
+    >
+      <label for="username">{{ $t(`${textData.section}.field_${field}.label`) }}</label>
+      <InputText
+        :disabled="field === 10"
+        :id="$t(`${textData.section}.field_${field}.label`)"
+        class="rounded-xl"
+        v-model="formData[$t(`${textData.section}.field_${field}.value`) as keyof BillingForm]"
+      />
+    </div>
+    <NuxtLink :to="localePath({ name: 'gift-card-gift-card-payment' })">
+      <Button :label="$t('gift-card.create.form.button')" class="w-1/2 ml-[25%]" />
+    </NuxtLink>
   </div>
 </template>
 
@@ -39,9 +34,8 @@ defineI18nRoute({
   },
 });
 
-const localePath = useLocalePath()
+const localePath = useLocalePath();
 const { orders } = useGetOrdersHandler(t);
-const { giftCard } = useCreateGiftCardHandler();
 
 const textData = {
   fields: 10,
@@ -83,4 +77,11 @@ watchEffect(() => {
   }
 });
 
+interface Test {
+  name: string
+}
+
+const prueba: Test = {
+  name: 'Roger'
+}
 </script>

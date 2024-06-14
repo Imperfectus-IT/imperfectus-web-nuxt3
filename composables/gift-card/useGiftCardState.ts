@@ -1,7 +1,7 @@
 import { v4 } from 'uuid'
 import type {Ref} from "vue";
 
-const giftCardCreator = () => {
+export const giftCardCreator = () => {
   return {
     id: v4(),
     amount: 21.07,
@@ -14,18 +14,12 @@ const giftCardCreator = () => {
   };
 }
 
-
 export const useGiftCardState = () => {
   const giftCard: Ref<GiftCard[]> = useState('giftcard', () => [giftCardCreator()]);
 
-  const addGiftCard = () => {
-    giftCard.value.unshift(giftCardCreator());
-  };
-
   return {
     giftCard,
-    addGiftCard,
-  };
+  }
 };
 
 export type GiftCard = {
@@ -38,4 +32,3 @@ export type GiftCard = {
   whoSend: string,
   quantity: number
 };
-

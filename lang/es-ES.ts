@@ -357,7 +357,7 @@ export default {
   'pages.legal.terms.description1continue': 'incluido en este sitio web',
   'pages.legal.terms.description1.bold2': 'https://www.talkualfoods.com.',
   'pages.legal.terms.description2':
-  'Al solicitar la adquisición de una caja, una suscripción o una tarjeta regalo a través de este sitio web, el Usuario queda vinculado a estas Condiciones.',
+    'Al solicitar la adquisición de una caja, una suscripción o una tarjeta regalo a través de este sitio web, el Usuario queda vinculado a estas Condiciones.',
 
   'pages.legal.terms.title1': '1. DISPOSICIONES PRELIMINARES',
   'pages.legal.terms.content1': 'Las presentes condiciones de venta son de aplicación para todas las ventas que hayan sido realizadas a través del sitio web',
@@ -2930,6 +2930,13 @@ export default {
       amount: 'TOTAL: ',
       add: 'Añadir otra tarjeta regalo',
       pay: 'Realiza el pago de {amount}€',
+    },
+    'payment-completed': {
+      title: '¡Gracias por tu compra!',
+      description: 'Gracias por regalar TALKUAL. Con este regalo, estás ayudando al cuidado del planeta, contribuyendo a reducir el desperdicio alimentario. Con este regalo, estás apostando por esos alimentos que, por no cumplir con los requisitos estéticos de las grandes superficies, no son aceptados ni vendidos.',
+      code: 'El código de descuento es:',
+      comment: '*En el mail recibirás el PDF con el mensaje personalizado y el cupón de descuento',
+      button: 'Volver a la página de inicio'
     }
   },
   'gift-card-create.title': 'Compra una tarjeta regalo de TALKUAL.',
