@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       title: 'TALKUAL',
       titleTemplate: '%s | TALKUAL',
       meta: [
-        { charset: 'utf-8' },
+        {charset: 'utf-8'},
         {
           name: 'viewport',
           content: 'width=device-width, initial-scale=1',
@@ -40,19 +40,20 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/api/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: { '^/api/': '' } },
-    '/uploads/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL },
+    '/api/**': {proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: {'^/api/': ''}},
+    '/uploads/**': {proxy: process.env.NUXT_PUBLIC_STRAPI_URL},
   },
   hooks: {
-    'pages:extend' (pages) {
+    'pages:extend'(pages) {
       // add a route
       pages.push({
-        name: 'profile',
-        path: '/gift-card-payment-completed/',
-        file: '~/pages/gift-card/payment-completed.vue'
-      })
+          name: 'payment-completed',
+          path: '/gift-card-payment-completed/',
+          file: '~/pages/gift-card/payment-completed.vue'
+        }
+      )
 
-      function removePagesMatching (pattern: RegExp, pages: NuxtPage[] = []) {
+      function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {
         const pagesToRemove = []
         for (const page of pages) {
           if (pattern.test(page.file)) {
@@ -65,6 +66,7 @@ export default defineNuxtConfig({
           pages.splice(pages.indexOf(page), 1)
         }
       }
+
       removePagesMatching(/\.ts$/, pages)
     }
   },
@@ -80,7 +82,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: false,
   },
-  devtools: { enabled: true },
+  devtools: {enabled: true},
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
