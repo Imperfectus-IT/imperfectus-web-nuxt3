@@ -10,6 +10,7 @@ import dropdown from './dropdown/index.ts'
 import fieldset from './fieldset/index.ts'
 import inputotp from './inputotp/index.ts'
 import inputtext from './inputtext/index.ts'
+import listbox from './listbox/index.ts'
 import menu from './menu/index.ts'
 import menubar from './menubar/index.ts'
 import message from './message/index.ts'
@@ -42,6 +43,7 @@ export default {
   fieldset,
   inputotp,
   inputtext,
+  listbox,
   menubar,
   menu,
   message,

@@ -44,7 +44,7 @@ export default {
 
       // Outlined Button
       {
-        'hover:bg-green-tertiary hover:text-white-primary focus:bg-green-tertiary focus:text-green-primary':
+        'hover:bg-green-primary hover:text-white-tertiary visited:bg-green-primary visited:text-white-tertiary focus:bg-green-primary focus:text-green-tertiary':
           props.outlined && !props.plain,
       },
 

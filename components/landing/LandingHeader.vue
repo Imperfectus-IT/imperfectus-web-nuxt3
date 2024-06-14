@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const localePath = useLocalePath()
+</script>
+
 <template>
   <video
     class="border-2 border-black w-full lg:h-[65vh] lg:object-cover lg:rounded-xl lg:w-auto lg:mx-6"
@@ -20,6 +24,7 @@
     <div class="flex justify-center lg:justify-end">
       <NuxtLink
         class="mt-4 lg:mt-0"
+        :to="localePath({ name: 'order' })"
       >
         <Button
           class="p-10 lg:py-4 w-full lg:px-10 lg:mt-0"
