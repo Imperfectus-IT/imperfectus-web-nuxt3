@@ -5,12 +5,14 @@
     >
       {{ $t("gift-card.status.title") }}
     </h1>
-    <p class="text-[20px]">{{ $t("gift-card.status.description") }}</p>
+    <p class="text-[20px]">
+      {{ $t("gift-card.status.description") }}
+    </p>
 
     <div
         v-for="card in cards"
         class="flex flex-col lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:mt-10"
-        style="grid-template-rows: 200px auto;"
+        style="grid-template-rows: 200px auto"
     >
       <NuxtImg
           v-if="imageUrl"
@@ -19,10 +21,14 @@
       />
       <div class="lg:col-start-2 lg:ml-4 lg:mt-6">
         <p>{{ card.message }}</p>
-        <p class="mt-1 mb-5">{{ card.whoSend }}</p>
+        <p class="mt-1 mb-5">
+          {{ card.whoSend }}
+        </p>
       </div>
       <div class="lg:col-start-1 lg:row-start-2">
-        <p class="text-[26px]">{{ card.forWho }}</p>
+        <p class="text-[26px]">
+          {{ card.forWho }}
+        </p>
         <p>{{ $t("gift-card.payment.price") }}</p>
       </div>
       <div class="lg:col-span-2 lg:w-7/12 lg:mx-auto">
@@ -54,24 +60,17 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-const cards = ref([]);
-const locale = useI18n().locale.value;
+const route = useRoute()
+const cards = ref([])
+const locale = useI18n().locale.value
 
 const imageUrl = computed(() => {
   return `/images/gift-card/cards/${locale}/${cards.value[0]?.designId}.webp`;
-});
-
-watch(() => {
-  console.log("CARD", cards.value);
-});
+})
 
 onMounted(async () => {
-  console.log("ROUTE", route);
-  const user = useStrapiUser();
-  console.log("user", user);
   cards.value = await $fetch(
-      `http://localhost:3000/order-payments/${route.query.notification}/cards`
+      `${process.env.STRAPI_URL}/order-payments/${route.query.notification}/cards`
   );
 });
 </script>
