@@ -12,6 +12,14 @@ export const useOrdersFactory = (order: any, t: any): Order => {
         exclusions: order_item.exclusions.map((exclusion: any) => {
           return exclusion.name_es
         }),
+        review: order_item.order_item_review ? {
+          id: order_item.order_item_review.id,
+          rating: {
+            productQuality: order_item.order_item_review.ratings[0].product_quality,
+            deliveryService: order_item.order_item_review.ratings[0].delivery_service,
+            overallExperience: order_item.order_item_review.ratings[0].overall_experience
+          }
+        } : null,
       }
     }),
     billing: {

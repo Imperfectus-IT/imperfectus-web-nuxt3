@@ -4,7 +4,11 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   const findOrdersByUser = async (): Promise<Order[]> => {
     const {find} = useStrapi()
     const user = useStrapiUser()
-    const strapiOrders = await find('orders', {user: user.value?.id, _sort: 'created_at:desc', _limit: 10})
+    const strapiOrders = await find('orders', {
+      user: user.value?.id,
+      _sort: 'created_at:desc',
+      _limit: 10
+    }, ['order_items'])
     return strapiOrders.map((order: any) => useOrdersFactory(order, t))
   }
 

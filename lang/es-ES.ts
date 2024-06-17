@@ -3271,6 +3271,27 @@ export default {
         item_5: 'Localidad:',
         button_label: 'Modificar datos',
       },
+      rating: {
+        item_0: {
+          title: 'Calidad del producto',
+          value: 'productQuality'
+        },
+        item_1: {
+          title: 'Servicio de entrega',
+          value: 'deliveryService'
+        },
+        item_2: {
+          title: 'Experiencia general',
+          value: 'overallExperience'
+        },
+        values: {
+          option_0: 'Fatal',
+          option_1: 'Mal',
+          option_2: 'Sin más',
+          option_3: 'Bien',
+          option_4: 'Genial',
+        }
+      }
     },
   },
   'upcoming_orders': {
