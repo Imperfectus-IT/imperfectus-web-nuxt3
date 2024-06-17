@@ -36,7 +36,7 @@ const sleep = (ms) => {
 const submitForm = async (): Promise<void> => {
   try {
     isPaymentAvailable.value = true
-    const data = await $fetch(`http://localhost:3000/payments/${props.order}/form/`,
+    const data = await $fetch(`${process.env.STRAPI_URL}/payments/${props.order}/form/`,
         {
           method: 'POST',
           headers: {
