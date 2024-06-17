@@ -3,11 +3,15 @@
     <p class="font-bold">
       {{ $t(`${fragmentName}.title`) }}
     </p>
+    <p class="font-bold">
+      {{ $t(`${fragmentName}.title`) }}
+    </p>
     <p>{{ $t(`${fragmentName}.description`) }}</p>
   </div>
 
   <Panel
     v-for="(ong, index) in ONGsData"
+    :key="index"
     :class="['mt-4 cursor-pointer lg:flex lg:flex-row lg:jus lg:w-3/4', getBackgroundColor(ong.name)]"
     :pt="!isMobile ? { content: 'flex flex-row' } : {} "
     @click="selectONG(ong)"
@@ -52,7 +56,8 @@
           {{ $t(`${ong.fragment}.description_title`) }}
         </p>
         <span
-          v-for="text in ong.description_sections"
+          v-for="(text, index) in ong.description_sections"
+          :key="index"
           :class="text.includes('bold') ? 'font-bold' : ''"
         >
           {{ $t(`${ong.fragment}.${text}`) }}

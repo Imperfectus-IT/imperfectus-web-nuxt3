@@ -357,7 +357,7 @@ export default {
   'pages.legal.terms.description1continue': 'incluido en este sitio web',
   'pages.legal.terms.description1.bold2': 'https://www.talkualfoods.com.',
   'pages.legal.terms.description2':
-  'Al solicitar la adquisición de una caja, una suscripción o una tarjeta regalo a través de este sitio web, el Usuario queda vinculado a estas Condiciones.',
+    'Al solicitar la adquisición de una caja, una suscripción o una tarjeta regalo a través de este sitio web, el Usuario queda vinculado a estas Condiciones.',
 
   'pages.legal.terms.title1': '1. DISPOSICIONES PRELIMINARES',
   'pages.legal.terms.content1': 'Las presentes condiciones de venta son de aplicación para todas las ventas que hayan sido realizadas a través del sitio web',
@@ -2827,6 +2827,118 @@ export default {
     'Crear una cuenta de cliente y el envío de newsletters, comunicaciones comerciales y promociones.',
 
   // Gift card
+  'gift-card': {
+    title: 'Tarjeta regalo digital',
+    description1: 'Regalar TALKUAL es regalar salud. Es regalar una caja llena de fruta y verdura imperfecta por fuera y brutal por dentro. De temporada, calidad y producto nacional.',
+    description2: 'Tus familiares y amigxs recibirán en su mail una tarjeta digital de regalo con un cupón de descuento para comprar en nuestra página web.',
+    description3: '¡Regala TALKUAL, regala salud!',
+    create: {
+      title: 'Crea tu tarjeta regalo',
+      choose_design: 'Elige un diseño',
+      images: '/images/gift-card/cards/',
+      form: {
+        field_price: {
+          title: 'Precios sugeridos',
+          option_1: {
+            price: '21.07',
+            box: 'Caja pequeña',
+          },
+          option_2: {
+            price: '25.87',
+            box: 'Caja mediana',
+          },
+          option_3: {
+            price: '32.59',
+            box: 'Caja grande',
+          },
+        },
+        field_quantity: {
+          title: 'Número de cajas',
+        },
+        field_amount: {
+          title: 'Resumen precio',
+        },
+        field_forWho: {
+          title: '¿Para quién es?',
+          placeholder: 'Nombre del destinatario',
+        },
+        field_message: {
+          title: 'Añade un mensaje personalizado',
+          placeholder: 'Mensaje para la tarjeta de regalo',
+        },
+        field_whoSend: {
+          title: '¿Quién la envía?',
+          placeholder: 'Nombre del remitente',
+        },
+        field_sendMethod: {
+          title: 'Método de envío',
+          placeholder: 'Mail del remitente',
+        },
+        description: 'Si compras una tarjeta regalo, solo podrán canjearla los usuarios que residan en la Península. Al comprar esta tarjeta regalo, aceptas los',
+        description_link: 'Términos de Uso de TALKUAL.',
+        button: 'Continuar',
+      },
+    },
+    'billing-form': {
+      title: 'Direccion de facturación',
+      field_1: {
+        label: 'Nombre',
+        value: 'name'
+      },
+      field_2: {
+        label: 'Apellidos',
+        value: 'surname'
+      },
+      field_3: {
+        label: 'NIF',
+        value: 'nif'
+      },
+      field_4: {
+        label: 'Correo electrónico',
+        value: 'email'
+      },
+      field_5: {
+        label: 'Dirección (calle y número)',
+        value: 'address1'
+      },
+      field_6: {
+        label: 'Piso y puerta',
+        value: 'address2'
+      },
+      field_7: {
+        label: 'Código postal',
+        value: 'postalCode'
+      },
+      field_8: {
+        label: 'Ciudad',
+        value: 'city'
+      },
+      field_9: {
+        label: 'Provincia',
+        value: 'state'
+      },
+      field_10: {
+        label: 'País',
+        value: 'country'
+      },
+    },
+    payment: {
+      title: 'Resumen de compra',
+      delete: 'Borrar',
+      edit: 'Editar',
+      price: 'Importe:',
+      amount: 'TOTAL: ',
+      add: 'Añadir otra tarjeta regalo',
+      pay: 'Realiza el pago de {amount}€',
+    },
+    'payment-completed': {
+      title: '¡Gracias por tu compra!',
+      description: 'Gracias por regalar TALKUAL. Con este regalo, estás ayudando al cuidado del planeta, contribuyendo a reducir el desperdicio alimentario. Con este regalo, estás apostando por esos alimentos que, por no cumplir con los requisitos estéticos de las grandes superficies, no son aceptados ni vendidos.',
+      code: 'El código de descuento es:',
+      comment: '*En el mail recibirás el PDF con el mensaje personalizado y el cupón de descuento',
+      button: 'Volver a la página de inicio'
+    }
+  },
   'gift-card-create.title': 'Compra una tarjeta regalo de TALKUAL.',
   'gift-card-create.description':
     'Compra y envía una tarjeta regalo de TALKUAL a tus familiares y amigos. Una caja llena de frutas y verduras imperfectas.',
@@ -2841,17 +2953,9 @@ export default {
   'gift-card.head.status.description':
     'Gracias por regalar TALKUAL, con este regalo estás ayudando al cuidado del planeta, contribuyendo a reducir el desperdicio alimentario.',
 
-  'gift-card.title': 'Tarjeta regalo digital',
-  'gift-card.description.1':
-    'Regalar TALKUAL es regalar salud. Es regalar una caja llena de fruta y verdura imperfecta por fuera y brutal por dentro. De temporada, calidad y producto nacional.',
-  'gift-card.description.2':
-    'Tus familiares y amigxs recibirán en su mail una tarjeta digital de regalo con un cupón de descuento para comprar en nuestra página web.',
-  'gift-card.description.3': '¡Regala TALKUAL, regala salud!',
-  'gift-card.create.title': 'Crea tu tarjeta regalo',
-  'gift-card.create.choose-design': 'Elige un diseño',
   'gift-card.create.choose-option.label': 'Resumen precio',
   'gift-card.create.choose-option.placeholder': 'Personalizado',
-  'gift-card.create.prices.description': 'Precios sugeridos',
+  // 'gift-card.create.prices.description': 'Precios sugeridos',
   'gift-card.create.for-who.label': '¿Para quién es?',
   'gift-card.create.for-who.placeholder': 'Nombre del destinatario',
   'gift-card.create.message.placeholder': 'Mensaje para la tarjeta de regalo',
@@ -2860,7 +2964,7 @@ export default {
   'gift-card.create.send-method.label': 'Método de envío',
   'gift-card.create.send-method.placeholder': 'Mail del remitente',
   'gift-card.create-who-send.placeholder': 'Nombre del remitente',
-  'gift-card.create.number-of-boxes.description': 'Número de cajas',
+  // 'gift-card.create.number-of-boxes.description': 'Número de cajas',
   'gift-card.designs.1.description': '¡Muchas felicidades!',
   'gift-card.designs.3.description': '¡Te quiero así,',
   'gift-card.designs.4.description': 'La perfección no existe, pero tú sí',

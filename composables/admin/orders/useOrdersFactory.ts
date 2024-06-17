@@ -45,8 +45,12 @@ export const useOrdersFactory = (order: any, t: any): Order => {
       billingEmail: order.order_meta.billing_email,
       billingPhone: order.order_meta.billing_phone,
       billingAddress: order.order_meta.billing_address1,
+      billingAddress2: order.order_meta.billing_address2,
       billingCP: order.order_meta.billing_postcode,
       billingCity: order.order_meta.billing_city,
+      billingState: order.order_meta.billing_state,
+      billingNif: order.order_meta.billing_cif,
+      billingCountry: order.order_meta.billing_country
     },
   }
 }
