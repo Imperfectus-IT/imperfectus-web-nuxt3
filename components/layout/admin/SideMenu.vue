@@ -1,40 +1,43 @@
 <template>
   <div
-    class="lg:max-w-[22vw] border-[1px] border-green-ternary flex flex-col font-solina-extended-book text-[20px] p-6 rounded-xl"
+      class="lg:max-w-[22vw] border-[1px] border-green-ternary flex flex-col font-solina-extended-book text-[20px] p-6 rounded-xl"
   >
     <NuxtLink
-      class="font-recoleta-regular text-[32px] mb-4"
-      :to="localePath({ name: 'admin' })"
+        class="font-recoleta-regular text-[32px] mb-4"
+        :to="localePath({ name: 'admin' })"
     >
       {{ $t("side_admin_menu.title") }}
     </NuxtLink>
     <NuxtLink
-      v-for="item in mainMenu"
-      :key="item.id"
-      :to="localePath({ name: item.route })"
-      class="pb-1 active:font-bold cursor-pointer flex flex-col"
-      @click="hideTopNavbar"
-    >{{ item.label }}</NuxtLink>
-    <Divider />
+        v-for="item in mainMenu"
+        :key="item.id"
+        :to="localePath({ name: item.route })"
+        class="pb-1 active:font-bold cursor-pointer flex flex-col"
+        @click="hideTopNavbar"
+    >{{ item.label }}
+    </NuxtLink>
+    <Divider/>
     <NuxtLink
-      v-for="item in secondaryMenu"
-      :key="item.id"
-      :to="localePath({ name: item.route })"
-      class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
-      @click="hideTopNavbar"
-    >{{ item.label }}</NuxtLink>
+        v-for="item in secondaryMenu"
+        :key="item.id"
+        :to="localePath({ name: item.route })"
+        class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
+        @click="hideTopNavbar"
+    >{{ item.label }}
+    </NuxtLink>
     <NuxtLink
-      class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
-      @click.prevent="handleLogoutUser"
-    >{{ $t('side_admin_menu.logout') }}</NuxtLink>
+        class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
+        @click.prevent="handleLogoutUser"
+    >{{ $t('side_admin_menu.logout') }}
+    </NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import {useI18n} from 'vue-i18n'
 
 const localePath = useLocalePath()
-const { t } = useI18n()
+const {t} = useI18n()
 
 const emit = defineEmits(['hide'])
 
@@ -42,7 +45,7 @@ const hideTopNavbar = () => {
   emit('hide')
 }
 
-const { handleLogoutUser } = useLogoutUserHandler()
+const {handleLogoutUser} = useLogoutUserHandler()
 
 const mainMenu = [
   {
@@ -68,7 +71,7 @@ const mainMenu = [
   {
     id: useId(),
     label: t('side_admin_menu.giftcard'),
-    route: 'admin-gift',
+    route: 'admin-gift-cards',
   },
   {
     id: useId(),
