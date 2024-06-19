@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="text-[14px] my-3">
-      Próxima entrega: {{ nextDeliveryDate }}
+      Próxima entrega: {{ getNextDeliveryDate }}
     </p>
     <div class="flex flex-row gap-4 mt-2">
       <NuxtImg
@@ -48,14 +48,20 @@
 </template>
 
 <script lang="ts" setup>
-import type { DayMapping } from '../types/DayMapping'
+import dayjs from 'dayjs'
+import { DayMapping } from '../DayMapping.ts'
 
-defineProps<{
+const props = defineProps<{
   subscriptionItem: SubscriptionItem
-  preferredDay: keyof DayMapping
+  preferredDay: keyof typeof DayMapping
   subscriptionStatus: string
   nextDeliveryDate: string
 }>()
+
+const getNextDeliveryDate = computed(() => {
+  const daysToAdd = DayMapping[props.preferredDay]
+  return dayjs(props.nextDeliveryDate).add(daysToAdd, 'day').format('DD-MM-YYYY')
+})
 
 const getBoxSize = (sku: string) => {
   return sku.includes('IM')

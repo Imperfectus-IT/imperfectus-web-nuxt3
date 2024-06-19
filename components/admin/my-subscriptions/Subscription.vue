@@ -1,39 +1,6 @@
 <template>
-  <Panel class="my-5 flex flex-col lg:p-2 lg:relative min-w-[900px]">
-    <div
-      class="flex flex-row gap-1 justify-start lg:order-2 lg:justify-start lg:gap-4 lg:mt-6 relative lg:items-center"
-    >
-      <Button
-        :label="status"
-        :pt="{
-          root: ` bg-${backgroundColor()} py-1.5 px-4 rounded-lg text-[12px] lg:px-8 cursor-default`,
-          label: '',
-        }"
-      />
-      <Button
-        outlined
-        :label="'ID ' + subscription.id"
-        :pt="{
-          label: 'text-[12px]',
-          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 cursor-default',
-        }"
-      />
-      <Button
-        outlined
-        :label="frequency"
-        :pt="{
-          label: 'text-[12px]',
-          root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 cursor-default',
-        }"
-      />
-      <p
-        v-if="subscription.status === 'cancelled'"
-        class="mt-5 lg:order-3 text-[14px] hidden lg:block lg:mt-0 lg:relative left-[35%] "
-      >
-        Fecha de cancelación: {{ cancelDate }}
-      </p>
-    </div>
-
+  <Panel class="my-5 flex flex-col lg:p-2 lg:relative lg:min-w-[900px]">
+    <SubscriptionHeader :subscription="subscription" />
     <SubscriptionItemCard
       v-for="(subscriptionItem, index) in subscription.subscriptionItems"
       :key="index"
@@ -56,7 +23,6 @@
           :label="'Editar'"
           :pt="{
             root: 'border-[1px] border-[green-tertiary] px-4  py-2 rounded-lg text-[14px]',
-            label: '',
           }"
         />
       </NuxtLink>
@@ -135,33 +101,10 @@
 
 <script setup lang="ts">
 import dayjs from 'dayjs'
-import type { SubscriptionStatus } from './types/SubscriptionStatus'
 
 const props = defineProps<{
   subscription: Subscription
 }>()
-
-const frequency = computed(() =>
-  props.subscription.frequency === 'weekly' ? 'Semanal' : 'Quincenal',
-)
-const status = computed(
-  () =>
-    subscriptionStatuses[props.subscription.status as keyof SubscriptionStatus],
-)
-const backgroundColor = () =>
-  props.subscription.status === 'active'
-    ? 'green-quaternary'
-    : props.subscription.status === 'paused'
-      ? 'orange-primary'
-      : 'red-secondary'
-
-const subscriptionStatuses: SubscriptionStatus = {
-  active: 'Activa',
-  paused: 'Pausada',
-  cancelled: 'Cancelada',
-  failed: 'Failed',
-  waiting: 'Esperando...',
-}
 
 const cancelDate = computed(() =>
   dayjs(props.subscription.cancelledAt).format('DD/MM/YYYY'),

@@ -21,6 +21,11 @@
           :order-item="orderItem"
           :order-status="order.status"
         />
+        <OrderItemReview
+          v-if="!isCollapsed && order.status === 'completed'"
+          :review="orderItem.review ? orderItem.review.ratings : null"
+          @create-review="(newReview: ReviewRatings) => handleCreateRating(newReview, orderItem.id)"
+        />
         <OrderProductsCarousel
           v-if="!isCollapsed"
           :products="filteredProducts(orderItem)"
@@ -137,24 +142,42 @@
         @edit-billing-info="() => console.log('Edit billing info')"
       />
     </div>
+    <Toast />
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
+import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
+
+const { t } = useI18n()
+const toast = useToast()
+const emits = defineEmits(['review-created'])
+const { successToast, errorToast } = useToastService()
+
 const props = defineProps<{
   order: Order
   isCollapsed: boolean
   products: ItemProduct[]
 }>()
+const textSection = 'orders.order.review.'
+
+const { handleCreateReview } = useCreateOrderItemReviewHandler()
+const handleCreateRating = async (newReview: ReviewRatings, orderItemId: number) => {
+  try {
+    await handleCreateReview(newReview, orderItemId)
+    emits('review-created')
+    successToast(toast, t(`${textSection}successToast.title`), t(`${textSection}successToast.description`))
+  }
+  catch (error) {
+    errorToast(toast, t(`${textSection}errorToast.title`), t(`${textSection}errorToast.description`))
+  }
+}
 
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
     return !orderItem.exclusions.includes(product.name) && product.isActive
   })
 }
-
-const isOneStepOrder = computed(() => {
-  const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
-  return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
-})
 </script>

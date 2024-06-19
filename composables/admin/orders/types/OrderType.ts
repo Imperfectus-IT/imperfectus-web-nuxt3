@@ -1,5 +1,6 @@
 export interface Order {
   id: number
+  isValidForReview: boolean
   order_id: number
   status: string
   deliveryDate: string
@@ -11,10 +12,19 @@ export interface Order {
 }
 
 export interface OrderItem {
+  id: number
   amount: number
   sku: string
   exclusions: string[]
   image: string
+  review: {
+    id: number
+    ratings: {
+      productQuality: number
+      deliveryService: number
+      overallExperience: number
+    }
+  }
 }
 
 export interface Billing {
@@ -39,12 +49,12 @@ export interface OrderBilling {
   billingFullName: string
   billingEmail: string
   billingPhone: string
-  billingAddress: string,
-  billingAddress2: string,
+  billingAddress: string
+  billingAddress2: string
   billingCP: string
-  billingCity: string,
-  billingState: string,
-  billingNif: string,
+  billingCity: string
+  billingState: string
+  billingNif: string
   billingCountry: string
 }
 

@@ -39,6 +39,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
+import { ref, reactive, toRefs, watch, computed } from 'vue'
 
 definePageMeta({
   layout: 'admin',
@@ -75,15 +76,24 @@ watch(orders, (newOrders) => {
   }
 })
 
+const allOrders = computed(() => orders.value)
+const currentOrders = computed(() => orders.value.filter((order: Order) => dayjs(order.deliveryDate) >= dayjs()))
+const pastOrders = computed(() => orders.value.filter((order: Order) => dayjs(order.deliveryDate) < dayjs()))
+
+const filterStrategies: { [key: string]: ComputedRef<Order[]> } = {
+  all: allOrders,
+  current: currentOrders,
+  past: pastOrders,
+}
+
 const filterSelectedOrders = (payload: string) => {
-  if (payload === 'all') {
-    return ordersToShow.value = [...orders.value]
-  }
-  else if (payload === 'current') {
-    return ordersToShow.value = orders.value.filter((order: Order) => dayjs(order.deliveryDate) >= dayjs())
+  const filterFunction = filterStrategies[payload]
+  if (filterFunction) {
+    ordersToShow.value = filterFunction.value
   }
   else {
-    return ordersToShow.value = orders.value.filter((order: Order) => dayjs(order.deliveryDate) < dayjs())
+    console.error(`Unknown filter type: ${payload}`)
+    ordersToShow.value = allOrders.value
   }
 }
 </script>
