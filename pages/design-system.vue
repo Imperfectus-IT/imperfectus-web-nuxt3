@@ -20,7 +20,11 @@
     <SkeletonDemo />
     <FieldsetDemo />
     <StepsDemo />
+<<<<<<< Updated upstream
     <TimeLineDemo />
+=======
+
+>>>>>>> Stashed changes
   </div>
 </template>
 
