@@ -2,7 +2,10 @@
   <h4 class="uppercase font-bold text-[22px] ml-8 mt-12">
     {{ $t("gift-card-doubts.title") }}
   </h4>
-  <div v-for="item in textData.items" :key="item">
+  <div
+    v-for="item in textData.items"
+    :key="item"
+  >
     <Divider class="text-green-primary !w-10/12 mx-auto lg:!w-[97vw]" />
     <Panel
       class="mb-4"

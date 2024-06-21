@@ -50,7 +50,7 @@ export const useOrdersFactory = (order: any, t: any): Order => {
       billingCity: order.order_meta.billing_city,
       billingState: order.order_meta.billing_state,
       billingNif: order.order_meta.billing_cif,
-      billingCountry: order.order_meta.billing_country
+      billingCountry: order.order_meta.billing_country,
     },
   }
 }

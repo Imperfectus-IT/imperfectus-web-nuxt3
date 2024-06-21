@@ -1,7 +1,7 @@
 export const useGetGiftCardsHandler = () => {
-  const {executeGetGiftCardsByUser} = useGetGiftCards();
+  const { executeGetGiftCardsByUser } = useGetGiftCards()
 
   return {
-    getGiftCardByUser: executeGetGiftCardsByUser
+    getGiftCardByUser: executeGetGiftCardsByUser,
   }
 }
