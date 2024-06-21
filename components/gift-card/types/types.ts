@@ -5,18 +5,18 @@ export type GiftCardForm = {
   whoSend: string
   forWho: string
   sendMethod: string
-  // designId: number       
+  // designId: number
 }
 
 export type BillingForm = {
-  name: string;
-  surname: string;
-  nif: string;
-  email: string;
-  address1: string;
-  address2: string;
-  postalCode: string;
-  city: string;
-  state: string;
-  country: string;
-};
+  name: string
+  surname: string
+  nif: string
+  email: string
+  address1: string
+  address2: string
+  postalCode: string
+  city: string
+  state: string
+  country: string
+}

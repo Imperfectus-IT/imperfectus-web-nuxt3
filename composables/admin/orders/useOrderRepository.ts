@@ -1,8 +1,8 @@
-import type {ComposerTranslation} from 'vue-i18n'
+import type { ComposerTranslation } from 'vue-i18n'
 
 export const useOrderRepository = (t: ComposerTranslation) => {
   const findOrdersByUser = async (): Promise<Order[]> => {
-    const {find} = useStrapi()
+    const { find } = useStrapi()
     const user = useStrapiUser()
     const strapiOrders = await find('orders', {
       user: user.value?.id,
@@ -13,8 +13,8 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   }
 
   const findById = async (id: number): Promise<Order> => {
-    const {find} = useStrapi()
-    const [order] = await find<Array<Order>>('orders', {id})
+    const { find } = useStrapi()
+    const [order] = await find<Array<Order>>('orders', { id })
     return order
   }
 

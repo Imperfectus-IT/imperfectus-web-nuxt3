@@ -2828,11 +2828,11 @@ export default {
 
   // Gift card
   'gift-card': {
-    title: 'Tarjeta regalo digital',
-    description1: 'Regalar TALKUAL es regalar salud. Es regalar una caja llena de fruta y verdura imperfecta por fuera y brutal por dentro. De temporada, calidad y producto nacional.',
-    description2: 'Tus familiares y amigxs recibirán en su mail una tarjeta digital de regalo con un cupón de descuento para comprar en nuestra página web.',
-    description3: '¡Regala TALKUAL, regala salud!',
-    create: {
+    'title': 'Tarjeta regalo digital',
+    'description1': 'Regalar TALKUAL es regalar salud. Es regalar una caja llena de fruta y verdura imperfecta por fuera y brutal por dentro. De temporada, calidad y producto nacional.',
+    'description2': 'Tus familiares y amigxs recibirán en su mail una tarjeta digital de regalo con un cupón de descuento para comprar en nuestra página web.',
+    'description3': '¡Regala TALKUAL, regala salud!',
+    'create': {
       title: 'Crea tu tarjeta regalo',
       choose_design: 'Elige un diseño',
       images: '/images/gift-card/cards/',
@@ -2883,46 +2883,46 @@ export default {
       title: 'Direccion de facturación',
       field_1: {
         label: 'Nombre',
-        value: 'name'
+        value: 'name',
       },
       field_2: {
         label: 'Apellidos',
-        value: 'surname'
+        value: 'surname',
       },
       field_3: {
         label: 'NIF',
-        value: 'nif'
+        value: 'nif',
       },
       field_4: {
         label: 'Correo electrónico',
-        value: 'email'
+        value: 'email',
       },
       field_5: {
         label: 'Dirección (calle y número)',
-        value: 'address1'
+        value: 'address1',
       },
       field_6: {
         label: 'Piso y puerta',
-        value: 'address2'
+        value: 'address2',
       },
       field_7: {
         label: 'Código postal',
-        value: 'postalCode'
+        value: 'postalCode',
       },
       field_8: {
         label: 'Ciudad',
-        value: 'city'
+        value: 'city',
       },
       field_9: {
         label: 'Provincia',
-        value: 'state'
+        value: 'state',
       },
       field_10: {
         label: 'País',
-        value: 'country'
+        value: 'country',
       },
     },
-    payment: {
+    'payment': {
       title: 'Resumen de compra',
       delete: 'Borrar',
       edit: 'Editar',
@@ -2936,8 +2936,8 @@ export default {
       description: 'Gracias por regalar TALKUAL. Con este regalo, estás ayudando al cuidado del planeta, contribuyendo a reducir el desperdicio alimentario. Con este regalo, estás apostando por esos alimentos que, por no cumplir con los requisitos estéticos de las grandes superficies, no son aceptados ni vendidos.',
       code: 'El código de descuento es:',
       comment: '*En el mail recibirás el PDF con el mensaje personalizado y el cupón de descuento',
-      button: 'Volver a la página de inicio'
-    }
+      button: 'Volver a la página de inicio',
+    },
   },
   'gift-card-create.title': 'Compra una tarjeta regalo de TALKUAL.',
   'gift-card-create.description':
