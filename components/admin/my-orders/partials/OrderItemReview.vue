@@ -53,7 +53,7 @@ import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/
 const { t: $t } = useI18n()
 
 const emits = defineEmits(['createReview'])
-const newRatings: ReviewRatings | null = reactive({
+const newRatings: ReviewRatings = reactive({
   productQuality: 3,
   deliveryService: 3,
   overallExperience: 3,
