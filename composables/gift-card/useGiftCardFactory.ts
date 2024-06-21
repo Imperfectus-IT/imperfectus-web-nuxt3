@@ -1,4 +1,4 @@
-import type {GiftCard} from "~/composables/gift-card/useGiftCardState.ts";
+import type { GiftCard } from '~/composables/gift-card/useGiftCardState.ts'
 
 export const useGiftCardFactory = (giftCard: any): GiftCard => {
   return {

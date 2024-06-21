@@ -17,20 +17,20 @@ import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
 const language = computed(() => locale.value)
-const { isDesktop } = useScreenSize();
-const { giftCard } = useCreateGiftCardHandler();
+const { isDesktop } = useScreenSize()
+const { giftCard } = useCreateGiftCardHandler()
 
 const section = t('gift-card.create.images')
-const cards = 6;
+const cards = 6
 const emits = defineEmits(['update-designId'])
 
-const cardsData = ref<{ image: string }[]>([]);
+const cardsData = ref<{ image: string }[]>([])
 
 const handleClick = (event: MouseEvent) => {
-  const target = event.target as HTMLImageElement; 
-  const match = target.src.match(/(\d)\.webp$/);
-  if(match) {
-    emits('update-designId', parseInt(match[1]));
+  const target = event.target as HTMLImageElement
+  const match = target.src.match(/(\d)\.webp$/)
+  if (match) {
+    emits('update-designId', parseInt(match[1]))
   }
 }
 
