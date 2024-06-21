@@ -5,6 +5,6 @@ export const useCreateGiftCardHandler = () => {
     giftCard,
     executeCreateGiftCard,
     addGiftCard: executeAddGiftCard,
-    removeGiftCard: executeRemoveGiftCard
+    removeGiftCard: executeRemoveGiftCard,
   }
 }

@@ -1,11 +1,11 @@
 export const useGetGiftCards = () => {
-  const {getGiftCardsByUser} = useGiftCardRepository();
+  const { getGiftCardsByUser } = useGiftCardRepository()
 
   const executeGetGiftCardsByUser = async () => {
-    return await getGiftCardsByUser();
+    return await getGiftCardsByUser()
   }
 
   return {
-    executeGetGiftCardsByUser
+    executeGetGiftCardsByUser,
   }
 }
