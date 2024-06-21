@@ -84,7 +84,6 @@ const cancelledDates = computed(() => {
   const dates = props.subscription.skip.map((date) => {
     return dayjs(date).add(daysToAdd, 'd').format('YYYY-MM-DD')
   })
-  console.log('DATES', dates)
   return dates
 })
 
@@ -106,7 +105,6 @@ const isCancelledDate = (date: CalendarDate) => {
 }
 
 const getBackgroundColor = (index: number) => {
-  console.log(t(`${textData.section}item_${index}.color`))
   return t(`${textData.section}item_${index}.color`)
 }
 

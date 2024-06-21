@@ -10,9 +10,6 @@ export const useOrderRepository = (t: ComposerTranslation) => {
       _limit: 10,
     }, ['order_items'])
 
-    // const completedOrders = strapiOrders.filter((order: any) => order.status === 'completed')
-    // console.log(completedOrders)
-
     return strapiOrders.map((order: any) => useOrdersFactory(order, t))
   }
 

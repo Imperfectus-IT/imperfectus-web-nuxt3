@@ -1,4 +1,6 @@
 import type { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
+import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
+import type { Payment } from '~/composables/payment/types/Payment.ts'
 
 export type Subscription = {
   id: number
@@ -11,13 +13,28 @@ export type Subscription = {
   subscriptionItems: SubscriptionItem[]
   donations: string[]
   subscriptionMeta: SubscriptionMeta
+  preferredHour: string
+  coupon: Coupon | null
+  payment: Payment
+}
+
+export type Coupon = {
+  id: string
+  coupon: string
+  isActive: boolean
+  discountValue: number
+  discountType: string
+  type: string
 }
 
 export type SubscriptionItem = {
+  id: number
+  quantity: number
   amount: number
   sku: string
   exclusions: string[]
   image: string
+  product: BoxProduct
 }
 
 export type SubscriptionMeta = {

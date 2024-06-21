@@ -2,7 +2,7 @@ import type { User } from '~/composables/auth/types/User.ts'
 
 export interface Payment {
   id: number
-  user: User
+  user: User | number
   paymentMethod: string
   cardNumber: string
   cardCountry: string

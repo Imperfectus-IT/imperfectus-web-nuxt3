@@ -1,6 +1,9 @@
 <template>
   <div>
-    <p class="text-[14px] my-3">
+    <p
+      v-if="props.nextDeliveryDate"
+      class="text-[14px] my-3"
+    >
       Próxima entrega: {{ getNextDeliveryDate }}
     </p>
     <div class="flex flex-row gap-4 mt-2">

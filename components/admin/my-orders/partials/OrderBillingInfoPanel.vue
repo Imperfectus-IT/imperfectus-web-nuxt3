@@ -4,6 +4,7 @@
     toggleable
     collapsed
   >
+    {{ data }}
     <div
       v-for="(key, index) in Object.keys(props.data)"
       :key="index"

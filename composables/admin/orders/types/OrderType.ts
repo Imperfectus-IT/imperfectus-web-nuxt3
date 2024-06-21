@@ -1,3 +1,5 @@
+import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
+
 export interface Order {
   id: number
   isValidForReview: boolean
@@ -17,6 +19,7 @@ export interface OrderItem {
   sku: string
   exclusions: string[]
   image: string
+  product: BoxProduct
   review: {
     id: number
     ratings: {
