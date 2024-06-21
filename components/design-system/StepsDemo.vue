@@ -1,5 +1,4 @@
 <template>
-<<<<<<< Updated upstream
   <div class="card border-[1px] p-6 rounded-lg">
     <h4>STEPS</h4>
     <Steps
@@ -31,15 +30,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-=======
-    <div class="card">
-        <Steps :model="items" />
-    </div>
-</template>
-
-<script setup>
-import { ref } from "vue";
->>>>>>> Stashed changes
 
 const getBgColor = (index: number) => {
   return activeStep.value > index
