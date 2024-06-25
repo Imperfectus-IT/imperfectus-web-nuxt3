@@ -20,7 +20,7 @@
             <OrderItemReview
               v-if="!isCollapsed && order.status === 'completed'"
               :review="orderItem.review ? orderItem.review.ratings : null"
-              @create-review="(newReview: ReviewRatings) => handleCreateRating(newReview, orderItem.id)"
+              @create-review="(newReview: ReviewRatings) => createReview(newReview, orderItem.id)"
             />
             <OrderProductsCarousel
               v-if="!isCollapsed"
@@ -105,13 +105,17 @@
       </p>
 
       <OrderCoupon v-if="!isCollapsed && order.status !== 'completed'" />
-      <div class="mt-5 w-2/3">
+      <div
+        v-if="order.status === 'completed' && !isCollapsed"
+        class="mt-5 w-2/3"
+      >
         <h4 class="font-bold">
           Valoración del pedido
         </h4>
-        <Divider class="mt-2" />
+        <Divider class="mt-2 !w-2/3" />
         <Textarea
           v-model="review"
+          :disabled="!canWriteReview"
           class="w-2/3"
           rows="6"
           :pt="{
@@ -119,11 +123,11 @@
           }"
         />
         <Button
+          v-if="canWriteReview"
           label="Guardar"
           @click="saveOrderReview"
         />
       </div>
-      {{ review }}
     </Panel>
 
     <div
@@ -161,8 +165,9 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
+import type { Order, OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
+import type { ItemProduct } from '~/composables/admin/products/types/Product.ts'
 
 const { t } = useI18n()
 const toast = useToast()
@@ -175,10 +180,11 @@ const props = defineProps<{
   products: ItemProduct[]
 }>()
 
-const review = ref<string>('')
-
+const review = ref<string>(props.order.orderReview || '')
+const canWriteReview = computed (() => props.order.orderReview.length < 1)
 const { handleCreateReview } = useCreateOrderItemReviewHandler()
-const handleCreateRating = async (newReview: ReviewRatings, orderItemId: number) => {
+const { handleUpdateOrder } = useUpdateOrderHandler(t)
+const createReview = async (newReview: ReviewRatings, orderItemId: number) => {
   try {
     await handleCreateReview(newReview, orderItemId)
     emits('review-created')
@@ -200,7 +206,8 @@ const isOneStepOrder = computed(() => {
   return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
 })
 
-const saveOrderReview = () => {
-  console.log('Save order review')
+const saveOrderReview = async () => {
+  const test = await handleUpdateOrder(props.order, review.value)
+  console.log('test', test)
 }
 </script>

@@ -2,7 +2,6 @@
   <div class="lg:min-w-[900px] lg:max-w-[1500px]">
     <Panel
       :header="`Pedido ${order.id}`"
-      :style="{ minHeight: isOneStepOrder }"
       class="relative lg:min-h-[500px]"
     >
       <Divider class="mt-2" />
@@ -24,7 +23,7 @@
         <OrderItemReview
           v-if="!isCollapsed && order.status === 'completed'"
           :review="orderItem.review ? orderItem.review.ratings : null"
-          @create-review="(newReview: ReviewRatings) => handleCreateRating(newReview, orderItem.id)"
+          @create-review="(newReview: ReviewRatings) => createReview(newReview, orderItem.id)"
         />
         <OrderProductsCarousel
           v-if="!isCollapsed"
@@ -111,6 +110,31 @@
       />
 
       <OrderCoupon v-if="!isCollapsed" />
+      <div
+        v-if="order.status === 'completed' && !isCollapsed"
+        class="mt-5"
+      >
+        <h4 class="font-bold text-[14px] mb-2">
+          Valoración del pedido
+        </h4>
+        <Textarea
+          v-model="review"
+          :disabled="!canWriteReview"
+          class="w-2/3"
+          rows="6"
+          :pt="{
+            root: 'border-[1px] border-green-tertiary bg-transparent px-4 py-3 rounded-lg w-full mb-4 outline-none',
+          }"
+        />
+        <Button
+          v-if="canWriteReview"
+          :pt="{
+            root: 'bg-green-primary border-[1px] border-green-tertiary text-green-tertiary px-4 py-2 rounded-lg w-full',
+          }"
+          label="Guardar"
+          @click="saveOrderReview"
+        />
+      </div>
     </Panel>
 
     <div
@@ -155,16 +179,19 @@ const { t } = useI18n()
 const toast = useToast()
 const emits = defineEmits(['review-created'])
 const { successToast, errorToast } = useToastService()
-
+const textSection = 'orders.order.review.'
 const props = defineProps<{
   order: Order
   isCollapsed: boolean
   products: ItemProduct[]
 }>()
-const textSection = 'orders.order.review.'
+
+const review = ref<string>(props.order.orderReview || '')
 
 const { handleCreateReview } = useCreateOrderItemReviewHandler()
-const handleCreateRating = async (newReview: ReviewRatings, orderItemId: number) => {
+const { handleUpdateOrder } = useUpdateOrderHandler(t)
+const canWriteReview = computed (() => props.order.orderReview.length < 1)
+const createReview = async (newReview: ReviewRatings, orderItemId: number) => {
   try {
     await handleCreateReview(newReview, orderItemId)
     emits('review-created')
@@ -179,5 +206,11 @@ const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
     return !orderItem.exclusions.includes(product.name) && product.isActive
   })
+}
+
+const saveOrderReview = async () => {
+  const test = await handleUpdateOrder(props.order, review.value)
+  review.value = props.order.orderReview
+  console.log('test', test)
 }
 </script>

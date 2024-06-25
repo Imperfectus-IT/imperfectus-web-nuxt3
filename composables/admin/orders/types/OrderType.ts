@@ -11,6 +11,7 @@ export interface Order {
   deliveryInfo: OrderDelivery
   shippingInfo: OrderShipping
   billingInfo: OrderBilling
+  orderReview: string
 }
 
 export interface OrderItem {

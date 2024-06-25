@@ -19,9 +19,9 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     return order
   }
 
-  const updateOrder = async (orderId: string, order: Order) => {
+  const updateOrder = async (order: Order, review: string) => {
     const { update } = useStrapi()
-    return await update('orders', orderId, order)
+    return await update('orders', order.id, { order_review: review })
   }
 
   return {
