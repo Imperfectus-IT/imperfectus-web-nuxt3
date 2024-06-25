@@ -22,6 +22,7 @@
       class="mt-3"
       outlined
       :label="$t(`${textData.section}button`)"
+      @click="handlePaymentChange"
     />
   </Panel>
 </template>
@@ -35,12 +36,17 @@ const props = defineProps<{
 
 const { payments } = useGetAllPaymentsHandler()
 const paymentId = ref<number>(props.payment.id)
+const emits = defineEmits(['paymentChanged'])
 
 const getLabelsForDropdown = () => {
   return payments.value.map((payment: Payment) => ({
     label: `${payment.cardBrand} - ${payment.cardNumber} - ${payment.expiryMonth}/${payment.expiryYear}`,
     value: payment.id,
   }))
+}
+
+const handlePaymentChange = () => {
+  emits('paymentChanged', paymentId.value)
 }
 
 const textData = {

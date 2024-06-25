@@ -1,10 +1,9 @@
 <template>
   <Panel
     :header="props.header ? props.header : $t(props.labelKey + '.header')"
-    toggleable
-    collapsed
+    :toggleable="isDesktop"
+    :collapsed="isDesktop"
   >
-    {{ data }}
     <div
       v-for="(item, index) in textData"
       :key="index"
@@ -28,6 +27,8 @@
 
 <script setup lang="ts">
 import type { OrderBilling } from '~/composables/admin/orders/types/OrderType.ts'
+
+const { isDesktop } = useScreenSize()
 
 const props = defineProps<{
   data: OrderBilling

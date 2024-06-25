@@ -1,9 +1,10 @@
+import { useI18n } from 'vue-i18n'
 import { useOrderReviewValidator } from '~/composables/admin/orders/useOrderReviewValidator.ts'
 import type { Order } from '~/composables/admin/orders/types/OrderType.ts'
 
 const { isValidForReview } = useOrderReviewValidator()
-
 export const useOrdersFactory = (order: any, t: any): Order => {
+  const { t: $t } = useI18n()
   return {
     id: order.id,
     order_id: order.order_id,
@@ -32,9 +33,9 @@ export const useOrdersFactory = (order: any, t: any): Order => {
       }
     }),
     billing: {
-      state: unpaidOrderStates.includes(order.status) ? t('orders.order.billing.order_pending') : t('orders.order.billing.order_paid'),
+      state: unpaidOrderStates.includes(order.status) ? $t('orders.order.billing.order_pending') : $t('orders.order.billing.order_paid'),
       amount: order.order_payment.totalAmount,
-      shippingCosts: shippingSuplementsAmount(order.order_shipping_supplements) === 0 ? t('orders.order.billing.free_shipping') : shippingSuplementsAmount(order.order_shipping_supplements) + ' €',
+      shippingCosts: shippingSuplementsAmount(order.order_shipping_supplements) === 0 ? $t('orders.order.billing.free_shipping') : shippingSuplementsAmount(order.order_shipping_supplements) + ' €',
       total: order.order_payment.totalAmount + shippingSuplementsAmount(order.order_shipping_supplements),
     },
     deliveryInfo: {

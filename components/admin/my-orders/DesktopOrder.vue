@@ -6,12 +6,6 @@
       :class="`p-2 relative `"
     >
       <Divider class="mt-2 !w-1/2" />
-      <p
-        v-if="order.status === 'pending'"
-        class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg "
-      >
-        Este pedido está pendiente de pago
-      </p>
       <div class="flex flex-row justify-between flex-wrap -mt-6 ">
         <div
           v-for="(orderItem, index) in order.orderItems"
@@ -39,6 +33,7 @@
             />
           </div>
         </div>
+
         <div
           v-if="order.status !== 'cancelled'"
           :style="{ minHeight: isOneStepOrder }"
@@ -102,8 +97,33 @@
           <!-- TODO This is not stored in DB -->
         </div>
       </div>
+      <p
+        v-if="order.status === 'pending'"
+        class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg "
+      >
+        Este pedido está pendiente de pago
+      </p>
 
       <OrderCoupon v-if="!isCollapsed && order.status !== 'completed'" />
+      <div class="mt-5 w-2/3">
+        <h4 class="font-bold">
+          Valoración del pedido
+        </h4>
+        <Divider class="mt-2" />
+        <Textarea
+          v-model="review"
+          class="w-2/3"
+          rows="6"
+          :pt="{
+            root: 'border-[1px] border-green-tertiary bg-transparent px-4 py-3 rounded-lg w-full mb-4 outline-none',
+          }"
+        />
+        <Button
+          label="Guardar"
+          @click="saveOrderReview"
+        />
+      </div>
+      {{ review }}
     </Panel>
 
     <div
@@ -154,6 +174,9 @@ const props = defineProps<{
   isCollapsed: boolean
   products: ItemProduct[]
 }>()
+
+const review = ref<string>('')
+
 const { handleCreateReview } = useCreateOrderItemReviewHandler()
 const handleCreateRating = async (newReview: ReviewRatings, orderItemId: number) => {
   try {
@@ -176,4 +199,8 @@ const isOneStepOrder = computed(() => {
   const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
   return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
 })
+
+const saveOrderReview = () => {
+  console.log('Save order review')
+}
 </script>

@@ -1,8 +1,6 @@
 <template>
   <Panel
     :header="props.header ? props.header : $t(props.labelKey + '.header')"
-    :toggleable="isToggleable"
-    :collapsed="isToggleable"
   >
     <div class="flex flex-col !justify-center !h-full">
       <div
@@ -29,11 +27,7 @@ const props = defineProps<{
   labelKey: string
 }>()
 
-const { isMobile } = useScreenSize()
-
-const isToggleable = computed(() => {
-  return isMobile.value
-})
+const { isDesktop } = useScreenSize()
 
 const getBillingValue = (key: string) => {
   return props.data[key as keyof Billing]

@@ -1,9 +1,10 @@
 import type { DonationPayload } from './types/DonationPayload'
-import type { Subscription } from './types/SubscriptionTypes'
+import type { Subscription, SubscriptionBilling } from './types/SubscriptionTypes'
 import type { SubscriptionTotal } from '~/components/admin/my-subscriptions/partials/SubscriptionDetails.vue'
 import type { Periodicity } from '~/components/admin/my-subscriptions/types/Periodicity.ts'
 
 export const useSubscriptionRepository = () => {
+  const config = useRuntimeConfig()
   const findSubscriptionsByUser = async (): Promise<Subscription[]> => {
     const { find } = useStrapi()
     const user = useStrapiUser()
@@ -13,15 +14,24 @@ export const useSubscriptionRepository = () => {
 
   const updateSubscriptionPeriodicity = async (subscription: Subscription, periodicity: Periodicity) => {
     const { update } = useStrapi()
-    console.log('updateSubscriptionPeriodicity', subscription, periodicity)
     const { preferredDay, preferredHour, frequency } = periodicity
     subscription = { ...subscription, preferredDay, preferredHour, frequency }
-    const test = await update('subscriptions', subscription.id, subscription)
+    return await update('subscriptions', subscription.id, subscription)
+  }
+
+  const updateSubscriptionBillingMeta = async (metaId: number, newBillingMeta: SubscriptionBilling) => {
+    const { update } = useStrapi()
+    return await update('subscription-metas', metaId, newBillingMeta)
+  }
+
+  const updateSubscriptionPayment = async (subscription: Subscription, paymentId: number) => {
+    const { update } = useStrapi()
+    const test = await update('subscriptions', subscription.id, { payment: paymentId })
     console.log('test', test)
   }
 
   const getSubscriptionTotal = async (subscription: Subscription): Promise<SubscriptionTotal> => {
-    return await $fetch('http://localhost:3000/orders/total', {
+    return await $fetch(`${config.public.STRAPI_URL}/orders/total`, {
       method: 'POST',
       body: {
         items: [...subscription.subscriptionItems],
@@ -52,5 +62,7 @@ export const useSubscriptionRepository = () => {
     donateToONG,
     getSubscriptionTotal,
     updateSubscriptionPeriodicity,
+    updateSubscriptionPayment,
+    updateSubscriptionBillingMeta,
   }
 }
