@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import {
   AUTH_STEP,
-  AVAILABILITY_STEP, CUSTOMIZE_STEP, PURCHASE_TYPE_STEP, BOX_STEP, FREQUENCY_SUBSCRIPTION_TYPE_STEP
+  AVAILABILITY_STEP, CUSTOMIZE_STEP, PURCHASE_TYPE_STEP, BOX_STEP, FREQUENCY_SUBSCRIPTION_TYPE_STEP, SHIPPING_STEP,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
-definePageMeta({
-  layout: 'default',
-  middleware: ['guest'],
-})
+// **--------------------- REVISAR ESTE MIDDLEWARE! ---------------------**
+// definePageMeta({
+//   layout: 'default',
+//   middleware: ['guest'],
+// })
+
 defineI18nRoute({
   paths: {
     ca: '/nova-comanda/',
@@ -24,6 +26,8 @@ const componentToRenderFromStep: Record<string, any> = {
   [FREQUENCY_SUBSCRIPTION_TYPE_STEP]: resolveComponent('LazyShoppingCartFrequencySubscriptionStep'),
   [CUSTOMIZE_STEP]: resolveComponent('LazyShoppingCartCustomizeStep'),
   [AUTH_STEP]: resolveComponent('LazyShoppingCartAuthStep'),
+  [RESUME_ITEM_STEP]: resolveComponent('LazyShoppingCartResumeStep'),
+  [SHIPPING_STEP]: resolveComponent('LazyShoppingCartShippingStep'),
 }
 
 onMounted(async () => {
@@ -33,6 +37,9 @@ onMounted(async () => {
 
 <template>
   <section>
-    <component :is="componentToRenderFromStep[shoppingCart.step]" @goToStep="executeStep" />
+    <component
+      :is="componentToRenderFromStep[shoppingCart.step]"
+      @go-to-step="executeStep"
+    />
   </section>
 </template>

@@ -1,3 +1,5 @@
+import type { Product } from '~/composables/shared/product/types/Product.ts'
+
 export type BillingAddress = {
   billingFirstName: string
   billingLastName: string
@@ -43,6 +45,7 @@ export type ShoppingCart = {
   preferredDay: string
   preferredHour: string
   coverage?: string | null
+  frequency: string
   items: Item[]
   billingAddress: BillingAddress
   shippingAddress: ShippingAddress

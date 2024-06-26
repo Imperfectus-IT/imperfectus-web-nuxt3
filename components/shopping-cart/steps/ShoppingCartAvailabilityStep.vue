@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PURCHASE_TYPE_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
+
 const { shoppingCart } = useShoppingCartState()
 const { executeFindCoverageByPostalCode } = useFindCoverageByPostalCode()
 const {
@@ -31,10 +32,10 @@ watch(
 <template>
   <div class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
     <Button
-        class="w-[2rem] h-[2rem] text-xl"
-        icon="mdi mdi-chevron-left"
-        rounded
-        outlined
+      class="w-[2rem] h-[2rem] text-xl"
+      icon="mdi mdi-chevron-left"
+      rounded
+      outlined
     />
     <div class="mt-16 text-center">
       <p class="font-recoleta-regular text-lg font-normal">
@@ -50,6 +51,9 @@ watch(
       <InputOtp
         v-model="shoppingCart.shippingAddress.shippingPostalCode"
         class="mt-4"
+        :pt="{
+          input: 'text-[40px]',
+        }"
         :length="MAX_POSTAL_CODE_LENGTH"
         :invalid="isInvalid"
         integer-only

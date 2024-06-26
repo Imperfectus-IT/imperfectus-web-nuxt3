@@ -1182,8 +1182,8 @@ export default {
   'order.steps.stepBox.largeBox': 'Caja Grande',
   'order.steps.stepCustomize.title': 'Elige tu caja',
   'order.steps.stepCustomize.section1': '¿Qué tipo de caja quieres?',
-  'order.steps.stepCustomize.section2':
-    '¿Cada cuanto quieres recibir tu caja? (obligatorio)',
+  'order.steps.stepCustomize.frequency':
+    '¿Cada cuánto quieres recibir tu caja?',
   'order.steps.stepCustomize.section3': '¿Qué te gustaría añadir a tu caja? ',
   'order.steps.stepCustomize.section4': '¿Quieres excluir algún alimento?',
   'order.steps.stepCustomize.section4.yes-btn': 'Si',
@@ -1200,6 +1200,7 @@ export default {
     'La caja de tipo {type} permite excluir hasta {max} alimentos.',
   'order.steps.stepCustomize.selectExclusions':
     'Selecciona los alimentos que quieres excluir',
+  'order.steps.orderItemResume': 'Resumen de caja',
   'order.steps.stepCustomize.selectExclusions.add': 'Has añadido',
   'order.steps.stepCustomize.selectExclusions.remove': 'Has eliminado',
   'order.steps.stepCustomize.selectExclusions.failed':
@@ -3377,6 +3378,15 @@ export default {
       description: '¿Quieres cancelar esta entrega?',
       cancel_button: 'Cancelar',
       skip_button: 'Cancelar entrega',
+    },
+  },
+  'shopping_cart': {
+    shippingStep: {
+      field_1: {
+        label: 'Nombre',
+        value: '',
+      },
+
     },
   },
 }

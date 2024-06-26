@@ -18,6 +18,7 @@ export const useShoppingCartFactory = () => {
       deliveryDate: '',
       coverage: null,
       items: [],
+      frequency: '',
       billingAddress: {
         billingFirstName: '',
         billingLastName: '',
