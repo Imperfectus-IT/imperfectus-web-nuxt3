@@ -2,7 +2,7 @@ export default {
   root: ({ props }) => ({
     class: [
       {
-        'rounded-lg border': !props.toggleable,
+        'rounded-lg border py-2': !props.toggleable,
         'border-0 ': props.toggleable,
       },
     ],
@@ -14,12 +14,12 @@ export default {
       // Colors
       'text-green-tertiary',
       'bg-transparent',
-      'pt-6 pb-2 px-6',
+      'py-2 px-6',
       {
         'border rounded-tl-lg rounded-tr-lg': props.toggleable,
       },
       {
-        'border-b border-green-tertiary': state.d_collapsed,
+        'border-b border-green-tertiary bg-red-primary': state.d_collapsed,
       },
       {
         '!p-2': !props.header,
@@ -27,12 +27,12 @@ export default {
     ],
   }),
   title: {
-    class: 'font-recoleta-semibold text-xl font-medium leading-5',
+    class: 'font-recoleta-semibold text-xl font-medium leading-5 whitespace-nowrap -ml-2',
   },
   toggler: {
     class: [
       // Alignments
-      'inline-flex items-center justify-center',
+      'inline-flex items-center justify-end -mr-2',
       'relative',
 
       // Sized
@@ -40,7 +40,7 @@ export default {
       'm-0 p-0',
 
       // Shape
-      'border border-green-tertiary rounded-full',
+      '',
 
       // Color
       'bg-transparent',

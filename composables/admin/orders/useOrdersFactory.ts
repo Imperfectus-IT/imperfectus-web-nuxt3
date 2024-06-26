@@ -1,17 +1,35 @@
+import { useI18n } from 'vue-i18n'
+import { useOrderReviewValidator } from '~/composables/admin/orders/useOrderReviewValidator.ts'
+import type { Order } from '~/composables/admin/orders/types/OrderType.ts'
+
+const { isValidForReview } = useOrderReviewValidator()
 export const useOrdersFactory = (order: any, t: any): Order => {
   return {
     id: order.id,
     order_id: order.order_id,
     status: order.status,
+    isValidForReview: isValidForReview(order),
     deliveryDate: order.deliveryDate,
+    orderReview: order.order_review,
     orderItems: order.order_items.map((order_item: any) => {
       return {
+        id: order_item.id,
         amount: order_item.final_amount ? order_item.final_amount : order_item.amount,
         sku: order_item.product.SKU,
         image: `images/boxes/Caixa-${getBoxImage(order_item.product.SKU)}.webp`,
         exclusions: order_item.exclusions.map((exclusion: any) => {
           return exclusion.name_es
         }),
+        review: order_item.order_item_review === null
+          ? null
+          : {
+              id: order_item.order_item_review?.id,
+              ratings: {
+                productQuality: order_item.order_item_review?.ratings.productQuality,
+                deliveryService: order_item.order_item_review?.ratings.deliveryService,
+                overallExperience: order_item.order_item_review?.ratings.overallExperience,
+              },
+            },
       }
     }),
     billing: {

@@ -3,7 +3,6 @@
     <ButtonDemo />
     <CalendarDemo />
     <ToolbarDemo />
-    <!-- <CarouselDemo /> -->
     <CardDemo />
     <InputOtpDemo />
     <InputTextDemo />
@@ -18,6 +17,7 @@
     <PanelDemo />
     <PanelMenuDemo />
     <SkeletonDemo />
+    <CardSkeleton />
     <FieldsetDemo />
     <StepsDemo />
     <TimeLineDemo />

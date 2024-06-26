@@ -1,11 +1,11 @@
 <template>
   <Panel
     :header="props.header ? props.header : $t(props.labelKey + '.header')"
-    toggleable
-    collapsed
+    :toggleable="isDesktop"
+    :collapsed="isDesktop"
   >
     <div
-      v-for="(key, index) in Object.keys(props.data)"
+      v-for="(item, index) in textData"
       :key="index"
       class="flex flex-col text-[14px]"
     >
@@ -13,7 +13,7 @@
         {{ $t(`${props.labelKey}.item_${index}`) }}
       </p>
       <p class="font-bold mt-1">
-        {{ getBillingInfoValue(key) }}
+        {{ getBillingInfoValue(item.key) }}
       </p>
     </div>
     <Button
@@ -26,11 +26,25 @@
 </template>
 
 <script setup lang="ts">
+import type { OrderBilling } from '~/composables/admin/orders/types/OrderType.ts'
+
+const { isDesktop } = useScreenSize()
+
 const props = defineProps<{
   data: OrderBilling
   header?: string
   labelKey: string
 }>()
+
+const textData = [
+  { key: 'billingFullName' },
+  { key: 'billingEmail' },
+  { key: 'billingPhone' },
+  { key: 'billingAddress' },
+  { key: 'billingCP' },
+  { key: 'billingCity' },
+
+]
 
 const emit = defineEmits(['editBillingInfo'])
 

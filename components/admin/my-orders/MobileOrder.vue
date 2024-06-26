@@ -2,7 +2,6 @@
   <div class="lg:min-w-[900px] lg:max-w-[1500px]">
     <Panel
       :header="`Pedido ${order.id}`"
-      :style="{ minHeight: isOneStepOrder }"
       class="relative lg:min-h-[500px]"
     >
       <Divider class="mt-2" />
@@ -20,6 +19,11 @@
         <OrderItemCard
           :order-item="orderItem"
           :order-status="order.status"
+        />
+        <OrderItemReview
+          v-if="!isCollapsed && order.status === 'completed'"
+          :review="orderItem.review ? orderItem.review.ratings : null"
+          @create-review="(newReview: ReviewRatings) => createReview(newReview, orderItem.id)"
         />
         <OrderProductsCarousel
           v-if="!isCollapsed"
@@ -106,6 +110,31 @@
       />
 
       <OrderCoupon v-if="!isCollapsed" />
+      <div
+        v-if="order.status === 'completed' && !isCollapsed"
+        class="mt-5"
+      >
+        <h4 class="font-bold text-[14px] mb-2">
+          Valoración del pedido
+        </h4>
+        <Textarea
+          v-model="review"
+          :disabled="!canWriteReview"
+          class="w-2/3"
+          rows="6"
+          :pt="{
+            root: 'border-[1px] border-green-tertiary bg-transparent px-4 py-3 rounded-lg w-full mb-4 outline-none',
+          }"
+        />
+        <Button
+          v-if="canWriteReview"
+          :pt="{
+            root: 'bg-green-primary border-[1px] border-green-tertiary text-green-tertiary px-4 py-2 rounded-lg w-full',
+          }"
+          label="Guardar"
+          @click="saveOrderReview"
+        />
+      </div>
     </Panel>
 
     <div
@@ -137,15 +166,41 @@
         @edit-billing-info="() => console.log('Edit billing info')"
       />
     </div>
+    <Toast />
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
+import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
+
+const { t } = useI18n()
+const toast = useToast()
+const emits = defineEmits(['review-created'])
+const { successToast, errorToast } = useToastService()
+const textSection = 'orders.order.review.'
 const props = defineProps<{
   order: Order
   isCollapsed: boolean
   products: ItemProduct[]
 }>()
+
+const review = ref<string>(props.order.orderReview || '')
+
+const { handleCreateReview } = useCreateOrderItemReviewHandler()
+const { handleUpdateOrder } = useUpdateOrderHandler(t)
+const canWriteReview = computed (() => props.order.orderReview.length < 1)
+const createReview = async (newReview: ReviewRatings, orderItemId: number) => {
+  try {
+    await handleCreateReview(newReview, orderItemId)
+    emits('review-created')
+    successToast(toast, t(`${textSection}successToast.title`), t(`${textSection}successToast.description`))
+  }
+  catch (error) {
+    errorToast(toast, t(`${textSection}errorToast.title`), t(`${textSection}errorToast.description`))
+  }
+}
 
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
@@ -153,8 +208,9 @@ const filteredProducts = (orderItem: OrderItem) => {
   })
 }
 
-const isOneStepOrder = computed(() => {
-  const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
-  return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
-})
+const saveOrderReview = async () => {
+  const test = await handleUpdateOrder(props.order, review.value)
+  review.value = props.order.orderReview
+  console.log('test', test)
+}
 </script>

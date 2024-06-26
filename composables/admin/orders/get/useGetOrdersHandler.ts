@@ -9,5 +9,6 @@ export const useGetOrdersHandler = (t: ComposerTranslation) => {
 
   return {
     orders,
+    executeGetOrdersByUser,
   }
 }

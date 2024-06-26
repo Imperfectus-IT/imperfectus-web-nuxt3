@@ -243,7 +243,7 @@ export default {
   tableheadercell: {
     class: [
       // Spacing
-      'p-0 md:p-2',
+      // 'p-0 md:p-2',
     ],
   },
   weekheader: {
@@ -279,7 +279,7 @@ export default {
       // Colors
       {
         'text-green-tertiary bg-transparent': !context.selected && !context.disabled,
-        'text-green-tertiary bg-green-primary': context.selected && !context.disabled,
+        'text-green-tertiary bg-red-primary': context.selected && !context.disabled,
       },
 
       // States
@@ -301,15 +301,15 @@ export default {
       'mx-auto',
 
       // Shape & Size
-      'w-10 h-10',
+      'w-8 h-8',
       'rounded',
-      'border-2',
+      // 'border-2',
 
       // Colors
       {
         'text-green-tertiary': context.date.today,
         'text-green-tertiary bg-transparent': !context.selected && !context.disabled && !context.date.today,
-        'text-green-tertiary bg-green-primary border-none': context.selected && !context.disabled,
+        'text-green-tertiary bg-transparent border-[1px]': context.selected && !context.disabled,
       },
 
       // States

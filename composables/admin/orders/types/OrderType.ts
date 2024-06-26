@@ -1,5 +1,8 @@
+import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
+
 export interface Order {
   id: number
+  isValidForReview: boolean
   order_id: number
   status: string
   deliveryDate: string
@@ -8,13 +11,24 @@ export interface Order {
   deliveryInfo: OrderDelivery
   shippingInfo: OrderShipping
   billingInfo: OrderBilling
+  orderReview: string
 }
 
 export interface OrderItem {
+  id: number
   amount: number
   sku: string
   exclusions: string[]
   image: string
+  product: BoxProduct
+  review: {
+    id: number
+    ratings: {
+      productQuality: number
+      deliveryService: number
+      overallExperience: number
+    }
+  }
 }
 
 export interface Billing {

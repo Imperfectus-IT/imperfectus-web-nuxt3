@@ -47,6 +47,7 @@ export default {
       },
       yellow: {
         primary: 'gold',
+        secondary: '#FFEE9E',
       },
       transparent: 'transparent',
       current: 'currentColor',

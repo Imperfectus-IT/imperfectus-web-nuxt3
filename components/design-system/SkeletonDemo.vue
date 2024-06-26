@@ -3,13 +3,13 @@
     <div class="flex mb-4">
       <Skeleton
         shape="circle"
-        size="4rem"
-        class="mr-2"
+        size="14rem"
+        class="mr-2 bg-red-primary"
       />
       <div>
         <Skeleton
           width="10rem"
-          class="mb-2"
+          class="mr-2 bg-red-primary"
         />
         <Skeleton
           width="5rem"
@@ -34,3 +34,6 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+</script>

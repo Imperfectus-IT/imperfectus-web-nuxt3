@@ -1,6 +1,6 @@
 <template>
   <div v-if="!order">
-    Loading...
+    <CardSkeleton />
   </div>
   <div v-else>
     <MobileOrder
@@ -11,6 +11,7 @@
         ...products.itemProducts.fruits,
         ...products.itemProducts.vegetables,
       ]"
+      @review-created="handleReviewCreated"
     />
     <DesktopOrder
       v-else
@@ -20,6 +21,7 @@
         ...products.itemProducts.fruits,
         ...products.itemProducts.vegetables,
       ]"
+      @review-created="handleReviewCreated"
     />
   </div>
 </template>
@@ -28,9 +30,9 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const { isDesktop, isMobile } = useScreenSize()
+const { isMobile } = useScreenSize()
 
-const { orders } = useGetOrdersHandler(t)
+const { orders, executeGetOrdersByUser } = useGetOrdersHandler(t)
 const { products } = useGetProductsHandler()
 
 const order: Ref<Order | null> = ref(null)
@@ -40,6 +42,10 @@ const orderId = parseInt(route.params.id as string)
 watch(orders, () => {
   order.value = orders.value.find(order => order?.id === orderId) as Order
 })
+
+const handleReviewCreated = () => {
+  executeGetOrdersByUser()
+}
 
 definePageMeta({
   layout: 'admin',

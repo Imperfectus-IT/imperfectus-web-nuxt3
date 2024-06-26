@@ -120,8 +120,8 @@
 
 <script setup lang="ts">
 import dayjs from 'dayjs'
-import type { DayMapping } from '~/components/admin/my-subscriptions/types/DayMapping'
 import type { ONG } from '~/components/admin/upcoming_orders/DonateONG.vue'
+import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 
 definePageMeta({
   layout: 'admin',
@@ -145,6 +145,8 @@ const donations = ref<string[]>([])
 const displayGiftToFriend = ref<Record<string, boolean>>({})
 const displayDonateToONG = ref<Record<string, boolean>>({})
 const displayCancelDelivery = ref<Record<string, boolean>>({})
+
+const { getNextDatesFromFrequency } = useGetNextDatesFromFrequency()
 
 const isSkipped = (date: string) => {
   return skips.value.includes(date)
@@ -219,29 +221,6 @@ const setDisplayCancelDelivery = (index: number, value: boolean) => {
   displayCancelDelivery.value[index] = value
 }
 
-const getNextDatesFromFrequency = (frequency: string): string[] => {
-  const upperLimit = dayjs(subscription.value?.nextPayment).add(6, 'months')
-  let lowerLimit = dayjs(subscription.value?.nextPayment)
-  const dates = []
-  if (frequency === 'weekly') {
-    dates.push(lowerLimit.format('YYYY-MM-DD'))
-    while (lowerLimit.isBefore(upperLimit)) {
-      lowerLimit = lowerLimit.add(1, 'week')
-      dates.push(lowerLimit.format('YYYY-MM-DD'))
-    }
-    dates.push(upperLimit.format('YYYY-MM-DD'))
-  }
-  else if (frequency === 'biweekly') {
-    dates.push(lowerLimit.format('YYYY-MM-DD'))
-    while (lowerLimit.isBefore(upperLimit)) {
-      lowerLimit = lowerLimit.add(2, 'week')
-      dates.push(lowerLimit.format('YYYY-MM-DD'))
-    }
-    dates.push(upperLimit.format('YYYY-MM-DD'))
-  }
-  return dates
-}
-
 watchEffect(() => {
   subscription.value = subscriptions.value.filter(
     (subscription: Subscription) =>
@@ -252,22 +231,13 @@ watchEffect(() => {
   subscription.value
     ? (nextDeliveries.value = getNextDatesFromFrequency(
         subscription.value?.frequency,
+        subscription.value?.nextPayment,
       ))
     : ''
 })
 
-const dayMapping: DayMapping = {
-  sunday: 0,
-  monday: 1,
-  tuesday: 2,
-  wednesday: 3,
-  thursday: 4,
-  friday: 5,
-  saturday: 6,
-}
-
 const calculateNextDeliveryDate = (date: string) => {
-  const dayNumber: number = dayMapping[subscription.value.preferredDay]
+  const dayNumber: number = DayMapping[subscription.value.preferredDay]
   const formattedDate = dayjs(date).format('YYYY-MM-DD')
   return dayjs(formattedDate).day(dayNumber).format('DD/MM/YYYY')
 }

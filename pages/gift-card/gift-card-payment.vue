@@ -117,7 +117,6 @@ const handlePayment = async (submitForm) => {
   }
   else {
     orderId.value = userGiftCards.value[0]?.order.id
-    console.log('orderId', orderId)
   }
   setTimeout(async () => {
     await submitForm()

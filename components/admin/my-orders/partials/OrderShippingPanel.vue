@@ -1,8 +1,8 @@
 <template>
   <Panel
     :header="props.header ? props.header : $t(props.labelKey + '.header')"
-    toggleable
-    collapsed
+    :toggleable="isDesktop"
+    :collapsed="isDesktop"
   >
     <div
       v-for="(key, index) in Object.keys(props.data)"
@@ -32,6 +32,8 @@ const props = defineProps<{
   header?: string
   labelKey: string
 }>()
+
+const { isDesktop } = useScreenSize()
 
 const emit = defineEmits(['editShippingInfo'])
 

@@ -3292,6 +3292,36 @@ export default {
         item_5: 'Localidad:',
         button_label: 'Modificar datos',
       },
+      review: {
+        item_0: {
+          title: 'Calidad del producto',
+          value: 'productQuality',
+        },
+        item_1: {
+          title: 'Servicio de entrega',
+          value: 'deliveryService',
+        },
+        item_2: {
+          title: 'Experiencia general',
+          value: 'overallExperience',
+        },
+        values: {
+          option_0: 'Fatal',
+          option_1: 'Mal',
+          option_2: 'Sin más',
+          option_3: 'Bien',
+          option_4: 'Genial',
+        },
+        successToast: {
+          title: 'Valoración guardada',
+          description: 'Tu valoración ha sido guardada. ¡Muchas gracias!',
+        },
+        errorToast: {
+          title: '¡Error!',
+          description: 'El proceso ha fallado. Por favor, inténtalo de nuevo.',
+        },
+        button: 'Guardar valoración',
+      },
     },
   },
   'upcoming_orders': {
@@ -3378,6 +3408,148 @@ export default {
       description: '¿Quieres cancelar esta entrega?',
       cancel_button: 'Cancelar',
       skip_button: 'Cancelar entrega',
+    },
+  },
+  'subscriptions': {
+    subscription: {
+      title: 'Editar suscripción',
+      description: 'Las suscripciones se renuevan y cobran cada domingo. Si quieres cancelar o pausar la suscripción, asegúrate de hacerlo antes del domingo para que no se genere ni cobre el pedido.',
+      details: {
+        title: 'Detalles de la suscripción',
+        date_picker: {
+          item_0: {
+            title: 'Hoy',
+            color: 'transparent',
+          },
+          item_1: {
+            title: 'Entregas',
+            color: 'green-primary',
+          },
+          item_2: {
+            title: 'Próximo pago',
+            color: 'yellow-secondary',
+          },
+          item_3: {
+            title: 'Entrega cancelada',
+            color: 'orange-primary',
+          },
+          button: 'Gestionar próximas entregas',
+        },
+        nextPayment: {
+          item_0: 'Siguiente pago: {date}',
+          item_1: 'Frecuencia: {frequency}',
+        },
+        nextDelivery: {
+          item_0: 'Próximo pedido',
+          item_1: 'Dia de entrega: {day}',
+          item_2: 'Hora de entrega: {hour}',
+        },
+        billingInfo: {
+          item_0: 'Cantidad de artículos: {quantity}',
+          item_1: 'Precio del envío: {shipping}',
+          item_2: 'Subtotal: {subtotal}€',
+          item_3: 'Total: {total}€',
+        },
+      },
+      modifyItem: {
+        title: 'Modificar caja',
+        button: 'Editar',
+      },
+      modifyPeriodicity: {
+        title: 'Periodicidad',
+        item_0: {
+          title: 'Frecuencia',
+          option_0: {
+            label: 'Semanal',
+            value: 'weekly',
+          },
+          option_1: {
+            label: 'Quincenal',
+            value: 'biweekly',
+          },
+        },
+        item_1: {
+          title: 'Día de entrega',
+          option_0: {
+            label: 'Martes',
+            value: 'tuesday',
+          },
+          option_1: {
+            label: 'Miércoles',
+            value: 'wednesday',
+          },
+          option_2: {
+            label: 'Jueves',
+            value: 'thursday',
+          },
+          option_3: {
+            label: 'Viernes',
+            value: 'friday',
+          },
+        },
+        item_2: {
+          title: 'Franja horaria',
+          option_0: {
+            label: 'Entre las 10:00 y las 14:00',
+            value: 'morning',
+          },
+          option_1: {
+            label: 'Entre las 14:00 y las 18:00',
+            value: 'afternoon',
+          },
+          option_2: {
+            label: 'Entre las 18:00 y las 22:00',
+            value: 'night',
+          },
+        },
+        button: 'Guardar',
+      },
+      coupon: {
+        title: 'Cupón de descuento',
+        placeholder: '¿Tienes descuento?',
+        button: 'Aplicar',
+      },
+      addItem: {
+        title: 'Añadir caja a la suscripción',
+        button: 'Añadir caja',
+      },
+      payment: {
+        title: 'Método de pago',
+        option_0: 'Tarjeta: {card}',
+        option_1: 'Tipo de tarjeta: {cardType}',
+        option_2: 'Caducidad: {expiration}',
+        button: 'Añadir método de pago',
+      },
+      billing: {
+        title: 'Dirección de facturación',
+        item_0: 'Nombre',
+        item_1: 'Apellidos',
+        item_2: 'Email',
+        item_3: 'Teléfono de contacto',
+        item_4: 'Dirección (calle y número)',
+        item_5: 'Piso y puerta',
+        item_6: 'Código postal',
+        item_7: 'Localidad',
+        item_8: 'Provincia',
+        item_9: 'País',
+        item_10: 'NIF',
+        button: 'Guardar',
+      },
+      shipping: {
+        title: 'Dirección de envío',
+        item_0: 'Nombre',
+        item_1: 'Apellidos',
+        item_2: 'Email',
+        item_3: 'Teléfono de contacto',
+        item_4: 'Dirección (calle y número)',
+        item_5: 'Piso y puerta',
+        item_6: 'Código postal',
+        item_7: 'Localidad',
+        item_8: 'Provincia',
+        item_9: 'País',
+        item_10: 'Notas',
+        button: 'Guardar',
+      },
     },
   },
   'shopping_cart': {
