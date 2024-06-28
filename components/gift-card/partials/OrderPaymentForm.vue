@@ -39,6 +39,9 @@
 <script setup lang="ts">
 const emit = defineEmits(['redirect', 'onError'])
 const env = useRuntimeConfig()
+onMounted(() => {
+  console.log('test', env)
+})
 
 const props = defineProps<{
   order: number
