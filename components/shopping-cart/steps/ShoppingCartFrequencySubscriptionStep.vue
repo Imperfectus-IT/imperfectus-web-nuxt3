@@ -7,7 +7,7 @@ const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequ
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
+  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%]">
     <div class="flex items-center justify-center gap-3">
       <Button
         class="w-[2rem] h-[2rem] text-xl !absolute left-5"
@@ -15,13 +15,13 @@ const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequ
         rounded
         outlined
       />
-      <p class="font-recoleta-regular text-lg font-normal text-center w-2/3">
+      <p class="font-recoleta-regular text-lg font-normal text-center w-2/3 lg:text-2xl lg:w-full">
         {{
           $t('order.steps.stepCustomize.frequency')
         }}
       </p>
     </div>
-    <div class="flex flex-col items-center gap-5 mt-6">
+    <div class="flex flex-col items-center gap-5 mt-6 lg:flex-row lg:justify-center">
       <Button
         outlined
         :label="$t('orderItemFrequency.option2')"
@@ -33,6 +33,15 @@ const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequ
         :label="$t('orderItemFrequency.option3')"
         @click.prevent="setFrequency('biweekly')"
       />
+    </div>
+    <NuxtImg
+      src="/images/steps/frequency/frequency.webp"
+      format="webp"
+      loading="lazy"
+      alt="frequency_img"
+      class="hidden lg:block mx-auto"
+    />
+    <div class="flex justify-center mt-5">
       <Button
         v-if="shoppingCart.frequency"
         class="mt-4"

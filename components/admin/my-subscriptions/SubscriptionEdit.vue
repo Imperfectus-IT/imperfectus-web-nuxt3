@@ -4,7 +4,7 @@
   </div>
   <div
     v-else
-    class="px-6 lg:max-w-[1200px] mx-auto"
+    class="px-6 lg:max-w-[1200px] mx-auto flex flex-col gap-3"
   >
     <h4 class="font-recoleta-regular text-[43px]">
       {{ $t(`${textData}title`) }}
@@ -32,12 +32,15 @@
       @modify-billing="updateSubscriptionBilling"
     />
     <SubscriptionShipping :shipping="subscription.shippingInfo" />
+    <SubscriptionPause />
+    <SubscriptionCancel />
   </div>
 </template>
 
 <script setup lang='ts'>
 import type { Subscription, SubscriptionBilling } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 import type { Periodicity } from '~/components/admin/my-subscriptions/types/Periodicity.ts'
+import type { Payment } from '~/composables/payment/types/Payment.ts'
 
 const { executeUpdatePeriodicity, executeUpdatePayment, executeUpdateBillingMeta } = useUpdateSubscription()
 

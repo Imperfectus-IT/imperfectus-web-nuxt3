@@ -50,23 +50,29 @@ export interface OrderDelivery {
 }
 
 export interface OrderBilling {
-  billingFullName: string
+  billingFirstName: string
+  billingLastName: string
   billingEmail: string
   billingPhone: string
   billingAddress: string
   billingAddress2: string
-  billingCP: string
+  billingPostCode: string
   billingCity: string
   billingState: string
-  billingNif: string
+  billingCif: string
   billingCountry: string
 }
 
 export interface OrderShipping {
-  shippingFullName: string
+  shippingFirstName: string
+  shippingLastName: string
   shippingEmail: string
   shippingPhone: string
   shippingAddress: string
-  shippingCP: string
+  shippingAddress2: string
+  shippingPostCode: string
   shippingCity: string
+  shippingState: string
+  shippingCountry: string
+  shippingNotes: string
 }

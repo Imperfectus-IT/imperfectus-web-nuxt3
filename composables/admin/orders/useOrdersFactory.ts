@@ -1,4 +1,3 @@
-import { useI18n } from 'vue-i18n'
 import { useOrderReviewValidator } from '~/composables/admin/orders/useOrderReviewValidator.ts'
 import type { Order } from '~/composables/admin/orders/types/OrderType.ts'
 
@@ -51,23 +50,29 @@ export const useOrdersFactory = (order: any, t: any): Order => {
       }),
     },
     shippingInfo: {
-      shippingFullName: order.order_meta.shipping_firstname + ' ' + order.order_meta.shipping_lastname,
+      shippingFirstName: order.order_meta.shipping_firstname,
+      shippingLastName: order.order_meta.shipping_lastname,
       shippingEmail: order.order_meta.shipping_email,
       shippingPhone: order.order_meta.shipping_phone,
       shippingAddress: order.order_meta.shipping_address1,
-      shippingCP: order.order_meta.shipping_postcode,
+      shippingAddress2: order.order_meta.shipping_address2,
+      shippingPostCode: order.order_meta.shipping_postcode,
       shippingCity: order.order_meta.shipping_city,
+      shippingState: order.order_meta.shipping_state,
+      shippingCountry: order.order_meta.shipping_country,
+      shippingNotes: order.order_meta.shipping_notes,
     },
     billingInfo: {
-      billingFullName: order.order_meta.billing_firstname + ' ' + order.order_meta.billing_lastname,
+      billingFirstName: order.order_meta.billing_firstname,
+      billingLastName: order.order_meta.billing_lastname,
       billingEmail: order.order_meta.billing_email,
       billingPhone: order.order_meta.billing_phone,
       billingAddress: order.order_meta.billing_address1,
       billingAddress2: order.order_meta.billing_address2,
-      billingCP: order.order_meta.billing_postcode,
+      billingPostCode: order.order_meta.billing_postcode,
       billingCity: order.order_meta.billing_city,
       billingState: order.order_meta.billing_state,
-      billingNif: order.order_meta.billing_cif,
+      billingCif: order.order_meta.billing_cif,
       billingCountry: order.order_meta.billing_country,
     },
   }

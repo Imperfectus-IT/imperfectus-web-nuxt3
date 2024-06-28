@@ -2,6 +2,7 @@
   <Panel
     :header="'Dirección de facturación'"
     toggleable
+    collapsed
   >
     <div
       v-for="(key, index) in getBillingKeys"

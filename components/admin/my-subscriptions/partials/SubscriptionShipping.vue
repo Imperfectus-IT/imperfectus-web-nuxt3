@@ -2,6 +2,7 @@
   <Panel
     :header="$t(`subscriptions.subscription.shipping.title`)"
     toggleable
+    collapsed
   >
     <div
       v-for="(key, index) in getShippingKeys"

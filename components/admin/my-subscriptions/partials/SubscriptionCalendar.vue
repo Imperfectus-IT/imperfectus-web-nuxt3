@@ -6,31 +6,33 @@
     <template #date="slotProps">
       <div
         v-if="isCancelledDate(slotProps.date) "
-        class="bg-orange-primary h-8 w-8 text-center rounded-md flex items-center justify-center"
+        class="text-[14px] bg-orange-primary h-8 w-8 text-center rounded-md flex items-center justify-center"
       >
         {{ slotProps.date.day }}
       </div>
       <div
         v-else-if="isSkippedDate(slotProps.date) "
-        class="bg-transparent h-8 w-8 rounded-md flex items-center justify-center"
+        class="bg-transparent text-[14px] h-8 w-8 rounded-md flex items-center justify-center"
       >
         {{ slotProps.date.day }}
       </div>
       <div
         v-else-if="isPaymentDate(slotProps.date) "
-        class="bg-yellow-secondary h-8 w-8 text-center rounded-md flex items-center justify-center"
+        class="text-[14px] bg-yellow-secondary h-8 w-8 text-center rounded-md flex items-center justify-center"
       >
         {{ slotProps.date.day }}
       </div>
       <div
         v-else-if="isNextDeliveryDate(slotProps.date) "
-        class="bg-green-primary h-8 w-8 text-center rounded-md my-auto flex items-center justify-center"
+        class="bg-green-primary text-[14px] h-8 w-8 text-center rounded-md my-auto flex items-center justify-center"
       >
         {{ slotProps.date.day }}
       </div>
 
       <template v-else>
-        {{ slotProps.date.day }}
+        <div class="text-[14px]">
+          {{ slotProps.date.day }}
+        </div>
       </template>
     </template>
   </Calendar>
@@ -81,10 +83,9 @@ const nextDeliveryDates = computed(() => {
 
 const cancelledDates = computed(() => {
   const daysToAdd = DayMapping[props.subscription.preferredDay]
-  const dates = props.subscription.skip.map((date) => {
+  return props.subscription.skip.map((date) => {
     return dayjs(date).add(daysToAdd, 'd').format('YYYY-MM-DD')
   })
-  return dates
 })
 
 const isSkippedDate = (date: CalendarDate) => {

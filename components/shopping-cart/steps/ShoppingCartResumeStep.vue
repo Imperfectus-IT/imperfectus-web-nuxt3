@@ -10,7 +10,7 @@ const goToNextStep = () => {
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
+  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[20%]">
     <div class="flex items-center justify-center gap-3 mt-4 relative">
       <Button
         class="w-[2rem] h-[2rem] text-xl !absolute left-0"
@@ -18,33 +18,35 @@ const goToNextStep = () => {
         rounded
         outlined
       />
-      <p class="font-recoleta-regular text-xl+ font-normal text-center">
+      <p class="font-recoleta-regular text-xl font-normal text-center lg:text-2xl">
         {{ $t('order.steps.orderItemResume') }}
       </p>
     </div>
-    <NuxtImg
-      :src="'/images/boxes/Caixa-M.webp'"
-      loading="lazy"
-      format="webp"
-      class="rounded-lg mt-6"
-    />
-    <div class="px-4">
-      <div class="flex justify-between items-center font-bold my-3 text-lg">
-        <span>Caja Pequeña</span>
-        <span>19.18€</span>
+    <div class="lg:flex lg:flex-row">
+      <NuxtImg
+        :src="'/images/boxes/Caixa-M.webp'"
+        loading="lazy"
+        format="webp"
+        class="rounded-lg mt-6 lg:w-1/2"
+      />
+      <div class="px-4 lg:my-auto lg:w-1/2">
+        <div class="flex justify-between items-center font-bold my-3 text-lg ">
+          <span>Caja Pequeña</span>
+          <span>19.18€</span>
+        </div>
+        <p class="mt-10 lg:mt-3">
+          Ideal para 1-2 personas. Contiene entre 6-7 kg de fruta y verdura.
+        </p>
       </div>
-      <p class="mt-10">
-        Ideal para 1-2 personas. Contiene entre 6-7 kg de fruta y verdura.
-      </p>
     </div>
     <Divider class="text-grey-secondary" />
     <Button
       :label="$t('orderResume.add')"
       outlined
+      class="lg:mb-8"
     />
-    <Divider class="text-grey-secondary mb-7" />
+    <Divider class="lg:hidden text-grey-secondary mb-7" />
     <OrderCoupon
-      class=""
       :show-title="false"
     />
     <Divider class="text-grey-secondary mt-7" />

@@ -29,7 +29,8 @@ export const useShoppingCartFactory = () => {
         billingPostalCode: '',
         billingCity: '',
         billingState: '',
-        billingNif: '',
+        billingCif: '',
+        billingCompany: '',
         billingCountry: '',
       },
       shippingAddress: {
@@ -38,10 +39,12 @@ export const useShoppingCartFactory = () => {
         shippingEmail: '',
         shippingPhone: '',
         shippingAddress: '',
+        shippingAddress2: '',
         shippingPostalCode: '',
         shippingCity: '',
         shippingState: '',
         shippingCountry: '',
+        shippingNotes: '',
       },
     }
   }

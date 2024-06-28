@@ -30,15 +30,15 @@ watch(
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
+  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[20%]">
     <Button
       class="w-[2rem] h-[2rem] text-xl"
       icon="mdi mdi-chevron-left"
       rounded
       outlined
     />
-    <div class="mt-16 text-center">
-      <p class="font-recoleta-regular text-lg font-normal">
+    <div class="mt-16 text-center lg:mt-0">
+      <p class="font-recoleta-regular text-lg font-normal lg:text-xl">
         {{
           $t("order.steps.stepAvailability.title")
         }}
@@ -59,5 +59,11 @@ watch(
         integer-only
       />
     </div>
+    <NuxtImg
+      src="/images/steps/availability/Ipad2_Dark1.webp"
+      format="webp"
+      loading="lazy"
+      class="hidden lg:block mx-auto"
+    />
   </div>
 </template>

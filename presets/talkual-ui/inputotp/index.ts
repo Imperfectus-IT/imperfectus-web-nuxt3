@@ -2,7 +2,7 @@ export default {
   root: {
     class: [
       // Alignment
-      'flex items-center',
+      'flex items-center justify-center',
       'gap-7',
     ],
   },

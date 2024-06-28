@@ -3550,15 +3550,167 @@ export default {
         item_10: 'Notas',
         button: 'Guardar',
       },
+      pause: {
+        title: 'Pausar suscripción',
+        description: 'Pausa temporalmente tu suscripción y reactívala cuando tú quieras. Cuando la reactives, mantendrás la antigüedad y beneficios de ser suscriptor antiguo.',
+        button: 'Pausar suscripción',
+      },
+      cancel: {
+        title: 'Cancelar suscripción',
+        description: 'Si no tienes intención de volver, cancela tu suscripción. Ten en cuenta que no la podrás reactivar. Si en un futuro quieres volver, deberás darte de alta otra vez',
+        button: 'Cancelar suscripción',
+      },
     },
   },
   'shopping_cart': {
     shippingStep: {
+      title: 'Datos de envío',
+      clean: 'Limpiar datos',
       field_1: {
         label: 'Nombre',
-        value: '',
+        value: 'shippingFirstName',
       },
-
+      field_2: {
+        label: 'Apellidos',
+        value: 'shippingLastName',
+      },
+      field_3: {
+        label: 'Email',
+        value: 'shippingEmail',
+      },
+      field_4: {
+        label: 'Teléfono',
+        value: 'shippingPhone',
+      },
+      field_5: {
+        label: 'Dirección (calle y número)',
+        value: 'shippingAddress',
+      },
+      field_6: {
+        label: 'Piso y puerta',
+        value: 'shippingAddress2',
+      },
+      field_7: {
+        label: 'Código postal',
+        value: 'shippingPostalCode',
+      },
+      field_8: {
+        label: 'Localidad',
+        value: 'shippingCity',
+      },
+      field_9: {
+        label: 'Provincia',
+        value: 'shippingState',
+      },
+      field_10: {
+        label: 'País',
+        value: 'shippingCountry',
+      },
+      field_11: {
+        label: 'Observaciones para el repartidor',
+        value: 'shippingNotes',
+      },
+      checkbox: 'Dirección de facturación diferente',
+    },
+    billingStep: {
+      title: 'Datos de facturación',
+      button: 'Continuar',
+      field_1: {
+        label: 'Nombre',
+        value: 'billingFirstName',
+      },
+      field_2: {
+        label: 'Apellidos',
+        value: 'billingLastName',
+      },
+      field_3: {
+        label: 'Correo electrónico',
+        value: 'billingEmail',
+      },
+      field_4: {
+        label: 'Teléfono',
+        value: 'billingPhone',
+      },
+      field_5: {
+        label: 'Empresa (opcional)',
+        value: 'billingCompany',
+      },
+      field_6: {
+        label: 'Dirección (calle y número)',
+        value: 'billingAddress',
+      },
+      field_7: {
+        label: 'Piso y puerta',
+        value: 'billingAddress2',
+      },
+      field_8: {
+        label: 'Código postal',
+        value: 'billingPostalCode',
+      },
+      field_9: {
+        label: 'Localidad',
+        value: 'billingCity',
+      },
+      field_10: {
+        label: 'Provincia',
+        value: 'billingState',
+      },
+      field_11: {
+        label: 'País',
+        value: 'billingCountry',
+      },
+    },
+    deliveryStep: {
+      title: 'Datos de envío',
+      subtitle: '¿Cuándo quieres recibir tu envío?',
+      available: 'Disponible',
+      selected: 'Seleccionado',
+      selectSection: {
+        title: 'Franja horaria',
+        option_0: {
+          label: 'Entre las 10:00 y las 22:00',
+          value: '',
+        },
+        option_1: {
+          label: 'Entre las 10:00 y las 14:00',
+          value: 'morning',
+        },
+        option_2: {
+          label: 'Entre las 14:00 y las 18:00',
+          value: 'afternoon',
+        },
+        option_3: {
+          label: 'Entre las 18:00 y las 22:00',
+          value: 'night',
+        },
+      },
+      comment: {
+        title: 'Ten en cuenta',
+        description: 'Estás contratando una suscripción',
+      },
+      button: 'Continuar',
+    },
+    paymentStep: {
+      title: 'Finalizar compra',
+      payment: 'Pago con tarjeta de débito/crédito o pago exprés',
+      button: 'Realizar pago',
+      conditions: {
+        condition_0: {
+          text_1: 'Al completar tu pedido aceptas los ',
+          text_2bold: 'Términos y Condiciones y nuestra Política de Privacidad, ',
+          text_3: 'así como recibir comunicaciones informativas y transaccionales en relación a pedidos, transporte, servicio o entregas.',
+        },
+        condition_1: {
+          text_1: 'Quiero recibir ',
+          text_2bold: 'recetas y consejos de aprovechamiento, ',
+          text_3: 'conocer a los agricultores y recibir descuentos y promociones.',
+        },
+        condition_2: {
+          text_1: 'Acepto recibir ',
+          text_2bold: 'comunicaciones por WhatsApp ',
+          text_3: 'sobre la suscripción, envíos y preferencias',
+        },
+      },
     },
   },
 }

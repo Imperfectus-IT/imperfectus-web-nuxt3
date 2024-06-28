@@ -5,12 +5,13 @@ export type BillingAddress = {
   billingLastName: string
   billingEmail: string
   billingPhone: string
+  billingCompany: string
   billingAddress: string
   billingAddress2: string
   billingPostalCode: string
   billingCity: string
   billingState: string
-  billingNif: string
+  billingCif: string
   billingCountry: string
 }
 
@@ -20,10 +21,12 @@ export type ShippingAddress = {
   shippingEmail: string
   shippingPhone: string
   shippingAddress: string
+  shippingAddress2: string
   shippingPostalCode: string
   shippingCity: string
   shippingState: string
   shippingCountry: string
+  shippingNotes: string
 }
 
 export type Item = {
