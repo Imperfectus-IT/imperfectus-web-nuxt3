@@ -58,11 +58,6 @@ const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-onMounted(() => {
-  console.log('test', process.env, env.public)
-},
-)
-
 const submitForm = async (): Promise<void> => {
   try {
     isPaymentAvailable.value = true
