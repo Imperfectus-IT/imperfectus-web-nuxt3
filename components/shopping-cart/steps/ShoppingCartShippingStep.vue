@@ -24,12 +24,15 @@ const isBillingFormDisplayed = ref(false)
 <template>
   <div class="px-10">
     <div class="flex items-center justify-center gap-3 mt-3 relative">
-      <Button
-        class="w-[2rem] h-[2rem] text-xl !absolute left-0 lg:mt-4"
-        icon="mdi mdi-chevron-left"
-        rounded
-        outlined
-      />
+      <div class="!absolute left-0 flex flex-row gap-3 lg:mt-4">
+        <Button
+          class="w-[2rem] h-[2rem] text-xl "
+          icon="mdi mdi-chevron-left"
+          rounded
+          outlined
+        />
+        <span class="my-auto hidden lg:block">Volver</span>
+      </div>
       <p class="font-recoleta-regular text-xl font-normal text-center w-2/3 lg:hidden">
         {{
           $t(`shopping_cart.shippingStep.title`)

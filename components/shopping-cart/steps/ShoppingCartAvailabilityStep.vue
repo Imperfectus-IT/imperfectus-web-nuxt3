@@ -30,20 +30,25 @@ watch(
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[20%]">
-    <Button
-      class="w-[2rem] h-[2rem] text-xl"
-      icon="mdi mdi-chevron-left"
-      rounded
-      outlined
-    />
-    <div class="mt-16 text-center lg:mt-0">
-      <p class="font-recoleta-regular text-lg font-normal lg:text-xl">
+  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] lg:relative">
+    <div class="flex items-center lg:justify-center gap-3">
+      <div class="lg:absolute lg:left-5 lg:flex lg:flex-row lg:gap-3 lg:mt-10">
+        <Button
+          class="w-[2rem] h-[2rem] text-xl "
+          icon="mdi mdi-chevron-left"
+          rounded
+          outlined
+        />
+        <span class="my-auto hidden lg:block">Volver</span>
+      </div>
+    </div>
+    <div class="text-center lg:mt-0">
+      <p class="font-recoleta-regular text-lg font-normal lg:text-2xl">
         {{
           $t("order.steps.stepAvailability.title")
         }}
       </p>
-      <p class="font-solina-extended-book text-base font-normal p-6">
+      <p class="font-solina-extended-book text-base font-normal p-6 lg:text-[20px]">
         {{
           $t("order.steps.stepAvailability.subTitle")
         }}
@@ -63,7 +68,7 @@ watch(
       src="/images/steps/availability/Ipad2_Dark1.webp"
       format="webp"
       loading="lazy"
-      class="hidden lg:block mx-auto"
+      class="hidden lg:block mx-auto w-[400px] mt-10"
     />
   </div>
 </template>

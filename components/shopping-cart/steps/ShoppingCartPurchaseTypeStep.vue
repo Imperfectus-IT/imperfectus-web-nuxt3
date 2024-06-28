@@ -22,14 +22,17 @@ const goToNextStep = () => {
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[30%]">
+  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] relatve">
     <div class="flex items-center justify-center gap-3">
-      <Button
-        class="w-[2rem] h-[2rem] text-xl"
-        icon="mdi mdi-chevron-left"
-        rounded
-        outlined
-      />
+      <div class="!absolute left-5 flex flex-row gap-3">
+        <Button
+          class="w-[2rem] h-[2rem] text-xl "
+          icon="mdi mdi-chevron-left"
+          rounded
+          outlined
+        />
+        <span class="my-auto hidden lg:block">Volver</span>
+      </div>
       <p class="font-recoleta-regular text-lg font-normal lg:text-2xl ">
         {{
           $t("order.steps.stepPurchase.title")
@@ -63,7 +66,7 @@ const goToNextStep = () => {
         src="/images/steps/purchaseType/Ipad2_Dark2.webp"
         format="webp"
         loading="lazy"
-        class="hidden lg:block w-[350px] col-start-1 row-start-1"
+        class="hidden lg:block w-[400px] col-start-1 row-start-1"
       />
     </div>
 
@@ -92,7 +95,7 @@ const goToNextStep = () => {
         src="/images/steps/purchaseType/Ipad2_Dark2.webp"
         format="webp"
         loading="lazy"
-        class="hidden lg:block w-[350px] col-start-1 row-start-1"
+        class="hidden lg:block w-[400px] col-start-1 row-start-1"
       />
     </div>
     <div class="text-center mt-8">

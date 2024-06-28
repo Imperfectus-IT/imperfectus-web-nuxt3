@@ -3686,7 +3686,8 @@ export default {
       },
       comment: {
         title: 'Ten en cuenta',
-        description: 'Estás contratando una suscripción',
+        mobileDescription: 'Estás contratando una suscripción',
+        desktopDescription: 'Las entregas de la caja serán semanales para suscripciones semanales y quincenales de manera alterna. El pago se realizará cada domingo previo.',
       },
       button: 'Continuar',
     },

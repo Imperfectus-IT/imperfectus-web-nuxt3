@@ -8,6 +8,7 @@ const { shoppingCart } = useShoppingCartState()
 const setBoxType = (boxSize: string) => shoppingCart.value.boxType = boxSize
 const { t } = useI18n()
 const emit = defineEmits(['goToStep'])
+const { isDesktop } = useScreenSize()
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
     src: '/images/boxes/Caixa-S.webp',
@@ -21,6 +22,11 @@ const boxTypeImages = {
     src: '/images/boxes/Caixa-XL.webp',
     alt: t('string.box.vegetables'),
   },
+}
+
+const getImageData = () => {
+  const boxType = shoppingCart.value.boxType as keyof typeof boxTypeImages
+  return boxTypeImages[boxType] || { src: '', alt: '' }
 }
 const exclusions = [
   {
@@ -62,21 +68,24 @@ const exclusions = [
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
+  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
     <div class="flex items-center gap-3">
-      <Button
-        class="w-[2rem] h-[2rem] text-xl"
-        icon="mdi mdi-chevron-left"
-        rounded
-        outlined
-      />
-      <p class="font-recoleta-regular text-lg font-">
+      <div class="lg:absolute lg:left-5 flex flex-row gap-3 lg:mt-3">
+        <Button
+          class="w-[2rem] h-[2rem] text-xl "
+          icon="mdi mdi-chevron-left"
+          rounded
+          outlined
+        />
+        <span class="my-auto hidden lg:block">Volver</span>
+      </div>
+      <p class="font-recoleta-regular text-lg font- lg:text-2xl lg:mx-auto">
         {{
           $t("order.steps.stepCustomize.section1")
         }}
       </p>
     </div>
-    <div class="flex flex-col items-center gap-5 mt-8">
+    <div class="flex flex-col items-center gap-5 mt-8 lg:flex-row">
       <Button
         class="text-xl w-2/3"
         :label="$t('string.box.vegetables')"
@@ -84,7 +93,7 @@ const exclusions = [
         @click.prevent="setBoxType(VEGETABLES_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.boxType === VEGETABLES_BOX_TYPE"
+        v-if="shoppingCart.boxType === VEGETABLES_BOX_TYPE && !isDesktop"
         class="rounded-lg"
         :src="boxTypeImages[shoppingCart.boxType].src"
         :alt="boxTypeImages[shoppingCart.boxType].alt"
@@ -98,7 +107,7 @@ const exclusions = [
         @click.prevent="setBoxType(MIXED_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.boxType === MIXED_BOX_TYPE"
+        v-if="shoppingCart.boxType === MIXED_BOX_TYPE && !isDesktop"
         class="rounded-lg"
         :src="boxTypeImages[shoppingCart.boxType].src"
         :alt="boxTypeImages[shoppingCart.boxType].alt"
@@ -112,16 +121,22 @@ const exclusions = [
         @click.prevent="setBoxType(FRUITS_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.boxType === FRUITS_BOX_TYPE"
+        v-if="shoppingCart.boxType === FRUITS_BOX_TYPE && !isDesktop"
         class="rounded-lg"
         :src="boxTypeImages[shoppingCart.boxType].src"
         :alt="boxTypeImages[shoppingCart.boxType].alt"
         format="webp"
         preload
       />
-
-      <ShoppingCartBoxTypeExclusions :product-exclusions="exclusions" />
     </div>
+    <NuxtImg
+      alt="box_type"
+      :src="getImageData().src"
+      loading="lazy"
+      format="webp"
+      class="hidden lg:block w-[480px] mx-auto rounded-lg mt-10"
+    />
+    <ShoppingCartBoxTypeExclusions :product-exclusions="exclusions" />
     <div class="text-center mt-6">
       <Button
         severity="secondary"
