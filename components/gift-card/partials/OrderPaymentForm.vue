@@ -38,6 +38,7 @@
 
 <script setup lang="ts">
 const emit = defineEmits(['redirect', 'onError'])
+const env = useRuntimeConfig()
 
 const props = defineProps<{
   order: number
@@ -57,10 +58,15 @@ const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+onMounted(() => {
+  console.log('test', process.env, env.public)
+},
+)
+
 const submitForm = async (): Promise<void> => {
   try {
     isPaymentAvailable.value = true
-    const data = await $fetch(`${process.env.STRAPI_URL}/payments/${props.order}/form/`,
+    const data = await $fetch(`${env.public.STRAPI_URL}/payments/${props.order}/form/`,
       {
         method: 'POST',
         headers: {
