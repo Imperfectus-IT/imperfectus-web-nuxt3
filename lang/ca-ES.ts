@@ -346,6 +346,10 @@ export default {
           title: 'Recuperar contrasenya',
         },
       },
+      register: {
+        title: 'Registre d\'usuari',
+        description: 'Registra\'t per continuar',
+      },
     },
   },
 
@@ -1931,6 +1935,7 @@ export default {
   'socialProvider.errorMessage':
         'No pots iniciar sessió amb aquest proveïdor, prova amb un altre',
   'socialProvider.loginWithEmail': 'o inicia sessió amb el teu email',
+  'socialProvider.registerWithEmail': 'o registra usuari amb el teu email',
 
   // LogoutButton
   'logoutButton.logout': 'Tancar sessió',
@@ -1956,6 +1961,7 @@ export default {
   'registerForm.password': 'Contrasenya',
   'registerForm.confirmPassword': 'Confirmar contrasenya',
   'registerForm.submit': 'Continuar',
+  'registerForm.buttonGoogleRegister': 'Registrar usuari amb Google',
   'registerForm.validationEmailNotValidMessage': 'Correu electrònic invàlid',
   'registerForm.validationEmailExistsErrorMessage':
         'El correu electrònic ja existeix. Prova d\'iniciar sessió.',

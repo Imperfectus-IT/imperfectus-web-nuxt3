@@ -346,6 +346,10 @@ export default {
           title: 'Recuperar contraseña',
         },
       },
+      register: {
+        title: 'Registro de usuario',
+        description: 'Registrate para continuar',
+      },
     },
   },
 
@@ -1956,6 +1960,7 @@ export default {
   'socialProvider.errorMessage':
     'No puedes iniciar sesión con este proveedor, prueba con otro',
   'socialProvider.loginWithEmail': 'o inicia sesión con tu email',
+  'socialProvider.registerWithEmail': 'o registra usuario con tu email',
 
   // LogoutButton
   'logoutButton.logout': 'Cerrar sesión',
@@ -1981,6 +1986,7 @@ export default {
   'registerForm.password': 'Contraseña',
   'registerForm.confirmPassword': 'Confirmar contraseña',
   'registerForm.submit': 'Continuar',
+  'registerForm.buttonGoogleRegister': 'Registrar usuario con Google',
   'registerForm.validationEmailNotValidMessage': 'Correo electrónico no válido',
   'registerForm.validationEmailExistsErrorMessage':
     'El correo electrónico ya existe. Prueba de iniciar sesión.',

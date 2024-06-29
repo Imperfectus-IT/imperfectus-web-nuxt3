@@ -22,8 +22,12 @@ const submitLoginForm = async () => {
 
 <template>
   <section class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
-    <slot name="header" />
-    <SocialButtons />
+    <div class="mb-5 lg:mb-10 text-center">
+      <span class="font-recoleta-regular text-lg font-normal">{{
+        $t("loginForm.login")
+      }}</span>
+    </div>
+    <SocialButtons :google-label="$t('loginForm.buttonGoogleLogin')" />
     <div class="flex items-center text-center py-3 lg:py-8">
       <Divider class="w-[36%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50" />
       <span class="text-[10px] text-green-tertiary/50 w-full lg:w-4/5">{{
@@ -88,7 +92,10 @@ const submitLoginForm = async () => {
           }"
         />
       </NuxtLink>
-      <NuxtLink class="font-solina-extended-medium text-center">
+      <NuxtLink
+        class="font-solina-extended-medium text-center"
+        :to="localePath({ name: 'auth-register' })"
+      >
         <Button
           :label="$t('orderStepAuth.hastAccount')"
           :pt="{

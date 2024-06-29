@@ -7,26 +7,26 @@ definePageMeta({
 
 defineI18nRoute({
   paths: {
-    ca: '/iniciar-sessio/',
-    es: '/iniciar-sesion/',
+    ca: '/registrar-usuario/',
+    es: '/registrar-usuari/',
   },
 })
 const { t } = useI18n()
 const i18nHead = useLocaleHead()
 
 useHead({
-  title: t('pages.auth.login.title'),
+  title: t('pages.auth.register.title'),
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: t('pages.auth.login.description'),
+      content: t('pages.auth.register.description'),
     },
     ...i18nHead.value.meta,
   ],
 })
 
-const handleLoginEvent = () => {
+const handleRegisterEvent = () => {
   const localeRoute = useLocaleRoute()
   const route = localeRoute({ name: 'admin' })
   navigateTo(route.fullPath)
@@ -35,8 +35,8 @@ const handleLoginEvent = () => {
 
 <template>
   <Divider />
-  <LoginForm
+  <RegisterForm
     class="mt-8"
-    @login="handleLoginEvent"
+    @user-registered="handleRegisterEvent"
   />
 </template>
