@@ -33,7 +33,7 @@ const componentToRenderFromStep: Record<string, any> = {
 }
 
 onMounted(async () => {
-  await executeStep(AUTH_STEP)
+  await executeStep(AVAILABILITY_STEP)
 })
 </script>
 
