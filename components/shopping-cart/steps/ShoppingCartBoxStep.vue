@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CUSTOMIZE_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-import type { BoxProductDetail } from '~/components/shopping-cart/ShoppingCartBoxDetail.vue'
 
 const { shoppingCart } = useShoppingCartState()
 const { isDesktop } = useScreenSize()

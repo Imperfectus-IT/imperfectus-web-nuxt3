@@ -9,10 +9,10 @@ const {
   isCoverageValid,
 } = useLocationValidator()
 
-const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostalCode) || !isCoverageValid(shoppingCart.value.coverage))
+const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.postalCode) || !isCoverageValid(shoppingCart.value.coverage))
 const emit = defineEmits(['goToStep'])
 watch(
-  () => shoppingCart.value.shippingAddress.shippingPostalCode,
+  () => shoppingCart.value.shippingAddress.postalCode,
   async (postalCode) => {
     if (!isPostalCodeLengthValid(postalCode)) {
       return
@@ -54,7 +54,7 @@ watch(
         }}
       </p>
       <InputOtp
-        v-model="shoppingCart.shippingAddress.shippingPostalCode"
+        v-model="shoppingCart.shippingAddress.postalCode"
         class="mt-4"
         :pt="{
           input: 'text-[40px]',

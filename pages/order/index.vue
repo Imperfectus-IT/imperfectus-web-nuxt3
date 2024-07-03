@@ -4,11 +4,9 @@ import {
   AVAILABILITY_STEP, CUSTOMIZE_STEP, PURCHASE_TYPE_STEP, BOX_STEP, FREQUENCY_SUBSCRIPTION_TYPE_STEP, SHIPPING_STEP, DELIVERY_STEP, PAYMENT_STEP,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
-// **--------------------- REVISAR ESTE MIDDLEWARE! ---------------------**
-// definePageMeta({
-//   layout: 'default',
-//   middleware: ['guest'],
-// })
+definePageMeta({
+  middleware: ['guest'],
+})
 
 defineI18nRoute({
   paths: {
@@ -33,7 +31,7 @@ const componentToRenderFromStep: Record<string, any> = {
 }
 
 onMounted(async () => {
-  await executeStep(AVAILABILITY_STEP)
+  await executeStep(SHIPPING_STEP)
 })
 </script>
 

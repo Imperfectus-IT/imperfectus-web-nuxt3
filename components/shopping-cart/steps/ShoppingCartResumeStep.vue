@@ -50,20 +50,24 @@ const goToNextStep = () => {
     />
     <Divider class="lg:hidden text-grey-secondary mb-7" />
     <OrderCoupon
-      :show-title="false"
+      :show-title="true"
     />
     <Divider class="text-grey-secondary mt-7" />
     <div class="flex justify-between">
-      <span>Subtotal</span>
+      <span>{{ $t('orderAmount.subtotal') }}</span>
       <span>19.18€</span>
     </div>
     <div class="flex justify-between mt-2">
-      <span>Gastos de envío</span>
+      <span>{{ $t('orderAmount.shippingCost') }}</span>
+      <span>0,00€</span>
+    </div>
+    <div class="flex justify-between mt-2">
+      <span>{{ $t('orderAmount.discount') }}</span>
       <span>0,00€</span>
     </div>
     <Divider class="text-grey-secondary" />
     <div class="flex justify-between text-[22px] font-solina-extended-medium">
-      <span>Total</span>
+      <span>{{ $t('orderAmount.total') }}</span>
       <span>19.18€</span>
     </div>
     <div class="flex justify-center">
@@ -71,7 +75,7 @@ const goToNextStep = () => {
         :label="$t('order.next')"
         severity="secondary"
         class="mt-4"
-        @click.prevent="goToNextStep()"
+        @click.prevent="goToNextStep"
       />
     </div>
   </div>

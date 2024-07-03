@@ -1,9 +1,9 @@
 <template>
   <h4
-    v-if="props.showTitle"
+    v-if="showTitle"
     class="text-[14px] whitespace-normal font-bold mt-4"
   >
-    ¿Tienes un descuento que quieras aplicar?
+    {{ $t('orderCoupon.message') }}
   </h4>
   <InputGroup class="my-2 lg:w-ful flex flex-row">
     <InputText
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang='ts'>
-const props = defineProps({
+const { showTitle } = defineProps({
   showTitle: {
     type: Boolean,
     default: true,

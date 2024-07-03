@@ -4,52 +4,70 @@ import {
 } from './types/ShoppingCartConstants.ts'
 
 export const useShoppingCartFactory = () => {
+  const emptyItem = (): Item => {
+    return {
+      amount: 0,
+      exclusions: [],
+      image: '',
+      product: null,
+      purchaseType: '',
+      frequency: '',
+      quantity: 1,
+    }
+  }
+
+  const emptyBillingAddress = (): BillingAddress => {
+    return {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      address1: '',
+      address2: '',
+      postalCode: '',
+      city: '',
+      state: '',
+      cif: '',
+      company: '',
+      country: '',
+    }
+  }
+  const emptyShippingAddress = (): ShippingAddress => {
+    return {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      address1: '',
+      address2: '',
+      postalCode: '',
+      city: '',
+      state: '',
+      company: '',
+      country: '',
+      notes: '',
+    }
+  }
   const emptyShoppingCart = (): ShoppingCart => {
     return {
       deliveryHour: '',
       preferredDay: '',
       preferredHour: '',
+      invoiceRequired: false,
       step: AVAILABILITY_STEP,
-      purchaseType: '',
-      boxProductSelected: null,
-      boxSize: '',
-      boxType: '',
       status: 'pending',
       deliveryDate: '',
       coverage: null,
       items: [],
-      frequency: '',
-      billingAddress: {
-        billingFirstName: '',
-        billingLastName: '',
-        billingEmail: '',
-        billingPhone: '',
-        billingAddress: '',
-        billingAddress2: '',
-        billingPostalCode: '',
-        billingCity: '',
-        billingState: '',
-        billingCif: '',
-        billingCompany: '',
-        billingCountry: '',
-      },
-      shippingAddress: {
-        shippingFirstName: '',
-        shippingLastName: '',
-        shippingEmail: '',
-        shippingPhone: '',
-        shippingAddress: '',
-        shippingAddress2: '',
-        shippingPostalCode: '',
-        shippingCity: '',
-        shippingState: '',
-        shippingCountry: '',
-        shippingNotes: '',
-      },
+      billingAddress: emptyBillingAddress(),
+      shippingAddress: emptyShippingAddress(),
     }
   }
 
   return {
     emptyShoppingCart,
+    emptyItem,
+    emptyBillingAddress,
+    emptyShippingAddress,
   }
 }

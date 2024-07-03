@@ -1,54 +1,54 @@
 import type { Product } from '~/composables/shared/product/types/Product.ts'
 
 export type BillingAddress = {
-  billingFirstName: string
-  billingLastName: string
-  billingEmail: string
-  billingPhone: string
-  billingCompany: string
-  billingAddress: string
-  billingAddress2: string
-  billingPostalCode: string
-  billingCity: string
-  billingState: string
-  billingCif: string
-  billingCountry: string
+  firstname: string
+  lastname: string
+  email: string
+  phone: string
+  company: string
+  address1: string
+  address2: string
+  postalCode: string
+  city: string
+  state: string
+  cif: string
+  country: string
 }
 
 export type ShippingAddress = {
-  shippingFirstName: string
-  shippingLastName: string
-  shippingEmail: string
-  shippingPhone: string
-  shippingAddress: string
-  shippingAddress2: string
-  shippingPostalCode: string
-  shippingCity: string
-  shippingState: string
-  shippingCountry: string
-  shippingNotes: string
+  firstname: string
+  lastname: string
+  email: string
+  phone: string
+  company: string
+  address1: string
+  address2: string
+  postalCode: string
+  city: string
+  state: string
+  country: string
+  notes: string
 }
 
 export type Item = {
   amount: number
-  sku: string
-  exclusions: string[]
+  exclusions: Product[]
   image: string
+  product: Product | null
+  purchaseType: string
+  frequency?: string
+  quantity: number
 }
 
 export type ShoppingCart = {
   status: string
-  boxSize: string
-  boxType: string
-  boxProductSelected: Product | null
-  purchaseType: string
   step: string
   deliveryDate: string
   deliveryHour: string
   preferredDay: string
   preferredHour: string
+  invoiceRequired: boolean
   coverage?: string | null
-  frequency: string
   items: Item[]
   billingAddress: BillingAddress
   shippingAddress: ShippingAddress
