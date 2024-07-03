@@ -31,12 +31,13 @@ const componentToRenderFromStep: Record<string, any> = {
 }
 
 onMounted(async () => {
-  await executeStep(SHIPPING_STEP)
+  await executeStep(RESUME_ITEM_STEP)
 })
 </script>
 
 <template>
   <section>
+    <Divider class="hidden lg:flex border-[1px]" />
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

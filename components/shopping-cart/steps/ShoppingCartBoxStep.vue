@@ -113,5 +113,7 @@ const getProductToRender = (key: string): BoxProductDetail => {
         @click.prevent="$emit('goToStep', CUSTOMIZE_STEP)"
       />
     </div>
+    <ShoppingCartPurchaseSummaryBox class="fixed z-10 inset-x-0 bottom-1/4 w-full lg:hidden bg-beige-primary" :items="[]" />
+    <ShoppingCartPurchaseSummaryBox class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary" :items="[]" />
   </div>
 </template>

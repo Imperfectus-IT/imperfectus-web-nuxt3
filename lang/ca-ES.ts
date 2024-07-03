@@ -2178,6 +2178,16 @@ export default {
     cherryBoxesNotAvailable: 'La caixa de cireres no està disponible en aquest codi postal'
   },
 
+  purchase_summary: {
+    title: 'Resum de compra',
+    fromPrice: 'Desde: ',
+    frequency: 'Cada quant?',
+    boxSize: 'Grandària de caixa',
+    boxType: 'Tipus de caixa',
+    exclusions: 'Exclusiones',
+    total: 'Total',
+  },
+
   // OrderItemExclusions
   'orderItemExclusions.manage': 'Gestiona les exclusions',
   'orderItemExclusions.done': 'Fet!',

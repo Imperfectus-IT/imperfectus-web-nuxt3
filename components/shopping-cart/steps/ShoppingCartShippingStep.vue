@@ -33,23 +33,28 @@ const emit = defineEmits(['goToStep'])
         }"
       />
     </div>
-    <div class="lg:border-[1px] lg:rounded-lg lg:w-1/2 lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
-      <ShoppingCartShippingAddress />
-      <div class="flex items-center lg:mt-4">
-        <Checkbox
-            v-model="shoppingCart.invoiceRequired"
-            :binary="true"
-            :pt="{
+    <div class="lg:flex lg:gap-4">
+      <div class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
+        <ShoppingCartShippingAddress />
+        <div class="flex items-center lg:mt-4">
+          <Checkbox
+              v-model="shoppingCart.invoiceRequired"
+              :binary="true"
+              :pt="{
           box: 'h-4 w-4 border-[1px] rounded-sm my-auto mx-auto text-green-tertiary',
           icon: 'text-green-tertiary',
         }"
-        />
-        <label
-            for="invoiceRequired"
-            class="text-xs"
-        > {{ $t('orderMeta.isBillingMetaDifferent') }} </label>
+          />
+          <label
+              for="invoiceRequired"
+              class="text-xs"
+          > {{ $t('orderMeta.isBillingMetaDifferent') }} </label>
+        </div>
+        <ShoppingCartBillingAddress v-if="shoppingCart.invoiceRequired" />
       </div>
-      <ShoppingCartBillingAddress v-if="shoppingCart.invoiceRequired" />
+      <div class="lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
+        <ShoppingCartSummaryBox />
+      </div>
     </div>
     <div class="flex justify-center lg:justify-end mt-4 lg:w-2/4">
       <Button
@@ -58,5 +63,7 @@ const emit = defineEmits(['goToStep'])
           @click.prevent="$emit('goToStep', DELIVERY_STEP)"
       />
     </div>
+    <ShoppingCartPurchaseSummaryFloating class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" :items="[]" />
+    <ShoppingCartPurchaseSummaryFloating class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary" :items="[]" />
   </div>
 </template>

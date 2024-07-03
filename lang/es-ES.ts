@@ -2206,6 +2206,16 @@ export default {
     cherryBoxesNotAvailable: 'La caja de cerezas no está disponible en este código postal'
   },
 
+  purchase_summary: {
+    title: 'Resumen de compra',
+    fromPrice: 'Desde: ',
+    frequency: '¿Cada cuanto?',
+    boxSize: 'Tamaño de caja',
+    boxType: 'Tipo de caja',
+    exclusions: 'Exclusiones',
+    total: 'Total',
+  },
+
   // OrderItemExclusions
   'orderItemExclusions.manage': 'Gestiona las exclusiones',
   'orderItemExclusions.done': 'Hecho!',
@@ -3137,7 +3147,7 @@ export default {
   'ReferAFriend.1.alt': 'Ilustración de la tribu TALKUAL',
   'general.error': 'Algo ha salido mal, inténtalo de nuevo más tarde',
 
-  'newsroom': {
+  newsroom: {
     header: {
       title: 'Sala de prensa',
       description: 'En esta sección podrás ver el material gráfico, los medios en los que ha salido TALKUAL, descargar el dossier de prensa o ver nuestras redes y contactar con nosotrxs.',
@@ -3183,7 +3193,7 @@ export default {
       description: 'Para cualquier información y/o solicitud de imágenes, no dudes en ponerte en contacto con nosotros a:',
     },
   },
-  'side_admin_menu': {
+  side_admin_menu: {
     title: 'Mi cuenta',
     personal_data: 'Datos personales',
     orders: 'Mis pedidos',
@@ -3195,8 +3205,7 @@ export default {
     contact: 'Contacto',
     logout: 'Cerrar sesión',
   },
-
-  'profile': {
+  profile: {
     my_account: {
       title: '¡Hola, {name}!',
       help: '¿Necesitas ayuda?',
@@ -3271,8 +3280,7 @@ export default {
       },
     },
   },
-
-  'orders': {
+  orders: {
     title: 'Mis Pedidos',
     order: {
       billing: {
@@ -3345,7 +3353,7 @@ export default {
       },
     },
   },
-  'upcoming_orders': {
+  upcoming_orders: {
     title: 'Próximas entregas',
     description_1: '',
     gift_to_friend: {
@@ -3431,7 +3439,7 @@ export default {
       skip_button: 'Cancelar entrega',
     },
   },
-  'subscriptions': {
+  subscriptions: {
     subscription: {
       title: 'Editar suscripción',
       description: 'Las suscripciones se renuevan y cobran cada domingo. Si quieres cancelar o pausar la suscripción, asegúrate de hacerlo antes del domingo para que no se genere ni cobre el pedido.',
