@@ -346,6 +346,10 @@ export default {
           title: 'Recuperar contraseña',
         },
       },
+      register: {
+        title: 'Registro de usuario',
+        description: 'Registrate para continuar',
+      },
     },
   },
 
@@ -1162,13 +1166,33 @@ export default {
   'order.next': 'Continuar',
   'order.steps.stepAvailability.step': 'Confirmar disponibilidad',
   'order.steps.stepAvailability.title':
-    'Indícanos tu código postal para saber si llegamos a tu zona.',
+    '¿Cuál es tu código postal?',
+  'order.steps.stepAvailability.subTitle':
+    'Nos servirá para saber si llegamos a tu zona.',
+  'order.steps.stepPurchase.title': '¿Qué te gustaría comprar?',
+  'order.steps.stepPurchase.btn-subscription': 'Suscripción',
+  'order.steps.stepPurchase.btn-subscription.section-1': 'Recibe semanalmente o quincenalmente tú caja de frutas y verduras imperfectas.',
+  'order.steps.stepPurchase.btn-subscription.section-2': 'Podrás…',
+  'order.steps.stepPurchase.btn-subscription.section-3.bullet-1': '**Ajustar el tamaño, la frecuencia y las exclusiones** desde tu cuenta cliente, siempre que quieras.',
+  'order.steps.stepPurchase.btn-subscription.section-3.bullet-2': '**Pausar, editar o cancelar** tu suscripción cuando quieras, ¡sin ningún coste añadido!',
+  'order.steps.stepPurchase.btn-subscription.section-3.bullet-3': 'Compartir tú **código personalizado** para obtener un **15% de descuento**. 15% descuento tus amigos = 15% descuento en tú próxima caja',
+  'order.steps.stepPurchase.btn-order': 'Compra única (+2€)',
+  'order.steps.stepPurchase.btn-order.section-1': '¿Es la primera vez con nosotros y quieres probar la calidad del producto?',
+  'order.steps.stepPurchase.btn-order.section-2': 'La mejor opción.',
+  'order.steps.stepPurchase.btn-continue': 'Continuar',
+  'order.steps.stepBox.title': '¿Qué tamaño de caja quieres?',
+  'order.steps.stepBox.smallBox': 'Caja Pequeña',
+  'order.steps.stepBox.mediumBox': 'Caja Mediana',
+  'order.steps.stepBox.largeBox': 'Caja Grande',
   'order.steps.stepCustomize.title': 'Elige tu caja',
   'order.steps.stepCustomize.section1': '¿Qué tipo de caja quieres?',
-  'order.steps.stepCustomize.section2':
-    '¿Cada cuanto quieres recibir tu caja? (obligatorio)',
+  'order.steps.stepCustomize.frequency':
+    '¿Cada cuánto quieres recibir tu caja?',
   'order.steps.stepCustomize.section3': '¿Qué te gustaría añadir a tu caja? ',
-  'order.steps.stepCustomize.section4': '¿Quieres excluir algunos alimentos?',
+  'order.steps.stepCustomize.section4': '¿Quieres excluir algún alimento?',
+  'order.steps.stepCustomize.section4.yes-btn': 'Si',
+  'order.steps.stepCustomize.section4.no-btn': 'No',
+  'order.steps.stepCustomize.section4.search': 'Buscar',
   'order.steps.stepCustomize.size': '¿Qué tipo de tamaño quieres?',
   'order.steps.stepCustomize.exclusions.bold':
     'Puedes excluir hasta {max} alimentos.',
@@ -1180,6 +1204,7 @@ export default {
     'La caja de tipo {type} permite excluir hasta {max} alimentos.',
   'order.steps.stepCustomize.selectExclusions':
     'Selecciona los alimentos que quieres excluir',
+  'order.steps.orderItemResume': 'Resumen de caja',
   'order.steps.stepCustomize.selectExclusions.add': 'Has añadido',
   'order.steps.stepCustomize.selectExclusions.remove': 'Has eliminado',
   'order.steps.stepCustomize.selectExclusions.failed':
@@ -1935,6 +1960,7 @@ export default {
   'socialProvider.errorMessage':
     'No puedes iniciar sesión con este proveedor, prueba con otro',
   'socialProvider.loginWithEmail': 'o inicia sesión con tu email',
+  'socialProvider.registerWithEmail': 'o registra usuario con tu email',
 
   // LogoutButton
   'logoutButton.logout': 'Cerrar sesión',
@@ -1960,6 +1986,7 @@ export default {
   'registerForm.password': 'Contraseña',
   'registerForm.confirmPassword': 'Confirmar contraseña',
   'registerForm.submit': 'Continuar',
+  'registerForm.buttonGoogleRegister': 'Registrar usuario con Google',
   'registerForm.validationEmailNotValidMessage': 'Correo electrónico no válido',
   'registerForm.validationEmailExistsErrorMessage':
     'El correo electrónico ya existe. Prueba de iniciar sesión.',

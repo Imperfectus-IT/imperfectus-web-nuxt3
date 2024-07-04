@@ -309,7 +309,7 @@ export default {
       {
         'text-green-tertiary': context.date.today,
         'text-green-tertiary bg-transparent': !context.selected && !context.disabled && !context.date.today,
-        'text-green-tertiary bg-transparent border-[1px]': context.selected && !context.disabled,
+        'text-green-tertiary ': context.selected && !context.disabled,
       },
 
       // States

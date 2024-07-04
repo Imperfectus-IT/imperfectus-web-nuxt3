@@ -1,6 +1,12 @@
+<script setup lang="ts">
+defineProps<{
+  label?: string
+}>()
+</script>
+
 <template>
   <Button
-    :label="$t('loginForm.buttonGoogleLogin')"
+    :label="label"
     outlined
   >
     <template #icon>

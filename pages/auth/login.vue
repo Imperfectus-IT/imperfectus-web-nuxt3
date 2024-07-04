@@ -38,13 +38,5 @@ const handleLoginEvent = () => {
   <LoginForm
     class="mt-8"
     @login="handleLoginEvent"
-  >
-    <template #header>
-      <div class="mb-5 lg:mb-10 text-center">
-        <span class="font-recoleta-regular text-lg font-normal">{{
-          $t("loginForm.login")
-        }}</span>
-      </div>
-    </template>
-  </LoginForm>
+  />
 </template>

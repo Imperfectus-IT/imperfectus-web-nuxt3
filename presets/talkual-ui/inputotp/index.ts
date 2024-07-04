@@ -2,8 +2,8 @@ export default {
   root: {
     class: [
       // Alignment
-      'flex items-center',
-      'gap-2',
+      'flex items-center justify-center',
+      'gap-7',
     ],
   },
   input: {
@@ -24,6 +24,7 @@ export default {
 
         // Size
         'w-10',
+        'h-10',
 
         // Shape
         { 'rounded-md': parent.instance.$name !== 'InputGroup' },
@@ -36,17 +37,17 @@ export default {
         'placeholder:text-green-tertiary',
         'bg-transparent',
         'border',
-        { 'border-green-tertiary': !props.invalid },
+        { 'border-green-secondary': !props.invalid },
 
         // Invalid State
-        'invalid:focus:ring-red-200',
-        'invalid:hover:border-red-500',
-        { 'border-red-500 dark:border-red-400': props.invalid },
+        'invalid:focus:ring-red-primary',
+        'invalid:hover:border-red-primary',
+        { 'border-red-primary': props.invalid },
 
         // States
         {
-          'hover:border-primary-500 dark:hover:border-primary-400': !context.disabled && !props.invalid,
-          'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-primary-500/50 dark:focus:ring-primary-400/50 focus:z-10': !context.disabled,
+          'hover:border-green-tertiary': !context.disabled && !props.invalid,
+          'focus:outline-none focus:outline-offset-0 focus:ring-none focus:z-10': !context.disabled,
           'opacity-60 select-none pointer-events-none cursor-default': context.disabled,
         },
 

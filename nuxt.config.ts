@@ -86,6 +86,9 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
   devtools: { enabled: true },
+  experimental: {
+    typedPages: true,
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
@@ -98,6 +101,7 @@ export default defineNuxtConfig({
     'nuxt-zod-i18n',
     '@nuxtjs/i18n',
     'vue3-carousel-nuxt',
+    "@nuxtjs/mdc"
   ],
   primevue: {
     options: {
@@ -125,6 +129,7 @@ export default defineNuxtConfig({
         'InputGroup',
         'InputOtp',
         'InputText',
+        'Listbox',
         'Menu',
         'MenuBar',
         'Message',

@@ -1,11 +1,14 @@
 <template>
-  <h4 class="text-[14px] whitespace-normal font-bold mt-4">
+  <h4
+    v-if="props.showTitle"
+    class="text-[14px] whitespace-normal font-bold mt-4"
+  >
     ¿Tienes un descuento que quieras aplicar?
   </h4>
   <InputGroup class="my-2 lg:w-ful flex flex-row">
     <InputText
       class="rounded-l-xl max-h-[42px] lg:w-1/2"
-      placeholder="Cupón"
+      placeholder="¿Código de descuento?"
     />
     <Button
       label="Aplicar"
@@ -15,4 +18,10 @@
 </template>
 
 <script setup lang='ts'>
+const props = defineProps({
+  showTitle: {
+    type: Boolean,
+    default: true,
+  },
+})
 </script>

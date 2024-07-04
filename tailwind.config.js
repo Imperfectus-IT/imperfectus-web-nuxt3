@@ -73,6 +73,12 @@ export default {
       xl: '0.9375rem',
       xxl: '50%',
     },
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square: 'square',
+    },
     extend: {
       fontFamily: {
         'recoleta-regular': ['Recoleta Regular'],
