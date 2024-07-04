@@ -1,7 +1,12 @@
 <template>
   <Panel
     :header="'Dirección de facturación'"
-    toggleable
+    :toggleable="!isDesktop"
+    :collapsed="!isDesktop"
+    class="relative flex flex-col"
+    :pt="{
+      toggleableContent: 'flex flex-1',
+    }"
   >
     <div
       v-for="(key, index) in getBillingKeys"
@@ -19,17 +24,21 @@
         }"
       />
     </div>
-    <Button
-      :label="$t(`subscriptions.subscription.billing.button`)"
-      class="mt-3"
-      @click="modifySubscriptionBilling"
-    />
+    <div class="lg:flex lg:flex-col lg:h-full justify-end items-end">
+      <Button
+        :label="$t(`subscriptions.subscription.billing.button`)"
+        class="mt-3 w-full"
+        @click="modifySubscriptionBilling"
+      />
+    </div>
   </Panel>
 </template>
 
 <script setup lang="ts">
 import type { SubscriptionBilling } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import { useScreenSize } from '~/composables/useScreenSize/useScreenSize.ts'
 
+const { isDesktop } = useScreenSize()
 const props = defineProps<{
   billing: SubscriptionBilling
 }>()

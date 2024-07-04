@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-row gap-1 justify-start lg:order-2 lg:justify-start lg:gap-4 lg:mt-6 relative lg:items-center">
+  <div class="flex flex-row gap-1 justify-start lg:gap-4 lg:mt-6 relative lg:items-center">
     <Button
       :label="status"
       :pt="{
-        root: ` bg-${backgroundColor()} py-1.5 px-4 rounded-lg text-[12px] lg:px-8 cursor-default`,
+        root: ` bg-${backgroundColor()} py-1.5 px-4 rounded-lg text-[12px] lg:px-8 lg:h-9 cursor-default`,
         label: '',
       }"
     />
@@ -12,7 +12,7 @@
       :label="'ID ' + subscription.id"
       :pt="{
         label: 'text-[12px]',
-        root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 cursor-default',
+        root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 lg:h-9 cursor-default',
       }"
     />
     <Button

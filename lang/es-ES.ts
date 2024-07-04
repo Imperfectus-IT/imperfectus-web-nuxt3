@@ -3427,7 +3427,7 @@ export default {
           item_0: 'Cantidad de artículos: {quantity}',
           item_1: 'Precio del envío: {shipping}',
           item_2: 'Subtotal: {subtotal}€',
-          item_3: 'Total: {total}€',
+          item_3: 'Importe total: {total}€',
         },
       },
       modifyItem: {
@@ -3528,6 +3528,235 @@ export default {
         item_9: 'País',
         item_10: 'Notas',
         button: 'Guardar',
+      },
+      pause: {
+        title: 'Pausar suscripción',
+        description: 'Pausa temporalmente tu suscripción y reactívala cuando tú quieras. Cuando la reactives, mantendrás la antigüedad y beneficios de ser suscriptor antiguo.',
+        button: 'Pausar suscripción',
+        modal: {
+          title: 'Pausar suscripción',
+          paragraph_1: 'Si lo que deseas es cancelar algunas entregas, puedes hacerlo aquí:',
+          paragraph_2: 'Si por contra, quieres pausar tu suscripción:',
+          placeholder: 'Indica un motivo',
+          option_0: {
+            label: 'Estaré fuera por vacaciones o trabajo',
+            value: 'awayFromHome',
+          },
+          option_1: {
+            label: 'No estoy comiendo tanta fruta y verdura',
+            value: 'notEatingAsMuch',
+          },
+          option_2: {
+            label: 'No me gusta la variedad de frutas y verduras de esta temporada',
+            value: 'dislikedVariety',
+          },
+          option_3: {
+            label: 'No me ha gustado la experiencia con la empresa de transporte',
+            value: 'dislikedTransport',
+          },
+          option_4: {
+            label: 'Otro',
+            value: 'other',
+          },
+          cancelButton: 'Cancelar',
+          nextButton: 'Siguiente',
+          upcomingButton: 'Gestionar próximas entregas',
+          backButton: 'Volver atrás',
+        },
+      },
+      cancel: {
+        title: 'Cancelar suscripción',
+        description: 'Si no tienes intención de volver, cancela tu suscripción. Ten en cuenta que no la podrás reactivar. Si en un futuro quieres volver, deberás darte de alta otra vez',
+        button: 'Cancelar suscripción',
+        modal: {
+          title: 'Cancelar suscripción',
+          paragraph_1: 'Si lo que deseas es cancelar algunas entregas, puedes hacerlo aquí:',
+          paragraph_2: 'Si por contra, quieres cancelar definitivamente tu suscripción:',
+          placeholder: 'Indica el motivo',
+          cancelButton: 'Cancelar suscripción',
+          closeButton: 'Cancelar',
+          upcomingButton: 'Gestionar próximas entregas',
+          option_0: {
+            label: 'Problemas con el transporte',
+            value: 'transportIssues',
+          },
+          option_1: {
+            label: 'Calidad no deseada',
+            value: 'unwantedQuality',
+          },
+          option_2: {
+            label: 'Variedad de las frutas y verduras',
+            value: 'varietyNotRight',
+          },
+          option_3: {
+            label: 'No me gusta que no pueda personalizar la caja',
+            value: 'cantCustomizeBox',
+          },
+          option_4: {
+            label: 'Me gustaría otra frecuencia de entrega',
+            value: 'frequencyIssue',
+          },
+          option_5: {
+            label: 'Precio demasiado alto',
+            value: 'pricoTooHigh',
+          },
+          option_6: {
+            label: 'Otro',
+            value: 'other',
+          },
+        },
+      },
+    },
+  },
+  'shopping_cart': {
+    shippingStep: {
+      title: 'Datos de envío',
+      clean: 'Limpiar datos',
+      field_1: {
+        label: 'Nombre',
+        value: 'shippingFirstName',
+      },
+      field_2: {
+        label: 'Apellidos',
+        value: 'shippingLastName',
+      },
+      field_3: {
+        label: 'Email',
+        value: 'shippingEmail',
+      },
+      field_4: {
+        label: 'Teléfono',
+        value: 'shippingPhone',
+      },
+      field_5: {
+        label: 'Dirección (calle y número)',
+        value: 'shippingAddress',
+      },
+      field_6: {
+        label: 'Piso y puerta',
+        value: 'shippingAddress2',
+      },
+      field_7: {
+        label: 'Código postal',
+        value: 'shippingPostalCode',
+      },
+      field_8: {
+        label: 'Localidad',
+        value: 'shippingCity',
+      },
+      field_9: {
+        label: 'Provincia',
+        value: 'shippingState',
+      },
+      field_10: {
+        label: 'País',
+        value: 'shippingCountry',
+      },
+      field_11: {
+        label: 'Observaciones para el repartidor',
+        value: 'shippingNotes',
+      },
+      checkbox: 'Dirección de facturación diferente',
+    },
+    billingStep: {
+      title: 'Datos de facturación',
+      button: 'Continuar',
+      field_1: {
+        label: 'Nombre',
+        value: 'billingFirstName',
+      },
+      field_2: {
+        label: 'Apellidos',
+        value: 'billingLastName',
+      },
+      field_3: {
+        label: 'Correo electrónico',
+        value: 'billingEmail',
+      },
+      field_4: {
+        label: 'Teléfono',
+        value: 'billingPhone',
+      },
+      field_5: {
+        label: 'Empresa (opcional)',
+        value: 'billingCompany',
+      },
+      field_6: {
+        label: 'Dirección (calle y número)',
+        value: 'billingAddress',
+      },
+      field_7: {
+        label: 'Piso y puerta',
+        value: 'billingAddress2',
+      },
+      field_8: {
+        label: 'Código postal',
+        value: 'billingPostalCode',
+      },
+      field_9: {
+        label: 'Localidad',
+        value: 'billingCity',
+      },
+      field_10: {
+        label: 'Provincia',
+        value: 'billingState',
+      },
+      field_11: {
+        label: 'País',
+        value: 'billingCountry',
+      },
+    },
+    deliveryStep: {
+      title: 'Datos de envío',
+      subtitle: '¿Cuándo quieres recibir tu envío?',
+      available: 'Disponible',
+      selected: 'Seleccionado',
+      selectSection: {
+        title: 'Franja horaria',
+        option_0: {
+          label: 'Entre las 10:00 y las 22:00',
+          value: '',
+        },
+        option_1: {
+          label: 'Entre las 10:00 y las 14:00',
+          value: 'morning',
+        },
+        option_2: {
+          label: 'Entre las 14:00 y las 18:00',
+          value: 'afternoon',
+        },
+        option_3: {
+          label: 'Entre las 18:00 y las 22:00',
+          value: 'night',
+        },
+      },
+      comment: {
+        title: 'Ten en cuenta',
+        mobileDescription: 'Estás contratando una suscripción',
+        desktopDescription: 'Las entregas de la caja serán semanales para suscripciones semanales y quincenales de manera alterna. El pago se realizará cada domingo previo.',
+      },
+      button: 'Continuar',
+    },
+    paymentStep: {
+      title: 'Finalizar compra',
+      payment: 'Pago con tarjeta de débito/crédito o pago exprés',
+      button: 'Realizar pago',
+      conditions: {
+        condition_0: {
+          text_1: 'Al completar tu pedido aceptas los ',
+          text_2bold: 'Términos y Condiciones y nuestra Política de Privacidad, ',
+          text_3: 'así como recibir comunicaciones informativas y transaccionales en relación a pedidos, transporte, servicio o entregas.',
+        },
+        condition_1: {
+          text_1: 'Quiero recibir ',
+          text_2bold: 'recetas y consejos de aprovechamiento, ',
+          text_3: 'conocer a los agricultores y recibir descuentos y promociones.',
+        },
+        condition_2: {
+          text_1: 'Acepto recibir ',
+          text_2bold: 'comunicaciones por WhatsApp ',
+          text_3: 'sobre la suscripción, envíos y preferencias',
+        },
       },
     },
   },

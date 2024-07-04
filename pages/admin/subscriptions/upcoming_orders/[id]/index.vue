@@ -1,12 +1,11 @@
 <template>
   <div v-if="!subscription">
-    cargando...
+    <CardSkeleton />
   </div>
   <div
     v-else
     class="lg:w-3/4"
   >
-    {{ subscription }}
     <MobileHeader v-if="isMobile" />
     <DesktopHeader v-if="!isMobile" />
     <Panel
@@ -15,12 +14,15 @@
     >
       <div class="flex flex-col lg:flex-row lg:justify-between">
         <div class="flex flex-col">
+          <p class="text-[14px] mb-3">
+            Próxima entrega: {{ getNextDeliveryDate }}
+          </p>
           <SubscriptionItemCard
             v-for="subscriptionItem in subscription.subscriptionItems"
             :subscription-item="subscriptionItem"
-            :preferred-day="subscription.preferredDay"
             :subscription-status="subscription.status"
-            :next-delivery-date="calculateNextDeliveryDate(nextPaymentDate)"
+            :frequency="subscription.frequency"
+            :display-amount="true"
           />
         </div>
         <div
@@ -145,6 +147,11 @@ const donations = ref<string[]>([])
 const displayGiftToFriend = ref<Record<string, boolean>>({})
 const displayDonateToONG = ref<Record<string, boolean>>({})
 const displayCancelDelivery = ref<Record<string, boolean>>({})
+
+const getNextDeliveryDate = computed(() => {
+  const daysToAdd = DayMapping[subscription.value.preferredDay]
+  return dayjs(subscription.value.nextPayment).add(daysToAdd, 'day').format('DD-MM-YYYY')
+})
 
 const { getNextDatesFromFrequency } = useGetNextDatesFromFrequency()
 

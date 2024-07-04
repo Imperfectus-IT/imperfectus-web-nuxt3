@@ -15,9 +15,9 @@ withDefaults(defineProps<ListItemTypes>(), {
       :class="dotClass"
       class="text-green-primary"
     >⬤</span>
-    <span :class="textClass">
+    <p :class="textClass">
       {{ text }}
-    </span>
+    </p>
   </div>
 </template>
 

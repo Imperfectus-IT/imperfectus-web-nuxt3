@@ -4,10 +4,10 @@
     <SubscriptionItemCard
       v-for="(subscriptionItem, index) in subscription.subscriptionItems"
       :key="index"
-      :next-delivery-date="subscription.nextPayment"
       :subscription-item="subscriptionItem"
       :preferred-day="subscription.preferredDay"
       :subscription-status="subscription.status"
+      :next-payment="subscription.nextPayment"
       class="mt-8 lg:mt-2 lg:order-1"
     />
 

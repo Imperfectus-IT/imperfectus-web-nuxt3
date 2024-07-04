@@ -1,37 +1,21 @@
 <template>
-  <div>
-    <p
-      v-if="props.nextDeliveryDate"
-      class="text-[14px] my-3"
-    >
-      Próxima entrega: {{ getNextDeliveryDate }}
-    </p>
+  <div class="mb-10">
     <div class="flex flex-row gap-4 mt-2">
       <NuxtImg
         loading="lazy"
         format="webp"
         :src="subscriptionItem.image"
         alt="next-order"
-        class="rounded-lg h-[100px] my-auto !w-[130px]"
+        class="rounded-lg h-[100px] my-auto !w-[130px] lg:w-[300px]"
       />
-      <div class="text-[14px] w-1/2 flex flex-col justify-center">
+      <div class="text-[14px] w-1/2 flex flex-col justify-center lg:w-2/3">
         <h4 class="font-semibold mb-2">
-          {{ getBoxSize(subscriptionItem.sku) }}
+          {{ getBoxSize(subscriptionItem.sku) }} - {{ getBoxType(subscriptionItem.sku) }}
         </h4>
         <ul
           v-if="subscriptionStatus === 'active'"
           class="ml-[3px]"
         >
-          <ListItem
-            main-class="flex gap-x-2 mb-1 whitespace-nowrap"
-            dot-class="text-[8px] -mt-[1px] text-green-tertiary"
-            :text="getBoxType(subscriptionItem.sku)"
-          />
-          <ListItem
-            main-class="flex gap-x-2 mb-1 whitespace-nowrap"
-            dot-class="text-[8px] -mt-[1px] text-green-tertiary"
-            :text="'Entrega: ' + $t(`string.day.${preferredDay}`)"
-          />
           <ListItem
             main-class="flex gap-x-2 mb-1 font-bold"
             dot-class="text-[8px] -mt-[1px] text-green-tertiary"
@@ -41,10 +25,31 @@
                 + subscriptionItem.exclusions.length
             "
           />
+          <ListItem
+            v-if="preferredDay"
+            main-class="flex gap-x-2 mb-1 whitespace-nowrap"
+            dot-class="text-[8px] -mt-[1px] text-green-tertiary"
+            :text="'Entrega: ' + $t(`string.day.${preferredDay}`)"
+          />
+          <ListItem
+            v-if="frequency"
+            main-class="flex gap-x-2 mb-1 whitespace-nowrap"
+            dot-class="text-[8px] -mt-[1px] text-green-tertiary"
+            :text="getFrequency"
+          />
+          <ListItem
+            v-if="displayAmount"
+            main-class="flex gap-x-2 mb-1 whitespace-nowrap"
+            dot-class="text-[8px] -mt-[1px] text-green-tertiary"
+            :text="subscriptionItem.amount + ' €'"
+          />
+          <ListItem
+            v-if="nextPayment"
+            main-class="flex gap-x-2 mb-1 whitespace-nowrap"
+            dot-class="text-[8px] -mt-[1px] text-green-tertiary"
+            :text="'Proxima entrega: ' + getDeliveryDate"
+          />
         </ul>
-        <p class="font-bold">
-          {{ subscriptionItem.amount }} €
-        </p>
       </div>
     </div>
   </div>
@@ -52,18 +57,35 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-import { DayMapping } from '../DayMapping.ts'
+import type { SubscriptionItem } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 
-const props = defineProps<{
-  subscriptionItem: SubscriptionItem
-  preferredDay: keyof typeof DayMapping
-  subscriptionStatus: string
-  nextDeliveryDate: string
-}>()
-
-const getNextDeliveryDate = computed(() => {
-  const daysToAdd = DayMapping[props.preferredDay]
-  return dayjs(props.nextDeliveryDate).add(daysToAdd, 'day').format('DD-MM-YYYY')
+const props = defineProps({
+  subscriptionItem: {
+    type: Object as () => SubscriptionItem,
+    required: true,
+  },
+  preferredDay: {
+    type: String,
+    required: false,
+  },
+  subscriptionStatus: {
+    type: String,
+    required: true,
+  },
+  frequency: {
+    type: String,
+    required: false,
+  },
+  nextPayment: {
+    type: String,
+    required: false,
+  },
+  displayAmount: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
 
 const getBoxSize = (sku: string) => {
@@ -83,4 +105,14 @@ const getBoxType = (sku: string) => {
         ? 'Naranjas'
         : 'Fruta y verdura'
 }
+
+const getFrequency = computed(() =>
+  props.frequency === 'weekly' ? 'Cada semana' : 'Cada dos semanas',
+)
+
+const getDeliveryDate = computed(() => {
+  const days = DayMapping[props.preferredDay as keyof typeof DayMapping]
+  console.log('DAYS', days)
+  return dayjs(props.nextPayment).add(1, 'days').format('DD-MM-YYYY')
+})
 </script>

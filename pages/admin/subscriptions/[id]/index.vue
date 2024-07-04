@@ -15,6 +15,11 @@ defineI18nRoute({
   },
 })
 
+definePageMeta({
+  layout: 'admin',
+  middleware: ['auth'],
+})
+
 const route = useRoute()
 const { subscriptions } = useGetSubscriptionsHandler()
 const subscription = ref<Subscription | null>(null)

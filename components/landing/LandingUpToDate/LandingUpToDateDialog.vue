@@ -15,7 +15,6 @@
       :dismissable-mask="true"
       :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
       :pt="{ root: { class: 'bg-green-quaternary' },
-      //  mask: { class: 'bg-[gray]' }
       }"
     >
       <div class="flex justify-start items-center">

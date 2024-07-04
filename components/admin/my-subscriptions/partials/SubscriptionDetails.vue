@@ -1,60 +1,59 @@
 <template>
   <Panel>
-    <h4 class="text-[26px] font-recoleta-medium text-center whitespace-normal ">
+    <h4 class="text-[26px] font-recoleta-medium text-center whitespace-nowrap lg:text-left">
       {{ $t(`${textData.section}title`) }}
     </h4>
-    <SubscriptionItemCard
-      v-for="(item, index) in subscription.subscriptionItems"
-      :key="index"
-      :subscription-item="item"
-      :preferred-day="subscription.preferredDay"
-      :next-delivery-date="subscription.nextPayment"
-      :subscription-status="subscription.status"
-    />
-    <SubscriptionCalendar :subscription="subscription" />
-    <NuxtLink
-      class="mt-10"
-      :to="localePath({ name: 'admin-subscriptions-upcoming_orders-id' })"
-    >
-      <Button
-        class="w-full"
-        :label="$t(`${textData.section}date_picker.button`)"
-      />
-    </NuxtLink>
-    <div class="text-[16px]">
-      <Divider />
-      <p
-        v-for="(item, index) in textData.nextPaymentItems"
-        :key="index"
-        class="mt-3"
-      >
-        {{ $t(`${textData.section}nextPayment.item_${index}`, item.params) }}
-      </p>
-      <Divider />
-      <p
-        v-for="(item, index) in textData.nextDeliveryItems"
-        :key="index"
-        :class="index === 0 ? 'font-bold font-recoleta-regular text-[20px]' : ''"
-        class="mt-3"
-      >
-        {{ $t(`${textData.section}nextDelivery.item_${index}`, item.params) }}
-      </p>
-      <Divider />
-      <p
-        v-for="(item, index) in textData.billingInfoItems"
-        :key="index"
-        class="mt-3"
-      >
-        {{ $t(`${textData.section}billingInfo.item_${index}`, item.params) }}
-      </p>
+    <div class="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:mt-3">
+      <div class="lg:col-span-2">
+        <SubscriptionItemCard
+          v-for="(item, index) in subscription.subscriptionItems"
+          :key="index"
+          :subscription-item="item"
+          :preferred-day="subscription.preferredDay"
+          :next-payment="subscription.nextPayment"
+          :subscription-status="subscription.status"
+        />
+      </div>
+      <div class="lg:col-start-3 lg:row-span-2 lg:flex lg:flex-col">
+        <SubscriptionCalendar :subscription="subscription" />
+      </div>
+
+      <div class="text-[16px] lg:col-start-1 lg:-mt-10">
+        <Divider />
+        <p
+          v-for="(item, index) in textData.nextPaymentItems"
+          :key="index"
+          class="mt-3"
+        >
+          {{ $t(`${textData.section}nextPayment.item_${index}`, item.params) }}
+        </p>
+        <Divider />
+        <p
+          v-for="(item, index) in textData.nextDeliveryItems"
+          :key="index"
+          :class="index === 0 ? 'font-bold font-recoleta-regular text-[20px]' : ''"
+          class="mt-3"
+        >
+          {{ $t(`${textData.section}nextDelivery.item_${index}`, item.params) }}
+        </p>
+        <Divider />
+        <p
+          v-for="(item, index) in textData.billingInfoItems"
+          :key="index"
+          class="mt-3"
+        >
+          {{ $t(`${textData.section}billingInfo.item_${index}`, item.params) }}
+        </p>
+      </div>
     </div>
   </Panel>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import dayjs from 'dayjs'
+import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
-const localePath = useLocalePath()
 const { t } = useI18n()
 const props = defineProps<{
   subscription: Subscription
@@ -88,7 +87,7 @@ const frequency = computed(() =>
 const textData = computed(() => ({
   section: 'subscriptions.subscription.details.',
   nextPaymentItems: [
-    { params: { date: props.subscription.nextPayment } },
+    { params: { date: dayjs(props.subscription.nextPayment).format('DD-MM-YYYY') } },
     { params: { frequency: frequency.value } },
   ],
   nextDeliveryItems: [

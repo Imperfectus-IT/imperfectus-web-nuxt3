@@ -6,7 +6,7 @@ export default {
       'relative',
 
       // Shape
-      'w-full md:w-56',
+      'w-full',
 
       // Color and Background
       'bg-transparent',

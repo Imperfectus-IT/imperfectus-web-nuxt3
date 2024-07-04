@@ -34,15 +34,26 @@
       </template>
     </template>
   </Calendar>
-  <div
-    v-for="(item, index) in textData.items"
-    :key="item"
-    class="flex flex-row items-center mt-4 "
-  >
+  <div class="lg:flex lg:flex-col">
     <div
-      :class="`h-5 w-5 bg-${getBackgroundColor(index)} rounded-sm ${index === 0 ? 'border-[1px] border-green-tertiary' : ''}`"
-    />
-    <span class="ml-3 text-[16px]">{{ getSpanText(index) }}</span>
+      v-for="(item, index) in textData.items"
+      :key="item"
+      class="flex flex-row items-center mt-4 "
+    >
+      <div
+        :class="`h-5 w-5 bg-${getBackgroundColor(index)} rounded-sm ${index === 0 ? 'border-[1px] border-green-tertiary' : ''}`"
+      />
+      <span class="ml-3 text-[16px]">{{ getSpanText(index) }}</span>
+    </div>
+    <NuxtLink
+      class="mt-10"
+      :to="localePath({ name: 'admin-subscriptions-upcoming_orders-id' })"
+    >
+      <Button
+        class="w-full mt-5 lg:mt-0"
+        :label="$t(`${textData.section}button`)"
+      />
+    </NuxtLink>
   </div>
 </template>
 
@@ -55,6 +66,7 @@ import { useGetNextDatesFromFrequency } from '~/composables/admin/subscriptions/
 import { useDateBuilder } from '~/composables/admin/subscriptions/useDateBuilder.ts'
 import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
+const localePath = useLocalePath()
 const { t } = useI18n()
 const { getNextDatesFromFrequency } = useGetNextDatesFromFrequency()
 const { dateBuilder } = useDateBuilder()

@@ -1,7 +1,8 @@
 <template>
   <Panel
     :header="$t(`subscriptions.subscription.shipping.title`)"
-    toggleable
+    :toggleable="!isDesktop"
+    :collapsed="!isDesktop"
   >
     <div
       v-for="(key, index) in getShippingKeys"
@@ -42,14 +43,13 @@
 <script setup lang="ts">
 import type { SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
+const { isDesktop } = useScreenSize()
 const props = defineProps<{
   shipping: SubscriptionShipping
 }>()
 
 const emits = defineEmits(['modifyShipping'])
-
 const getShippingKeys = computed(() => Object.keys(props.shipping))
-
 const shippingForm = reactive<SubscriptionShipping>({
   shippingAddress: props.shipping.shippingAddress,
   shippingCity: props.shipping.shippingCity,

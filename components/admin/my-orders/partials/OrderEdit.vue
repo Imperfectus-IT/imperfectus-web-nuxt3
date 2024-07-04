@@ -12,12 +12,23 @@
       @click="toggleDisplayEditOrder"
     />
     <div v-if="displayEditOrder">
-      <h4 class="font-bold mb-3">
+      <h4 class="font-bold">
         Tipo de caja
       </h4>
       <Dropdown
-        v-model="editOrderData.sku"
-        :options="boxes"
+        v-model="editOrderData.type"
+        :options="boxTypes"
+        option-label="name"
+        option-value="code"
+        placeholder="Selecciona un tipo de caja"
+        class="w-72"
+      />
+      <h4 class="font-bold mt-6">
+        Tamaño de caja
+      </h4>
+      <Dropdown
+        v-model="editOrderData.size"
+        :options="boxSizes"
         option-label="name"
         option-value="code"
         placeholder="Selecciona un tipo de caja"
@@ -63,11 +74,16 @@ const props = defineProps<{
 }>()
 
 const editOrderData = reactive({
-  sku: props.orderItem.sku.includes('FR')
+  type: props.orderItem.sku.includes('FR')
     ? 'FR'
     : props.orderItem.sku.includes('VG')
       ? 'VG'
       : 'MX',
+  size: props.orderItem.sku.includes('S')
+    ? 'S'
+    : props.orderItem.sku.includes('IM')
+      ? 'IM'
+      : 'XL',
   exclusions: props.exclusions,
   coupon: null,
 })
@@ -78,10 +94,16 @@ const toggleDisplayEditOrder = () => {
   displayEditOrder.value = !displayEditOrder.value
 }
 
-const boxes = [
+const boxTypes = [
   { name: 'Verdura y fruta', code: 'MX' },
   { name: 'Sólo fruta', code: 'FR' },
   { name: 'Sólo verdura', code: 'VG' },
+]
+
+const boxSizes = [
+  { name: 'Pequeña', code: 'S' },
+  { name: 'Mediana', code: 'IM' },
+  { name: 'Grande', code: 'XL' },
 ]
 
 const { products } = useGetProductsHandler()

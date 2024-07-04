@@ -8,16 +8,23 @@
       v-for="item in props.subscription.subscriptionItems"
       :key="item.id"
       :subscription-item="item"
-      :next-delivery-date="''"
       :preferred-day="props.subscription.preferredDay"
       :subscription-status="props.subscription.status"
       class="mt-4"
     />
+    <Divider class="-mt-0" />
     <Button
+      v-if="!isAddFormDisplayed"
       :pt="{
         root: 'border-[1px] px-3.5 py-2.5 rounded-lg my-3 bg-green-primary w-1/2',
       }"
       :label="$t('subscriptions.subscription.addItem.button')"
+      @click="displayAddForm"
+    />
+    <SubscriptionNewItem
+      v-if="isAddFormDisplayed"
+      @close="closeAddForm"
+      @save="handleSave"
     />
   </Panel>
 </template>
@@ -28,4 +35,14 @@ import type { Subscription } from '~/composables/admin/subscriptions/types/Subsc
 const props = defineProps<{
   subscription: Subscription
 }>()
+const isAddFormDisplayed = ref<boolean>(false)
+const displayAddForm = () => {
+  isAddFormDisplayed.value = true
+}
+const closeAddForm = () => {
+  isAddFormDisplayed.value = false
+}
+const handleSave = () => {
+  isAddFormDisplayed.value = false
+}
 </script>

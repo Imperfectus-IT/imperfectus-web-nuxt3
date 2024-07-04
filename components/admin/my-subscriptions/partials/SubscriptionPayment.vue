@@ -19,7 +19,7 @@
       option-value="value"
     />
     <Button
-      class="mt-3"
+      class="mt-3 lg:w-1/3 lg:mt-6"
       outlined
       :label="$t(`${textData.section}button`)"
       @click="handlePaymentChange"
