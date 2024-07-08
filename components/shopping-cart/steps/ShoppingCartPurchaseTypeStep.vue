@@ -70,7 +70,7 @@ const goBack = () => {
     </div>
     <div
       v-if="isOrderPurchaseType"
-      class="font-solina-extended-book text-base font-normal leading-6 p-6 lg:grid lg:grid-cols-2"
+      class="font-solina-extended-book text-base font-normal leading-6 mt-5 lg:grid lg:grid-cols-2"
     >
       <div>
         <p class="mb-5">
@@ -89,7 +89,7 @@ const goBack = () => {
 
     <div
       v-if="isSubscriptionPurchaseType"
-      class="font-solina-extended-book text-base font-normal leading-6 p-6 lg:grid lg:grid-cols-2"
+      class="font-solina-extended-book text-base font-normal leading-6 mt-5 lg:grid lg:grid-cols-2"
     >
       <div class="lg:col-start-2">
         <p class="mb-5">
@@ -117,6 +117,7 @@ const goBack = () => {
     </div>
     <div class="text-center mt-8">
       <Button
+        v-if="shoppingCart.currentItem?.purchaseType"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
         @click.prevent="goToNextStep"

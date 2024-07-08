@@ -2,9 +2,9 @@
 import { CUSTOMIZE_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const { shoppingCart } = useShoppingCartState()
-const { setBoxSize, boxProductSelected } = useShoppingCartBoxStep()
+const { onSetBoxSize } = useShoppingCartBoxStep()
 const { isDesktop } = useScreenSize()
-const emit = defineEmits(['goToStep'])
+defineEmits(['goToStep'])
 const boxDetails = [
   {
     size: SMALL_BOX_SIZE,
@@ -51,13 +51,13 @@ const boxDetails = [
           icon="mdi mdi-chevron-down"
           icon-pos="right"
           outlined
-          @click.prevent="setBoxSize(box.size)"
+          @click.prevent="onSetBoxSize(box.size)"
         />
+
         <ShoppingCartBoxDetail
-          v-if="shoppingCart.currentItem.boxSize === box.size && boxProductSelected && !isDesktop"
+          v-if="shoppingCart.currentItem.boxSize === box.size && shoppingCart.currentItem.boxProduct && !isDesktop"
           class="mt-5"
-          :box-product="boxProductSelected"
-          :box-size="shoppingCart.currentItem.boxSize"
+          :box-product="shoppingCart.currentItem.boxProduct"
         />
       </div>
     </div>
@@ -67,11 +67,6 @@ const boxDetails = [
       src="/images/steps/boxSize/Ipad2_Dark2.webp"
       class="w-[480px] mx-auto"
     />
-    <ShoppingCartBoxDetail
-      v-if="shoppingCart.currentItem.boxSize && boxProductSelected && isDesktop"
-      :box-product="boxProductSelected"
-      :box-size="shoppingCart.currentItem.boxSize"
-    />
     <div class="text-center mt-8">
       <Button
         severity="secondary"
@@ -80,12 +75,12 @@ const boxDetails = [
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-      class="fixed z-10 inset-x-0 bottom-1/4 w-full lg:hidden bg-beige-primary"
-      :items="[]"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden bg-beige-primary"
+      :item="shoppingCart.currentItem"
     />
     <ShoppingCartPurchaseSummaryFloating
       class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
-      :items="[]"
+      :item="shoppingCart.currentItem"
     />
   </div>
 </template>

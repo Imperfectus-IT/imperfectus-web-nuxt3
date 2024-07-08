@@ -14,9 +14,9 @@ import dialog from './dialog/index.ts'
 import divider from './divider/index.ts'
 import dropdown from './dropdown/index.ts'
 import fieldset from './fieldset/index.ts'
+import iconfield from './iconfield/index.ts'
 import inputotp from './inputotp/index.ts'
 import inputtext from './inputtext/index.ts'
-import listbox from './listbox/index.ts'
 import menu from './menu/index.ts'
 import menubar from './menubar/index.ts'
 import multiselect from './multiselect/index.ts'
@@ -41,9 +41,9 @@ export default {
   divider,
   dropdown,
   fieldset,
+  iconfield,
   inputotp,
   inputtext,
-  listbox,
   menubar,
   menu,
   message,

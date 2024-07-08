@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import {
-  RESUME_ITEM_STEP,
   WEEKLY_FREQUENCY,
   BIWEEKLY_FREQUENCY,
-  AVAILABILITY_STEP,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const emit = defineEmits(['goToStep'])
@@ -60,8 +58,18 @@ const goBack = () => {
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="(emit('goToStep', RESUME_ITEM_STEP))"
+        @click.prevent="$emit('goToStep', BOX_STEP)"
       />
     </div>
+    <ShoppingCartPurchaseSummaryFloating
+      v-if="shoppingCart.currentItem?.frequency"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden bg-beige-primary"
+      :item="shoppingCart.currentItem"
+    />
+    <ShoppingCartPurchaseSummaryFloating
+      v-if="shoppingCart.currentItem?.frequency"
+      class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
+      :item="shoppingCart.currentItem"
+    />
   </div>
 </template>

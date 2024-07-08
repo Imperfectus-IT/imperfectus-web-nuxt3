@@ -5,7 +5,7 @@ import {
 import { MIXED_BOX_TYPE, FRUITS_BOX_TYPE, VEGETABLES_BOX_TYPE } from '~/composables/shared/product/types/ProductConstants.ts'
 
 const { shoppingCart } = useShoppingCartState()
-const setBoxType = (boxSize: string) => shoppingCart.value.boxType = boxSize
+const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
 const { t } = useI18n()
 const emit = defineEmits(['goToStep'])
 const { isDesktop } = useScreenSize()
@@ -25,7 +25,7 @@ const boxTypeImages = {
 }
 
 const getImageData = () => {
-  const boxType = shoppingCart.value.boxType as keyof typeof boxTypeImages
+  const boxType = shoppingCart.value.currentItem.boxType as keyof typeof boxTypeImages
   return boxTypeImages[boxType] || { src: '', alt: '' }
 }
 const exclusions = [
@@ -77,7 +77,7 @@ const exclusions = [
           rounded
           outlined
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
       <p class="font-recoleta-regular text-lg font- lg:text-2xl lg:mx-auto">
         {{
@@ -93,10 +93,10 @@ const exclusions = [
         @click.prevent="setBoxType(VEGETABLES_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.boxType === VEGETABLES_BOX_TYPE && !isDesktop"
+        v-if="shoppingCart.currentItem.boxType === VEGETABLES_BOX_TYPE && !isDesktop"
         class="rounded-lg"
-        :src="boxTypeImages[shoppingCart.boxType].src"
-        :alt="boxTypeImages[shoppingCart.boxType].alt"
+        :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+        :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
         preload
       />
@@ -107,10 +107,10 @@ const exclusions = [
         @click.prevent="setBoxType(MIXED_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.boxType === MIXED_BOX_TYPE && !isDesktop"
+        v-if="shoppingCart.currentItem.boxType === MIXED_BOX_TYPE && !isDesktop"
         class="rounded-lg"
-        :src="boxTypeImages[shoppingCart.boxType].src"
-        :alt="boxTypeImages[shoppingCart.boxType].alt"
+        :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+        :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
         preload
       />
@@ -121,10 +121,10 @@ const exclusions = [
         @click.prevent="setBoxType(FRUITS_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.boxType === FRUITS_BOX_TYPE && !isDesktop"
+        v-if="shoppingCart.currentItem.boxType === FRUITS_BOX_TYPE && !isDesktop"
         class="rounded-lg"
-        :src="boxTypeImages[shoppingCart.boxType].src"
-        :alt="boxTypeImages[shoppingCart.boxType].alt"
+        :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+        :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
         preload
       />
@@ -144,5 +144,15 @@ const exclusions = [
         @click.prevent="$emit('goToStep', FREQUENCY_SUBSCRIPTION_TYPE_STEP)"
       />
     </div>
+    <ShoppingCartPurchaseSummaryFloating
+      v-if="shoppingCart.currentItem"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden bg-beige-primary"
+      :item="shoppingCart.currentItem"
+    />
+    <ShoppingCartPurchaseSummaryFloating
+      v-if="shoppingCart.currentItem"
+      class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
+      :item="shoppingCart.currentItem"
+    />
   </div>
 </template>

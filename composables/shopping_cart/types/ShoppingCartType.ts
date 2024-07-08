@@ -30,12 +30,24 @@ export type ShippingAddress = {
   notes: string
 }
 
+export type BoxProductDetail = {
+  id: number
+  sku: string
+  name: string
+  description: string
+  price: string
+  image?: string
+  exclusions?: []
+}
+
 export type Item = {
   id: string
   amount: number
   exclusions: Product[]
   image: string
-  product: Product | null
+  boxProduct: BoxProductDetail | null
+  boxType: string
+  boxSize: string
   purchaseType: string
   frequency?: string
   quantity: number

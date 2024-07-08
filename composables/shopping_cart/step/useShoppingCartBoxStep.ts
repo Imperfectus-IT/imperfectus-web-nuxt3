@@ -20,25 +20,28 @@ export const useShoppingCartBoxStep = () => {
   const setBoxSize = (boxSize: string) => {
     shoppingCart.value.currentItem.boxSize = boxSize
   }
-  const boxProductSelected = computed(() => {
-    return !shoppingCart.value.currentItem.boxSize
-      ? null
-      : {
-          id: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value?.id,
-          sku: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value.SKU,
-          price: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value.price,
-          name: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value[`name_${locale.value}`],
-          description: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value[`description_${locale.value}`],
-          image: `/images/boxes/Caja-${orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value.SKU}-empty.webp`,
-        }
-  })
+
+  const addBoxProduct = () => {
+    shoppingCart.value.currentItem.boxProduct = {
+      id: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value?.id,
+      sku: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value.SKU,
+      price: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value.price,
+      name: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value[`name_${locale.value}`],
+      description: orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value[`description_${locale.value}`],
+      image: `/images/boxes/Caja-${orderBoxProductBySize[shoppingCart.value.currentItem.boxSize]?.value.SKU}-empty.webp`,
+    }
+  }
+
+  const onSetBoxSize = (boxSize: string) => {
+    setBoxSize(boxSize)
+    addBoxProduct()
+  }
 
   onMounted(async () => {
     await executeGetAllProducts()
   })
 
   return {
-    setBoxSize,
-    boxProductSelected,
+    onSetBoxSize,
   }
 }
