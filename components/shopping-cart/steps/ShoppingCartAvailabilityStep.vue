@@ -27,6 +27,12 @@ watch(
     }
   },
 )
+
+const goBack = () => {
+  const router = useRouter()
+  const localePath = useLocalePath()
+  router.push(localePath({ name: 'index' }))
+}
 </script>
 
 <template>
@@ -38,8 +44,9 @@ watch(
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="goBack"
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
     </div>
     <div class="text-center lg:mt-0">

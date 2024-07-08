@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import type { ShoppingCart } from './types/ShoppingCartType.ts'
 import {
   AVAILABILITY_STEP,
@@ -6,6 +7,7 @@ import {
 export const useShoppingCartFactory = () => {
   const emptyItem = (): Item => {
     return {
+      id: uuidv4(),
       amount: 0,
       exclusions: [],
       image: '',
@@ -59,6 +61,7 @@ export const useShoppingCartFactory = () => {
       deliveryDate: '',
       coverage: null,
       items: [],
+      currentItem: null,
       billingAddress: emptyBillingAddress(),
       shippingAddress: emptyShippingAddress(),
     }

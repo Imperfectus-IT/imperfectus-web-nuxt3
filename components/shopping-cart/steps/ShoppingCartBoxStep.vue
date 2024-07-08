@@ -2,42 +2,27 @@
 import { CUSTOMIZE_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const { shoppingCart } = useShoppingCartState()
+const { setBoxSize, boxProductSelected } = useShoppingCartBoxStep()
 const { isDesktop } = useScreenSize()
-const setBoxSize = (boxSize: string) => shoppingCart.value.boxSize = boxSize
-const boxProductToRender = [
+const emit = defineEmits(['goToStep'])
+const boxDetails = [
   {
-    id: 1,
-    name: 'Caja pequeña',
-    key: 'small',
-    description: 'Ideal para 1-2 personas. Contiene entre 6-7 kg de fruta y verdura.',
-    price: `19,98€`,
-    image: '/images/boxes/Caixa-S.webp',
+    size: SMALL_BOX_SIZE,
+    stepBox: 'order.steps.stepBox.smallBox',
   },
   {
-    id: 2,
-    name: 'Caja mediana',
-    key: 'medium',
-    description: 'Ideal para 1-2 personas. Contiene entre 6-7 kg de fruta y verdura.',
-    price: `19,98€`,
-    image: '/images/boxes/Caixa-M.webp',
+    size: MEDIUM_BOX_SIZE,
+    stepBox: 'order.steps.stepBox.mediumBox',
   },
   {
-    id: 3,
-    key: 'xlarge',
-    name: 'Caja grande',
-    description: 'Ideal para 1-2 personas. Contiene entre 6-7 kg de fruta y verdura.',
-    price: `19,98€`,
-    image: '/images/boxes/Caixa-XL.webp',
+    size: XLARGE_BOX_SIZE,
+    stepBox: 'order.steps.stepBox.largeBox',
   },
 ]
-const emit = defineEmits(['goToStep'])
-const getProductToRender = (key: string): BoxProductDetail => {
-  return boxProductToRender.find((product: BoxProductDetail) => product.key === key) as BoxProductDetail
-}
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[20%]">
+  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%]">
     <div class="flex items-center gap-3">
       <div class="lg:absolute lg:left-5 flex flex-row gap-3 lg:mt-3">
         <Button
@@ -46,7 +31,7 @@ const getProductToRender = (key: string): BoxProductDetail => {
           rounded
           outlined
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
       <p class="font-recoleta-regular text-lg lg:text-2xl lg:mx-auto">
         {{
@@ -55,65 +40,42 @@ const getProductToRender = (key: string): BoxProductDetail => {
       </p>
     </div>
     <div class="flex flex-col lg:flex-row items-center gap-5 mt-8">
-      <Button
-        class="text-xl w-2/3"
-        :label="$t('order.steps.stepBox.smallBox')"
-        icon="mdi mdi-chevron-down"
-        icon-pos="right"
-        outlined
-        @click.prevent="setBoxSize(SMALL_BOX_SIZE)"
-      />
-      <ShoppingCartBoxDetail
-        v-if="shoppingCart.boxSize === SMALL_BOX_SIZE && !isDesktop"
-        :box-product="getProductToRender(shoppingCart.boxSize)"
-        :box-size="shoppingCart.boxSize"
-      />
-      <Button
-        class="text-xl w-2/3"
-        :label="$t('order.steps.stepBox.mediumBox')"
-        icon="mdi mdi-chevron-down"
-        icon-pos="right"
-        outlined
-        @click.prevent="setBoxSize(MEDIUM_BOX_SIZE)"
-      />
-      <ShoppingCartBoxDetail
-        v-if="shoppingCart.boxSize === MEDIUM_BOX_SIZE && !isDesktop"
-        :box-product="getProductToRender(shoppingCart.boxSize)"
-        :box-size="shoppingCart.boxSize"
-      />
-      <Button
-        class="text-xl w-2/3"
-        :label="$t('order.steps.stepBox.largeBox')"
-        icon="mdi mdi-chevron-down"
-        icon-pos="right"
-        outlined
-        @click.prevent="setBoxSize(XLARGE_BOX_SIZE)"
-      />
-      <ShoppingCartBoxDetail
-        v-if="shoppingCart.boxSize === XLARGE_BOX_SIZE && !isDesktop"
-        :box-product="getProductToRender(shoppingCart.boxSize)"
-        :box-size="shoppingCart.boxSize"
-      />
+      <div v-for="box in boxDetails" :key="box.size" class="w-full text-center">
+        <Button
+            class="text-xl w-2/3 lg:w-full"
+            :label="$t(box.stepBox)"
+            icon="mdi mdi-chevron-down"
+            icon-pos="right"
+            outlined
+            @click.prevent="setBoxSize(box.size)"
+        />
+        <ShoppingCartBoxDetail
+            v-if="shoppingCart.currentItem.boxSize === box.size && boxProductSelected && !isDesktop"
+            class="mt-5"
+            :box-product="boxProductSelected"
+            :box-size="shoppingCart.currentItem.boxSize"
+        />
+      </div>
     </div>
     <NuxtImg
-      v-if="isDesktop && !shoppingCart.boxSize"
+      v-if="isDesktop && !shoppingCart.currentItem.boxSize"
       alt="static_boxSize"
       src="/images/steps/boxSize/Ipad2_Dark2.webp"
       class="w-[480px] mx-auto"
     />
     <ShoppingCartBoxDetail
-      v-if="shoppingCart.boxSize && isDesktop"
-      :box-product="getProductToRender(shoppingCart.boxSize)"
-      :box-size="shoppingCart.boxSize"
+      v-if="shoppingCart.currentItem.boxSize && boxProductSelected && isDesktop"
+      :box-product="boxProductSelected"
+      :box-size="shoppingCart.currentItem.boxSize"
     />
-    <div class="text-center mt-6">
+    <div class="text-center mt-8">
       <Button
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
         @click.prevent="$emit('goToStep', CUSTOMIZE_STEP)"
       />
     </div>
-    <ShoppingCartPurchaseSummaryBox class="fixed z-10 inset-x-0 bottom-1/4 w-full lg:hidden bg-beige-primary" :items="[]" />
-    <ShoppingCartPurchaseSummaryBox class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary" :items="[]" />
+    <ShoppingCartPurchaseSummaryFloating class="fixed z-10 inset-x-0 bottom-1/4 w-full lg:hidden bg-beige-primary" :items="[]" />
+    <ShoppingCartPurchaseSummaryFloating class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary" :items="[]" />
   </div>
 </template>

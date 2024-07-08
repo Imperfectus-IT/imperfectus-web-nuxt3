@@ -31,7 +31,7 @@ const componentToRenderFromStep: Record<string, any> = {
 }
 
 onMounted(async () => {
-  await executeStep(RESUME_ITEM_STEP)
+  await executeStep(AVAILABILITY_STEP)
 })
 </script>
 

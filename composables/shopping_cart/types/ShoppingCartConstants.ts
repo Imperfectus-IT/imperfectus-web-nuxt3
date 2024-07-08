@@ -8,3 +8,8 @@ export const RESUME_ITEM_STEP = 'StepResumeItem'
 export const SHIPPING_STEP = 'StepShipping'
 export const DELIVERY_STEP = 'StepDelivery'
 export const PAYMENT_STEP = 'StepPayment'
+
+export const WEEKLY_FREQUENCY = 'weekly'
+export const BIWEEKLY_FREQUENCY = 'biweekly'
+export const ORDER_TYPE = 'order'
+export const SUBSCRIPTION_TYPE = 'subscription'

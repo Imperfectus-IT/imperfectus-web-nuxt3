@@ -31,6 +31,7 @@ export type ShippingAddress = {
 }
 
 export type Item = {
+  id: string
   amount: number
   exclusions: Product[]
   image: string
@@ -50,6 +51,7 @@ export type ShoppingCart = {
   invoiceRequired: boolean
   coverage?: string | null
   items: Item[]
+  currentItem: Item | null
   billingAddress: BillingAddress
   shippingAddress: ShippingAddress
 }

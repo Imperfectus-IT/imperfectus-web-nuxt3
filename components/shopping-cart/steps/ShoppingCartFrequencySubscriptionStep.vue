@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { RESUME_ITEM_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
+import {
+  RESUME_ITEM_STEP,
+  WEEKLY_FREQUENCY,
+  BIWEEKLY_FREQUENCY,
+  AVAILABILITY_STEP,
+} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const emit = defineEmits(['goToStep'])
 const { shoppingCart } = useShoppingCartState()
-const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequency
+const setFrequency = (frequency: string) => shoppingCart.value.currentItem.frequency = frequency
+
+const goBack = () => {
+  emit('goToStep', BOX_STEP)
+}
 </script>
 
 <template>
@@ -15,8 +24,9 @@ const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequ
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="goBack"
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
       <p class="font-recoleta-regular text-lg font-normal text-center w-2/3 lg:text-2xl lg:w-full">
         {{
@@ -28,13 +38,13 @@ const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequ
       <Button
         outlined
         :label="$t('orderItemFrequency.option2')"
-        @click.prevent="setFrequency('weekly')"
+        @click.prevent="setFrequency(WEEKLY_FREQUENCY)"
       />
       <Button
         outlined
         severity="secondary"
         :label="$t('orderItemFrequency.option3')"
-        @click.prevent="setFrequency('biweekly')"
+        @click.prevent="setFrequency(BIWEEKLY_FREQUENCY)"
       />
     </div>
     <NuxtImg
@@ -46,7 +56,7 @@ const setFrequency = (frequency: string) => shoppingCart.value.frequency = frequ
     />
     <div class="flex justify-center mt-5">
       <Button
-        v-if="shoppingCart.frequency"
+        v-if="shoppingCart.currentItem?.frequency"
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"
