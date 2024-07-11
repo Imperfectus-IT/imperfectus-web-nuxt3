@@ -1,23 +1,39 @@
 <script setup lang="ts">
-import { FREQUENCY_SUBSCRIPTION_TYPE_STEP, BOX_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
+import {
+  FREQUENCY_SUBSCRIPTION_TYPE_STEP,
+  BOX_STEP,
+  AVAILABILITY_STEP,
+} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const emit = defineEmits(['goToStep'])
 const { shoppingCart } = useShoppingCartState()
 const ONCE_ORDER_PURCHASE_TYPE = 'order'
 const SUBSCRIPTION_PURCHASE_TYPE = 'subscription'
 
+const { emptyItem } = useShoppingCartFactory()
+
 const setPurchaseType = (purchaseType: string) => {
-  shoppingCart.value.purchaseType = purchaseType
+  if (!shoppingCart.value.currentItem) {
+    shoppingCart.value.currentItem = emptyItem()
+  }
+  shoppingCart.value.currentItem.purchaseType = purchaseType
 }
 
-const isSubscriptionPurchaseType = computed(() => shoppingCart.value.purchaseType === SUBSCRIPTION_PURCHASE_TYPE)
-const isOrderPurchaseType = computed(() => shoppingCart.value.purchaseType === ONCE_ORDER_PURCHASE_TYPE)
+const isSubscriptionPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === SUBSCRIPTION_PURCHASE_TYPE)
+const isOrderPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === ONCE_ORDER_PURCHASE_TYPE)
+
 const goToNextStep = () => {
-  if (isSubscriptionPurchaseType.value) {
-    emit('goToStep', FREQUENCY_SUBSCRIPTION_TYPE_STEP)
-  } if (isOrderPurchaseType.value) {
-    emit('goToStep', BOX_STEP)
+  const purchaseTypesForStep = {
+    [SUBSCRIPTION_PURCHASE_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
+    [ONCE_ORDER_PURCHASE_TYPE]: BOX_STEP,
   }
+
+  const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
+
+  emit('goToStep', nextStep)
+}
+const goBack = () => {
+  emit('goToStep', AVAILABILITY_STEP)
 }
 </script>
 
@@ -30,8 +46,9 @@ const goToNextStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="goBack"
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
       <p class="font-recoleta-regular text-lg font-normal lg:text-2xl ">
         {{

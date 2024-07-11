@@ -19,7 +19,7 @@ export default {
         'border rounded-tl-lg rounded-tr-lg': props.toggleable,
       },
       {
-        'border-b border-green-tertiary bg-red-primary': state.d_collapsed,
+        'border-b border-green-tertiary': state.d_collapsed,
       },
       {
         '!p-2': !props.header,

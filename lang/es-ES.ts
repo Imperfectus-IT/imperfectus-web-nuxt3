@@ -1112,7 +1112,7 @@ export default {
   'string.misc.add': 'Añadir caja',
   'string.identifier': 'Identificador',
   'string.subscription': 'Suscripción',
-  'string.back': 'Volver atrás',
+  'string.back': 'Volver',
 
   // Admin
   'admin.home.subscriptions.title': 'Mis suscripciones',
@@ -2166,30 +2166,55 @@ export default {
   'adminOrdersSteps.refunded': 'Reembolsado',
   'adminOrdersSteps.replacement': 'Reemplazado',
 
-  // OrderShippingMeta
-  'orderShippingMeta.cleanData': 'Limpiar datos',
-  'orderShippingMeta.name': 'Nombre',
-  'orderShippingMeta.lastname': 'Apellidos',
-  'orderShippingMeta.cif': 'NIF',
-  'orderShippingMeta.billing_company': 'Razón Social',
-  'orderShippingMeta.email': 'Correo electrónico',
-  'orderShippingMeta.phone': 'Teléfono',
-  'orderShippingMeta.company': 'Empresa (opcional)',
-  'orderShippingMeta.address1': 'Dirección (calle y número)',
-  'orderShippingMeta.address2': 'Piso y puerta',
-  'orderShippingMeta.postalCode': 'Código Postal',
-  'orderShippingMeta.city': 'Localidad',
-  'orderShippingMeta.region': 'Provincia',
-  'orderShippingMeta.country': 'País',
-  'orderShippingMeta.deliveryNotes':
-    'Observaciones para el repartidor (opcional)',
-  'orderShippingMeta.isBillingMetaDifferent': 'Quiero factura del pedido',
-  'orderShippingMeta.billingMeta': 'Direcció de facturación',
-  'orderShippingMeta.continue': 'Continuar',
-  'orderShippingMeta.postalCodeNotAvailable':
-    'De momento no repartimos a esta localidad',
-  'orderShippingMeta.cherryBoxesNotAvailable':
-    'La caja de cerezas no está disponible en este código postal',
+  // OrderMeta
+  'orderMeta': {
+    shipping_fields: {
+      firstname: 'Nombre',
+      lastname: 'Apellidos',
+      email: 'Correo electrónico',
+      phone: 'Teléfono',
+      company: 'Empresa (opcional)',
+      address1: 'Dirección (calle y número)',
+      address2: 'Piso y puerta',
+      postalCode: 'Código Postal',
+      city: 'Localidad',
+      state: 'Provincia',
+      country: 'País',
+      notes: 'Observaciones para el repartidor',
+    },
+    billing_fields: {
+      firstname: 'Nombre',
+      lastname: 'Apellidos',
+      cif: 'NIF/DNI/NIE',
+      billing_company: 'Razón Social',
+      email: 'Correo electrónico',
+      phone: 'Teléfono',
+      company: 'Empresa (opcional)',
+      address1: 'Dirección (calle y número)',
+      address2: 'Piso y puerta',
+      postalCode: 'Código Postal',
+      city: 'Localidad',
+      state: 'Provincia',
+      country: 'País',
+    },
+    cleanData: 'Limpiar datos',
+    shippingAddressTitle: 'Datos de envío',
+    billingAddressTitle: 'Datos de facturación',
+    isBillingMetaDifferent: 'Quiero factura del pedido',
+    continue: 'Continuar',
+    postalCodeNotAvailable: 'De momento no repartimos a esta localidad',
+    cherryBoxesNotAvailable: 'La caja de cerezas no está disponible en este código postal',
+  },
+
+  'purchase_summary': {
+    title: 'Resumen de compra',
+    fromPrice: 'Desde: ',
+    frequency: '¿Cada cuanto?',
+    boxSize: 'Tamaño de caja',
+    boxType: 'Tipo de caja',
+    exclusions: 'Exclusiones',
+    total: 'Total',
+  },
 
   // OrderItemExclusions
   'orderItemExclusions.manage': 'Gestiona las exclusiones',
@@ -3180,7 +3205,6 @@ export default {
     contact: 'Contacto',
     logout: 'Cerrar sesión',
   },
-
   'profile': {
     my_account: {
       title: '¡Hola, {name}!',
@@ -3257,7 +3281,6 @@ export default {
       addButton: 'Añadir método de pago',
     },
   },
-
   'orders': {
     title: 'Mis Pedidos',
     order: {
@@ -3818,158 +3841,6 @@ export default {
             label: 'Otro',
             value: 'other',
           },
-        },
-      },
-    },
-  },
-  'shopping_cart': {
-    shippingStep: {
-      title: 'Datos de envío',
-      clean: 'Limpiar datos',
-      field_1: {
-        label: 'Nombre',
-        value: 'shippingFirstName',
-      },
-      field_2: {
-        label: 'Apellidos',
-        value: 'shippingLastName',
-      },
-      field_3: {
-        label: 'Email',
-        value: 'shippingEmail',
-      },
-      field_4: {
-        label: 'Teléfono',
-        value: 'shippingPhone',
-      },
-      field_5: {
-        label: 'Dirección (calle y número)',
-        value: 'shippingAddress',
-      },
-      field_6: {
-        label: 'Piso y puerta',
-        value: 'shippingAddress2',
-      },
-      field_7: {
-        label: 'Código postal',
-        value: 'shippingPostalCode',
-      },
-      field_8: {
-        label: 'Localidad',
-        value: 'shippingCity',
-      },
-      field_9: {
-        label: 'Provincia',
-        value: 'shippingState',
-      },
-      field_10: {
-        label: 'País',
-        value: 'shippingCountry',
-      },
-      field_11: {
-        label: 'Observaciones para el repartidor',
-        value: 'shippingNotes',
-      },
-      checkbox: 'Dirección de facturación diferente',
-    },
-    billingStep: {
-      title: 'Datos de facturación',
-      button: 'Continuar',
-      field_1: {
-        label: 'Nombre',
-        value: 'billingFirstName',
-      },
-      field_2: {
-        label: 'Apellidos',
-        value: 'billingLastName',
-      },
-      field_3: {
-        label: 'Correo electrónico',
-        value: 'billingEmail',
-      },
-      field_4: {
-        label: 'Teléfono',
-        value: 'billingPhone',
-      },
-      field_5: {
-        label: 'Empresa (opcional)',
-        value: 'billingCompany',
-      },
-      field_6: {
-        label: 'Dirección (calle y número)',
-        value: 'billingAddress',
-      },
-      field_7: {
-        label: 'Piso y puerta',
-        value: 'billingAddress2',
-      },
-      field_8: {
-        label: 'Código postal',
-        value: 'billingPostalCode',
-      },
-      field_9: {
-        label: 'Localidad',
-        value: 'billingCity',
-      },
-      field_10: {
-        label: 'Provincia',
-        value: 'billingState',
-      },
-      field_11: {
-        label: 'País',
-        value: 'billingCountry',
-      },
-    },
-    deliveryStep: {
-      title: 'Datos de envío',
-      subtitle: '¿Cuándo quieres recibir tu envío?',
-      available: 'Disponible',
-      selected: 'Seleccionado',
-      selectSection: {
-        title: 'Franja horaria',
-        option_0: {
-          label: 'Entre las 10:00 y las 22:00',
-          value: '',
-        },
-        option_1: {
-          label: 'Entre las 10:00 y las 14:00',
-          value: 'morning',
-        },
-        option_2: {
-          label: 'Entre las 14:00 y las 18:00',
-          value: 'afternoon',
-        },
-        option_3: {
-          label: 'Entre las 18:00 y las 22:00',
-          value: 'night',
-        },
-      },
-      comment: {
-        title: 'Ten en cuenta',
-        mobileDescription: 'Estás contratando una suscripción',
-        desktopDescription: 'Las entregas de la caja serán semanales para suscripciones semanales y quincenales de manera alterna. El pago se realizará cada domingo previo.',
-      },
-      button: 'Continuar',
-    },
-    paymentStep: {
-      title: 'Finalizar compra',
-      payment: 'Pago con tarjeta de débito/crédito o pago exprés',
-      button: 'Realizar pago',
-      conditions: {
-        condition_0: {
-          text_1: 'Al completar tu pedido aceptas los ',
-          text_2bold: 'Términos y Condiciones y nuestra Política de Privacidad, ',
-          text_3: 'así como recibir comunicaciones informativas y transaccionales en relación a pedidos, transporte, servicio o entregas.',
-        },
-        condition_1: {
-          text_1: 'Quiero recibir ',
-          text_2bold: 'recetas y consejos de aprovechamiento, ',
-          text_3: 'conocer a los agricultores y recibir descuentos y promociones.',
-        },
-        condition_2: {
-          text_1: 'Acepto recibir ',
-          text_2bold: 'comunicaciones por WhatsApp ',
-          text_3: 'sobre la suscripción, envíos y preferencias',
         },
       },
     },

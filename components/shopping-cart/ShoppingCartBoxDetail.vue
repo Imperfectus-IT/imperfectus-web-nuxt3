@@ -1,7 +1,7 @@
 <script setup lang="ts">
 export type BoxProductDetail = {
   id: number
-  key: string
+  sku: string
   name: string
   description: string
   price: string
@@ -15,7 +15,7 @@ defineProps<{
 <template>
   <div class="lg:flex lg:flex-row lg:justify-center lg:mt-10">
     <NuxtImg
-      class="rounded-lg lg:w-[350px]"
+      class="rounded-lg w-full lg:w-[350px]"
       :src="boxProduct?.image"
       :alt="boxProduct?.name"
       format="webp"

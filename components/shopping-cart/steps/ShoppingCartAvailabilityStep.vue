@@ -9,10 +9,10 @@ const {
   isCoverageValid,
 } = useLocationValidator()
 
-const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostalCode) || !isCoverageValid(shoppingCart.value.coverage))
+const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.postalCode) || !isCoverageValid(shoppingCart.value.coverage))
 const emit = defineEmits(['goToStep'])
 watch(
-  () => shoppingCart.value.shippingAddress.shippingPostalCode,
+  () => shoppingCart.value.shippingAddress.postalCode,
   async (postalCode) => {
     if (!isPostalCodeLengthValid(postalCode)) {
       return
@@ -27,6 +27,12 @@ watch(
     }
   },
 )
+
+const goBack = () => {
+  const router = useRouter()
+  const localePath = useLocalePath()
+  router.push(localePath({ name: 'index' }))
+}
 </script>
 
 <template>
@@ -38,8 +44,9 @@ watch(
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="goBack"
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
     </div>
     <div class="text-center lg:mt-0">
@@ -54,7 +61,7 @@ watch(
         }}
       </p>
       <InputOtp
-        v-model="shoppingCart.shippingAddress.shippingPostalCode"
+        v-model="shoppingCart.shippingAddress.postalCode"
         class="mt-4"
         :pt="{
           input: 'text-[40px]',
