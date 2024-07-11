@@ -763,13 +763,13 @@ export default {
         item_6: {
           name: '_pinterest_ct_ua',
           entity: 'Pinterest',
-          purpose: '	Es una cookie de origen que agrupa acciones para usuarios que no pueden ser identificados por Pinterest.',
+          purpose: 'Es una cookie de origen que agrupa acciones para usuarios que no pueden ser identificados por Pinterest.',
           duration: '1 año',
         },
         item_7: {
           name: '_pinterest_sess',
           entity: 'Pinterest',
-          purpose: '	Es la cookie de inicio de sesión de Pinterest. Contiene ID(s) de usuario, token(s) de autenticación y marcas de tiempo. Si la persona cierra la sesión, los tokens de autenticación se eliminan pero dejamos la cookie presente. Utilizamos los ID de usuario desconectado para optimizar la experiencia y la medición de la persona.',
+          purpose: 'Es la cookie de inicio de sesión de Pinterest. Contiene ID(s) de usuario, token(s) de autenticación y marcas de tiempo. Si la persona cierra la sesión, los tokens de autenticación se eliminan pero dejamos la cookie presente. Utilizamos los ID de usuario desconectado para optimizar la experiencia y la medición de la persona.',
           duration: '1 año',
         },
         item_8: {
@@ -787,7 +787,7 @@ export default {
         item_10: {
           name: 'wd, dpr',
           entity: 'Facebook',
-          purpose: '	Esta cookie almacena las dimensiones de la ventana del navegador y es utilizada por Facebook para optimizar la representación de la página.',
+          purpose: 'Esta cookie almacena las dimensiones de la ventana del navegador y es utilizada por Facebook para optimizar la representación de la página.',
           duration: '1 semana',
         },
         item_11: {
@@ -3254,6 +3254,7 @@ export default {
         month: 'Mes de caducidad',
         year: 'Año de caducidad',
       },
+      addButton: 'Añadir método de pago',
     },
   },
 
@@ -3336,6 +3337,28 @@ export default {
     gift_to_friend: {
       title: 'Regala a un amigx',
       description: 'Introduce los datos de tu amigx para poder enviarle esta entrega:',
+      toasts: {
+        giveToasts: {
+          successToast: {
+            title: 'Donación realizada',
+            description: 'Tu donación ha sido realizada con éxito!',
+          },
+          errorToast: {
+            title: '¡Error!',
+            description: 'La donación ha fallado. Por favor, inténtalo de nuevo.',
+          },
+        },
+        cancelGiveToasts: {
+          successToast: {
+            title: 'Donación cancelada',
+            description: 'Tu donación ha sido cancelada con éxito.',
+          },
+          errorToast: {
+            title: '¡Error!',
+            description: 'La cancelación ha fallado. Por favor, inténtalo de nuevo.',
+          },
+        },
+      },
       field_1: {
         label: 'Nombre',
         value: 'name',
@@ -3380,6 +3403,28 @@ export default {
       description: 'En TALKUAL colaboramos con varias ONGs, elige la que quieras para donar esta entrega.',
       donate_button: 'Donar',
       cancel_button: 'Cancelar',
+      toasts: {
+        donateToasts: {
+          successToast: {
+            title: 'Donación realizada',
+            description: 'Tu donación ha sido realizada con éxito. ¡Gracias por tu colaboración!',
+          },
+          errorToast: {
+            title: '¡Error!',
+            description: 'La donación ha fallado. Por favor, inténtalo de nuevo.',
+          },
+        },
+        cancelDonateToasts: {
+          successToast: {
+            title: 'Donación cancelada',
+            description: 'Tu donación ha sido cancelada con éxito.',
+          },
+          errorToast: {
+            title: '¡Error!',
+            description: 'La cancelación ha fallado. Por favor, inténtalo de nuevo.',
+          },
+        },
+      },
       ong_1: {
         title: 'Fundació Arrels',
         description: 'Su misión es acoger, acompañar y defender a las personas en situación de más vulnerabilidad en Lérida.',
@@ -3414,6 +3459,28 @@ export default {
       description: '¿Quieres cancelar esta entrega?',
       cancel_button: 'Cancelar',
       skip_button: 'Cancelar entrega',
+      toasts: {
+        skipToasts: {
+          successToast: {
+            title: 'Pedido cancelado',
+            description: 'El pedido ha sido cancelado con éxito',
+          },
+          errorToast: {
+            title: '¡Error!',
+            description: 'La cancelación ha fallado. Por favor, inténtalo de nuevo.',
+          },
+        },
+        removeSkipToasts: {
+          successToast: {
+            title: 'Pedido reactivado',
+            description: 'Tu pedido ha sido reactivado con éxito.',
+          },
+          errorToast: {
+            title: '¡Error!',
+            description: 'La reactivación del pedido ha fallado. Por favor, inténtalo de nuevo.',
+          },
+        },
+      },
     },
   },
   'subscriptions': {
@@ -3460,9 +3527,31 @@ export default {
       modifyItem: {
         title: 'Modificar caja',
         button: 'Editar',
+        selected: 'Tu selección actual:',
+        exclusionsTitle: '¿Quieres excluir algun alimento?',
+        exclusionsParagraph1: 'Puedes excluir hasta 6 alimentos.',
+        exclusionsParagraph2: 'Aún así, cada viernes enviamos un email con las frutas y verduras que habrá en la caja de la siguitente semana para que así puedas editar las exclusiones dependiendo del contenido de la caja.',
+        saveButton: 'Guardar selección',
+        cancelButton: 'Cancelar cambios',
+        successToast: {
+          title: 'Caja modificada!',
+          description: 'La caja se ha modificado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al modificar la caja',
+        },
       },
       modifyPeriodicity: {
         title: 'Periodicidad',
+        successToast: {
+          title: 'Periodicidad modificada!',
+          description: 'La preiodicidad se ha modificado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al modificar la caja',
+        },
         item_0: {
           title: 'Frecuencia',
           option_0: {
@@ -3510,14 +3599,49 @@ export default {
         },
         button: 'Guardar',
       },
-      coupon: {
+      addCoupon: {
         title: 'Cupón de descuento',
         placeholder: '¿Tienes descuento?',
         button: 'Aplicar',
+        removeButton: 'Eliminar',
+        successToast: {
+          add: {
+            title: 'Coupon añadido con éxito!',
+            description: 'Tu cupón se ha añadido corrrectamente a la suscripción.',
+          },
+          remove: {
+            title: 'Cupón borrado con éxito!',
+            description: 'Tu cupón se ha borrado corrrectamente de la suscripción.',
+          },
+        },
+        errorToast: {
+          couponNotFound: 'El cupón no existe',
+          couponExpired: 'El cupón introducido ha caducado',
+          couponNotActive: 'El cupón introducido no está activo',
+          couponUserEligibility: 'El cupón introducido no es para este tipo de usuario',
+          couponLimitOrders: 'El cupón introducido ha alacanzado su máximo de usos',
+          couponUser: 'El usuario no está incluido en la lista de usuarios permitidos para este cupón',
+          couponPostalCode: 'El cupón introducido no se puede utilizar para este código postal ',
+          couponBoxType: 'El cupón introducido no se puede utilizar para este tipo de caja',
+          couponFirstOrder: 'El cupón introducido solo se puede usar en la primera compra',
+          couponActiveSubscription: 'El cupón introducido sólo se puede utilizar en una suscripción activa',
+          couponFriend: 'El cupón introducido no se puede usar para el mismo usuario que lo creó',
+          title: 'Error!',
+          description: 'Ha habido un error al añadir o borrar el cupón',
+
+        },
       },
       addItem: {
         title: 'Añadir caja a la suscripción',
         button: 'Añadir caja',
+        successToast: {
+          title: 'Caja añadida!',
+          description: 'La caja se ha añadido correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al añadir la caja',
+        },
       },
       payment: {
         title: 'Método de pago',
@@ -3525,6 +3649,14 @@ export default {
         option_1: 'Tipo de tarjeta: {cardType}',
         option_2: 'Caducidad: {expiration}',
         button: 'Añadir método de pago',
+        successToast: {
+          title: '¡Método de pago actualizado!',
+          description: 'El método de pago se ha actualizado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al actualizar el método de pago',
+        },
       },
       billing: {
         title: 'Dirección de facturación',
@@ -3539,7 +3671,16 @@ export default {
         item_8: 'Provincia',
         item_9: 'País',
         item_10: 'NIF',
-        button: 'Guardar',
+        saveButton: 'Guardar',
+        editButton: 'Modificar datos',
+        successToast: {
+          title: 'Datos guardados!',
+          description: 'Los datos de facturación se han guardado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al guardar los datos',
+        },
       },
       shipping: {
         title: 'Dirección de envío',
@@ -3554,12 +3695,44 @@ export default {
         item_8: 'Provincia',
         item_9: 'País',
         item_10: 'Notas',
-        button: 'Guardar',
+        saveButton: 'Guardar',
+        editButton: 'Modificar datos',
+        successToast: {
+          title: 'Datos guardados!',
+          description: 'Los datos de envío se han guardado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al guardar los datos',
+        },
       },
       pause: {
         title: 'Pausar suscripción',
         description: 'Pausa temporalmente tu suscripción y reactívala cuando tú quieras. Cuando la reactives, mantendrás la antigüedad y beneficios de ser suscriptor antiguo.',
-        button: 'Pausar suscripción',
+        paused_description_1: 'Tu suscripción está pausada. Si quieres recibir la caja antes de la fecha elegida cuando la pausaste, reactiva la suscripción.',
+        paused_description_2: 'Próxima entrega: {date}',
+        pauseToasts: {
+          successToast: {
+            title: 'Suscripcion pausada!',
+            description: 'La suscripción se ha pausado correctamente',
+          },
+          errorToast: {
+            title: 'Error!',
+            description: 'Ha habido un error al pausar la suscripción',
+          },
+        },
+        unpauseToasts: {
+          successToast: {
+            title: 'Suscripcion reactivada!',
+            description: 'La suscripción se ha reactivado correctamente. Tu próxima entrega será el {date}',
+          },
+          errorToast: {
+            title: 'Error!',
+            description: 'Ha habido un error al reactivar la suscripción',
+          },
+        },
+        pauseButton: 'Pausar suscripción',
+        unpauseButton: 'Reactivar suscripción',
         modal: {
           title: 'Pausar suscripción',
           paragraph_1: 'Si lo que deseas es cancelar algunas entregas, puedes hacerlo aquí:',
@@ -3594,7 +3767,21 @@ export default {
       cancel: {
         title: 'Cancelar suscripción',
         description: 'Si no tienes intención de volver, cancela tu suscripción. Ten en cuenta que no la podrás reactivar. Si en un futuro quieres volver, deberás darte de alta otra vez',
+        cancelledTitle: 'Suscripción cancelada',
+        cancelledDescription1: 'Gracias por ayudarnos a mejorar.',
+        cancelledDescription2: 'Si en un futuro quieres volver,',
+        cancelledDescription3: 'deberás darte de alta otra vez con una nueva suscripción',
         button: 'Cancelar suscripción',
+        toasts: {
+          successToast: {
+            title: 'Suscripcion cancelada!',
+            description: 'La suscripción se ha cancelado correctamente.',
+          },
+          errorToast: {
+            title: 'Error!',
+            description: 'Ha habido un error al cancelar la suscripción',
+          },
+        },
         modal: {
           title: 'Cancelar suscripción',
           paragraph_1: 'Si lo que deseas es cancelar algunas entregas, puedes hacerlo aquí:',

@@ -37,13 +37,12 @@ const props = defineProps<{
 }>()
 
 const textData = [
-  { key: 'billingFullName' },
+  { key: 'billingFirstName' },
   { key: 'billingEmail' },
   { key: 'billingPhone' },
   { key: 'billingAddress' },
-  { key: 'billingCP' },
+  { key: 'billingPostCode' },
   { key: 'billingCity' },
-
 ]
 
 const emit = defineEmits(['editBillingInfo'])

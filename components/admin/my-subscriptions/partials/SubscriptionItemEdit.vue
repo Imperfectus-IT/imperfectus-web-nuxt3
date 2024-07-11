@@ -1,15 +1,12 @@
 <template>
   <div class="text-[16px]">
-    <h4 class="!font-bold text-[16px] mb-4">
-      Tu selección actual:
-    </h4>
     <div class="lg:grid lg:grid-cols-3 lg:grid-rows-1 lg:gap-x-10">
       <div class="lg:col-start-3 lg:row-start-1">
         <h4 class="font-bold">
           Tipo de caja
         </h4>
         <Dropdown
-          v-model="editOrderData.type"
+          v-model="updateSubscriptionItemData.type"
           :options="boxTypes"
           option-label="name"
           option-value="code"
@@ -22,7 +19,7 @@
           Tamaño de caja
         </h4>
         <Dropdown
-          v-model="editOrderData.size"
+          v-model="updateSubscriptionItemData.size"
           :options="boxSizes"
           option-label="name"
           option-value="code"
@@ -32,81 +29,87 @@
       </div>
       <div class="lg:col-start-1 lg:row-start-1">
         <h4 class="font-bold mt-5 lg:mt-0">
-          ¿Quieres excluir algun alimento?
+          {{ $t(`${textData}exclusionsTitle`) }}
         </h4>
         <p class="font-bold mt-4">
-          Puedes excluir hasta 6 alimentos.
+          {{ $t(`${textData}exclusionsParagraph1`) }}
         </p>
         <p class="leading-7">
-          Aún así, cada viernes enviamos un email con las frutas y verduras que
-          habrá en la caja de la siguitente semana para que así puedas editar
-          las exclusiones dependiendo del contenido de la caja.
+          {{ $t(`${textData}exclusionsParagraph2`) }}
         </p>
         <MultiSelect
-          v-model="editOrderData.exclusions"
+          v-model="updateSubscriptionItemData.exclusions"
           :options="listProducts"
           filter
-          option-label="name"
-          option-value="name"
+          option-label="nameEs"
+          option-value="id"
           placeholder="Buscar "
           :selection-limit="6"
           class="w-full border-[1px] text-[16px] mt-3 rounded-xl mb-5"
         />
-        <div class="flex justify-evenly lg:flex lg:gap-6 lg:justify-center">
+        <div class="flex justify-evenly lg:flex lg:gap-6 lg:justify-center lg:col-span-3 lg:mb-5">
           <Button
-            label="Guardar"
+            :label="$t(`${textData}saveButton`)"
             class="!px-5 !h-5 mb-2"
             @click="save"
           />
           <Button
-            label="Cancelar"
+            :label="$t(`${textData}cancelButton`)"
             outlined
             class="!px-5 !h-5 mb-2"
             @click="close"
           />
         </div>
       </div>
-      <Divider class="before:border-t-[1px] before:border-green-primary" />
+      <Divider class="before:border-t-[1px] before:border-green-primary lg:hidden" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import type { ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
 import type { SubscriptionItem } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
 const props = defineProps<{
-  exclusions: string[]
+  exclusions: ItemProduct[]
   subscriptionItem: SubscriptionItem
+  frequency: string
 }>()
-
-const emit = defineEmits(['save', 'close'])
+const textData = 'subscriptions.subscription.modifyItem.'
+const { products } = useGetProductsHandler()
+const listProducts: Ref<ItemProduct[]> = ref([])
+const emits = defineEmits(['save', 'close'])
 const save = () => {
-  emit('save', editOrderData)
+  const frequency = props.frequency === 'weekly' ? 1 : 2
+  const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === updateSubscriptionItemData.type && box.sku.includes(`${updateSubscriptionItemData.size}R${frequency}`))
+  if (!newBoxProduct) {
+    // ERROR TOAST
+    return
+  }
+  const { exclusions } = updateSubscriptionItemData
+  emits('save', { newBoxProduct, subscriptionItemId: props.subscriptionItem.id, exclusions })
 }
+const close = () => emits('close')
 
-const close = () => emit('close')
-
-const editOrderData = reactive({
+const updateSubscriptionItemData = reactive({
   type: props.subscriptionItem.sku.includes('FR')
-    ? 'FR'
+    ? 'fruits'
     : props.subscriptionItem.sku.includes('VG')
-      ? 'VG'
-      : 'MX',
+      ? 'vegetables'
+      : 'mixed',
   size: props.subscriptionItem.sku.includes('S')
     ? 'S'
     : props.subscriptionItem.sku.includes('IM')
       ? 'IM'
       : 'XL',
-  exclusions: props.exclusions,
+  exclusions: [...props.exclusions.map((exclusion: ItemProduct) => exclusion.id)],
   coupon: null,
 })
-
 const boxTypes = [
-  { name: 'Verdura y fruta', code: 'MX' },
-  { name: 'Sólo fruta', code: 'FR' },
-  { name: 'Sólo verdura', code: 'VG' },
+  { name: 'Verdura y fruta', code: 'mixed' },
+  { name: 'Sólo fruta', code: 'fruits' },
+  { name: 'Sólo verdura', code: 'vegetables' },
 ]
 const boxSizes = [
   { name: 'Pequeña', code: 'S' },
@@ -114,15 +117,12 @@ const boxSizes = [
   { name: 'Grande', code: 'XL' },
 ]
 
-const { products } = useGetProductsHandler()
-const listProducts: Ref<ItemProduct[]> = ref([])
-
 watch(products, () => {
   if (products.value.itemProducts) {
     listProducts.value = [
       ...products.value.itemProducts.fruits,
       ...products.value.itemProducts.vegetables,
-    ].sort((a, b) => a.name.localeCompare(b.name))
+    ].sort((a, b) => a.nameEs.localeCompare(b.nameEs))
   }
 })
 </script>

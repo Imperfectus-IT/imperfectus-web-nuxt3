@@ -33,7 +33,7 @@
         {{ $t(`${textData.section}paragraph_2`) }}
       </p>
       <Dropdown
-        v-model="pauseInfo.reason"
+        v-model="pauseInfo.reasonPaused"
         :placeholder="$t(`${textData.section}placeholder`)"
         :options="generateDropdownOptions"
         option-value="value"
@@ -57,14 +57,13 @@
         }"
       />
       <Textarea
-        v-if="pauseInfo.reason === 'other'"
-        v-model="pauseInfo.text"
+        v-if="pauseInfo.reasonPaused === 'other'"
+        v-model="pauseInfo.reasonPausedText"
         rows="4"
         :placeholder="$t(`${textData.section}placeholder`)"
         :pt="{
-          root: 'border-[1px] border-green-tertiary bg-transparent px-4 py-3 rounded-lg w-full mb-4 outline-none',
+          root: 'border-[1px] mt-4 border-green-tertiary bg-transparent px-4 py-3 rounded-lg w-full mb-4 outline-none',
         }"
-        class="!w-3/4 mt-3"
       />
       <div class="mt-5 flex flex-row justify-evenly mb-6">
         <Button
@@ -76,7 +75,7 @@
           @click="closeModal"
         />
         <Button
-          :disabled="!pauseInfo.reason"
+          :disabled="!pauseInfo.reasonPaused"
           :label="$t(`${textData.section}nextButton`)"
           :pt="{
             root: ({ context }) => ({
@@ -115,7 +114,7 @@
           @click="toggleModalLayers"
         />
         <Button
-          :disabled="!pauseInfo.reason"
+          :disabled="!pauseInfo.reasonPaused"
           :label="$t(`${textData.section}cancelButton`)"
           :pt="{
             root: ({ context }) => ({
@@ -148,7 +147,7 @@ defineProps<{
 }>()
 const localePath = useLocalePath()
 const { dateBuilder } = useDateBuilder()
-const emit = defineEmits(['close-modal'])
+const emit = defineEmits(['close-modal', 'pause-subscription'])
 const closeModal = () => {
   emit('close-modal')
   resetPauseInfo()
@@ -159,18 +158,18 @@ const textData = {
   section: 'subscriptions.subscription.pause.modal.',
   options: 5,
 }
-const pauseInfo = reactive({
-  reason: '',
-  text: '',
-  nextDeliveryDate: null,
+const pauseInfo = reactive<PauseSubscriptionPayload>({
+  reasonPaused: '',
+  reasonPausedText: '',
+  nextDeliveryDate: '',
 })
 const modalLayersDisplayed = reactive({
   pauseInfoModal: true,
   pauseDatepickerModal: false,
 })
 const resetPauseInfo = () => {
-  pauseInfo.reason = ''
-  pauseInfo.text = ''
+  pauseInfo.reasonPaused = ''
+  pauseInfo.reasonPausedText = ''
 }
 const generateDropdownOptions = computed(() => {
   const options = []
@@ -190,6 +189,13 @@ const isToday = (date: CalendarDate) => {
   return dateBuilder(date) === dayjs(pauseInfo.nextDeliveryDate).format('YYYY-MM-DD')
 }
 const pauseSubscription = () => {
-  emit('close-modal', 'pause-subscription', pauseInfo)
+  emit('pause-subscription', pauseInfo)
+  resetPauseInfo()
+}
+
+export type PauseSubscriptionPayload = {
+  reasonPaused: string
+  reasonPausedText: string
+  nextDeliveryDate: string
 }
 </script>

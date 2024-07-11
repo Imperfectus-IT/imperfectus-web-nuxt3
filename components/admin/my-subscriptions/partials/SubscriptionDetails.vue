@@ -3,7 +3,7 @@
     <h4 class="text-[26px] font-recoleta-medium text-center whitespace-nowrap lg:text-left">
       {{ $t(`${textData.section}title`) }}
     </h4>
-    <div class="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:mt-3">
+    <div class="lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:mt-3">
       <div class="lg:col-span-2">
         <SubscriptionItemCard
           v-for="(item, index) in subscription.subscriptionItems"

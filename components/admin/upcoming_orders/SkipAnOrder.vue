@@ -27,6 +27,5 @@
 const emit = defineEmits(['close-form', 'skip-order'])
 const closeForm = () => emit('close-form')
 const skipOrder = () => emit('skip-order')
-
 const fragmentName = 'upcoming_orders.skip_order'
 </script>

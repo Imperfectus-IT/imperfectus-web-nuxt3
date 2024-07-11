@@ -10,15 +10,17 @@
     <DesktopHeader v-if="!isMobile" />
     <Panel
       v-for="(nextPaymentDate, index) in nextDeliveries"
+      :key="index"
       class="mt-2 lg:mt-6"
     >
       <div class="flex flex-col lg:flex-row lg:justify-between">
         <div class="flex flex-col">
           <p class="text-[14px] mb-3">
-            Próxima entrega: {{ getNextDeliveryDate }}
+            Próxima entrega: {{ getNextDeliveryDateFromNextPayment(nextPaymentDate) }}
           </p>
           <SubscriptionItemCard
-            v-for="subscriptionItem in subscription.subscriptionItems"
+            v-for="(subscriptionItem, cardIndex) in subscription.subscriptionItems"
+            :key="cardIndex"
             :subscription-item="subscriptionItem"
             :subscription-status="subscription.status"
             :frequency="subscription.frequency"
@@ -75,7 +77,7 @@
           </div>
           <p
             class="underline mt-2 lg:text-right lg:mt-5 cursor-pointer"
-            @click="cancelDonation(nextPaymentDate)"
+            @click="handleCancelDonationToONG(nextPaymentDate)"
           >
             Cancelar donación
           </p>
@@ -94,7 +96,7 @@
           </div>
           <p
             class="underline mt-2 lg:text-right lg:mt-5 cursor-pointer"
-            @click="removeSkip(nextPaymentDate)"
+            @click="handleRemoveSkip(nextPaymentDate, index)"
           >
             Editar pedido
           </p>
@@ -103,20 +105,21 @@
       <GiftToFriend
         v-if="displayGiftToFriend[index]"
         @close-form="setDisplayGiftToFriend(index, false)"
-        @gift-to-friend="((payload: FormData) => giftToFriend(payload, index))"
+        @gift-to-friend="(giveToFriendData: GiveToFriendForm) => handleGiveToFriend(giveToFriendData, index, nextPaymentDate)"
       />
       <DonateONG
         v-if="displayDonateToONG[index]"
         :subscription-id="subscription.id"
         @close-form="setDisplayDonateToONG(index, false)"
-        @donate-to-ong="(ong: ONG) => donateOrder(subscription.id, ong, index, nextPaymentDate)"
+        @donate-to-ong="(ong: ONG) => handleDonateOrderToONG(subscription.id, ong, index, nextPaymentDate)"
       />
       <SkipAnOrder
         v-if="displayCancelDelivery[index]"
         @close-form="setDisplayCancelDelivery(index, false)"
-        @skip-order="skipOrder(subscription.id, nextPaymentDate, index)"
+        @skip-order="handleSkipOrder(nextPaymentDate, index)"
       />
     </Panel>
+    <Toast />
   </div>
 </template>
 
@@ -124,6 +127,9 @@
 import dayjs from 'dayjs'
 import type { ONG } from '~/components/admin/upcoming_orders/DonateONG.vue'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
+import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { GiveToFriendForm } from '~/components/admin/upcoming_orders/types/FormTypes.ts'
+import type { DonationPayload } from '~/composables/admin/subscriptions/types/DonationPayload.ts'
 
 definePageMeta({
   layout: 'admin',
@@ -136,7 +142,7 @@ defineI18nRoute({
     ca: '/el-meu-compte/subscripcions/properes-entregues/[id]',
   },
 })
-
+const { t } = useI18n()
 const route = useRoute()
 const { isMobile } = useScreenSize()
 const { subscriptions } = useGetSubscriptionsHandler()
@@ -147,46 +153,35 @@ const donations = ref<string[]>([])
 const displayGiftToFriend = ref<Record<string, boolean>>({})
 const displayDonateToONG = ref<Record<string, boolean>>({})
 const displayCancelDelivery = ref<Record<string, boolean>>({})
-
-const getNextDeliveryDate = computed(() => {
+const textData = {
+  donate: 'upcoming_orders.donate_to_ong.',
+  skipOrder: 'upcoming_orders.skip_order.',
+  giveToFriend: 'upcoming_orders.gift_to_friend.',
+}
+const getNextDeliveryDateFromNextPayment = (date: string) => {
   const daysToAdd = DayMapping[subscription.value.preferredDay]
-  return dayjs(subscription.value.nextPayment).add(daysToAdd, 'day').format('DD-MM-YYYY')
-})
+  return dayjs(date).add(daysToAdd, 'day').format('DD-MM-YYYY')
+}
 
+const { donateToONG, cancelDonation, removeSkip, skipAnOrder, giveOrderToFriend } = useUpdateSubscriptionHandler()
 const { getNextDatesFromFrequency } = useGetNextDatesFromFrequency()
+const isSkipped = (date: string) => skips.value.includes(date)
+const isDonated = (date: string) => donations.value?.includes(date)
 
-const isSkipped = (date: string) => {
-  return skips.value.includes(date)
-}
-
-const isDonated = (date: string) => {
-  return donations.value?.includes(date)
-}
-
-const skipOrder = (
-  subscriptionID: number,
-  paymentDate: string,
-  index: number,
-) => {
+const handleSkipOrder = async (paymentDate: string, index: number) => {
   skips.value.push(paymentDate)
-
+  await skipAnOrder(subscription.value.id, skips.value, textData.skipOrder, t)
   setDisplayCancelDelivery(index, false)
 }
-
-const removeSkip = (paymentDate: string) => {
+const handleRemoveSkip = async (paymentDate: string, index: number) => {
   skips.value = skips.value.filter(skip => skip !== paymentDate)
+  await removeSkip(subscription.value.id, skips.value, textData.skipOrder, t)
+  setDisplayCancelDelivery(index, false)
 }
-
-const donateOrder = (
-  subscriptionId: number,
-  ong: ONG,
-  index: number,
-  nextPaymentDate: string,
-) => {
+// @TODO Refactor this method
+const handleDonateOrderToONG = (subscriptionId: number, ong: ONG, index: number, nextPaymentDate: string) => {
   const purpose = 'donation'
-  const { executeDonateToONG } = useUpdateSubscriptionHandler()
-
-  executeDonateToONG({
+  donateToONG({
     subscriptionId,
     givenTo: ong.name,
     purpose,
@@ -204,29 +199,43 @@ const donateOrder = (
     },
     deliveryDate: calculateNextDeliveryDate(nextPaymentDate),
     paymentDate: nextPaymentDate,
-  })
+  }, textData.donate, t)
   setDisplayDonateToONG(index, false)
 }
-
-const cancelDonation = (paymentDate: string) => {
-  console.log(paymentDate)
+const handleCancelDonationToONG = async (paymentDate: string) => {
+  await cancelDonation(subscription.value.id, paymentDate, textData.donate, t)
 }
 
-const giftToFriend = (formData: FormData, index: number) => {
+const handleGiveToFriend = async (formData: GiveToFriendForm, index: number, nextPaymentDate: string) => {
+  console.log('FORM DATA', formData, index, nextPaymentDate)
+
+  const giveToFriendData: DonationPayload = {
+    purpose: 'gift',
+    subscriptionId: subscription.value.id,
+    deliveryDate: calculateNextDeliveryDate(nextPaymentDate),
+    givenTo: formData.name,
+    paymentDate: nextPaymentDate,
+    newSubscriptionMeta: {
+      shipping_firstname: formData.name,
+      shipping_lastname: formData.surname,
+      shipping_address1: formData.address,
+      shipping_address: formData.addressDetails,
+      shipping_city: formData.city,
+      shipping_state: 'Lleida',
+      shipping_postcode: formData.cp,
+      shipping_phone: formData.phone,
+      shipping_email: formData.email,
+      shipping_country: 'ES',
+    },
+  }
+  console.log('payload', giveToFriendData)
+  await giveOrderToFriend(giveToFriendData, textData.giveToFriend, t)
   setDisplayGiftToFriend(index, false)
 }
 
-const setDisplayGiftToFriend = (index: number, value: boolean) => {
-  displayGiftToFriend.value[index] = value
-}
-
-const setDisplayDonateToONG = (index: number, value: boolean) => {
-  displayDonateToONG.value[index] = value
-}
-
-const setDisplayCancelDelivery = (index: number, value: boolean) => {
-  displayCancelDelivery.value[index] = value
-}
+const setDisplayGiftToFriend = (index: number, value: boolean) => displayGiftToFriend.value[index] = value
+const setDisplayDonateToONG = (index: number, value: boolean) => displayDonateToONG.value[index] = value
+const setDisplayCancelDelivery = (index: number, value: boolean) => displayCancelDelivery.value[index] = value
 
 watchEffect(() => {
   subscription.value = subscriptions.value.filter(
@@ -242,7 +251,6 @@ watchEffect(() => {
       ))
     : ''
 })
-
 const calculateNextDeliveryDate = (date: string) => {
   const dayNumber: number = DayMapping[subscription.value.preferredDay]
   const formattedDate = dayjs(date).format('YYYY-MM-DD')

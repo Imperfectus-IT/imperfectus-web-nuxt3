@@ -47,11 +47,16 @@ export default defineNuxtConfig({
   },
   hooks: {
     'pages:extend'(pages) {
-      // add a route
       pages.push({
         name: 'payment-completed',
         path: '/gift-card-payment-completed/',
         file: '~/pages/gift-card/payment-completed.vue',
+      },
+      {
+        name: 'payment-added',
+        path: '/add-payment-completed',
+        // file: '~/pages/admin/profile.vue',
+        redirect: '/mi-cuenta/perfil',
       },
       )
 
@@ -101,7 +106,7 @@ export default defineNuxtConfig({
     'nuxt-zod-i18n',
     '@nuxtjs/i18n',
     'vue3-carousel-nuxt',
-    "@nuxtjs/mdc"
+    '@nuxtjs/mdc',
   ],
   primevue: {
     options: {

@@ -3,7 +3,7 @@ export type InputPayload = {
   id: string
 }
 
-export type FriendForm = {
+export type GiveToFriendForm = {
   name: string
   surname: string
   email: string

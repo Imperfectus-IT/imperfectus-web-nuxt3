@@ -3,7 +3,7 @@
     <h4 class="font-recoleta-regular text-[40px]">
       Próximas entregas
     </h4>
-    <NuxtLink>
+    <NuxtLink :to="localePath({ name: 'admin-subscriptions-id' })">
       <Button
         primary
         class=""
@@ -30,3 +30,7 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const localePath = useLocalePath()
+</script>

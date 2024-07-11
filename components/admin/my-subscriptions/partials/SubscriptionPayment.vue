@@ -17,13 +17,17 @@
       :options="getLabelsForDropdown()"
       option-label="label"
       option-value="value"
+      @change="handlePaymentChange"
     />
-    <Button
-      class="mt-3 lg:w-1/3 lg:mt-6"
-      outlined
-      :label="$t(`${textData.section}button`)"
-      @click="handlePaymentChange"
-    />
+    <RedsysPaymentForm
+      ref="redsys"
+      class="mt-6 w-1/3"
+      :order="null"
+      :is-button-outlined="true"
+      @redirect="handleAddPayment"
+    >
+      {{ $t("profile.payment.addButton") }}
+    </RedsysPaymentForm>
   </Panel>
 </template>
 
@@ -33,7 +37,6 @@ import type { Payment } from '~/composables/payment/types/Payment.ts'
 const props = defineProps<{
   payment: Payment
 }>()
-
 const { payments } = useGetAllPaymentsHandler()
 const paymentId = ref<number>(props.payment.id)
 const emits = defineEmits(['paymentChanged'])
@@ -47,6 +50,10 @@ const getLabelsForDropdown = () => {
 
 const handlePaymentChange = () => {
   emits('paymentChanged', paymentId.value)
+}
+
+const handleAddPayment = async (submit) => {
+  await submit()
 }
 
 const textData = {

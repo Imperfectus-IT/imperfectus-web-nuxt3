@@ -95,6 +95,7 @@
       @click="closeForm"
     />
   </div>
+  <Toast />
 </template>
 
 <script setup lang="ts">

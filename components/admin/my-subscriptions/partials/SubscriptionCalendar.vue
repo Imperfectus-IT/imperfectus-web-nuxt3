@@ -1,11 +1,16 @@
 <template>
   <Calendar
-    v-model="today"
     inline
   >
     <template #date="slotProps">
       <div
-        v-if="isCancelledDate(slotProps.date) "
+        v-if="isToday(slotProps.date) "
+        class="text-[14px] h-8 w-8 text-center rounded-md flex items-center justify-center border-[1px]"
+      >
+        {{ slotProps.date.day }}
+      </div>
+      <div
+        v-else-if="isCancelledDate(slotProps.date) "
         class="text-[14px] bg-orange-primary h-8 w-8 text-center rounded-md flex items-center justify-center"
       >
         {{ slotProps.date.day }}
@@ -29,11 +34,12 @@
         {{ slotProps.date.day }}
       </div>
 
-      <template v-else>
-        <div class="text-[14px]">
-          {{ slotProps.date.day }}
-        </div>
-      </template>
+      <div
+        v-else
+        class="text-[14px]"
+      >
+        {{ slotProps.date.day }}
+      </div>
     </template>
   </Calendar>
   <div class="lg:flex lg:flex-col">
@@ -80,19 +86,15 @@ const textData = {
   section: 'subscriptions.subscription.details.date_picker.',
   items: 4,
 }
-
-const today = dayjs().toDate()
 const nextPaymentDates = computed(() => {
   return getNextDatesFromFrequency(props.subscription.frequency, props.subscription.nextPayment)
 })
-
 const nextDeliveryDates = computed(() => {
   const daysToAdd = DayMapping[props.subscription.preferredDay]
   return nextPaymentDates.value.map((date) => {
     return dayjs(date).add(daysToAdd, 'd').format('YYYY-MM-DD')
   })
 })
-
 const cancelledDates = computed(() => {
   const daysToAdd = DayMapping[props.subscription.preferredDay]
   return props.subscription.skip.map((date) => {
@@ -103,6 +105,9 @@ const cancelledDates = computed(() => {
 const isSkippedDate = (date: CalendarDate) => {
   const formattedDate = dateBuilder(date)
   return props.subscription.skip.includes(formattedDate)
+}
+const isToday = (date: CalendarDate) => {
+  return dayjs().format('YYYY-MM-DD') === dateBuilder(date)
 }
 
 const isPaymentDate = (date: CalendarDate) => {

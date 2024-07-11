@@ -1,12 +1,13 @@
 import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
-export const useSubscriptionFactory = (subscription: any): Subscription => {
-  console.log(subscription)
+export const useDomainSubscriptionFactory = (subscription: any): Subscription => {
+  console.log('subscription', subscription)
   return {
     id: subscription.id,
     status: subscription.status,
     frequency: subscription.frequency,
     nextPayment: subscription.nextPayment,
+    nextDeliveryDateFromPaused: subscription.next_delivery_date_from_paused_at,
     preferredDay: subscription.preferredDay,
     cancelledAt: subscription.cancelledAt,
     donations: subscription.given?.map((donation: any) => donation.order_date),
@@ -66,7 +67,12 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
         sku: item.product.SKU,
         image: `images/boxes/Caixa-${getBoxImage(item?.product.SKU)}.webp`,
         exclusions: item.exclusions.map((exclusion: any) => {
-          return exclusion.name_es
+          return {
+            id: exclusion.id,
+            nameEs: exclusion.name_es,
+            nameCa: exclusion.name_ca,
+            product: exclusion.product,
+          }
         }),
       }
     }),

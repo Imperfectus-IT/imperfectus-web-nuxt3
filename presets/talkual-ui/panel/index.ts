@@ -63,7 +63,7 @@ export default {
         'border border-t-0 last:rounded-br-lg last:rounded-bl-lg': props.toggleable,
       },
       // Spacing
-      'px-5 pb-3',
+      'px-5 pb-3 h-full',
 
       // Color
       'bg-transparent',

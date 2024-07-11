@@ -6,6 +6,7 @@
     <p>{{ $t(`${inputText.fragment}.description`) }}</p>
   </div>
   <div class="lg:grid lg:grid-cols-3">
+    {{ giveToFriendForm }}
     <InputFriendForm
       v-for="field in inputText.fields"
       :id="$t(`${inputText.fragment}.field_${field}.value`)"
@@ -41,25 +42,25 @@
 </template>
 
 <script setup lang="ts">
-import type { FriendForm, InputPayload } from './types/FormTypes'
+import type { GiveToFriendForm, InputPayload } from './types/FormTypes'
 
 const emit = defineEmits(['close-form', 'gift-to-friend'])
 const closeForm = () => emit('close-form')
-const giftToFriend = () => emit('gift-to-friend', formData)
+const giftToFriend = () => emit('gift-to-friend', giveToFriendForm)
 
 const isFormCompleted = computed(() => {
   return (
-    formData.address !== ''
-    && formData.city !== ''
-    && formData.cp !== ''
-    && formData.email !== ''
-    && formData.name !== ''
-    && formData.phone !== ''
-    && formData.surname !== ''
+    giveToFriendForm.address !== ''
+    && giveToFriendForm.city !== ''
+    && giveToFriendForm.cp !== ''
+    && giveToFriendForm.email !== ''
+    && giveToFriendForm.name !== ''
+    && giveToFriendForm.phone !== ''
+    && giveToFriendForm.surname !== ''
   )
 })
 
-const formData: FriendForm = reactive({
+const giveToFriendForm = reactive<GiveToFriendForm>({
   name: '',
   surname: '',
   email: '',
@@ -72,7 +73,8 @@ const formData: FriendForm = reactive({
 })
 
 const updateDataFormValue = (payload: InputPayload) => {
-  formData[payload.id as keyof FriendForm] = payload.data
+  console.log('payload', payload)
+  giveToFriendForm[payload.id as keyof GiveToFriendForm] = payload.payload
 }
 
 const inputText = {

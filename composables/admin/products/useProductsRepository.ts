@@ -1,3 +1,5 @@
+import type { Products } from '~/composables/admin/products/types/Product.ts'
+
 export const useProductsRepository = () => {
   const getProducts = async () => {
     const { find } = useStrapi()
@@ -15,7 +17,7 @@ export const useProductsRepository = () => {
           .map((product: any) => useProductsFactory(product).itemProductFactory()),
       },
       boxProducts: strapiProducts
-        .filter((product: any) => product.type === 'box')
+        .filter((product: any) => product.type === 'box' && !product.SKU.includes('OLD') && !product.SKU.includes('CO'))
         .map((product: any) => useProductsFactory(product).boxProductFactory()),
     }
     return products

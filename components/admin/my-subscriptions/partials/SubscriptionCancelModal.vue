@@ -72,7 +72,7 @@
               class: [{ 'opacity-60 cursor-not-allowed': context.disabled }, 'bg-red-secondary py-3 rounded-lg lg:w-3/4 lg:mx-auto'],
             }),
           }"
-          @click="closeModal"
+          @click="cancelSubscription"
         />
         <Button
           :label="$t(`${textData.section}closeButton`)"
@@ -107,13 +107,18 @@ const textData = {
   options: 7,
 }
 
-const cancelInfo = reactive({
+const cancelInfo = reactive<CancelSubscriptionPayload>({
   reason: '',
   text: '',
 })
 const resetCancelInfo = () => {
   cancelInfo.reason = ''
   cancelInfo.text = ''
+}
+
+const cancelSubscription = () => {
+  emit('cancel-subscription', cancelInfo)
+  resetCancelInfo()
 }
 
 const generateDropdownOptions = computed(() => {
@@ -124,7 +129,11 @@ const generateDropdownOptions = computed(() => {
       label: t(`${textData.section}option_${i}.label`),
     })
   }
-  console.log('OPTIONS', options)
   return options
 })
+
+export type CancelSubscriptionPayload = {
+  reason: string
+  text: string
+}
 </script>

@@ -10,7 +10,13 @@ export const usePaymentRepository = () => {
     return await _delete<Payment>('payments', id)
   }
 
+  const addPayment = async (payment: Payment): Promise<Payment> => {
+    const { create } = useStrapi()
+    return await create<Payment>('payments', payment)
+  }
+
   return {
+    addPayment,
     findPaymentsByUserId,
     deletePayment,
   }

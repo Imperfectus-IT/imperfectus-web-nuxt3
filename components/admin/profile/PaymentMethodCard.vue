@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Payment } from '~/composables/payment/types/Payment.ts'
+
 const {
   isDialogOpen,
   openDialog,
@@ -8,6 +10,10 @@ const {
 const { canDeletePayment } = useDeletePaymentValidator()
 const { payments: paymentMethods } = useGetAllPaymentsHandler()
 const { handleDeletePayment } = useDeletePaymentHandler()
+
+const handleAddPayment = async (submitForm: any) => {
+  await submitForm()
+}
 </script>
 
 <template>
@@ -52,13 +58,16 @@ const { handleDeletePayment } = useDeletePaymentHandler()
           @delete="handleDeletePayment(item.id)"
         />
       </div>
-      <Divider class="invisible lg:visible !my-0 !mb-8" />
-      <Button
-        class="h-[3.125rem] lg:w-72"
-        :label="$t('adminSubscriptionPayment.addPaymentMethod')"
-        :pt="{ label: 'text-sm lg:text-lg' }"
-        outlined
-      />
+      <Divider class="invisible lg:visible !my-0 " />
+      <RedsysPaymentForm
+        ref="redsys"
+        class="mt-6 w-1/4"
+        :order="null"
+        :is-button-outlined="true"
+        @redirect="handleAddPayment"
+      >
+        {{ $t("profile.payment.addButton") }}
+      </RedsysPaymentForm>
     </Panel>
   </div>
 </template>

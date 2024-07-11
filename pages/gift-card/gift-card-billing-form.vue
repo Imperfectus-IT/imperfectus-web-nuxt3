@@ -63,16 +63,16 @@ watchEffect(() => {
   if (orders) {
     const billingData = orders.value[0]?.billingInfo
     if (billingData) {
-      const name = billingData.billingFullName.split(' ')[0]
-      const surname = billingData.billingFullName.split(' ')[1]
+      const name = billingData.billingFirstName
+      const surname = billingData.billingLastName
       formData.value = {
         name,
         surname,
-        nif: billingData.billingNif,
+        nif: billingData.billingCif,
         email: billingData.billingEmail,
         address1: billingData.billingAddress,
         address2: billingData.billingAddress2,
-        postalCode: billingData.billingCP,
+        postalCode: billingData.billingPostCode,
         city: billingData.billingCity,
         state: billingData.billingState,
         country: billingData.billingCountry,

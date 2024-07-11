@@ -2,7 +2,8 @@ export const useProductsFactory = (product: any) => {
   const itemProductFactory = () => {
     return {
       id: product.id,
-      name: product.name_es,
+      nameEs: product.name_es,
+      nameCa: product.nameCa,
       type: product.type, // item | box
       itemType: product.itemType, // vegetable | fruit
       image: product.imagePath,
@@ -19,6 +20,7 @@ export const useProductsFactory = (product: any) => {
       boxType: product.boxType,
       sku: product.SKU,
       amount: product.price,
+      weight: product.weight,
     }
   }
 

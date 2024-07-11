@@ -8,7 +8,8 @@ export interface Products {
 
 export interface ItemProduct {
   id: number
-  name: string
+  nameEs: string
+  nameCa: string
   type: string
   itemType: string
   image: string
@@ -23,4 +24,5 @@ export interface BoxProduct {
   boxType: string
   sku: string
   amount: number
+  weight: number
 }

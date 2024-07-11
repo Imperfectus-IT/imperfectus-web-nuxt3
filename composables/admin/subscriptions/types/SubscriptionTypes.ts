@@ -1,5 +1,5 @@
 import type { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
-import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
 import type { Payment } from '~/composables/payment/types/Payment.ts'
 
 export type Subscription = {
@@ -8,6 +8,7 @@ export type Subscription = {
   frequency: string
   skip: string[]
   nextPayment: string
+  nextDeliveryDateFromPaused: string
   cancelledAt: string
   preferredDay: keyof typeof DayMapping
   subscriptionItems: SubscriptionItem[]
@@ -34,7 +35,7 @@ export type SubscriptionItem = {
   quantity: number
   amount: number
   sku: string
-  exclusions: string[]
+  exclusions: ItemProduct[]
   image: string
   product: BoxProduct
 }

@@ -112,7 +112,6 @@ const getFrequency = computed(() =>
 
 const getDeliveryDate = computed(() => {
   const days = DayMapping[props.preferredDay as keyof typeof DayMapping]
-  console.log('DAYS', days)
-  return dayjs(props.nextPayment).add(1, 'days').format('DD-MM-YYYY')
+  return dayjs(props.nextPayment).add(days, 'days').format('DD-MM-YYYY')
 })
 </script>

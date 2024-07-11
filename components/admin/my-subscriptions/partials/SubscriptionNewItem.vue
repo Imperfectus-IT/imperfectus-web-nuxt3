@@ -46,8 +46,8 @@
           v-model="newItem.exclusions"
           :options="listProducts"
           filter
-          option-label="name"
-          option-value="name"
+          option-label="nameEs"
+          option-value="id"
           placeholder="Buscar "
           :selection-limit="6"
           class="w-full border-[1px] text-[16px] mt-3 rounded-xl mb-5"
@@ -72,7 +72,11 @@
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import type { ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+
+const props = defineProps<{
+  frequency: string
+}>()
 
 const emits = defineEmits(['close', 'save'])
 const { products } = useGetProductsHandler()
@@ -87,15 +91,25 @@ watch(products, () => {
     listProducts.value = [
       ...products.value.itemProducts.fruits,
       ...products.value.itemProducts.vegetables,
-    ].sort((a, b) => a.name.localeCompare(b.name))
+    ].sort((a, b) => a.nameEs.localeCompare(b.nameEs))
   }
 })
-const save = () => emits('save')
+
+const save = () => {
+  const frequency = props.frequency === 'weekly' ? 1 : 2
+  const boxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === newItem.type && box.sku.includes(`${newItem.size}R${frequency}`))
+  if (!boxProduct) {
+    // ERROR TOAST
+    return
+  }
+  const { exclusions } = newItem
+  emits('save', { boxProduct, exclusions })
+}
 const close = () => emits('close')
 const boxTypes = [
-  { name: 'Verdura y fruta', code: 'MX' },
-  { name: 'Sólo fruta', code: 'FR' },
-  { name: 'Sólo verdura', code: 'VG' },
+  { name: 'Verdura y fruta', code: 'mixed' },
+  { name: 'Sólo fruta', code: 'fruits' },
+  { name: 'Sólo verdura', code: 'vegetables' },
 ]
 const boxSizes = [
   { name: 'Pequeña', code: 'S' },

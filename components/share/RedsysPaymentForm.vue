@@ -3,7 +3,6 @@
     ref="redsys"
     :action="url"
     method="POST"
-    class="OrderPaymentForm"
     @submit.prevent="submitForm"
   >
     <input
@@ -26,6 +25,7 @@
       class="mt-4"
     >{{ $t('pages.order.status.paymentNotAvailable') }}</span>
     <Button
+      :outlined="isButtonOutlined"
       class="w-full"
       @click="emitRedirect"
     >
@@ -38,15 +38,9 @@
 
 <script setup lang="ts">
 const emit = defineEmits(['redirect', 'onError'])
-const env = useRuntimeConfig()
-onMounted(() => {
-  console.log('test', env)
-  console.log('testing', process.env)
-})
-
 const props = defineProps<{
-  order: number
-  disabled: boolean
+  order: number | null
+  isButtonOutlined: boolean
 }>()
 
 const body = reactive({
@@ -64,15 +58,17 @@ const sleep = (ms) => {
 
 const submitForm = async (): Promise<void> => {
   try {
+    const client = useStrapiClient()
     isPaymentAvailable.value = true
-    const data = await $fetch(`${env.public.STRAPI_URL}/payments/${props.order}/form/`,
-      {
+    let data
+    if (props.order) {
+      data = await client(`/payments/${props.order}/form/`, { method: 'POST' })
+    }
+    else {
+      data = await client('/payments/form/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    )
+      })
+    }
     if (data.url) {
       url.value = data.url
       body.Ds_SignatureVersion = data.body.Ds_SignatureVersion

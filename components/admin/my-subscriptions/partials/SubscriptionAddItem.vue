@@ -16,13 +16,14 @@
     <Button
       v-if="!isAddFormDisplayed"
       :pt="{
-        root: 'border-[1px] px-3.5 py-2.5 rounded-lg my-3 bg-green-primary w-1/2',
+        root: 'border-[1px] px-3.5 py-2.5 rounded-lg my-3 bg-green-primary w-1/2 lg:w-40',
       }"
       :label="$t('subscriptions.subscription.addItem.button')"
       @click="displayAddForm"
     />
     <SubscriptionNewItem
       v-if="isAddFormDisplayed"
+      :frequency="props.subscription.frequency"
       @close="closeAddForm"
       @save="handleSave"
     />
@@ -31,10 +32,12 @@
 
 <script setup lang="ts">
 import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
 
 const props = defineProps<{
   subscription: Subscription
 }>()
+const emits = defineEmits(['save-add-item'])
 const isAddFormDisplayed = ref<boolean>(false)
 const displayAddForm = () => {
   isAddFormDisplayed.value = true
@@ -42,7 +45,13 @@ const displayAddForm = () => {
 const closeAddForm = () => {
   isAddFormDisplayed.value = false
 }
-const handleSave = () => {
+const handleSave = (newItem: addItemPayload) => {
+  emits('save-add-item', newItem)
   isAddFormDisplayed.value = false
+}
+
+export type addItemPayload = {
+  boxProduct: BoxProduct
+  exclusions: number[]
 }
 </script>

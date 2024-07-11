@@ -54,11 +54,11 @@
           @click="addGiftCard"
         />
       </NuxtLink>
-      <OrderPaymentForm
+      <RedsysPaymentForm
         ref="redsys"
         class="mt-6"
         :order="orderId"
-        :loading="isLoading"
+        :is-button-outlined="false"
         @redirect="(submit) => handlePayment(submit)"
       >
         {{
@@ -66,7 +66,7 @@
             ? $t('gift-card.payment.form.repeat-submit')
             : $t('gift-card.payment.form.submit', { amount: getTotalAmount })
         }}
-      </OrderPaymentForm>
+      </RedsysPaymentForm>
     </div>
   </div>
 
