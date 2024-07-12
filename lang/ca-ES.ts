@@ -2139,7 +2139,7 @@ export default {
   'adminOrdersSteps.replacement': 'Reemplaçada',
 
   // OrderMeta
-  orderMeta: {
+  'orderMeta': {
     shipping_fields: {
       firstname: 'Nom',
       lastname: 'Cognoms',
@@ -2175,10 +2175,10 @@ export default {
     isBillingMetaDifferent: 'Vull factura de la comanda',
     continue: 'Continuar',
     postalCodeNotAvailable: 'De moment no repartim a aquesta localitat',
-    cherryBoxesNotAvailable: 'La caixa de cireres no està disponible en aquest codi postal'
+    cherryBoxesNotAvailable: 'La caixa de cireres no està disponible en aquest codi postal',
   },
 
-  purchase_summary: {
+  'purchase_summary': {
     title: 'Resum de compra',
     fromPrice: 'Desde: ',
     frequency: 'Cada quant?',

@@ -40,20 +40,24 @@ const boxDetails = [
       </p>
     </div>
     <div class="flex flex-col lg:flex-row items-center gap-5 mt-8">
-      <div v-for="box in boxDetails" :key="box.size" class="w-full text-center">
+      <div
+        v-for="box in boxDetails"
+        :key="box.size"
+        class="w-full text-center"
+      >
         <Button
-            class="text-xl w-2/3 lg:w-full"
-            :label="$t(box.stepBox)"
-            icon="mdi mdi-chevron-down"
-            icon-pos="right"
-            outlined
-            @click.prevent="setBoxSize(box.size)"
+          class="text-xl w-2/3 lg:w-full"
+          :label="$t(box.stepBox)"
+          icon="mdi mdi-chevron-down"
+          icon-pos="right"
+          outlined
+          @click.prevent="setBoxSize(box.size)"
         />
         <ShoppingCartBoxDetail
-            v-if="shoppingCart.currentItem.boxSize === box.size && boxProductSelected && !isDesktop"
-            class="mt-5"
-            :box-product="boxProductSelected"
-            :box-size="shoppingCart.currentItem.boxSize"
+          v-if="shoppingCart.currentItem.boxSize === box.size && boxProductSelected && !isDesktop"
+          class="mt-5"
+          :box-product="boxProductSelected"
+          :box-size="shoppingCart.currentItem.boxSize"
         />
       </div>
     </div>
@@ -75,7 +79,13 @@ const boxDetails = [
         @click.prevent="$emit('goToStep', CUSTOMIZE_STEP)"
       />
     </div>
-    <ShoppingCartPurchaseSummaryFloating class="fixed z-10 inset-x-0 bottom-1/4 w-full lg:hidden bg-beige-primary" :items="[]" />
-    <ShoppingCartPurchaseSummaryFloating class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary" :items="[]" />
+    <ShoppingCartPurchaseSummaryFloating
+      class="fixed z-10 inset-x-0 bottom-1/4 w-full lg:hidden bg-beige-primary"
+      :items="[]"
+    />
+    <ShoppingCartPurchaseSummaryFloating
+      class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
+      :items="[]"
+    />
   </div>
 </template>

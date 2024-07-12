@@ -101,7 +101,7 @@ export default defineNuxtConfig({
     'nuxt-zod-i18n',
     '@nuxtjs/i18n',
     'vue3-carousel-nuxt',
-    "@nuxtjs/mdc"
+    '@nuxtjs/mdc',
   ],
   primevue: {
     options: {
