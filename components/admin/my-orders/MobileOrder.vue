@@ -9,7 +9,7 @@
         v-if="order.status === 'pending'"
         class="bg-orange-primary px-2 py-2 rounded-lg mb-3"
       >
-        Este pedido está pendiente de pago
+        {{ $t(`${textData}pending`) }}
       </p>
 
       <div
@@ -177,6 +177,7 @@ import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
 
 const { t } = useI18n()
 const toast = useToast()
+const textData = 'orders.order.'
 const emits = defineEmits(['review-created'])
 const { successToast, errorToast } = useToastService()
 const textSection = 'orders.order.review.'
@@ -211,6 +212,5 @@ const filteredProducts = (orderItem: OrderItem) => {
 const saveOrderReview = async () => {
   const test = await handleUpdateOrder(props.order, review.value)
   review.value = props.order.orderReview
-  console.log('test', test)
 }
 </script>

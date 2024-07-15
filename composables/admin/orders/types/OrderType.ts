@@ -1,24 +1,28 @@
-import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { Coupon } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
 export interface Order {
   id: number
   isValidForReview: boolean
   order_id: number
   status: string
+  discarded: boolean
   deliveryDate: string
+  orderMeta: number
   orderItems: OrderItem[]
   billing: Billing
   deliveryInfo: OrderDelivery
   shippingInfo: OrderShipping
   billingInfo: OrderBilling
   orderReview: string
+  coupon: Coupon
 }
 
 export interface OrderItem {
   id: number
   amount: number
   sku: string
-  exclusions: string[]
+  exclusions: ItemProduct []
   image: string
   product: BoxProduct
   review: {
@@ -72,7 +76,8 @@ export interface OrderShipping {
   shippingAddress2: string
   shippingPostCode: string
   shippingCity: string
-  shippingState: string
-  shippingCountry: string
   shippingNotes: string
+  shippingCountry: string
+  shippingState: string
+  shippingCoverage: string
 }

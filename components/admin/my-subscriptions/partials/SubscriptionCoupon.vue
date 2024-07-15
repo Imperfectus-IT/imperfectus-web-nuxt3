@@ -36,6 +36,7 @@ const props = defineProps<{
 }>()
 const coupon = ref<string>(props.subscriptionCoupon?.coupon || '')
 const isInputReadonly = computed(() => {
+  console.log('COMPUTED')
   return !!props.subscriptionCoupon
 })
 const emits = defineEmits(['apply-coupon', 'remove-coupon'])

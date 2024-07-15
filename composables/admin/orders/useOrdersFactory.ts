@@ -3,13 +3,17 @@ import type { Order } from '~/composables/admin/orders/types/OrderType.ts'
 
 const { isValidForReview } = useOrderReviewValidator()
 export const useOrdersFactory = (order: any, t: any): Order => {
+  console.log(order)
   return {
     id: order.id,
     order_id: order.order_id,
     status: order.status,
+    discarded: order.discaded,
     isValidForReview: isValidForReview(order),
     deliveryDate: order.deliveryDate,
     orderReview: order.order_review,
+    coupon: order.coupon,
+    orderMeta: order.order_meta.id,
     orderItems: order.order_items.map((order_item: any) => {
       return {
         id: order_item.id,
@@ -17,7 +21,12 @@ export const useOrdersFactory = (order: any, t: any): Order => {
         sku: order_item.product.SKU,
         image: `images/boxes/Caixa-${getBoxImage(order_item.product.SKU)}.webp`,
         exclusions: order_item.exclusions.map((exclusion: any) => {
-          return exclusion.name_es
+          return {
+            id: exclusion.id,
+            nameEs: exclusion.name_es,
+            nameCa: exclusion.name_ca,
+            product: exclusion.product,
+          }
         }),
         review: order_item.order_item_review === null
           ? null
@@ -58,9 +67,10 @@ export const useOrdersFactory = (order: any, t: any): Order => {
       shippingAddress2: order.order_meta.shipping_address2,
       shippingPostCode: order.order_meta.shipping_postcode,
       shippingCity: order.order_meta.shipping_city,
+      shippingNotes: order.order_meta.shipping_notes,
       shippingState: order.order_meta.shipping_state,
       shippingCountry: order.order_meta.shipping_country,
-      shippingNotes: order.order_meta.shipping_notes,
+      shippingCoverage: order.order_meta.shipping_coverage,
     },
     billingInfo: {
       billingFirstName: order.order_meta.billing_firstname,

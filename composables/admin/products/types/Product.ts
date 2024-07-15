@@ -8,8 +8,8 @@ export interface Products {
 
 export interface ItemProduct {
   id: number
-  nameEs: string
-  nameCa: string
+  name_es: string
+  name_ca: string
   type: string
   itemType: string
   image: string

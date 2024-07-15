@@ -27,8 +27,6 @@ const props = defineProps<{
   labelKey: string
 }>()
 
-const { isDesktop } = useScreenSize()
-
 const getBillingValue = (key: string) => {
   return props.data[key as keyof Billing]
 }

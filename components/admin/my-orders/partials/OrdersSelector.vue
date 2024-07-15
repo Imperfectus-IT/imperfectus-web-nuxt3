@@ -2,19 +2,19 @@
   <div class="mt-3 flex flex-row gap-7">
     <Button
       :class="ordersSelected === 'all' ? 'font-bold' : ''"
-      :label="`Todos (${availableOrders.total.value})`"
+      :label="$t('orders.ordersSelector.all', { quantity: props.availableOrders.total.value })"
       :pt="{ root: '', label: '' }"
       @click="selectOrders('all')"
     />
     <Button
       :class="ordersSelected === 'current' ? 'font-bold' : ''"
-      :label="`Actuales (${availableOrders.current.value})`"
+      :label="$t('orders.ordersSelector.current', { quantity: props.availableOrders.current.value })"
       :pt="{ root: '', label: '' }"
       @click="selectOrders('current')"
     />
     <Button
       :class="ordersSelected === 'past' ? 'font-bold' : ''"
-      :label="`Pasados (${availableOrders.past.value})`"
+      :label="$t('orders.ordersSelector.past', { quantity: props.availableOrders.past.value })"
       :pt="{ root: '', label: '' }"
       @click="selectOrders('past')"
     />
@@ -23,7 +23,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import type { Ref } from 'vue'
+
+const props = defineProps<{
   availableOrders: {
     past: Ref<number>
     current: Ref<number>
@@ -34,7 +36,6 @@ defineProps<{
 const emit = defineEmits(['selectedOrders'])
 type OrdersSelectedOptions = 'all' | 'current' | 'past'
 const ordersSelected = ref<OrdersSelectedOptions>('all')
-
 const selectOrders = (type: OrdersSelectedOptions) => {
   ordersSelected.value = type
   emit('selectedOrders', ordersSelected.value)

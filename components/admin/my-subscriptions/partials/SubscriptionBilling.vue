@@ -42,9 +42,6 @@
       </div>
     </div>
     <div v-else>
-      <!--      <h4 class="text-[28px] font-recoleta-medium text-left my-3 mb-8"> -->
-      <!--        {{ $t(`${textData.section}title`) }} -->
-      <!--      </h4> -->
       <div
         v-for="(key, index) in getBillingKeys"
         :key="key"

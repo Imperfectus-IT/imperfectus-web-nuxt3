@@ -22,24 +22,22 @@ export const useUpdateSubscription = () => {
   }
   const executeRemoveSubscriptionCoupon = async (subscriptionId: number) => {
     await removeSubscriptionCoupon(subscriptionId)
-    subscriptions.value = await findSubscriptionsByUser()
+    return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeAddSubscriptionItem = async (newSubscriptionItem: addItemPayload, subscriptionId: number) => {
     await addSubscriptionItem(newSubscriptionItem, subscriptionId)
-    subscriptions.value = await findSubscriptionsByUser()
-    return
+    return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeDonateToONG = async (body: DonationPayload) => {
     const response = await donateToONG(body)
-    subscriptions.value = await findSubscriptionsByUser()
-    return response
+    return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeGiveOrderToFriend = async (giveOrderToFriendData: DonationPayload) => {
     return giveOrderToFriend(giveOrderToFriendData)
   }
   const executeCancelDonation = async (subscriptionId: number, date: string) => {
     await cancelDonation(subscriptionId, date)
-    subscriptions.value = await findSubscriptionsByUser()
+    return subscriptions.value = await findSubscriptionsByUser()
   }
   const executePauseSubscription = async (pauseSubscriptionData: PauseSubscriptionPayload, subscriptionId: number) => {
     const response = await pauseSubscription(pauseSubscriptionData, subscriptionId)

@@ -1,10 +1,14 @@
-import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
+import type { ComposerTranslation } from 'vue-i18n'
+import type { createOrderItemReviewPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
 
-export const useCreateOrderItemReview = () => {
+export const useCreateOrderItemReview = (t: ComposerTranslation) => {
   const { createReview } = useReviewRepository()
+  const { orders } = useOrdersState()
+  const { findOrdersByUser } = useOrderRepository(t)
 
-  const executeCreateOrderItemReview = async (newReview: ReviewRatings, orderItemId: number) => {
-    return await createReview(newReview, orderItemId)
+  const executeCreateOrderItemReview = async (newReview: createOrderItemReviewPayload) => {
+    await createReview(newReview)
+    orders.value = await findOrdersByUser()
   }
 
   return {

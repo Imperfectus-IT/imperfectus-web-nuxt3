@@ -1,7 +1,7 @@
 <template>
   <div class=" mt-12 lg:my-12 ">
     <h4 class="!font-bold text-[16px] mt-4">
-      ¿Qué lleva tu caja?
+      {{ $t('orders.order.carouselTitle') }}
     </h4>
     <Divider class="mt-2 !w-2/3" />
     <TKCarousel
@@ -17,8 +17,8 @@
       slot-class="leading-3"
     >
       <template #SlideContent="{ item }">
-        <p class="text-[10px] ">
-          {{ item.name }}
+        <p class="text-[12px] ">
+          {{ item[`name_${locale}`] }}
         </p>
       </template>
     </TKCarousel>
@@ -29,6 +29,7 @@
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes'
 
 const { isMobile } = useScreenSize()
+const { locale } = useI18n()
 
 defineProps<{
   products: CarouselSlideObject[]

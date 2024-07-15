@@ -6,6 +6,12 @@
       :class="`p-2 relative `"
     >
       <Divider class="mt-2 !w-1/2" />
+      <p
+        v-if="order.status === 'pending'"
+        class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg "
+      >
+        {{ $t(`${textData}pending`) }}
+      </p>
       <div class="flex flex-row justify-between flex-wrap -mt-6 ">
         <div
           v-for="(orderItem, index) in order.orderItems"
@@ -20,7 +26,8 @@
             <OrderItemReview
               v-if="!isCollapsed && order.status === 'completed'"
               :review="orderItem.review ? orderItem.review.ratings : null"
-              @create-review="(newReview: ReviewRatings) => createReview(newReview, orderItem.id)"
+              :order-item-id="orderItem.id"
+              @create-review="handleCreateReview"
             />
             <OrderProductsCarousel
               v-if="!isCollapsed"
@@ -30,6 +37,8 @@
               v-if="!isCollapsed"
               :exclusions="orderItem.exclusions"
               :order-item="orderItem"
+              :order-id="order.id"
+              @update-item="handleUpdateOrderItem"
             />
           </div>
         </div>
@@ -65,24 +74,23 @@
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
               <Button
                 outlined
-                label="Detalles del pedido"
+                :label="$t(`${textData}details`)"
                 :pt="{ label: 'text-[14px]' }"
               />
             </NuxtLink>
             <NuxtLink :to="`/order/pay?order=${order.order_id}`">
               <Button
                 outlined
-                label="Finalizar pago"
+                :label="$t(`${textData}payment`)"
                 :pt="{ label: 'text-[14px]', root: 'text-green-tertiary border-[1px] bg-green-primary px-4 py-2 rounded-lg' }"
               />
             </NuxtLink>
-            <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
-              <Button
-                outlined
-                label="Descartar pedido"
-                :pt="{ label: 'text-[14px]', root: 'text-green-tertiary border-[1px] bg-red-secondary px-4 py-2 rounded-lg' }"
-              />
-            </NuxtLink>
+            <Button
+              outlined
+              :label="$t(`${textData}discard`)"
+              :pt="{ label: 'text-[14px]', root: 'text-green-tertiary border-[1px] bg-red-secondary px-4 py-2 rounded-lg' }"
+              @click="handleDiscardOrder"
+            />
           </div>
         </div>
 
@@ -93,18 +101,17 @@
           <div class="bg-red-secondary w-1/4 h-9 rounded-lg flex items-center justify-center text-[12px]">
             {{ $t("string.status.order.cancelled") }}
           </div>
-          <p>Fecha de cancelacion: **********</p>
+          <!--          @TODO INSERT CANCELLED AT COLUMN TO ORDERS -->
+          <p>{{ $t(`${textData}cancelledDate`, { date: '1-1-2024' }) }}</p>
           <!-- TODO This is not stored in DB -->
         </div>
       </div>
-      <p
-        v-if="order.status === 'pending'"
-        class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg "
-      >
-        Este pedido está pendiente de pago
-      </p>
-
-      <OrderCoupon v-if="!isCollapsed && order.status !== 'completed'" />
+      <OrderCoupon
+        v-if="!isCollapsed && (order.status === 'pending' || order.status === 'failed')"
+        :order-coupon="order.coupon"
+        @add-coupon="handleAddOrderCoupon"
+        @remove-coupon="handleRemoveOrderCoupon"
+      />
       <div
         v-if="order.status === 'completed' && !isCollapsed"
         class="mt-5 w-2/3"
@@ -142,21 +149,21 @@
       <OrderDeliveryPanel
         class="mt-5"
         :data="order.deliveryInfo"
-        :label-key="'orders.order.order_delivery'"
       />
 
       <OrderShippingPanel
         class="mt-5"
         :data="order.shippingInfo"
+        :order-id="order.id"
         :label-key="'orders.order.order_shipping'"
-        @edit-shipping-info="() => console.log('Edit shipping info')"
+        @edit-shipping-info="handleUpdateOrderShipping"
       />
 
       <OrderBillingInfoPanel
         class="mt-5"
         :data="order.billingInfo"
         :label-key="'orders.order.order_billing_info'"
-        @edit-billing-info="() => console.log('Edit billing info')"
+        @edit-billing-info="handleUpdateOrderBilling"
       />
     </div>
     <Toast />
@@ -165,15 +172,14 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { Order, OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
+import type { Order, OrderBilling, OrderItem, OrderShipping } from '~/composables/admin/orders/types/OrderType.ts'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
-import type { ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 
 const { t } = useI18n()
-const toast = useToast()
 const emits = defineEmits(['review-created'])
-const { successToast, errorToast } = useToastService()
-const textSection = 'orders.order.review.'
+const textData = 'orders.order.'
 const props = defineProps<{
   order: Order
   isCollapsed: boolean
@@ -181,20 +187,30 @@ const props = defineProps<{
 }>()
 
 const review = ref<string>(props.order.orderReview || '')
-const canWriteReview = computed (() => props.order.orderReview.length < 1)
-const { handleCreateReview } = useCreateOrderItemReviewHandler()
-const { handleUpdateOrder } = useUpdateOrderHandler(t)
-const createReview = async (newReview: ReviewRatings, orderItemId: number) => {
-  try {
-    await handleCreateReview(newReview, orderItemId)
-    emits('review-created')
-    successToast(toast, t(`${textSection}successToast.title`), t(`${textSection}successToast.description`))
-  }
-  catch (error) {
-    errorToast(toast, t(`${textSection}errorToast.title`), t(`${textSection}errorToast.description`))
-  }
+const canWriteReview = computed (() => props.order.orderReview?.length < 1)
+const { createReview } = useCreateOrderItemReviewHandler(t)
+const { handleAddOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useUpdateOrderHandler(t)
+const handleCreateReview = async (newReviewData: createOrderItemReviewPayload) => {
+  await createReview(newReviewData, textData, t)
 }
-
+const handleDiscardOrder = async () => {
+  await discardOrder(props.order.id, textData)
+}
+const handleUpdateOrderShipping = async (meta: updateOrderShippingPayload) => {
+  await updateOrderShipping(meta, props.order.orderMeta, textData)
+}
+const handleUpdateOrderBilling = async (meta: OrderBilling) => {
+  await updateOrderBilling(meta, props.order.orderMeta, textData)
+}
+const handleRemoveOrderCoupon = async () => {
+  await removeOrderCoupon(props.order, props.order.coupon, textData)
+}
+const handleAddOrderCoupon = async (coupon: string) => {
+  await addOrderCoupon(props.order, coupon, textData)
+}
+const handleUpdateOrderItem = async (updateOrderItemData: updateOrderItemPayload) => {
+  await updateOrderItem(updateOrderItemData, textData)
+}
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
     return !orderItem.exclusions.includes(product.name) && product.isActive
@@ -205,9 +221,13 @@ const isOneStepOrder = computed(() => {
   const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
   return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
 })
-
 const saveOrderReview = async () => {
-  const test = await handleUpdateOrder(props.order, review.value)
-  console.log('test', test)
+  await handleAddOrderReview(props.order, review.value, textData)
+}
+
+export type updateOrderShippingPayload = OrderShipping & { order: number }
+export type createOrderItemReviewPayload = {
+  newRatings: ReviewRatings
+  orderItemId: number
 }
 </script>

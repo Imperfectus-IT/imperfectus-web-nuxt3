@@ -1,6 +1,6 @@
 <template>
   <h4 class="font-bold text-[18px] mt-7 -mb-3">
-    Valoración caja
+    {{ $t('orders.order.review.title') }}
   </h4>
   <Divider class="!w-3/4" />
   <div
@@ -60,7 +60,7 @@ const newRatings: ReviewRatings = reactive({
 })
 
 const handleCreateRating = () => {
-  emits('createReview', newRatings)
+  emits('createReview', { newRatings, orderItemId: props.orderItemId })
 }
 
 const props = defineProps<{
@@ -69,6 +69,7 @@ const props = defineProps<{
     deliveryService: number
     overallExperience: number
   } | null
+  orderItemId: number
 }>()
 
 const isReviewed = ref(false)

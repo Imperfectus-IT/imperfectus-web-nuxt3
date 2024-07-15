@@ -18,7 +18,7 @@ export const useSubscriptionRepository = () => {
   const client = useStrapiClient()
 
   const addSubscriptionCoupon = async (subscriptionId: number, coupon: string) => {
-    return await client<Subscription>(`/subscriptions/${subscriptionId}/coupon`, { method: 'PUT', body: { coupon } })
+    await client<Subscription>(`/subscriptions/${subscriptionId}/coupon`, { method: 'PUT', body: { coupon } })
   }
   const addSubscriptionItem = async (newSubscriptionItem: addItemPayload, subscriptionId: number) => {
     const { boxProduct, exclusions } = newSubscriptionItem

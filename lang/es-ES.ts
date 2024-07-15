@@ -3283,7 +3283,42 @@ export default {
   },
   'orders': {
     title: 'Mis Pedidos',
+    ordersSelector: {
+      all: 'Todos ({quantity})',
+      current: 'Actuales ({quantity})',
+      past: 'Pasados ({quantity})',
+    },
     order: {
+      pending: 'Este pedido está pendiente de pago',
+      details: 'Detalles del pedido',
+      payment: 'Finalizar pago',
+      discard: 'Descartar pedido',
+      carouselTitle: '¿Qué lleva tu caja?',
+      cancelledDate: 'Fecha de cancelación: {date}',
+      coupon: {
+        buttonAdd: 'Aplicar',
+        buttonRemove: 'Eliminar',
+        add: {
+          successToast: {
+            title: 'Coupon añadido con éxito!',
+            description: 'Tu cupón se ha añadido corrrectamente al pedido.',
+          },
+          notValidToast: {
+            title: '¡Cupón incorrecto!',
+            description: 'El cupón introducido no es válido',
+          },
+        },
+        remove: {
+          successToast: {
+            title: 'Coupon eliminado con éxito!',
+            description: 'Tu cupón se ha eliminado corrrectamente al pedido.',
+          },
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'El proceso ha fallado. Por favor, inténtalo de nuevo.',
+        },
+      },
       billing: {
         header: 'Facturación',
         item_0: 'Estado:',
@@ -3294,35 +3329,52 @@ export default {
         order_paid: 'Pagado',
         order_pending: 'Pendiente de pago',
       },
-      order_delivery: {
+      delivery: {
         header: 'Datos de entrega',
         item_0: 'Día de entrega:',
         item_1: 'Empresa de transporte',
         item_2: 'Hora de entrega estimada:',
         item_3: 'ID de seguimiento',
         item_4: 'Enlace: ',
+        trackingID: 'Id de seguimiento: {tracking}',
       },
-      order_shipping: {
+      shipping: {
         header: 'Dirección de envío',
         item_0: 'Nombre',
-        item_1: 'Email:',
-        item_2: 'Teléfono de contacto:',
-        item_3: 'Dirección (calle y número)',
-        item_4: 'Código postal:',
-        item_5: 'Localidad:',
-        button_label: 'Modificar datos',
+        item_1: 'Apellidos',
+        item_2: 'Email',
+        item_3: 'Teléfono de contacto',
+        item_4: 'Dirección (calle y número)',
+        item_5: 'Piso y puerta',
+        item_6: 'Código postal',
+        item_7: 'Localidad',
+        item_8: 'Notas',
+        saveButton: 'Guardar',
+        editButton: 'Modificar datos',
+        successToast: {
+          title: 'Datos guardados!',
+          description: 'Los datos de envío se han guardado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al guardar los datos',
+        },
       },
-      order_billing_info: {
+      billingInfo: {
         header: 'Dirección de facturación',
         item_0: 'Nombre',
-        item_1: 'Email:',
-        item_2: 'Teléfono de contacto:',
-        item_3: 'Dirección (calle y número)',
-        item_4: 'Código postal:',
-        item_5: 'Localidad:',
-        button_label: 'Modificar datos',
+        item_1: 'Apellidos',
+        item_2: 'Email',
+        item_3: 'Teléfono de contacto',
+        item_4: 'Dirección (calle y número)',
+        item_5: 'Piso y puerta',
+        item_6: 'Código postal',
+        item_7: 'Localidad',
+        buttonModify: 'Modificar datos',
+        buttonSave: 'Guardar',
       },
       review: {
+        title: 'Valoración caja',
         item_0: {
           title: 'Calidad del producto',
           value: 'productQuality',
@@ -3351,6 +3403,18 @@ export default {
           description: 'El proceso ha fallado. Por favor, inténtalo de nuevo.',
         },
         button: 'Guardar valoración',
+      },
+      edit: {
+        title: '¿Quieres editar tu caja?',
+        boxType: 'Tipo de caja',
+        boxSize: 'Tamaño de la caja',
+        exclusions: {
+          title: '¿Quieres excluir algún alimento?',
+          description_1: 'Puedes excluir hasta 6 alimentos.',
+          description_2: 'Aún así, cada viernes enviamos un email con las frutas y verduras que habrá en la caja de la siguitente semana para que así puedas editar las exclusiones dependiendo del contenido de la caja.',
+          placeholder: 'Buscar',
+        },
+        saveButton: 'Guardar',
       },
     },
   },

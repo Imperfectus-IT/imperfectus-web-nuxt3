@@ -43,7 +43,7 @@ const getLastOrder = () => {
     <Introduction :user="user" />
     <ImagesAndData kgs="50" />
     <div v-if="isLoading">
-      Cargando...
+      <CardSkeleton />
     </div>
     <div v-else>
       <NextOrder

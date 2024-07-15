@@ -104,7 +104,6 @@ const updateSubscriptionItemData = reactive({
       ? 'IM'
       : 'XL',
   exclusions: [...props.exclusions.map((exclusion: ItemProduct) => exclusion.id)],
-  coupon: null,
 })
 const boxTypes = [
   { name: 'Verdura y fruta', code: 'mixed' },
@@ -122,7 +121,7 @@ watch(products, () => {
     listProducts.value = [
       ...products.value.itemProducts.fruits,
       ...products.value.itemProducts.vegetables,
-    ].sort((a, b) => a.nameEs.localeCompare(b.nameEs))
+    ]
   }
 })
 </script>

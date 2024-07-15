@@ -1,5 +1,5 @@
 <template>
-  <Panel :header="props.header ? props.header : $t(props.labelKey + '.header')">
+  <Panel :header="props.header ? props.header : $t(textData + 'header')">
     <div
       v-for="(key, index) in Object.keys(props.data)"
       :key="index"
@@ -7,21 +7,21 @@
     >
       <div v-if="key !== 'tracking'">
         <p class="mt-5">
-          {{ $t(`${props.labelKey}.item_${index}`) }}
+          {{ $t(`${textData}item_${index}`) }}
         </p>
         <p class="font-bold mt-1">
           {{ getBillingValue(key) }}
         </p>
       </div>
       <div
-        v-for="(tracking, index) in data.tracking"
+        v-for="(tracking, index2) in data.tracking"
         v-else
-        :key="index"
+        :key="index2"
       >
         <p class="mt-5 font-bold underline">
           {{ getBoxSize(tracking.boxType) }}
         </p>
-        <span class="">ID de seguimiento: </span>
+        <span class="">{{ $t(`${textData}trackingID`, { tracking: '111111' }) }}</span>
         <p class="font-bold mt-1">
           {{ tracking.trackingID }}
         </p>
@@ -41,6 +41,7 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const textData = 'orders.order.delivery.'
 const props = defineProps<{
   data: OrderDelivery
   header?: string
