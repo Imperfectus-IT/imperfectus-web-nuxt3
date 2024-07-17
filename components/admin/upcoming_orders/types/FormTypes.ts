@@ -1,6 +1,6 @@
 export type InputPayload = {
   data: string
-  id: string
+  name: string
 }
 
 export type GiveToFriendForm = {
@@ -13,4 +13,6 @@ export type GiveToFriendForm = {
   cp: string
   city: string
   comments: string
+  state: string
+  country: string
 }

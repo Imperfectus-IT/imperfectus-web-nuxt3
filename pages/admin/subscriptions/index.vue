@@ -4,13 +4,13 @@
       <h4 class="font-recoleta-regular text-[30px]">
         {{ $t('subscriptions.title') }}
       </h4>
-      <NuxtLink>
+      <NuxtLinkLocale to="order">
         <Button
           primary
           class="hidden lg:block "
           :label="$t('subscriptions.add')"
         />
-      </NuxtLink>
+      </NuxtLinkLocale>
     </div>
     <Subscription
       v-for="subscription in subscriptions"

@@ -6,24 +6,24 @@
     <p>{{ $t(`${inputText.fragment}.description`) }}</p>
   </div>
   <div class="lg:grid lg:grid-cols-3">
-    {{ giveToFriendForm }}
     <InputFriendForm
-      v-for="field in inputText.fields"
-      :id="$t(`${inputText.fragment}.field_${field}.value`)"
+      v-for="(field, index) in inputText.fields"
+      :key="index"
+      :name="$t(`${inputText.fragment}.field_${field}.value`)"
       :label-text="$t(`${inputText.fragment}.field_${field}.label`)"
       :input-class="'text-[15px] !h-14'"
       :label-class="'font-bold text-[15px]'"
       class="mt-5 lg:w-11/12"
-      @update-value="(payload: InputPayload) => updateDataFormValue(payload)"
+      @update-value="updateDataFormValue"
     />
     <TextareaForm
-      :id="'comments'"
-      :label-text="$t(`${inputText.fragment}.field_9.label`)"
-      :label-class="'font-bold text-[15px] mt-5'"
+      :name="'shippingNotes'"
+      :label-text="$t(`${inputText.fragment}.field_10.label`)"
+      :label-class="'font-bold text-[15px]'"
       :textarea-class="'text-[15px] !mt-1 lg:w-11/12'"
       :rows="6"
       class="lg:row-start-4 lg:col-start-1"
-      @update-value="(payload: InputPayload) => updateDataFormValue(payload)"
+      @update-value="updateDataFormValue"
     />
   </div>
   <div class="mt-5 mb-2 flex flex-row gap-2">
@@ -42,7 +42,8 @@
 </template>
 
 <script setup lang="ts">
-import type { GiveToFriendForm, InputPayload } from './types/FormTypes'
+import type { InputPayload } from './types/FormTypes'
+import type { SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
 const emit = defineEmits(['close-form', 'gift-to-friend'])
 const closeForm = () => emit('close-form')
@@ -50,35 +51,36 @@ const giftToFriend = () => emit('gift-to-friend', giveToFriendForm)
 
 const isFormCompleted = computed(() => {
   return (
-    giveToFriendForm.address !== ''
-    && giveToFriendForm.city !== ''
-    && giveToFriendForm.cp !== ''
-    && giveToFriendForm.email !== ''
-    && giveToFriendForm.name !== ''
-    && giveToFriendForm.phone !== ''
-    && giveToFriendForm.surname !== ''
+    giveToFriendForm.shippingAddress !== ''
+    && giveToFriendForm.shippingCity !== ''
+    && giveToFriendForm.shippingPostCode !== ''
+    && giveToFriendForm.shippingEmail !== ''
+    && giveToFriendForm.shippingFirstName !== ''
+    && giveToFriendForm.shippingPhone !== ''
+    && giveToFriendForm.shippingLastName !== ''
   )
 })
 
-const giveToFriendForm = reactive<GiveToFriendForm>({
-  name: '',
-  surname: '',
-  email: '',
-  phone: '',
-  address: '',
-  addressDetails: '',
-  cp: '',
-  city: '',
-  comments: '',
+const giveToFriendForm = reactive<SubscriptionShipping>({
+  shippingState: '',
+  shippingCountry: 'ES',
+  shippingAddress2: '',
+  shippingAddress: '',
+  shippingCity: '',
+  shippingNotes: '',
+  shippingLastName: '',
+  shippingEmail: '',
+  shippingFirstName: '',
+  shippingPhone: '',
+  shippingPostCode: '',
 })
 
 const updateDataFormValue = (payload: InputPayload) => {
-  console.log('payload', payload)
-  giveToFriendForm[payload.id as keyof GiveToFriendForm] = payload.payload
+  giveToFriendForm[payload.name as keyof SubscriptionShipping] = payload.data
 }
 
 const inputText = {
   fragment: 'upcoming_orders.gift_to_friend',
-  fields: 8,
+  fields: 9,
 }
 </script>

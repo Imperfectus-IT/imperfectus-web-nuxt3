@@ -16,6 +16,7 @@ export interface Order {
   billingInfo: OrderBilling
   orderReview: string
   coupon: Coupon
+  subscription: number
 }
 
 export interface OrderItem {

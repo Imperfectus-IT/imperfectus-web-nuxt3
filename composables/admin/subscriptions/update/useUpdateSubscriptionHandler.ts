@@ -96,7 +96,6 @@ export const useUpdateSubscriptionHandler = () => {
       errorToast(toast, t(`${textData}modifyItem.errorToast.title`), t(`${textData}modifyItem.successToast.description`))
     }
   }
-
   const updatePayment = async (subscription: Subscription, paymentId: number, textData: string, t: ComposerTranslation): Promise<void> => {
     try {
       await executeUpdatePayment(subscription, paymentId)
@@ -107,7 +106,6 @@ export const useUpdateSubscriptionHandler = () => {
       errorToast(toast, t(`${textData}payment.errorToast.title`), t(`${textData}payment.errorToast.description`))
     }
   }
-
   const updateBillingMeta = async (metaId: number, newBillingMeta: SubscriptionBilling, textData: string, t: ComposerTranslation) => {
     try {
       await executeUpdateBillingMeta(metaId, newBillingMeta)
@@ -150,13 +148,12 @@ export const useUpdateSubscriptionHandler = () => {
   }
   const giveOrderToFriend = async (giveOrderToFriendData: DonationPayload, textData: string, t: ComposerTranslation) => {
     try {
-      const response = await executeGiveOrderToFriend(giveOrderToFriendData)
-      console.log('response', response)
-      successToast(toast, t(`${textData}toasts.giveOrderToFriendToasts.successToast.title`), t(`${textData}toasts.giveOrderToFriendToasts.successToast.description`))
+      await executeGiveOrderToFriend(giveOrderToFriendData)
+      successToast(toast, t(`${textData}toasts.giveToasts.successToast.title`), t(`${textData}toasts.giveToasts.successToast.description`))
     }
     catch (error) {
       console.log('Error on giving orders to friends', error)
-      errorToast(toast, t(`${textData}toasts.giveOrderToFriendToasts.errorToast.title`), t(`${textData}toasts.giveOrderToFriendToasts.errorToast.description`))
+      errorToast(toast, t(`${textData}toasts.giveToasts.errorToast.title`), t(`${textData}toasts.giveToasts.errorToast.description`))
     }
   }
   const skipAnOrder = async (subscriptionId: number, skip: string[], textData: string, t: ComposerTranslation) => {

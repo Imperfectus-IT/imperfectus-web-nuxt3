@@ -29,6 +29,7 @@ watch(orders, () => {
 
 const getLastOrder = () => {
   lastOrder.value = orders.value.filter((order: Order) => {
+    console.log(order)
     return (
       order.deliveryInfo.deliveryDate > dayjs().format('YYYY-MM-DD')
       && order.status === 'processing'
@@ -36,6 +37,7 @@ const getLastOrder = () => {
   })[0]
   isLoading.value = false
 }
+const getSubscriptionId = computed(() => lastOrder.value.subscription)
 </script>
 
 <template>
@@ -51,6 +53,6 @@ const getLastOrder = () => {
         :order="lastOrder"
       />
     </div>
-    <HandleNextDeliveries :subscription-id="1234" />
+    <HandleNextDeliveries :subscription-id="getSubscriptionId" />
   </div>
 </template>

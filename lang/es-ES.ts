@@ -3478,39 +3478,43 @@ export default {
       },
       field_1: {
         label: 'Nombre',
-        value: 'name',
+        value: 'shippingFirstName',
       },
       field_2: {
         label: 'Apellidos',
-        value: 'surname',
+        value: 'shippingLastName',
       },
       field_3: {
         label: 'Email',
-        value: 'email',
+        value: 'shippingEmail',
       },
       field_4: {
         label: 'Teléfono de contacto',
-        value: 'phone',
+        value: 'shippingPhone',
       },
       field_5: {
         label: 'Dirección (calle y número)',
-        value: 'address',
+        value: 'shippingAddress',
       },
       field_6: {
         label: 'Piso y puerta',
-        value: 'addressDetails',
+        value: 'shippingAddress2',
       },
       field_7: {
         label: 'Código Postal',
-        value: 'cp',
+        value: 'shippingPostCode',
       },
       field_8: {
         label: 'Localidad',
-        value: 'city',
+        value: 'shippingCity',
       },
       field_9: {
+        label: 'Província',
+        value: 'shippingState',
+      },
+      field_10: {
         label: 'Observaciones',
-        value: 'comments',
+        value: 'shippingNotes',
       },
       gift_button: 'Regalar',
       cancel_button: 'Cancelar',

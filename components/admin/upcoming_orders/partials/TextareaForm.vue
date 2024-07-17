@@ -1,13 +1,16 @@
 <template>
-  <div>
+  <div class="mt-5">
     <label
-      :for="id"
+      :for="name"
       :class="labelClass"
     >{{ labelText }}</label>
     <Textarea
-      :id="id"
+      :id="name"
+      v-model="comments"
+      :pt="{
+        root: 'bg-transparent border-[1px] p-2 rounded-lg w-full',
+      }"
       :rows="rows"
-      class="mt-5"
       :class="textareaClass"
       @input="emitUpdateValue"
     />
@@ -16,7 +19,7 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  id: string
+  name: string
   labelText: string
   textareaClass: string
   labelClass: string
@@ -26,8 +29,8 @@ const props = defineProps<{
 const emit = defineEmits(['update-value'])
 
 const emitUpdateValue = () => {
-  emit('update-value', { payload: inputValue.value, id: props.id })
+  emit('update-value', { data: comments.value, name: props.name })
 }
 
-const inputValue = ref<string>('')
+const comments = ref<string>('')
 </script>

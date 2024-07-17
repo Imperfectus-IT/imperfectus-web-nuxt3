@@ -10,12 +10,14 @@
       v-for="(item, index) in order.orderItems"
       :key="index"
       :order-item="item"
+      :order-status="order.status"
+      class="mt-7"
     />
     <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
       <Button
         outlined
         :label="$t('profile.my_account.next_order.open_order')"
-        class="ml-3 mt-6 bg-beige-primary lg:mt-0 lg:h-10 mr-4"
+        class="ml-3 mt-6 bg-beige-primary lg:mt-4 lg:h-10 mr-4"
       />
     </NuxtLink>
   </div>

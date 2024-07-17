@@ -1,10 +1,10 @@
-import type { SubscriptionMeta } from './SubscriptionTypes'
+import type { SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 
 export type DonationPayload = {
   subscriptionId: number
-  paymentDate: string
   deliveryDate: string
   givenTo: string
-  newSubscriptionMeta: SubscriptionMeta
+  newSubscriptionMeta: SubscriptionShipping
   purpose: string
+  date: string
 }

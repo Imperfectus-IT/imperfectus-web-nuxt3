@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row gap-1 justify-start lg:gap-4 lg:mt-6 relative lg:items-center">
+  <div class="flex flex-row gap-1 justify-start lg:gap-4 relative lg:items-center">
     <Button
       :label="status"
       :pt="{

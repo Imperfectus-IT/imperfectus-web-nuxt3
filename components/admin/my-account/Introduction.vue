@@ -34,11 +34,11 @@ defineProps<{
         </NuxtLink>
       </div>
     </div>
-    <NuxtLink to="order">
+    <NuxtLinkLocale to="order">
       <Button
         class="hidden lg:block lg:h-12 lg:w-[200px]"
         :label="$t('string.misc.order')"
       />
-    </NuxtLink>
+    </NuxtLinkLocale>
   </div>
 </template>

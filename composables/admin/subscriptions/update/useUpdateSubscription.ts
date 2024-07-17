@@ -29,11 +29,12 @@ export const useUpdateSubscription = () => {
     return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeDonateToONG = async (body: DonationPayload) => {
-    const response = await donateToONG(body)
+    await donateToONG(body)
     return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeGiveOrderToFriend = async (giveOrderToFriendData: DonationPayload) => {
-    return giveOrderToFriend(giveOrderToFriendData)
+    await giveOrderToFriend(giveOrderToFriendData)
+    return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeCancelDonation = async (subscriptionId: number, date: string) => {
     await cancelDonation(subscriptionId, date)

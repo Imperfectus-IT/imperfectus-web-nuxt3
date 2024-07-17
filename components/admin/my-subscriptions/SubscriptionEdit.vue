@@ -4,7 +4,7 @@
   </div>
   <div
     v-else
-    class="lg:max-w-[1100px] mx-auto flex flex-col gap-3"
+    class=" mx-auto flex flex-col gap-3"
   >
     <h4 class="font-recoleta-regular text-[43px]">
       {{ $t(`${textData}title`) }}

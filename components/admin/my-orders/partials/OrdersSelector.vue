@@ -1,25 +1,27 @@
 <template>
-  <div class="mt-3 flex flex-row gap-7">
-    <Button
-      :class="ordersSelected === 'all' ? 'font-bold' : ''"
-      :label="$t('orders.ordersSelector.all', { quantity: props.availableOrders.total.value })"
-      :pt="{ root: '', label: '' }"
-      @click="selectOrders('all')"
-    />
-    <Button
-      :class="ordersSelected === 'current' ? 'font-bold' : ''"
-      :label="$t('orders.ordersSelector.current', { quantity: props.availableOrders.current.value })"
-      :pt="{ root: '', label: '' }"
-      @click="selectOrders('current')"
-    />
-    <Button
-      :class="ordersSelected === 'past' ? 'font-bold' : ''"
-      :label="$t('orders.ordersSelector.past', { quantity: props.availableOrders.past.value })"
-      :pt="{ root: '', label: '' }"
-      @click="selectOrders('past')"
-    />
+  <div class="lg:max-w-[340px]">
+    <div class="mt-3 flex flex-row gap-7 ">
+      <Button
+        :class="ordersSelected === 'all' ? 'font-bold' : ''"
+        :label="$t('orders.ordersSelector.all', { quantity: props.availableOrders.total.value })"
+        :pt="{ root: '', label: '' }"
+        @click="selectOrders('all')"
+      />
+      <Button
+        :class="ordersSelected === 'current' ? 'font-bold' : ''"
+        :label="$t('orders.ordersSelector.current', { quantity: props.availableOrders.current.value })"
+        :pt="{ root: '', label: '' }"
+        @click="selectOrders('current')"
+      />
+      <Button
+        :class="ordersSelected === 'past' ? 'font-bold' : ''"
+        :label="$t('orders.ordersSelector.past', { quantity: props.availableOrders.past.value })"
+        :pt="{ root: '', label: '' }"
+        @click="selectOrders('past')"
+      />
+    </div>
+    <Divider class="mt-1" />
   </div>
-  <Divider class="mt-1" />
 </template>
 
 <script setup lang="ts">

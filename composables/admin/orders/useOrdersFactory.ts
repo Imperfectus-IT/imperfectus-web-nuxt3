@@ -3,7 +3,7 @@ import type { Order } from '~/composables/admin/orders/types/OrderType.ts'
 
 const { isValidForReview } = useOrderReviewValidator()
 export const useOrdersFactory = (order: any, t: any): Order => {
-  console.log(order)
+  // console.log('order factory', order)
   return {
     id: order.id,
     order_id: order.order_id,
@@ -14,6 +14,7 @@ export const useOrdersFactory = (order: any, t: any): Order => {
     orderReview: order.order_review,
     coupon: order.coupon,
     orderMeta: order.order_meta.id,
+    subscription: order.subscriptions?.length > 0 ? order.subscriptions[0].id : null,
     orderItems: order.order_items.map((order_item: any) => {
       return {
         id: order_item.id,

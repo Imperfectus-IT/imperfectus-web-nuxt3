@@ -127,7 +127,7 @@
 import dayjs from 'dayjs'
 import type { ONG } from '~/components/admin/upcoming_orders/DonateONG.vue'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
-import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { Subscription, SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 import type { GiveToFriendForm } from '~/components/admin/upcoming_orders/types/FormTypes.ts'
 import type { DonationPayload } from '~/composables/admin/subscriptions/types/DonationPayload.ts'
 
@@ -206,29 +206,15 @@ const handleCancelDonationToONG = async (paymentDate: string) => {
   await cancelDonation(subscription.value.id, paymentDate, textData.donate, t)
 }
 
-const handleGiveToFriend = async (formData: GiveToFriendForm, index: number, nextPaymentDate: string) => {
-  console.log('FORM DATA', formData, index, nextPaymentDate)
-
+const handleGiveToFriend = async (formData: SubscriptionShipping, index: number, nextPaymentDate: string) => {
   const giveToFriendData: DonationPayload = {
     purpose: 'gift',
     subscriptionId: subscription.value.id,
     deliveryDate: calculateNextDeliveryDate(nextPaymentDate),
-    givenTo: formData.name,
-    paymentDate: nextPaymentDate,
-    newSubscriptionMeta: {
-      shipping_firstname: formData.name,
-      shipping_lastname: formData.surname,
-      shipping_address1: formData.address,
-      shipping_address: formData.addressDetails,
-      shipping_city: formData.city,
-      shipping_state: 'Lleida',
-      shipping_postcode: formData.cp,
-      shipping_phone: formData.phone,
-      shipping_email: formData.email,
-      shipping_country: 'ES',
-    },
+    givenTo: formData.shippingFirstName + ' ' + formData.shippingLastName,
+    date: nextPaymentDate,
+    newSubscriptionMeta: formData,
   }
-  console.log('payload', giveToFriendData)
   await giveOrderToFriend(giveToFriendData, textData.giveToFriend, t)
   setDisplayGiftToFriend(index, false)
 }

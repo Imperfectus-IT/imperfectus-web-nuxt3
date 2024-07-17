@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col gap-1 ">
     <label
-      :for="id"
+      :for="name"
       :class="labelClass"
     >{{ labelText }}</label>
     <InputText
-      :id="id"
+      :id="name"
       v-model="inputValue"
       :class="['rounded-md', inputClass]"
       @input="emitUpdateValue"
@@ -15,17 +15,15 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  id: string
+  name: string
   labelText: string
   inputClass: string
   labelClass: string
 }>()
 
 const emit = defineEmits(['update-value'])
-
-const emitUpdateValue = () => {
-  emit('update-value', { payload: inputValue.value, id: props.id })
-}
-
 const inputValue = ref<string>('')
+const emitUpdateValue = () => {
+  emit('update-value', { data: inputValue.value, name: props.name })
+}
 </script>

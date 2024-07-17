@@ -1,6 +1,9 @@
 <template>
   <Panel class="my-5 flex flex-col lg:p-2 lg:relative lg:min-w-[900px]">
-    <SubscriptionHeader :subscription="subscription" />
+    <SubscriptionHeader
+      class="mb-6"
+      :subscription="subscription"
+    />
     <SubscriptionItemCard
       v-for="(subscriptionItem, index) in subscription.subscriptionItems"
       :key="index"
@@ -8,7 +11,7 @@
       :preferred-day="subscription.preferredDay"
       :subscription-status="subscription.status"
       :next-payment="subscription.nextPayment"
-      class="mt-8 lg:mt-2 lg:order-1"
+      class="lg:mt-2 lg:order-1"
     />
 
     <div class="flex justify-end ">
