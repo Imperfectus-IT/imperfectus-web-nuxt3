@@ -20,7 +20,7 @@ defineProps<{
         <span>{{ boxProduct?.name }}</span>
         <span>{{ boxProduct?.price }} €</span>
       </div>
-      <p>{{ boxProduct?.description }}</p>
+      <p class="text-base leading-6 font-extralight lg:mt-10">{{ boxProduct?.description }}</p>
     </div>
   </div>
 </template>

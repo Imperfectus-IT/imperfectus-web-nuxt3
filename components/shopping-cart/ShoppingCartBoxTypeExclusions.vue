@@ -31,51 +31,53 @@ const productExclusionsResume = computed(() => {
         class="text-xl"
         :label="$t('order.steps.stepCustomize.section4.yes-btn')"
         outlined
-        @click="isExclusionSelected = true"
+        @click.prevent="isExclusionSelected = true"
       />
       <Button
         :class="['text-xl', !isExclusionSelected ? 'bg-green-primary' : 'bg-transparent']"
         :label="$t('order.steps.stepCustomize.section4.no-btn')"
         outlined
         active
-        @click="isExclusionSelected = false"
+        @click.prevent="isExclusionSelected = false"
       />
     </div>
     <span class="font-solina-extended-book text-base leading-6">
       <strong>{{ $t('order.steps.stepCustomize.exclusions.bold', { max: 6 }) }}</strong>
       {{ $t('order.steps.stepCustomize.exclusions') }}
     </span>
-    <div>
+    <div v-if="isExclusionSelected" class="w-full">
       <IconField icon-position="left">
         <InputIcon>
           <i class="mdi mdi-magnify text-lg" />
         </InputIcon>
         <InputText
           v-model="searchExclusion"
-          class="rounded-lg"
-          placeholder="Search"
+          class="w-full rounded-xl"
+          :placeholder="$t('order.steps.stepCustomize.section4.search')"
         />
       </IconField>
       <p class="my-4">
         {{ productExclusionsResume }}
       </p>
-      <div
-        v-for="productExclusion in filteredExclusions"
-        :key="productExclusion.id"
-        class="py-3"
-      >
-        <Checkbox
-          v-model="selectedProductExclusions"
-          class="mr-3"
-          :input-id="productExclusion.id"
-          name="productExclusion"
-          :value="productExclusion"
-        />
-        <label
-          class="font-solina-extended-book tex-base"
-          :for="productExclusion?.name"
-        >{{ productExclusion?.name }}</label>
-      </div>
+      <VirtualScroller scrollHeight="300px" :items="filteredExclusions" :itemSize="filteredExclusions.length * 4" :autoSize="true">
+        <template v-slot:item="{ item }">
+          <div
+              class="py-3"
+          >
+            <Checkbox
+                v-model="selectedProductExclusions"
+                class="mr-3"
+                :input-id="item.id"
+                name="productExclusion"
+                :value="item"
+            />
+            <label
+                class="font-solina-extended-book tex-base"
+                :for="item?.name"
+            >{{ item?.name }}</label>
+          </div>
+        </template>
+      </VirtualScroller>
     </div>
   </div>
 </template>

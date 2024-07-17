@@ -83,7 +83,7 @@ const decrementQuantity = (item) => {
         rounded
         outlined
       />
-      <span class="my-auto hidden lg:block">Volver</span>
+      <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
     </div>
     <p class="font-recoleta-regular text-xl font-normal text-center lg:text-2xl">
       {{ $t('order.steps.orderItemResume') }}
@@ -93,31 +93,33 @@ const decrementQuantity = (item) => {
   <div
     v-for="(item, index) in items"
     :key="index"
-    class="lg:flex lg:flex-row lg:justify-center"
+    class="lg:flex mb-5 lg:mb-0 lg:gap-4 lg:flex-wrap"
   >
     <NuxtImg
-      :src="'/images/boxes/Caixa-M.webp'"
-      loading="lazy"
-      format="webp"
-      class="rounded-lg mt-6 lg:w-[350px]"
+        :src="'/images/boxes/Caixa-M.webp'"
+        loading="lazy"
+        format="webp"
+        class="rounded-lg mt-6 w-full lg:w-[100px] lg:h-[100px]"
     />
-    <div class="px-4 lg:my-auto lg:w-1/2">
+    <div class="p-4 lg:my-auto lg:w-1/2 lg:p-0 lg:py-4 mt-5">
       <div class="flex justify-between items-center">
-        <span class="font-bold my-3 text-lg">{{ item.product[`name_${locale}`] }}</span>
-        <span class="mdi mdi-close text-red-primary cursor-pointer" />
+        <span class="font-bold my-3 lg:my-1 text-lg lg:text-base">{{ item.product[`name_${locale}`] }}</span>
+        <span class="font-bold text-lg inline lg:hidden">19.18 €</span>
       </div>
       <p class="mt-6 lg:mt-3 lg:hidden">
         {{ item.product[`description_${locale}`] }}
       </p>
-      <ul class="list-square ml-5 text-base leading-7 mt-2">
+      <ul class="list-square ml-5 text-base leading-7 mt-2 lg:mt-0 lg:text-xs lg:leading-[18px]">
         <li>Cada semana</li>
         <li>Verdura y fruta</li>
         <li>Plantano, Sandia, Lechuga, Apio, Manzana</li>
       </ul>
-      <div class="flex justify-between mt-4">
-        <span class="font-bold text-lg">19.18 €</span>
-        <div class="flex gap-2">
-          <Button
+      <span class="font-bold text-lg hidden lg:block lg:mt-2 lg:text-base">19.18 €</span>
+    </div>
+    <div class="flex flex-row-reverse justify-between px-4 lg:flex-col lg:items-end lg:justify-around lg:gap-14">
+      <span class="mdi mdi-close text-red-primary cursor-pointer" />
+      <div class="flex gap-2">
+        <Button
             icon="mdi mdi-minus"
             outlined
             :pt="{
@@ -128,9 +130,9 @@ const decrementQuantity = (item) => {
               mergeProps: true,
             }"
             @click.prevent="decrementQuantity(item)"
-          />
-          <span>{{ item.quantity }}</span>
-          <Button
+        />
+        <span>{{ item.quantity }}</span>
+        <Button
             icon="mdi mdi-plus"
             outlined
             :pt="{
@@ -141,18 +143,16 @@ const decrementQuantity = (item) => {
               mergeProps: true,
             }"
             @click.prevent="incrementQuantity(item)"
-          />
-        </div>
+        />
       </div>
     </div>
+    <Divider class="text-grey-secondary" />
   </div>
-  <Divider class="text-grey-secondary" />
   <Button
     :label="$t('orderResume.add')"
     outlined
-    class="lg:mb-8"
   />
-  <Divider class="lg:hidden text-grey-secondary mb-7" />
+  <Divider class="text-grey-secondary" />
   <OrderCoupon
     :show-title="true"
   />

@@ -1,22 +1,35 @@
 <script setup lang="ts">
-
+import { RESUME_ITEM_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
+defineEmits(['goToStep'])
+const {
+  REGISTER_EVENT,
+  LOGIN_EVENT,
+  componentRender,
+  loadComponent,
+  handleLoginEvent,
+  handleRegisterEvent
+} = useAuth()
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[20%] relative">
-    <div class="flex items-center justify-center gap-3 mt-4">
-      <div class="!absolute left-5 flex flex-row gap-3">
-        <Button
-          class="w-[2rem] h-[2rem] text-xl "
-          icon="mdi mdi-chevron-left"
-          rounded
-          outlined
-        />
-        <span class="my-auto hidden lg:block">Volver</span>
-      </div>
-      <p class="font-recoleta-regular text-xl font-normal text-center lg:text-2xl">
-        {{ $t('order.steps.orderItemResume') }}
-      </p>
-    </div>
-  </div>
+  <RegisterForm
+      v-if="componentRender === REGISTER_EVENT"
+      class="mt-8"
+      @user-registered="handleRegisterEvent"
+      @auth-form-requested="loadComponent"
+  >
+    <template #backButton>
+      <BackButton @go-to-back="$emit('goToStep', RESUME_ITEM_STEP)" />
+    </template>
+  </RegisterForm>
+  <LoginForm
+      v-if="componentRender === LOGIN_EVENT"
+      class="mt-8"
+      @login="handleLoginEvent"
+      @auth-form-requested="loadComponent"
+  >
+    <template #backButton>
+      <BackButton @go-to-back="$emit('goToStep', RESUME_ITEM_STEP)" />
+    </template>
+  </LoginForm>
 </template>

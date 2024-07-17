@@ -15,7 +15,7 @@ const emit = defineEmits(['goToStep'])
           rounded
           outlined
         />
-        <span class="my-auto hidden lg:block">Volver</span>
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
       <p class="font-recoleta-regular text-xl font-normal text-center w-2/3 lg:hidden">
         {{
@@ -34,8 +34,10 @@ const emit = defineEmits(['goToStep'])
       />
     </div>
     <div class="lg:flex lg:gap-4">
-      <div class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
-        <ShoppingCartShippingAddress />
+      <div class="lg:w-2/4">
+        <div class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
+          <ShoppingCartShippingAddress />
+        </div>
         <div class="flex items-center lg:mt-4">
           <Checkbox
             v-model="shoppingCart.invoiceRequired"
@@ -52,7 +54,7 @@ const emit = defineEmits(['goToStep'])
         </div>
         <ShoppingCartBillingAddress v-if="shoppingCart.invoiceRequired" />
       </div>
-      <div class="lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
+      <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
         <ShoppingCartSummaryBox />
       </div>
     </div>
@@ -65,11 +67,7 @@ const emit = defineEmits(['goToStep'])
     </div>
     <ShoppingCartPurchaseSummaryFloating
       class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
-      :items="[]"
-    />
-    <ShoppingCartPurchaseSummaryFloating
-      class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
-      :items="[]"
+      :item="shoppingCart.currentItem"
     />
   </div>
 </template>

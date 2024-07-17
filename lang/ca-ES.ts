@@ -2007,9 +2007,10 @@ export default {
 
   // OrderCoupon
   'orderCoupon.message': 'Tens algun codi de descompte?',
+  'orderCoupon.placeholder': '¿Codi de descompte?',
   'orderCoupon.apply': 'Aplicar',
-  'orderCoupon.successMessage': 'Cupó aplicat correctament',
-  'orderCoupon.errorMessage': 'Cupó no vàlid',
+  'orderCoupon.successMessage': 'Codi correcte',
+  'orderCoupon.errorMessage': 'Código incorrecte',
   'orderCoupon.errorLimit':
         'Ja has utilitzat aquest cupó el màxim número de vegades',
   'orderCoupon.errorEligibilityCompanies':
@@ -2096,8 +2097,9 @@ export default {
   'orderStepDate.message': 'Quin dia vols rebre el teu primer enviament?',
   'orderStepDate.available': 'Disponible',
   'orderStepDate.selected': 'Seleccionat',
+  'orderStepDate.deliveryNotes.title': 'Ten en cuenta',
   'orderStepDate.deliveryNotes':
-        'Només per a subscripcions: A partir d\'ara si la teva subscripció és setmanal, la caixa t\'arribarà cada {nextDeliveryDate}, per contra, si la teva subscripció és cada dues setmanes, t\'arribarà un {nextDeliveryDay} sí i un altre no. Recorda que el pagament es cobrarà el diumenge anterior.',
+        'Només per a subscripcions: A partir d\'ara si la teva subscripció és setmanal, la caixa t\'arribarà cada {nextDeliveryDate}, per contra, si la teva subscripció és cada dues setmanes, t\'arribarà un {nextDeliveryDay} sí i un altre no. **Recorda que el pagament es cobrarà el diumenge anterior.**',
   'orderStepDate.nextDeliveryDay.tuesday': 'dimarts',
   'orderStepDate.nextDeliveryDay.wednesday': 'dimecres',
   'orderStepDate.nextDeliveryDay.thursday': 'dijous',

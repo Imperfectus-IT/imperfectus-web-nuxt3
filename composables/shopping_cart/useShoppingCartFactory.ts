@@ -64,7 +64,7 @@ export const useShoppingCartFactory = () => {
       coverage: null,
       items: [],
       currentItem: null,
-      totalAmount: 0,
+      coupon: null,
       billingAddress: emptyBillingAddress(),
       shippingAddress: emptyShippingAddress(),
     }

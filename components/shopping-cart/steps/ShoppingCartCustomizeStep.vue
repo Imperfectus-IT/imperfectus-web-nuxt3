@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  FREQUENCY_SUBSCRIPTION_TYPE_STEP,
+  RESUME_ITEM_STEP,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 import { MIXED_BOX_TYPE, FRUITS_BOX_TYPE, VEGETABLES_BOX_TYPE } from '~/composables/shared/product/types/ProductConstants.ts'
 
@@ -8,7 +8,6 @@ const { shoppingCart } = useShoppingCartState()
 const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
 const { t } = useI18n()
 const emit = defineEmits(['goToStep'])
-const { isDesktop } = useScreenSize()
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
     src: '/images/boxes/Caixa-S.webp',
@@ -24,10 +23,6 @@ const boxTypeImages = {
   },
 }
 
-const getImageData = () => {
-  const boxType = shoppingCart.value.currentItem.boxType as keyof typeof boxTypeImages
-  return boxTypeImages[boxType] || { src: '', alt: '' }
-}
 const exclusions = [
   {
     id: 1,
@@ -64,6 +59,26 @@ const exclusions = [
     name: 'Pera',
     type: 'item',
   },
+  {
+    id: 8,
+    name: 'Cebolla',
+    type: 'item',
+  },
+  {
+    id: 9,
+    name: 'Ajo',
+    type: 'item',
+  },
+  {
+    id: 10,
+    name: 'Borcolli',
+    type: 'item',
+  },
+  {
+    id: 11,
+    name: 'Pino',
+    type: 'item',
+  },
 ]
 </script>
 
@@ -93,8 +108,8 @@ const exclusions = [
         @click.prevent="setBoxType(VEGETABLES_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.currentItem.boxType === VEGETABLES_BOX_TYPE && !isDesktop"
-        class="rounded-lg"
+        v-if="shoppingCart.currentItem.boxType === VEGETABLES_BOX_TYPE"
+        class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
@@ -107,8 +122,8 @@ const exclusions = [
         @click.prevent="setBoxType(MIXED_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.currentItem.boxType === MIXED_BOX_TYPE && !isDesktop"
-        class="rounded-lg"
+        v-if="shoppingCart.currentItem.boxType === MIXED_BOX_TYPE"
+        class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
@@ -121,8 +136,8 @@ const exclusions = [
         @click.prevent="setBoxType(FRUITS_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.currentItem.boxType === FRUITS_BOX_TYPE && !isDesktop"
-        class="rounded-lg"
+        v-if="shoppingCart.currentItem.boxType === FRUITS_BOX_TYPE"
+        class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
@@ -130,18 +145,20 @@ const exclusions = [
       />
     </div>
     <NuxtImg
-      alt="box_type"
-      :src="getImageData().src"
-      loading="lazy"
-      format="webp"
-      class="hidden lg:block w-[480px] mx-auto rounded-lg mt-10"
+        v-if="shoppingCart.currentItem.boxType"
+        class="hidden lg:block w-[480px] mx-auto rounded-lg mt-10"
+        :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+        :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
+        format="webp"
+        preload
     />
     <ShoppingCartBoxTypeExclusions :product-exclusions="exclusions" />
     <div class="text-center mt-6">
       <Button
+        v-if="shoppingCart.currentItem.boxType"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit('goToStep', FREQUENCY_SUBSCRIPTION_TYPE_STEP)"
+        @click.prevent="$emit('goToStep', RESUME_ITEM_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
