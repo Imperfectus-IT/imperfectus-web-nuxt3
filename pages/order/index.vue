@@ -4,10 +4,6 @@ import {
   AVAILABILITY_STEP, CUSTOMIZE_STEP, PURCHASE_TYPE_STEP, BOX_STEP, FREQUENCY_SUBSCRIPTION_TYPE_STEP, SHIPPING_STEP, DELIVERY_STEP, PAYMENT_STEP,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
-definePageMeta({
-  middleware: ['guest'],
-})
-
 defineI18nRoute({
   paths: {
     ca: '/nova-comanda/',
@@ -30,6 +26,12 @@ const componentToRenderFromStep: Record<string, any> = {
   [PAYMENT_STEP]: resolveComponent('LazyShoppingCartPaymentStep'),
 }
 
+const currentProgress = computed(() => {
+  const totalSteps = Object.keys(componentToRenderFromStep).length - 1
+  const currentStepIndex = Object.keys(componentToRenderFromStep).findIndex(step => step === shoppingCart.value.step);
+  return (currentStepIndex / (totalSteps - 1)) * 100;
+})
+
 onMounted(async () => {
   await executeStep(AVAILABILITY_STEP)
 })
@@ -37,7 +39,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <Divider class="hidden lg:flex border-[1px]" />
+    <ProgressBar class="my-5 w-full" :value="currentProgress"/>
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

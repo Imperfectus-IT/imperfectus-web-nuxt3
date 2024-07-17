@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import type { Product } from '~/composables/shared/product/types/Product.ts'
 
-defineProps<{
+const props = defineProps<{
   productExclusions: Partial<Product[]>
 }>()
+const { t } = useI18n()
 const isExclusionSelected = ref(false)
 const selectedProductExclusions = ref<Partial<Product[]>>([])
+const searchExclusion = ref('')
+const filteredExclusions = computed(() => {
+  if (!searchExclusion.value) {
+    return props.productExclusions
+  }
+  return props.productExclusions.filter((product) => {
+    return product.name.toLowerCase().includes(searchExclusion.value.toLowerCase())
+  })
+})
+const productExclusionsResume = computed(() => {
+  return t('admin.order.exclusions.limit', { 'current_exclusions': selectedProductExclusions.value.length, 'max_exclusions': 6 })
+})
 </script>
 
 <template>
@@ -32,29 +45,37 @@ const selectedProductExclusions = ref<Partial<Product[]>>([])
       <strong>{{ $t('order.steps.stepCustomize.exclusions.bold', { max: 6 }) }}</strong>
       {{ $t('order.steps.stepCustomize.exclusions') }}
     </span>
-    <Listbox
-      v-if="isExclusionSelected"
-      v-model="selectedProductExclusions"
-      :options="productExclusions"
-      filter
-      option-label="name"
-      class="w-full"
-      :filter-placeholder="$t('order.steps.stepCustomize.section4.search')"
-    >
-      <template #option="slotProps">
-        <div class="flex items-center">
-          <Checkbox
-            v-model="selectedProductExclusions"
-            :input-id="slotProps.option.id"
-            :name="slotProps.option.name"
-            :value="slotProps.option.id"
-          />
-          <label
-            for="exclusions"
-            class="ml-2"
-          >{{ slotProps.option.name }}</label>
-        </div>
-      </template>
-    </Listbox>
+    <div>
+      <IconField icon-position="left">
+        <InputIcon>
+          <i class="mdi mdi-magnify text-lg" />
+        </InputIcon>
+        <InputText
+          v-model="searchExclusion"
+          class="rounded-lg"
+          placeholder="Search"
+        />
+      </IconField>
+      <p class="my-4">
+        {{ productExclusionsResume }}
+      </p>
+      <div
+        v-for="productExclusion in filteredExclusions"
+        :key="productExclusion.id"
+        class="py-3"
+      >
+        <Checkbox
+          v-model="selectedProductExclusions"
+          class="mr-3"
+          :input-id="productExclusion.id"
+          name="productExclusion"
+          :value="productExclusion"
+        />
+        <label
+          class="font-solina-extended-book tex-base"
+          :for="productExclusion?.name"
+        >{{ productExclusion?.name }}</label>
+      </div>
+    </div>
   </div>
 </template>

@@ -22,9 +22,6 @@ watch(
       deliveryDate: shoppingCart.value.deliveryDate,
     }
     shoppingCart.value.coverage = await executeFindCoverageByPostalCode(query)
-    if (isCoverageValid(shoppingCart.value.coverage)) {
-      emit('goToStep', PURCHASE_TYPE_STEP)
-    }
   },
 )
 
@@ -49,13 +46,13 @@ const goBack = () => {
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
     </div>
-    <div class="text-center lg:mt-0">
+    <div class="text-center mt-10 lg:mt-0">
       <p class="font-recoleta-regular text-lg font-normal lg:text-2xl">
         {{
           $t("order.steps.stepAvailability.title")
         }}
       </p>
-      <p class="font-solina-extended-book text-base font-normal p-6 lg:text-[20px]">
+      <p class="font-solina-extended-book text-base font-normal p-5 lg:text-[20px]">
         {{
           $t("order.steps.stepAvailability.subTitle")
         }}
@@ -77,5 +74,15 @@ const goBack = () => {
       loading="lazy"
       class="hidden lg:block mx-auto w-[400px] mt-10"
     />
+    <div class="flex justify-center mt-5">
+      <Button
+        v-if="!isInvalid && isCoverageValid(shoppingCart.coverage)"
+        class="mt-4"
+        :disabled="isInvalid && !isCoverageValid(shoppingCart.coverage)"
+        severity="secondary"
+        :label="$t('order.next')"
+        @click.prevent="$emit('goToStep', PURCHASE_TYPE_STEP)"
+      />
+    </div>
   </div>
 </template>

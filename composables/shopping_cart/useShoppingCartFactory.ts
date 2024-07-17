@@ -11,7 +11,9 @@ export const useShoppingCartFactory = () => {
       amount: 0,
       exclusions: [],
       image: '',
-      product: null,
+      boxProduct: null,
+      boxType: '',
+      boxSize: '',
       purchaseType: '',
       frequency: '',
       quantity: 1,
@@ -62,6 +64,7 @@ export const useShoppingCartFactory = () => {
       coverage: null,
       items: [],
       currentItem: null,
+      totalAmount: 0,
       billingAddress: emptyBillingAddress(),
       shippingAddress: emptyShippingAddress(),
     }

@@ -37,7 +37,7 @@ const hiddeAccountLink = computed(() => routeToHidde[router.currentRoute.value.n
       <template #end>
         <NuxtLink
           :class="{ invisible: hiddeAccountLink }"
-          :to="localePath({ name: 'auth-login' })"
+          :to="localePath({ name: 'admin' })"
         >
           <Button
             icon="mdi mdi-account"

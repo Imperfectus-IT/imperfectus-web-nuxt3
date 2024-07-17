@@ -1,14 +1,3 @@
 <template>
-  <span class="footer-top" />
+  <NuxtImg class="w-full relative top-[-15px] lg:top-[-25px] 2xl:top-[-45px]" src="/images/footer/footer-top.svg" preload />
 </template>
-
-<style scoped lang="scss">
-.footer-top {
-  display: block;
-  position: relative;
-  top: -25px;
-  width: 100%;
-  height: 50px;
-  background-image: url("/images/footer/footer-top.png");
-}
-</style>

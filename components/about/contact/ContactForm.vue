@@ -14,7 +14,7 @@
       />
     </div>
   </div>
-  <TKTopFooterEffect class=" bg-beige-primary text-white-primary transform rotate-180" />
+  <TKTopFooterEffect class="text-white-primary transform rotate-180 top-[-15px] lg:top-[-45px] 2xl:top-[-82px]" />
 </template>
 
 <script setup lang="ts">

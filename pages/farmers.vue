@@ -10,7 +10,7 @@
       class="relative"
     >
       <div class="absolute w-full xl:top-[470px]">
-        <TKTopFooterEffect class="lg:!top-0" />
+        <TKTopFooterEffect class="lg:top-[50px] 2xl:top-[80px]"  />
         <div class="bg-green-tertiary lg:h-[900px]" />
       </div>
       <div

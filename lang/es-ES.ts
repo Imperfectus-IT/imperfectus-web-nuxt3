@@ -1134,6 +1134,7 @@ export default {
   'admin.order.save': 'Guardar',
   'admin.order.boxes': 'Tipo de caja',
   'admin.order.exclusions.bold': 'Puedes excluir hasta 6 alimentos.',
+  'admin.order.exclusions.limit': '{current_exclusions} / {max_exclusions} alimentos excluidos.',
   'admin.order.exclusions':
     'Aun así, cada viernes enviamos un mail con las frutas y verduras que habrá en la caja de siguiente semana para que así puedas editar las exclusiones dependiendo del contenido de la caja.',
   'admin.order.mixed': 'Fruta y verdura',
@@ -1184,6 +1185,9 @@ export default {
   'order.steps.stepBox.smallBox': 'Caja Pequeña',
   'order.steps.stepBox.mediumBox': 'Caja Mediana',
   'order.steps.stepBox.largeBox': 'Caja Grande',
+  'order.steps.stepBoxDetail.small': 'Pequeña',
+  'order.steps.stepBoxDetail.medium': 'Mediana',
+  'order.steps.stepBoxDetail.xlarge': 'Grande',
   'order.steps.stepCustomize.title': 'Elige tu caja',
   'order.steps.stepCustomize.section1': '¿Qué tipo de caja quieres?',
   'order.steps.stepCustomize.frequency':
