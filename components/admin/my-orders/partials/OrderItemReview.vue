@@ -51,18 +51,6 @@ import { useI18n } from 'vue-i18n'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
 
 const { t: $t } = useI18n()
-
-const emits = defineEmits(['createReview'])
-const newRatings: ReviewRatings = reactive({
-  productQuality: 3,
-  deliveryService: 3,
-  overallExperience: 3,
-})
-
-const handleCreateRating = () => {
-  emits('createReview', { newRatings, orderItemId: props.orderItemId })
-}
-
 const props = defineProps<{
   review: {
     productQuality: number
@@ -73,6 +61,16 @@ const props = defineProps<{
 }>()
 
 const isReviewed = ref(false)
+const emits = defineEmits(['createReview'])
+
+const newRatings: ReviewRatings = reactive({
+  productQuality: 3,
+  deliveryService: 3,
+  overallExperience: 3,
+})
+const handleCreateRating = () => {
+  emits('createReview', { newRatings, orderItemId: props.orderItemId })
+}
 
 watchEffect(() => {
   if (props.review) {

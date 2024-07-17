@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-col">
-    <div class="lg:flex lg:flex-row lg:justify-between">
+  <div class="flex flex-col lg:flex-grow">
+    <div class="lg:flex lg:flex-row lg:justify-between ">
       <h4 class="font-recoleta-regular text-[30px]">
-        Mis suscripciones
+        {{ $t('subscriptions.title') }}
       </h4>
       <NuxtLink>
         <Button
           primary
           class="hidden lg:block "
-          label="Añadir suscripción"
+          :label="$t('subscriptions.add')"
         />
       </NuxtLink>
     </div>
@@ -34,8 +34,3 @@ defineI18nRoute({
 
 const { subscriptions } = useGetSubscriptionsHandler()
 </script>
-
-1x caja pequeña
-sin exlcusiones
-entrega: jueves
-Proxima entrega

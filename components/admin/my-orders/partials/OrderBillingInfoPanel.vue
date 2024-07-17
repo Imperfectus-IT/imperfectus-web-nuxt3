@@ -3,6 +3,10 @@
     :header="props.header ? props.header : $t(textData.section + 'header')"
     :toggleable="isDesktop"
     :collapsed="isDesktop"
+    :pt=" {
+      toggleableContent: 'lg:h-full lg:border-b-[1px] lg:border-x-[1px]  rounded-b-lg p-4 lg:!pt-0',
+      content: 'lg:h-full lg:flex lg:flex-col',
+    }"
   >
     <div
       v-for="(item, index) in textData.items"
@@ -31,14 +35,14 @@
     </div>
     <Button
       v-if="!isEditForm"
-      class="h-7 mt-6 mb-2"
+      class="h-7 mt-6 mb-2 lg:mt-auto"
       outlined
       :label="$t(textData.section + 'buttonModify')"
       @click="displayBillingForm"
     />
     <Button
       v-if="isEditForm"
-      class="h-7 mt-6 mb-2"
+      class="h-7 mt-6 mb-2 lg:mt-auto"
       outlined
       :label="$t(textData.section + 'buttonSave')"
       @click="updateBillingInfo"

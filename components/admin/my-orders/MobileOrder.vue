@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:min-w-[900px] lg:max-w-[1500px]">
+  <div>
     <Panel
       :header="`Pedido ${order.id}`"
       class="relative lg:min-h-[500px]"
@@ -23,7 +23,8 @@
         <OrderItemReview
           v-if="!isCollapsed && order.status === 'completed'"
           :review="orderItem.review ? orderItem.review.ratings : null"
-          @create-review="(newReview: ReviewRatings) => createReview(newReview, orderItem.id)"
+          :order-item-id="orderItem.id"
+          @create-review="handleCreateReview"
         />
         <OrderProductsCarousel
           v-if="!isCollapsed"
@@ -33,6 +34,8 @@
           v-if="!isCollapsed"
           :exclusions="orderItem.exclusions"
           :order-item="orderItem"
+          :order-id="order.id"
+          @update-item="handleUpdateOrderItem"
         />
       </div>
 
@@ -86,6 +89,7 @@
                 label: 'text-[12px]',
                 root: 'text-green-tertiary border-[1px] bg-red-secondary px-4 py-2 rounded-lg',
               }"
+              @click="handleDiscardOrder"
             />
           </NuxtLink>
         </div>
@@ -109,7 +113,12 @@
         :order-status="order.status"
       />
 
-      <OrderCoupon v-if="!isCollapsed" />
+      <OrderCoupon
+        v-if="!isCollapsed && (order.status === 'pending' || order.status === 'failed')"
+        :order-coupon="order.coupon"
+        @add-coupon="handleAddOrderCoupon"
+        @remove-coupon="handleRemoveOrderCoupon"
+      />
       <div
         v-if="order.status === 'completed' && !isCollapsed"
         class="mt-5"
@@ -156,14 +165,15 @@
         class="mt-5"
         :data="order.shippingInfo"
         :label-key="'orders.order.order_shipping'"
-        @edit-shipping-info="() => console.log('Edit shipping info')"
+        :order-id="order.id"
+        @edit-shipping-info="handleUpdateOrderShipping"
       />
 
       <OrderBillingInfoPanel
         class="mt-5"
         :data="order.billingInfo"
         :label-key="'orders.order.order_billing_info'"
-        @edit-billing-info="() => console.log('Edit billing info')"
+        @edit-billing-info="handleUpdateOrderBilling"
       />
     </div>
     <Toast />
@@ -172,15 +182,14 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import type { Order, OrderBilling, OrderItem, OrderShipping } from '~/composables/admin/orders/types/OrderType.ts'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
-import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
+import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 
 const { t } = useI18n()
-const toast = useToast()
-const textData = 'orders.order.'
 const emits = defineEmits(['review-created'])
-const { successToast, errorToast } = useToastService()
-const textSection = 'orders.order.review.'
+const textData = 'orders.order.'
 const props = defineProps<{
   order: Order
   isCollapsed: boolean
@@ -188,21 +197,30 @@ const props = defineProps<{
 }>()
 
 const review = ref<string>(props.order.orderReview || '')
-
-const { handleCreateReview } = useCreateOrderItemReviewHandler()
-const { handleUpdateOrder } = useUpdateOrderHandler(t)
-const canWriteReview = computed (() => props.order.orderReview.length < 1)
-const createReview = async (newReview: ReviewRatings, orderItemId: number) => {
-  try {
-    await handleCreateReview(newReview, orderItemId)
-    emits('review-created')
-    successToast(toast, t(`${textSection}successToast.title`), t(`${textSection}successToast.description`))
-  }
-  catch (error) {
-    errorToast(toast, t(`${textSection}errorToast.title`), t(`${textSection}errorToast.description`))
-  }
+const canWriteReview = computed (() => props.order.orderReview?.length < 1)
+const { createReview } = useCreateOrderItemReviewHandler(t)
+const { addOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useUpdateOrderHandler(t)
+const handleCreateReview = async (newReviewData: createOrderItemReviewPayload) => {
+  await createReview(newReviewData, textData, t)
 }
-
+const handleDiscardOrder = async () => {
+  await discardOrder(props.order.id, textData)
+}
+const handleUpdateOrderShipping = async (meta: updateOrderShippingPayload) => {
+  await updateOrderShipping(meta, props.order.orderMeta, textData)
+}
+const handleUpdateOrderBilling = async (meta: OrderBilling) => {
+  await updateOrderBilling(meta, props.order.orderMeta, textData)
+}
+const handleRemoveOrderCoupon = async () => {
+  await removeOrderCoupon(props.order, props.order.coupon, textData)
+}
+const handleAddOrderCoupon = async (coupon: string) => {
+  await addOrderCoupon(props.order, coupon, textData)
+}
+const handleUpdateOrderItem = async (updateOrderItemData: updateOrderItemPayload) => {
+  await updateOrderItem(updateOrderItemData, textData)
+}
 const filteredProducts = (orderItem: OrderItem) => {
   return props.products.filter((product) => {
     return !orderItem.exclusions.includes(product.name) && product.isActive
@@ -210,7 +228,12 @@ const filteredProducts = (orderItem: OrderItem) => {
 }
 
 const saveOrderReview = async () => {
-  const test = await handleUpdateOrder(props.order, review.value)
-  review.value = props.order.orderReview
+  await handleAddOrderReview(props.order, review.value, textData)
+}
+
+export type updateOrderShippingPayload = OrderShipping & { order: number }
+export type createOrderItemReviewPayload = {
+  newRatings: ReviewRatings
+  orderItemId: number
 }
 </script>

@@ -2,7 +2,10 @@
   <div v-if="!order">
     <CardSkeleton />
   </div>
-  <div v-else>
+  <div
+    v-else
+    class="flex flex-grow"
+  >
     <MobileOrder
       v-if="order && isMobile"
       :is-collapsed="false"
@@ -14,6 +17,7 @@
       @review-created="handleReviewCreated"
     />
     <DesktopOrder
+
       v-else
       :is-collapsed="false"
       :order="order"

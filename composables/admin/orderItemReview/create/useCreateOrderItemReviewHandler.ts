@@ -7,7 +7,7 @@ export const useCreateOrderItemReviewHandler = (t: ComposerTranslation) => {
   const toast = useToast()
   const { successToast, errorToast } = useToastService()
 
-  const createReview = async (newReview: createOrderItemReviewPayload, textData: string, t: ComposerTranslation) => {
+  const createReview = async (newReview: createOrderItemReviewPayload, textData: string) => {
     try {
       await executeCreateOrderItemReview(newReview)
       successToast(toast, t(`${textData}successToast.title`), t(`${textData}successToast.description`))

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-[1000px]">
+  <div class="min-w-[1000px] lg:flex-grow">
     <Panel
       :header="`Pedido ${order.id}`"
       :style="{ minHeight: isOneStepOrder }"
@@ -69,7 +69,7 @@
           </div>
           <div
             v-else-if="isCollapsed"
-            class="flex flex-row gap-4 mt-4"
+            class="flex flex-row gap-4 mt-4 lg:mt-10"
           >
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
               <Button
@@ -87,7 +87,7 @@
             </NuxtLink>
             <Button
               outlined
-              :label="$t(`${textData}discard`)"
+              :label="$t(`${textData}discard.title`)"
               :pt="{ label: 'text-[14px]', root: 'text-green-tertiary border-[1px] bg-red-secondary px-4 py-2 rounded-lg' }"
               @click="handleDiscardOrder"
             />
@@ -189,9 +189,9 @@ const props = defineProps<{
 const review = ref<string>(props.order.orderReview || '')
 const canWriteReview = computed (() => props.order.orderReview?.length < 1)
 const { createReview } = useCreateOrderItemReviewHandler(t)
-const { handleAddOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useUpdateOrderHandler(t)
+const { addOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useUpdateOrderHandler(t)
 const handleCreateReview = async (newReviewData: createOrderItemReviewPayload) => {
-  await createReview(newReviewData, textData, t)
+  await createReview(newReviewData, textData)
 }
 const handleDiscardOrder = async () => {
   await discardOrder(props.order.id, textData)

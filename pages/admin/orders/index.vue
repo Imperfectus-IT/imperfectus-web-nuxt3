@@ -1,7 +1,7 @@
 <template>
-  <div class="">
+  <div class="lg:flex-grow">
     <h4 class="font-recoleta-regular text-[28px]">
-      Mis Pedidos
+      {{ $t('orders.title') }}
     </h4>
     <OrdersSelector
       :available-orders="ordersSelectorCountRef"

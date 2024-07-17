@@ -39,13 +39,13 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import type { OrderDelivery } from '~/composables/admin/orders/types/OrderType.ts'
 
 const { t } = useI18n()
 const textData = 'orders.order.delivery.'
 const props = defineProps<{
   data: OrderDelivery
   header?: string
-  labelKey: string
 }>()
 
 const deliveryHourData = {

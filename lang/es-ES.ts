@@ -3292,7 +3292,17 @@ export default {
       pending: 'Este pedido está pendiente de pago',
       details: 'Detalles del pedido',
       payment: 'Finalizar pago',
-      discard: 'Descartar pedido',
+      discard: {
+        title: 'Descartar pedido',
+        successToast: {
+          title: '¡Pedido descartado!',
+          description: 'Tu pedido ha sido descartado correctamente',
+        },
+        errorToast: {
+          title: '¡Error!',
+          description: 'No se ha podido descartar tu pedido. Por favor, inténtelo de nuevo',
+        },
+      },
       carouselTitle: '¿Qué lleva tu caja?',
       cancelledDate: 'Fecha de cancelación: {date}',
       coupon: {
@@ -3372,6 +3382,14 @@ export default {
         item_7: 'Localidad',
         buttonModify: 'Modificar datos',
         buttonSave: 'Guardar',
+        successToast: {
+          title: '¡Datos guardados!',
+          description: 'Los datos de facturación se han guardado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al guardar los datos. Por favor, inténtelo de nuevo.',
+        },
       },
       review: {
         title: 'Valoración caja',
@@ -3400,7 +3418,7 @@ export default {
         },
         errorToast: {
           title: '¡Error!',
-          description: 'El proceso ha fallado. Por favor, inténtalo de nuevo.',
+          description: 'No se ha podido guardar tu valoración. Por favor, inténtalo de nuevo.',
         },
         button: 'Guardar valoración',
       },
@@ -3415,6 +3433,14 @@ export default {
           placeholder: 'Buscar',
         },
         saveButton: 'Guardar',
+        successToast: {
+          title: '¡Caja actualizada!',
+          description: 'Los cambios en tu caja se han guardado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al guardar los datos',
+        },
       },
     },
   },
@@ -3571,6 +3597,8 @@ export default {
     },
   },
   'subscriptions': {
+    title: 'Mis suscripciones',
+    add: 'Añadir suscripción',
     subscription: {
       title: 'Editar suscripción',
       description: 'Las suscripciones se renuevan y cobran cada domingo. Si quieres cancelar o pausar la suscripción, asegúrate de hacerlo antes del domingo para que no se genere ni cobre el pedido.',
