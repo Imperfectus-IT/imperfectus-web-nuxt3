@@ -7,7 +7,8 @@ watch(userLogin.value, (newValue) => {
   validateSchema(newValue)
 })
 const emit = defineEmits<{
-  (e: 'login'): void
+  (e: 'login'): void,
+  (e: 'auth-form-requested'): void,
 }>()
 
 const isButtonDisabled = computed(() => {
@@ -23,6 +24,7 @@ const submitLoginForm = async () => {
 <template>
   <section class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
     <div class="mb-5 lg:mb-10 text-center">
+      <slot name="backButton"/>
       <span class="font-recoleta-regular text-lg font-normal">{{
         $t("loginForm.login")
       }}</span>
@@ -92,18 +94,15 @@ const submitLoginForm = async () => {
           }"
         />
       </NuxtLink>
-      <NuxtLink
-        class="font-solina-extended-medium text-center"
-        :to="localePath({ name: 'auth-register' })"
-      >
-        <Button
+      <Button
+          class="font-solina-extended-medium text-center"
           :label="$t('orderStepAuth.hastAccount')"
           :pt="{
             root: { class: 'px-0 py-0' },
             label: { class: 'text-base underline' },
           }"
-        />
-      </NuxtLink>
+          @click.prevent="$emit('authFormRequested', 'register')"
+      />
     </form>
   </section>
 </template>

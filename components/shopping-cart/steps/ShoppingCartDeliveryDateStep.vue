@@ -21,25 +21,6 @@ const isSelectedDate = (date: CalendarDate) => {
   return dayjs(formattedDate).format('YYYY-MM-DD') === dayjs(selectedDate.value).format('YYYY-MM-DD')
 }
 
-const timeOptions = [
-  {
-    label: t('orderStepDate.timePreferenceOption1'),
-    value: 'full',
-  },
-  {
-    label: t('orderStepDate.timePreferenceOption2'),
-    value: 'morning',
-  },
-  {
-    label: t('orderStepDate.timePreferenceOption3'),
-    value: 'afternoon',
-  },
-  {
-    label: t('orderStepDate.timePreferenceOption4'),
-    value: 'night',
-  }
-]
-
 const getDateCellStyle = (date: CalendarDate) => {
   return date.selectable ? 'border-[1px] rounded-md w-7 h-7 flex justify-center items-center text-[13px]' : 'text-[13px]'
 }

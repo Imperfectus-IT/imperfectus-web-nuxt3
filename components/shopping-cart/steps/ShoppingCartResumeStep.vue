@@ -5,7 +5,7 @@ const { shoppingCart } = useShoppingCartState()
 const emit = defineEmits(['goToStep'])
 const goToNextStep = () => {
   const user = useStrapiUser()
-  user ? emit('goToStep', SHIPPING_STEP) : emit('goToStep', AUTH_STEP)
+  user?.value?.id ? emit('goToStep', SHIPPING_STEP) : emit('goToStep', AUTH_STEP)
 }
 </script>
 

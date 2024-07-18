@@ -62,6 +62,7 @@ export type ShoppingCart = {
   preferredHour: string
   invoiceRequired: boolean
   coverage?: string | null
+  coupon?: any
   items: Item[]
   currentItem: Item | null
   billingAddress: BillingAddress

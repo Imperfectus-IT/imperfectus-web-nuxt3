@@ -6,8 +6,8 @@ const { item } = defineProps<{
   item: Item
 }
 >()
-const showForSubscription = computed(() => item.purchaseType === SUBSCRIPTION_TYPE && item.boxSize)
-const showForOrder = computed(() => item.purchaseType === ORDER_TYPE && item)
+const showForSubscription = computed(() => item?.purchaseType === SUBSCRIPTION_TYPE && item.boxSize)
+const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
 </script>
 
 <template>
@@ -56,7 +56,7 @@ const showForOrder = computed(() => item.purchaseType === ORDER_TYPE && item)
           </p>
         </div>
       </div>
-      <Divider class="opacity-50" />
+      <Divider v-if="item?.boxProduct" class="opacity-50" />
       <div class="flex justify-between">
         <span class="text-xs leading-3">{{ $t('purchase_summary.frequency') }}</span>
         <span class="text-xs leading-3">{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</span>
@@ -67,7 +67,7 @@ const showForOrder = computed(() => item.purchaseType === ORDER_TYPE && item)
       </div>
       <div class="flex justify-between mt-3">
         <span class="text-xs leading-3">{{ $t('purchase_summary.boxType') }}</span>
-        <span class="text-xs leading-3">{{ item.boxType ? $t(`string.box.${item.boxType}`) : '-' }}</span>
+        <span class="text-xs leading-3">{{ item?.boxType ? $t(`string.box.${item?.boxType}`) : '-' }}</span>
       </div>
       <div class="flex justify-between mt-3">
         <span class="text-xs leading-3 grow">{{ $t('purchase_summary.exclusions') }}</span>

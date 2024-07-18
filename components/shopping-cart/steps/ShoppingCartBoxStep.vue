@@ -3,7 +3,6 @@ import { CUSTOMIZE_STEP } from '~/composables/shopping_cart/types/ShoppingCartCo
 
 const { shoppingCart } = useShoppingCartState()
 const { onSetBoxSize } = useShoppingCartBoxStep()
-const { isDesktop } = useScreenSize()
 defineEmits(['goToStep'])
 const boxDetails = [
   {
@@ -55,20 +54,26 @@ const boxDetails = [
         />
 
         <ShoppingCartBoxDetail
-          v-if="shoppingCart.currentItem.boxSize === box.size && shoppingCart.currentItem.boxProduct && !isDesktop"
-          class="mt-5"
+          v-if="shoppingCart.currentItem.boxSize === box.size && shoppingCart.currentItem.boxProduct"
+          class="mt-5 lg:hidden"
           :box-product="shoppingCart.currentItem.boxProduct"
         />
       </div>
     </div>
+    <ShoppingCartBoxDetail
+        v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.boxProduct"
+        class="mt-5 hidden lg:block"
+        :box-product="shoppingCart.currentItem.boxProduct"
+    />
     <NuxtImg
-      v-if="isDesktop && !shoppingCart.currentItem.boxSize"
+      v-if="!shoppingCart.currentItem.boxSize"
       alt="static_boxSize"
       src="/images/steps/boxSize/Ipad2_Dark2.webp"
-      class="w-[480px] mx-auto"
+      class="w-[480px] mx-auto hidden lg:block"
     />
     <div class="text-center mt-8">
       <Button
+        v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
         @click.prevent="$emit('goToStep', CUSTOMIZE_STEP)"

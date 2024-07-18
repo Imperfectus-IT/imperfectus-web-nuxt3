@@ -2023,9 +2023,11 @@ export default {
 
   // OrderCoupon
   'orderCoupon.message': '¿Tienes algún código de descuento?',
+  'orderCoupon.placeholder': '¿Código de descuento?',
   'orderCoupon.apply': 'Aplicar',
-  'orderCoupon.successMessage': 'Cupón aplicado correctamente',
-  'orderCoupon.errorMessage': 'Cupón no válido',
+  'orderCoupon.remove': 'Remover',
+  'orderCoupon.successMessage': 'Código correcto',
+  'orderCoupon.errorMessage': 'Código incorrecto',
   'orderCoupon.errorLimit':
     'Ya has utilizado este cupón el máximo número de veces',
   'orderCoupon.errorEligibilityCompanies':
@@ -2109,15 +2111,15 @@ export default {
   'orderStepCustomize.next': 'Continuar',
 
   // OrderStepDate
-  'orderStepDate.message': '¿Qué día quieres recibir tu primer envío?',
+  'orderStepDate.message': '¿Qué día quieres recibir tu envío?',
   'orderStepDate.available': 'Disponible',
   'orderStepDate.selected': 'Seleccionado',
-  'orderStepDate.deliveryNotes':
-    'Sólo para suscripciones: A partir de ahora si tu suscripción es semanal, la caja te llegará cada {nextDeliveryDay}, en cambio, si tu suscripción es cada dos semanas, te llegará un {nextDeliveryDay} sí y otro no. Recuerda que el pago se cobrará el domingo anterior.',
+  'orderStepDate.deliveryNotes.title': 'Ten en cuenta',
+  'orderStepDate.deliveryNotes': 'Las entregas de la caja serán semanales para suscripciones semanales y quincenales de manera alterna. **El pago se realizará cada domingo previo.**',
   'orderStepDate.nextDeliveryDay.tuesday': 'martes',
   'orderStepDate.nextDeliveryDay.wednesday': 'miércoles',
   'orderStepDate.nextDeliveryDay.thursday': 'jueves',
-  'orderStepDate.time': '¿A qué hora?',
+  'orderStepDate.time': '¿Franja horaria?',
   'orderStepDate.timePreferenceOption1': 'Sin preferencia',
   'orderStepDate.timePreferenceOption2': 'Entre las 10:00 y las 14:00',
   'orderStepDate.timePreferenceOption3': 'Entre las 14:00 y las 18:00',
@@ -3604,7 +3606,7 @@ export default {
       },
     },
   },
-  'subscriptions': {
+  subscriptions: {
     title: 'Mis suscripciones',
     add: 'Añadir suscripción',
     subscription: {
@@ -3653,7 +3655,7 @@ export default {
         selected: 'Tu selección actual:',
         exclusionsTitle: '¿Quieres excluir algun alimento?',
         exclusionsParagraph1: 'Puedes excluir hasta 6 alimentos.',
-        exclusionsParagraph2: 'Aún así, cada viernes enviamos un email con las frutas y verduras que habrá en la caja de la siguitente semana para que así puedas editar las exclusiones dependiendo del contenido de la caja.',
+        exclusionsParagraph2: 'Aún así, cada viernes enviamos un email con las frutas y verduras que habrá en la caja de la siguiente semana para que así puedas editar las exclusiones dependiendo del contenido de la caja.',
         saveButton: 'Guardar selección',
         cancelButton: 'Cancelar cambios',
         successToast: {

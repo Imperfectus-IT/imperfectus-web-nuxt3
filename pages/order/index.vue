@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import {
   AUTH_STEP,
-  AVAILABILITY_STEP, CUSTOMIZE_STEP, PURCHASE_TYPE_STEP, BOX_STEP, FREQUENCY_SUBSCRIPTION_TYPE_STEP, SHIPPING_STEP, DELIVERY_STEP, PAYMENT_STEP,
+  AVAILABILITY_STEP,
+  CUSTOMIZE_STEP,
+  PURCHASE_TYPE_STEP,
+  BOX_STEP,
+  FREQUENCY_SUBSCRIPTION_TYPE_STEP,
+  SHIPPING_STEP,
+  DELIVERY_STEP,
+  PAYMENT_STEP,
+  DELIVERY_DATE_STEP,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 defineI18nRoute({
@@ -22,6 +30,7 @@ const componentToRenderFromStep: Record<string, any> = {
   [AUTH_STEP]: resolveComponent('LazyShoppingCartAuthStep'),
   [RESUME_ITEM_STEP]: resolveComponent('LazyShoppingCartResumeStep'),
   [SHIPPING_STEP]: resolveComponent('LazyShoppingCartShippingStep'),
+  [DELIVERY_DATE_STEP]: resolveComponent('LazyShoppingCartDeliveryDateStep'),
   [DELIVERY_STEP]: resolveComponent('LazyShoppingCartDeliveryStep'),
   [PAYMENT_STEP]: resolveComponent('LazyShoppingCartPaymentStep'),
 }
@@ -33,7 +42,7 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  await executeStep(AVAILABILITY_STEP)
+  await executeStep(DELIVERY_DATE_STEP)
 })
 </script>
 

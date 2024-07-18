@@ -3,12 +3,12 @@ import {
   FREQUENCY_SUBSCRIPTION_TYPE_STEP,
   BOX_STEP,
   AVAILABILITY_STEP,
+  ORDER_TYPE,
+  SUBSCRIPTION_TYPE,
 } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const emit = defineEmits(['goToStep'])
 const { shoppingCart } = useShoppingCartState()
-const ONCE_ORDER_PURCHASE_TYPE = 'order'
-const SUBSCRIPTION_PURCHASE_TYPE = 'subscription'
 
 const { emptyItem } = useShoppingCartFactory()
 
@@ -19,13 +19,13 @@ const setPurchaseType = (purchaseType: string) => {
   shoppingCart.value.currentItem.purchaseType = purchaseType
 }
 
-const isSubscriptionPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === SUBSCRIPTION_PURCHASE_TYPE)
-const isOrderPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === ONCE_ORDER_PURCHASE_TYPE)
+const isSubscriptionPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === SUBSCRIPTION_TYPE)
+const isOrderPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === ORDER_TYPE)
 
 const goToNextStep = () => {
   const purchaseTypesForStep = {
-    [SUBSCRIPTION_PURCHASE_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-    [ONCE_ORDER_PURCHASE_TYPE]: BOX_STEP,
+    [SUBSCRIPTION_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
+    [ORDER_TYPE]: BOX_STEP,
   }
 
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
@@ -38,7 +38,7 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] relatve">
+  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] relative">
     <div class="flex items-center justify-center gap-3">
       <div class="!absolute left-5 flex flex-row gap-3">
         <Button
@@ -60,12 +60,12 @@ const goBack = () => {
       <Button
         outlined
         :label="$t('order.steps.stepPurchase.btn-subscription')"
-        @click.prevent="setPurchaseType(SUBSCRIPTION_PURCHASE_TYPE)"
+        @click.prevent="setPurchaseType(SUBSCRIPTION_TYPE)"
       />
       <Button
         outlined
         :label="$t('order.steps.stepPurchase.btn-order')"
-        @click.prevent="setPurchaseType(ONCE_ORDER_PURCHASE_TYPE)"
+        @click.prevent="setPurchaseType(ORDER_TYPE)"
       />
     </div>
     <div

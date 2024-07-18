@@ -7,6 +7,7 @@ export const AUTH_STEP = 'StepAuth'
 export const RESUME_ITEM_STEP = 'StepResumeItem'
 export const SHIPPING_STEP = 'StepShipping'
 export const DELIVERY_STEP = 'StepDelivery'
+export const DELIVERY_DATE_STEP = 'StepDeliveryDate'
 export const PAYMENT_STEP = 'StepPayment'
 
 export const WEEKLY_FREQUENCY = 'weekly'

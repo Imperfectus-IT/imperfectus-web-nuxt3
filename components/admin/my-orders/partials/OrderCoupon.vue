@@ -5,12 +5,12 @@
   >
     {{ $t('orderCoupon.message') }}
   </h4>
-  <InputGroup class="my-2 lg:w-ful flex flex-row">
+  <InputGroup :class="['my-2 lg:w-full flex flex-row', validCouponStyle]">
     <InputText
       v-model="coupon"
       :disabled="isInputDisabled"
-      class="rounded-l-xl max-h-[42px] lg:w-1/2"
-      placeholder="¿Código de descuento?"
+      :class="['rounded-l-xl max-h-[42px] lg:w-2/3', validCouponStyle]"
+      :placeholder="$t('orderCoupon.placeholder')"
     />
     <Button
       v-if="!orderCoupon"
@@ -25,6 +25,9 @@
       @click="removeOrderCoupon"
     />
   </InputGroup>
+  <span v-if="orderCoupon" :class="['text-base', orderCoupon ? 'text-green-secondary' : 'text-red-primary']">
+    {{ couponMessageText }}
+  </span>
 </template>
 
 <script setup lang='ts'>
@@ -41,6 +44,7 @@ const props = defineProps({
     required: false,
   },
 })
+
 const textData = 'orders.order.coupon.'
 const coupon = ref<string>(props.orderCoupon?.coupon || '')
 const emits = defineEmits(['add-coupon', 'remove-coupon'])
@@ -54,4 +58,7 @@ const removeOrderCoupon = () => {
   emits('remove-coupon')
   coupon.value = ''
 }
+
+const validCouponStyle = computed(() => props.orderCoupon ? '!border-green-secondary' : '!border-red-primary')
+const couponMessageText = computed(() => props.orderCoupon ? t('orderCoupon.successMessage') : t('orderCoupon.errorMessage'))
 </script>

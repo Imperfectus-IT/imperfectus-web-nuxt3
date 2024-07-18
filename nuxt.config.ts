@@ -154,6 +154,7 @@ export default defineNuxtConfig({
         'Timeline',
         'Toast',
         'Toolbar',
+        'VirtualScroller',
       ],
     },
   },
