@@ -12,12 +12,12 @@ const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
 
 <template>
   <Panel
+     class="rounded-tl-lg rounded-tr-lg bg-beige-primary"
     :header="$t('purchase_summary.title')"
     toggleable
     collapsed
     :pt="{
-      header: '!bg-beige-primary',
-      content: '!bg-beige-primary',
+      header: 'h-20',
     }"
     :pt-options="{
       mergeSections: true,

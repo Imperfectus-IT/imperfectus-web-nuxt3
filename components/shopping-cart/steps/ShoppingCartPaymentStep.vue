@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const emit = defineEmits(['goToStep'])
 const textData = {
   section: 'shopping_cart.paymentStep.',
   conditions: {
@@ -26,6 +27,7 @@ const addTextStyle = (key: string) => {
         icon="mdi mdi-chevron-left"
         rounded
         outlined
+        @click.prevent="$emit('goToStep', DELIVERY_STEP)"
       />
       <p class="font-recoleta-regular text-xl font-normal text-center w-2/3">
         {{ $t(`${textData.section}title`) }}

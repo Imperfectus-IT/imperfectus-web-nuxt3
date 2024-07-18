@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import {
-  RESUME_ITEM_STEP,
-} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-import { MIXED_BOX_TYPE, FRUITS_BOX_TYPE, VEGETABLES_BOX_TYPE } from '~/composables/shared/product/types/ProductConstants.ts'
-
 const { shoppingCart } = useShoppingCartState()
 const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
 const { t } = useI18n()
@@ -91,6 +86,7 @@ const exclusions = [
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="$emit('goToStep', BOX_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -162,14 +158,14 @@ const exclusions = [
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-      v-if="shoppingCart.currentItem"
-      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden bg-beige-primary"
-      :item="shoppingCart.currentItem"
+        v-if="shoppingCart.currentItem?.frequency"
+        class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
+        :item="shoppingCart.currentItem"
     />
     <ShoppingCartPurchaseSummaryFloating
-      v-if="shoppingCart.currentItem"
-      class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
-      :item="shoppingCart.currentItem"
+        v-if="shoppingCart.currentItem?.frequency"
+        class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
+        :item="shoppingCart.currentItem"
     />
   </div>
 </template>

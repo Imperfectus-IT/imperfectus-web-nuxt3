@@ -1,20 +1,11 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
-import {useI18n} from 'vue-i18n'
 import type {CalendarDate} from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
-import {
-  DELIVERY_STEP,
-  PAYMENT_STEP
-} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 
 const emit = defineEmits(['goToStep'])
-const {t} = useI18n()
 const {dateBuilder} = useDateBuilder()
 const {shoppingCart} = useShoppingCartState()
 
-const goBack = () => {
-  emit('goToStep', DELIVERY_STEP)
-}
 const selectedDate = ref(dayjs().toDate())
 const isSelectedDate = (date: CalendarDate) => {
   const formattedDate = dateBuilder(date)
@@ -35,7 +26,7 @@ const getDateCellStyle = (date: CalendarDate) => {
             icon="mdi mdi-chevron-left"
             rounded
             outlined
-            @click.prevent="goBack"
+            @click.prevent="emit('goToStep', SHIPPING_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -92,12 +83,12 @@ const getDateCellStyle = (date: CalendarDate) => {
       <Button
           severity="secondary"
           :label="$t('orderMeta.continue')"
-          @click.prevent="$emit('goToStep', PAYMENT_STEP)"
+          @click.prevent="$emit('goToStep', DELIVERY_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
         v-if="shoppingCart.currentItem"
-        class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden bg-beige-primary"
+        class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
         :item="shoppingCart.currentItem"
     />
   </div>

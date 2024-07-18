@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { DELIVERY_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
 const { shoppingCart } = useShoppingCartState()
 const emit = defineEmits(['goToStep'])
 </script>
@@ -14,6 +12,7 @@ const emit = defineEmits(['goToStep'])
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="$emit('goToStep', RESUME_ITEM_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -62,7 +61,7 @@ const emit = defineEmits(['goToStep'])
       <Button
         severity="secondary"
         :label="$t('orderMeta.continue')"
-        @click.prevent="$emit('goToStep', DELIVERY_STEP)"
+        @click.prevent="$emit('goToStep', DELIVERY_DATE_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

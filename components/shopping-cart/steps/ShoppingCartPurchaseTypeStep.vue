@@ -1,12 +1,4 @@
 <script setup lang="ts">
-import {
-  FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-  BOX_STEP,
-  AVAILABILITY_STEP,
-  ORDER_TYPE,
-  SUBSCRIPTION_TYPE,
-} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
 const emit = defineEmits(['goToStep'])
 const { shoppingCart } = useShoppingCartState()
 

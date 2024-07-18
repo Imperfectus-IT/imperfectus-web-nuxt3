@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { PURCHASE_TYPE_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
 const { shoppingCart } = useShoppingCartState()
 const { executeFindCoverageByPostalCode } = useFindCoverageByPostalCode()
 const {

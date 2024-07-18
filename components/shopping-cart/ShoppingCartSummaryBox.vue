@@ -82,6 +82,7 @@ const decrementQuantity = (item) => {
         icon="mdi mdi-chevron-left"
         rounded
         outlined
+        @click.prevent="$emit('goBack')"
       />
       <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
     </div>

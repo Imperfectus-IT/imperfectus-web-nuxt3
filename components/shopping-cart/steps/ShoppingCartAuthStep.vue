@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { RESUME_ITEM_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
 defineEmits(['goToStep'])
 const {
   REGISTER_EVENT,
   LOGIN_EVENT,
   componentRender,
   loadComponent,
-  handleLoginEvent,
-  handleRegisterEvent
 } = useAuth()
 </script>
 
@@ -15,7 +12,7 @@ const {
   <RegisterForm
       v-if="componentRender === REGISTER_EVENT"
       class="mt-8"
-      @user-registered="handleRegisterEvent"
+      @user-registered="$emit('goToStep', SHIPPING_STEP)"
       @auth-form-requested="loadComponent"
   >
     <template #backButton>
@@ -25,7 +22,7 @@ const {
   <LoginForm
       v-if="componentRender === LOGIN_EVENT"
       class="mt-8"
-      @login="handleLoginEvent"
+      @login="$emit('goToStep', SHIPPING_STEP)"
       @auth-form-requested="loadComponent"
   >
     <template #backButton>
