@@ -3945,4 +3945,43 @@ export default {
       },
     },
   },
+  'referrals': {
+    title: 'Recomienda TALKUAL y gana descuentos',
+    recommend: {
+      title: '¡Recomienda TALKUAL y consigue 15% de descuento en tu próxima caja!',
+      description: '¿Sabes cómo podrías alegrar el día a una persona que quieres? ¡Regalándole 15% en su primera compra! Además, tú también conseguirás 15% de descuento.',
+      subject_message: 'Aquí te dejo un cupón de descuento del 15% para que pruebes las frutas y verduras imperfectas de TALKUAL',
+      body_message: '¡Hola! 💚 Aquí te dejo un cupón de descuento del 15% para que pruebes las frutas y verduras imperfectas de TALKUAL. Accede a la web: https://www.talkualfoods.com/nuestras-cajas Cupón: {coupon}',
+      button: 'Copiar',
+      toasts: {
+        successToast: {
+          title: '¡Cupón copiado!',
+          description: 'El cupón ha sido copiado correctamente al portapapeles',
+        },
+        errorToast: {
+          title: '¡Error!',
+          description: 'Ha habido un error al copiar el cupón',
+        },
+      },
+    },
+    my_coupons: {
+      title: 'Tus cupones',
+      used: 'Usados ({quantity})',
+      unused: 'No usados ({quantity})',
+      text: 'No tienes ningún cupón',
+      discount: 'Descuento: {discount}%',
+    },
+    faqs: {
+      title: 'Preguntas frecuentes',
+      question: '¿Cómo se aplican tus cupones?',
+      answer_1: {
+        title: 'Suscripción activa: ',
+        description: 'Los cupones (no acumulables) se aplicarán automáticamente en tu siguiente renovación.',
+      },
+      answer_2: {
+        title: 'Compra única: ',
+        description: 'Puedes aplicar el cupón copiándolo y aplicándolo en tu nueva compra manualmente.',
+      },
+    },
+  },
 }
