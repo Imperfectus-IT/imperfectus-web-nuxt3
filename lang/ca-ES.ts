@@ -2135,6 +2135,10 @@ export default {
   'orderStepPayment.message':
         'Per gestionar als teus mètodes de pagament pots dirigir-te a la secció \'Mètodes de pagament\' situat en el teu compte',
   'orderStepPayment.creditCard': 'Pagament amb targeta de dèbit/crèdit',
+  'order.steps.stepPayment.methodType.debit': 'Pago con tarjeta de débito/crédito o pago exprés',
+  'order.steps.stepPayment.termConditions': 'Al completar tu pedido aceptas los [**Términos y Condiciones**](https://www.talkualfoods.com/terminos-y-condiciones) y nuestra [**Política de Privacidad**](https://www.talkualfoods.com/politica-de-privacidad), así como recibir comunicaciones informativas y transaccionales en relación a pedidos, transporte, servicio o entregas.',
+  'order.steps.stepPayment.whatsappInfo': 'Quiero recibir recetas y consejos de aprovechamiento, conocer a los agricultores y recibir descuentos y promociones.',
+  'order.steps.stepPayment.marketingInfo': 'Acepto recibir comunicaciones por WhatsApp sobre la suscripción, envíos y preferencias.',
   'orderStepPayment.pay': 'Realitzar pagament',
   'orderStepPayment.terms1': 'En completar la teva comanda acceptes els',
   'orderStepPayment.terms2': 'i la',

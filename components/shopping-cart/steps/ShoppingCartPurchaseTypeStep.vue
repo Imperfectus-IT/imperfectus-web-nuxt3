@@ -24,9 +24,6 @@ const goToNextStep = () => {
 
   emit('goToStep', nextStep)
 }
-const goBack = () => {
-  emit('goToStep', AVAILABILITY_STEP)
-}
 </script>
 
 <template>
@@ -38,7 +35,7 @@ const goBack = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="goBack"
+          @click.prevent="$emit('goToStep', AVAILABILITY_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>

@@ -29,7 +29,7 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  await executeStep(AVAILABILITY_STEP)
+  await executeStep(PAYMENT_STEP)
 })
 </script>
 

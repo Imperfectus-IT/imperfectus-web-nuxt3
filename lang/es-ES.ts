@@ -1218,6 +1218,10 @@ export default {
   'order.steps.stepAuth.register': 'Registrar usuario',
   'order.steps.stepShipping.title': 'Datos de envío',
   'order.steps.stepPayment.title': 'Finalizar compra',
+  'order.steps.stepPayment.methodType.debit': 'Pago con tarjeta de débito/crédito o pago exprés',
+  'order.steps.stepPayment.termConditions': 'Al completar tu pedido aceptas los [**Términos y Condiciones**](https://www.talkualfoods.com/terminos-y-condiciones) y nuestra [**Política de Privacidad**](https://www.talkualfoods.com/politica-de-privacidad), así como recibir comunicaciones informativas y transaccionales en relación a pedidos, transporte, servicio o entregas.',
+  'order.steps.stepPayment.whatsappInfo': 'Quiero recibir recetas y consejos de aprovechamiento, conocer a los agricultores y recibir descuentos y promociones.',
+  'order.steps.stepPayment.marketingInfo': 'Acepto recibir comunicaciones por WhatsApp sobre la suscripción, envíos y preferencias.',
   'order.steps.stepNotAvailable.title':
     'Lo sentimos, de momento no podemos entregar a su localidad. Puede dejar su correo electrónico y le avisaremos en cuanto esté disponible.',
   'order.steps.stepResume': 'Resumen del pedido',

@@ -65,6 +65,9 @@ export const useShoppingCartFactory = () => {
       items: [],
       currentItem: null,
       coupon: null,
+      termConditions: false,
+      whatsappInfo: false,
+      marketingInfo: false,
       billingAddress: emptyBillingAddress(),
       shippingAddress: emptyShippingAddress(),
     }

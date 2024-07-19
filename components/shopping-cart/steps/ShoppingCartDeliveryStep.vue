@@ -56,8 +56,7 @@ const timeOptions = [
       </div>
     </div>
     <div class="lg:flex gap-5">
-      <div
-        class="lg:border lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] mt-10 lg:mt-14 font-solina-extended-book text-xs leading-5"
+      <div class="my-auto lg:border lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] mt-10 lg:mt-14 font-solina-extended-book text-xs leading-5"
       >
         <div class="border rounded-lg lg:border-green-tertiary/50 p-4">
           <div class="flex justify-between items-center">
@@ -176,7 +175,7 @@ const timeOptions = [
           </div>
         </div>
       </div>
-      <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
+      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
         <ShoppingCartSummaryBox>
           <template #title>
             <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">

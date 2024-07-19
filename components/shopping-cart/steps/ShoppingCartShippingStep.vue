@@ -53,7 +53,7 @@ const emit = defineEmits(['goToStep'])
         </div>
         <ShoppingCartBillingAddress v-if="shoppingCart.invoiceRequired" />
       </div>
-      <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
+      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
         <ShoppingCartSummaryBox />
       </div>
     </div>
