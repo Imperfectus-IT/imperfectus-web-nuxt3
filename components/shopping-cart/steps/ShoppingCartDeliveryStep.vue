@@ -2,9 +2,25 @@
 const emit = defineEmits(['goToStep'])
 const { shoppingCart } = useShoppingCartState()
 const { t } = useI18n()
-const deliveryType = ref('pickup')
+const deliveryType = ref(PICKUP_POINT_DELIVERY_TYPE)
 
 const carrierOptions = ['mensakas', 'paack', 'correosexp', 'seur', 'ctt', 'talkual']
+const pickupCarrierOptions = [
+  {
+    label: t('orderStepDate.carrier.seur'),
+    value: 'seur',
+  }
+]
+const pickupPointList = [
+  {
+    id: 1,
+    address: 'OF.CORREOS: BARCELONA. PS. SANT JOAN, 196, Barcelona, Barcelona, 08037',
+  },
+  {
+    id: 2,
+    address: 'OF.CORREOS: BARCELONA. PS. SANT JOAN, 196, Barcelona, Barcelona, 08037',
+  }
+]
 const timeOptions = [
   {
     label: t('orderStepDate.timePreferenceOption1'),
@@ -61,21 +77,21 @@ const timeOptions = [
           </p>
           <InputGroup>
             <Button
-              :class="['w-1/2 rounded-none rounded-l-xl h-[34px]', { 'bg-green-primary': deliveryType === 'pickup' }]"
+              :class="['w-1/2 rounded-none rounded-l-xl h-[34px]', { 'bg-green-primary': deliveryType === PICKUP_POINT_DELIVERY_TYPE }]"
               :label="$t('orderStepDate.nextDeliveryDay.methodType.pickup')"
               outlined
-              @click.prevent="deliveryType = 'pickup'"
+              @click.prevent="deliveryType = PICKUP_POINT_DELIVERY_TYPE"
             />
             <Button
-              :class="['w-1/2 rounded-none rounded-r-xl h-[34px]', { 'bg-green-primary': deliveryType === 'home' }]"
+              :class="['w-1/2 rounded-none rounded-r-xl h-[34px]', { 'bg-green-primary': deliveryType === HOME_DELIVERY_TYPE }]"
               :label="$t('orderStepDate.nextDeliveryDay.methodType.home')"
               outlined
-              @click.prevent="deliveryType = 'home'"
+              @click.prevent="deliveryType = HOME_DELIVERY_TYPE"
             />
           </InputGroup>
         </div>
         <div
-          v-if="deliveryType === 'pickup'"
+          v-if="deliveryType === HOME_DELIVERY_TYPE"
           class="mt-6"
         >
           <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
@@ -110,18 +126,54 @@ const timeOptions = [
               </p>
             </div>
           </div>
+          <div class="mt-6">
+            <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
+              {{ $t('orderStepDate.time') }}
+            </p>
+            <Dropdown
+                v-model="shoppingCart.preferredHour"
+                :options="timeOptions"
+                option-label="label"
+                option-value="value"
+                class="lg:w-full text-base"
+            />
+          </div>
         </div>
-        <div class="mt-6">
+        <div v-if="deliveryType === PICKUP_POINT_DELIVERY_TYPE"
+             class="mt-6">
           <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
             {{ $t('orderStepDate.time') }}
           </p>
           <Dropdown
-            v-model="shoppingCart.preferredHour"
-            :options="timeOptions"
-            option-label="label"
-            option-value="value"
-            class="lg:w-full text-base"
+              v-model="shoppingCart.coverage"
+              :options="pickupCarrierOptions"
+              option-label="label"
+              option-value="value"
+              class="lg:w-full text-base border rounded-lg"
           />
+          <div class="mt-6">
+            <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
+              {{ $t('orderStepDate.carrier.preferredPickup') }}
+            </p>
+            <MDC class="bg-orange-primary p-4 leading-4 rounded-lg my-6" :value="$t('orderStepDate.carrier.caution')" />
+            <div
+                v-for="pickupPoint in pickupPointList"
+                :key="pickupPoint.id"
+                class="mb-3 cursor-pointer lg:w-2/3"
+                @click.prevent="shoppingCart.shippingAddress.address1 = pickupPoint.id"
+            >
+              <RadioButton
+                  v-model="shoppingCart.shippingAddress.address1"
+                  input-id="pickupPoint"
+                  name="pickupPoint"
+                  :value="pickupPoint.id"
+              />
+              <label
+                  for="coverage"
+                  class="ml-2 text-xs font-normal leading-5"
+              >{{ pickupPoint.address }}</label>
+            </div>
+          </div>
         </div>
       </div>
       <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
