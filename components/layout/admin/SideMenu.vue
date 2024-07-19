@@ -11,7 +11,7 @@
     <NuxtLink
       v-for="item in mainMenu"
       :key="item.id"
-      :to="localePath({ name: item.route })"
+      :to="getRouteTo(item)"
       class="pb-1 active:font-bold cursor-pointer flex flex-col"
       @click="hideTopNavbar"
     >{{ item.label }}
@@ -20,7 +20,7 @@
     <NuxtLink
       v-for="item in secondaryMenu"
       :key="item.id"
-      :to="localePath({ name: item.route })"
+      :to="getRouteTo(item)"
       class="pb-1 text-[1.125rem] cursor-pointer flex flex-col"
       @click="hideTopNavbar"
     >{{ item.label }}
@@ -36,6 +36,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+type LinkItem = {
+  id: string
+  label: string
+  route?: string
+  link?: string
+}
+
 const localePath = useLocalePath()
 const { t } = useI18n()
 
@@ -46,8 +53,9 @@ const hideTopNavbar = () => {
 }
 
 const { handleLogoutUser } = useLogoutUserHandler()
+const getRouteTo = (item: LinkItem) => item.route ? localePath({ name: item.route }) : item.link
 
-const mainMenu = [
+const mainMenu: LinkItem[] = [
   {
     id: useId(),
     label: t('side_admin_menu.personal_data'),
@@ -80,11 +88,11 @@ const mainMenu = [
   },
 ]
 
-const secondaryMenu = [
+const secondaryMenu: LinkItem[] = [
   {
     id: useId(),
     label: t('side_admin_menu.faq'),
-    route: 'faq',
+    link: 'https://help.talkualfoods.com/knowledge',
   },
   {
     id: useId(),

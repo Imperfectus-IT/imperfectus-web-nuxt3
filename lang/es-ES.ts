@@ -3606,7 +3606,7 @@ export default {
       },
     },
   },
-  subscriptions: {
+  'subscriptions': {
     title: 'Mis suscripciones',
     add: 'Añadir suscripción',
     subscription: {
@@ -3984,6 +3984,18 @@ export default {
         title: 'Compra única: ',
         description: 'Puedes aplicar el cupón copiándolo y aplicándolo en tu nueva compra manualmente.',
       },
+    },
+  },
+  'newsletter': {
+    title: 'Newsletter',
+    description_1: 'Actualmente no estás suscrito a la Newsletter.',
+    description_2: 'Suscríbete y mantente al día de nuestras novedades, productos, recetas y mucho más',
+    inputPlaceholder: 'Tu correo electrónico',
+    sendButton: 'Enviar',
+    subscribed: {
+      title: '¡Estás suscrito!',
+      description: 'Con tu suscripción recibirás información sobre productos rescatados, recetas, nuestro blog, aclaraciones, etc.',
+      handleButton: 'Gestionar suscripción de comunicaciones',
     },
   },
 }

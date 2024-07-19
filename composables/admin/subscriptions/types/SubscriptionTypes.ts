@@ -21,15 +21,6 @@ export type Subscription = {
   payment: Payment | number
 }
 
-export type Coupon = {
-  id: string
-  coupon: string
-  isActive: boolean
-  discountValue: number
-  discountType: string
-  type: string
-}
-
 export type SubscriptionItem = {
   id: number
   quantity: number
