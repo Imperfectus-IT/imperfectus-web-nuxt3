@@ -141,12 +141,12 @@ const exclusions = [
       />
     </div>
     <NuxtImg
-        v-if="shoppingCart.currentItem.boxType"
-        class="hidden lg:block w-[480px] mx-auto rounded-lg mt-10"
-        :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
-        :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
-        format="webp"
-        preload
+      v-if="shoppingCart.currentItem.boxType"
+      class="hidden lg:block w-[480px] mx-auto rounded-lg mt-10"
+      :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+      :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
+      format="webp"
+      preload
     />
     <ShoppingCartBoxTypeExclusions :product-exclusions="exclusions" />
     <div class="text-center mt-6">
@@ -158,14 +158,14 @@ const exclusions = [
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-        v-if="shoppingCart.currentItem?.frequency"
-        class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
-        :item="shoppingCart.currentItem"
+      v-if="shoppingCart.currentItem?.frequency"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
+      :item="shoppingCart.currentItem"
     />
     <ShoppingCartPurchaseSummaryFloating
-        v-if="shoppingCart.currentItem?.frequency"
-        class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
-        :item="shoppingCart.currentItem"
+      v-if="shoppingCart.currentItem?.frequency"
+      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
+      :item="shoppingCart.currentItem"
     />
   </div>
 </template>

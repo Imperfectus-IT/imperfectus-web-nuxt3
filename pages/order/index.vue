@@ -24,8 +24,8 @@ const componentToRenderFromStep: Record<string, any> = {
 
 const currentProgress = computed(() => {
   const totalSteps = Object.keys(componentToRenderFromStep).length - 1
-  const currentStepIndex = Object.keys(componentToRenderFromStep).findIndex(step => step === shoppingCart.value.step);
-  return (currentStepIndex / (totalSteps - 1)) * 100;
+  const currentStepIndex = Object.keys(componentToRenderFromStep).findIndex(step => step === shoppingCart.value.step)
+  return (currentStepIndex / (totalSteps - 1)) * 100
 })
 
 onMounted(async () => {
@@ -35,7 +35,10 @@ onMounted(async () => {
 
 <template>
   <section>
-    <ProgressBar class="my-5 w-full" :value="currentProgress"/>
+    <ProgressBar
+      class="my-5 w-full"
+      :value="currentProgress"
+    />
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

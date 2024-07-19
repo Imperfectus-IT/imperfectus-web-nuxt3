@@ -17,7 +17,7 @@ const filteredExclusions = computed(() => {
   })
 })
 const productExclusionsResume = computed(() => {
-  return t('admin.order.exclusions.limit', { 'current_exclusions': selectedProductExclusions.value.length, 'max_exclusions': 6 })
+  return t('admin.order.exclusions.limit', { current_exclusions: selectedProductExclusions.value.length, max_exclusions: 6 })
 })
 </script>
 
@@ -45,7 +45,10 @@ const productExclusionsResume = computed(() => {
       <strong>{{ $t('order.steps.stepCustomize.exclusions.bold', { max: 6 }) }}</strong>
       {{ $t('order.steps.stepCustomize.exclusions') }}
     </span>
-    <div v-if="isExclusionSelected" class="w-full">
+    <div
+      v-if="isExclusionSelected"
+      class="w-full"
+    >
       <IconField icon-position="left">
         <InputIcon>
           <i class="mdi mdi-magnify text-lg" />
@@ -59,21 +62,26 @@ const productExclusionsResume = computed(() => {
       <p class="my-4">
         {{ productExclusionsResume }}
       </p>
-      <VirtualScroller scrollHeight="300px" :items="filteredExclusions" :itemSize="filteredExclusions.length * 4" :autoSize="true">
-        <template v-slot:item="{ item }">
+      <VirtualScroller
+        scroll-height="300px"
+        :items="filteredExclusions"
+        :item-size="filteredExclusions.length * 4"
+        :auto-size="true"
+      >
+        <template #item="{ item }">
           <div
-              class="py-3"
+            class="py-3"
           >
             <Checkbox
-                v-model="selectedProductExclusions"
-                class="mr-3"
-                :input-id="item.id"
-                name="productExclusion"
-                :value="item"
+              v-model="selectedProductExclusions"
+              class="mr-3"
+              :input-id="item.id"
+              name="productExclusion"
+              :value="item"
             />
             <label
-                class="font-solina-extended-book tex-base"
-                :for="item?.name"
+              class="font-solina-extended-book tex-base"
+              :for="item?.name"
             >{{ item?.name }}</label>
           </div>
         </template>

@@ -3620,7 +3620,7 @@ export default {
       },
     },
   },
-  subscriptions: {
+  'subscriptions': {
     title: 'Mis suscripciones',
     add: 'Añadir suscripción',
     subscription: {

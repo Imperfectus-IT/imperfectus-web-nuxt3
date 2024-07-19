@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
-import type {CalendarDate} from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
+import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
 
 const emit = defineEmits(['goToStep'])
-const {dateBuilder} = useDateBuilder()
-const {shoppingCart} = useShoppingCartState()
+const { dateBuilder } = useDateBuilder()
+const { shoppingCart } = useShoppingCartState()
 
 const selectedDate = ref(dayjs().toDate())
 const isSelectedDate = (date: CalendarDate) => {
@@ -22,11 +22,11 @@ const getDateCellStyle = (date: CalendarDate) => {
     <div class="flex items-center justify-center gap-3 lg:mt-14">
       <div class="!absolute left-5 flex flex-row gap-3">
         <Button
-            class="w-[2rem] h-[2rem] text-xl "
-            icon="mdi mdi-chevron-left"
-            rounded
-            outlined
-            @click.prevent="emit('goToStep', SHIPPING_STEP)"
+          class="w-[2rem] h-[2rem] text-xl "
+          icon="mdi mdi-chevron-left"
+          rounded
+          outlined
+          @click.prevent="emit('goToStep', SHIPPING_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -44,52 +44,54 @@ const getDateCellStyle = (date: CalendarDate) => {
           }}
         </p>
         <Calendar
-            class="mt-5"
-            v-model="selectedDate"
-            inline
-            :disabled-days="[0, 1, 6]"
+          v-model="selectedDate"
+          class="mt-5"
+          inline
+          :disabled-days="[0, 1, 6]"
         >
           <template #date="slotProps">
             <div
-                v-if="isSelectedDate(slotProps.date)"
-                class="bg-green-primary rounded-md w-7 h-7 flex justify-center items-center text-[13px]"
+              v-if="isSelectedDate(slotProps.date)"
+              class="bg-green-primary rounded-md w-7 h-7 flex justify-center items-center text-[13px]"
             >
               {{ slotProps.date.day }}
             </div>
             <div
-                v-else
-                :class="getDateCellStyle(slotProps.date)"
+              v-else
+              :class="getDateCellStyle(slotProps.date)"
             >
               {{ slotProps.date.day }}
             </div>
           </template>
         </Calendar>
         <div class="w-64 text-center align-baseline mt-5">
-          <span class="mdi mdi-square-outline text-lg inline-block align-top rounded-xl"/>
+          <span class="mdi mdi-square-outline text-lg inline-block align-top rounded-xl" />
           <span class="inline-block align-top mr-3">{{ $t('orderStepDate.available') }}</span>
-          <span class="mdi mdi-square text-green-primary text-lg inline-block align-top rounded-xl"/>
+          <span class="mdi mdi-square text-green-primary text-lg inline-block align-top rounded-xl" />
           <span class="inline-block align-top">{{ $t('orderStepDate.selected') }}</span>
         </div>
       </div>
       <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
         <ShoppingCartSummaryBox>
           <template #title>
-            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">{{ $t('order.steps.stepResume') }}</h3>
+            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
+              {{ $t('order.steps.stepResume') }}
+            </h3>
           </template>
         </ShoppingCartSummaryBox>
       </div>
     </div>
     <div class="flex justify-center mt-6">
       <Button
-          severity="secondary"
-          :label="$t('orderMeta.continue')"
-          @click.prevent="$emit('goToStep', DELIVERY_STEP)"
+        severity="secondary"
+        :label="$t('orderMeta.continue')"
+        @click.prevent="$emit('goToStep', DELIVERY_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-        v-if="shoppingCart.currentItem"
-        class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
-        :item="shoppingCart.currentItem"
+      v-if="shoppingCart.currentItem"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
+      :item="shoppingCart.currentItem"
     />
   </div>
 </template>

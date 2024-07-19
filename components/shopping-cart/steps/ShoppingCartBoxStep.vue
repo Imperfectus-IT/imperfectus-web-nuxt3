@@ -67,9 +67,9 @@ const goBack = () => {
       </div>
     </div>
     <ShoppingCartBoxDetail
-        v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.boxProduct"
-        class="mt-5 hidden lg:block"
-        :box-product="shoppingCart.currentItem.boxProduct"
+      v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.boxProduct"
+      class="mt-5 hidden lg:block"
+      :box-product="shoppingCart.currentItem.boxProduct"
     />
     <NuxtImg
       v-if="!shoppingCart.currentItem.boxSize"

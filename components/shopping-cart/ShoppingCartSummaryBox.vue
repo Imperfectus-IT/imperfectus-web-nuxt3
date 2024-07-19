@@ -97,10 +97,10 @@ const decrementQuantity = (item) => {
     class="lg:flex mb-5 lg:mb-0 lg:gap-4 lg:flex-wrap"
   >
     <NuxtImg
-        :src="'/images/boxes/Caixa-M.webp'"
-        loading="lazy"
-        format="webp"
-        class="rounded-lg mt-6 w-full lg:w-[100px] lg:h-[100px]"
+      :src="'/images/boxes/Caixa-M.webp'"
+      loading="lazy"
+      format="webp"
+      class="rounded-lg mt-6 w-full lg:w-[100px] lg:h-[100px]"
     />
     <div class="p-4 lg:my-auto lg:w-1/2 lg:p-0 lg:py-4 mt-5">
       <div class="flex justify-between items-center">
@@ -121,29 +121,29 @@ const decrementQuantity = (item) => {
       <span class="mdi mdi-close text-red-primary cursor-pointer" />
       <div class="flex gap-2">
         <Button
-            icon="mdi mdi-minus"
-            outlined
-            :pt="{
-              root: ['h-4 w-7'],
-            }"
-            :pt-options="{
-              mergeSections: true,
-              mergeProps: true,
-            }"
-            @click.prevent="decrementQuantity(item)"
+          icon="mdi mdi-minus"
+          outlined
+          :pt="{
+            root: ['h-4 w-7'],
+          }"
+          :pt-options="{
+            mergeSections: true,
+            mergeProps: true,
+          }"
+          @click.prevent="decrementQuantity(item)"
         />
         <span>{{ item.quantity }}</span>
         <Button
-            icon="mdi mdi-plus"
-            outlined
-            :pt="{
-              root: ['h-4 w-7'],
-            }"
-            :pt-options="{
-              mergeSections: true,
-              mergeProps: true,
-            }"
-            @click.prevent="incrementQuantity(item)"
+          icon="mdi mdi-plus"
+          outlined
+          :pt="{
+            root: ['h-4 w-7'],
+          }"
+          :pt-options="{
+            mergeSections: true,
+            mergeProps: true,
+          }"
+          @click.prevent="incrementQuantity(item)"
         />
       </div>
     </div>

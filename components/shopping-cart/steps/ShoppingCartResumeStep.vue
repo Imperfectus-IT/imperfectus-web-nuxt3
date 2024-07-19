@@ -12,7 +12,10 @@ const goBack = () => {
 
 <template>
   <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[20%] relative">
-    <ShoppingCartSummaryBox :back-button="true" @go-back="goBack"/>
+    <ShoppingCartSummaryBox
+      :back-button="true"
+      @go-back="goBack"
+    />
     <div class="flex justify-center">
       <Button
         :label="$t('order.next')"

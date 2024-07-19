@@ -12,7 +12,7 @@ const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
 
 <template>
   <Panel
-     class="rounded-tl-lg rounded-tr-lg bg-beige-primary"
+    class="rounded-tl-lg rounded-tr-lg bg-beige-primary"
     :header="$t('purchase_summary.title')"
     toggleable
     collapsed
@@ -56,7 +56,10 @@ const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
           </p>
         </div>
       </div>
-      <Divider v-if="item?.boxProduct" class="opacity-50" />
+      <Divider
+        v-if="item?.boxProduct"
+        class="opacity-50"
+      />
       <div class="flex justify-between">
         <span class="text-xs leading-3">{{ $t('purchase_summary.frequency') }}</span>
         <span class="text-xs leading-3">{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</span>

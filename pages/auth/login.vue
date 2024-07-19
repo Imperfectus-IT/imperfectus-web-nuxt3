@@ -32,7 +32,7 @@ const {
   componentRender,
   loadComponent,
   handleLoginEvent,
-  handleRegisterEvent
+  handleRegisterEvent,
 } = useAuth()
 </script>
 
@@ -45,9 +45,9 @@ const {
     @auth-form-requested="loadComponent"
   />
   <RegisterForm
-      v-if="componentRender === REGISTER_EVENT"
-      class="mt-8"
-      @user-registered="handleRegisterEvent"
-      @auth-form-requested="loadComponent"
+    v-if="componentRender === REGISTER_EVENT"
+    class="mt-8"
+    @user-registered="handleRegisterEvent"
+    @auth-form-requested="loadComponent"
   />
 </template>
