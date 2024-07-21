@@ -1,4 +1,19 @@
 <script setup lang="ts">
+const { t } = useI18n()
+const i18nHead = useLocaleHead()
+console.log(i18nHead.value.meta)
+
+useHead({
+  title: t('pages.order.title'),
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: t('pages.order.description'),
+    },
+    ...i18nHead.value.meta,
+  ],
+})
 defineI18nRoute({
   paths: {
     ca: '/nova-comanda/',
@@ -29,7 +44,7 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  await executeStep(PAYMENT_STEP)
+  await executeStep(AVAILABILITY_STEP)
 })
 </script>
 

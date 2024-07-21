@@ -1,33 +1,14 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
-const { executeFindCoverageByPostalCode } = useFindCoverageByPostalCode()
-const {
-  MAX_POSTAL_CODE_LENGTH,
-  isPostalCodeLengthValid,
-  isCoverageValid,
-} = useLocationValidator()
+const { isInvalid, findCoverageByPostalCode, goBack } = useShoppingCartAvailabilityStep()
+const { MAX_POSTAL_CODE_LENGTH } = useLocationValidator()
 
-const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.postalCode) || !isCoverageValid(shoppingCart.value.coverage))
-const emit = defineEmits(['goToStep'])
+const goToStepEvent = 'goToStep'
+defineEmits([goToStepEvent])
 watch(
   () => shoppingCart.value.shippingAddress.postalCode,
-  async (postalCode) => {
-    if (!isPostalCodeLengthValid(postalCode)) {
-      return
-    }
-    const query: LocationQuery = {
-      postcode: Number(postalCode),
-      deliveryDate: shoppingCart.value.deliveryDate,
-    }
-    shoppingCart.value.coverage = await executeFindCoverageByPostalCode(query)
-  },
+  findCoverageByPostalCode,
 )
-
-const goBack = () => {
-  const router = useRouter()
-  const localePath = useLocalePath()
-  router.push(localePath({ name: 'index' }))
-}
 </script>
 
 <template>
@@ -74,9 +55,9 @@ const goBack = () => {
     />
     <div class="flex justify-center mt-5">
       <Button
-        v-if="!isInvalid && isCoverageValid(shoppingCart.coverage)"
+        v-if="!isInvalid"
         class="mt-4"
-        :disabled="isInvalid && !isCoverageValid(shoppingCart.coverage)"
+        :disabled="isInvalid"
         severity="secondary"
         :label="$t('order.next')"
         @click.prevent="$emit('goToStep', PURCHASE_TYPE_STEP)"
