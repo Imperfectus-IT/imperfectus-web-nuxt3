@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { Product } from '~/composables/shared/product/types/Product.ts'
-
 const props = defineProps<{
-  productExclusions: Partial<Product[]>
+  productExclusions: ProductExclusion[]
 }>()
+const { shoppingCart } = useShoppingCartState()
 const { t } = useI18n()
 const isExclusionSelected = ref(false)
-const selectedProductExclusions = ref<Partial<Product[]>>([])
 const searchExclusion = ref('')
 const filteredExclusions = computed(() => {
   if (!searchExclusion.value) {
@@ -16,8 +14,34 @@ const filteredExclusions = computed(() => {
     return product.name.toLowerCase().includes(searchExclusion.value.toLowerCase())
   })
 })
+const MAX_MIXED_EXCLUSIONS = 6
+const MAX_FRUIT_OR_VEGETABLE_EXCLUSIONS = 3
+const maxLimitExclusions = computed(() => {
+  return shoppingCart.value.currentItem.boxType === MIXED_BOX_TYPE ? MAX_MIXED_EXCLUSIONS : MAX_FRUIT_OR_VEGETABLE_EXCLUSIONS
+})
+
 const productExclusionsResume = computed(() => {
-  return t('admin.order.exclusions.limit', { current_exclusions: selectedProductExclusions.value.length, max_exclusions: 6 })
+  return t('admin.order.exclusions.limit', { current_exclusions: shoppingCart.value.currentItem.exclusions.length, max_exclusions: maxLimitExclusions.value })
+})
+
+const disabledExclusion = (product: ProductExclusion) => {
+  const exclusionIds = shoppingCart.value.currentItem?.exclusions?.map(exclusion => exclusion.id)
+  return shoppingCart.value.currentItem.exclusions.length === maxLimitExclusions.value
+    && !exclusionIds.includes(product.id)
+}
+const onClickSelectExclusion = (isSelected: boolean) => {
+  isExclusionSelected.value = isSelected
+  if (!isSelected) {
+    shoppingCart.value.currentItem.exclusions = []
+  }
+}
+
+const initData = () => {
+  isExclusionSelected.value = shoppingCart.value.currentItem.exclusions.length > 0
+}
+
+onMounted(() => {
+  initData()
 })
 </script>
 
@@ -28,17 +52,17 @@ const productExclusionsResume = computed(() => {
     </p>
     <div class="flex items-center gap-5">
       <Button
-        class="text-xl"
+        :class="['text-xl', isExclusionSelected ? 'bg-green-primary' : 'bg-transparent']"
         :label="$t('order.steps.stepCustomize.section4.yes-btn')"
         outlined
-        @click.prevent="isExclusionSelected = true"
+        @click.prevent="onClickSelectExclusion(true)"
       />
       <Button
         :class="['text-xl', !isExclusionSelected ? 'bg-green-primary' : 'bg-transparent']"
         :label="$t('order.steps.stepCustomize.section4.no-btn')"
         outlined
         active
-        @click.prevent="isExclusionSelected = false"
+        @click.prevent="onClickSelectExclusion(false)"
       />
     </div>
     <span class="font-solina-extended-book text-base leading-6">
@@ -65,7 +89,7 @@ const productExclusionsResume = computed(() => {
       <VirtualScroller
         scroll-height="300px"
         :items="filteredExclusions"
-        :item-size="filteredExclusions.length * 4"
+        :item-size="filteredExclusions.length * 2"
         :auto-size="true"
       >
         <template #item="{ item }">
@@ -73,10 +97,11 @@ const productExclusionsResume = computed(() => {
             class="py-3"
           >
             <Checkbox
-              v-model="selectedProductExclusions"
+              v-model="shoppingCart.currentItem.exclusions"
               class="mr-3"
               :input-id="item.id"
               name="productExclusion"
+              :disabled="disabledExclusion(item)"
               :value="item"
             />
             <label

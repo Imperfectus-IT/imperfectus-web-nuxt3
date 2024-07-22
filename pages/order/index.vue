@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const i18nHead = useLocaleHead()
-console.log(i18nHead.value.meta)
 
 useHead({
   title: t('pages.order.title'),
@@ -21,7 +20,9 @@ defineI18nRoute({
   },
 })
 const { shoppingCart } = useShoppingCartState()
+const { initShoppingCart } = useShoppingCart()
 const { executeStep } = useStep()
+const { executeGetAllProducts } = useGetAllStrapiProducts()
 
 const componentToRenderFromStep: Record<string, any> = {
   [AVAILABILITY_STEP]: resolveComponent('LazyShoppingCartAvailabilityStep'),
@@ -43,8 +44,12 @@ const currentProgress = computed(() => {
   return (currentStepIndex / (totalSteps - 1)) * 100
 })
 
+onBeforeMount(() => {
+  initShoppingCart(shoppingCart)
+})
 onMounted(async () => {
-  await executeStep(AVAILABILITY_STEP)
+  await executeGetAllProducts()
+  await executeStep(shoppingCart.value.step)
 })
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
 const { t } = useI18n()
 const deliveryType = ref(PICKUP_POINT_DELIVERY_TYPE)
@@ -50,7 +50,7 @@ const timeOptions = [
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="emit('goToStep', DELIVERY_DATE_STEP)"
+          @click.prevent="emit(GO_TO_STEP_EVENT, DELIVERY_DATE_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -196,7 +196,7 @@ const timeOptions = [
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit('goToStep', PAYMENT_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, PAYMENT_STEP)"
       />
     </div>
   </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const { t } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 
@@ -21,7 +21,7 @@ const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
             icon="mdi mdi-chevron-left"
             rounded
             outlined
-            @click.prevent="emit('goToStep', DELIVERY_STEP)"
+            @click.prevent="emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -77,7 +77,7 @@ const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
             <Button
                 severity="secondary"
                 :label="$t('orderStepPayment.pay')"
-                @click.prevent="$emit('goToStep', DELIVERY_STEP)"
+                @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
             />
           </div>
         </div>

@@ -3,8 +3,7 @@ const { shoppingCart } = useShoppingCartState()
 const { isInvalid, findCoverageByPostalCode, goBack } = useShoppingCartAvailabilityStep()
 const { MAX_POSTAL_CODE_LENGTH } = useLocationValidator()
 
-const goToStepEvent = 'goToStep'
-defineEmits([goToStepEvent])
+defineEmits([GO_TO_STEP_EVENT])
 watch(
   () => shoppingCart.value.shippingAddress.postalCode,
   findCoverageByPostalCode,
@@ -60,7 +59,7 @@ watch(
         :disabled="isInvalid"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit('goToStep', PURCHASE_TYPE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)"
       />
     </div>
   </div>

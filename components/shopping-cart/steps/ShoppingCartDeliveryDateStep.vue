@@ -2,7 +2,7 @@
 import dayjs from 'dayjs'
 import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
 
-const emit = defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const { dateBuilder } = useDateBuilder()
 const { shoppingCart } = useShoppingCartState()
 
@@ -26,7 +26,7 @@ const getDateCellStyle = (date: CalendarDate) => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="emit('goToStep', SHIPPING_STEP)"
+          @click.prevent="emit(GO_TO_STEP_EVENT, SHIPPING_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -85,7 +85,7 @@ const getDateCellStyle = (date: CalendarDate) => {
       <Button
         severity="secondary"
         :label="$t('orderMeta.continue')"
-        @click.prevent="$emit('goToStep', DELIVERY_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

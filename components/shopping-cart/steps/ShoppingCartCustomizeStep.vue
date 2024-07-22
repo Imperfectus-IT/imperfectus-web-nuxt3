@@ -1,8 +1,23 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
+const { itemProducts } = useLocalStorageProductRepository()
+const { makeProductExclusion } = useProductFactory()
+
 const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
-const { t } = useI18n()
-const emit = defineEmits(['goToStep'])
+const { t, locale } = useI18n()
+const emit = defineEmits([GO_TO_STEP_EVENT])
+const isSelectedBox = (boxType: string) => boxType === shoppingCart.value.currentItem.boxType
+const activeButtonSelected = (boxType: string) => isSelectedBox(boxType) ? 'bg-green-primary' : 'bg-transparent'
+const nexStep = () => {
+  const currentItemIndex = shoppingCart.value.items.findIndex(item => item.id === shoppingCart.value.currentItem.id)
+  if (currentItemIndex > -1) {
+    shoppingCart.value.items[currentItemIndex] = shoppingCart.value.currentItem
+  }
+  else {
+    shoppingCart.value.items.push(shoppingCart.value.currentItem)
+  }
+  emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP)
+}
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
     src: '/images/boxes/Caixa-S.webp',
@@ -17,64 +32,9 @@ const boxTypeImages = {
     alt: t('string.box.vegetables'),
   },
 }
-
-const exclusions = [
-  {
-    id: 1,
-    name: 'Pepino',
-    type: 'item',
-  },
-  {
-    id: 2,
-    name: 'Tomate',
-    type: 'item',
-  },
-  {
-    id: 3,
-    name: 'Cebolla',
-    type: 'item',
-  },
-  {
-    id: 4,
-    name: 'Manzana',
-    type: 'item',
-  },
-  {
-    id: 5,
-    name: 'Lechuga',
-    type: 'item',
-  },
-  {
-    id: 6,
-    name: 'Cereza',
-    type: 'item',
-  },
-  {
-    id: 7,
-    name: 'Pera',
-    type: 'item',
-  },
-  {
-    id: 8,
-    name: 'Cebolla',
-    type: 'item',
-  },
-  {
-    id: 9,
-    name: 'Ajo',
-    type: 'item',
-  },
-  {
-    id: 10,
-    name: 'Borcolli',
-    type: 'item',
-  },
-  {
-    id: 11,
-    name: 'Pino',
-    type: 'item',
-  },
-]
+const productExclusions = computed(() => {
+  return itemProducts().map(product => makeProductExclusion(product, locale.value))
+})
 </script>
 
 <template>
@@ -86,7 +46,7 @@ const exclusions = [
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="$emit('goToStep', BOX_STEP)"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -98,13 +58,13 @@ const exclusions = [
     </div>
     <div class="flex flex-col items-center gap-5 mt-8 lg:flex-row">
       <Button
-        class="text-xl w-2/3"
+        :class="['text-xl w-2/3', activeButtonSelected(VEGETABLES_BOX_TYPE)]"
         :label="$t('string.box.vegetables')"
         outlined
         @click.prevent="setBoxType(VEGETABLES_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.currentItem.boxType === VEGETABLES_BOX_TYPE"
+        v-if="isSelectedBox(VEGETABLES_BOX_TYPE)"
         class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
@@ -112,13 +72,13 @@ const exclusions = [
         preload
       />
       <Button
-        class="text-xl w-2/3"
+        :class="['text-xl w-2/3', activeButtonSelected(MIXED_BOX_TYPE)]"
         :label="$t('string.box.mixed')"
         outlined
         @click.prevent="setBoxType(MIXED_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.currentItem.boxType === MIXED_BOX_TYPE"
+        v-if="isSelectedBox(MIXED_BOX_TYPE)"
         class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
@@ -126,13 +86,13 @@ const exclusions = [
         preload
       />
       <Button
-        class="text-xl w-2/3"
+        :class="['text-xl w-2/3', activeButtonSelected(FRUITS_BOX_TYPE)]"
         :label="$t('string.box.fruits')"
         outlined
         @click.prevent="setBoxType(FRUITS_BOX_TYPE)"
       />
       <NuxtImg
-        v-if="shoppingCart.currentItem.boxType === FRUITS_BOX_TYPE"
+        v-if="isSelectedBox(FRUITS_BOX_TYPE)"
         class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
@@ -148,13 +108,16 @@ const exclusions = [
       format="webp"
       preload
     />
-    <ShoppingCartBoxTypeExclusions :product-exclusions="exclusions" />
+    <ShoppingCartBoxTypeExclusions
+      v-if="shoppingCart.currentItem.boxType"
+      :product-exclusions="productExclusions"
+    />
     <div class="text-center mt-6">
       <Button
         v-if="shoppingCart.currentItem.boxType"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit('goToStep', RESUME_ITEM_STEP)"
+        @click.prevent="nexStep"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

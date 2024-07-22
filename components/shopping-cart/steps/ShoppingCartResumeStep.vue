@@ -1,12 +1,11 @@
 <script setup lang="ts">
-const emit = defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const goToNextStep = () => {
   const user = useStrapiUser()
-  user?.value?.id ? emit('goToStep', SHIPPING_STEP) : emit('goToStep', AUTH_STEP)
+  user?.value?.id ? emit(GO_TO_STEP_EVENT, SHIPPING_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
 }
-
 const goBack = () => {
-  emit('goToStep', CUSTOMIZE_STEP)
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
 }
 </script>
 

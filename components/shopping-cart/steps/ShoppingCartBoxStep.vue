@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
 const { onSetBoxSize } = useShoppingCartBoxStep()
-const emit = defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const boxDetails = [
   {
     size: SMALL_BOX_SIZE,
@@ -21,7 +21,7 @@ const goBack = () => {
     [SUBSCRIPTION_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
     [ORDER_TYPE]: PURCHASE_TYPE_STEP,
   }
-  emit('goToStep', purchaseTypesForStep[shoppingCart.value.currentItem.purchaseType])
+  emit(GO_TO_STEP_EVENT, purchaseTypesForStep[shoppingCart.value.currentItem.purchaseType])
 }
 </script>
 
@@ -51,7 +51,7 @@ const goBack = () => {
         class="w-full text-center"
       >
         <Button
-          class="text-xl w-2/3 lg:w-full"
+          :class="['text-xl w-2/3 lg:w-full', shoppingCart.currentItem.boxSize === box.size ? 'bg-green-primary' : 'bg-transparent']"
           :label="$t(box.stepBox)"
           icon="mdi mdi-chevron-down"
           icon-pos="right"
@@ -82,7 +82,7 @@ const goBack = () => {
         v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit('goToStep', CUSTOMIZE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

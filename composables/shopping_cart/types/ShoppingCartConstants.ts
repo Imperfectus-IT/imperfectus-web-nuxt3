@@ -16,3 +16,5 @@ export const ORDER_TYPE = 'order'
 export const SUBSCRIPTION_TYPE = 'subscription'
 export const HOME_DELIVERY_TYPE = 'home'
 export const PICKUP_POINT_DELIVERY_TYPE = 'pickup'
+
+export const GO_TO_STEP_EVENT = 'goToStep'

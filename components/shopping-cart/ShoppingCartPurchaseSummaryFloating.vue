@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { Item } from '~/composables/shopping_cart/types/ShoppingCartType.ts'
-import { SUBSCRIPTION_TYPE, ORDER_TYPE } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
 const { item } = defineProps<{
   item: Item
 }
 >()
 const showForSubscription = computed(() => item?.purchaseType === SUBSCRIPTION_TYPE && item.boxSize)
 const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
+const exclusionLists = computed(() => {
+  return item.exclusions.map(exclusion => exclusion?.name).join(', ') || '-'
+})
 </script>
 
 <template>
@@ -74,7 +74,7 @@ const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
       </div>
       <div class="flex justify-between mt-3">
         <span class="text-xs leading-3 grow">{{ $t('purchase_summary.exclusions') }}</span>
-        <span class="text-xs leading-3 w-[30%]">Boniato, Pepino, Manzana, Mango, Lechuga</span>
+        <span class="text-xs leading-3 text-end w-[30%]">{{ exclusionLists }}</span>
       </div>
       <Divider class="opacity-50" />
       <div class="flex justify-between mt-3 font-solina-extended-medium">
