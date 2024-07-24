@@ -82,3 +82,16 @@ export interface OrderShipping {
   shippingState: string
   shippingCoverage: string
 }
+
+export type TotalOrderDelivery = {
+  deliveryDate: string
+  preferredDay: string
+}
+
+export type OrderAmountQuery = {
+  items: OrderItem[]
+  coupon: Partial<Coupon>
+  isPlaced: boolean
+  delivery: TotalOrderDelivery
+  orderId: number
+}

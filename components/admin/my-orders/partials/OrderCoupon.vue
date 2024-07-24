@@ -26,16 +26,14 @@
     />
   </InputGroup>
   <span
-    v-if="orderCoupon"
+    v-if="isValidationError"
     :class="['text-base', orderCoupon ? 'text-green-secondary' : 'text-red-primary']"
   >
-    {{ couponMessageText }}
+    {{ validationMessage.message }}
   </span>
 </template>
 
 <script setup lang='ts'>
-import type { Coupon } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
-
 const { t } = useI18n()
 const props = defineProps({
   showTitle: {
@@ -46,7 +44,14 @@ const props = defineProps({
     type: Object as () => Coupon,
     required: false,
   },
+  validationMessage: {
+    type: Object,
+    required: false,
+  }
 })
+
+const isValidationError = computed(() => props.validationMessage?.status === ERROR_MESSAGE_STATUS)
+const isSetValidationError = computed(() => props.validationMessage?.status !== null)
 
 const textData = 'orders.order.coupon.'
 const coupon = ref<string>(props.orderCoupon?.coupon || '')
@@ -62,6 +67,10 @@ const removeOrderCoupon = () => {
   coupon.value = ''
 }
 
-const validCouponStyle = computed(() => props.orderCoupon ? '!border-green-secondary' : '!border-red-primary')
-const couponMessageText = computed(() => props.orderCoupon ? t('orderCoupon.successMessage') : t('orderCoupon.errorMessage'))
+const validCouponStyle = computed(() => {
+  if (!isSetValidationError.value) {
+    return 'border-green-tertiary'
+  }
+  return !isValidationError.value ? '!border-green-secondary' : '!border-red-primary'
+})
 </script>

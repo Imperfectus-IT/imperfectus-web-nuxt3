@@ -1,10 +1,14 @@
 <script setup lang="ts">
+const { validateCoupon,
+  validationMessage,
+  setValidationMessage } = useCouponValidator()
 const { backButton } = defineProps({
   backButton: {
     type: Boolean,
     default: false,
   },
 })
+const { t } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const incrementQuantity = (item) => {
   item.quantity += 1
@@ -22,6 +26,17 @@ const exclusionLists = (item) => {
 const removeItem = (id: number) => {
   const index = shoppingCart.value.items.findIndex(item => item.id === id)
   shoppingCart.value.items.splice(index, 1)
+}
+
+const { executeFindCoupon } = useFindCoupon()
+
+const addCoupon = async (coupon: string) => {
+  const couponFound = await executeFindCoupon({coupon})
+  if (!couponFound.length) {
+    setValidationMessage(ERROR_MESSAGE_STATUS, t('orderCoupon.errorMessage'))
+    return
+  }
+  await validateCoupon(couponFound[0], validationMessage)
 }
 </script>
 
@@ -113,6 +128,8 @@ const removeItem = (id: number) => {
   <Divider class="text-grey-secondary" />
   <OrderCoupon
     :show-title="true"
+    :validation-message="validationMessage"
+    @add-coupon="addCoupon"
   />
   <Divider class="text-grey-secondary mt-7" />
   <div class="flex justify-between">

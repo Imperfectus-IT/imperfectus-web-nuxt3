@@ -1,5 +1,3 @@
-import { ref, watchEffect } from 'vue'
-
 export const useScreenSize = () => {
   const isMobile = ref(false)
   const isTablet = ref(false)

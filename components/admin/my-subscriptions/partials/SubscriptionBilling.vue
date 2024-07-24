@@ -75,11 +75,6 @@
 </template>
 
 <script setup lang="ts">
-import type {
-  SubscriptionBilling,
-} from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
-import { useScreenSize } from '~/composables/useScreenSize/useScreenSize.ts'
-
 const textData = {
   section: 'subscriptions.subscription.billing.',
 }

@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { useWindowSize } from '@/composables/useWindowSize'
-
 const { addResize, removeResize, windowWidth } = useWindowSize()
 const { locale } = useI18n()
 

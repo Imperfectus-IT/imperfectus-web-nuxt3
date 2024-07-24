@@ -15,7 +15,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
       discarded: false,
       _sort: 'created_at:desc',
       _limit: 10,
-    }, ['order_items'])
+    })
 
     return strapiOrders.map((order: any) => useOrdersFactory(order, t))
   }
@@ -33,16 +33,14 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     const params = { coupon }
     const foundCoupon: Coupon = (await find<Coupon[]>(`coupons`, params))[0]
     await client(`orders/${order.id}/coupon`, { method: 'PUT', body: { coupon: foundCoupon } })
-    const response = await client('orders/total', { method: 'POST',
-      body: {
-        items: [...order.orderItems],
-        coupon: foundCoupon,
-        isPlaced: true,
-        delivery: null,
-        orderId: order.id,
-      },
-    })
-    return response
+    const payload = {
+      items: [...order.orderItems],
+      coupon: foundCoupon,
+      isPlaced: true,
+      delivery: null,
+      orderId: order.id,
+    }
+    return await getAmount(payload)
   }
 
   const discardOrder = async (orderId: number) => {
@@ -89,7 +87,6 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   }
 
   const updateOrderShipping = async (meta: updateOrderShippingPayload, orderMetaId: number) => {
-    console.log('repo', meta)
     const strapiMeta = {
       shipping_firstname: meta.shippingFirstName,
       shipping_lastname: meta.shippingLastName,
@@ -113,12 +110,22 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     })
   }
 
+  const getAmount = async (payload: OrderAmountQuery): Promise<any> => {
+    return await client('orders/total', { method: 'POST', body: payload })
+  }
+
+  const getFirstPaidOrder = async (): Promise<Order> => {
+    return await client('orders/firstPaidOrder', { method: 'GET'})
+  }
+
   return {
     addOrderCoupon,
     addOrderReview,
     discardOrder,
     findOrdersByUser,
     findById,
+    getAmount,
+    getFirstPaidOrder,
     removeOrderCoupon,
     updateOrderItem,
     updateOrderShipping,

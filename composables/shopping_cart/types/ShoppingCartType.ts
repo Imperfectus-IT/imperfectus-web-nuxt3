@@ -1,5 +1,3 @@
-import type { Product } from '~/composables/shared/product/types/Product.ts'
-
 export type BillingAddress = {
   firstname: string
   lastname: string
@@ -51,6 +49,13 @@ export type Item = {
   purchaseType: string
   frequency?: string
   quantity: number
+}
+
+export type MessageStatus = ERROR_MESSAGE_STATUS  | SUCCESS_MESSAGE_STATUS | null
+
+export type ValidationMessage = {
+  status: MessageStatus
+  message: string | null
 }
 
 export type ShoppingCart = {

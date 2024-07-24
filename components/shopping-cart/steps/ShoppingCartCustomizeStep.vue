@@ -16,7 +16,8 @@ const nexStep = () => {
   else {
     shoppingCart.value.items.push(shoppingCart.value.currentItem)
   }
-  emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP)
+  const user = useStrapiUser()
+  user?.value?.id ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
 }
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
