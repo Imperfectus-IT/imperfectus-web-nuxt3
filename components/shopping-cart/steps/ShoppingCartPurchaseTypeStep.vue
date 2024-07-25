@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-  BOX_STEP,
-  AVAILABILITY_STEP,
-  ORDER_TYPE,
-  SUBSCRIPTION_TYPE,
-} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
-const emit = defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
 
 const { emptyItem } = useShoppingCartFactory()
@@ -30,10 +22,7 @@ const goToNextStep = () => {
 
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
 
-  emit('goToStep', nextStep)
-}
-const goBack = () => {
-  emit('goToStep', AVAILABILITY_STEP)
+  emit(GO_TO_STEP_EVENT, nextStep)
 }
 </script>
 
@@ -46,7 +35,7 @@ const goBack = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="goBack"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, AVAILABILITY_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -58,11 +47,13 @@ const goBack = () => {
     </div>
     <div class="flex flex-col items-center gap-5 mt-6 lg:flex-row lg:mt-4 lg:justify-center">
       <Button
+        :class="[isSubscriptionPurchaseType ? 'bg-green-primary' : 'bg-transparent']"
         outlined
         :label="$t('order.steps.stepPurchase.btn-subscription')"
         @click.prevent="setPurchaseType(SUBSCRIPTION_TYPE)"
       />
       <Button
+        :class="[isOrderPurchaseType ? 'bg-green-primary' : 'bg-transparent']"
         outlined
         :label="$t('order.steps.stepPurchase.btn-order')"
         @click.prevent="setPurchaseType(ORDER_TYPE)"

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { CUSTOMIZE_STEP } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
 const { shoppingCart } = useShoppingCartState()
 const { onSetBoxSize } = useShoppingCartBoxStep()
-defineEmits(['goToStep'])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 const boxDetails = [
   {
     size: SMALL_BOX_SIZE,
@@ -18,6 +16,13 @@ const boxDetails = [
     stepBox: 'order.steps.stepBox.largeBox',
   },
 ]
+const goBack = () => {
+  const purchaseTypesForStep = {
+    [SUBSCRIPTION_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
+    [ORDER_TYPE]: PURCHASE_TYPE_STEP,
+  }
+  emit(GO_TO_STEP_EVENT, purchaseTypesForStep[shoppingCart.value.currentItem.purchaseType])
+}
 </script>
 
 <template>
@@ -29,6 +34,7 @@ const boxDetails = [
           icon="mdi mdi-chevron-left"
           rounded
           outlined
+          @click.prevent="goBack"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -45,7 +51,7 @@ const boxDetails = [
         class="w-full text-center"
       >
         <Button
-          class="text-xl w-2/3 lg:w-full"
+          :class="['text-xl w-2/3 lg:w-full', shoppingCart.currentItem.boxSize === box.size ? 'bg-green-primary' : 'bg-transparent']"
           :label="$t(box.stepBox)"
           icon="mdi mdi-chevron-down"
           icon-pos="right"
@@ -61,9 +67,9 @@ const boxDetails = [
       </div>
     </div>
     <ShoppingCartBoxDetail
-        v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.boxProduct"
-        class="mt-5 hidden lg:block"
-        :box-product="shoppingCart.currentItem.boxProduct"
+      v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.boxProduct"
+      class="mt-5 hidden lg:block"
+      :box-product="shoppingCart.currentItem.boxProduct"
     />
     <NuxtImg
       v-if="!shoppingCart.currentItem.boxSize"
@@ -76,15 +82,15 @@ const boxDetails = [
         v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit('goToStep', CUSTOMIZE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden bg-beige-primary"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
       :item="shoppingCart.currentItem"
     />
     <ShoppingCartPurchaseSummaryFloating
-      class="hidden fixed z-10 top-[17%] right-0 w-1/3 lg:block bg-beige-primary"
+      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
       :item="shoppingCart.currentItem"
     />
   </div>

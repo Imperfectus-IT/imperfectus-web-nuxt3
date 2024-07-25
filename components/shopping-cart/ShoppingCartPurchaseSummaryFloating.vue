@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import type { Item } from '~/composables/shopping_cart/types/ShoppingCartType.ts'
-import { SUBSCRIPTION_TYPE, ORDER_TYPE } from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
-
 const { item } = defineProps<{
   item: Item
 }
 >()
 const showForSubscription = computed(() => item?.purchaseType === SUBSCRIPTION_TYPE && item.boxSize)
 const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
+const exclusionLists = computed(() => {
+  return item.exclusions.map(exclusion => exclusion?.name).join(', ') || '-'
+})
 </script>
 
 <template>
   <Panel
+    class="rounded-tl-lg rounded-tr-lg bg-beige-primary"
     :header="$t('purchase_summary.title')"
     toggleable
     collapsed
     :pt="{
-      header: '!bg-beige-primary',
-      content: '!bg-beige-primary',
+      header: 'h-20',
     }"
     :pt-options="{
       mergeSections: true,
@@ -56,7 +56,10 @@ const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
           </p>
         </div>
       </div>
-      <Divider v-if="item?.boxProduct" class="opacity-50" />
+      <Divider
+        v-if="item?.boxProduct"
+        class="opacity-50"
+      />
       <div class="flex justify-between">
         <span class="text-xs leading-3">{{ $t('purchase_summary.frequency') }}</span>
         <span class="text-xs leading-3">{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</span>
@@ -71,7 +74,7 @@ const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
       </div>
       <div class="flex justify-between mt-3">
         <span class="text-xs leading-3 grow">{{ $t('purchase_summary.exclusions') }}</span>
-        <span class="text-xs leading-3 w-[30%]">Boniato, Pepino, Manzana, Mango, Lechuga</span>
+        <span class="text-xs leading-3 text-end w-[30%]">{{ exclusionLists }}</span>
       </div>
       <Divider class="opacity-50" />
       <div class="flex justify-between mt-3 font-solina-extended-medium">

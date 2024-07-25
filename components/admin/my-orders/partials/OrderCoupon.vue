@@ -25,7 +25,10 @@
       @click="removeOrderCoupon"
     />
   </InputGroup>
-  <span v-if="orderCoupon" :class="['text-base', orderCoupon ? 'text-green-secondary' : 'text-red-primary']">
+  <span
+    v-if="orderCoupon"
+    :class="['text-base', orderCoupon ? 'text-green-secondary' : 'text-red-primary']"
+  >
     {{ couponMessageText }}
   </span>
 </template>

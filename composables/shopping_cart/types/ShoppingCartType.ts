@@ -65,6 +65,9 @@ export type ShoppingCart = {
   coupon?: any
   items: Item[]
   currentItem: Item | null
+  termConditions: boolean
+  whatsappInfo: boolean
+  marketingInfo: boolean
   billingAddress: BillingAddress
   shippingAddress: ShippingAddress
 }

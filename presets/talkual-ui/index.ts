@@ -24,6 +24,7 @@ import overlaypanel from './overlaypanel/index.ts'
 import panelmenu from './panelmenu/index.ts'
 import password from './password/index.ts'
 import progressbar from './progressbar/index.ts'
+import radiobutton from './radiobutton/index.ts'
 import rating from './rating/index.ts'
 import sidebar from './sidebar/index.ts'
 import skeleton from './skeleton/index.ts'
@@ -53,6 +54,7 @@ export default {
   panelmenu,
   password,
   progressbar,
+  radiobutton,
   rating,
   sidebar,
   skeleton,

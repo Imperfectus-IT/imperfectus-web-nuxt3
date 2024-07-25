@@ -27,7 +27,7 @@ const isButtonDisabled = computed(() => {
 <template>
   <section class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
     <div class="mb-5 lg:mb-10 text-center">
-      <slot name="backButton"/>
+      <slot name="backButton" />
       <span class="font-recoleta-regular text-lg font-normal">{{
         $t("pages.auth.register.title")
       }}</span>

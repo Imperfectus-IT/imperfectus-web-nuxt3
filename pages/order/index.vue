@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import {
-  AUTH_STEP,
-  AVAILABILITY_STEP,
-  CUSTOMIZE_STEP,
-  PURCHASE_TYPE_STEP,
-  BOX_STEP,
-  FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-  SHIPPING_STEP,
-  DELIVERY_STEP,
-  PAYMENT_STEP,
-  DELIVERY_DATE_STEP,
-} from '~/composables/shopping_cart/types/ShoppingCartConstants.ts'
+const { t } = useI18n()
+const i18nHead = useLocaleHead()
 
+useHead({
+  title: t('pages.order.title'),
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: t('pages.order.description'),
+    },
+    ...i18nHead.value.meta,
+  ],
+})
 defineI18nRoute({
   paths: {
     ca: '/nova-comanda/',
@@ -19,7 +20,9 @@ defineI18nRoute({
   },
 })
 const { shoppingCart } = useShoppingCartState()
+const { initShoppingCart } = useShoppingCart()
 const { executeStep } = useStep()
+const { executeGetAllProducts } = useGetAllStrapiProducts()
 
 const componentToRenderFromStep: Record<string, any> = {
   [AVAILABILITY_STEP]: resolveComponent('LazyShoppingCartAvailabilityStep'),
@@ -37,18 +40,25 @@ const componentToRenderFromStep: Record<string, any> = {
 
 const currentProgress = computed(() => {
   const totalSteps = Object.keys(componentToRenderFromStep).length - 1
-  const currentStepIndex = Object.keys(componentToRenderFromStep).findIndex(step => step === shoppingCart.value.step);
-  return (currentStepIndex / (totalSteps - 1)) * 100;
+  const currentStepIndex = Object.keys(componentToRenderFromStep).findIndex(step => step === shoppingCart.value.step)
+  return (currentStepIndex / (totalSteps - 1)) * 100
 })
 
+onBeforeMount(() => {
+  initShoppingCart(shoppingCart)
+})
 onMounted(async () => {
-  await executeStep(DELIVERY_DATE_STEP)
+  await executeGetAllProducts()
+  await executeStep(shoppingCart.value.step)
 })
 </script>
 
 <template>
   <section>
-    <ProgressBar class="my-5 w-full" :value="currentProgress"/>
+    <ProgressBar
+      class="my-5 w-full"
+      :value="currentProgress"
+    />
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

@@ -1,5 +1,5 @@
 export type Product = {
-  id: number
+  id?: number
   SKU: string
   weight: number
   price: number
@@ -22,7 +22,7 @@ export type Product = {
   image: ProductImage[]
 }
 export type ProductImage = {
-  id: number
+  id?: number
   name: string
   alternativeText: string
   caption: string
@@ -134,4 +134,19 @@ export type ProductQuery = {
   frequency?: string
   boxType?: string
   _sort?: string
+}
+
+export type ProductExclusion = {
+  id?: number
+  sku: string
+  name: string
+}
+
+export type ProductBox = {
+  id?: number
+  sku: string
+  price: number
+  name: string
+  description: string
+  image: string
 }

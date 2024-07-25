@@ -1,95 +1,96 @@
 <script setup lang="ts">
-const textData = {
-  section: 'shopping_cart.paymentStep.',
-  conditions: {
-    quantity: 3,
-    subSections: ['text_1', 'text_2bold', 'text_3'],
-  },
-}
+const emit = defineEmits([GO_TO_STEP_EVENT])
+const { t } = useI18n()
+const { shoppingCart } = useShoppingCartState()
 
-const isPaymentSelected = ref(true)
-const optionsChecked = reactive({
-  0: false,
-  1: false,
-  2: false,
-})
-const addTextStyle = (key: string) => {
-  return key.includes('bold') ? 'font-bold' : key.includes('underline') ? 'underline' : ''
-}
+const paymentMethods = [
+  {
+    label: t('order.steps.stepPayment.methodType.debit'),
+    value: 'redsys',
+  },
+]
+const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
 </script>
 
 <template>
-  <div class="px-10 lg:w-1/2 lg:border-[1px] lg:rounded-md lg:p-10">
-    <div class="flex items-center justify-center gap-3 mt-3 relative">
-      <Button
-        class="w-[2rem] h-[2rem] text-xl !absolute left-0"
-        icon="mdi mdi-chevron-left"
-        rounded
-        outlined
-      />
-      <p class="font-recoleta-regular text-xl font-normal text-center w-2/3">
-        {{ $t(`${textData.section}title`) }}
-      </p>
-    </div>
-    <div class="mt-10 flex flex-row">
-      <Checkbox
-        v-model="isPaymentSelected"
-        binary
-        :pt="{
-          box: `border-[2px] w-[20px] h-[20px] rounded-full ${isPaymentSelected ? 'bg-green-primary p-2' : 'bg-transparent'}`,
-          icon: 'hidden',
-        }"
-      />
-      <p class="ml-3 text-[14px]">
-        {{ $t(`${textData.section}payment`) }}
-      </p>
-    </div>
-
-    <div
-      class="flex flex-row items-center gap-3 mt-4"
-    >
-      <NuxtImg
-        alt="google_icon"
-        format="webp"
-        loading="lazy"
-        src="/images/logos/payment/google.webp"
-        class="w-[50px] "
-      />
-      <NuxtImg
-        alt="apple_icon"
-        format="webp"
-        loading="lazy"
-        src="/images/logos/payment/apple.webp"
-        class="w-[50px] h-[20px]"
-      />
-    </div>
-    <Divider class="text-grey-secondary" />
-    <div
-      v-for="(condition, index) in textData.conditions.quantity"
-      :key="index"
-      class="flex gap-5 mt-2 text-[14px]"
-    >
-      <Checkbox
-        v-model="optionsChecked[index as keyof typeof optionsChecked]"
-        binary
-        class=""
-      />
-      <div class="w-10/12">
-        <span
-          v-for="(text, index2) in textData.conditions.subSections"
-          :key="index2"
-          :class="addTextStyle(text)"
-        >
-          {{ $t(`${textData.section}conditions.condition_${index}.${text}`) }}
-        </span>
+  <div class="px-10 md:px-[28%] lg:px-[2%] 2xl:px-[20%] relative">
+    <div class="flex items-center justify-center gap-3 lg:mt-14">
+      <div class="!absolute left-5 flex flex-row gap-3">
+        <Button
+            class="w-[2rem] h-[2rem] text-xl "
+            icon="mdi mdi-chevron-left"
+            rounded
+            outlined
+            @click.prevent="emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
+        />
+        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
+      <p class="font-recoleta-regular text-lg font-normal text-center w-2/3 lg:text-2xl lg:hidden">
+        {{
+          $t("order.steps.stepPayment.title")
+        }}
+      </p>
     </div>
-    <div class="flex justify-center mt-5">
-      <Button
-        :disabled="!optionsChecked[0]"
-        severity="secondary"
-        :label="$t(`${textData.section}button`)"
-      />
+    <div class="lg:flex gap-5">
+      <div class="my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] lg:mt-14">
+        <p class="font-recoleta-regular text-lg font-normal text-center lg:text-xl hidden lg:block">
+          {{
+            $t("order.steps.stepPayment.title")
+          }}
+        </p>
+        <div class="mt-5" v-for="paymentMethod in paymentMethods" :key="paymentMethod.value">
+          <RadioButton
+              v-model="paymentMethod.value"
+              input-id="paymentMethod"
+              name="paymentMethod"
+              :value="paymentMethod.value"
+          />
+          <label
+              for="paymentMethod"
+              class="ml-2 text-xs font-normal leading-5"
+          >{{ paymentMethod.label }}
+          </label>
+        </div>
+        <div class="flex items-center gap-3 mt-5">
+          <NuxtImg
+              alt="google_icon"
+              format="webp"
+              loading="lazy"
+              src="/images/logos/payment/google.webp"
+              class="w-[50px] "
+          />
+          <NuxtImg
+              alt="apple_icon"
+              format="webp"
+              loading="lazy"
+              src="/images/logos/payment/apple.webp"
+              class="w-[50px] h-[20px]"
+          />
+        </div>
+        <Divider class="text-grey-secondary" />
+        <div class="mt-5">
+          <div class="flex" v-for="checkOption in checkOptions">
+            <Checkbox class="basis-8" v-model="shoppingCart[checkOption]" :id="checkOption" name="checkOption" binary />
+            <MDC class="ml-2 basis-full" :value="$t(`order.steps.stepPayment.${checkOption}`)" />
+          </div>
+          <div class="flex justify-center mt-6">
+            <Button
+                severity="secondary"
+                :label="$t('orderStepPayment.pay')"
+                @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
+        <ShoppingCartSummaryBox>
+          <template #title>
+            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
+              {{ $t('order.steps.stepResume') }}
+            </h3>
+          </template>
+        </ShoppingCartSummaryBox>
+      </div>
     </div>
   </div>
 </template>
