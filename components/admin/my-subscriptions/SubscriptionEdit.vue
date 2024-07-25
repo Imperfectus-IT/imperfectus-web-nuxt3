@@ -136,7 +136,6 @@ const updateSubscriptionPayment = async (paymentId: number) => {
 const handleRemoveCoupon = async () => await removeSubscriptionCoupon(props.subscription.id, textData, t)
 const handleUpdateSubscriptionBilling = async (billing: SubscriptionBilling) => await updateBillingMeta(props.subscription.subscriptionMeta, billing, textData, t)
 const handleUpdateSubscriptionShipping = async (shipping: SubscriptionShipping) => {
-  console.log('shipping', shipping)
   await updateShippingMeta(props.subscription.subscriptionMeta, shipping, textData, t)
 }
 const handleUpdateSubscriptionItem = async (updateSubscriptionItemData: updateSubscriptionItemPayload) => await updateSubscriptionItem(updateSubscriptionItemData, textData, t)

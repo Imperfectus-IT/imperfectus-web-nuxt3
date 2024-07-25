@@ -14,7 +14,7 @@
   >
     <template #SlideContent="{ item }">
       <p class="bottom-7 text-[15px] absolute w-full text-center font-bold">
-        {{ item.name }}
+        {{ locale === 'es' ? item.name_es : item.name_ca }}
       </p>
     </template>
   </TKCarousel>
@@ -24,6 +24,7 @@
 import { useWindowSize } from '@/composables/useWindowSize'
 
 const { addResize, removeResize, windowWidth } = useWindowSize()
+const { locale } = useI18n()
 
 defineProps({
   itemsType: {

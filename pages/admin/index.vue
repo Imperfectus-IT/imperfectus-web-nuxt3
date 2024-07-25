@@ -16,8 +16,10 @@ defineI18nRoute({
     ca: '/el-meu-compte',
   },
 })
-
-const user = useStrapiUser()
+onMounted(async () => {
+  await handleGetDomainUser()
+})
+const { domainUser, handleGetDomainUser } = useGetUserHandler()
 const lastOrder: Ref<Order> = ref({} as Order)
 const isLoading = ref(true)
 
@@ -29,7 +31,6 @@ watch(orders, () => {
 
 const getLastOrder = () => {
   lastOrder.value = orders.value.filter((order: Order) => {
-    console.log(order)
     return (
       order.deliveryInfo.deliveryDate > dayjs().format('YYYY-MM-DD')
       && order.status === 'processing'
@@ -42,7 +43,7 @@ const getSubscriptionId = computed(() => lastOrder.value.subscription)
 
 <template>
   <div class="lg:mt-2 xl:w-full">
-    <Introduction :user="user" />
+    <Introduction :user="domainUser" />
     <ImagesAndData kgs="50" />
     <div v-if="isLoading">
       <CardSkeleton />

@@ -1,6 +1,6 @@
-import type { User } from '~/composables/admin/user/types/UserType.ts'
+import type { DomainUser } from '~/composables/admin/domain-user/types/DomainUser.ts'
 
-export const useUserFactory = (user: any): User => {
+export const useDomainUserFactory = (user: any): DomainUser => {
   return {
     id: user.id,
     username: user.username,
@@ -16,7 +16,7 @@ export const useUserFactory = (user: any): User => {
   }
 }
 
-export const emptyUser = (): User => {
+export const emptyUser = (): DomainUser => {
   return {
     id: 0,
     username: '',
