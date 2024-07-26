@@ -1,19 +1,21 @@
-import type { DomainUser } from '~/composables/admin/domain-user/types/DomainUser.ts'
-
 export const useUpdateUser = () => {
-  const { subscribeToNewsletter, unsubscribeFromNewsletter, getUser } = useDomainUserRepository()
+  const { subscribeToNewsletter, unsubscribeFromNewsletter, getUser, updatePersonalData } = useDomainUserRepository()
   const { domainUser } = useDomainUserState()
-  const executeSubscribeToNewsletter = async (user: DomainUser) => {
-    await subscribeToNewsletter(user)
-    domainUser.value = await getUser()
+  const executeSubscribeToNewsletter = async (email: string, language: string) => {
+    return await subscribeToNewsletter(email, language)
   }
-  const executeUnsubscribeFromNewsletter = async (user: DomainUser) => {
-    await unsubscribeFromNewsletter(user)
-    domainUser.value = await getUser()
+  const executeUnsubscribeFromNewsletter = async (email: string, language: string) => {
+    await unsubscribeFromNewsletter(email, language)
+    return domainUser.value.id ? domainUser.value = await getUser() : ''
+  }
+
+  const executeUpdatePersonalData = async (id: number, personalData: PersonalData) => {
+    return domainUser.value = await updatePersonalData(id, personalData)
   }
 
   return {
     executeSubscribeToNewsletter,
     executeUnsubscribeFromNewsletter,
+    executeUpdatePersonalData,
   }
 }

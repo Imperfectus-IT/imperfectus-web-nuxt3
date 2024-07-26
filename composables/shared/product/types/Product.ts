@@ -150,3 +150,10 @@ export type ProductBox = {
   description: string
   image: string
 }
+
+export type CarouselProduct = {
+  id?: number
+  sku: string
+  name: string
+  image: string
+}

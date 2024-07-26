@@ -37,7 +37,7 @@ const props = defineProps<{
 const { executeSubscribeToNewsletter, executeUnsubscribeFromNewsletter } = useUpdateUser()
 
 const textData = 'newsletter.'
-const handleSubscribeToNewsletter = async () => await executeSubscribeToNewsletter(props.user)
-const handleUnsubscribeToNewsletter = async () => await executeUnsubscribeFromNewsletter(props.user)
+const handleSubscribeToNewsletter = async () => await executeSubscribeToNewsletter(props.user.email)
+const handleUnsubscribeToNewsletter = async () => await executeUnsubscribeFromNewsletter(props.user.email)
 const isUserSubscribed = computed(() => !props.user.marketingInfoComm)
 </script>

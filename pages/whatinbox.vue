@@ -49,17 +49,31 @@ defineI18nRoute({
 const { t } = useI18n()
 
 const searchField = ref<string>('')
-const products = useGetProductsHandler().products.value.itemProducts
-const activeProducts = ref<Product[]> ([...products.fruits, ...products.vegetables].filter(product => product.isActive))
+const { locale } = useI18n()
+const { activeItemProducts } = useLocalStorageProductRepository()
+const { makeProductForCarousel } = useProductFactory()
 
-const productsToShow: ComputedRef<Product[]> = computed(() => {
+const products = activeItemProducts().map((item) => {
+  return makeProductForCarousel(item, locale.value)
+})
+
+const productsToShow = computed(() => {
   if (searchField.value) {
-    return activeProducts.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
+    return products.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
   }
   else {
-    return activeProducts.value
+    return products
   }
 })
+
+// const productsToShow: ComputedRef<Product[]> = computed(() => {
+//   if (searchField.value) {
+//     return activeProducts.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
+//   }
+//   else {
+//     return activeProducts.value
+//   }
+// })
 
 type Product = {
   name: string

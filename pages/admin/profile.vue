@@ -1,4 +1,8 @@
+// In `pages/admin/profile.vue`
 <script setup lang="ts">
+import { useUpdateUserLanguageHandler } from '~/composables/admin/domain-user/update/updateLanguage/useUpdateUserLanguageHandler.ts'
+import PersonalData from '~/components/admin/profile/PersonalData.vue'
+
 definePageMeta({
   layout: 'admin',
   middleware: ['auth'],
@@ -9,8 +13,28 @@ defineI18nRoute({
     es: '/mi-cuenta/perfil/',
   },
 })
-const { personalData } = useProfileState()
+const { t } = useI18n()
+const { domainUser, handleGetDomainUser } = useGetUserHandler()
+const personalData = computed(() => {
+  return {
+    username: domainUser.value.username,
+    email: domainUser.value.email,
+  }
+})
+
+onMounted(async () => !domainUser.value.id ? await handleGetDomainUser() : '')
 const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle()
+const { handleUpdatePersonalData } = useUpdateUserHandler()
+const { handleUpdateUserLanguage } = useUpdateUserLanguageHandler()
+const updatePersonalData = async (personalDataForm: PersonalData) => {
+  const { id } = domainUser.value
+  await handleUpdatePersonalData(id, personalDataForm, t)
+  handleToggleModifyProfile()
+}
+const updateUserLanguage = async (language: string) => {
+  const { id } = domainUser.value
+  await handleUpdateUserLanguage(id, language, t)
+}
 </script>
 
 <template>
@@ -27,12 +51,17 @@ const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = 
         />
         <PersonalDataForm
           v-if="isModifyingProfile"
-          @on-modify-data="handleToggleModifyProfile"
+          :personal-data="personalData"
+          @on-modify-data="updatePersonalData"
         />
       </div>
     </div>
     <div class="w-full">
-      <LanguagePreference class="mt-5 lg:mt-10" />
+      <LanguagePreference
+        :language="domainUser.language"
+        class="mt-5 lg:mt-10"
+        @update-language="updateUserLanguage"
+      />
       <PaymentMethodCard class="mt-5 lg:mt-10" />
       <AddressProfile class="mt-5 lg:mt-10" />
     </div>

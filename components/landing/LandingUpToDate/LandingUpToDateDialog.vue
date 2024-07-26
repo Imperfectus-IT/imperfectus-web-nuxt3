@@ -48,14 +48,18 @@
       <template #footer>
         <Button
           :label="t('homeUpToDate.confirm')"
+          :disabled="!checked"
           raised
           :pt="{
-            root: {
-              class:
+            root: ({ context }) => ({
+              class: [
                 'bg-green-primary hover:bg-green-primary p-3 rounded-lg',
-            },
+                { 'cursor-not-allowed opacity-50': context.disabled },
+              ],
+            }),
             label: 'text-md text-green-tertiary',
           }"
+          @click="subscribe"
         />
         <Button
           :label="t('homeUpToDate.cancel')"
@@ -77,11 +81,18 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
-
-const visible = ref(false)
-const checked = ref(false)
 defineProps({
   buttonDisabled: Boolean,
 })
+const emits = defineEmits(['subscribe'])
+const { t } = useI18n()
+const visible = ref(false)
+const checked = ref(false)
+const subscribe = () => {
+  if (checked.value) {
+    emits('subscribe')
+    visible.value = false
+    checked.value = false
+  }
+}
 </script>

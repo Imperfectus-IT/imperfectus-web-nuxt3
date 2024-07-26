@@ -1,20 +1,20 @@
 <script setup lang="ts">
-const { personalData } = defineProps<{
+const props = defineProps<{
   personalData: PersonalData
 }>()
 
-const items = [
+const items = computed(() => [
   {
     id: useId(),
-    label: personalData.username,
+    label: props.personalData.username,
     icon: 'mdi mdi-account-circle-outline',
   },
   {
     id: useId(),
-    label: personalData.email,
+    label: props.personalData.email,
     icon: 'mdi mdi-email-outline',
   },
-]
+])
 </script>
 
 <template>

@@ -8,8 +8,9 @@ export const useGetCouponsHandler = () => {
     unusedCoupons: [] as Coupon[],
   })
   onMounted(async () => {
-    coupons.usedCoupons = (await executeGetReferredCoupons()).usedCoupons
-    coupons.unusedCoupons = (await executeGetReferredCoupons()).unusedCoupons
+    const fetchedCoupons = await executeGetReferredCoupons()
+    coupons.usedCoupons = fetchedCoupons.usedCoupons
+    coupons.unusedCoupons = fetchedCoupons.unusedCoupons
   })
 
   return {

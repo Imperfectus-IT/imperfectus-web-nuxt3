@@ -20,17 +20,17 @@ onMounted(async () => {
   await handleGetDomainUser()
 })
 const { domainUser, handleGetDomainUser } = useGetUserHandler()
-const lastOrder: Ref<Order> = ref({} as Order)
+const nextOrder: Ref<Order> = ref({} as Order)
 const isLoading = ref(true)
 
 const { orders } = useGetOrdersHandler(t)
 
 watch(orders, () => {
-  getLastOrder()
+  getNextOrder()
 })
 
-const getLastOrder = () => {
-  lastOrder.value = orders.value.filter((order: Order) => {
+const getNextOrder = () => {
+  nextOrder.value = orders.value.filter((order: Order) => {
     return (
       order.deliveryInfo.deliveryDate > dayjs().format('YYYY-MM-DD')
       && order.status === 'processing'
@@ -38,22 +38,21 @@ const getLastOrder = () => {
   })[0]
   isLoading.value = false
 }
-const getSubscriptionId = computed(() => lastOrder.value.subscription)
+const getSubscriptionId = computed(() => nextOrder.value.subscription)
 </script>
 
 <template>
   <div class="lg:mt-2 xl:w-full">
     <Introduction :user="domainUser" />
     <ImagesAndData kgs="50" />
-    <div v-if="isLoading">
-      <CardSkeleton />
+    <div v-if="nextOrder">
+      <div>
+        <NextOrder
+          v-if="nextOrder"
+          :order="nextOrder"
+        />
+      </div>
+      <HandleNextDeliveries :subscription-id="getSubscriptionId" />
     </div>
-    <div v-else>
-      <NextOrder
-        v-if="lastOrder"
-        :order="lastOrder"
-      />
-    </div>
-    <HandleNextDeliveries :subscription-id="getSubscriptionId" />
   </div>
 </template>

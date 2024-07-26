@@ -1,9 +1,25 @@
+import type { Product, ProductExclusion } from '~/composables/shared/product/types/Product.ts'
+
 export const useProductFactory = () => {
   const makeProductExclusion = (product: Product, locale: string): ProductExclusion => {
     return {
-      id: product?.id,
+      id: product.id,
       sku: product.SKU,
       name: product[`name_${locale}`],
+    }
+  }
+
+  const makeProductForDropdown = (product: Product, locale: string): ProductDropdown => {
+    return {
+      id: product.id,
+      name: product[`name_${locale}`],
+    }
+  }
+
+  const makeProductForCarousel = (product: Product, locale: string): CarouselProduct => {
+    return {
+      ...makeProductExclusion(product, locale),
+      image: product.imagePath,
     }
   }
 
@@ -19,5 +35,7 @@ export const useProductFactory = () => {
   return {
     makeProductExclusion,
     makeProductBox,
+    makeProductForCarousel,
+    makeProductForDropdown,
   }
 }

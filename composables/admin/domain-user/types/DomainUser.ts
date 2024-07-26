@@ -10,4 +10,10 @@ export type DomainUser = {
   company: number | null
   whatsappInfoComm: boolean
   marketingInfoComm: boolean
+  preferredProducts: PreferredProducts
+}
+
+export type PreferredProducts = {
+  fruits: number[]
+  vegetables: number[]
 }

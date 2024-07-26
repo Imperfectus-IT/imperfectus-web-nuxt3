@@ -1,9 +1,19 @@
 <script setup lang="ts">
-const { personalDataForm, handleUpdatePersonalData } = useUpdatePersonalDataHandler()
+// const { personalDataForm, handleUpdatePersonalData } = useUpdatePersonalDataHandler()
 const emit = defineEmits(['on-modify-data'])
+const props = defineProps<{
+  personalData: {
+    username: string
+    email: string
+  }
+}>()
+const personalDataForm = reactive({
+  username: props.personalData.username,
+  email: props.personalData.email,
+
+})
 const onSubmit = async () => {
-  await handleUpdatePersonalData()
-  emit('on-modify-data')
+  emit('on-modify-data', personalDataForm)
 }
 </script>
 

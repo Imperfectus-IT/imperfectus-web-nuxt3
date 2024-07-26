@@ -66,7 +66,6 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
 
 const props = defineProps<{
   exclusions: ItemProduct[]
@@ -74,7 +73,6 @@ const props = defineProps<{
   orderId: number
 }>()
 const displayEditOrder = ref(false)
-const { products } = useGetProductsHandler()
 const listProducts: Ref<ItemProduct[]> = ref([])
 const emits = defineEmits(['update-item'])
 const textData = 'orders.order.edit.'

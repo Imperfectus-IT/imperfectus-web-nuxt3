@@ -1,7 +1,7 @@
 <template>
   <TKCarousel
     class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
-    :data="itemsType === 'fruits' ? fruits : vegetables"
+    :data="itemsType === 'fruits' ? fruits : vegetables "
     :visible-items="wrapItems()"
     :show-pagination="!displayDesktop"
     :show-navigation="displayDesktop"
@@ -14,7 +14,7 @@
   >
     <template #SlideContent="{ item }">
       <p class="bottom-7 text-[15px] absolute w-full text-center font-bold">
-        {{ locale === 'es' ? item.name_es : item.name_ca }}
+        {{ item.name }}
       </p>
     </template>
   </TKCarousel>
@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { useWindowSize } from '@/composables/useWindowSize'
+import type { Product } from '~/composables/shared/product/types/Product.ts'
 
 const { addResize, removeResize, windowWidth } = useWindowSize()
 const { locale } = useI18n()
@@ -49,12 +50,21 @@ const wrapItems = () => {
   return windowWidth.value < 768 ? 1.4 : windowWidth.value < 1450 ? 3 : windowWidth.value < 1950 ? 4 : 5
 }
 
-const { products } = useGetProductsHandler()
+const { activeFruitsItemProducts, activeVegetablesItemProducts } = useLocalStorageProductRepository()
+const { makeProductForCarousel } = useProductFactory()
+const { products } = useProductsState()
 
 const fruits = computed(() => {
-  return products.value.itemProducts.fruits.filter(product => product.isActive)
+  console.log(products.value)
+  return products.value.filter((product: Product) => product.itemType === 'fruit').map((item) => {
+    return makeProductForCarousel(item, locale.value)
+  })
 })
-const vegetables = computed(() => {
-  return products.value.itemProducts.vegetables.filter(product => product.isActive)
+
+// const fruits = activeFruitsItemProducts().map((item) => {
+//   return makeProductForCarousel(item, locale.value)
+// })
+const vegetables = activeVegetablesItemProducts().map((item) => {
+  return makeProductForCarousel(item, locale.value)
 })
 </script>

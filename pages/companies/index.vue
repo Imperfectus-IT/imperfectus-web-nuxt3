@@ -13,19 +13,19 @@ defineI18nRoute({
 
 const { t } = useI18n()
 const { scrollToById } = useScroll()
-const i18nHead = useLocaleHead()
-
-useHead({
-  title: t('pages.companies.title'),
-  meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: t('pages.companies.description'),
-    },
-    ...i18nHead.value.meta,
-  ],
-})
+// const i18nHead = useLocaleHead()
+//
+// useHead({
+//   title: t('pages.companies.title'),
+//   meta: [
+//     {
+//       hid: 'description',
+//       name: 'description',
+//       content: t('pages.companies.description'),
+//     },
+//     ...i18nHead.value.meta,
+//   ],
+// })
 
 const pdfFilePath = computed(() => {
   return `/pdfs/${t('pages.companies.pdfFileName')}`

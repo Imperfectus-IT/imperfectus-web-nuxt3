@@ -35,6 +35,7 @@
       <LandingUpToDateDialog
         class="mt-10 mb-4"
         :button-disabled="!emailIsMatched"
+        @subscribe="subscribeToNewsletter"
       />
     </div>
     <div v-else>
@@ -46,12 +47,26 @@
 </template>
 
 <script setup lang="ts">
+const { locale } = useI18n()
+const { handleSubscribeToNewsletter } = useUpdateUserHandler()
 const form = reactive({
   email: '',
   confirmEmail: '',
   emailFocused: false,
   displayMessageSent: false,
 })
+
+const subscribeToNewsletter = async () => {
+  try {
+    await handleSubscribeToNewsletter(form.email, locale.value)
+    form.displayMessageSent = true
+    form.email = ''
+    form.confirmEmail = ''
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
 
 const emailIsMatched = computed(() => {
   return form.email === form.confirmEmail && form.email !== '' && form.confirmEmail !== ''

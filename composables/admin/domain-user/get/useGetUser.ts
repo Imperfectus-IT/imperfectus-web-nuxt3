@@ -5,7 +5,8 @@ export const useGetUser = () => {
   const { getUser } = useDomainUserRepository()
   const { domainUser } = useDomainUserState()
   const executeGetUser = async () => {
-    domainUser.value = await getUser()
+    const strapiUser = await getUser()
+    domainUser.value = useDomainUserFactory(strapiUser)
   }
   return {
     executeGetUser,

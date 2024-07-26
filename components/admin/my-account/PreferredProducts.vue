@@ -17,8 +17,8 @@
             v-model="preferredProducts.fruits"
             :options="fruits"
             filter
-            option-label="label"
-            option-value="value"
+            option-label="name"
+            option-value="id"
             :placeholder="$t('profile.my_account.preferred_products.fruits.placeholder')"
             :selection-limit="2"
             class="w-full border-[1px] rounded-md text-[16px] mt-3"
@@ -32,8 +32,8 @@
             v-model="preferredProducts.vegetables"
             :options="vegetables"
             filter
-            option-label="label"
-            option-value="value"
+            option-label="name"
+            option-value="id"
             :placeholder="
               $t('profile.my_account.preferred_products.vegetables.placeholder')
             "
@@ -82,60 +82,33 @@
 </template>
 
 <script setup lang="ts">
-const savePreferredProducts = () => {
-  // TODO fetch API
-  console.log('Fetching API...')
-  return toggleComponentLayers()
-}
+const { locale } = useI18n()
 
 const toggleComponentLayers = () => {
   componentLayers.confirmView = !componentLayers.confirmView
   componentLayers.mainView = !componentLayers.mainView
 }
-
-const preferredProducts = reactive({
+const preferredProducts = reactive<PreferredProducts>({
   fruits: [],
   vegetables: [],
 })
-
 const disabledButton = computed(() => {
   return (
     preferredProducts.fruits.length === 0
     && preferredProducts.vegetables.length === 0
   )
 })
-
 const componentLayers = reactive({
   mainView: true,
   confirmView: false,
 })
+const { fruitsItemProducts, vegetablesItemProducts } = useLocalStorageProductRepository()
+const { makeProductForDropdown } = useProductFactory()
 
-const fruits = [
-  {
-    label: 'Manzana',
-    value: 'manzana',
-  },
-  {
-    label: 'Plátano',
-    value: 'plátano',
-  },
-  {
-    label: 'Naranja',
-    value: 'naranja',
-  },
-]
-const vegetables = [
-  {
-    label: 'Zanahoria',
-    value: 'zanahoria',
-  },
-  {
-    label: 'Pepino',
-    value: 'pepino',
-  },
-  {
-    label: 'Calabacín',
-    value: 'calabacín',
-  },
-]
+const fruits = computed(() => fruitsItemProducts().map(product => makeProductForDropdown(product, locale.value)))
+const vegetables = computed(() => vegetablesItemProducts().map(product => makeProductForDropdown(product, locale.value)))
+
+const savePreferredProducts = () => {
+  return toggleComponentLayers()
+}
 </script>

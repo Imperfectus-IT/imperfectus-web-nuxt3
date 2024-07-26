@@ -13,7 +13,7 @@
       <Dropdown
         v-if="isOpen"
         v-model="selectedLanguage"
-        class="mt-4"
+        class="mt-4 lg:w-1/2"
         :options="languages"
         option-label="name"
         option-value="code"
@@ -25,7 +25,7 @@
           :label="$t('profile.language_preference.save_modify_language_button')"
           :pt="{ label: 'text-sm' }"
           outlined
-          @click.prevent="handleUpdateLanguage"
+          @click="handleUpdateLanguage"
         />
         <Button
           class="w-[8.5rem] h-[3.125rem]"
@@ -40,8 +40,22 @@
 </template>
 
 <script setup lang="ts">
-const { selectedLanguage } = useProfileState()
-const { languages } = useGetAllLanguagesHandler()
+const props = defineProps<{
+  language: string
+}>()
+const emits = defineEmits(['update-language'])
+const languages = [
+  { name: 'Català', code: 'ca' },
+  { name: 'Español', code: 'es' },
+]
 const { isOpen, handleToggle } = useToggle()
-const { handleUpdateLanguage } = useUpdateProfileLanguageHandler()
+const selectedLanguage = ref(props.language)
+const handleUpdateLanguage = () => {
+  emits('update-language', selectedLanguage.value)
+  selectedLanguage.value = props.language
+  handleToggle()
+}
+watchEffect(() => {
+  selectedLanguage.value = props.language
+})
 </script>

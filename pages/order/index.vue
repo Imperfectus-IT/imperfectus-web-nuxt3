@@ -48,6 +48,7 @@ onBeforeMount(() => {
   initShoppingCart(shoppingCart)
 })
 onMounted(async () => {
+  console.log('EXECUTE')
   await executeGetAllProducts()
   await executeStep(shoppingCart.value.step)
 })

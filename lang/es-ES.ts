@@ -3232,6 +3232,14 @@ export default {
     logout: 'Cerrar sesión',
   },
   'profile': {
+    successToast: {
+      title: 'Datos actualizados correctamente',
+      description: 'Tus datos han sido actualizados correctamente',
+    },
+    errorToast: {
+      title: '¡Error!',
+      description: 'No se han podido actualizar tus datos. Por favor, inténtalo de nuevo',
+    },
     my_account: {
       title: '¡Hola, {name}!',
       help: '¿Necesitas ayuda?',
