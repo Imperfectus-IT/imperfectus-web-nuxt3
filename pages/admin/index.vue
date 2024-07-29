@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import dayjs from 'dayjs'
 import { useI18n } from 'vue-i18n'
 
@@ -38,7 +37,7 @@ const getLastOrder = () => {
   })[0]
   isLoading.value = false
 }
-const getSubscriptionId = computed(() => lastOrder.value.subscription)
+const getSubscriptionId = computed(() => lastOrder.value?.subscription)
 </script>
 
 <template>
