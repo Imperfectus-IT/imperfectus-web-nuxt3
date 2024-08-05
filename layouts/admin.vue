@@ -10,3 +10,7 @@
     <LazyFooterDefault />
   </div>
 </template>
+
+<script setup lang="ts">
+useGetSubscriptionsHandler()
+</script>

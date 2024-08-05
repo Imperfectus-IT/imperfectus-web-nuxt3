@@ -24,9 +24,7 @@ defineProps({
   },
 },
 )
-
 const classItemsToShow = ref('fruits')
-
 const handleToggleType = (type: string) => {
   classItemsToShow.value = type
 }

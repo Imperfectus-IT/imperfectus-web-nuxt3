@@ -1,4 +1,4 @@
-import type { Product, ProductExclusion } from '~/composables/shared/product/types/Product.ts'
+import type { MultiselectProduct, Product, ProductExclusion } from '~/composables/shared/product/types/Product.ts'
 
 export const useProductFactory = () => {
   const makeProductExclusion = (product: Product, locale: string): ProductExclusion => {
@@ -9,9 +9,9 @@ export const useProductFactory = () => {
     }
   }
 
-  const makeProductForDropdown = (product: Product, locale: string): ProductDropdown => {
+  const makeProductForDropdown = (product: Product, locale: string): MultiselectProduct => {
     return {
-      id: product.id,
+      id: product.id as number,
       name: product[`name_${locale}`],
     }
   }

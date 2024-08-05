@@ -17,5 +17,4 @@
 
 <script setup lang="ts">
 const { isDesktop } = useScreenSize()
-const displayDesktop = ref(false)
 </script>

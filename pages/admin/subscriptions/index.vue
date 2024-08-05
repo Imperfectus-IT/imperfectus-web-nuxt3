@@ -14,6 +14,7 @@
     </div>
     <Subscription
       v-for="subscription in subscriptions"
+      :key="subscription.id"
       :subscription="subscription"
     />
   </div>
@@ -32,5 +33,5 @@ defineI18nRoute({
   },
 })
 
-const { subscriptions } = useGetSubscriptionsHandler()
+const { subscriptions } = useSubscriptionsState()
 </script>

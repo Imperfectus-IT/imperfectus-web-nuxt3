@@ -6,8 +6,6 @@
 </template>
 
 <script setup lang='ts'>
-import { useGetSubscriptionsHandler } from '~/composables/admin/subscriptions/get/useGetSubscriptionsHandler.ts'
-
 defineI18nRoute({
   paths: {
     ca: '/el-meu-compte/subscripcions/[id]',
@@ -21,9 +19,6 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { subscriptions } = useGetSubscriptionsHandler()
-const subscription = ref<Subscription | null>(null)
-watch(subscriptions, () => {
-  subscription.value = subscriptions.value.find(subscription => subscription?.id === parseInt(route.params.id as string)) as Subscription
-})
+const { subscriptions } = useSubscriptionsState()
+const subscription = subscriptions.value.filter((subscription: Subscription) => subscription.id === parseInt(route.params.id))[0]
 </script>

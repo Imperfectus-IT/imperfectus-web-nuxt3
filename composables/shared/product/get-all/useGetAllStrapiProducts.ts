@@ -2,7 +2,7 @@ import type { Product } from '~/composables/shared/product/types/Product.ts'
 
 export const useGetAllStrapiProducts = () => {
   const { findProducts } = useStrapiProductRepository()
-  const { setProducts } = useLocalStorageProductRepository()
+  // const { setProducts } = useLocalStorageProductRepository()
   const { products } = useProductsState()
 
   const executeGetAllProducts = async () => {
@@ -10,7 +10,6 @@ export const useGetAllStrapiProducts = () => {
       _sort: 'name_es:ASC',
     }
     const strapiProducts: Array<Product> = await findProducts(query)
-    setProducts(strapiProducts)
     products.value = strapiProducts
   }
 

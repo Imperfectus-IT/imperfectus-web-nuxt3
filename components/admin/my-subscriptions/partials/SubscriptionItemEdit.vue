@@ -67,30 +67,23 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
-import type { SubscriptionItem } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { MultiselectProduct } from '~/composables/shared/product/types/Product.ts'
 
 const props = defineProps<{
-  exclusions: ItemProduct[]
+  exclusions: MultiselectProduct[]
   subscriptionItem: SubscriptionItem
   frequency: string
 }>()
+const { locale } = useI18n()
 const textData = 'subscriptions.subscription.modifyItem.'
-const { products } = useGetProductsHandler()
-const listProducts: Ref<ItemProduct[]> = ref([])
-const emits = defineEmits(['save', 'close'])
-const save = () => {
-  const frequency = props.frequency === 'weekly' ? 1 : 2
-  const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === updateSubscriptionItemData.type && box.sku.includes(`${updateSubscriptionItemData.size}R${frequency}`))
-  if (!newBoxProduct) {
-    // ERROR TOAST
-    return
-  }
-  const { exclusions } = updateSubscriptionItemData
-  emits('save', { newBoxProduct, subscriptionItemId: props.subscriptionItem.id, exclusions })
-}
-const close = () => emits('close')
+const { itemProducts } = useProductsState()
+const { makeProductForDropdown } = useProductFactory()
+const listProducts = computed(() => {
+  return itemProducts.value.map((product: Product) => {
+    return makeProductForDropdown(product, locale.value)
+  })
+})
+console.log('listProducts', listProducts.value)
 
 const updateSubscriptionItemData = reactive({
   type: props.subscriptionItem.sku.includes('FR')
@@ -105,6 +98,20 @@ const updateSubscriptionItemData = reactive({
       : 'XL',
   exclusions: [...props.exclusions.map((exclusion: ItemProduct) => exclusion.id)],
 })
+
+const emits = defineEmits(['save', 'close'])
+// const save = () => {
+//   const frequency = props.frequency === 'weekly' ? 1 : 2
+//   const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === updateSubscriptionItemData.type && box.sku.includes(`${updateSubscriptionItemData.size}R${frequency}`))
+//   if (!newBoxProduct) {
+//     // ERROR TOAST
+//     return
+//   }
+//   const { exclusions } = updateSubscriptionItemData
+//   emits('save', { newBoxProduct, subscriptionItemId: props.subscriptionItem.id, exclusions })
+// }
+
+const close = () => emits('close')
 const boxTypes = [
   { name: 'Verdura y fruta', code: 'mixed' },
   { name: 'Sólo fruta', code: 'fruits' },

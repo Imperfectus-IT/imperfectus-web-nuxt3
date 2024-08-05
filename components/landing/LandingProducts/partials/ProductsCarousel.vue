@@ -21,11 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useWindowSize } from '@/composables/useWindowSize'
 import type { Product } from '~/composables/shared/product/types/Product.ts'
-
-const { addResize, removeResize, windowWidth } = useWindowSize()
-const { locale } = useI18n()
 
 defineProps({
   itemsType: {
@@ -38,33 +34,13 @@ defineProps({
   },
 })
 
-onMounted(() => {
-  addResize()
-})
-
-onBeforeUnmount(() => {
-  removeResize()
-})
-
+const { windowWidth } = useWindowSize()
+const { locale } = useI18n()
 const wrapItems = () => {
   return windowWidth.value < 768 ? 1.4 : windowWidth.value < 1450 ? 3 : windowWidth.value < 1950 ? 4 : 5
 }
-
-const { activeFruitsItemProducts, activeVegetablesItemProducts } = useLocalStorageProductRepository()
 const { makeProductForCarousel } = useProductFactory()
 const { products } = useProductsState()
-
-const fruits = computed(() => {
-  console.log(products.value)
-  return products.value.filter((product: Product) => product.itemType === 'fruit').map((item) => {
-    return makeProductForCarousel(item, locale.value)
-  })
-})
-
-// const fruits = activeFruitsItemProducts().map((item) => {
-//   return makeProductForCarousel(item, locale.value)
-// })
-const vegetables = activeVegetablesItemProducts().map((item) => {
-  return makeProductForCarousel(item, locale.value)
-})
+const fruits = computed(() => products.value.filter((product: Product) => product.itemType === 'fruit').map(item => makeProductForCarousel(item, locale.value)))
+const vegetables = computed(() => products.value.filter((product: Product) => product.itemType === 'vegetable').map(item => makeProductForCarousel(item, locale.value)))
 </script>

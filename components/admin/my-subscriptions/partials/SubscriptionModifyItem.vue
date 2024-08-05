@@ -42,9 +42,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
-import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
-
 const emits = defineEmits(['save-modify-item'])
 const props = defineProps<{
   subscription: Subscription

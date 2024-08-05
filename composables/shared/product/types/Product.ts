@@ -157,3 +157,8 @@ export type CarouselProduct = {
   name: string
   image: string
 }
+
+export type MultiselectProduct = {
+  id: number
+  name: string
+}

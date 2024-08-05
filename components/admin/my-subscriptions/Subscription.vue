@@ -109,7 +109,5 @@ const props = defineProps<{
   subscription: Subscription
 }>()
 
-const cancelDate = computed(() =>
-  dayjs(props.subscription.cancelledAt).format('DD/MM/YYYY'),
-)
+const cancelDate = computed(() => dayjs(props.subscription.cancelledAt).format('DD/MM/YYYY'))
 </script>
