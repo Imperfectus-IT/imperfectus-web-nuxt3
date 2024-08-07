@@ -1095,6 +1095,7 @@ export default {
   'string.box.fruits': 'Solo fruta',
   'string.box.vegetables': 'Solo verdura',
   'string.box.cherries': 'Cerezas',
+  'string.box.stone_fruits': 'Fruta de hueso',
   'string.misc.buy.now': 'Comprar ahora',
   'string.misc.order': 'Nuevo pedido',
   'string.misc.here': 'Aquí',

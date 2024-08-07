@@ -1,5 +1,4 @@
 import type { ComposerTranslation } from 'vue-i18n'
-import type { Coupon } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 import type { Order, OrderBilling } from '~/composables/admin/orders/types/OrderType.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'

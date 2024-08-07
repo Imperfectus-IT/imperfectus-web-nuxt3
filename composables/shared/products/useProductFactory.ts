@@ -12,7 +12,7 @@ export const useProductFactory = () => {
       ...makeProductExclusion(product, locale),
       price: product.price,
       description: product[`description_${locale}`],
-      image: `/images/boxes/Caja-${product.SKU}-empty.webp`,
+      image: `/images/boxes/${product.SKU}_sale.webp`,
     }
   }
 

@@ -2,6 +2,7 @@
 export const useStep = () => {
   const { shoppingCart } = useShoppingCartState()
   const { saveShoppingCartLocalStorage } = useShoppingCart()
+  const { scrollToTop } = useScroll()
   const route = useRoute()
   const router = useRouter()
 
@@ -16,6 +17,7 @@ export const useStep = () => {
       path: route.path,
       query: { step },
     })
+    scrollToTop()
   }
 
   return {

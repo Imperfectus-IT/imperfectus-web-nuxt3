@@ -15,7 +15,7 @@ export const useShoppingCartFactory = () => {
       boxType: '',
       boxSize: '',
       purchaseType: '',
-      frequency: '',
+      frequency: 'once',
       quantity: 1,
     }
   }

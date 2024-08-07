@@ -60,7 +60,7 @@ const exclusionLists = computed(() => {
         v-if="item?.boxProduct"
         class="opacity-50"
       />
-      <div class="flex justify-between">
+      <div class="flex justify-between mt-3">
         <span class="text-xs leading-3">{{ $t('purchase_summary.frequency') }}</span>
         <span class="text-xs leading-3">{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</span>
       </div>

@@ -8,17 +8,6 @@ const { t, locale } = useI18n()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const isSelectedBox = (boxType: string) => boxType === shoppingCart.value.currentItem.boxType
 const activeButtonSelected = (boxType: string) => isSelectedBox(boxType) ? 'bg-green-primary' : 'bg-transparent'
-const nexStep = () => {
-  const currentItemIndex = shoppingCart.value.items.findIndex(item => item.id === shoppingCart.value.currentItem.id)
-  if (currentItemIndex > -1) {
-    shoppingCart.value.items[currentItemIndex] = shoppingCart.value.currentItem
-  }
-  else {
-    shoppingCart.value.items.push(shoppingCart.value.currentItem)
-  }
-  const user = useStrapiUser()
-  user?.value?.id ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
-}
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
     src: '/images/boxes/Caixa-S.webp',
@@ -32,10 +21,19 @@ const boxTypeImages = {
     src: '/images/boxes/Caixa-XL.webp',
     alt: t('string.box.vegetables'),
   },
+  [STONE_FRUITS_BOX_TYPE]: {
+    src: '/images/boxes/IMStone_sale.webp',
+    alt: t('string.box.stone_fruits'),
+  },
 }
 const productExclusions = computed(() => {
   return itemProducts().map(product => makeProductExclusion(product, locale.value))
 })
+
+const goToPreviousStep = () => {
+  const previousStep = shoppingCart.value.currentItem.purchaseType === SUBSCRIPTION_TYPE ? FREQUENCY_SUBSCRIPTION_TYPE_STEP : PURCHASE_TYPE_STEP
+  emit(GO_TO_STEP_EVENT, previousStep)
+}
 </script>
 
 <template>
@@ -47,7 +45,7 @@ const productExclusions = computed(() => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
+          @click.prevent="goToPreviousStep"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -100,6 +98,20 @@ const productExclusions = computed(() => {
         format="webp"
         preload
       />
+      <Button
+          :class="['text-xl w-2/3', activeButtonSelected(STONE_FRUITS_BOX_TYPE)]"
+          :label="$t('string.box.stone_fruits')"
+          outlined
+          @click.prevent="setBoxType(STONE_FRUITS_BOX_TYPE)"
+      />
+      <NuxtImg
+          v-if="isSelectedBox(STONE_FRUITS_BOX_TYPE)"
+          class="rounded-lg lg:hidden"
+          :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+          :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
+          format="webp"
+          preload
+      />
     </div>
     <NuxtImg
       v-if="shoppingCart.currentItem.boxType"
@@ -110,7 +122,7 @@ const productExclusions = computed(() => {
       preload
     />
     <ShoppingCartBoxTypeExclusions
-      v-if="shoppingCart.currentItem.boxType"
+      v-if="shoppingCart.currentItem.boxType && shoppingCart.currentItem.boxType !== STONE_FRUITS_BOX_TYPE"
       :product-exclusions="productExclusions"
     />
     <div class="text-center mt-6">
@@ -118,7 +130,7 @@ const productExclusions = computed(() => {
         v-if="shoppingCart.currentItem.boxType"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="nexStep"
+        @click.prevent="emit(GO_TO_STEP_EVENT, BOX_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

@@ -50,9 +50,9 @@ const wrapItems = () => {
 const { products } = useGetProductsHandler()
 
 const fruits = computed(() => {
-  return products.value.itemProducts.fruits.filter(product => product.isActive)
+  return products.value.itemProducts?.fruits?.filter(product => product.isActive)
 })
 const vegetables = computed(() => {
-  return products.value.itemProducts.vegetables.filter(product => product.isActive)
+  return products.value.itemProducts?.vegetables?.filter(product => product.isActive)
 })
 </script>

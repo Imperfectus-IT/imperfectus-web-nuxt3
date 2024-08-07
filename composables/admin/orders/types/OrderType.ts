@@ -1,6 +1,4 @@
 import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
-import type { Coupon } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
-
 export interface Order {
   id: number
   isValidForReview: boolean
@@ -88,10 +86,10 @@ export type TotalOrderDelivery = {
   preferredDay: string
 }
 
-export type OrderAmountQuery = {
+export type TotalOrderAmountQuery = {
   items: OrderItem[]
   coupon: Partial<Coupon>
-  isPlaced: boolean
-  delivery: TotalOrderDelivery
-  orderId: number
+  isPlaced?: boolean
+  delivery?: TotalOrderDelivery
+  orderId?: number
 }

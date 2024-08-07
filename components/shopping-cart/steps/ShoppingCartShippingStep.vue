@@ -51,7 +51,12 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
             class="text-xs"
           > {{ $t('orderMeta.isBillingMetaDifferent') }} </label>
         </div>
-        <ShoppingCartBillingAddress v-if="shoppingCart.invoiceRequired" />
+        <div
+          v-if="shoppingCart.invoiceRequired"
+          class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:mt-5"
+        >
+          <ShoppingCartBillingAddress />
+        </div>
       </div>
       <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
         <ShoppingCartSummaryBox />

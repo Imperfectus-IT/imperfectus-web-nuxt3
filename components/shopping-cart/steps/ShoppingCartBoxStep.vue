@@ -16,12 +16,16 @@ const boxDetails = [
     stepBox: 'order.steps.stepBox.largeBox',
   },
 ]
-const goBack = () => {
-  const purchaseTypesForStep = {
-    [SUBSCRIPTION_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-    [ORDER_TYPE]: PURCHASE_TYPE_STEP,
+const nexStep = () => {
+  const currentItemIndex = shoppingCart.value.items.findIndex(item => item.id === shoppingCart.value.currentItem.id)
+  if (currentItemIndex > -1) {
+    shoppingCart.value.items[currentItemIndex] = shoppingCart.value.currentItem
   }
-  emit(GO_TO_STEP_EVENT, purchaseTypesForStep[shoppingCart.value.currentItem.purchaseType])
+  else {
+    shoppingCart.value.items.push(shoppingCart.value.currentItem)
+  }
+  const user = useStrapiUser()
+  user?.value?.id ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
 }
 </script>
 
@@ -34,7 +38,7 @@ const goBack = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="goBack"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -82,7 +86,7 @@ const goBack = () => {
         v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
+        @click.prevent="nexStep"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

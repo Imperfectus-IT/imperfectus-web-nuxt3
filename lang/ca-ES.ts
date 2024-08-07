@@ -1088,6 +1088,7 @@ export default {
   'string.box.fruits': 'Només fruita',
   'string.box.vegetables': 'Només verdura',
   'string.box.cherries': 'Cireres',
+  'string.box.stone_fruits': 'Fruta de hueso',
   'string.misc.buy.now': 'Comprar ara',
   'string.misc.order': 'Nova Comanda',
   'string.misc.here': 'Aquí',

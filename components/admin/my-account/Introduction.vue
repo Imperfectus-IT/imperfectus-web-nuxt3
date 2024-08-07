@@ -34,7 +34,7 @@ defineProps<{
         </NuxtLink>
       </div>
     </div>
-    <NuxtLinkLocale to="order">
+    <NuxtLinkLocale :to="{ name: 'order' }">
       <Button
         class="hidden lg:block lg:h-12 lg:w-[200px]"
         :label="$t('string.misc.order')"

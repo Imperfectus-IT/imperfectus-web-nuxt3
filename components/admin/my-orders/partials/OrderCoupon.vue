@@ -14,27 +14,26 @@
     />
     <Button
       v-if="!orderCoupon"
-      :label="$t(`${textData}buttonAdd`)"
+      :label="$t('orders.order.coupon.buttonAdd')"
       :pt="{ root: 'hover:bg-green-tertiary hover:text-green-primary bg-green-primary max-h-[42px] font-solina-extended-book text-[14px] px-4 p-2.5 lg:py-[11px] border-[1px] border-green-tertiary rounded-r-lg' }"
       @click="addOrderCoupon"
     />
     <Button
       v-if="orderCoupon"
-      :label="t(`${textData}buttonRemove`)"
+      :label="$t('orders.order.coupon.buttonRemove')"
       :pt="{ root: 'bg-orange-primary hover:bg-green-tertiary hover:text-orange-primary max-h-[42px] font-solina-extended-book text-[14px] px-4 p-2.5 lg:py-[11px] border-[1px] border-green-tertiary rounded-r-lg' }"
       @click="removeOrderCoupon"
     />
   </InputGroup>
   <span
-    v-if="isValidationError"
-    :class="['text-base', orderCoupon ? 'text-green-secondary' : 'text-red-primary']"
+    v-if="isSetValidationError"
+    :class="['text-base', !isValidationError ? 'text-green-secondary' : 'text-red-primary']"
   >
-    {{ validationMessage.message }}
+    {{ validationMessage?.message }}
   </span>
 </template>
 
 <script setup lang='ts'>
-const { t } = useI18n()
 const props = defineProps({
   showTitle: {
     type: Boolean,
@@ -50,10 +49,9 @@ const props = defineProps({
   }
 })
 
-const isValidationError = computed(() => props.validationMessage?.status === ERROR_MESSAGE_STATUS)
 const isSetValidationError = computed(() => props.validationMessage?.status !== null)
+const isValidationError = computed(() => props.validationMessage?.status === ERROR_MESSAGE_STATUS)
 
-const textData = 'orders.order.coupon.'
 const coupon = ref<string>(props.orderCoupon?.coupon || '')
 const emits = defineEmits(['add-coupon', 'remove-coupon'])
 const isInputDisabled = computed(() => {

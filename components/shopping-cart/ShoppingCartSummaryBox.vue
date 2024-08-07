@@ -8,6 +8,7 @@ const { backButton } = defineProps({
     default: false,
   },
 })
+defineEmits(['goBack'])
 const { t } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const incrementQuantity = (item) => {
@@ -29,14 +30,25 @@ const removeItem = (id: number) => {
 }
 
 const { executeFindCoupon } = useFindCoupon()
+const { executeGetOrderAmount } = useGetOrderAmount()
 
 const addCoupon = async (coupon: string) => {
-  const couponFound = await executeFindCoupon({coupon})
+  const couponFound = await executeFindCoupon({ coupon })
   if (!couponFound.length) {
     setValidationMessage(ERROR_MESSAGE_STATUS, t('orderCoupon.errorMessage'))
     return
   }
   await validateCoupon(couponFound[0], validationMessage)
+}
+const getOrderAmount = async () => {
+  const payload = {
+    items: shoppingCart.value.items.map(item => ({
+      id: item.id,
+      quantity: item.quantity,
+    })),
+    coupon: shoppingCart.value.coupon,
+  }
+  await executeGetOrderAmount(payload)
 }
 </script>
 
@@ -71,7 +83,7 @@ const addCoupon = async (coupon: string) => {
       format="webp"
       class="rounded-lg mt-6 w-full lg:w-[100px] lg:h-[100px]"
     />
-    <div class="p-4 lg:my-auto lg:w-1/2 lg:p-0 lg:py-4 mt-5">
+    <div class="p-4 lg:my-auto lg:p-0 lg:py-4 mt-5">
       <div class="flex justify-between items-center">
         <span class="font-bold my-3 lg:my-1 text-lg lg:text-base">{{ item.boxProduct?.name }}</span>
         <span class="font-bold text-lg inline lg:hidden">{{ item.boxProduct?.price }} €</span>
