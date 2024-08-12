@@ -1102,8 +1102,9 @@ export default {
   'string.misc.status': 'Estado',
   'string.misc.baseAmount': 'Precio base',
   'string.misc.shippingCosts': 'Gastos de envío',
-  'string.misc.freeShipping':
-    'Envíos GRATIS a toda la península | Fruta y verdura directa del campo',
+  'string.misc.freeShipping_1':
+    'Envíos GRATIS a toda la península',
+  'string.misc.freeShipping_2': 'Fruta y verdura directa del campo',
   'string.misc.freeShipping-mobile': 'Envíos GRATIS a toda la península',
   'string.misc.talkual': 'TALKUAL',
   'string.misc.contact.general': 'contacto para particulares',

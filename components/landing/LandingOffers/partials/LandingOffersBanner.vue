@@ -22,12 +22,12 @@
     </p>
     <div class="flex flex-row items-center mt-4">
       <div class="h-3 w-3 bg-green-primary rounded-xl mr-2" />
-      <NuxtLink
+      <NuxtLinkLocale
         to="boxes"
         class="text-[16px]"
       >
         <p>{{ $t('homeKnowMore.more') }}</p>
-      </NuxtLink>
+      </NuxtLinkLocale>
     </div>
   </div>
 </template>

@@ -4,24 +4,23 @@
       {{ $t("footer.downloadApp") }}
     </h4>
     <div>
-      <NuxtLink>
+      <a href="https://apps.apple.com/es/app/talkual/id6469320546">
         <NuxtImg
-          class="w-2/3 mt-5"
+          class="w-[156px] h-[52px] lg:mt-5"
           src="/images/logos/footer/apple.webp"
           format="webp"
           loading="lazy"
         />
-      </NuxtLink>
+      </a>
 
-      <NuxtLink>
+      <a href="https://play.google.com/store/apps/details?id=com.lluraferi.talkual">
         <NuxtImg
-          class="w-2/3 mt-5"
+          class="mt-5 w-[156px] h-[52px]"
           src="/images/logos/footer/google.webp"
-          to="https://play.google.com/store/apps/details?id=com.lluraferi.talkual"
           loading="lazy"
           format="webp"
         />
-      </NuxtLink>
+      </a>
     </div>
   </div>
 </template>

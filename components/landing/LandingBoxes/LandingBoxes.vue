@@ -8,9 +8,9 @@
       <div
         class="inline-block ml-4 w-3 h-3 !bg-green-primary rounded-xl mr-1 lg:ml-0 lg:mr-2 lg:h-3.5 lg:w-3.5"
       />
-      <Nuxt-link to="boxes">
+      <NuxtLinkLocale to="boxes">
         {{ $t('homeBoxes.howToWorks') }}
-      </Nuxt-link>
+      </NuxtLinkLocale>
     </div>
   </div>
   <LandingBoxesCarousel

@@ -7,48 +7,48 @@
       {{ $t('blogPosts.description') }}
     </p>
     <div
-      class="grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:flex lg:justify-center"
+      class="px-2 grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:flex lg:justify-center"
     >
-      <template
+      <div
         v-for="(post, index) in blogPosts"
         :key="index"
+        class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[320px]"
       >
-        <div class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[200px]">
-          <div>
-            <NuxtImg
-              class="w-[300px] h-[150px] lg:h-[175px] rounded-t-lg  object-cover"
-              :src="post.imageUrl"
-              :alt="post.title"
-              loading="lazy"
-              format="webp"
-            />
-            <p class="text-left mt-3 pl-3 font-bold text-sm">
-              {{ post.title }}
-            </p>
-          </div>
-          <div class="text-[15px] flex mt-auto">
-            <NuxtLink
-              :to="post.link"
-              class="mt-auto mb-3"
-            >
-              <p class="text-left pl-3 underline mt-2">
-                {{ $t('blogPosts.read') }}
-              </p>
-            </NuxtLink>
-            <span class="mdi mdi-arrow-right ml-2 my-auto" />
-          </div>
+        <div>
+          <NuxtImg
+            class="w-[300px] h-[150px] lg:h-[175px] rounded-t-lg  object-cover"
+            :src="post.imageUrl"
+            :alt="post.title"
+            loading="lazy"
+            format="webp"
+          />
+          <p class="text-left mt-3 pl-3 font-bold text-sm">
+            {{ post.title }}
+          </p>
         </div>
-      </template>
+        <div class="text-[15px] flex mt-auto">
+          <NuxtLink
+            :to="post.link"
+            class="mt-auto mb-3"
+          >
+            <p class="text-left pl-3 underline mt-2">
+              {{ $t('blogPosts.read') }}
+            </p>
+          </NuxtLink>
+          <span class="mdi mdi-arrow-right ml-2 my-auto" />
+        </div>
+      </div>
     </div>
-    <Button
-      class=""
-      :label="$t('blogPosts.visit')"
-      severity="secondary"
-      :pt="{
-        // label: 'px-6 text-green-primary font-solina-extended-medium hover:text-green-tertiary',
-        root: 'px-6 py-2.5 rounded-[5px] bg-green-tertiary text-green-primary font-solina-extended-medium hover:bg-green-primary hover:text-green-tertiary',
-      }"
-    />
+    <a href="https://blog.talkualfoods.com/">
+      <Button
+        class=""
+        :label="$t('blogPosts.visit')"
+        severity="secondary"
+        :pt="{
+          root: 'px-6 py-2.5 rounded-[5px] bg-green-tertiary text-green-primary font-solina-extended-medium hover:bg-green-primary hover:text-green-tertiary outline-none',
+        }"
+      />
+    </a>
   </div>
 </template>
 
@@ -60,6 +60,7 @@ defineProps({
   },
 })
 
+// GET IN /utils/posts-blog
 const blogPosts = ref([
   {
     index: 1,

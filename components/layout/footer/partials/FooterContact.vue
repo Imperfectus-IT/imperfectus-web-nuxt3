@@ -28,11 +28,16 @@
       <p>{{ $t("footerInfo.schedule.2") }}</p>
     </div>
     <div class="text-[30px] flex flex-row gap-4 mt-6">
-      <span
-        v-for="icon in socialLinkIcons"
-        :key="icon"
-        :class="['mdi', `mdi-${icon}`]"
-      />
+      <a
+        v-for="(icon, index) in socialLinkIcons"
+        :key="index"
+        :href="icon.link"
+      >
+        <span
+          :class="['mdi', `mdi-${icon.icon}`]"
+        />
+      </a>
+
       <a
         class="relative top-3"
         title="Tiktok"
@@ -57,10 +62,25 @@
 
 <script setup lang="ts">
 const socialLinkIcons = [
-  'instagram',
-  'linkedin',
-  'facebook',
-  'youtube',
-  'twitter',
+  {
+    icon: 'instagram',
+    link: 'https://www.instagram.com/talkual/',
+  },
+  {
+    icon: 'linkedin',
+    link: 'https://www.linkedin.com/company/talkual',
+  },
+  {
+    icon: 'facebook',
+    link: 'https://www.linkedin.com/company/talkual',
+  },
+  {
+    icon: 'youtube',
+    link: 'https://www.youtube.com/channel/UCu6BQidScrwfSP7xvtZc24Q',
+  },
+  {
+    icon: 'twitter',
+    link: 'https://x.com/talkualfoods',
+  },
 ]
 </script>

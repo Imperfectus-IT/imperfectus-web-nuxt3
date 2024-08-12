@@ -10,7 +10,7 @@
         class="h-[300px] flex flex-col justify-center items-center"
       >
         <div
-          class="flex flex-col justify-center items-center text-center rounded-full border-2 border-green-primary mx-auto z-10"
+          class="flex flex-col justify-center items-center text-center rounded-full border-2 border-green-primary mx-auto"
           :class="[
             item.index % 2 === 0 ? 'bg-green-primary' : 'bg-green-tertiary',
             item.index === 1

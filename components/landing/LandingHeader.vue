@@ -22,16 +22,16 @@ const localePath = useLocalePath()
     </div>
 
     <div class="flex justify-center lg:justify-end">
-      <NuxtLink
+      <NuxtLinkLocale
         class="mt-4 lg:mt-0"
-        :to="localePath({ name: 'order' })"
+        to="order"
       >
         <Button
           class="p-10 lg:py-4 w-full lg:px-10 lg:mt-0"
           :label="$t('homeTitle.order')"
           raised
         />
-      </NuxtLink>
+      </NuxtLinkLocale>
     </div>
   </div>
 </template>
