@@ -5,7 +5,7 @@ defineProps<InfoCardTypes>()
 </script>
 
 <template>
-  <div class="flex flex-col items-center rounded-lg p-4 bg-green-primary">
+  <div class="flex flex-col items-center rounded-[20px] p-4 bg-green-primary">
     <p class="text-base font-solina-extended-medium">
       {{ title }}
     </p>

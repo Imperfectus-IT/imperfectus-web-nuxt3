@@ -2285,7 +2285,7 @@ export default {
     'Ofrecemos tres tamaños de caja de fruta variada y de temporada, directa del campo a tu oficina:',
   'companies.s': 'Caja pequeña (6-7 kg)',
   'companies.im': 'Caja mediana (9-10 kg)',
-  'companies.xl': 'Caja Grande (14-15 kg)',
+  'companies.xl': 'Caja grande (14-15 kg)',
 
   'companies.healthy.title': 'Tribu de empresas saludables',
 
@@ -2299,7 +2299,7 @@ export default {
   'companies.wantBeHealthy.1': 'Frutas imperfectas',
   // ++ Br tag
   'companies.wantBeHealthy.2': 'para tu empresa',
-  'companies.getYourFreeBox': 'Consigue tu prueba gratis',
+  'companies.getYourFreeBox': 'Pruébanos sin compromiso',
 
   'companies.reasons.proximity': 'Cajas de fruta de temporada y proximidad',
   'companies.reasons.healthy': 'Hábitos y bienestar saludable en la empresa',
@@ -2358,7 +2358,7 @@ export default {
   'pages.companies.description':
     'Servicio de fruta fresca y de proximidad por empresas. Cuida a tus trabajadores y ayuda a reducir el desperdicio alimentario. Escoge la cantidad y la frecuencia, y nosotros te lo traemos.',
   'pages.companies.pdfFileName': 'TALKUAL_Empresas_ES.pdf',
-  'pages.companies.form.title': 'Pide tu caja gratuita aquí',
+  'pages.companies.form.title': 'Pide tu caja de prueba gratuita',
   'pages.companies.form.description':
     'Rellena el formulario con todos tus datos y una persona de nuestro equipo se pondrá en contacto contigo lo antes posible para programar la entrega',
   'pages.companies.form.availableFor':
@@ -2368,7 +2368,7 @@ export default {
     'la Política de Privacidad y los Términos y Condiciones son obligatorios',
   'companies.messageSent':
     'Gracias por contactarnos, nos pondremos en contacto contigo lo antes posible para programar la entrega.',
-
+  'companies.contactus': 'Contacta con nosotros',
   // Refer a friend
   'pages.refer-a-friend.goto': 'Ir a tus referidos',
   'pages.refer-a-friend.title':
@@ -2630,30 +2630,27 @@ export default {
     'de las grandes superficies para combatir el ', //
   'boxes.suppliers.description.6.bold': 'desperdicio alimentario.', //
   'boxes.subscription-description.1.title': 'LA SUSCRIPCIÓN',
-  'boxes.subscription-description.1.description.1.bold': 'Ahorra 2€',
-  'boxes.subscription-description.1.description.2': 'en cada caja',
-  'boxes.subscription-description.1.description.3':
+  'boxes.subscription-description.1.description.1': '**Ahorra 2€** en cada caja',
+  'boxes.subscription-description.1.description.2':
     'Excluye hasta 6 alimentos cada semana',
-  'boxes.subscription-description.1.description.4':
+  'boxes.subscription-description.1.description.3':
     'Ideal para los que quieren consumir fruta y verdura muy a menudo',
-  'boxes.subscription-description.1.description.5': 'Receta incluida',
-  'boxes.subscription-description.1.description.6':
+  'boxes.subscription-description.1.description.4': 'Receta incluida',
+  'boxes.subscription-description.1.description.5':
     'Entrega martes, miércoles, jueves o viernes (según la zona)',
-  'boxes.subscription-description.1.description.7': 'Envío siempre gratis',
-  'boxes.subscription-description.1.description.8':
+  'boxes.subscription-description.1.description.6': 'Envío siempre gratis',
+  'boxes.subscription-description.1.description.7':
     'Pausa o cancela la suscripción en cualquier momento',
-  'boxes.subscription-description.1.description.9':
+  'boxes.subscription-description.1.description.8':
     'Comodidad: tu pedido se renueva automáticamente, sin preocuparte de nada',
   'boxes.subscription-description.2.title': 'COMPRA ÚNICA',
-  'boxes.subscription-description.2.description.1':
-    'Ideal para quienes no nos conocen y quieren ',
-  'boxes.subscription-description.2.description.2.bold':
-    'probar la calidad del producto',
-  'boxes.subscription-description.2.description.3': 'Receta incluida',
-  'boxes.subscription-description.2.description.4':
+  'boxes.order-description.2.description.1':
+    'Ideal para quienes no nos conocen y quieren **probar la calidad del producto** ',
+  'boxes.order-description.2.description.2': 'Receta incluida',
+  'boxes.order-description.2.description.3':
     'Entrega martes, miércoles, jueves o viernes (según la zona)',
-  'boxes.subscription-description.2.description.5': 'Envío gratis',
-  'boxes.subscription-description.2.description.6': 'Excluye hasta 6 alimentos',
+  'boxes.order-description.2.description.4': 'Envío gratis',
+  'boxes.order-description.2.description.5': 'Excluye hasta 6 alimentos',
   'boxes.our-products.description':
     'Estos son algunos de los productos de temporada que puedes encontrar actualmente en nuestras cajas en función de la disponibilidad del producto y de la limitación de peso de tu caja.',
   'boxes.our-boxes.title': 'NUESTRAS CAJAS',

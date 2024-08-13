@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header
-      :title="t('layout.navbar.whatinbox')"
-      :description="t('content.whatinbox.description')"
+      :title="$t('layout.navbar.whatinbox')"
+      :description="$t('content.whatinbox.description')"
       :background-desktop="'/images/whatinbox/whatinbox-banner.webp'"
       class="px-5 pb-16 pt-7 leading-5 lg:leading-8 "
     />
@@ -15,7 +15,7 @@
           :pt="{
             root: 'w-[80vw] lg:w-[50vw] border-[1px] border-grey-primary pl-10 py-2 rounded-lg',
           }"
-          :placeholder="t('content.whatinbox.searchPlaceholder')"
+          :placeholder="$t('content.whatinbox.searchPlaceholder')"
         />
       </span>
       <ImageTextCard
@@ -46,23 +46,23 @@ defineI18nRoute({
   },
 })
 
-const { t } = useI18n()
+const { locale } = useI18n()
 
 const searchField = ref<string>('')
-const products = useGetProductsHandler().products.value.itemProducts
-const activeProducts = ref<Product[]> ([...products.fruits, ...products.vegetables].filter(product => product.isActive))
+const { activeItemProducts } = useProductsState()
+const { makeProductForCarousel } = useProductFactory()
+//
+console.log('activeItemProducts.value', activeItemProducts.value)
+const products = computed(() => {
+  return activeItemProducts.value.map((product: Product) => makeProductForCarousel(product, locale.value))
+})
 
 const productsToShow: ComputedRef<Product[]> = computed(() => {
   if (searchField.value) {
-    return activeProducts.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
+    return products.value.filter(product => product.name.toLowerCase().includes(searchField.value.toLowerCase()))
   }
   else {
-    return activeProducts.value
+    return products.value
   }
 })
-
-type Product = {
-  name: string
-  image: string
-}
 </script>

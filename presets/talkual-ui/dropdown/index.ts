@@ -107,7 +107,7 @@ export default {
   wrapper: {
     class: [
       // Sizing
-      'max-h-[200px]',
+      'max-h-[300px]',
 
       // Misc
       'overflow-auto',

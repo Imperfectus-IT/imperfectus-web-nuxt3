@@ -16,7 +16,7 @@
         {{ t("content.boxes.title") }}
       </h4>
       <p
-        class="text-[25px] leading-8 mb-12 font-solina-extended-medium lg:text-[40px] lg:leading-[45px]"
+        class="text-[25px] leading-8 mb-12 font-solina-extended-book lg:text-[40px] lg:leading-[45px]"
       >
         {{ t("boxes.our-boxes.description") }}
       </p>
@@ -55,8 +55,8 @@
       />
     </div>
 
-    <div class="mx-3 font-solina-extended-medium lg:ml-12 lg:mb-4">
-      <h4 class="font-solina-condensed-bold font-bold text-[18px] mb-8">
+    <div class="mx-3 font-solina-extended-book lg:ml-12 lg:mb-4">
+      <h4 class="font-solina-condensed-bold font-bold uppercase text-[18px] mb-8">
         {{ t("boxes.title") }}
       </h4>
       <p class="text-[26px] leading-8 lg:text-[40px] lg:mb-4">
@@ -75,15 +75,15 @@
           gridRowGap: '20px',
         }"
       >
-        <BoxesBuyOptions
+        <BoxesBuyOptionsSubscription
           class="mb-12 lg:row-start-1 lg:col-span-2 lg:my-auto"
           :is-display-desktop="isDisplayDesktop"
           :list-items="subscriptionList"
           :title="t('boxes.subscription-description.1.title')"
         />
 
-        <BoxesBuyOptions
-          class="mb-12 lg:row-start-2 lg:col-span-2"
+        <BoxesBuyOptionsOrder
+          class="mb-12 lg:row-start-2 lg:col-span-2 lg:mt-6"
           :is-display-desktop="isDisplayDesktop"
           :list-items="uniqueOrderList"
           :title="t('boxes.subscription-description.2.title')"
@@ -100,9 +100,9 @@
         />
       </div>
     </div>
-
-    <Divider class="before:border-t-2 before:border-green-primary lg:mt-28" />
-
+  </div>
+  <Divider class="text-green-primary lg:mt-28 w-[100vw]" />
+  <div class="mt-16 lg:mt-0 max-w-[1600px] mx-auto">
     <p
       class="font-recoleta-regular text-[35px] mx-4 leading-10 lg:w-3/5 lg:mt-16 2xl:ml-0"
     >
@@ -116,11 +116,12 @@
       />
       <ProductsCarousel
         class="mt-4"
+        pagination-class="!mt-10"
         :display-desktop="true"
         :items-type="classItemsToShow"
         :visible-items="isDisplayDesktop ? 5 : 1.4"
-        :navigation-next-class="'relative lg:left-[96vw] xl:left-[90vw] 2xl:left-[50vw]'"
-        :navigation-prev-class="'relative lg:left-[88vw] xl:left-[82vw] 2xl:left-[45vw]'"
+        :navigation-next-class="'relative lg:left-[96vw] xl:left-[90vw] 2xl:left-[83vw]'"
+        :navigation-prev-class="'relative lg:left-[88vw] xl:left-[82vw] 2xl:left-[78vw]'"
         :show-pagination="!isDisplayDesktop"
         :show-navigation="isDisplayDesktop"
       />
@@ -130,7 +131,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import BoxesBuyOptions from '~/components/boxes/BoxesBuyOptions.vue'
+import BoxesBuyOptions from '~/components/boxes/BoxesBuyOptionsSubscription.vue'
 import type { BoxImages } from '~/components/boxes/types/BoxImages'
 import type { SelectedBox } from '~/components/boxes/types/BoxSelected'
 import type { Size } from '~/components/boxes/types/Size'
@@ -344,22 +345,22 @@ const xlBoxData = {
 }
 
 const subscriptionList = [
+  'boxes.subscription-description.1.description.1',
+  'boxes.subscription-description.1.description.2',
   'boxes.subscription-description.1.description.3',
   'boxes.subscription-description.1.description.4',
   'boxes.subscription-description.1.description.5',
   'boxes.subscription-description.1.description.6',
   'boxes.subscription-description.1.description.7',
   'boxes.subscription-description.1.description.8',
-  'boxes.subscription-description.1.description.9',
 ]
 
 const uniqueOrderList = [
-  'boxes.subscription-description.2.description.1',
-  'boxes.subscription-description.2.description.2.bold',
-  'boxes.subscription-description.2.description.3',
-  'boxes.subscription-description.2.description.4',
-  'boxes.subscription-description.2.description.5',
-  'boxes.subscription-description.2.description.6',
+  'boxes.order-description.2.description.1',
+  'boxes.order-description.2.description.2',
+  'boxes.order-description.2.description.3',
+  'boxes.order-description.2.description.4',
+  'boxes.order-description.2.description.5',
 ]
 
 const fruits = [

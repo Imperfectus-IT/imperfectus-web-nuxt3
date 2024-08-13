@@ -6,7 +6,7 @@
       class="bg-green-tertiary text-green-quaternary font-recoleta-regular text-[50px] leading-none lg:text-[60px] pb-16 px-4 first:pt-16 "
     >
       <p
-        class="lg:w-11/12 mx-auto"
+        class="lg:w-3/4 mx-auto"
       >
         {{ description }}
       </p>

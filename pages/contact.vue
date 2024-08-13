@@ -23,7 +23,7 @@
         </p>
       </div>
 
-      <ScheduleTable />
+      <ScheduleTable class="ml-44" />
     </div>
   </div>
 </template>

@@ -18,8 +18,10 @@
             :model-value="selectedBox.content"
             :options="getSelectedBoxData"
             :pt="{
-              input: 'font-solina-extended-medium text-[16px]',
+              input: 'font-solina-extended-medium text-[16px] border-none',
               trigger: 'ml-auto',
+              wrapper: 'bg-green-tertiary rounded-b-lg',
+              item: 'hover:bg-green-primary text-green-primary hover:text-green-tertiary cursor-pointer px-5 py-2 ',
             }"
             option-label="name"
             option-value="value"
@@ -35,7 +37,8 @@
             :pt="{
               input: 'font-solina-extended-medium text-[16px]',
               trigger: 'ml-auto',
-            }"
+              wrapper: 'bg-green-tertiary rounded-b-lg',
+              item: 'hover:bg-green-primary text-green-primary hover:text-green-tertiary cursor-pointer px-5 py-2 ' }"
             option-label="name"
             option-value="value"
             class="w-72"
@@ -46,10 +49,13 @@
           <span>{{ t("boxes.label.units") }}</span>
           <Dropdown
             :model-value="selectedBox.units"
-            :options="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+            :options="[1, 2, 3, 4, 5, 6]"
             :pt="{
               input: 'font-solina-extended-medium text-[16px]',
               trigger: 'ml-auto',
+              wrapper: 'bg-green-tertiary rounded-b-lg min-h-[260px]',
+              item: 'hover:bg-green-primary text-green-primary hover:text-green-tertiary cursor-pointer px-5 py-2 ',
+              panel: 'h-500px',
             }"
             class="w-72"
             @update:model-value="updateUnitsOnParent"

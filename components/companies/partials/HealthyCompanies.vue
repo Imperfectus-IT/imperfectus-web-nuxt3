@@ -12,21 +12,20 @@ const companies = [
   'motor-tarrega.webp',
   'nomad-coffee.webp',
   'oriols.webp',
-  'ondara.webp',
 ]
 </script>
 
 <template>
   <div
-    class="pl-4 pr-4 pt-[30px] pb-[30px] md:flex md:max-w-screen-lg md:flex-col md:self-center md:p-8"
+    class="pl-4 pr-4 py-[30px] md:flex  md:flex-col md:self-center md:p-8"
   >
     <SectionTitle
       :value="$t('companies.healthy.title')"
-      class="text-lg"
+      class="text-xl lg:text-[36px]"
       title-class="mb-10"
     />
 
-    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-8">
+    <div class="flex flex-wrap items-center justify-start gap-x-6 gap-y-8 lg:w-1/2 lg:mx-auto">
       <NuxtLink
         v-for="(company, index) in companies"
         :key="index"
@@ -37,7 +36,7 @@ const companies = [
           :alt="company"
           loading="lazy"
           format="webp"
-          width="100"
+          class="w-[100px] lg:w-[150px]"
         />
       </NuxtLink>
     </div>

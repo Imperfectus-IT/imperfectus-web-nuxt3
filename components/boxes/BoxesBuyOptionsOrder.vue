@@ -3,21 +3,17 @@
     v-if="isDisplayDesktop"
     :pt="{ legend: 'hidden' }"
   >
-    <h4 class="ml-5 font-solina-extended-medium mb-4 font-bold lg:ml-0 lg:mt-6">
+    <h4 class="ml-5 font-solina-extended-medium mb-4 font-bold lg:ml-0 lg:mt-3">
       {{ title }}
     </h4>
     <ul>
-      <li
+      <ListItem
         v-for="(item, index) in listItems"
         :key="index"
-      >
-        <ListItem
-          main-class="flex gap-x-4"
-          dot-class="text-[12px]"
-          text-class="-ml-2"
-          :text="t(item)"
-        />
-      </li>
+        main-class="flex gap-x-4"
+        dot-class="text-[12px]"
+        :text="$t(item)"
+      />
     </ul>
   </Fieldset>
 
@@ -26,29 +22,23 @@
       {{ title }}
     </h4>
     <ul>
-      <li
+      <ListItem
         v-for="(item, index) in listItems"
         :key="index"
-      >
-        <ListItem
-          main-class="flex gap-x-4"
-          dot-class="text-[10px] mt-1"
-          text-class=""
-          :text="t(item)"
-        />
-      </li>
+        main-class="flex gap-x-4"
+        dot-class="text-[10px] mt-1"
+        :text-class="`-ml-2 ${isBold(item)}`"
+        :text="$t(item)"
+      />
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
 defineProps<{
   isDisplayDesktop: boolean
   listItems: string[]
   title: string
 }>()
-
-const { t } = useI18n()
+const isBold = (label: string) => label.includes('bold') ? 'font-bold' : ''
 </script>
