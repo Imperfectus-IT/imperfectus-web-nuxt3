@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const companies = [
-  'alohas.webp',
-  'alsa.webp',
-  'chep.webp',
-  'cooltra.webp',
-  'decathlon.webp',
-  'hannlin.webp',
-  'ilerna.webp',
-  'innovamat.webp',
-  'mail-boxes.webp',
-  'motor-tarrega.webp',
-  'nomad-coffee.webp',
-  'oriols.webp',
+  { image: 'alohas.webp', link: 'https://alohas.com/' },
+  { image: 'alsa.webp', link: 'https://www.alsa.es/' },
+  { image: 'chep.webp', link: 'https://www.chep.com/' },
+  { image: 'cooltra.webp', link: 'https://cooltra.com/' },
+  { image: 'decathlon.webp', link: 'https://www.decathlon.es/' },
+  { image: 'hannlin.webp', link: 'https://hanlinltd.com/' },
+  { image: 'ilerna.webp', link: 'https://www.ilerna.es/' },
+  { image: 'innovamat.webp', link: 'https://www.innovamat.com/' },
+  { image: 'mail-boxes.webp', link: 'https://www.mbe.es/' },
+  { image: 'motor-tarrega.webp', link: 'https://motortarrega.com/' },
+  { image: 'nomad-coffee.webp', link: 'https://nomadcoffee.es/' },
+  { image: 'oriols.webp', link: 'https://www.maderasobiols.com/' },
 ]
 </script>
 
@@ -25,20 +25,20 @@ const companies = [
       title-class="mb-10"
     />
 
-    <div class="flex flex-wrap items-center justify-start gap-x-6 gap-y-8 lg:w-1/2 lg:mx-auto">
-      <NuxtLink
+    <div class="flex flex-wrap items-center justify-start gap-x-10 gap-y-10 lg:w-1/2 lg:mx-auto">
+      <a
         v-for="(company, index) in companies"
         :key="index"
-        :to="`/empreses/${company.split('.')[0]}`"
+        :href="company.link"
       >
         <NuxtImg
-          :src="`/images/companies/${company}`"
-          :alt="company"
+          :src="`/images/companies/${company.image}`"
+          :alt="company.image"
           loading="lazy"
           format="webp"
           class="w-[100px] lg:w-[150px]"
         />
-      </NuxtLink>
+      </a>
     </div>
   </div>
 </template>

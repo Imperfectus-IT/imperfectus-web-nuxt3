@@ -102,6 +102,10 @@ const itemLinks = [
     path: t('layout.navbar.blog.url'),
   },
 ]
+const selectedItem = ref<string | null>(null)
+const selectItem = (item: MenuItem) => {
+  selectedItem.value = item.id
+}
 </script>
 
 <template>
@@ -116,11 +120,17 @@ const itemLinks = [
       <template #item="{ item }">
         <div @click="hasCollapse(item)">
           <NuxtLink :to="item.path">
-            <span>{{ item.label }}</span>
-            <span
-              v-if="item.items"
-              class="mdi mdi-arrow-down ml-2"
-            />
+            <div class="flex flex-row">
+              <span
+                v-if="selectedItem === item.id"
+                class="text-green-primary !text-[12px] mr-3"
+              >⬤</span>
+              <span @click="selectItem(item)">{{ item.label }}</span>
+              <span
+                v-if="item.items"
+                class="mdi mdi-arrow-down ml-2"
+              />
+            </div>
           </NuxtLink>
         </div>
       </template>

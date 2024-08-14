@@ -3192,15 +3192,15 @@ export default {
       },
       medios: {
         title: 'TALKUAL en Medios',
-        cope: 'Gastrocope',
         rtve: 'Comer bien, tirar menos: el viaje de los productos...',
         tv3: '90 kg de menjar per persona, a les escombraries.',
         lasexta: 'Ahorrar comprando fruta fea...',
         lavanguardia: 'Dos emprendedores fundan una empresa en Bellpuig...',
-        segre: 'Una empresa leridana rescata del desperdicio más de...',
+        segre: 'Nueva aplicación de Talkual, en contra del despilfarro alimentario',
         elpuntavui: 'Una empresa de Bellpuig rescata del malbaratament...',
-        ondacero: 'Setembre de bioeconomia a Lleida amb jornades...',
         elpais: 'La empresa que vende fruta y verdura que se tira solo...',
+        periodico: 'La distribuidora de fruta \'fea\' Talkual amplía su infraestructura...',
+        antena3: 'Cómo y dónde comprar frutas y verduras de calidad más baratas porque son feas',
       },
     },
     dossier: {

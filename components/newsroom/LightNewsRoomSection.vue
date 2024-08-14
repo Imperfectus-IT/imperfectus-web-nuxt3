@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <section class="mt-5 text-center lg:mt-14">
     <div class="px-8">
-      <h3 class="font-recoleta-regular text-xl font-normal lg:text-[3rem]">
+      <h3 class="font-recoleta-regular text-xl font-normal lg:text-[3rem] lg:mb-6">
         {{ title }}
       </h3>
       <p
