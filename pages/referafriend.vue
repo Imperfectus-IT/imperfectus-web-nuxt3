@@ -79,12 +79,10 @@
 
     <!-- FAQS -->
 
-    <h4
-      class="uppercase font-solina-condensed-bold font-bold mt-14 lg:w-[93%] lg:mx-auto ml-4"
-    >
+    <h4 class="uppercase font-solina-extended-medium font-bold mt-14 lg:w-[75%] lg:mx-auto ml-4 lg:pl-[16px]">
       {{ t("pages.refer-a-friend.faqs.title") }}
     </h4>
-    <div class="px-4 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:w-[95%] lg:mx-auto">
+    <div class="px-4 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:w-[75%] lg:mx-auto">
       <Fieldset
         v-for="({ question, answer, answerExt }, index) in faqs"
         :key="index"

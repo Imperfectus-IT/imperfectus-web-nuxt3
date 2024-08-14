@@ -5,7 +5,7 @@ export type GiftCardForm = {
   whoSend: string
   forWho: string
   sendMethod: string
-  // designId: number
+  designId: number
 }
 
 export type BillingForm = {

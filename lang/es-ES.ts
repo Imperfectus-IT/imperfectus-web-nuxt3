@@ -1008,7 +1008,7 @@ export default {
   'layout.navbar.foodWaste': 'Desperdicio alimentario',
   'layout.navbar.commitment': 'Compromiso',
   'layout.navbar.impact': 'Impacto',
-  'layout.navbar.referrals': 'Invita a un amigx',
+  'layout.navbar.referrals': 'Invita a un amigo',
   'layout.navbar.giftcards': 'Tarjeta regalo',
   'layout.navbar.newsroom': 'Sala de prensa',
 
@@ -2574,14 +2574,12 @@ export default {
   'about.we-are.description.2':
     '¿Quieres que te contemos cómo nació esta aventura?',
   'about.we-are.description.3':
-    'Allá va. Hace unos años, Oriol volvió de Australia con muchas ideas en la cabeza, con conocimientos que aprendió de allí muy diferentes. Un día, como muchos otros, vino a verme (a mí, Marc) a mi almacén de peras y manzanas y vio como tirábamos muchas de ellas porque no eran del calibre que nos piden las grandes superficies y otros clientes. Oriol vio un problema muy grande en una acción que estaba muy normalizada para mí.',
+    '**Allá va. Hace unos años, Oriol volvió de Australia con muchas ideas en la cabeza, con conocimientos que aprendió de allí muy diferentes. Un día, como muchos otros, vino a verme (a mí, Marc) a mi almacén de peras y manzanas y vio como tirábamos muchas de ellas porque no eran del calibre que nos piden las grandes superficies y otros clientes. Oriol vio un problema muy grande en una acción que estaba muy normalizada para mí.**',
   'about.we-are.description.4':
     'Nos decidimos a investigar y vimos que el problema, aparte de darse con peras y manzanas, también ocurría con muchísimas otras frutas y verduras, además de otros productos.',
   'about.we-are.description.5':
-    'Nos pusimos a pensar en qué podíamos hacer para dar solución a esta problemática de la manera más fácil posible. Pensamos; "¿Qué nos gustaría a nosotros que se hiciese con fruta y verdura no aceptada por los supermercados?" La respuesta fue fácil: ',
-  'about.we-are.description.6.bold':
-    'cajas a domicilio, con productos tal cual, directos del campo.',
-  'about.we-are.description.7':
+    'Nos pusimos a pensar en qué podíamos hacer para dar solución a esta problemática de la manera más fácil posible. Pensamos; "¿Qué nos gustaría a nosotros que se hiciese con fruta y verdura no aceptada por los supermercados?" La respuesta fue fácil: **cajas a domicilio, con productos tal cual, directos del campo.**',
+  'about.we-are.description.6':
     'Por ello, a principios de 2020, decidimos poner en marcha TALKUAL con la misión de reducir el desperdicio alimentario, siendo las frutas y verduras las protagonistas de este cambio.',
 
   'about.mission':

@@ -21,7 +21,7 @@
     <Container>
       <div class="w-11/12 ml-4 mt-12 lg:w-1/2 lg:ml-0">
         <p
-          class="mt-6 text-[18px] font-solina-condensed-bold font-bold lg:mt-10 lg:text-[18px] uppercase"
+          class="mt-6 text-[18px] font-solina-extended-medium font-bold lg:mt-10 lg:text-[18px] uppercase"
         >
           {{ t("farmers.title") }}
         </p>

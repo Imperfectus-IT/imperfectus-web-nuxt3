@@ -5,9 +5,9 @@ export const useGiftFormValidator = () => {
   const giftCardForm = z
     .object({
       quantity: z.number(),
-      message: z.string().min(10),
-      whoSend: z.string().min(3),
-      forWho: z.string().min(3),
+      message: z.string().min(10, { message: 'Debe contener almenos 10 caracteres' }),
+      whoSend: z.string().min(3, { message: 'Debe contener almenos 3 caracteres' }),
+      forWho: z.string().min(3, { message: 'Debe contener almenos 3 caracteres' }),
       sendMethod: z.string().email({ message: 'Email incorrecto' }).min(1),
     })
     .required()

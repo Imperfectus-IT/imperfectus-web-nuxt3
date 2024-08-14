@@ -17,7 +17,7 @@
           v-if="item.image"
           :src="item.image"
           :alt="item.name"
-          :class="imageClass"
+          :class="imageClass || item.imageClass"
           loading="lazy"
           format="webp"
         />

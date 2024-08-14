@@ -1,5 +1,5 @@
 <template>
-  <h4 class="uppercase font-bold text-[22px] ml-8 mt-12">
+  <h4 class="uppercase font-bold font-solina-extended-medium text-[22px] ml-8 my-8">
     {{ $t("gift-card-doubts.title") }}
   </h4>
   <div
@@ -19,7 +19,7 @@
       :collapsed="true"
       :header="$t(`${textData.section}${item}.question`)"
     >
-      <p class="m-0">
+      <p class="ml-5">
         {{ $t(`${textData.section}${item}.answer`) }}
       </p>
     </Panel>

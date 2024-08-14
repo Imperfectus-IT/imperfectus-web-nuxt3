@@ -40,7 +40,7 @@ const changeNetworkLogo = (event: any) => {
       <span :class="['text-2xl', currentLogo]" />
       <TKCarousel
         class="w-full"
-        image-class="rounded-lg object-fit"
+        image-class="object-fit"
         :data="itemNetworks"
         :show-pagination="true"
         :show-navigation="false"
@@ -59,7 +59,7 @@ const changeNetworkLogo = (event: any) => {
       >
         <span :class="['text-2xl', item.icon]" />
         <NuxtImg
-          class="mt-5"
+          class="mt-5 rounded-lg"
           :src="item.image"
           :alt="item.name"
           width="316"

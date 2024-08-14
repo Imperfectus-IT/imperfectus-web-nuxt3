@@ -1,8 +1,8 @@
 <template>
-  <section class="mt-14 mb-10 lg:my-5 lg:mb-5">
-    <Divider />
-    <div class="text-center px-5 text-green-tertiary lg:flex lg:flex-cols-2 lg:justify-between lg:items-center lg:px-20 lg:py-10 xl:px-96">
-      <div class="lg:w-[760px] xl:w-[560px]">
+  <section class="mb-10 lg:mb-5">
+    <Divider class="mt-0" />
+    <div class="text-center px-5 text-green-tertiary lg:flex lg:flex-cols-2 lg:justify-evenly lg:items-center lg:px-20 lg:py-10 ">
+      <div class="lg:w-[760px] xl:w-[760px]">
         <h3 class="font-recoleta-regular text-2xl font-normal lg:text-[5rem]">
           {{ $t('newsroom.header.title') }}
         </h3>

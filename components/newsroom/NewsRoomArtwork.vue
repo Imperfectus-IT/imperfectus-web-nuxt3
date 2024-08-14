@@ -117,12 +117,9 @@ const toggle = (event: any) => {
           {{ item.title }}
         </p>
         <NuxtImg
-          class="mt-8 rounded-lg"
+          class="mt-8 rounded-lg w-[270px] h-[189px] object-cover"
           :src="item.cover"
           :alt="item.altCover"
-          width="270"
-          height="189"
-          sizes="270"
           :placeholder="[270, 189]"
           preload
         />

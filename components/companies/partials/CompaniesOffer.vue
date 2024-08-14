@@ -14,11 +14,11 @@ const images = [
     alt: 'boxes.s.alt',
   },
   {
-    image: '/images/boxes/Caixa-M.webp',
+    image: '/images/boxes/IMFR.webp',
     alt: 'boxes.m.alt',
   },
   {
-    image: '/images/boxes/XLR1VG_sale.webp',
+    image: '/images/boxes/XLFR.webp',
     alt: 'boxes.xl.alt',
   },
 ]
@@ -69,6 +69,7 @@ const images = [
       :show-navigation="!isMobile"
       :model-value="activeProductImage"
       class="flex-1"
+      image-class="lg:w-[720px]"
       @slide-end="handleSlideChange"
     />
   </div>

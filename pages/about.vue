@@ -5,33 +5,31 @@
       :key="index"
       class="bg-green-tertiary text-green-quaternary font-recoleta-regular text-[50px] leading-none lg:text-[60px] pb-16 px-4 first:pt-16 "
     >
-      <p
+      <MDC
         class="lg:w-3/4 mx-auto"
-      >
-        {{ description }}
-      </p>
+        :value="description"
+      />
     </div>
 
     <TKTopFooterEffect class="transform rotate-180" />
 
     <div class="lg:flex lg:ml-16 ">
       <div class="flex flex-col space-y-6 mt-6 px-4 text-green-tertiary descriptions lg:w-1/2">
-        <h4 class="font-solina-condensed-bold text-[18px] font-bold ">
+        <h4 class="font-solina-extended-medium text-[18px] font-bold ">
           {{ t('about.title') }}
         </h4>
-        <p
+        <MDC
           v-for="(description, index) in ourDescriptions"
           :key="index"
           :class="getTextClass(index)"
-        >
-          {{ description }}
-        </p>
+          :value="description"
+        />
       </div>
 
       <NuxtImg
         src="/images/about/we-are.webp"
         alt="Our team"
-        class="w-11/12 mx-auto mt-6 lg:w-[490px] lg:h-[600px] lg:mt-20 lg:rounded-xl"
+        class="w-11/12 mx-auto mt-6 lg:w-[510px] lg:h-[600px] lg:mt-20 lg:rounded-xl"
         loading="lazy"
         format="webp"
       />
@@ -76,7 +74,7 @@ const ourDescriptions: string[] = [
   t('about.we-are.description.2'),
   t('about.we-are.description.3'),
   t('about.we-are.description.4'),
-  t('about.we-are.description.5') + `<span class="font-bold">${t('about.we-are.description.6.bold')}</span>`,
-  t('about.we-are.description.7'),
+  t('about.we-are.description.5'),
+  t('about.we-are.description.6'),
 ]
 </script>
