@@ -3186,6 +3186,10 @@ export default {
       },
       videos: {
         title: 'Vídeos',
+        first_slide: 'Impacto',
+        second_slide: 'Imperfecciones',
+        third_slide: 'Agricultores',
+        fourth_slide: 'Equipo',
       },
       logos: {
         title: 'Logotipos',

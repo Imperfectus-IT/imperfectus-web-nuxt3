@@ -3,7 +3,7 @@
     <Header
       :title="t('farmers.header.title')"
       :description="t('farmers.header.description')"
-      background-desktop="'/images/about/farmers/header.jpg'"
+      background-desktop="'/images/about/farmers/header.webp'"
     />
     <div
       v-if="displayDesktop"
@@ -102,19 +102,19 @@ const farmers = computed<IFarmer[]>(() => [
       {
         width: displayDesktop.value ? 85 : 95,
         height: displayDesktop.value ? 490 : 460,
-        url: '/images/about/farmers/1.jpg',
+        url: '/images/about/farmers/1.webp',
         class: 'ml-1.5 lg:col-start-1 lg:row-start-1 order-1',
       },
       {
         width: 95,
         height: displayDesktop.value ? 490 : 630,
-        url: '/images/about/farmers/2.jpg',
+        url: '/images/about/farmers/2.webp',
         class: 'ml-1.5 lg:mx-auto lg:col-start-2 lg:row-start-1 order-2',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 590 : 530,
-        url: '/images/about/farmers/3.jpg',
+        url: '/images/about/farmers/3.webp',
         class:
           'ml-2 lg:ml-0 lg:col-start-3 lg:row-start-2 lg:row-span-4 order-4',
       },
@@ -129,27 +129,27 @@ const farmers = computed<IFarmer[]>(() => [
       {
         width: displayDesktop.value ? 80 : 95,
         height: displayDesktop.value ? 360 : 220,
-        url: '/images/about/farmers/4.jpg',
+        url: '/images/about/farmers/4.webp',
         class:
           'ml-1.5 mt-1.5 lg:mt-0 lg:row-start-1 lg:row-span-2 lg:col-start-1 lg:col-span-2 lg:ml-20',
       },
       {
         width: 95,
         height: displayDesktop.value ? 520 : 425,
-        url: '/images/about/farmers/5.jpg',
+        url: '/images/about/farmers/5.webp',
         class:
           'ml-1.5 lg:ml-0 lg:row-start-3 lg:col-start-1 lg:row-span-4 lg:mt-5',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: 435,
-        url: '/images/about/farmers/6.jpg',
+        url: '/images/about/farmers/6.webp',
         class: 'ml-1.5 lg:row-start-4 lg:col-start-2 lg:mx-auto',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 620 : 435,
-        url: '/images/about/farmers/7.jpg',
+        url: '/images/about/farmers/7.webp',
         class:
           'ml-1.5 lg:ml-0 lg:row-start-3 lg:col-start-3 lg:row-span-3 lg:-mt-10',
       },
@@ -164,13 +164,13 @@ const farmers = computed<IFarmer[]>(() => [
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 490 : 210,
-        url: '/images/about/farmers/9.jpg',
+        url: '/images/about/farmers/9.webp',
         class: ' ml-1.5 lg:col-start-2 lg:col-span-2 lg:ml-auto',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 545 : 469,
-        url: '/images/about/farmers/8.jpg',
+        url: '/images/about/farmers/8.webp',
         class: 'ml-1.5 lg:ml-0 lg:col-start-1 lg:w-11/12 lg:row-span-4',
       },
     ],
@@ -183,21 +183,21 @@ const farmers = computed<IFarmer[]>(() => [
       {
         width: displayDesktop.value ? 100 : 95,
         height: 500,
-        url: '/images/about/farmers/10.jpg',
+        url: '/images/about/farmers/10.webp',
         class:
           'ml-1.5 lg:ml-0 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:row-span-3 order-1',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 486 : 536,
-        url: '/images/about/farmers/11.jpg',
+        url: '/images/about/farmers/11.webp',
         class:
           'ml-1.5 lg:ml-0 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:-mt-3 order-3',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 680 : 565,
-        url: '/images/about/farmers/12.jpg',
+        url: '/images/about/farmers/12.webp',
         class:
           'ml-1.5 lg:col-start-3 lg:row-start-1 lg:mx-auto lg:-mt-6 order-2',
       },
@@ -211,21 +211,21 @@ const farmers = computed<IFarmer[]>(() => [
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 650 : 536,
-        url: '/images/about/farmers/13.jpg',
+        url: '/images/about/farmers/13.webp',
         class:
           'ml-1.5 lg:ml-0 lg:col-start-1 lg:row-start-1 lg:row-span-4 lg:mx-auto lg:mt-4 order-1',
       },
       {
         width: displayDesktop.value ? 90 : 95,
         height: displayDesktop.value ? 600 : 536,
-        url: '/images/about/farmers/14.jpg',
+        url: '/images/about/farmers/14.webp',
         class:
           'ml-1.5 lg:mx-auto lg:col-start-2 lg:row-start-1 lg:row-span-4 lg:mx-auto lg:mt-6 order-3',
       },
       {
         width: displayDesktop.value ? 100 : 95,
         height: displayDesktop.value ? 575 : 714,
-        url: '/images/about/farmers/15.jpg',
+        url: '/images/about/farmers/15.webp',
         class:
           'ml-1.5 lg:ml-auto lg:col-start-3 lg:row-start-1 lg:row-span-4 lg:mt-16 order-2',
       },

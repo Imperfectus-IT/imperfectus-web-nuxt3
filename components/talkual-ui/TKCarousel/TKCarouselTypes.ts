@@ -11,6 +11,7 @@ export interface CarouselSlideObject {
   stars?: number
   relativeTime?: string
   rating?: number
+  download?: string
   [key: string]: any
 }
 
