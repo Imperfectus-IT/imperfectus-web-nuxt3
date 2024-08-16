@@ -22,22 +22,19 @@ const atworkImages = ref<CarouselSlideObject[]>([
     id: useId(),
     name: t('newsroom.multimedia.images.first_slide'),
     image: '/images/landing/vegetables-carousel/3-tomate.webp',
-    download: '/downloads/products.zip',
-    fileName: 'talkual-products',
+    download: 'https://drive.usercontent.google.com/uc?id=1Yh2vteS3yLbybjh4rr7UVKFqCgABdNMT&export=download',
   },
   {
     id: useId(),
     name: t('newsroom.multimedia.images.second_slide'),
     image: '/images/landing/boxes-carousel/S.webp',
-    download: '/downloads/boxes.zip',
-    fileName: 'talkual-boxes',
+    download: 'https://drive.usercontent.google.com/uc?id=1Tr7QK_JymtFJShuZQBiHgt7p3PdGiK65&export=download',
   },
   {
     id: useId(),
     name: t('newsroom.multimedia.images.third_slide'),
     image: '/images/about/farmers/7.webp',
-    download: '/downloads/farmers.zip',
-    fileName: 'talkual-farmers',
+    download: 'https://drive.usercontent.google.com/uc?id=1vmQ-Xu89AkS0Ci9-1VBSr9Kq943ZEtqE&export=download',
   },
   {
     id: useId(),
@@ -51,31 +48,27 @@ const atworkVideos = ref<CarouselSlideObject[]>([
     id: useId(),
     name: t('newsroom.multimedia.videos.first_slide'),
     image: '/images/newsroom/artwork-videos-1.webp',
-    download: '/downloads/impact.mp4',
-    fileName: 'talkual-impact',
+    download: 'https://drive.usercontent.google.com/uc?id=1C2M6ev2hp0g1gn7dFYAnw6AF7ngGHLAJ&export=download',
   },
   {
     id: useId(),
     name: t('newsroom.multimedia.videos.second_slide'),
     image: '/images/newsroom/artwork-videos-2.webp',
-    download: '/downloads/imperfections.mp4',
-    fileName: 'talkual-imperfections',
+    download: 'https://drive.usercontent.google.com/uc?id=1Ypf7tCnrw1V636Qz9mf-MxQr2iGITlCe&export=download',
   },
   {
     id: useId(),
     name: t('newsroom.multimedia.videos.third_slide'),
     image: '/images/about/farmers/5.webp',
-    download: '/downloads/opening.mp4',
-    fileName: 'talkual-farmers',
+    download: 'https://drive.usercontent.google.com/uc?id=1UGDGwmhb6FvhWzG1uSCfhUfVjf7ghHqh&export=download',
   },
   {
     id: useId(),
     name: t('newsroom.multimedia.videos.fourth_slide'),
     image: '/images/newsroom/artwork-videos-4.webp',
-    download: '/downloads/unboxing.mp4',
-    fileName: 'talkual-team' },
+    download: 'https://drive.usercontent.google.com/uc?id=1CysxZLXm1iysGnSOmRQnV4jzsBrGZBvO&export=download',
+  },
 ])
-
 const op = ref()
 const isCollapsed = ref(true)
 const selectedIndex = ref(0)
@@ -134,7 +127,7 @@ const toggle = (event: any, index: number) => {
         <template #SlideContent="{ item }">
           <a
             :href="item.download"
-            :download="item.fileName"
+            target="_blank"
           >
             <span class="mdi mdi-tray-arrow-down text-xl absolute bottom-14 right-6 text-white-primary" />
           </a>
@@ -145,7 +138,9 @@ const toggle = (event: any, index: number) => {
       </TKCarousel>
     </OverlayPanel>
     <div class="relative">
-      <p>{{ $t('newsroom.multimedia.logos.title') }}</p>
+      <p :class="getTextColor">
+        {{ $t('newsroom.multimedia.logos.title') }}
+      </p>
       <NuxtImg
         class="mx-auto w-[270px] h-[189px] object-cover mt-8"
         src="/images/newsroom/talkual_banner.webp"
@@ -156,6 +151,7 @@ const toggle = (event: any, index: number) => {
       <a
         href="/downloads/logos.zip"
         download="talkual-logos"
+        target="_blank"
       >
         <span class="mdi mdi-tray-arrow-down text-xl text-green-tertiary absolute right-16 bottom-1" />
       </a>
