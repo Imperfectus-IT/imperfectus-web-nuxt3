@@ -149,7 +149,7 @@ const toggle = (event: any, index: number) => {
         alt="Banner TALKUAL"
       />
       <a
-        href="/downloads/logos.zip"
+        href="https://drive.usercontent.google.com/u/0/uc?id=1Yh2vteS3yLbybjh4rr7UVKFqCgABdNMT&export=download"
         download="talkual-logos"
         target="_blank"
       >
@@ -181,16 +181,3 @@ const toggle = (event: any, index: number) => {
     </div>
   </DarkNewsRoomSection>
 </template>
-
-<style lang="scss" scoped>
-//.arrow {
-//  bottom: 90%;
-//  left: 48%;
-//  border: solid transparent;
-//  content: "";
-//  position: absolute;
-//  border-bottom-color: var(--color-green-quaternary);
-//  border-width: 46px;
-//  margin-left: -40px;
-//}
-</style>
