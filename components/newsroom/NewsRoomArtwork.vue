@@ -27,7 +27,7 @@ const atworkImages = ref<CarouselSlideObject[]>([
     id: useId(),
     name: t('newsroom.multimedia.images.second_slide'),
     image: '/images/landing/boxes-carousel/S.webp',
-    download: 'https://drive.usercontent.google.com/uc?id=1Tr7QK_JymtFJShuZQBiHgt7p3PdGiK65&export=download',
+    download: 'https://drive.usercontent.google.com/uc?id=1IN0HUQeoXUnmXEv3NJCwbsSjZ1T_AuEW&export=download',
   },
   {
     id: useId(),
