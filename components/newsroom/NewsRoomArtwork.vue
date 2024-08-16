@@ -2,7 +2,6 @@
 import type { CarouselSlideObject } from '~/components/talkual-ui/TKCarousel/TKCarouselTypes.ts'
 
 const { t } = useI18n()
-
 const multimediaItems = [
   {
     id: 1,
@@ -22,7 +21,7 @@ const atworkImages = ref<CarouselSlideObject[]>([
     id: useId(),
     name: t('newsroom.multimedia.images.first_slide'),
     image: '/images/landing/vegetables-carousel/3-tomate.webp',
-    download: 'https://drive.usercontent.google.com/uc?id=1Yh2vteS3yLbybjh4rr7UVKFqCgABdNMT&export=download',
+    download: 'https://drive.usercontent.google.com/uc?id=1Tr7QK_JymtFJShuZQBiHgt7p3PdGiK65&export=download',
   },
   {
     id: useId(),
