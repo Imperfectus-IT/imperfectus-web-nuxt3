@@ -69,15 +69,41 @@ const atworkVideos = ref<CarouselSlideObject[]>([
   },
 ])
 const op = ref()
-const isCollapsed = ref(true)
-const selectedIndex = ref(0)
-const getImagesForCarousel = computed(() => selectedIndex.value === 1 ? atworkImages.value : atworkVideos.value)
-const getTextColor = computed(() => isCollapsed.value ? 'text-green-quaternary' : 'text-green-tertiary')
+
+const getTextColor = computed(() => imagesTableCollapsed.value ? 'text-green-quaternary' : 'text-green-tertiary')
+const getIconDirection = (key: string) => imagesToShowOnTable[key] ? 'mdi-chevron-down' : 'mdi-chevron-up'
+const getOpacity = (key: string) => showDownloadIcons[key] ? 'opacity-80' : ''
+
+const selectedMultimediaItems = ref(1)
+const getImages = computed(() => selectedMultimediaItems.value === 1 ? atworkImages.value : atworkVideos.value)
+
 const toggle = (event: any, index: number) => {
   op.value.toggle(event)
-  selectedIndex.value = index
-  isCollapsed.value = !isCollapsed.value
+  selectedMultimediaItems.value = index
+  setIsCollapsed(index)
 }
+
+const showDownloadIcons = reactive<Record<string, boolean>>({})
+const setShowDownloadIcon = (image: string, value: boolean) => {
+  showDownloadIcons[image] = value
+}
+
+const imagesToShowOnTable = reactive<Record<string, boolean>>({ 1: false, 2: false })
+const setIsCollapsed = (key: number) => {
+  if (key === 1) {
+    imagesToShowOnTable['2'] = false
+  }
+  else {
+    imagesToShowOnTable['1'] = false
+  }
+  imagesToShowOnTable[key] = !imagesToShowOnTable[key]
+}
+
+const displayCards = (index: number) => {
+  selectedMultimediaItems.value = index
+  setIsCollapsed(index)
+}
+const imagesTableCollapsed = computed(() => Object.values(imagesToShowOnTable).every(value => !value))
 </script>
 
 <template>
@@ -86,7 +112,7 @@ const toggle = (event: any, index: number) => {
     :title="$t('newsroom.multimedia.title')"
   >
     <div
-      v-for="item in multimediaItems"
+      v-for="(item, index) in multimediaItems"
       :key="item.id"
       class="font-solina-extended-book font-light text-base my-6"
     >
@@ -95,7 +121,7 @@ const toggle = (event: any, index: number) => {
       </p>
       <div class="flex justify-center mt-8 relative">
         <span
-          class="mdi mdi-chevron-down absolute bottom-0 right-12 text-[2rem]"
+          :class="['mdi mdi-chevron-down absolute bottom-0 right-12 text-[2rem]', getIconDirection(JSON.stringify(index+1))]"
           @click="toggle($event, item.id)"
         />
         <NuxtImg
@@ -117,7 +143,7 @@ const toggle = (event: any, index: number) => {
       <TKCarousel
         slide-class="rounded-lg py-5 mx-2"
         image-class="rounded-lg w-[270px] h-[189px] object-cover"
-        :data="getImagesForCarousel"
+        :data="getImages"
         :show-navigation="false"
         :show-pagination="false"
         :items-to-show="1.3"
@@ -156,19 +182,24 @@ const toggle = (event: any, index: number) => {
       </a>
     </div>
   </DarkNewsRoomSection>
+
   <DarkNewsRoomSection
     class="hidden lg:block"
     :title="$t('newsroom.multimedia.title')"
   >
     <div class="flex gap-5 justify-center">
       <div
-        v-for="item in multimediaItems"
+        v-for="(item, index) in multimediaItems"
         :key="item.id"
-        class="mt-16"
+        class="mt-16 relative"
       >
         <p class="text-[2rem] text-green-quaternary font-solina-extended-book font-light">
           {{ item.title }}
         </p>
+        <span
+          :class="['mdi absolute bottom-0 right-3 text-[2rem] cursor-pointer', getIconDirection(JSON.stringify(index+1))]"
+          @click="displayCards(item.id)"
+        />
         <NuxtImg
           class="mt-8 rounded-lg w-[270px] h-[189px] object-cover"
           :src="item.cover"
@@ -176,6 +207,56 @@ const toggle = (event: any, index: number) => {
           :placeholder="[270, 189]"
           preload
         />
+      </div>
+      <div
+        class="relative mt-16"
+        @mouseenter="setShowDownloadIcon('tk-logotipos', true)"
+        @mouseleave="setShowDownloadIcon('tk-logotipos', false)"
+      >
+        <p class="text-[2rem] text-green-quaternary font-solina-extended-book font-light">
+          {{ $t('newsroom.multimedia.logos.title') }}
+        </p>
+        <NuxtImg
+          :class="['mx-auto w-[270px] h-[189px] object-cover mt-8 rounded-lg hover:opacity-80 cursor-pointer', getOpacity('tk-logotipos')]"
+          src="/images/newsroom/talkual_banner.webp"
+          format="webp"
+          loading="lazy"
+          alt="Banner TALKUAL"
+        />
+        <a
+          v-if="showDownloadIcons['tk-logotipos']"
+          href="https://drive.usercontent.google.com/u/0/uc?id=1Yh2vteS3yLbybjh4rr7UVKFqCgABdNMT&export=download"
+          download="talkual-logos"
+          target="_blank"
+          class="inset-0 flex items-center justify-center absolute h-[130%] "
+        >
+          <span class="mdi mdi-tray-arrow-down text-[70px] text-white-primary" />
+        </a>
+      </div>
+    </div>
+    <div
+      v-if="!imagesTableCollapsed"
+      class="flex flex-row justify-center"
+    >
+      <div
+        v-for="item in getImages"
+        :key="item.image"
+        class="relative flex flex-col items-center mx-3 mt-10  hover:opacity-80"
+        @mouseenter="setShowDownloadIcon(item.image as string, true)"
+        @mouseleave="setShowDownloadIcon(item.image as string, false)"
+      >
+        <NuxtImg
+          class="w-[230px] h-[189px] rounded-lg object-cover cursor-pointer"
+          :src="item.image"
+        />
+        <a
+          v-if="showDownloadIcons[item.image as string]"
+          :href="item.download"
+          target="_blank"
+          class="z-10 absolute inset-0 flex items-center justify-center"
+        >
+          <span class="mdi mdi-tray-arrow-down text-[70px] text-white-primary" />
+        </a>
       </div>
     </div>
   </DarkNewsRoomSection>

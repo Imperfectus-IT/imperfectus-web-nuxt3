@@ -6,8 +6,8 @@
       title: 'font-recoleta-medium text-xl font-medium leading-5',
     }"
   >
-    <div class="flex flex-col gap-3 mb-5">
-      <p class="font-solina-extended-book text-sm mt-2 lg:mt-8">
+    <div class="flex flex-col gap-3 ">
+      <p class="font-solina-extended-book text-md mt-2 lg:mt-8">
         {{ $t("profile.language_preference.description") }}
       </p>
       <Dropdown
@@ -21,16 +21,14 @@
       <div class="flex flex-row gap-2 mt-5">
         <Button
           v-if="isOpen"
-          class="w-[11.5rem] h-[3.125rem]"
           :label="$t('profile.language_preference.save_modify_language_button')"
-          :pt="{ label: 'text-sm' }"
+          :pt="{ label: 'text-[16px] lg:w-1/5' }"
           outlined
           @click.prevent="handleUpdateLanguage"
         />
         <Button
-          class="w-[8.5rem] h-[3.125rem]"
           :label="isOpen ? $t('profile.language_preference.cancel_modify_language_button') : $t('profile.language_preference.modify_language_button')"
-          :pt="{ label: 'text-sm' }"
+          :pt="{ label: 'text-[16px] lg:w-1/5', root: 'border-[1px] py-3 px-4 rounded-lg' }"
           outlined
           @click.prevent="handleToggle"
         />

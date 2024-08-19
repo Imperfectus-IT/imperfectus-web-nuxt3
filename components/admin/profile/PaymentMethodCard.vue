@@ -61,7 +61,7 @@ const handleAddPayment = async (submitForm: any) => {
       <Divider class="invisible lg:visible !my-0 " />
       <RedsysPaymentForm
         ref="redsys"
-        class="mt-6 w-1/4"
+        class="mt-6 w-full lg:w-1/5 text-[14px]"
         :order="null"
         :is-button-outlined="true"
         @redirect="handleAddPayment"

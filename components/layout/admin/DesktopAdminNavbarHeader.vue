@@ -42,11 +42,6 @@ const items = ref([
               }"
             />
           </NuxtLink>
-          <div class="bg-green-tertiary h-4 w-[1px] mr-4" />
-          <NuxtLink :to="'/'">
-            <span class="mdi mdi-shopping text-[20px]" />
-
-          </NuxtLink>
         </div>
       </template>
     </Toolbar>

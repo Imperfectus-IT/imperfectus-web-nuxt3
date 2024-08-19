@@ -50,9 +50,9 @@ const addresses = [
     </div>
     <Divider class="invisible lg:visible !my-0 !mb-8" />
     <Button
-      class="h-[3.125rem] lg:w-64"
+      class="h-[3.125rem] lg:w-1/5"
       :label="$t('profile.address.add_address_button')"
-      :pt="{ label: 'text-sm lg:text-lg' }"
+      :pt="{ label: 'text-sm lg:text-[16px]' }"
       outlined
     />
   </Panel>

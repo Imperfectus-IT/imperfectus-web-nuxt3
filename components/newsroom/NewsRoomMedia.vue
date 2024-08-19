@@ -15,7 +15,7 @@ const mediosItems = [
     cover: 'rtve.webp',
     altCover: 'Logo RTVE',
     styles: 'p-0 w-[125px] h-[40px] lg:w-[145px] lg:h-[90px]',
-    styleText: 'lg:px-0 xl:px-28 !mt-0',
+    styleText: 'lg:px-0 xl:px-14 ',
     link: 'https://www.rtve.es/noticias/20230312/comer-bien-tirar-menos-viaje-productos-danados-para-evitar-desperdicio-alimentario/2431100.shtml',
   },
   {

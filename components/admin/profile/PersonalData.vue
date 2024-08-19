@@ -22,7 +22,7 @@ const items = [
     :header="$t('adminProfileForm.title')"
     class="lg:w-full"
     :pt="{
-      title: 'font-recoleta-medium text-xl font-medium leading-5',
+      title: 'font-recoleta-medium text-xl font-medium leading-5 lg:-mb-5',
     }"
   >
     <Divider class="lg:invisible" />
@@ -32,7 +32,7 @@ const items = [
       class="flex items-center gap-3 mb-5 lg:mb-10 lg:gap-5"
     >
       <span :class="['text-lg lg:text-[2rem]', item.icon]" />
-      <p class="font-solina-extended-book text-sm lg:text-lg overflow-hidden">
+      <p class="font-solina-extended-book text-md lg:text-lg overflow-hidden">
         {{ item.label }}
       </p>
     </div>
@@ -40,14 +40,14 @@ const items = [
       <Button
         class="w-[11.5rem] h-[3.125rem]"
         :label="$t('profile.personal_data.modify_data_button')"
-        :pt="{ label: 'text-sm' }"
+        :pt="{ label: 'text-md' }"
         outlined
         @click.prevent="$emit('on-modify-data', personalData)"
       />
       <Button
         class="w-[11.5rem] h-[3.125rem]"
         :label="$t('profile.personal_data.change_password_button')"
-        :pt="{ label: 'text-sm' }"
+        :pt="{ label: 'text-md' }"
         outlined
       />
     </div>

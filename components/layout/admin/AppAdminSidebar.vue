@@ -116,9 +116,7 @@ const itemLinks = [
       <template #item="{ item }">
         <div @click="hasCollapse(item)">
           <NuxtLink :to="item.path">
-            <span
-              class="hover:text-[45px] hover:text-green-primary transition-all ease-out duration-700"
-            >{{ item.label }}</span>
+            <span>{{ item.label }}</span>
             <span
               v-if="item.items"
               class="mdi mdi-arrow-down ml-2"

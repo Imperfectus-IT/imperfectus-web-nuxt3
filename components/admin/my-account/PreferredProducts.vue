@@ -2,11 +2,10 @@
   <div
     class="border-green-tertiary border-[1px] rounded-lg p-4 mt-6 flex flex-col justify-center"
   >
-    <h4 class="font-recoleta-regular text-[30px]">
+    <h4 class="font-recoleta-medium text-[25px]">
       {{ $t("profile.my_account.preferred_products.title") }}
     </h4>
     <Divider />
-
     <div v-if="componentLayers.mainView">
       <div class="lg:flex lg:flex-row lg:gap-5">
         <div class="flex flex-col w-full">
@@ -17,8 +16,8 @@
             v-model="preferredProducts.fruits"
             :options="fruits"
             filter
-            option-label="label"
-            option-value="value"
+            option-label="name"
+            option-value="id"
             :placeholder="$t('profile.my_account.preferred_products.fruits.placeholder')"
             :selection-limit="2"
             class="w-full border-[1px] rounded-md text-[16px] mt-3"
@@ -32,8 +31,8 @@
             v-model="preferredProducts.vegetables"
             :options="vegetables"
             filter
-            option-label="label"
-            option-value="value"
+            option-label="name"
+            option-value="id"
             :placeholder="
               $t('profile.my_account.preferred_products.vegetables.placeholder')
             "
@@ -82,6 +81,7 @@
 </template>
 
 <script setup lang="ts">
+const { locale } = useI18n()
 const savePreferredProducts = () => {
   // TODO fetch API
   console.log('Fetching API...')
@@ -110,32 +110,11 @@ const componentLayers = reactive({
   confirmView: false,
 })
 
-const fruits = [
-  {
-    label: 'Manzana',
-    value: 'manzana',
-  },
-  {
-    label: 'Plátano',
-    value: 'plátano',
-  },
-  {
-    label: 'Naranja',
-    value: 'naranja',
-  },
-]
-const vegetables = [
-  {
-    label: 'Zanahoria',
-    value: 'zanahoria',
-  },
-  {
-    label: 'Pepino',
-    value: 'pepino',
-  },
-  {
-    label: 'Calabacín',
-    value: 'calabacín',
-  },
-]
+const { fruitsItemProducts, vegetablesItemProducts } = useProductsState()
+const vegetables = computed(() => {
+  return vegetablesItemProducts.value.map(item => useProductFactory().makeProductExclusion(item, locale.value))
+})
+const fruits = computed(() => {
+  return fruitsItemProducts.value.map(item => useProductFactory().makeProductExclusion(item, locale.value))
+})
 </script>

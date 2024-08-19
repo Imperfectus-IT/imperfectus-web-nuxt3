@@ -14,7 +14,7 @@
     </div>
     <NuxtImg
       alt="cards"
-      :src="'/images/gift-card/cards.webp'"
+      :src="'/images/gift-card/gift-card-header.webp'"
       loading="lazy"
       format="webp"
       class="w-[330px] h-[210px]"

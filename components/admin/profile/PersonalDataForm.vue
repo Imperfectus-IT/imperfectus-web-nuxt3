@@ -39,13 +39,13 @@ const onSubmit = async () => {
           class="w-[11.5rem] h-[3.125rem]"
           type="submit"
           :label="$t('profile.personal_data.save_changes_button')"
-          :pt="{ label: 'text-sm' }"
+          :pt="{ label: 'text-md' }"
           outlined
         />
         <Button
           class="w-[11.5rem] h-[3.125rem]"
           :label="$t('profile.personal_data.cancel_changes_button')"
-          :pt="{ label: 'text-sm' }"
+          :pt="{ label: 'text-md' }"
           outlined
           @click.prevent="$emit('on-modify-data')"
         />

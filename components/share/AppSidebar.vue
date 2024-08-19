@@ -22,6 +22,12 @@ const hasCollapse = (item: MenuItem) => {
   }
 }
 
+const getParentItem = (itemId: string) => {
+  return itemLinks.find(item =>
+    item.items?.some(subItem => subItem.id === itemId),
+  )
+}
+
 const itemLinks = [
   {
     id: useId(),
@@ -104,7 +110,7 @@ const itemLinks = [
 ]
 const selectedItem = ref<string | null>(null)
 const selectItem = (item: MenuItem) => {
-  selectedItem.value = item.id
+  selectedItem.value = getParentItem(item.id)?.id || item.id
 }
 </script>
 
