@@ -1,41 +1,35 @@
-import type { MultiselectProduct, Product, ProductExclusion } from '~/composables/shared/product/types/Product.ts'
-
 export const useProductFactory = () => {
-  const makeProductExclusion = (product: Product, locale: string): ProductExclusion => {
+  const createBoxProduct = (product: any): BoxProduct => {
     return {
       id: product.id,
-      sku: product.SKU,
-      name: product[`name_${locale}`],
-    }
-  }
-
-  const makeProductForDropdown = (product: Product, locale: string): MultiselectProduct => {
-    return {
-      id: product.id as number,
-      name: product[`name_${locale}`],
-    }
-  }
-
-  const makeProductForCarousel = (product: Product, locale: string): CarouselProduct => {
-    return {
-      ...makeProductExclusion(product, locale),
-      image: product.imagePath,
-    }
-  }
-
-  const makeProductBox = (product: Product, locale: string): ProductBox => {
-    return {
-      ...makeProductExclusion(product, locale),
+      name_es: product.name_es,
+      name_ca: product.name_ca,
+      description_es: product.description_es,
+      description_ca: product.description_ca,
+      image: product.image,
+      isActive: product.isActive,
+      type: product.type,
       price: product.price,
-      description: product[`description_${locale}`],
-      image: `/images/boxes/Caja-${product.SKU}-empty.webp`,
+      weight: product.weight,
+      boxType: product.boxType,
+      isImperfectusProduct: product.isImperfectusProduct,
+    }
+  }
+  const createItemProduct = (product: any): ItemProduct => {
+    return {
+      id: product.id,
+      name_es: product.name_es,
+      name_ca: product.name_ca,
+      image: product.imagePath?.[0],
+      isActive: product.isActive,
+      type: product.type,
+      itemType: product.itemType,
+      isImperfectusProduct: product.isImperfectusProduct,
     }
   }
 
   return {
-    makeProductExclusion,
-    makeProductBox,
-    makeProductForCarousel,
-    makeProductForDropdown,
+    createBoxProduct,
+    createItemProduct,
   }
 }

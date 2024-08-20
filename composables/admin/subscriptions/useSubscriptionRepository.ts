@@ -64,8 +64,8 @@ export const useSubscriptionRepository = () => {
     return await $fetch(`${config.public.STRAPI_URL}/orders/total`, {
       method: 'POST',
       body: {
-        items: [...subscription.subscriptionItems],
         coupon: subscription.coupon,
+        items: [...subscription.subscriptionItems],
         delivery: {
           shipping_supplements: [],
         },

@@ -1,7 +1,7 @@
 <template>
   <TKCarousel
     class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
-    :data="itemsType === 'fruits' ? fruits : vegetables"
+    :data="itemsType === 'fruits' ? activeFruitsItemProducts : activeVegetablesItemProducts"
     :visible-items="wrapItems()"
     :show-pagination="!displayDesktop"
     :show-navigation="displayDesktop"
@@ -47,12 +47,5 @@ const wrapItems = () => {
   return windowWidth.value < 768 ? 1.4 : windowWidth.value < 1450 ? 3 : windowWidth.value < 1950 ? 4 : 5
 }
 
-const { products } = useGetProductsHandler()
-
-const fruits = computed(() => {
-  return products.value.itemProducts?.fruits?.filter(product => product.isActive)
-})
-const vegetables = computed(() => {
-  return products.value.itemProducts?.vegetables?.filter(product => product.isActive)
-})
+const { activeFruitsItemProducts, activeVegetablesItemProducts } = useProductsState()
 </script>

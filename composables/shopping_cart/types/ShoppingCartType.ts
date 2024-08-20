@@ -41,7 +41,7 @@ export type BoxProductDetail = {
 export type Item = {
   id: string
   amount: number
-  exclusions: Product[]
+  exclusions: StrapiProduct[]
   image: string
   boxProduct: BoxProductDetail | null
   boxType: string
@@ -51,7 +51,7 @@ export type Item = {
   quantity: number
 }
 
-export type MessageStatus = ERROR_MESSAGE_STATUS  | SUCCESS_MESSAGE_STATUS | null
+export type MessageStatus = ERROR_MESSAGE_STATUS | SUCCESS_MESSAGE_STATUS | null
 
 export type ValidationMessage = {
   status: MessageStatus

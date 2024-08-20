@@ -63,6 +63,8 @@ lg:flex lg:flex-row lg:justify-between lg:px-4 lg:items-center lg:pr-28"
 <script setup lang="ts">
 import type { CarouselSlideObject } from '../talkual-ui/TKCarousel/TKCarouselTypes'
 
+const { isDesktop } = useScreenSize()
+
 const reviews: CarouselSlideObject[] = [
   {
     index: 1,

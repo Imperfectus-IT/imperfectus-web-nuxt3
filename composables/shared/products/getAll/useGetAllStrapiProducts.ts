@@ -1,14 +1,14 @@
 export const useGetAllStrapiProducts = () => {
-  const { findProducts } = useStrapiProductRepository()
+  const { findProducts } = useProductRepository()
   const { products } = useProductsState()
 
   const executeGetAllProducts = async () => {
     const query = {
       _sort: 'name_es:ASC',
     }
-    products.value = await findProducts(query)
-    // setProducts(products.value)
-    return products
+    const allProducts = await findProducts(query)
+    products.value.boxProducts = allProducts.boxProducts
+    products.value.itemProducts = allProducts.itemProducts
   }
 
   return {
