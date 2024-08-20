@@ -218,11 +218,11 @@ const filteredProducts = (orderItem: OrderItem) => {
 }
 
 const isOneStepOrder = computed(() => {
-  const oneStepStatuses = ['refunded', 'cancelled', 'failed', 'replaced']
+  const oneStepStatuses = ['refunded', 'cancelled', 'replaced']
   return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
 })
 const saveOrderReview = async () => {
-  await handleAddOrderReview(props.order, review.value, textData)
+  await addOrderReview(props.order, review.value, textData)
 }
 
 export type updateOrderShippingPayload = OrderShipping & { order: number }

@@ -45,7 +45,7 @@ const items = ref([
         </div>
       </template>
     </Toolbar>
-    <AppAdminSidebar
+    <AppSidebar
       v-model:visible="visible"
       @hide="toggleVisible"
     />

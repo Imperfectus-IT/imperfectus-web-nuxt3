@@ -5,7 +5,7 @@
     </h4>
     <OrdersSelector
       :available-orders="ordersSelectorCountRef"
-      @selected-orders="(payload: string) => filterSelectedOrders(payload)"
+      @selected-orders="filterSelectedOrders"
     />
     <div class="flex flex-col">
       <MobileOrder
