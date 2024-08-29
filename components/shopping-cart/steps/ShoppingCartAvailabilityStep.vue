@@ -12,17 +12,15 @@ watch(
 
 <template>
   <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] lg:relative">
-    <div class="flex items-center lg:justify-center gap-3">
-      <div class="lg:absolute lg:left-5 lg:flex lg:flex-row lg:gap-3 lg:mt-10">
-        <Button
-          class="w-[2rem] h-[2rem] text-xl "
-          icon="mdi mdi-chevron-left"
-          rounded
-          outlined
-          @click.prevent="goBack"
-        />
-        <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
-      </div>
+    <div class="lg:absolute lg:left-[36px] lg:flex lg:flex-row lg:gap-3 lg:mt-2">
+      <Button
+        class="w-[2rem] h-[2rem] text-xl "
+        icon="mdi mdi-chevron-left"
+        rounded
+        outlined
+        @click.prevent="goBack"
+      />
+      <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
     </div>
     <div class="text-center mt-10 lg:mt-0">
       <p class="font-recoleta-regular text-lg font-normal lg:text-2xl">
@@ -39,7 +37,7 @@ watch(
         v-model="shoppingCart.shippingAddress.postalCode"
         class="mt-4"
         :pt="{
-          input: 'text-[40px]',
+          input: 'text-[45px]',
         }"
         :length="MAX_POSTAL_CODE_LENGTH"
         :invalid="isInvalid"
