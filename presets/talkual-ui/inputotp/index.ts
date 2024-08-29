@@ -3,7 +3,7 @@ export default {
     class: [
       // Alignment
       'flex items-center justify-center',
-      'gap-7',
+      'gap-4 lg:gap-7',
     ],
   },
   input: {
@@ -40,9 +40,9 @@ export default {
         { 'border-green-secondary': !props.invalid },
 
         // Invalid State
-        'invalid:focus:ring-red-primary',
-        'invalid:hover:border-red-primary',
-        { 'border-red-primary': props.invalid },
+        'invalid:focus:ring-green-tertiary',
+        'invalid:hover:border-green-tertiary',
+        { 'border-green-tertiary': props.invalid },
 
         // States
         {

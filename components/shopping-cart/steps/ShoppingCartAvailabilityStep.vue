@@ -2,16 +2,28 @@
 const { shoppingCart } = useShoppingCartState()
 const { isInvalid, findCoverageByPostalCode, goBack } = useShoppingCartAvailabilityStep()
 const { MAX_POSTAL_CODE_LENGTH } = useLocationValidator()
+const toast = useToast()
+const { errorToast } = useToastService()
+const { t } = useI18n()
+const showToast = () => {
+  errorToast(toast, t('adminOrderShipment.postCode'), t('validations.postcode.notCovered'))
+}
 
 defineEmits([GO_TO_STEP_EVENT])
 watch(
   () => shoppingCart.value.shippingAddress.postalCode,
-  findCoverageByPostalCode,
+  async (newPostalCode) => {
+    await findCoverageByPostalCode(newPostalCode)
+    if (isInvalid.value && newPostalCode.length === MAX_POSTAL_CODE_LENGTH) {
+      await showToast()
+    }
+  },
 )
 </script>
 
 <template>
   <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] lg:relative">
+    <Toast />
     <div class="lg:absolute lg:left-[36px] lg:flex lg:flex-row lg:gap-3 lg:mt-2">
       <Button
         class="w-[2rem] h-[2rem] text-xl "
