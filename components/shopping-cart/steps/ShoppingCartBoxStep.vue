@@ -30,9 +30,9 @@ const nexStep = () => {
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%]">
-    <div class="flex items-center gap-3">
-      <div class="lg:absolute lg:left-5 flex flex-row gap-3 lg:mt-3">
+  <div class="px-8 md:px-[28%] lg:px-[20%] 2xl:px-[20%]">
+    <div class="flex items-center gap-5">
+      <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">
         <Button
           class="w-[2rem] h-[2rem] text-xl "
           icon="mdi mdi-chevron-left"

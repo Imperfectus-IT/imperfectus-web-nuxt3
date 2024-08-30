@@ -37,9 +37,9 @@ const goToPreviousStep = () => {
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
-    <div class="flex items-center gap-3">
-      <div class="lg:absolute lg:left-5 flex flex-row gap-3 lg:mt-3">
+  <div class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
+    <div class="flex items-center gap-5">
+      <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">
         <Button
           class="w-[2rem] h-[2rem] text-xl "
           icon="mdi mdi-chevron-left"
@@ -99,18 +99,18 @@ const goToPreviousStep = () => {
         preload
       />
       <Button
-          :class="['text-xl w-2/3', activeButtonSelected(STONE_FRUITS_BOX_TYPE)]"
-          :label="$t('string.box.stone_fruits')"
-          outlined
-          @click.prevent="setBoxType(STONE_FRUITS_BOX_TYPE)"
+        :class="['text-xl w-2/3', activeButtonSelected(STONE_FRUITS_BOX_TYPE)]"
+        :label="$t('string.box.stone_fruits')"
+        outlined
+        @click.prevent="setBoxType(STONE_FRUITS_BOX_TYPE)"
       />
       <NuxtImg
-          v-if="isSelectedBox(STONE_FRUITS_BOX_TYPE)"
-          class="rounded-lg lg:hidden"
-          :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
-          :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
-          format="webp"
-          preload
+        v-if="isSelectedBox(STONE_FRUITS_BOX_TYPE)"
+        class="rounded-lg lg:hidden"
+        :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
+        :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
+        format="webp"
+        preload
       />
     </div>
     <NuxtImg

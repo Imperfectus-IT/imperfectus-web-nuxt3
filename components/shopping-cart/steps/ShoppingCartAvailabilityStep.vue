@@ -22,7 +22,7 @@ watch(
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[20%] 2xl:px-[20%] lg:relative">
+  <div class="px-8 md:px-[28%] lg:px-[20%] 2xl:px-[20%] lg:relative">
     <Toast />
     <div class="lg:absolute lg:left-[35px] lg:flex lg:flex-row lg:gap-3 lg:mt-2">
       <Button

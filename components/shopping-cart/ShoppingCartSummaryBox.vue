@@ -57,7 +57,7 @@ const getOrderAmount = async () => {
     v-if="backButton"
     class="flex items-center justify-center gap-3 mt-4"
   >
-    <div class="!absolute left-5 flex flex-row gap-3">
+    <div class="!absolute left-[25px] lg:left-[35px] flex flex-row gap-3">
       <Button
         class="w-[2rem] h-[2rem] text-xl "
         icon="mdi mdi-chevron-left"
