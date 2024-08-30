@@ -23,7 +23,7 @@ export default {
     class: [
       // Flexbox
       'sm:flex',
-      'items-center',
+      'items-center gap-5',
       'flex-wrap',
       'flex-col sm:flex-row',
       { hidden: !props?.mobileActive, flex: props?.mobileActive },
@@ -54,7 +54,7 @@ export default {
     ],
   }),
   menuitem: {
-    class: 'sm:relative sm:w-auto w-full static',
+    class: 'sm:relative sm:w-auto w-full static my-3',
   },
   content: ({ props, context }) => ({
     class: [
@@ -120,7 +120,7 @@ export default {
       'w-full sm:w-60',
 
       // Spacing
-      'py-1',
+      'px-4',
       'm-0',
       'list-none',
 
