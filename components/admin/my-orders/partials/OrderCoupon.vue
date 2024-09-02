@@ -46,7 +46,7 @@ const props = defineProps({
   validationMessage: {
     type: Object,
     required: false,
-  }
+  },
 })
 
 const isSetValidationError = computed(() => props.validationMessage?.status !== null)

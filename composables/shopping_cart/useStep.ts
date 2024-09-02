@@ -1,4 +1,3 @@
-
 export const useStep = () => {
   const { shoppingCart } = useShoppingCartState()
   const { saveShoppingCartLocalStorage } = useShoppingCart()

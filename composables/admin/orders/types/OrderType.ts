@@ -1,4 +1,5 @@
 import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+
 export interface Order {
   id: number
   isValidForReview: boolean

@@ -23,6 +23,6 @@ export const useScroll = () => {
 
   return {
     scrollToById,
-    scrollToTop
+    scrollToTop,
   }
 }

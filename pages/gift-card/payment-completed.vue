@@ -73,7 +73,7 @@ const imageUrl = computed(() => {
 
 onMounted(async () => {
   cards.value = await $fetch(
-      `${process.env.STRAPI_URL}/order-payments/${route.query.notification}/cards`,
+    `${process.env.STRAPI_URL}/order-payments/${route.query.notification}/cards`,
   )
 })
 </script>

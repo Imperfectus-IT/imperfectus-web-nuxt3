@@ -46,9 +46,16 @@ const items = ref([
       <template #start>
         <Menubar :model="items">
           <template #item="{ item, props }">
-            <NuxtLink :class="['flex items-center', isOrderBuyRoute && !item.visible ? 'invisible pointer-events-none' : 'visible cursor-pointer']" :to="item?.url" v-bind="props.action">
+            <NuxtLink
+              :class="['flex items-center', isOrderBuyRoute && !item.visible ? 'invisible pointer-events-none' : 'visible cursor-pointer']"
+              :to="item?.url"
+              v-bind="props.action"
+            >
               {{ item?.label }}
-              <span v-if="item?.icon" class="mdi mdi-chevron-down text-[1.875rem]"/>
+              <span
+                v-if="item?.icon"
+                class="mdi mdi-chevron-down text-[1.875rem]"
+              />
             </NuxtLink>
           </template>
         </Menubar>
@@ -63,7 +70,10 @@ const items = ref([
       </template>
       <template #end>
         <div class="flex items-center justify-center gap-x-5 pr-8">
-          <NuxtLink :to="localePath({ name: 'order' })" :class="isOrderBuyRoute ? 'invisible pointer-events-none' : 'visible cursor-pointer'">
+          <NuxtLink
+            :to="localePath({ name: 'order' })"
+            :class="isOrderBuyRoute ? 'invisible pointer-events-none' : 'visible cursor-pointer'"
+          >
             <Button
               :label="$t('homeTitle.order')"
               raised

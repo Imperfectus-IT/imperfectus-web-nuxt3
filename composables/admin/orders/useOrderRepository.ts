@@ -114,7 +114,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   }
 
   const getFirstPaidOrder = async (): Promise<Order> => {
-    return await client('orders/firstPaidOrder', { method: 'GET'})
+    return await client('orders/firstPaidOrder', { method: 'GET' })
   }
 
   return {
