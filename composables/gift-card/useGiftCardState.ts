@@ -16,7 +16,6 @@ export const giftCardCreator = () => {
 
 export const useGiftCardState = () => {
   const giftCard: Ref<GiftCard[]> = useState('giftcard', () => [giftCardCreator()])
-
   return {
     giftCard,
   }

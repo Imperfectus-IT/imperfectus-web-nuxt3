@@ -1,30 +1,22 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="flex flex-col">
-    <LandingHeader />
-    <Divider class="before:border-t-2 before:border-green-primary" />
-    <LazyLandingBoxes :display-desktop="displayDesktop" />
-    <LazyLandingVegetablesOffers
-      :vegetables="vegetables"
-    />
-    <LazyLandingProducts :display-desktop="displayDesktop" />
-    <LandingUpToDate />
-    <LandingBlog :display-desktop="displayDesktop" />
-    <LandingWorldData :display-desktop="displayDesktop" />
-    <LandingDonations :display-desktop="displayDesktop" />
-    <LazyLandingComments />
-    <LandingHelp />
+    <LandingHeader/>
+    <Divider class="before:border-t-2 before:border-green-primary"/>
+    <LazyLandingBoxes :display-desktop="isDesktop"/>
+    <LazyLandingVegetablesOffers :vegetables="vegetables"/>
+    <LazyLandingProducts :display-desktop="isDesktop"/>
+    <LandingUpToDate/>
+    <LandingBlog :display-desktop="isDesktop"/>
+    <LandingWorldData :display-desktop="isDesktop"/>
+    <LandingDonations :display-desktop="isDesktop"/>
+    <LazyLandingComments/>
+    <LandingHelp/>
   </div>
 </template>
 
 <script setup lang="ts">
-const displayDesktop = ref(false)
-
-onBeforeMount(() => {
-  if (window.innerWidth > 768) {
-    displayDesktop.value = true
-  }
-})
+const {isDesktop} = useScreenSize()
 
 const vegetables = [
   {
