@@ -1,4 +1,4 @@
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '/composables/admin/products/types/Product.ts'
 
 export interface Order {
   id: number

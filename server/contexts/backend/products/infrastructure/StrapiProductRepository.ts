@@ -4,13 +4,12 @@ import type { ProductRepository } from '~/server/contexts/backend/products/domai
 export class StrapiProductRepository implements ProductRepository {
   async getAll(): Promise<Product[]> {
     const config = useRuntimeConfig()
-    const products = await $fetch(`${config.STRAPI_URL}/products`)
+    const products = await $fetch(`${config.STRAPI_URL}/products?isActive=all`)
     return Promise.all(products.map(product => this.createProduct(product)))
   }
 
   private createProduct(product) {
     return new Product(
-      product.id,
       product.SKU,
       product.price,
       product.isActive,
@@ -24,6 +23,7 @@ export class StrapiProductRepository implements ProductRepository {
       product.boxType,
       product.itemType,
       product.frequency,
+      product.id,
     )
   }
 }
