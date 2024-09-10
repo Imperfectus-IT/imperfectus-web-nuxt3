@@ -16,9 +16,11 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     //   _limit: 10,
     // })
     // return strapiOrders.map((order: any) => useOrdersFactory(order, t))
-    // @TODO PASS USER ID TO HTTP REQUEST QUERY
+    // @TODO PASS USER ID TO HTTP REQUEST QUERY AND GET TOKEN FROM COOKIES
+    const token = useCookie('strapi_jwt')
+    console.log('TOKEN', token.value)
     const orders = await useFetch(`/api/v1/orders/getByUserId?user=11798`, { method: 'GET', headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTE3OTgsImlhdCI6MTcyNTg4MDE5NSwiZXhwIjoxNzI4NDcyMTk1fQ.gCvS_W6tUc8coQbz1Nt2VLZBMElqHF61NgroeyvuirA `,
+      Authorization: `Bearer ${token}`,
     } })
 
     return orders
