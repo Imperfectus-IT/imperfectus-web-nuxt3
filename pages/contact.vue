@@ -33,6 +33,16 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.contact.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.contact.description'),
+    },
+  ],
+})
+
 const contacts = computed(() => {
   return [
     {

@@ -31,6 +31,16 @@ import type { BillingForm } from '~/components/gift-card/types/types'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('gift-card-create.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('gift-card-create.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     ca: '/targeta-regal-digital/facturacio',

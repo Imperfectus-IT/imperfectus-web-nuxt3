@@ -24,6 +24,19 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+useHead({
+  title: t('pages.admin.referral.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.admin.referral.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     es: '/mi-cuenta/referidos',

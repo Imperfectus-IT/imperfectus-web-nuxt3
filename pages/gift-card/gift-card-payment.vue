@@ -85,9 +85,20 @@ const orderId = ref(null)
 const status = ref('s')
 const notification = ref('')
 const userGiftCards = ref([])
+const { t } = useI18n()
 
 const { giftCard, addGiftCard, removeGiftCard, executeCreateGiftCard } = useCreateGiftCardHandler()
 const { getGiftCardByUser } = useGetGiftCardsHandler()
+
+useHead({
+  title: t('gift-card-payment.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('gift-card-payment.description'),
+    },
+  ],
+})
 
 defineI18nRoute({
   paths: {

@@ -15,7 +15,6 @@ useHead({
   title: t('pages.companies.title'),
   meta: [
     {
-      hid: 'description',
       name: 'description',
       content: t('pages.companies.description'),
     },

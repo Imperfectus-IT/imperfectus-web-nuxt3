@@ -138,6 +138,16 @@ import type { Size } from '~/components/boxes/types/Size'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.boxes.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.boxes.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     ca: '/les-nostres-caixes/',

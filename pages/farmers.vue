@@ -78,6 +78,16 @@ import type { IFarmer } from '../components/about/farmers/types/farmers'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.farmers.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.farmers.description'),
+    },
+  ],
+})
+
 const displayDesktop = ref(false)
 
 defineI18nRoute({

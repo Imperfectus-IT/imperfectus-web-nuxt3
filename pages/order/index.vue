@@ -6,7 +6,6 @@ useHead({
   title: t('pages.order.title'),
   meta: [
     {
-      hid: 'description',
       name: 'description',
       content: t('pages.order.description'),
     },

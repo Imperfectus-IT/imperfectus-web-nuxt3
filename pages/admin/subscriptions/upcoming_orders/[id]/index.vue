@@ -125,15 +125,21 @@
 
 <script setup lang="ts">
 import dayjs from 'dayjs'
+import { useI18n } from 'vue-i18n'
 import type { ONG } from '~/components/admin/upcoming_orders/DonateONG.vue'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 import type { Subscription, SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
 import type { GiveToFriendForm } from '~/components/admin/upcoming_orders/types/FormTypes.ts'
 import type { DonationPayload } from '~/composables/admin/subscriptions/types/DonationPayload.ts'
+const { t } = useI18n()
 
 definePageMeta({
   layout: 'admin',
   middleware: ['auth'],
+})
+
+useHead({
+  title: t('pages.admin.upcoming.title'),
 })
 
 defineI18nRoute({
@@ -142,7 +148,6 @@ defineI18nRoute({
     ca: '/el-meu-compte/subscripcions/properes-entregues/[id]',
   },
 })
-const { t } = useI18n()
 const route = useRoute()
 const { isMobile } = useScreenSize()
 const { subscriptions } = useGetSubscriptionsHandler()

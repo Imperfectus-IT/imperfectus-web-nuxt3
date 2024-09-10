@@ -63,9 +63,22 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const route = useRoute()
 const cards = ref([])
 const locale = useI18n().locale.value
+
+useHead({
+  title: t('gift-card.head.status.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('gift-card.head.status.description'),
+    },
+  ],
+})
 
 const imageUrl = computed(() => {
   return `/images/gift-card/cards/${locale}/${cards.value[0]?.designId}.webp`

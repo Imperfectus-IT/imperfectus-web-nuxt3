@@ -88,6 +88,9 @@ export default {
     'Selecciona una nueva fecha de entrega',
   'pages.order.status.error.deliveryDate': 'El día {0} no está disponible',
   'pages.order.status.updateNewDeliverOrder': 'Guardar',
+  'pages.special.title': 'Cajas estacionales de TALKUAL ',
+  'pages.special.description':
+    'Conoce las cajas de temporada de TALKUAL. Podrás encontrar cajas de frutas y verduras variadas de productos concretos dependiendo de la temporada del año',
 
   // Pages Admin
   'pages.admin.home.title': 'Mi cuenta',
@@ -98,7 +101,7 @@ export default {
   'pages.admin.orders.all': 'Todos',
   'pages.admin.orders.current': 'Actuales',
   'pages.admin.orders.past': 'Pasados',
-  'pages.admin.order.title': 'Mi pedido: ',
+  'pages.admin.order.title': 'Mi pedido: {order} ',
   'pages.admin.order.description': 'Detalle de pedido.',
   'pages.admin.order.orderItemsTitle': '¿Que contiene tu pedido?',
   'pages.admin.order.orderPaymentTitle': 'Facturación',
@@ -113,7 +116,7 @@ export default {
   'pages.admin.subscriptions.title': 'Mis Suscripciones',
   'pages.admin.subscriptions.description':
     'Aquí encontrarás todos tus próximos pedidos',
-  'pages.admin.subscription.title': 'Mi Suscripción',
+  'pages.admin.subscription.title': 'Mi Suscripción: {subscription}',
   'pages.admin.subscription.adminSubscriptionDetailsTitle':
     'Detalles de la suscripción',
   'pages.admin.subscription.adminSubscriptionCalendarTitle': 'Próximas fechas',
@@ -3171,6 +3174,10 @@ export default {
   'general.error': 'Algo ha salido mal, inténtalo de nuevo más tarde',
 
   'newsroom': {
+    meta: {
+      title: 'Sala de prensa de TALKUAL',
+      description: 'Aquí tienes nuestras noticias más destacadas, material descargable y nuestro contacto por si eres un medio de comunicación o nos quieres hacer una entrevista.',
+    },
     header: {
       title: 'Sala de prensa',
       description: 'En esta sección podrás ver el material gráfico, los medios en los que ha salido TALKUAL, descargar el dossier de prensa o ver nuestras redes y contactar con nosotrxs.',

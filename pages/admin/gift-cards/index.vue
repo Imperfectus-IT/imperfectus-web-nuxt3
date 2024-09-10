@@ -49,9 +49,16 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const localePath = useLocalePath()
 definePageMeta({
   layout: 'admin',
   middleware: ['auth'],
+})
+
+useHead({
+  title: t('pages.admin.gift-cards.title'),
 })
 </script>

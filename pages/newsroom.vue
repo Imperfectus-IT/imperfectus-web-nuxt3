@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+useHead({
+  title: t('newsroom.meta.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('newsroom.meta.description'),
+    },
+  ],
+})
 defineI18nRoute({
   paths: {
     ca: '/sala-de-premsa/',

@@ -41,6 +41,12 @@ import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import { ref, reactive, toRefs, watch, computed } from 'vue'
 
+const { t } = useI18n()
+
+useHead({
+  title: t('pages.admin.orders.title'),
+})
+
 definePageMeta({
   layout: 'admin',
   middleware: ['auth'],
@@ -53,7 +59,6 @@ defineI18nRoute({
   },
 })
 
-const { t } = useI18n()
 const { orders } = useGetOrdersHandler(t)
 const { products } = useGetProductsHandler()
 const { isMobile } = useScreenSize()

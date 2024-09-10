@@ -5,6 +5,16 @@ import { useGetOrderHandler } from '~/composables/admin/orders/getOne/useGetOrde
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.order.pay.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.order.pay.description'),
+    },
+  ],
+})
+
 definePageMeta({
   layout: 'default',
   middleware: ['auth'],

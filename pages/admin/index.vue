@@ -4,6 +4,16 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.admin.home.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.admin.home.description'),
+    },
+  ],
+})
+
 definePageMeta({
   layout: 'admin',
   middleware: ['auth'],

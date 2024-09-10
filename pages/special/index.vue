@@ -47,6 +47,16 @@ import type { SelectedOrangeBox } from './types/OrangeBoxSelected'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.special.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.special.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     ca: '/caixes-estacionals/',

@@ -112,6 +112,18 @@ import { useI18n } from 'vue-i18n'
 const localePath = useLocalePath()
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.refer-a-friend.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.refer-a-friend.description'),
+    },
+  ],
+})
+
+
+
 defineI18nRoute({
   paths: {
     ca: '/invita-a-un-amic/',

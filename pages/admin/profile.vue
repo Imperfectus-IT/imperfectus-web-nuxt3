@@ -1,8 +1,22 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+useHead({
+  title: t('pages.admin.profile.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.admin.profile.description'),
+    },
+  ],
+})
+
 definePageMeta({
   layout: 'admin',
   middleware: ['auth'],
 })
+
 defineI18nRoute({
   paths: {
     ca: '/el-meu-compte/perfil/',

@@ -119,6 +119,16 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.legal.cookies.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.legal.cookies.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     ca: '/politica-de-cookies/',

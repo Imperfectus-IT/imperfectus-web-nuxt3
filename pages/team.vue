@@ -29,6 +29,15 @@ import { useI18n } from 'vue-i18n'
 import type { TeamMember } from '~/components/about/team/types/Member'
 
 const { t } = useI18n()
+useHead({
+  title: t('pages.team.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.team.description'),
+    },
+  ],
+})
 
 const client = useStrapiClient()
 const team = ref<TeamMember[]>([])

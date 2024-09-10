@@ -42,6 +42,16 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.about.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.about.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     ca: '/historia/',

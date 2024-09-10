@@ -559,6 +559,16 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+useHead({
+  title: t('pages.legal.conditions.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('pages.legal.conditions.description'),
+    },
+  ],
+})
+
 defineI18nRoute({
   paths: {
     ca: '/termes-i-condicions/',
