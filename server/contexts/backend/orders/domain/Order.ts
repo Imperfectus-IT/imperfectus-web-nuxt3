@@ -8,7 +8,7 @@ export class Order {
     public readonly order_id: number,
     public readonly discarded: boolean,
     public readonly orderMeta: unknow,
-    public readonly userId: number,
+    public readonly user: User,
     public readonly orderItems: unknown,
     public readonly id?: string,
     public readonly subscription?: string,

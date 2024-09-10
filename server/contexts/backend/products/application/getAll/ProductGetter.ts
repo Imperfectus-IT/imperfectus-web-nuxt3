@@ -4,7 +4,7 @@ import type { Product } from '~/server/contexts/backend/products/domain/Product'
 export class ProductGetter {
   constructor(private readonly repository: ProductRepository) {}
 
-  async execute(): Promise<Product[]> {
+  execute(): Promise<Product[]> {
     return this.repository.getAll()
   }
 }

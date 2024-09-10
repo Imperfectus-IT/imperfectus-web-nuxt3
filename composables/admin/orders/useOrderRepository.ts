@@ -8,15 +8,20 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   const client = useStrapiClient()
 
   const findOrdersByUser = async (): Promise<Order[]> => {
-    const user = useStrapiUser()
-    const strapiOrders = await find('orders', {
-      user: user.value?.id,
-      discarded: false,
-      _sort: 'created_at:desc',
-      _limit: 10,
-    })
+    // const user = useStrapiUser()
+    // const strapiOrders = await find('orders', {
+    //   user: user.value?.id,
+    //   discarded: false,
+    //   _sort: 'created_at:desc',
+    //   _limit: 10,
+    // })
+    // return strapiOrders.map((order: any) => useOrdersFactory(order, t))
+    // @TODO PASS USER ID TO HTTP REQUEST QUERY
+    const orders = await useFetch(`/api/v1/orders/getByUserId?user=11798`, { method: 'GET', headers: {
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTE3OTgsImlhdCI6MTcyNTg4MDE5NSwiZXhwIjoxNzI4NDcyMTk1fQ.gCvS_W6tUc8coQbz1Nt2VLZBMElqHF61NgroeyvuirA `,
+    } })
 
-    return strapiOrders.map((order: any) => useOrdersFactory(order, t))
+    return orders
   }
   const findById = async (id: number): Promise<Order> => {
     const { find } = useStrapi()
