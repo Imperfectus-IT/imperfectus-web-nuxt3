@@ -1,4 +1,4 @@
-import type {PublicReview} from '@/composables/public-reviews/types/types.ts'
+import type { PublicReview } from '@/composables/public-reviews/types/types.ts'
 
 export const usePublicReviewsFactory = (review: any): PublicReview => {
   return {

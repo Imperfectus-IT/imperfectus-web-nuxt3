@@ -122,8 +122,6 @@ useHead({
   ],
 })
 
-
-
 defineI18nRoute({
   paths: {
     ca: '/invita-a-un-amic/',

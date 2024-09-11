@@ -44,7 +44,10 @@ const items = ref([
   <section>
     <Toolbar class="!p-0 bg-transparent border-none gap-x-2">
       <template #start>
-        <Menubar class="h-16" :model="items">
+        <Menubar
+          class="h-16"
+          :model="items"
+        >
           <template #item="{ item, props }">
             <NuxtLink
               :class="['flex items-center', isOrderBuyRoute && !item.visible ? 'invisible pointer-events-none' : 'visible cursor-pointer']"
