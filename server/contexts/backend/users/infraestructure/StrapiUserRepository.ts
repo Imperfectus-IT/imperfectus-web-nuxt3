@@ -3,7 +3,7 @@ import { User } from '~/server/contexts/backend/users/domain/User'
 
 export class StrapiUserRepository implements UserRepository {
   async login(identifier, password) {
-    const strapiUser = await $fetch('http://localhost:3000/auth/local', {
+    const strapiUser = await $fetch(`${config.STRAPI_URL}/auth/local`, {
       method: 'POST',
       body: {
         identifier,
@@ -14,7 +14,7 @@ export class StrapiUserRepository implements UserRepository {
   }
 
   async signup(email: string, password: string, talkualLegalBasis: boolean) {
-    const strapiUser = await $fetch('http://localhost:3000/auth/local/register', {
+    const strapiUser = await $fetch(`${config.STRAPI_URL}/auth/local/register`, {
       method: 'POST',
       body: {
         email,
