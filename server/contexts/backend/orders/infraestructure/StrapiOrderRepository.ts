@@ -14,7 +14,7 @@ export class StrapiOrderRepository implements OrderRepository {
       },
       method: 'GET',
     })
-    return this.createOrder(order)
+    return Promise.resolve(this.createOrder(order))
   }
 
   async getByUserId(userId: number): Promise<Order[]> {
@@ -27,7 +27,7 @@ export class StrapiOrderRepository implements OrderRepository {
     return Promise.all(orders.map(order => this.createOrder(order)))
   }
 
-  async create(order: Order): Promise<any> {
+  async create(order: Order): Promise<Order> {
     const newOrder = await $fetch(`${this.config.STRAPI_URL}/orders`, {
       headers: {
         Authorization: `${this.JWT}`,
@@ -37,7 +37,7 @@ export class StrapiOrderRepository implements OrderRepository {
       },
       method: 'POST',
     })
-    console.log('newOrder', newOrder)
+    return Promise.resolve(this.createOrder(newOrder))
   }
 
   private createOrder(order): Order {
