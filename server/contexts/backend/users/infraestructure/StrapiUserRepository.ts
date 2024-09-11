@@ -1,5 +1,6 @@
 import type { UserRepository } from '~/server/contexts/backend/users/domain/UserRepository'
 import { User } from '~/server/contexts/backend/users/domain/User'
+import { Role } from "~/server/contexts/backend/users/domain/Role";
 
 export class StrapiUserRepository implements UserRepository {
   async login(identifier, password) {
@@ -35,7 +36,7 @@ export class StrapiUserRepository implements UserRepository {
       strapiUser.user.type,
       strapiUser.user.marketingInfoComm,
       strapiUser.user.whatsappInfoComm,
-      strapiUser.user.role.name,
+      new Role(strapiUser.user.role.id, strapiUser.user.role.name, strapiUser.user.role.type),
       strapiUser.jwt,
     )
   }
