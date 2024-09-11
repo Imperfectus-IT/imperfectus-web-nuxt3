@@ -7,13 +7,11 @@ export class StrapiSubscriptionsRepository implements SubscriptionRepository {
   constructor(private readonly JWT: string) {}
 
   async getById(id: number): Promise<Subscription | null> {
-    console.log(this.config)
     const subscription = await $fetch(`${this.config.STRAPI_URL}/subscriptions/${id}`, {
       headers: {
         Authorization: `Bearer ${this.JWT}`,
       },
     })
-    console.log(subscription)
     return this.createSubscription(subscription)
   }
 
