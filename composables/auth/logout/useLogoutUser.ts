@@ -1,6 +1,6 @@
 export const useLogoutUser = () => {
   const executeLogoutUser = (): void => {
-    const { logout } = useAuthRepository()
+    const { logout } = useAuthStrapiRepository()
     logout()
   }
 

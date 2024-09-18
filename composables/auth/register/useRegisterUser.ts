@@ -3,7 +3,7 @@ import type { RegisterUser } from '~/composables/auth/types/Auth.ts'
 
 export const useRegisterUser = () => {
   const executeRegisterUser = async (userData: RegisterUser): Promise<StrapiAuthenticationResponse> => {
-    const { register } = useAuthRepository()
+    const { register } = useAuthStrapiRepository()
     return await register(userData)
   }
 

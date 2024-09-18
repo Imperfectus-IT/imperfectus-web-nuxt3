@@ -8,7 +8,7 @@ watch(userLogin.value, (newValue) => {
 })
 const emit = defineEmits<{
   (e: 'login'): void
-  (e: 'auth-form-requested'): void
+  (e: 'authFormRequested'): void
 }>()
 
 const isButtonDisabled = computed(() => {
