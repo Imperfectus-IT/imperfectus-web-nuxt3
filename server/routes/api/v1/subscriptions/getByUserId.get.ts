@@ -5,7 +5,7 @@ import {
 } from '~/server/contexts/backend/subscriptions/infraestructure/StrapiSubscriptionsRepository'
 import {
   SubscriptionGetterByUserId,
-} from '~/server/contexts/backend/subscriptions/application/getByUserId/SubscriptionGetterByUserId'
+} from '~/server/contexts/backend/subscriptions/application/get-by-user-id/SubscriptionGetterByUserId'
 
 export default defineEventHandler(async (event: H3Event) => {
   try {

@@ -1,5 +1,5 @@
 import { StrapiOrderRepository } from '~/server/contexts/backend/orders/infraestructure/StrapiOrderRepository'
-import { OrderGetterByUserId } from '~/server/contexts/backend/orders/application/getByUserId/OrderGetterByUserId'
+import { OrderGetterByUserId } from '~/server/contexts/backend/orders/application/get-by-user-id/OrderGetterByUserId'
 
 export default defineEventHandler(async (event: H3Event) => {
   console.log('get orders by user id')

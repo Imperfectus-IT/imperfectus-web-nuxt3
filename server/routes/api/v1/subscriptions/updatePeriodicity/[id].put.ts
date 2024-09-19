@@ -2,13 +2,13 @@ import type { H3Event } from 'h3'
 import type { Strapi3Error } from '@nuxtjs/strapi'
 import {
   UpdateSubscriptionPeriodicity,
-} from '~/server/contexts/backend/subscriptions/application/updateSubscriptionPeriodicity/UpdateSubscriptionPeriodicity'
+} from '~/server/contexts/backend/subscriptions/application/update-subscription-periodicity/UpdateSubscriptionPeriodicity'
 import {
   StrapiSubscriptionsRepository,
 } from '~/server/contexts/backend/subscriptions/infraestructure/StrapiSubscriptionsRepository'
 import {
   SubscriptionGetterById,
-} from '~/server/contexts/backend/subscriptions/application/getById/SubscriptionGetterById'
+} from '~/server/contexts/backend/subscriptions/application/get-by-id/SubscriptionGetterById'
 
 export default defineEventHandler(async (event: H3Event) => {
   try {

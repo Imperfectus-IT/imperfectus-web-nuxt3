@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import { OrderGetterById } from '~/server/contexts/backend/orders/application/getById/OrderGetterById'
+import { OrderGetterById } from '~/server/contexts/backend/orders/application/get-by-id/OrderGetterById'
 import { StrapiOrderRepository } from '~/server/contexts/backend/orders/infraestructure/StrapiOrderRepository'
 
 export default defineEventHandler(async (event: H3Event) => {

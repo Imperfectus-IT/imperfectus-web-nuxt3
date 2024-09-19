@@ -6,10 +6,10 @@ import {
 } from '~/server/contexts/backend/subscriptions/infraestructure/StrapiSubscriptionsRepository'
 import {
   SubscriptionGetterById,
-} from '~/server/contexts/backend/subscriptions/application/getById/SubscriptionGetterById'
+} from '~/server/contexts/backend/subscriptions/application/get-by-id/SubscriptionGetterById'
 import {
   PauseSubscription,
-} from '~/server/contexts/backend/subscriptions/application/pauseSubscription/PauseSubscription'
+} from '~/server/contexts/backend/subscriptions/application/pause-subscription/PauseSubscription'
 
 export default defineEventHandler(async (event: H3Event) => {
   try {
