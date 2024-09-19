@@ -2,6 +2,7 @@ import { StrapiOrderRepository } from '~/server/contexts/backend/orders/infraest
 import { OrderGetterByUserId } from '~/server/contexts/backend/orders/application/getByUserId/OrderGetterByUserId'
 
 export default defineEventHandler(async (event: H3Event) => {
+  console.log('get orders by user id')
   const { user } = await getQuery(event)
   const JWT: string | null = event.headers.get('authorization')
   if (!JWT) {

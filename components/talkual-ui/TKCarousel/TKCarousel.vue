@@ -13,9 +13,10 @@
       :key="index"
     >
       <div :class="slideClass">
+        {{ item.image }}
         <NuxtImg
           v-if="item.image"
-          :src="item.image"
+          :src="'/images/products/frutas/Aguacate.webp'"
           :alt="item.name"
           :class="imageClass || item.imageClass"
           loading="lazy"

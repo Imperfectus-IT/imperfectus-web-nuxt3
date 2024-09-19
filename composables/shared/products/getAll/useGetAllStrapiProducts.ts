@@ -3,10 +3,7 @@ export const useGetAllStrapiProducts = () => {
   const { products } = useProductsState()
 
   const executeGetAllProducts = async () => {
-    const query = {
-      _sort: 'name_es:ASC',
-    }
-    const allProducts = await findProducts(query)
+    const allProducts = await findProducts()
     products.value.boxProducts = allProducts.boxProducts
     products.value.itemProducts = allProducts.itemProducts
   }

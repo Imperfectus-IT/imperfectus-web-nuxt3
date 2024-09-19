@@ -1,4 +1,5 @@
 <template>
+  {{ activeFruitsItemProducts}}
   <TKCarousel
     class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
     :data="itemsType === 'fruits' ? activeFruitsItemProducts : activeVegetablesItemProducts"
@@ -14,7 +15,7 @@
   >
     <template #SlideContent="{ item }">
       <p class="bottom-7 text-[15px] absolute w-full text-center font-bold">
-        {{ locale === 'es' ? item.name_es : item.name_ca }}
+        {{ locale === 'es' ? item.nameEs : item.nameCa }}
       </p>
     </template>
   </TKCarousel>

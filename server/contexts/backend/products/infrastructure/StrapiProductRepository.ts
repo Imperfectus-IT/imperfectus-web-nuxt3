@@ -9,6 +9,7 @@ export class StrapiProductRepository implements ProductRepository {
   }
 
   private createProduct(product) {
+    console.log(product)
     return new Product(
       product.SKU,
       product.price,

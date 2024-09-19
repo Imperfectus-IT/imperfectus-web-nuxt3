@@ -1,10 +1,10 @@
 export const useProductRepository = () => {
-  const { find } = useStrapi()
-  const findProducts = async (query: ProductQuery): Promise<ProductsState> => {
-    const strapiProducts = await find<StrapiProduct[]>('products', { ...query, isActive: 'all' })
+  const findProducts = async (): Promise<ProductsState> => {
+    const products = await $fetch('/api/v1/products')
+    console.log(products)
     return {
-      itemProducts: strapiProducts.filter(product => product.type === 'item').map(product => useProductFactory().createItemProduct(product)),
-      boxProducts: strapiProducts.filter(product => product.type === 'box').map(product => useProductFactory().createBoxProduct(product)),
+      itemProducts: products.filter(product => product.type === 'item'),
+      boxProducts: products.filter(product => product.type === 'box'),
     }
   }
 

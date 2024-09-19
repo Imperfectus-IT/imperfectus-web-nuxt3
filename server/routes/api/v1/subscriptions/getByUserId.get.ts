@@ -4,19 +4,21 @@ import {
   StrapiSubscriptionsRepository,
 } from '~/server/contexts/backend/subscriptions/infraestructure/StrapiSubscriptionsRepository'
 import {
-  SubscriptionGetterById,
-} from '~/server/contexts/backend/subscriptions/application/getById/SubscriptionGetterById'
+  SubscriptionGetterByUserId,
+} from '~/server/contexts/backend/subscriptions/application/getByUserId/SubscriptionGetterByUserId'
 
 export default defineEventHandler(async (event: H3Event) => {
   try {
-    const { id } = event.context.params
+    console.log('subscriptions BY USER ID')
+    const { user } = await getQuery(event)
     const JWT: string | null = event.headers.get('authorization')
+    console.log(JWT)
     if (!JWT) {
       return new Error('Unauthorized')
     }
-    const subscriptionRepository = new StrapiSubscriptionsRepository(JWT)
-    const subscriptionGetter = new SubscriptionGetterById(subscriptionRepository)
-    return subscriptionGetter.execute(id)
+    const StrapiRepository = new StrapiSubscriptionsRepository(JWT)
+    const subscriptionGetter = new SubscriptionGetterByUserId(StrapiRepository)
+    return await subscriptionGetter.execute(JSON.parse(user))
   }
   catch (error: Strapi3Error) {
     console.log('Error', error.data)

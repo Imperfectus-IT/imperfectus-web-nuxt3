@@ -6,17 +6,26 @@ import {
 import {
   SubscriptionGetterById,
 } from '~/server/contexts/backend/subscriptions/application/getById/SubscriptionGetterById'
+import {
+  UnpauseSubscription,
+} from '~/server/contexts/backend/subscriptions/application/unpauseSubscription/UnpauseSubscription'
 
 export default defineEventHandler(async (event: H3Event) => {
   try {
-    const { id } = event.context.params
     const JWT: string | null = event.headers.get('authorization')
     if (!JWT) {
       return new Error('Unauthorized')
     }
-    const subscriptionRepository = new StrapiSubscriptionsRepository(JWT)
-    const subscriptionGetter = new SubscriptionGetterById(subscriptionRepository)
-    return subscriptionGetter.execute(id)
+    const { id } = event.context.params
+    if (!id) {
+      return new Error('Missing parameters')
+    }
+
+    const unpauseSubscription = new UnpauseSubscription(new StrapiSubscriptionsRepository(JWT))
+    await unpauseSubscription.execute(id)
+
+    const subscriptionGetter = new SubscriptionGetterById(new StrapiSubscriptionsRepository(JWT))
+    return await subscriptionGetter.execute(id)
   }
   catch (error: Strapi3Error) {
     console.log('Error', error.data)

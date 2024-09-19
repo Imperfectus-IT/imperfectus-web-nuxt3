@@ -1,7 +1,7 @@
-import type { ComposerTranslation } from 'vue-i18n'
-import type { Order, OrderBilling } from '~/composables/admin/orders/types/OrderType.ts'
-import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
-import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
+import type {ComposerTranslation} from 'vue-i18n'
+import type {Order, OrderBilling} from '~/composables/admin/orders/types/OrderType.ts'
+import type {updateOrderItemPayload} from '~/components/admin/my-orders/partials/OrderEdit.vue'
+import type {updateOrderShippingPayload} from '~/components/admin/my-orders/DesktopOrder.vue'
 
 export const useOrderRepository = (t: ComposerTranslation) => {
   const { find, update } = useStrapi()
@@ -18,12 +18,12 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     // return strapiOrders.map((order: any) => useOrdersFactory(order, t))
     // @TODO PASS USER ID TO HTTP REQUEST QUERY AND GET TOKEN FROM COOKIES
     const token = useCookie('strapi_jwt')
-    console.log('TOKEN', token.value)
-    const orders = await useFetch(`/api/v1/orders/getByUserId?user=11798`, { method: 'GET', headers: {
-      Authorization: `Bearer ${token}`,
-    } })
-
-    return orders
+    return useFetch(`/api/v1/orders/getByUserId?user=11798`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
   }
   const findById = async (id: number): Promise<Order> => {
     const { find } = useStrapi()

@@ -75,7 +75,10 @@ export const useSubscriptionRepository = () => {
   }
   const giveOrderToFriend = async (giveOrderToFriendData: DonationPayload): Promise<void> => {
     const { subscriptionId } = giveOrderToFriendData
-    const response = await client(`/subscriptions/${subscriptionId}/giveOrder`, { method: 'POST', body: giveOrderToFriendData })
+    const response = await client(`/subscriptions/${subscriptionId}/giveOrder`, {
+      method: 'POST',
+      body: giveOrderToFriendData,
+    })
     console.log('response', response)
   }
   const pauseSubscription = async (pauseSubscriptionData: PauseSubscriptionPayload, subscriptionId: number): Promise<Subscription> => {
@@ -114,8 +117,16 @@ export const useSubscriptionRepository = () => {
   const updateSubscriptionItem = async (updateSubscriptionItemData: updateSubscriptionItemPayload) => {
     const { subscriptionItemId, newBoxProduct, exclusions } = updateSubscriptionItemData
     const { amount, weight } = newBoxProduct
-    return await update('subscription-items', subscriptionItemId, { subscriptionItemId, product: newBoxProduct.id, exclusions, amount, weight })
+    return await update('subscription-items', subscriptionItemId, {
+      subscriptionItemId,
+      product: newBoxProduct.id,
+      exclusions,
+      amount,
+      weight,
+    })
   }
+
+  // http://localhost:3001/api/v1/subscriptions/updatePeriodicity/20365
   const updateSubscriptionPeriodicity = async (subscription: Subscription, periodicity: Periodicity) => {
     const { preferredDay, preferredHour, frequency } = periodicity
     await update('subscriptions', subscription.id, { preferredDay, preferredHour, frequency })

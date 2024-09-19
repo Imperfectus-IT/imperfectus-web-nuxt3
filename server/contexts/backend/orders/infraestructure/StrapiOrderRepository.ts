@@ -10,7 +10,7 @@ export class StrapiOrderRepository implements OrderRepository {
   async getById(id: string): Promise<Order> {
     const order = await $fetch(`${this.config.STRAPI_URL}/orders/${id}`, {
       headers: {
-        Authorization: `${this.JWT}`,
+        Authorization: `Bearer ${this.JWT}`,
       },
       method: 'GET',
     })
@@ -20,7 +20,7 @@ export class StrapiOrderRepository implements OrderRepository {
   async getByUserId(userId: number): Promise<Order[]> {
     const orders = await $fetch(`${this.config.STRAPI_URL}/orders?user=${userId}&discarded=false&_sort=created_at%3Adesc&_limit=10`, {
       headers: {
-        Authorization: `${this.JWT}`,
+        Authorization: `Bearer ${this.JWT}`,
       },
       method: 'GET',
     })
