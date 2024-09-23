@@ -1,5 +1,5 @@
 export const useGetAllStrapiProducts = () => {
-  const { findProducts } = useProductRepository()
+  const { findProducts } = useStrapiProductRepository()
   const { products } = useProductsState()
 
   const executeGetAllProducts = async () => {
