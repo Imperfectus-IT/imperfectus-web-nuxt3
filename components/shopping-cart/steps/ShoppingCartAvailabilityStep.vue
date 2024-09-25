@@ -1,21 +1,17 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
-const { isInvalid, findCoverageByPostalCode, goBack } = useShoppingCartAvailabilityStep()
-const { MAX_POSTAL_CODE_LENGTH } = useLocationValidator()
+const { isInvalid, findCoverageByPostalCode, goBack, isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } = useShoppingCartAvailabilityStep()
 const toast = useToast()
 const { errorToast } = useToastService()
 const { t } = useI18n()
-const showToast = () => {
-  errorToast(toast, t('adminOrderShipment.postCode'), t('validations.postcode.notCovered'))
-}
 
 defineEmits([GO_TO_STEP_EVENT])
 watch(
   () => shoppingCart.value.shippingAddress.postalCode,
   async (newPostalCode) => {
     await findCoverageByPostalCode(newPostalCode)
-    if (isInvalid.value && newPostalCode.length === MAX_POSTAL_CODE_LENGTH) {
-      await showToast()
+    if (isInvalid.value && isPostalCodeLengthValid(newPostalCode)) {
+      await errorToast(toast, t('adminOrderShipment.postCode'), t('validations.postcode.notCovered'))
     }
   },
 )

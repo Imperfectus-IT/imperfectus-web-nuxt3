@@ -1,10 +1,13 @@
+import { createEmpty } from '@/composables/shopping-cart/domain/ShoppingCart.ts'
+
 export const useShoppingCartState = () => {
-  const { getShoppingCart } = useLocalStorageShoppingCartRepository()
-  const shoppingCart: Ref<ShoppingCart> = useState('shoppingCart', (): ShoppingCart => {
-    return getShoppingCart()
-  })
+  const shoppingCart: Ref<ShoppingCart> = useState('shoppingCart', (): ShoppingCart => createEmpty())
+  const setShoppingCart = (value: ShoppingCart) => {
+    shoppingCart.value = value
+  }
 
   return {
     shoppingCart,
+    setShoppingCart,
   }
 }

@@ -19,7 +19,6 @@ defineI18nRoute({
   },
 })
 const { shoppingCart } = useShoppingCartState()
-const { initShoppingCart } = useShoppingCart()
 const { executeStep } = useStep()
 const { executeGetAllProducts } = useGetAllStrapiProducts()
 
@@ -43,9 +42,6 @@ const currentProgress = computed(() => {
   return (currentStepIndex / (totalSteps - 1)) * 100
 })
 
-onBeforeMount(() => {
-  initShoppingCart(shoppingCart)
-})
 onMounted(async () => {
   await executeGetAllProducts()
   await executeStep(shoppingCart.value.step)
