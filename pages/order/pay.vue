@@ -43,7 +43,7 @@ const { order } = useGetOrderHandler(order_id, t)
       {{ $t("pages.order.pay.title") }}
     </h1>
 
-    <CompletePaymentOrderInfo
+    <CompletePaymentOrderDetails
       :order-id="order.order_id"
       :delivery-date="order.deliveryDate"
       :total="order.orderPayment.totalAmount"
@@ -65,6 +65,13 @@ const { order } = useGetOrderHandler(order_id, t)
     </Panel>
 
     <CompletePaymentActions class="mt-10" />
+
+    <div>
+      <OrderBillingPanel
+        :data="order.billingInfo"
+        label-key="pages.order.pay.billing"
+      />
+    </div>
   </Container>
 </template>
 
