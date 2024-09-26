@@ -45,7 +45,6 @@ export default {
   'pages.order.pay.orderNumber': 'Número de pedido:',
   'pages.order.pay.deliveryEstimate': 'Fecha de entrega estimada:',
   'pages.order.pay.total': 'Total:',
-  'pages.order.pay.orderContents': 'Contenido del pedido',
   'pages.order.pay.pay': 'Realizar pago',
   'pages.order.pay.seeOrder': 'Ver pedido',
 
