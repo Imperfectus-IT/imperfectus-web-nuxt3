@@ -16,16 +16,9 @@ const boxDetails = [
     stepBox: 'order.steps.stepBox.largeBox',
   },
 ]
-const nexStep = () => {
-  const currentItemIndex = shoppingCart.value.items.findIndex(item => item.id === shoppingCart.value.currentItem.id)
-  if (currentItemIndex > -1) {
-    shoppingCart.value.items[currentItemIndex] = shoppingCart.value.currentItem
-  }
-  else {
-    shoppingCart.value.items.push(shoppingCart.value.currentItem)
-  }
-  const user = useStrapiUser()
-  user?.value?.id ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
+const goToPreviousStep = () => {
+  const previousStep = shoppingCart.value.currentItem.purchaseType === SUBSCRIPTION_TYPE ? FREQUENCY_SUBSCRIPTION_TYPE_STEP : PURCHASE_TYPE_STEP
+  emit(GO_TO_STEP_EVENT, previousStep)
 }
 </script>
 
@@ -38,7 +31,7 @@ const nexStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
+          @click.prevent="goToPreviousStep"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -57,7 +50,7 @@ const nexStep = () => {
         <Button
           :class="['text-xl w-2/3 lg:w-full', shoppingCart.currentItem.boxSize === box.size ? 'bg-green-primary' : 'bg-transparent']"
           :label="$t(box.stepBox)"
-          icon="mdi mdi-chevron-down"
+          :icon="shoppingCart.currentItem.boxSize === box.size ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
           icon-pos="right"
           outlined
           @click.prevent="onSetBoxSize(box.size)"
@@ -86,16 +79,16 @@ const nexStep = () => {
         v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="nexStep"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
       />
     </div>
-    <ShoppingCartPurchaseSummaryFloating
-      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
-      :item="shoppingCart.currentItem"
-    />
-    <ShoppingCartPurchaseSummaryFloating
-      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
-      :item="shoppingCart.currentItem"
-    />
+    <!--    <ShoppingCartPurchaseSummaryFloating -->
+    <!--      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" -->
+    <!--      :item="shoppingCart.currentItem" -->
+    <!--    /> -->
+    <!--    <ShoppingCartPurchaseSummaryFloating -->
+    <!--      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block" -->
+    <!--      :item="shoppingCart.currentItem" -->
+    <!--    /> -->
   </div>
 </template>

@@ -89,7 +89,7 @@ onMounted(() => {
       <VirtualScroller
         scroll-height="300px"
         :items="filteredExclusions"
-        :item-size="filteredExclusions.length * 2"
+        :item-size="50"
         :auto-size="true"
       >
         <template #item="{ item }">
@@ -99,7 +99,7 @@ onMounted(() => {
             <Checkbox
               v-model="shoppingCart.currentItem.exclusions"
               class="mr-3"
-              :input-id="item.id"
+              :input-id="item.id.toString()"
               name="productExclusion"
               :disabled="disabledExclusion(item)"
               :value="item"

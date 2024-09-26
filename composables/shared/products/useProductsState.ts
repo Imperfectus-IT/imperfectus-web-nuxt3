@@ -1,4 +1,4 @@
-export const useProductsState = () => {
+export default function () {
   const products: Ref<ProductsState> = useState('products', () => ({
     itemProducts: [],
     boxProducts: [],

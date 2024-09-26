@@ -17,7 +17,7 @@ const isOrderPurchaseType = computed(() => shoppingCart.value.currentItem?.purch
 const goToNextStep = () => {
   const purchaseTypesForStep = {
     [SUBSCRIPTION_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-    [ORDER_TYPE]: CUSTOMIZE_STEP,
+    [ORDER_TYPE]: BOX_STEP,
   }
 
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]

@@ -25,9 +25,9 @@ const { executeGetAllProducts } = useGetAllStrapiProducts()
 const componentToRenderFromStep: Record<string, any> = {
   [AVAILABILITY_STEP]: resolveComponent('LazyShoppingCartAvailabilityStep'),
   [PURCHASE_TYPE_STEP]: resolveComponent('LazyShoppingCartPurchaseTypeStep'),
+  [CUSTOMIZE_STEP]: resolveComponent('LazyShoppingCartCustomizeStep'),
   [BOX_STEP]: resolveComponent('LazyShoppingCartBoxStep'),
   [FREQUENCY_SUBSCRIPTION_TYPE_STEP]: resolveComponent('LazyShoppingCartFrequencySubscriptionStep'),
-  [CUSTOMIZE_STEP]: resolveComponent('LazyShoppingCartCustomizeStep'),
   [AUTH_STEP]: resolveComponent('LazyShoppingCartAuthStep'),
   [RESUME_ITEM_STEP]: resolveComponent('LazyShoppingCartResumeStep'),
   [SHIPPING_STEP]: resolveComponent('LazyShoppingCartShippingStep'),

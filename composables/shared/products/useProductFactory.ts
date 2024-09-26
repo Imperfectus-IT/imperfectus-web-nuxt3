@@ -1,7 +1,7 @@
-export const useProductFactory = () => {
+export default function () {
   const createBoxProduct = (product: any): BoxProduct => {
     return {
-      id: product.id,
+      id: product?.id,
       name_es: product.name_es,
       name_ca: product.name_ca,
       description_es: product.description_es,
@@ -17,7 +17,7 @@ export const useProductFactory = () => {
   }
   const createItemProduct = (product: any): ItemProduct => {
     return {
-      id: product.id,
+      id: product?.id,
       name_es: product.name_es,
       name_ca: product.name_ca,
       image: product.imagePath?.[0],

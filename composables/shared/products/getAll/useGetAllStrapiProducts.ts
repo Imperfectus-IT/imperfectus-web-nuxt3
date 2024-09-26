@@ -1,4 +1,4 @@
-export const useGetAllStrapiProducts = () => {
+export default function () {
   const { findProducts } = useStrapiProductRepository()
   const { products } = useProductsState()
 

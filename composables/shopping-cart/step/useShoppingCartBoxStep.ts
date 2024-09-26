@@ -1,7 +1,8 @@
+import { createProductDetail } from "~/composables/shopping-cart/domain/Product.ts";
+
 export const useShoppingCartBoxStep = () => {
   const { shoppingCart } = useShoppingCartState()
   const { locale } = useI18n()
-  const { makeProductBox } = useProductFactory()
   const { boxProductBySize } = useProductCatalog()
 
   const setBoxSize = (boxSize: string) => {
@@ -9,11 +10,8 @@ export const useShoppingCartBoxStep = () => {
   }
 
   const addBoxProduct = () => {
-    shoppingCart.value.currentItem.boxProduct = makeProductBox(boxProductBySize[shoppingCart.value.currentItem.boxSize].value, locale.value)
-  }
-  const resetBoxProduct = () => {
-    shoppingCart.value.currentItem.boxProduct = null
-    shoppingCart.value.currentItem.boxSize = null
+    console.log(boxProductBySize)
+    //shoppingCart.value.currentItem.product = createProductDetail(boxProductBySize[shoppingCart.value.currentItem.boxSize].value, locale.value)
   }
 
   const onSetBoxSize = (boxSize: string) => {

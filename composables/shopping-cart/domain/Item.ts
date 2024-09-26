@@ -22,7 +22,7 @@ export function createEmpty(): Item {
     boxType: '',
     boxSize: '',
     purchaseType: '',
-    frequency: 'once',
+    frequency: '',
     quantity: 1,
     exclusions: [],
     product: null,

@@ -56,7 +56,7 @@ const goBack = () => {
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

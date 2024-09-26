@@ -1,14 +1,13 @@
-export const useProductCatalog = () => {
-  const { activeBoxProducts } = useLocalStorageProductRepository()
+export default function () {
   const { shoppingCart } = useShoppingCartState()
+  const { activeBoxProducts } = useProductsState()
 
-  const productCatalog = activeBoxProducts().filter((product) => {
+  const productCatalog = activeBoxProducts.value.filter((product) => {
     if (shoppingCart.value.currentItem.boxType === STONE_FRUITS_BOX_TYPE) {
       return product.frequency === shoppingCart.value.currentItem.frequency && product.SKU.endsWith('Stone')
     }
     return product.frequency === shoppingCart.value.currentItem.frequency && product.boxType === shoppingCart.value.currentItem.boxType && !product.SKU.endsWith('Stone')
   })
-  console.log(productCatalog)
   const findProductCatalogByStartWith = (productType: string) => productCatalog.find(product => product.SKU.startsWith(productType))
 
   const boxProductBySize = {

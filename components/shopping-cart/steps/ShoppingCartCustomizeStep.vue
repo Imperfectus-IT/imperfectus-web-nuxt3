@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
-const { itemProducts } = useLocalStorageProductRepository()
-const { makeProductExclusion } = useProductFactory()
+const { products } = useProductsState()
 
 const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
 const { t, locale } = useI18n()
@@ -21,18 +20,21 @@ const boxTypeImages = {
     src: '/images/boxes/Caixa-XL.webp',
     alt: t('string.box.vegetables'),
   },
-  [STONE_FRUITS_BOX_TYPE]: {
-    src: '/images/boxes/IMStone_sale.webp',
-    alt: t('string.box.stone_fruits'),
-  },
 }
 const productExclusions = computed(() => {
-  return itemProducts().map(product => makeProductExclusion(product, locale.value))
+  return products.value.itemProducts.map(product => createProductExclusion(product, locale.value))
 })
 
-const goToPreviousStep = () => {
-  const previousStep = shoppingCart.value.currentItem.purchaseType === SUBSCRIPTION_TYPE ? FREQUENCY_SUBSCRIPTION_TYPE_STEP : PURCHASE_TYPE_STEP
-  emit(GO_TO_STEP_EVENT, previousStep)
+const nexStep = () => {
+  const currentItemIndex = shoppingCart.value.items.findIndex(item => item.id === shoppingCart.value.currentItem.id)
+  if (currentItemIndex > -1) {
+    shoppingCart.value.items[currentItemIndex] = shoppingCart.value.currentItem
+  }
+  else {
+    shoppingCart.value.items.push(shoppingCart.value.currentItem)
+  }
+  const user = useStrapiUser()
+  user?.value?.id ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
 }
 </script>
 
@@ -45,7 +47,7 @@ const goToPreviousStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="goToPreviousStep"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -59,6 +61,8 @@ const goToPreviousStep = () => {
       <Button
         :class="['text-xl w-2/3', activeButtonSelected(VEGETABLES_BOX_TYPE)]"
         :label="$t('string.box.vegetables')"
+        :icon="isSelectedBox(VEGETABLES_BOX_TYPE) ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
+        icon-pos="right"
         outlined
         @click.prevent="setBoxType(VEGETABLES_BOX_TYPE)"
       />
@@ -73,6 +77,8 @@ const goToPreviousStep = () => {
       <Button
         :class="['text-xl w-2/3', activeButtonSelected(MIXED_BOX_TYPE)]"
         :label="$t('string.box.mixed')"
+        :icon="isSelectedBox(MIXED_BOX_TYPE) ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
+        icon-pos="right"
         outlined
         @click.prevent="setBoxType(MIXED_BOX_TYPE)"
       />
@@ -87,6 +93,8 @@ const goToPreviousStep = () => {
       <Button
         :class="['text-xl w-2/3', activeButtonSelected(FRUITS_BOX_TYPE)]"
         :label="$t('string.box.fruits')"
+        :icon="isSelectedBox(FRUITS_BOX_TYPE) ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
+        icon-pos="right"
         outlined
         @click.prevent="setBoxType(FRUITS_BOX_TYPE)"
       />
@@ -97,12 +105,6 @@ const goToPreviousStep = () => {
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
         format="webp"
         preload
-      />
-      <Button
-        :class="['text-xl w-2/3', activeButtonSelected(STONE_FRUITS_BOX_TYPE)]"
-        :label="$t('string.box.stone_fruits')"
-        outlined
-        @click.prevent="setBoxType(STONE_FRUITS_BOX_TYPE)"
       />
       <NuxtImg
         v-if="isSelectedBox(STONE_FRUITS_BOX_TYPE)"
@@ -130,18 +132,18 @@ const goToPreviousStep = () => {
         v-if="shoppingCart.currentItem.boxType"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="emit(GO_TO_STEP_EVENT, BOX_STEP)"
+        @click.prevent="nexStep"
       />
     </div>
-    <ShoppingCartPurchaseSummaryFloating
-      v-if="shoppingCart.currentItem?.frequency"
-      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
-      :item="shoppingCart.currentItem"
-    />
-    <ShoppingCartPurchaseSummaryFloating
-      v-if="shoppingCart.currentItem?.frequency"
-      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
-      :item="shoppingCart.currentItem"
-    />
+    <!--    <ShoppingCartPurchaseSummaryFloating -->
+    <!--      v-if="shoppingCart.currentItem?.frequency" -->
+    <!--      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" -->
+    <!--      :item="shoppingCart.currentItem" -->
+    <!--    /> -->
+    <!--    <ShoppingCartPurchaseSummaryFloating -->
+    <!--      v-if="shoppingCart.currentItem?.frequency" -->
+    <!--      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block" -->
+    <!--      :item="shoppingCart.currentItem" -->
+    <!--    /> -->
   </div>
 </template>

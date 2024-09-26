@@ -13,6 +13,38 @@ export type Product = {
   images: string[]
 }
 
+export type ProductExclusion = {
+  id: number
+  sku: string
+  name: string
+}
+
+export type ProductDetail = {
+  id: number
+  sku: string
+  name: string
+  description: string
+  price: number
+}
+
+export function createProductExclusion(product: any, locale: string): ProductExclusion {
+  return {
+    id: product.id,
+    sku: product.SKU,
+    name: product[`name_${locale}`],
+  }
+}
+
+export function createProductDetail(product: any, locale: string): ProductExclusion {
+  return {
+    id: product.id,
+    sku: product.SKU,
+    name: product[`name_${locale}`],
+    description: product[`description_${locale}`],
+    price: product?.price,
+  }
+}
+
 export function isBoxProduct({ boxType }: Product): boolean {
   return boxType === 'box'
 }
