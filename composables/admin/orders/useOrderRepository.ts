@@ -28,7 +28,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   const findById = async (id: number): Promise<Order> => {
     const { find } = useStrapi()
     const [order] = await find<Array<Order>>('orders', { id })
-    return order
+    return useOrdersFactory(order, t)
   }
   const addOrderReview = async (order: Order, review: string) => {
     const { update } = useStrapi()
