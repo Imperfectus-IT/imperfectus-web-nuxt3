@@ -8,11 +8,5 @@
       class=""
       :label="$t('pages.order.pay.pay')"
     />
-
-    <Button
-      class=""
-      link
-      :label="$t('pages.order.pay.seeOrder')"
-    />
   </div>
 </template>
