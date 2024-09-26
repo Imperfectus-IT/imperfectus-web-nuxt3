@@ -46,7 +46,7 @@ const { order } = useGetOrderHandler(order_id, t)
     <CompletePaymentOrderInfo
       :order-id="order.order_id"
       :delivery-date="order.deliveryDate"
-      :total="order.order_payment.totalAmount"
+      :total="order.orderPayment.totalAmount"
     />
 
     <TKTimeline
@@ -55,11 +55,7 @@ const { order } = useGetOrderHandler(order_id, t)
       layout-type="horizontal"
     />
 
-    <p class="mt-5 mb-5">
-      {{ $t('pages.order.pay.orderContents') }}
-    </p>
-
-    <Panel>
+    <Panel class="mt-10">
       <OrderItemCard
         v-for="(item, index) in order?.orderItems"
         :key="index"
