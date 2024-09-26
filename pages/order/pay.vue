@@ -43,13 +43,16 @@ const { order } = useGetOrderHandler(order_id, t)
       {{ $t("pages.order.pay.title") }}
     </h1>
 
-    <h3>order:</h3>
-    <pre>{{ order }}</pre>
-
     <CompletePaymentOrderInfo
       :order-id="order.order_id"
       :delivery-date="order.deliveryDate"
-      :total="30.72"
+      :total="order.order_payment.totalAmount"
+    />
+
+    <TKTimeline
+      :order-status="order.status"
+      class="mt-12"
+      layout-type="horizontal"
     />
 
     <p class="mt-5 mb-5">
