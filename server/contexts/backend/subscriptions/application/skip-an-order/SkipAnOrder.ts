@@ -4,7 +4,7 @@ export class SkipAnOrder {
   constructor(private readonly subscriptionRepository: SubscriptionRepository) {
   }
 
-  async execute(subscriptionId: number, skip: string[]): Promise<void> {
-    await this.subscriptionRepository.skipAnOrder(subscriptionId, skip)
+  async execute(subscriptionId: number, newDatesToSkip: string[]): Promise<void> {
+    await this.subscriptionRepository.skipAnOrder(subscriptionId, newDatesToSkip)
   }
 }

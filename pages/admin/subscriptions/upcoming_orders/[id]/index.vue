@@ -43,9 +43,7 @@
             @click="setDisplayGiftToFriend(index, true)"
           />
           <Button
-            :disabled="
-              displayGiftToFriend[index] || displayCancelDelivery[index]
-            "
+            :disabled="displayGiftToFriend[index] || displayCancelDelivery[index]"
             outlined
             :pt="{
               root: 'focus:bg-green-quaternary border-[1px] rounded-lg h-12 lg:w-48 disabled:opacity-50',

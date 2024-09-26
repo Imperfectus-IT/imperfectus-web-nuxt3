@@ -1,10 +1,10 @@
 import type { SubscriptionRepository } from '~/server/contexts/backend/subscriptions/domain/SubscriptionRepository'
 
-export class SubscriptionGetterByUserId {
+export class RemoveDonationOrGift {
   constructor(private readonly repository: SubscriptionRepository) {
   }
 
-  execute(subscriptionId: number, coupon: string) {
-    return this.repository.addSubscriptionCoupon(subscriptionId, coupon)
+  execute(subscriptionId: number, date: string) {
+    return this.repository.cancelDonationOrGift(subscriptionId, date)
   }
 }

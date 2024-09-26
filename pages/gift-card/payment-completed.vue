@@ -10,7 +10,8 @@
     </p>
 
     <div
-      v-for="card in cards"
+      v-for="(card, index) in cards"
+      :key="index"
       class="flex flex-col lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:mt-10"
       style="grid-template-rows: 200px auto"
     >

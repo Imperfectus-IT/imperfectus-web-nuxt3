@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
-import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct } from '~/composables/shared/products/types/Product.ts'
 
 const props = defineProps<{
   subscription: Subscription

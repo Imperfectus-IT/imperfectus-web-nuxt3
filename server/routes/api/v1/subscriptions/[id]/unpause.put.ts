@@ -7,8 +7,8 @@ import {
   SubscriptionGetterById,
 } from '~/server/contexts/backend/subscriptions/application/get-by-id/SubscriptionGetterById'
 import {
-  UnpauseSubscription,
-} from '~/server/contexts/backend/subscriptions/application/unpause-subscription/UnpauseSubscription'
+  Unpause,
+} from '~/server/contexts/backend/subscriptions/application/unpause/Unpause'
 
 export default defineEventHandler(async (event: H3Event) => {
   try {
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event: H3Event) => {
       return new Error('Missing parameters')
     }
 
-    const unpauseSubscription = new UnpauseSubscription(new StrapiSubscriptionsRepository(JWT))
+    const unpauseSubscription = new Unpause(new StrapiSubscriptionsRepository(JWT))
     await unpauseSubscription.execute(id)
 
     const subscriptionGetter = new SubscriptionGetterById(new StrapiSubscriptionsRepository(JWT))

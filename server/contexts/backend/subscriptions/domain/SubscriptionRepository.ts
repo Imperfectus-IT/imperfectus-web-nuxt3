@@ -3,7 +3,7 @@ import type {
   updateSubscriptionItemPayload,
   PauseSubscriptionPayload,
   DonationPayload,
-  PeriodicityPayload,
+  PeriodicityPayload, AddItemPayload,
 } from '~/server/contexts/backend/subscriptions/domain/SubscriptionPayload'
 
 export interface SubscriptionRepository {
@@ -11,38 +11,38 @@ export interface SubscriptionRepository {
 
   getByUserId(userId: number): Promise<Subscription[] | null>
 
-  addSubscriptionCoupon(subscriptionId: number, coupon: string): Promise<void>
+  addCoupon(subscriptionId: number, coupon: string): Promise<void>
 
-  addSubscriptionItem(subscriptionId: number, subscriptionItem: any): Promise<void>
+  addItem(addItemPayload: AddItemPayload): Promise<void>
 
-  cancelDonation(subscriptionId: number, date: string): Promise<void>
+  cancelDonationOrGift(subscriptionId: string, date: string): Promise<void>
 
-  cancelSubscription(subscriptionId: number, cancelSubscriptionPayload: CancelSubscriptionPayload): Promise<void>
+  cancel(subscriptionId: number, cancelSubscriptionPayload: CancelSubscriptionPayload): Promise<void>
 
-  donateToONG(donationPayload: DonationPayload): Promise<void>
+  donateToONG(subscriptionId: number, donationData: DonationPayload): Promise<void>
 
   getSubscriptionTotal()
 
-  giveOrderToFriend(giveOrderToFriendData: DonationPayload): Promise<void>
+  giveOrderToFriend(subscriptionId: number, giveOrderToFriendData: DonationPayload): Promise<void>
 
-  pauseSubscription(subscriptionId: number, pauseSubscriptionData: PauseSubscriptionPayload): Promise<void>
+  pause(subscriptionId: number, pauseSubscriptionData: PauseSubscriptionPayload): Promise<void>
 
   removeSkip(subscriptionId: number, skip: string[]): Promise<void>
 
   removeSubscriptionCoupon(subscriptionId: number): Promise<void>
 
-  skipAnOrder(subscriptionId: number, skip: string[]): Promise<void>
+  skipAnOrder(subscriptionId: number, newDatesToSkip: string[]): Promise<void>
 
   updateShippingMeta(metaId: number, newShippingMeta: any): Promise<void>
 
   updateBillingMeta(metaId: number, newBillingMeta: any): Promise<void>
 
-  unpauseSubscription(subscriptionId: number): Promise<void>
+  unpause(subscriptionId: number): Promise<void>
 
-  updateSubscriptionPeriodicity(subscriptionId: number, periodicity: PeriodicityPayload): Promise<void>
+  updatePeriodicity(subscriptionId: number, periodicity: PeriodicityPayload): Promise<void>
 
-  updateSubscriptionItem(updateSubscriptionItemData: updateSubscriptionItemPayload)
+  updateItem(updateSubscriptionItemData: updateSubscriptionItemPayload)
 
-  updateSubscriptionPayment(subscriptionId: number, paymentId: number): Promise<void>
+  updatePayment(subscriptionId: number, paymentId: number): Promise<void>
 
 }

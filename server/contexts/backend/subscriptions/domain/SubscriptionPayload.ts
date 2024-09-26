@@ -1,5 +1,13 @@
 import type { DayMapping } from '~/components/admin/my-subscriptions/DayMapping'
 
+export type AddItemPayload = {
+  amount: string
+  product: number
+  quantity: number
+  subscription: number
+  exclusions: number[]
+}
+
 export type CancelSubscriptionPayload = {
   reason: string
   text: string
