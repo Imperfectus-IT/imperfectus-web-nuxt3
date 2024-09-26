@@ -1,5 +1,4 @@
 <template>
-  {{ activeFruitsItemProducts}}
   <TKCarousel
     class="lg:col-start-2 lg:col-span-2 lg:row-start-3"
     :data="itemsType === 'fruits' ? activeFruitsItemProducts : activeVegetablesItemProducts"
