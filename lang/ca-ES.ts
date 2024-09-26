@@ -38,7 +38,7 @@ export default {
         'En TALKUAL treballem per a reduir els aliments que es perden i lluitem contra el malbaratament alimentari.',
 
   'pages.order.title': 'Compra',
-  'pages.order.pay.title': 'Realitzar pagament',
+  'pages.order.pay.title': 'Ups! Error en el pagament',
   'pages.order.description':
         'Aquí pots comprar els tres tipus de caixes TALKUAL que oferim',
   'pages.order.pay.message': 'Gràcies per la seva compra!',
