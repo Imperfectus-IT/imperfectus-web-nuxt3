@@ -12,9 +12,6 @@ import type {
 import type {
   StrapiSubscription,
 } from '~/server/contexts/backend/subscriptions/infraestructure/types/StrapiSubscription'
-import type {
-  StrapiSubscriptionItem,
-} from '~/server/contexts/backend/subscriptions-items/infraestructure/types/StrapiSubscriptionItem'
 import { SubscriptionMapper } from '~/server/contexts/backend/subscriptions/infraestructure/SubscriptionMapper'
 
 export class StrapiSubscriptionsRepository implements SubscriptionRepository {
@@ -234,62 +231,4 @@ export class StrapiSubscriptionsRepository implements SubscriptionRepository {
   private createSubscription(subscription: StrapiSubscription) {
     return SubscriptionMapper.toDomain(subscription)
   }
-
-  // private createSubscription(subscription: StrapiSubscription): Subscription {
-  //   console.log(subscription)
-  //   return new Subscription(
-  //     subscription.id,
-  //     subscription.status,
-  //     subscription.frequency,
-  //     subscription.skip,
-  //     subscription.nextPayment,
-  //     subscription.next_delivery_date_from_paused_at,
-  //     subscription.cancelledAt,
-  //     subscription.preferredDay,
-  //     subscription.subscription_items.forEach((item: StrapiSubscriptionItem) => {
-  //       return new SubscriptionItem(
-  //         item.id,
-  //         item.quantity,
-  //         item.amount,
-  //         item.sku,
-  //         item.exclusions,
-  //         item.image,
-  //         item.product,
-  //         item.weight,
-  //         item.coupon,
-  //       )
-  //     }),
-  //     subscription.given,
-  //     subscription.subscription_meta.id,
-  //     new SubscriptionShipping(
-  //       subscription.subscription_meta.shipping_firstname,
-  //       subscription.subscription_meta.shipping_lastname,
-  //       subscription.subscription_meta.shipping_email,
-  //       subscription.subscription_meta.shipping_phone,
-  //       subscription.subscription_meta.shipping_address1,
-  //       subscription.subscription_meta.shipping_address2,
-  //       subscription.subscription_meta.shipping_postcode,
-  //       subscription.subscription_meta.shipping_city,
-  //       subscription.subscription_meta.shipping_state,
-  //       subscription.subscription_meta.shipping_country,
-  //       subscription.subscription_meta.shipping_notes,
-  //     ),
-  //     new SubscriptionBilling(
-  //       subscription.subscription_meta.billing_firstname,
-  //       subscription.subscription_meta.billing_lastname,
-  //       subscription.subscription_meta.billing_email,
-  //       subscription.subscription_meta.billing_phone,
-  //       subscription.subscription_meta.billing_address1,
-  //       subscription.subscription_meta.billing_address2,
-  //       subscription.subscription_meta.billing_postcode,
-  //       subscription.subscription_meta.billing_city,
-  //       subscription.subscription_meta.billing_state,
-  //       subscription.subscription_meta.billing_country,
-  //       subscription.subscription_meta.billing_cif,
-  //     ),
-  //     subscription.preferredHour,
-  //     subscription.coupon,
-  //     subscription.payment,
-  //   )
-  // }
 }

@@ -1,21 +1,23 @@
-export type StrapiSubscription = {
+import type { StrapiUser } from '~/server/contexts/backend/users/infraestructure/types/StrapiUser'
+
+export type StrapiOrder = {
   id: number
+  order_id: number
+  user: StrapiUser
   status: string
-  frequency: string
-  skip: string[]
-  nextPayment: string
-  next_delivery_date_from_paused_at: string
-  cancelledAt: string
-  preferredDay: string
-  subscription_items: StrapiSubscriptionItem[]
+  deliveryDate: string
+  deliveryHour: string | null
+  orderReview: string | null
+  discarded: boolean
+  order_items: StrapiOrderItem[]
   given: object[]
-  subscription_meta: StrapiSubscriptionMeta
+  order_meta: StrapiOrderMeta
   preferredHour: string
   coupon: object | null
   payment: object | number
 }
 
-export interface StrapiSubscriptionItem {
+export interface StrapiOrderItem {
   id: number
   product: object
   quantity: number
@@ -23,13 +25,14 @@ export interface StrapiSubscriptionItem {
   amount: number
   subscription: number
   weight: number
+  image: string | string[]
   deliveryDate: string | null
   notes: string | null
   coupon_id: object
   exclusions: unknown[]
 }
 
-export type StrapiSubscriptionMeta = {
+export type StrapiOrderMeta = {
   id: number
   billing_firstname: string
   billing_lastname: string

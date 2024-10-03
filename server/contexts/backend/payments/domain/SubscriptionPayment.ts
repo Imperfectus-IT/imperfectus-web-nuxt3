@@ -1,4 +1,4 @@
-export class Payment {
+export class SubscriptionPayment {
   constructor(
     public readonly id: number,
     public readonly userId: number,

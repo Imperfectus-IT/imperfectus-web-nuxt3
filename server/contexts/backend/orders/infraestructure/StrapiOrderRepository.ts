@@ -1,20 +1,22 @@
 import type { NitroRuntimeConfig } from 'nitropack'
 import type { OrderRepository } from '~/server/contexts/backend/orders/domain/OrderRepository'
-import { Order } from '~/server/contexts/backend/orders/domain/Order'
+import type { Order } from '~/server/contexts/backend/orders/domain/Order'
+import { OrderMapper } from '~/server/contexts/backend/orders/infraestructure/OrderMapper'
 
 export class StrapiOrderRepository implements OrderRepository {
   private readonly config: NitroRuntimeConfig = useRuntimeConfig()
 
-  constructor(private readonly JWT: string) {}
+  constructor(private readonly JWT: string) {
+  }
 
   async getById(id: string): Promise<Order> {
-    const order = await $fetch(`${this.config.STRAPI_URL}/orders/${id}`, {
+    const [order] = await $fetch(`${this.config.STRAPI_URL}/orders?order_id=${id}`, {
       headers: {
         Authorization: `Bearer ${this.JWT}`,
       },
       method: 'GET',
     })
-    return Promise.resolve(this.createOrder(order))
+    return Promise.resolve(OrderMapper.toDomain(order))
   }
 
   async getByUserId(userId: number): Promise<Order[]> {
@@ -24,7 +26,7 @@ export class StrapiOrderRepository implements OrderRepository {
       },
       method: 'GET',
     })
-    return Promise.all(orders.map(order => this.createOrder(order)))
+    return Promise.all(orders.map(order => OrderMapper.toDomain(order)))
   }
 
   async create(order: Order): Promise<Order> {
@@ -37,21 +39,6 @@ export class StrapiOrderRepository implements OrderRepository {
       },
       method: 'POST',
     })
-    return Promise.resolve(this.createOrder(newOrder))
-  }
-
-  private createOrder(order): Order {
-    return new Order(
-      order.status,
-      order.deliveryDate,
-      order.orderReview,
-      order.order_id,
-      order.discarded,
-      order.order_meta,
-      order.user,
-      order.order_items,
-      order.id,
-      order.subscription,
-    )
+    return Promise.resolve(OrderMapper.toDomain(newOrder))
   }
 }

@@ -1,4 +1,4 @@
-export class SubscriptionBilling {
+export class OrderBilling {
   constructor(
     public billingFirstName: string,
     public billingLastName: string,

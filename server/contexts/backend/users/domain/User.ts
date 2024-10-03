@@ -1,4 +1,4 @@
-import { Role } from "~/server/contexts/backend/users/domain/Role";
+import type { Role } from '~/server/contexts/backend/users/domain/Role'
 
 export class User {
   constructor(
@@ -12,7 +12,8 @@ export class User {
     public whatsappInfoComm: boolean,
     public role: Role,
     public jwt?: string,
-  ) {}
+  ) {
+  }
 
   public hasAdminRole() {
     return this.role.isAdmin()

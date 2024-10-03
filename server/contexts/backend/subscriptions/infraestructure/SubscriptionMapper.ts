@@ -3,9 +3,10 @@ import type { StrapiSubscription } from '~/server/contexts/backend/subscriptions
 import { SubscriptionItem } from '~/server/contexts/backend/subscriptions-items/domain/SubscriptionItem'
 import { SubscriptionShipping } from '~/server/contexts/backend/subscriptions/domain/SubscriptionShipping'
 import { SubscriptionBilling } from '~/server/contexts/backend/subscriptions/domain/SubscriptionBilling'
-import { Payment } from '~/server/contexts/backend/payments/domain/Payment'
+import { SubscriptionPayment } from '~/server/contexts/backend/payments/domain/SubscriptionPayment'
 import { BoxProduct } from '~/server/contexts/backend/products/domain/BoxProduct'
 import { Coupon } from '~/server/contexts/backend/coupons/domain/Coupon'
+import { User } from '~/server/contexts/backend/users/domain/User'
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class SubscriptionMapper {
@@ -13,7 +14,7 @@ export class SubscriptionMapper {
   }
 
   static toDomain(subscription: StrapiSubscription): Subscription {
-    const { subscription_meta, payment } = subscription
+    const { subscription_meta, payment, user: strapiUser } = subscription
 
     const subscriptionItems = subscription.subscription_items.map((subscriptionItem) => {
       const { product, coupon_id: coupon } = subscriptionItem
@@ -23,7 +24,7 @@ export class SubscriptionMapper {
         subscriptionItem.amount,
         subscriptionItem.exclusions,
         subscriptionItem.image,
-        new BoxProduct(product.id, product.sku, product.price, product.isActive, product.weight, product.nameEs, product.nameCa, product.descriptionEs, product.descriptionCa, product.image, product.type, product.boxType, product.frequency, product.isImperfectusProduct),
+        new BoxProduct(product.id, product.sku, product.price, product.isActive, product.weight, product.nameEs, product.nameCa, product.descriptionEs, product.descriptionCa, product.image, product.type, product.boxType, product.isImperfectusProduct),
         subscriptionItem.weight,
         new Coupon(coupon.id, coupon.expire, coupon.limit, coupon.discountValue, coupon.discountType, coupon.coupon, coupon.type, coupon.isActive, coupon.descriptionEs, coupon.descriptionCa, coupon.onlyFirstPurchase, coupon.maxOrdersPerUser, coupon.hasActiveSubscription),
       )
@@ -56,11 +57,11 @@ export class SubscriptionMapper {
       subscription_meta.billing_country,
       subscription_meta.billing_cif,
     )
-    console.log('PAYMENT', payment)
-    const a = new Payment(payment.id, payment.user, payment.paymentMethod, payment.cardNumber, payment.cardCountry, payment.cardBrand, payment.currency, payment.expiryMonth, payment.expiryYear)
-    console.log('PAYMENT', a)
+    const paymentObject = new SubscriptionPayment(payment.id, payment.user, payment.paymentMethod, payment.cardNumber, payment.cardCountry, payment.cardBrand, payment.currency, payment.expiryMonth, payment.expiryYear)
+
     return new Subscription(
       subscription.id,
+      new User(strapiUser.id, strapiUser.username, strapiUser.email, strapiUser.confirmed, strapiUser.blocked, strapiUser.type, strapiUser.marketingInfoComm, strapiUser.whatsappInfoComm, strapiUser.role),
       subscription.status,
       subscription.frequency,
       subscription.skip,
@@ -74,7 +75,7 @@ export class SubscriptionMapper {
       shippingInfo,
       billingInfo,
       subscription.preferredHour,
-      a,
+      paymentObject,
     )
   }
 }

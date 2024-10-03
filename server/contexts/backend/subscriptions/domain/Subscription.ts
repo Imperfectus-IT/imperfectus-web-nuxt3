@@ -1,11 +1,12 @@
 import type { SubscriptionShipping } from './SubscriptionShipping'
 import type { SubscriptionBilling } from './SubscriptionBilling'
-import type { Coupon } from '~/server/contexts/backend/coupons/domain/Coupon'
 import type { SubscriptionItem } from '~/server/contexts/backend/subscriptions-items/domain/SubscriptionItem'
+import type { User } from '~/server/contexts/backend/users/domain/User'
 
 export class Subscription {
   constructor(
     public readonly id: number,
+    public readonly user: User,
     public readonly status: string,
     public readonly frequency: string,
     public readonly skip: string[],

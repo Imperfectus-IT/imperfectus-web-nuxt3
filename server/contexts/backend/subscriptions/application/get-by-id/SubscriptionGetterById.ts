@@ -5,7 +5,6 @@ export class SubscriptionGetterById {
   }
 
   execute(id: number) {
-    console.log('ID')
     return this.repository.getById(id)
   }
 }
