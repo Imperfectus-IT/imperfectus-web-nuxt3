@@ -34,7 +34,7 @@ export type PeriodicityPayload = {
   preferredHour: string
 }
 
-export type updateSubscriptionItemPayload = {
+export type updateItemPayload = {
   newBoxProduct: BoxProduct
   subscriptionItemId: number
   exclusions: number[]

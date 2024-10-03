@@ -1,30 +1,53 @@
-import { Product } from '~/server/contexts/backend/products/domain/Product'
 import type { ProductRepository } from '~/server/contexts/backend/products/domain/ProductRepository'
+import { BoxProduct } from '~/server/contexts/backend/products/domain/BoxProduct'
+import { ItemProduct } from '~/server/contexts/backend/products/domain/ItemProduct'
 
 export class StrapiProductRepository implements ProductRepository {
-  async getAll(): Promise<Product[]> {
+  async getAll(): Promise<{ boxProducts: BoxProduct[], itemProducts: ItemProduct[] }> {
     const config = useRuntimeConfig()
     const products = await $fetch(`${config.STRAPI_URL}/products?isActive=all`)
-    return Promise.all(products.map(product => this.createProduct(product)))
+    const itemProducts = await Promise.all(products.filter(product => product.type === 'item').map(product => this.createItemProduct(product)))
+    const boxProducts = await Promise.all(products.filter(product => product.type === 'box').map(product => this.createBoxProduct(product)))
+
+    return {
+      boxProducts,
+      itemProducts,
+    }
   }
 
-  private createProduct(product) {
-    console.log(product)
-    return new Product(
-      product.SKU,
-      product.price,
-      product.isActive,
-      product.weight,
-      product.name_es,
-      product.name_ca,
-      product.description_es,
-      product.description_ca,
-      product.imagePath,
-      product.type,
-      product.boxType,
-      product.itemType,
-      product.frequency,
-      product.id,
+  private createBoxProduct(product) {
+    return new BoxProduct(
+      {
+        id: product.id,
+        sku: product.SKU,
+        price: product.price,
+        isActive: product.isActive,
+        weight: product.weight,
+        nameEs: product.name_es,
+        nameCa: product.name_ca,
+        descriptionEs: product.description_es,
+        descriptionCa: product.description_ca,
+        image: product.imagePath,
+        type: product.type,
+        boxType: product.boxType,
+        frequency: product.frequency,
+        isImperfectusProduct: product.isImperfectusProduct,
+      },
+    )
+  }
+
+  private createItemProduct(product) {
+    return new ItemProduct(
+      {
+        id: product.id,
+        nameCa: product.name_ca,
+        nameEs: product.name_es,
+        isImperfectusProduct: product.isImperfectusProduct,
+        image: product.imagePath,
+        type: product.type,
+        isActive: product.isActive,
+        itemType: product.itemType,
+      },
     )
   }
 }

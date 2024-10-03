@@ -1,6 +1,6 @@
 import type { SubscriptionRepository } from '~/server/contexts/backend/subscriptions/domain/SubscriptionRepository'
 
-export class UpdateBillingMeta {
+export class UpdateBilling {
   constructor(private readonly subscriptionRepository: SubscriptionRepository) {
   }
 

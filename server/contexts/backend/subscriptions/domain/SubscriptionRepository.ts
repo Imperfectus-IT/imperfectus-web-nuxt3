@@ -3,7 +3,7 @@ import type {
   updateSubscriptionItemPayload,
   PauseSubscriptionPayload,
   DonationPayload,
-  PeriodicityPayload, AddItemPayload,
+  PeriodicityPayload, AddItemPayload, updateItemPayload,
 } from '~/server/contexts/backend/subscriptions/domain/SubscriptionPayload'
 
 export interface SubscriptionRepository {
@@ -33,15 +33,15 @@ export interface SubscriptionRepository {
 
   skipAnOrder(subscriptionId: number, newDatesToSkip: string[]): Promise<void>
 
-  updateShippingMeta(metaId: number, newShippingMeta: any): Promise<void>
+  updateShipping(metaId: number, newShippingMeta: SubscriptionShipping): Promise<void>
 
-  updateBillingMeta(metaId: number, newBillingMeta: any): Promise<void>
+  updateBilling(metaId: number, newBillingMeta: SubscriptionBilling): Promise<void>
 
   unpause(subscriptionId: number): Promise<void>
 
   updatePeriodicity(subscriptionId: number, periodicity: PeriodicityPayload): Promise<void>
 
-  updateItem(updateSubscriptionItemData: updateSubscriptionItemPayload)
+  updateItem(updateSubscriptionItemData: updateItemPayload): Promise<void>
 
   updatePayment(subscriptionId: number, paymentId: number): Promise<void>
 

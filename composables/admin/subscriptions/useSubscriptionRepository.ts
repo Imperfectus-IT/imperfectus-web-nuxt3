@@ -126,7 +126,6 @@ export const useSubscriptionRepository = () => {
     })
   }
 
-  // http://localhost:3001/api/v1/subscriptions/updatePeriodicity/20365
   const updateSubscriptionPeriodicity = async (subscription: Subscription, periodicity: Periodicity) => {
     const { preferredDay, preferredHour, frequency } = periodicity
     await update('subscriptions', subscription.id, { preferredDay, preferredHour, frequency })

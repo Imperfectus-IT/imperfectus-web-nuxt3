@@ -3,8 +3,19 @@ import { StrapiProductRepository } from '~/server/contexts/backend/products/infr
 import { ProductGetter } from '~/server/contexts/backend/products/application/get-all/ProductGetter'
 
 export default defineCachedEventHandler(async (event: H3Event) => {
-  console.log('CONTROLLER')
+  const CACHE_DURATION = 3600
+  const cacheKey = 'products-cache'
   const strapiProductRepository = new StrapiProductRepository()
   const productGetter = new ProductGetter(strapiProductRepository)
-  return await productGetter.execute()
+
+  const cachedData = await useStorage().getItem(cacheKey)
+
+  if (cachedData) {
+    return cachedData
+  }
+
+  const products = await productGetter.execute()
+  await useStorage().setItem(cacheKey, products, CACHE_DURATION)
+
+  return products
 })

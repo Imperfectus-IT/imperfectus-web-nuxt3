@@ -1,5 +1,6 @@
-import type { Product } from '~/server/contexts/backend/products/domain/Product'
+import type { BoxProduct } from './BoxProduct'
+import type { ItemProduct } from './ItemProduct'
 
 export interface ProductRepository {
-  getAll(): Promise<Product[]>
+  getAll(): Promise<{ boxProducts: BoxProduct[], itemProducts: ItemProduct[] }>
 }
