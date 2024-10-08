@@ -99,7 +99,7 @@ onMounted(() => {
             <Checkbox
               v-model="shoppingCart.currentItem.exclusions"
               class="mr-3"
-              :input-id="item.id.toString()"
+              :input-id="item.id"
               name="productExclusion"
               :disabled="disabledExclusion(item)"
               :value="item"

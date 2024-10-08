@@ -1,14 +1,11 @@
 export const useShoppingCart = () => {
-  const { setShoppingCart, getShoppingCart } = useLocalStorageShoppingCartRepository()
-  const saveShoppingCartLocalStorage = (shoppingCart: ShoppingCart) => {
-    setShoppingCart(shoppingCart)
-  }
+  const { getShoppingCart } = useInMemoryShoppingCartRepository()
+
   const initShoppingCart = (shoppingCart: Ref<ShoppingCart>) => {
     shoppingCart.value = getShoppingCart()
   }
 
   return {
     initShoppingCart,
-    saveShoppingCartLocalStorage,
   }
 }
