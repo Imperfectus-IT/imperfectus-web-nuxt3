@@ -57,7 +57,7 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-import type { SubscriptionItem } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { SubscriptionItem } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 
 const props = defineProps({

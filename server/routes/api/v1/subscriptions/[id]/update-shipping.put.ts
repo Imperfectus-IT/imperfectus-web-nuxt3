@@ -13,7 +13,6 @@ export default defineEventHandler(async (event: H3Event): Promise<Subscription> 
     }
 
     const { meta, id: metaId } = await readBody(event)
-    console.log('meta', meta)
 
     const updateShipping = new UpdateShipping(new StrapiSubscriptionsRepository(JWT))
     return await updateShipping.execute(metaId, meta)

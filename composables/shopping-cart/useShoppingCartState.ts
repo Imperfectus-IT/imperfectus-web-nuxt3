@@ -1,4 +1,4 @@
-import { createEmpty } from '@/composables/shopping-cart/domain/ShoppingCart.ts'
+import { createEmpty } from '~/composables/shopping-cart/domain/ShoppingCart.ts'
 
 export const useShoppingCartState = () => {
   const shoppingCart: Ref<ShoppingCart> = useState('shoppingCart', (): ShoppingCart => createEmpty())

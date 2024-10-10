@@ -182,7 +182,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { Order, OrderBilling, OrderItem, OrderShipping } from '~/composables/admin/orders/types/OrderType.ts'
+import type { Order, OrderBilling, OrderItem, OrderShipping } from '~/composables/admin/orders/domain/OrderType.ts'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
 import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'

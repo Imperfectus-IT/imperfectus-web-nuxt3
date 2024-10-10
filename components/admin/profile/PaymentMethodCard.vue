@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Payment } from '~/composables/payment/types/Payment.ts'
+import type { Payment } from '~/composables/payment/domain/Payment.ts'
 
 const {
   isDialogOpen,

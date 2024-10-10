@@ -10,10 +10,7 @@
       v-if="order && isMobile"
       :is-collapsed="false"
       :order="order"
-      :products="[
-        ...products.itemProducts.fruits,
-        ...products.itemProducts.vegetables,
-      ]"
+      :products="[]"
       @review-created="handleReviewCreated"
     />
     <DesktopOrder
@@ -21,10 +18,7 @@
       v-else
       :is-collapsed="false"
       :order="order"
-      :products="[
-        ...products.itemProducts.fruits,
-        ...products.itemProducts.vegetables,
-      ]"
+      :products="[]"
       @review-created="handleReviewCreated"
     />
   </div>
@@ -33,6 +27,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+const route = useRoute()
 const { t } = useI18n()
 useHead({
   title: t('pages.admin.order.title', { order: route.params.id }),
@@ -41,10 +36,8 @@ useHead({
 const { isMobile } = useScreenSize()
 
 const { orders, executeGetOrdersByUser } = useGetOrdersHandler(t)
-const { products } = useGetProductsHandler()
 
 const order: Ref<Order | null> = ref(null)
-const route = useRoute()
 const orderId = parseInt(route.params.id as string)
 
 watch(orders, () => {

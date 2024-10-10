@@ -1,10 +1,10 @@
-import { generateId } from '@/composables/shared/infraestructura/UuidGenerator.ts'
 import type { BillingAddress } from './BillingAddress.ts'
 import type { ShippingAddress } from './ShippingAddress.ts'
 import type { Item } from './Item.ts'
 import { createEmpty as createEmptyBillingAddress } from './BillingAddress.ts'
 import { createEmpty as createEmptyShippingAddress } from './ShippingAddress.ts'
 import { createEmpty as createEmptyItem } from './Item.ts'
+import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
 
 export type ShoppingCart = {
   id: string
@@ -57,6 +57,6 @@ export function createEmpty(): ShoppingCart {
   }
 }
 
-export function isCoverageValid (coverage: string | null | undefined): boolean {
+export function isCoverageValid(coverage: string | null | undefined): boolean {
   return coverage !== null && coverage !== undefined
 }

@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import type { Periodicity } from '~/components/admin/my-subscriptions/types/Periodicity.ts'
-import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { Subscription } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const { t } = useI18n()
 const props = defineProps<{

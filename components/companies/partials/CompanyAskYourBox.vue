@@ -23,7 +23,7 @@
       </div>
 
       <HubSpotForm
-        class="rounded-md ml-4 mr-4 mb-12 lg:w-1/2 lg:mx-auto"
+        class="rounded-md ml-4 mr-4 mb-12 lg:w-8/12 lg:mx-auto"
         form="b2b"
       />
     </div>

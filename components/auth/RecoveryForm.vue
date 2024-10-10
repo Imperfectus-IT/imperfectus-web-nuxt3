@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { z } from 'zod'
-import { useValidateResetPassword } from '~/composables/auth/useValidateResetPassword.ts'
+import { useValidateResetPassword } from '~/composables/shared/auth/domain/useValidateResetPassword.ts'
 
 const { validationErrors, validateSchema } = useValidateRecovery()
 const { recoveryFormData, handleRecovery, handleReset } = useStrapiRecovery()

@@ -12,16 +12,16 @@
       :data="reviews"
       :show-navigation="isDesktop"
       :show-pagination="!isDesktop"
-      :slide-class="'w-5/6 h-[400px] lg:w-full lg:mt-6  lg:h-[300px]'"
+      :slide-class="'w-5/6 h-[400px] lg:w-full lg:mt-6  lg:h-[400px]'"
       :slot-class="'min-h-[200px]'"
       :autoplay="3000"
       :pagination-class="'absolute transform left-1/2 -translate-x-1/2 lg:-bottom-20 text-red-primary'"
-      :navigation-next-class="'absolute -bottom-20 !bg-green-primary text-green-tertiary'"
-      :navigation-prev-class="'absolute -bottom-20 left-[24vw] !bg-green-primary text-green-tertiary'"
+      :navigation-next-class="'absolute -bottom-32 !bg-green-primary text-green-tertiary'"
+      :navigation-prev-class="'absolute -bottom-32 left-[24vw] !bg-green-primary text-green-tertiary'"
     >
       <template #SlideContent="{ item }">
         <div
-          class=" bg-beige-primary h-full rounded-lg leading-6 text-left pl-2 mb-3 lg:p-3 lg:h-[180px] overflow-auto"
+          class=" bg-beige-primary h-[260px] rounded-lg leading-6 text-left pl-2 mb-3 lg:p-3 lg:h-[280px] overflow-auto"
         >
           <div class=" w-full bg-beige-primary flex flex-row items-center">
             <Rating
@@ -46,7 +46,7 @@
           <NuxtImg
             :src="item.imageUrl"
             :alt="item.author"
-            class="rounded-full "
+            class="rounded-full w-20 h-20 lg:h-24 lg:w-24"
             loading="lazy"
             format="webp"
           />

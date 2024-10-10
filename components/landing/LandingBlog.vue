@@ -10,7 +10,7 @@
       class="px-2 grid grid-cols-2 gap-4 my-10 lg:grid-cols-4 lg:gap-10 lg:flex lg:justify-center"
     >
       <div
-        v-for="(post, index) in blogPosts"
+        v-for="(post, index) in posts"
         :key="index"
         class="bg-green-quaternary text-green-tertiary rounded-b-lg min-h-[275px] flex flex-col shadow-gray-primary shadow-md lg:w-[300px] lg:h-[320px]"
       >
@@ -58,33 +58,7 @@ defineProps({
     type: Boolean,
     required: true,
   },
-})
 
-// GET IN /utils/posts-blog
-const blogPosts = ref([
-  {
-    index: 1,
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Caja%20XL.png',
-    link: 'https://blog.talkualfoods.com/beneficios-comer-fruta-verdura',
-    title: 'Beneficios de comer fruta y verdura',
-  },
-  {
-    index: 2,
-    title: 'Propiedades de las verduras',
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Caja%20M_Verdura%283%29.jpg',
-    link: 'https://blog.talkualfoods.com/propiedades-verduras',
-  },
-  {
-    index: 3,
-    title: 'Propiedades de las frutas',
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Frutas.jpg',
-    link: 'https://blog.talkualfoods.com/propiedades-frutas',
-  },
-  {
-    index: 4,
-    title: 'Beneficios y propiedades de la chirimoya',
-    imageUrl: 'https://blog.talkualfoods.com/hubfs/Chirimoya.png',
-    link: 'https://blog.talkualfoods.com/beneficios-chirimoya',
-  },
-])
+})
+const { posts } = useBlogPostsState()
 </script>

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import type { GiftCardForm } from '~/components/gift-card/types/types'
+import type { GiftCardForm } from '~/components/gift-card/types/types.ts'
 
 export const useGiftFormValidator = () => {
   const giftCardForm = z

@@ -84,7 +84,6 @@
 const { locale } = useI18n()
 const savePreferredProducts = () => {
   // TODO fetch API
-  console.log('Fetching API...')
   return toggleComponentLayers()
 }
 

@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
-import type { SubscriptionItem } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { SubscriptionItem } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const props = defineProps<{
   exclusions: ItemProduct[]

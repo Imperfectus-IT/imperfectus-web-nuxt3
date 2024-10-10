@@ -1,4 +1,4 @@
-import { createProductDetail } from "~/composables/shopping-cart/domain/Product.ts";
+import { createProductDetail } from '~/composables/shopping-cart/domain/Product.ts'
 
 export const useShoppingCartBoxStep = () => {
   const { shoppingCart } = useShoppingCartState()
@@ -11,7 +11,7 @@ export const useShoppingCartBoxStep = () => {
 
   const addBoxProduct = () => {
     console.log(boxProductBySize)
-    //shoppingCart.value.currentItem.product = createProductDetail(boxProductBySize[shoppingCart.value.currentItem.boxSize].value, locale.value)
+    // shoppingCart.value.currentItem.product = createProductDetail(boxProductBySize[shoppingCart.value.currentItem.boxSize].value, locale.value)
   }
 
   const onSetBoxSize = (boxSize: string) => {

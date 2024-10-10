@@ -28,8 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import type { DomainUser } from '~/composables/admin/domain-user/types/DomainUser.ts'
-import { useUpdateUser } from '~/composables/admin/domain-user/update/useUpdateUser.ts'
+import type { DomainUser } from '~/composables/shared/user/types/DomainUser.ts'
+import { useUpdateUser } from '~/composables/shared/user/application/update/useUpdateUser.ts'
 
 const props = defineProps<{
   user: DomainUser

@@ -9,7 +9,7 @@
       @click="handleClickToDisplay(item.index as number)"
     >
       <NuxtImg
-        :src="item.image"
+        :src="item.image[0]"
         :alt="item.title"
         class=" h-[500px] w-[400px] object-cover"
         loading="lazy"

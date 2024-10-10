@@ -1,6 +1,6 @@
 import type { StrapiOrder } from '~/server/contexts/backend/orders/infraestructure/types/StrapiOrder'
 import { Order } from '~/server/contexts/backend/orders/domain/Order'
-import { OrderItem } from '~/server/contexts/backend/order-items/OrderItem'
+import { OrderItem } from '~/server/contexts/backend/order-items/domain/OrderItem'
 import { Coupon } from '~/server/contexts/backend/coupons/domain/Coupon'
 import { OrderPayment } from '~/server/contexts/backend/payments/domain/OrderPayment'
 import { BoxProduct } from '~/server/contexts/backend/products/domain/BoxProduct'

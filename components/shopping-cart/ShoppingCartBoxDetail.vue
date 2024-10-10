@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {ProductDetail} from "~/composables/shopping-cart/domain/Product.ts";
+import type { ProductDetail } from '~/composables/shopping-cart/domain/Product.ts'
 
 defineProps<{
   boxProduct: ProductDetail

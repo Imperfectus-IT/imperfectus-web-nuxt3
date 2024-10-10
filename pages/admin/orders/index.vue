@@ -8,18 +8,19 @@
       @selected-orders="filterSelectedOrders"
     />
     <div class="flex flex-col">
-      <MobileOrder
-        v-for="order in ordersToShow"
+      <div
         v-if="isMobile"
-        :key="order.id"
-        :order="order"
-        class="my-2 "
-        :is-collapsed="true"
-        :products="[
-          ...products.itemProducts.fruits,
-          ...products.itemProducts.vegetables,
-        ]"
-      />
+      >
+        <MobileOrder
+          v-for="order in ordersToShow"
+          :key="order.id"
+          :order="order"
+          class="my-2 "
+          :is-collapsed="true"
+          :products="[]"
+        />
+      </div>
+
       <DesktopOrder
         v-for="order in ordersToShow"
         v-else
@@ -27,10 +28,7 @@
         :order="order"
         class="my-2 "
         :is-collapsed="true"
-        :products="[
-          ...products.itemProducts.fruits,
-          ...products.itemProducts.vegetables,
-        ]"
+        :products="[]"
       />
     </div>
   </div>
@@ -60,7 +58,7 @@ defineI18nRoute({
 })
 
 const { orders } = useGetOrdersHandler(t)
-const { products } = useGetProductsHandler()
+// const { products } = useGetProductsHandler()
 const { isMobile } = useScreenSize()
 const ordersToShow = ref([...orders.value])
 

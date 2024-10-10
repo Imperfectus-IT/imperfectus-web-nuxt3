@@ -26,7 +26,7 @@ export class SubscriptionMapper {
         subscriptionItem.image,
         new BoxProduct(product.id, product.sku, product.price, product.isActive, product.weight, product.nameEs, product.nameCa, product.descriptionEs, product.descriptionCa, product.image, product.type, product.boxType, product.isImperfectusProduct),
         subscriptionItem.weight,
-        new Coupon(coupon.id, coupon.expire, coupon.limit, coupon.discountValue, coupon.discountType, coupon.coupon, coupon.type, coupon.isActive, coupon.descriptionEs, coupon.descriptionCa, coupon.onlyFirstPurchase, coupon.maxOrdersPerUser, coupon.hasActiveSubscription),
+        coupon ? new Coupon(coupon.id, coupon.expire, coupon.limit, coupon.discountValue, coupon.discountType, coupon.coupon, coupon.type, coupon.isActive, coupon.descriptionEs, coupon.descriptionCa, coupon.onlyFirstPurchase, coupon.maxOrdersPerUser, coupon.hasActiveSubscription) : null,
       )
     })
 

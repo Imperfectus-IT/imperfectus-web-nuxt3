@@ -126,9 +126,9 @@ import dayjs from 'dayjs'
 import { useI18n } from 'vue-i18n'
 import type { ONG } from '~/components/admin/upcoming_orders/DonateONG.vue'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
-import type { Subscription, SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { Subscription, SubscriptionShipping } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 import type { GiveToFriendForm } from '~/components/admin/upcoming_orders/types/FormTypes.ts'
-import type { DonationPayload } from '~/composables/admin/subscriptions/types/DonationPayload.ts'
+import type { DonationPayload } from '~/composables/admin/subscriptions/infrastructure/DonationPayload.ts'
 
 const { t } = useI18n()
 

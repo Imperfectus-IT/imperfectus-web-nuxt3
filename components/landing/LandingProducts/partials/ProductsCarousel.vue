@@ -5,7 +5,7 @@
     :visible-items="wrapItems()"
     :show-pagination="!displayDesktop"
     :show-navigation="displayDesktop"
-    :image-class="'py-4 relative bottom-2 w-[200px] h-[225px] mx-auto object-cover'"
+    :image-class="'py-4 relative bottom-2 w-[200px] h-[245px] mx-auto object-cover'"
     :slide-class="'bg-beige-secondary  rounded-[20px] w-[230px] h-[240px] lg:w-[280px] lg:h-[250px] mx-auto lg:mr-2 relative'"
     :pagination-class="'absolute transform left-1/2 -translate-x-1/2 bottom-[-10px] text-red-primary xl:bottom-0'"
     :navigation-container-class="'absolute bottom-[120%]'"

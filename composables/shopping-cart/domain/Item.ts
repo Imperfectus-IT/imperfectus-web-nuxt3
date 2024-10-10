@@ -1,5 +1,5 @@
-import { generateId } from '@/composables/shared/infraestructura/UuidGenerator.ts'
 import type { Product } from './Product.ts'
+import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
 
 export type Item = {
   id: string

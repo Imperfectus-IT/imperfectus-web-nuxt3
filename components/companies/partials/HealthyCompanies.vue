@@ -17,7 +17,7 @@ const companies = [
 
 <template>
   <div
-    class="pl-4 pr-4 py-[30px] md:flex  md:flex-col md:self-center md:p-8"
+    class="pl-4 pr-4 py-[30px] md:flex md:flex-col md:self-center md:p-8"
   >
     <SectionTitle
       :value="$t('companies.healthy.title')"
@@ -25,7 +25,7 @@ const companies = [
       title-class="mb-10"
     />
 
-    <div class="flex flex-wrap items-center justify-start gap-x-10 gap-y-10 lg:w-1/2 lg:mx-auto">
+    <div class="grid grid-cols-3 lg:flex lg:flex-wrap lg:items-center lg:justify-start gap-x-10 gap-y-10 lg:w-1/2 lg:mx-auto">
       <a
         v-for="(company, index) in companies"
         :key="index"

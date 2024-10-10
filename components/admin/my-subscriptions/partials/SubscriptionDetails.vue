@@ -52,7 +52,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
-import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { Subscription } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const { t } = useI18n()
 const props = defineProps<{

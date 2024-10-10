@@ -7,7 +7,7 @@
 
 <script setup lang='ts'>
 import { useI18n } from 'vue-i18n'
-import { useGetSubscriptionsHandler } from '~/composables/admin/subscriptions/get/useGetSubscriptionsHandler.ts'
+import { useGetSubscriptionsHandler } from '~/composables/admin/subscriptions/application/get/useGetSubscriptionsHandler.ts'
 
 const { t } = useI18n()
 const route = useRoute()

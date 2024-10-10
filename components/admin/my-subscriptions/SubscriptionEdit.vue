@@ -83,12 +83,12 @@ import dayjs from 'dayjs'
 import type {
   Subscription,
   SubscriptionBilling, SubscriptionShipping,
-} from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+} from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 import type { Periodicity } from '~/components/admin/my-subscriptions/types/Periodicity.ts'
-import type { Payment } from '~/composables/payment/types/Payment.ts'
+import type { Payment } from '~/composables/payment/domain/Payment.ts'
 import {
   useGetAllAvailabilityHandler,
-} from '~/composables/shared/availableDates/get-all/useGetAllAvailabilityHandler.ts'
+} from '~/composables/availableDates/get-all/useGetAllAvailabilityHandler.ts'
 import type {
   updateSubscriptionItemPayload,
 } from '~/components/admin/my-subscriptions/partials/SubscriptionModifyItem.vue'
@@ -111,7 +111,6 @@ const isSubscriptionCancelledModalStyle = computed(() => props.subscription.stat
 //   const carrier = 'correosexp'
 //   const product = '3'
 //   const test = await handleGetAllAvailability(postCode, product, carrier)
-//   console.log('test', test)
 // })
 const handleApplyCoupon = async (coupon: string) => {
   await addSubscriptionCoupon(props.subscription.id, coupon, textData, t)

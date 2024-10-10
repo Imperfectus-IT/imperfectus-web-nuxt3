@@ -13,11 +13,13 @@ export type Product = {
   images: string[]
 }
 
-export type ProductExclusion = {
-  id: number
-  sku: string
-  name: string
-}
+export type ProductExclusion = Pick<Product, 'id' | 'sku' | 'name'>
+
+// export type ProductExclusion = {
+//   id: number
+//   sku: string
+//   name: string
+// }
 
 export type ProductDetail = {
   id: number

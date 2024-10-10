@@ -1,6 +1,7 @@
-import { isCoverageValid } from '@/composables/shopping-cart/domain/ShoppingCart.ts'
-import { isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } from '@/composables/shopping-cart/domain/ShippingAddress.ts'
-export default function (){
+import { isCoverageValid } from '~/composables/shopping-cart/domain/ShoppingCart.ts'
+import { isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } from '~/composables/shopping-cart/domain/ShippingAddress.ts'
+
+export default function () {
   const { shoppingCart } = useShoppingCartState()
   const { executeFindCoverageByPostalCode } = useFindCoverageByPostalCode()
 
@@ -28,6 +29,6 @@ export default function (){
     findCoverageByPostalCode,
     goBack,
     isPostalCodeLengthValid,
-    MAX_POSTAL_CODE_LENGTH
+    MAX_POSTAL_CODE_LENGTH,
   }
 }

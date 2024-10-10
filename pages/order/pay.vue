@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useGetOrderHandler } from '~/composables/admin/orders/getOne/useGetOrderHandler.ts'
+import { useGetOrderHandler } from '~/composables/admin/orders/application/getOne/useGetOrderHandler.ts'
 
 const { t } = useI18n()
 

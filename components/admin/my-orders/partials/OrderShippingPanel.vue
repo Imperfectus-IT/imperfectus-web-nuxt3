@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import type { OrderShipping } from '~/composables/admin/orders/types/OrderType.ts'
+import type { OrderShipping } from '~/composables/admin/orders/domain/OrderType.ts'
 
 const props = defineProps<{
   data: OrderShipping

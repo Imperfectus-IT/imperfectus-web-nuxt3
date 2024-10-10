@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang='ts'>
-import type { Coupon } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { Coupon } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const props = defineProps<{
   subscriptionCoupon: Coupon | null

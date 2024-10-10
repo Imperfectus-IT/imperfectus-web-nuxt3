@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { OrderDelivery } from '~/composables/admin/orders/types/OrderType.ts'
+import type { OrderDelivery } from '~/composables/admin/orders/domain/OrderType.ts'
 
 const { t } = useI18n()
 const textData = 'orders.order.delivery.'

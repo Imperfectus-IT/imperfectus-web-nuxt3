@@ -65,7 +65,7 @@
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import type { OrderItem } from '~/composables/admin/orders/types/OrderType.ts'
+import type { OrderItem } from '~/composables/admin/orders/domain/OrderType.ts'
 import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
 
 const props = defineProps<{
@@ -74,7 +74,6 @@ const props = defineProps<{
   orderId: number
 }>()
 const displayEditOrder = ref(false)
-const { products } = useGetProductsHandler()
 const listProducts: Ref<ItemProduct[]> = ref([])
 const emits = defineEmits(['update-item'])
 const textData = 'orders.order.edit.'
@@ -116,14 +115,14 @@ const boxSizes = [
   { name: 'Grande', code: 'XL' },
 ]
 
-watch(products, () => {
-  if (products.value.itemProducts) {
-    listProducts.value = [
-      ...products.value.itemProducts.fruits,
-      ...products.value.itemProducts.vegetables,
-    ]
-  }
-})
+// watch(products, () => {
+//   if (products.value.itemProducts) {
+//     listProducts.value = [
+//       ...products.value.itemProducts.fruits,
+//       ...products.value.itemProducts.vegetables,
+//     ]
+//   }
+// })
 export type updateOrderItemPayload = {
   newBoxProduct: BoxProduct
   orderItemId: number

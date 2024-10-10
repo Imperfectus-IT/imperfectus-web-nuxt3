@@ -9,19 +9,18 @@ import {
 
 export default defineEventHandler(async (event: H3Event) => {
   try {
-    console.log('subscriptions BY USER ID')
     const { user } = await getQuery(event)
     const JWT: string | null = event.headers.get('authorization')
-    console.log(JWT)
     if (!JWT) {
-      return new Error('Unauthorized')
+      console.log('JWT is missing')
+      throw createError({ statusCode: 401, statusMessage: 'JWT is missing' })
     }
     const StrapiRepository = new StrapiSubscriptionsRepository(JWT)
     const subscriptionGetter = new SubscriptionGetterByUserId(StrapiRepository)
     return await subscriptionGetter.execute(JSON.parse(user))
   }
   catch (error: Strapi3Error) {
-    console.log('Error', error.data)
-    return error.data
+    console.log('Error', error)
+    throw error
   }
 })

@@ -70,9 +70,9 @@ import dayjs from 'dayjs'
 import { useI18n } from 'vue-i18n'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
-import { useGetNextDatesFromFrequency } from '~/composables/admin/subscriptions/useGetNextDatesFromFrequency.ts'
-import { useDateBuilder } from '~/composables/admin/subscriptions/useDateBuilder.ts'
-import type { Subscription } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import { useGetNextDatesFromFrequency } from '~/composables/admin/subscriptions/domain/useGetNextDatesFromFrequency.ts'
+import { useDateBuilder } from '~/composables/admin/subscriptions/domain/useDateBuilder.ts'
+import type { Subscription } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const localePath = useLocalePath()
 const { t } = useI18n()

@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import type { OrderBilling } from '~/composables/admin/orders/types/OrderType.ts'
+import type { OrderBilling } from '~/composables/admin/orders/domain/OrderType.ts'
 
 const { isDesktop } = useScreenSize()
 const isEditForm = ref(false)

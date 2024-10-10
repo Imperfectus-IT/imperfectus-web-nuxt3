@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
 import type { InputPayload } from './types/FormTypes'
-import type { SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { SubscriptionShipping } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const emit = defineEmits(['close-form', 'gift-to-friend'])
 const closeForm = () => emit('close-form')

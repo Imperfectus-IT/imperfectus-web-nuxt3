@@ -13,10 +13,9 @@
       :key="index"
     >
       <div :class="slideClass">
-        {{ item.image }}
         <NuxtImg
           v-if="item.image"
-          :src="'/images/products/frutas/Aguacate.webp'"
+          :src="item.image[0]"
           :alt="item.name"
           :class="imageClass || item.imageClass"
           loading="lazy"
@@ -144,8 +143,8 @@ defineProps({
 }
 
 :deep .carousel__pagination-button.carousel__pagination-button--active {
-  background-color: hsl(68 83% 63%)!important;
-  border: 1px solid hsl(68 83% 63%)!important;
+  background-color: hsl(68 83% 63%) !important;
+  border: 1px solid hsl(68 83% 63%) !important;
 }
 
 :deep .carousel__pagination-button.carousel__pagination-button {

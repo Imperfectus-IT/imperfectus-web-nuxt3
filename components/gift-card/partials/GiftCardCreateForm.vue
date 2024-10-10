@@ -104,7 +104,7 @@
 
 <script setup lang="ts">
 import { type GiftCardForm } from '../types/types'
-import { useCreateGiftCardHandler } from '~/composables/gift-card/create/useCreateGiftCardHandler.ts'
+import { useCreateGiftCardHandler } from '~/composables/gift-card/application/create/useCreateGiftCardHandler.ts'
 
 const emit = defineEmits(['formUpdated'])
 

@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SubscriptionShipping } from '~/composables/admin/subscriptions/types/SubscriptionTypes.ts'
+import type { SubscriptionShipping } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 const { isDesktop } = useScreenSize()
 const props = defineProps<{
