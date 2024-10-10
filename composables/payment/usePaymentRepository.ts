@@ -1,6 +1,8 @@
-import type { Payment } from './types/Payment.ts'
+import type { Payment, PaymentForm } from './types/Payment.ts'
 
 export const usePaymentRepository = () => {
+  const client = useStrapiClient()
+
   const findPaymentsByUserId = async (id: number): Promise<Payment[]> => {
     const { find } = useStrapi()
     return await find<Payment[]>('payments', { user: id })
@@ -15,9 +17,14 @@ export const usePaymentRepository = () => {
     return await create<Payment>('payments', payment)
   }
 
+  const form = async (id: number): Promise<PaymentForm> => {
+    return await client(`payments/${id}/form/`, { method: 'POST' })
+  }
+
   return {
     addPayment,
     findPaymentsByUserId,
     deletePayment,
+    form,
   }
 }

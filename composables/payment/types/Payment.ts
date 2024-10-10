@@ -12,5 +12,10 @@ export interface Payment {
   expiryYear: number
   created_at: string
   updated_at: string
-  notification_hash: any
+  notification_hash: string
+}
+
+export interface PaymentForm {
+  url: string
+  body: string
 }

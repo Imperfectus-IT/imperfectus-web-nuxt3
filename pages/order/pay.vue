@@ -64,14 +64,10 @@ const { order } = useGetOrderHandler(order_id, t)
       />
     </Panel>
 
-    <CompletePaymentActions class="mt-10" />
-
-    <div>
-      <OrderBillingPanel
-        :data="order.billingInfo"
-        label-key="pages.order.pay.billing"
-      />
-    </div>
+    <CompletePaymentActions
+      class="mt-10"
+      :order="order"
+    />
   </Container>
 </template>
 
