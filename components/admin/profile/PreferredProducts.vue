@@ -14,9 +14,9 @@
           </p>
           <MultiSelect
             v-model="preferredProducts.fruits"
-            :options="fruits"
+            :options="fruitsItemProducts"
             filter
-            option-label="name"
+            :option-label="`name${getLocaleLanguage}`"
             option-value="id"
             :placeholder="$t('profile.my_account.preferred_products.fruits.placeholder')"
             :selection-limit="2"
@@ -29,9 +29,9 @@
           </p>
           <MultiSelect
             v-model="preferredProducts.vegetables"
-            :options="vegetables"
+            :options="vegetablesItemProducts"
             filter
-            option-label="name"
+            :option-label="`name${getLocaleLanguage}`"
             option-value="id"
             :placeholder="
               $t('profile.my_account.preferred_products.vegetables.placeholder')
@@ -83,9 +83,13 @@
 <script setup lang="ts">
 const { locale } = useI18n()
 const savePreferredProducts = () => {
-  // TODO fetch API
+  // @TODO fetch API
   return toggleComponentLayers()
 }
+
+const getLocaleLanguage = computed(() => {
+  return locale.value === 'es' ? 'Es' : 'Ca'
+})
 
 const toggleComponentLayers = () => {
   componentLayers.confirmView = !componentLayers.confirmView
@@ -110,10 +114,4 @@ const componentLayers = reactive({
 })
 
 const { fruitsItemProducts, vegetablesItemProducts } = useProductsState()
-const vegetables = computed(() => {
-  return vegetablesItemProducts.value.map(item => useProductFactory().makeProductExclusion(item, locale.value))
-})
-const fruits = computed(() => {
-  return fruitsItemProducts.value.map(item => useProductFactory().makeProductExclusion(item, locale.value))
-})
 </script>

@@ -2141,6 +2141,7 @@ export default {
   'orderStepDate.carrier.talkual': 'TALKUAL',
   'orderStepDate.carrier.cargobike': 'Cargobike',
   'orderStepDate.carrier.recommended': 'Empresa de transporte recomendada según tu CP',
+  'orderStepDate.carrier.now': 'Empresa de transporte actual',
   'orderStepDate.carrier.preferredPickup': '¿Qué punto de recogida prefieres?',
   'orderStepDate.carrier.caution': '**¡Importante!** En caso de que el punto de entrega cerrara, **el pedido se enviará a la dirección de domicilio que proporcionaste**, siempre informándote previamente por email.',
   'orderStepDate.time': '¿En qué franja horaria te gustaría recibir tu envío?',

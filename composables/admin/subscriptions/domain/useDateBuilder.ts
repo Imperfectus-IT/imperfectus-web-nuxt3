@@ -3,21 +3,14 @@ import type { CalendarDate } from '~/components/admin/my-subscriptions/types/Cal
 export const useDateBuilder = () => {
   const dateBuilder = (date: CalendarDate) => {
     const { year, month, day } = date
-    if (day < 10 && month < 10) {
-      const dayWith0 = `0${day}`
-      const monthWith0 = `0${month + 1}`
-      return `${year}-${monthWith0}-${dayWith0}`
-    }
-    if (day < 10) {
-      const dayWith0 = `0${day}`
-      return `${year}-${month + 1}-${dayWith0}`
-    }
-    if (month < 10) {
-      const monthWith0 = `0${month + 1}`
-      return `${year}-${monthWith0}-${day}`
-    }
-    return `${year}-${month + 1}-${day}`
+
+    // Use String.padStart() to add leading zeros if necessary
+    const dayWith0 = String(day).padStart(2, '0')
+    const monthWith0 = String(month + 1).padStart(2, '0')
+
+    return `${year}-${monthWith0}-${dayWith0}`
   }
+
   return {
     dateBuilder,
   }

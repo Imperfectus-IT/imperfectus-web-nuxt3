@@ -14,7 +14,7 @@ import type { CancelSubscriptionPayload } from '~/components/admin/my-subscripti
 
 export const useUpdateSubscription = () => {
   const { subscriptions } = useSubscriptionsState()
-  const { addSubscriptionCoupon, cancelSubscription, cancelDonation, donateToONG, findSubscriptionsByUser, giveOrderToFriend, skipAnOrder, removeSkip, removeSubscriptionCoupon, unpauseSubscription, updateSubscriptionPeriodicity, updateSubscriptionPayment, updateSubscriptionBillingMeta, updateShippingMeta, updateSubscriptionItem, addSubscriptionItem, pauseSubscription } = useSubscriptionRepository()
+  const { addSubscriptionCoupon, cancelSubscription, cancelDonation, donateToONG, findSubscriptionsByUser, giveOrderToFriend, skipAnOrder, removeSkip, removeSubscriptionCoupon, unpauseSubscription, updateSubscriptionPeriodicity, updateSubscriptionPayment, updateSubscriptionBillingMeta, updateShippingCoverage, updateShippingMeta, updateSubscriptionItem, addSubscriptionItem, pauseSubscription } = useSubscriptionRepository()
 
   const executeAddSubscriptionCoupon = async (subscriptionId: number, coupon: string) => {
     await addSubscriptionCoupon(subscriptionId, coupon)
@@ -60,6 +60,12 @@ export const useUpdateSubscription = () => {
     subscriptions.value = await findSubscriptionsByUser()
     return
   }
+
+  const executeUpdateSubscriptionCoverage = async (metaId: number, newShippingCoverage: SubscriptionCoverage) => {
+    await updateShippingCoverage(metaId, newShippingCoverage)
+    return subscriptions.value = await findSubscriptionsByUser()
+  }
+
   const executeUpdateShippingMeta = async (metaId: number, newShippingMeta: SubscriptionShipping) => {
     await updateShippingMeta(metaId, newShippingMeta)
     subscriptions.value = await findSubscriptionsByUser()
@@ -105,12 +111,12 @@ export const useUpdateSubscription = () => {
     executeSkipAnOrder,
     executeRemoveSkip,
     executeRemoveSubscriptionCoupon,
+    executeUpdateSubscriptionCoverage,
     executeUpdateShippingMeta,
     executeUnpauseSubscription,
     executeUpdatePeriodicity,
     executeUpdatePayment,
     executeUpdateBillingMeta,
     executeUpdateSubscriptionItem,
-    subscriptions,
   }
 }

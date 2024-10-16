@@ -18,4 +18,5 @@ export type BoxProduct = BaseProduct & {
   descriptionCa: string
   boxType: string
   price: number
+  sku: string
 }

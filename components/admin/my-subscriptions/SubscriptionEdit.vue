@@ -26,9 +26,16 @@
         class="lg:row-span-2 lg:h-[400px]"
         @save-modify-periodicity="updateSubscriptionPeriodicity"
       />
+      <SubscriptionShippingCoverage
+        class="lg:col-span-3 lg:row-start-1"
+        :available-coverages="availableShippingCoverages"
+        :subscription-shipping-coverage="props.subscription.shippingCoverage"
+        :postcode="props.subscription.shippingInfo.shippingPostCode"
+        @update-coverage="handleUpdateSubscriptionCoverage"
+      />
       <SubscriptionCoupon
         class="lg:col-span-2"
-        :subscription-coupon="subscription.coupon"
+        :subscription-coupon="subscription.subscriptionItems[0].coupon"
         @apply-coupon="handleApplyCoupon"
         @remove-coupon="handleRemoveCoupon"
       />
@@ -79,16 +86,12 @@
 </template>
 
 <script setup lang='ts'>
-import dayjs from 'dayjs'
 import type {
   Subscription,
   SubscriptionBilling, SubscriptionShipping,
 } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 import type { Periodicity } from '~/components/admin/my-subscriptions/types/Periodicity.ts'
 import type { Payment } from '~/composables/payment/domain/Payment.ts'
-import {
-  useGetAllAvailabilityHandler,
-} from '~/composables/availableDates/get-all/useGetAllAvailabilityHandler.ts'
 import type {
   updateSubscriptionItemPayload,
 } from '~/components/admin/my-subscriptions/partials/SubscriptionModifyItem.vue'
@@ -96,22 +99,22 @@ import type { addItemPayload } from '~/components/admin/my-subscriptions/partial
 import type { PauseSubscriptionPayload } from '~/components/admin/my-subscriptions/partials/SubscriptionPauseModal.vue'
 import type { CancelSubscriptionPayload } from '~/components/admin/my-subscriptions/partials/SubscriptionCancelModal.vue'
 
-// const { handleGetAllAvailability } = useGetAllAvailabilityHandler()
-const { addSubscriptionCoupon, cancelSubscription, updateBillingMeta, updatePeriodicity, updatePayment, updateSubscriptionItem, addSubscriptionItem, pauseSubscription, unpauseSubscription, updateShippingMeta, removeSubscriptionCoupon } = useUpdateSubscriptionHandler()
+const { addSubscriptionCoupon, cancelSubscription, updateBillingMeta, updatePeriodicity, updatePayment, updateSubscriptionItem, addSubscriptionItem, pauseSubscription, unpauseSubscription, updateSubscriptionCoverage, updateShippingMeta, removeSubscriptionCoupon } = useUpdateSubscriptionHandler()
 const { t } = useI18n()
 const isPauseModalVisible = ref(false)
 const isCancelModalVisible = ref(false)
 const props = defineProps<{
   subscription: Subscription
 }>()
+const { getDeliveryDateFromNextPayment } = useGetDeliveryDateFromNextPayment()
+const { executeGetShippingCompanies } = useGetShippingCompanies()
+const { shippingPostCode } = props.subscription.shippingInfo
+const expectedDeliveryDate = computed(() => getDeliveryDateFromNextPayment(props.subscription.nextPayment, props.subscription.preferredDay))
+const availableShippingCoverages = await executeGetShippingCompanies(shippingPostCode, expectedDeliveryDate.value)
+
 const textData = 'subscriptions.subscription.'
 const isSubscriptionCancelledModalStyle = computed(() => props.subscription.status === 'cancelled' ? 'lg:col-span-2 lg:w-1/2 lg:mx-auto' : '')
-// onMounted(async () => {
-//   const postCode = props.subscription.shippingInfo.shippingPostCode
-//   const carrier = 'correosexp'
-//   const product = '3'
-//   const test = await handleGetAllAvailability(postCode, product, carrier)
-// })
+
 const handleApplyCoupon = async (coupon: string) => {
   await addSubscriptionCoupon(props.subscription.id, coupon, textData, t)
 }
@@ -124,6 +127,7 @@ const handleUnPauseSubscription = async (subscriptionId: number) => {
   await unpauseSubscription(subscriptionId, textData, t, preferredDay, nextPayment)
   closePauseModal()
 }
+const handleUpdateSubscriptionCoverage = async (newSubscriptionCoverage: SubscriptionCoverage) => await updateSubscriptionCoverage(props.subscription.subscriptionMeta, newSubscriptionCoverage)
 const handleCancelSubscription = async (cancelSubscriptionData: CancelSubscriptionPayload) => {
   await cancelSubscription(props.subscription.id, cancelSubscriptionData, textData, t)
   closeCancelModal()

@@ -71,39 +71,33 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '@/composables/shared/products/domain/Product.ts'
+import { useGenerateSku } from '~/composables/shared/utils/useGenerateSku.ts'
 
 const props = defineProps<{
   frequency: string
 }>()
 
+const { generateSku } = useGenerateSku()
 const emits = defineEmits(['close', 'save'])
-const { products } = useGetProductsHandler()
-const listProducts: Ref<ItemProduct[]> = ref([])
+const { products } = useProductsState()
+
 const newItem = reactive({
   exclusions: [],
   size: '',
   type: '',
 })
-watch(products, () => {
-  if (products.value.itemProducts) {
-    listProducts.value = [
-      ...products.value.itemProducts.fruits,
-      ...products.value.itemProducts.vegetables,
-    ].sort((a, b) => a.nameEs.localeCompare(b.nameEs))
-  }
-})
 
 const save = () => {
-  const frequency = props.frequency === 'weekly' ? 1 : 2
-  const boxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === newItem.type && box.sku.includes(`${newItem.size}R${frequency}`))
-  if (!boxProduct) {
+  const { type, size } = newItem
+  const sku = generateSku(type, size, props.frequency)
+  const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.sku === sku)
+  if (!newBoxProduct) {
     // ERROR TOAST
     return
   }
   const { exclusions } = newItem
-  emits('save', { boxProduct, exclusions })
+  emits('save', { newBoxProduct, exclusions })
 }
 const close = () => emits('close')
 const boxTypes = [

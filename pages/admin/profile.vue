@@ -48,7 +48,7 @@ const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = 
     <div class="w-full">
       <LanguagePreference class="mt-5 lg:mt-10" />
       <PaymentMethodCard class="mt-5 lg:mt-10" />
-      <AddressProfile class="mt-5 lg:mt-10" />
+      <!--      <AddressProfile class="mt-5 lg:mt-10" /> -->
     </div>
     <PreferredProducts />
   </section>

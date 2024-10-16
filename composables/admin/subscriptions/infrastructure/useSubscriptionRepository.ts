@@ -1,4 +1,9 @@
-import type { Subscription, SubscriptionBilling, SubscriptionShipping } from '../domain/SubscriptionTypes.ts'
+import type {
+  Subscription,
+  SubscriptionBilling,
+  SubscriptionCoverage,
+  SubscriptionShipping,
+} from '../domain/SubscriptionTypes.ts'
 import type { DonationPayload } from './DonationPayload.ts'
 import type { SubscriptionTotal } from '~/components/admin/my-subscriptions/partials/SubscriptionDetails.vue'
 import type { Periodicity } from '~/components/admin/my-subscriptions/types/Periodicity.ts'
@@ -11,6 +16,12 @@ import type { CancelSubscriptionPayload } from '~/components/admin/my-subscripti
 import {
   useStrapiSubscriptionBillingFactory,
 } from '~/composables/admin/subscriptions/infrastructure/factories/useStrapiSubscriptionBillingFactory.ts'
+import type {
+  StrapiSubscription,
+} from '~/server/contexts/backend/subscriptions/infraestructure/types/StrapiSubscription.ts'
+import {
+  useStrapiSubscriptionItemFactory,
+} from '~/composables/admin/subscriptions/infrastructure/factories/useStrapiSubscriptionItemFactory.ts'
 
 export const useSubscriptionRepository = () => {
   const config = useRuntimeConfig()
@@ -18,16 +29,16 @@ export const useSubscriptionRepository = () => {
   const client = useStrapiClient()
 
   const addSubscriptionCoupon = async (subscriptionId: number, coupon: string) => {
-    await client<Subscription>(`/subscriptions/${subscriptionId}/coupon`, { method: 'PUT', body: { coupon } })
+    await client<Subscription>(`/subscriptions/${subscriptionId}/coupon`, { method: 'PUT', body: { coupon_id: coupon } })
   }
   const addSubscriptionItem = async (newSubscriptionItem: addItemPayload, subscriptionId: number) => {
-    const { boxProduct, exclusions } = newSubscriptionItem
-    const { amount, weight, id } = boxProduct
+    const { newBoxProduct, exclusions } = newSubscriptionItem
+    const { price, weight, id } = newBoxProduct
     const body = {
       subscription: subscriptionId,
       product: id,
       exclusions,
-      amount,
+      amount: price,
       weight,
       quantity: 1,
       status: 'active',
@@ -43,41 +54,41 @@ export const useSubscriptionRepository = () => {
       body: cancelSubscriptionData,
     })
   }
-  const donateToONG = async (body: DonationPayload): Promise<Subscription> => {
-    const { subscriptionId } = body
+  const donateToONG = async (giveToOngData: DonationPayload): Promise<Subscription> => {
+    const { subscriptionId } = giveToOngData
+    const strapiShippingData = useStrapiSubscriptionShippingFactory(giveToOngData.newSubscriptionMeta)
     return await client<Subscription>(`/subscriptions/${subscriptionId}/giveOrder`, {
-      method: 'POST', body: {
-        purpose: body.purpose,
-        givenTo: body.givenTo,
-        date: body.paymentDate,
-        newSubscriptionMeta: body.newSubscriptionMeta,
-        deliveryDate: body.deliveryDate,
+      method: 'POST',
+      body: {
+        ...giveToOngData,
+        newSubscriptionMeta: strapiShippingData,
       },
     })
   }
   const findSubscriptionsByUser = async (): Promise<Subscription[]> => {
     const user = useStrapiUser()
     const strapiSubscriptions = await find('subscriptions', { user: user.value?.id, _sort: 'created_at:desc' })
-    return strapiSubscriptions.map((subscription: any) => useSubscriptionFactory(subscription))
+    return strapiSubscriptions.map((subscription: StrapiSubscription) => useSubscriptionFactory(subscription))
   }
   const getSubscriptionTotal = async (subscription: Subscription): Promise<SubscriptionTotal> => {
-    return await $fetch(`${config.public.STRAPI_URL}/orders/total`, {
+    const strapiItems = subscription.subscriptionItems.map((item: SubscriptionItem) => useStrapiSubscriptionItemFactory(item, subscription.id))
+    return await client(`/orders/total`, {
       method: 'POST',
       body: {
-        coupon: subscription.coupon,
-        items: [...subscription.subscriptionItems],
-        delivery: {
-          shipping_supplements: [],
-        },
+        items: strapiItems,
         isPlaced: true,
       },
     })
   }
   const giveOrderToFriend = async (giveOrderToFriendData: DonationPayload): Promise<void> => {
     const { subscriptionId } = giveOrderToFriendData
-    const response = await client(`/subscriptions/${subscriptionId}/giveOrder`, {
+    const strapiShippingData = useStrapiSubscriptionShippingFactory(giveOrderToFriendData.newSubscriptionMeta)
+    return await client(`/subscriptions/${subscriptionId}/giveOrder`, {
       method: 'POST',
-      body: giveOrderToFriendData,
+      body: {
+        ...giveOrderToFriendData,
+        newSubscriptionMeta: strapiShippingData,
+      },
     })
   }
   const pauseSubscription = async (pauseSubscriptionData: PauseSubscriptionPayload, subscriptionId: number): Promise<Subscription> => {
@@ -86,11 +97,10 @@ export const useSubscriptionRepository = () => {
     })
   }
   const removeSkip = async (subscriptionId: number, skip: string[]) => {
-    const response = await update('subscriptions', subscriptionId, { skip })
-    return response
+    return await update('subscriptions', subscriptionId, { skip })
   }
   const removeSubscriptionCoupon = async (subscriptionId: number) => {
-    return await update('subscriptions', subscriptionId, { coupon: null })
+    return await client<Subscription>(`/subscriptions/${subscriptionId}/coupon`, { method: 'PUT', body: { coupon_id: null } })
   }
   const skipAnOrder = async (subscriptionId: number, skip: string[]) => {
     return update('subscriptions', subscriptionId, { skip })
@@ -102,6 +112,14 @@ export const useSubscriptionRepository = () => {
       body: { meta: strapiShippingMeta },
     })
   }
+
+  const updateShippingCoverage = async (metaId: number, newShippingCoverage: SubscriptionCoverage) => {
+    return await client(`subscription-metas/${metaId}/transportShipping`, {
+      method: 'PUT',
+      body: newShippingCoverage,
+    })
+  }
+
   const unpauseSubscription = async (subscriptionId: number): Promise<Subscription> => {
     return await client(`/subscriptions/${subscriptionId}/unpauseSubscription`, { method: 'PUT' })
   }
@@ -125,8 +143,7 @@ export const useSubscriptionRepository = () => {
   }
 
   const updateSubscriptionPeriodicity = async (subscription: Subscription, periodicity: Periodicity) => {
-    const { preferredDay, preferredHour, frequency } = periodicity
-    await update('subscriptions', subscription.id, { preferredDay, preferredHour, frequency })
+    await client(`/subscriptions/${subscription.id}/periodicity`, { method: 'PUT', body: { ...periodicity, shippingCoverage: 'paack' } })
   }
   const updateSubscriptionPayment = async (subscription: Subscription, paymentId: number) => await update('subscriptions', subscription.id, { payment: paymentId })
 
@@ -147,6 +164,7 @@ export const useSubscriptionRepository = () => {
     updateSubscriptionPeriodicity,
     updateSubscriptionPayment,
     updateSubscriptionBillingMeta,
+    updateShippingCoverage,
     updateSubscriptionItem,
     updateShippingMeta,
   }

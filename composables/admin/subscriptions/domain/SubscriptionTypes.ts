@@ -15,6 +15,7 @@ export type Subscription = {
   donations: string[]
   shippingInfo: SubscriptionShipping
   billingInfo: SubscriptionBilling
+  shippingCoverage: SubscriptionCoverage
   subscriptionMeta: number
   preferredHour: string
   // coupon: Coupon | null
@@ -29,6 +30,7 @@ export type SubscriptionItem = {
   exclusions: ItemProduct[]
   image: string
   product: BoxProduct
+  coupon: Coupon
 }
 
 export interface SubscriptionBilling {
@@ -57,4 +59,10 @@ export interface SubscriptionShipping {
   shippingState: string
   shippingCountry: string
   shippingNotes: string
+}
+
+export interface SubscriptionCoverage {
+  shippingCoverage: string
+  shippingService: string | null
+  shippingOffice: string | null
 }

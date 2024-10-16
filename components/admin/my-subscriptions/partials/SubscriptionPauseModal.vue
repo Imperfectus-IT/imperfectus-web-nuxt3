@@ -1,6 +1,6 @@
 <template>
   <Dialog
-    :visible="isVisible"
+    :visible="true"
     modal
     :closable="false"
     :dismissable-mask="true"
@@ -88,15 +88,23 @@
       </div>
     </div>
     <div v-else-if="modalLayersDisplayed.pauseDatepickerModal">
+      {{ pauseInfo }}
       <div class="flex justify-center">
         <Calendar
           v-model="pauseInfo.nextDeliveryDate"
+          date-format="dd/m/yy"
           inline
           :disabled-days="[0, 1, 6]"
         >
           <template #date="slotProps">
             <div
-              v-if="isToday(slotProps.date)"
+              v-if="slotProps.date.today"
+              class="text-[14px] border-[1px] h-8 w-8 text-center rounded-md flex items-center justify-center"
+            >
+              {{ slotProps.date.day }}
+            </div>
+            <div
+              v-if="isNextDeliveryDateSelected(slotProps.date)"
               class="text-[14px] bg-green-primary h-8 w-8 text-center rounded-md flex items-center justify-center"
             >
               {{ slotProps.date.day }}
@@ -164,8 +172,8 @@ const pauseInfo = reactive<PauseSubscriptionPayload>({
   nextDeliveryDate: '',
 })
 const modalLayersDisplayed = reactive({
-  pauseInfoModal: true,
-  pauseDatepickerModal: false,
+  pauseInfoModal: false,
+  pauseDatepickerModal: true,
 })
 const resetPauseInfo = () => {
   pauseInfo.reasonPaused = ''
@@ -185,8 +193,14 @@ const toggleModalLayers = () => {
   modalLayersDisplayed.pauseInfoModal = !modalLayersDisplayed.pauseInfoModal
   modalLayersDisplayed.pauseDatepickerModal = !modalLayersDisplayed.pauseDatepickerModal
 }
-const isToday = (date: CalendarDate) => {
-  return dateBuilder(date) === dayjs(pauseInfo.nextDeliveryDate).format('YYYY-MM-DD')
+
+const isNextDeliveryDateSelected = (date: CalendarDate) => {
+  console.log('date', date)
+  const result = dateBuilder(date) === dayjs(pauseInfo.nextDeliveryDate).format('YYYY-MM-DD')
+  console.log(dateBuilder(date))
+  console.log(dayjs(pauseInfo.nextDeliveryDate).subtract(1, 'month').format('YYYY-MM-DD'))
+  console.log('result', result)
+  return result
 }
 const pauseSubscription = () => {
   emit('pause-subscription', pauseInfo)

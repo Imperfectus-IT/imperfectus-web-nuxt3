@@ -39,7 +39,7 @@
         </p>
         <MultiSelect
           v-model="updateSubscriptionItemData.exclusions"
-          :options="listProducts"
+          :options="products.itemProducts"
           filter
           option-label="nameEs"
           option-value="id"
@@ -67,26 +67,24 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct, ItemProduct } from '@/composables/shared/products/domain/Product.ts'
 import type { SubscriptionItem } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
+import { useGenerateSku } from '~/composables/shared/utils/useGenerateSku.ts'
 
 const props = defineProps<{
   exclusions: ItemProduct[]
   subscriptionItem: SubscriptionItem
   frequency: string
 }>()
+const { generateSku } = useGenerateSku()
 const textData = 'subscriptions.subscription.modifyItem.'
-const { products } = useGetProductsHandler()
-const listProducts: Ref<ItemProduct[]> = ref([])
+const { products } = useProductsState()
 const emits = defineEmits(['save', 'close'])
+
 const save = () => {
-  const frequency = props.frequency === 'weekly' ? 1 : 2
-  const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === updateSubscriptionItemData.type && box.sku.includes(`${updateSubscriptionItemData.size}R${frequency}`))
-  if (!newBoxProduct) {
-    // ERROR TOAST
-    return
-  }
+  const { type, size } = updateSubscriptionItemData
+  const sku = generateSku(type, size, props.frequency)
+  const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.sku === sku)
   const { exclusions } = updateSubscriptionItemData
   emits('save', { newBoxProduct, subscriptionItemId: props.subscriptionItem.id, exclusions })
 }
@@ -115,13 +113,4 @@ const boxSizes = [
   { name: 'Mediana', code: 'IM' },
   { name: 'Grande', code: 'XL' },
 ]
-
-watch(products, () => {
-  if (products.value.itemProducts) {
-    listProducts.value = [
-      ...products.value.itemProducts.fruits,
-      ...products.value.itemProducts.vegetables,
-    ]
-  }
-})
 </script>

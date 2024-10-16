@@ -17,7 +17,7 @@ import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 export const useUpdateSubscriptionHandler = () => {
   const toast = useToast()
   const { successToast, errorToast } = useToastService()
-  const { executeAddSubscriptionCoupon, executeCancelSubscription, executeGiveOrderToFriend, executeCancelDonation, executeDonateToONG, executeSkipAnOrder, executeRemoveSkip, executeRemoveSubscriptionCoupon, executeUpdatePeriodicity, executeUpdatePayment, executeUpdateBillingMeta, executeUpdateShippingMeta, executeUpdateSubscriptionItem, executeAddSubscriptionItem, executePauseSubscription, executeUnpauseSubscription } = useUpdateSubscription()
+  const { executeAddSubscriptionCoupon, executeCancelSubscription, executeGiveOrderToFriend, executeCancelDonation, executeDonateToONG, executeSkipAnOrder, executeRemoveSkip, executeRemoveSubscriptionCoupon, executeUpdatePeriodicity, executeUpdatePayment, executeUpdateBillingMeta, executeUpdateShippingMeta, executeUpdateSubscriptionItem, executeAddSubscriptionItem, executePauseSubscription, executeUpdateSubscriptionCoverage, executeUnpauseSubscription } = useUpdateSubscription()
 
   const addSubscriptionCoupon = async (subscriptionId: number, coupon: string, textData: string, t: ComposerTranslation) => {
     try {
@@ -84,6 +84,14 @@ export const useUpdateSubscriptionHandler = () => {
     catch (error) {
       console.log('Error', error)
       errorToast(toast, t(`${textData}pause.unpauseToasts.errorToast.title`), t(`${textData}pause.unpauseToasts.errorToast.description`))
+    }
+  }
+  const updateSubscriptionCoverage = async (metaId: number, newCoverage: SubscriptionCoverage) => {
+    try {
+      await executeUpdateSubscriptionCoverage(metaId, newCoverage)
+    }
+    catch (error) {
+      console.log('Error on updating subscription coverage')
     }
   }
   const updateSubscriptionItem = async (updateSubscriptionItemData: updateSubscriptionItemPayload, textData: string, t: ComposerTranslation): Promise<any> => {
@@ -202,6 +210,7 @@ export const useUpdateSubscriptionHandler = () => {
     updatePeriodicity,
     updatePayment,
     updateBillingMeta,
+    updateSubscriptionCoverage,
     updateShippingMeta,
     updateSubscriptionItem,
   }

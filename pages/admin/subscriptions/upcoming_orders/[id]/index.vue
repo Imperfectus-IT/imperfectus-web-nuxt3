@@ -190,19 +190,19 @@ const handleDonateOrderToONG = (subscriptionId: number, ong: ONG, index: number,
     givenTo: ong.name,
     purpose,
     newSubscriptionMeta: {
-      shipping_address1: ong.address1,
-      shipping_address2: ong.address2,
-      shipping_city: ong.city,
-      shipping_state: ong.state,
-      shipping_country: ong.country,
-      shipping_postcode: ong.postcode,
-      shipping_phone: ong.phone,
-      shipping_email: ong.email,
-      shipping_firstname: ong.firstname,
-      shipping_lastname: ong.lastname,
+      shippingAddress: ong.address1,
+      shippingAddress2: ong.address2,
+      shippingCity: ong.city,
+      shippingState: ong.state,
+      shippingCountry: ong.country,
+      shippingPostCode: ong.postcode,
+      shippingPhone: ong.phone,
+      shippingEmail: ong.email,
+      shippingFirstname: ong.firstname,
+      shippingLastname: ong.lastname,
     },
     deliveryDate: calculateNextDeliveryDate(nextPaymentDate),
-    paymentDate: nextPaymentDate,
+    date: nextPaymentDate,
   }, textData.donate, t)
   setDisplayDonateToONG(index, false)
 }
@@ -242,8 +242,8 @@ watchEffect(() => {
     : ''
 })
 const calculateNextDeliveryDate = (date: string) => {
+  console.log('date', date)
   const dayNumber: number = DayMapping[subscription.value.preferredDay]
-  const formattedDate = dayjs(date).format('YYYY-MM-DD')
-  return dayjs(formattedDate).day(dayNumber).format('DD/MM/YYYY')
+  return dayjs(date).day(dayNumber).format('YYYY-MM-DD')
 }
 </script>

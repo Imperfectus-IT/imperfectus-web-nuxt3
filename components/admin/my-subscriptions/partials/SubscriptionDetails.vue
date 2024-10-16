@@ -14,7 +14,7 @@
           :subscription-status="subscription.status"
         />
       </div>
-      <div class="lg:col-start-3 lg:row-span-2 lg:flex lg:flex-col">
+      <div class="lg:col-start-3 lg:row-span-2 lg:flex lg:flex-col lg:-mt-8">
         <SubscriptionCalendar :subscription="subscription" />
       </div>
 
@@ -68,8 +68,8 @@ const { handleGetSubscriptionTotal } = useGetSubscriptionTotalHandler()
 
 export type SubscriptionTotal = {
   shipping: number
-  total: number
   subtotal: number
+  total: number
 }
 
 onMounted(async () => {
@@ -93,7 +93,7 @@ const textData = computed(() => ({
   nextDeliveryItems: [
     { params: {} },
     { params: { day: t(`string.day.${props.subscription.preferredDay}`) } },
-    { params: { hour: t(`string.hour.${props.subscription.preferredHour}`) } },
+    { params: { hour: t(`string.hour.${props.subscription.preferredHour ? props.subscription.preferredHour : 'full'}`) } },
   ],
   billingInfoItems: [
     { params: { quantity: props.subscription.subscriptionItems.length } },

@@ -24,7 +24,11 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
       shippingState: subscription.subscription_meta.shipping_state,
       shippingCountry: subscription.subscription_meta.shipping_country,
       shippingNotes: subscription.subscription_meta.shipping_notes,
-
+    },
+    shippingCoverage: {
+      shippingCoverage: subscription.subscription_meta.shipping_coverage,
+      shippingService: subscription.subscription_meta.shipping_service,
+      shippingOffice: subscription.subscription_meta.shipping_office,
     },
     billingInfo: {
       billingFirstName: subscription.subscription_meta.billing_firstname,
@@ -39,16 +43,7 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
       billingCountry: subscription.subscription_meta.billing_country,
       billingCif: subscription.subscription_meta.billing_cif,
     },
-    coupon: subscription.coupon
-      ? {
-          coupon: subscription.coupon.coupon,
-          discountType: subscription.coupon.discountType,
-          discountValue: subscription.coupon.discountValue,
-          id: subscription.coupon.id,
-          isActive: subscription.coupon.isActive,
-          type: subscription.coupon.type,
-        }
-      : null,
+
     subscriptionItems: subscription.subscription_items.map((item: any) => {
       return {
         product: {
@@ -73,6 +68,16 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
             product: exclusion.product,
           }
         }),
+        coupon: item.coupon_id
+          ? {
+              coupon: item.coupon_id.coupon,
+              discountType: item.coupon_id.discountType,
+              discountValue: item.coupon_id.discountValue,
+              id: item.coupon_id.id,
+              isActive: item.coupon_id.isActive,
+              type: item.coupon_id.type,
+            }
+          : null,
       }
     }),
     skip: subscription.skip ? [...subscription.skip] : [],
@@ -94,6 +99,5 @@ export const useSubscriptionFactory = (subscription: any): Subscription => {
 }
 
 const getBoxImage = (sku: string) => {
-  console.log('SKU', sku)
   return sku?.includes('IM') ? 'M' : sku.includes('XL') ? 'XL' : 'S'
 }

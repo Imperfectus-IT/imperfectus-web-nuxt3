@@ -1,0 +1,4 @@
+export const ALLSERVICES = {
+  PICK_UP_POINT: 'PICK_UP_POINT',
+  CORREOSB2C: 'EPAQ24',
+}

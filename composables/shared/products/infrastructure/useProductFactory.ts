@@ -13,6 +13,7 @@ export default function () {
       weight: product.weight,
       boxType: product.boxType,
       isImperfectusProduct: product.isImperfectusProduct,
+      sku: product.SKU,
     }
   }
   const createItemProduct = (product: StrapiProduct): ItemProduct => {
