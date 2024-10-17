@@ -40,7 +40,7 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     v-if="order"
     class="px-6"
   >
-    <h1 class="mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10">
+    <h1 class="mt-10 mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10">
       {{ $t("pages.order.pay.title") }}
     </h1>
 
