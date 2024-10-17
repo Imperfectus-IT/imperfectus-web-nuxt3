@@ -47,6 +47,7 @@ export default {
   'pages.order.pay.total': 'Total:',
   'pages.order.pay.pay': 'Realizar pago',
   'pages.order.pay.seeOrder': 'Ver pedido',
+  'pages.order.pay.goToMyAccount': 'Ir a mi cuenta',
 
   'pages.order.status.paymentError': 'Error en el pago',
   'pages.order.status.paymentNotAvailable':
@@ -56,7 +57,7 @@ export default {
   'pages.order.status.thanks': '¡Gracias por tu compra!',
   'pages.order.status.trackingNumber': 'Número de seguimiento:',
   'pages.order.status.deliveryEstimate': 'Fecha de entrega estimada:',
-  'pages.order.status.total': 'Total:',
+  'pages.order.status.total': 'Total',
   'pages.order.status.pay': 'Realizar pago',
   'pages.order.status.orderContents': 'Contenido del pedido',
   'pages.order.status.shippingData': 'Datos de entrega',
@@ -74,7 +75,7 @@ export default {
   'pages.order.status.billingDataEmail': 'Email de contacto',
   'pages.order.status.billingDataCompany': 'Empresa',
   'pages.order.status.paymentData': 'Datos de pago',
-  'pages.order.status.status': 'Estado:',
+  'pages.order.status.status': 'Estado',
   'pages.order.status.payed': 'Pagado',
   'pages.order.status.notPayed': 'No pagado',
   'pages.order.status.usedCoupon': 'Cupón utilizado:',

@@ -47,6 +47,7 @@ export default {
   'pages.order.pay.total': 'Total:',
   'pages.order.pay.pay': 'Realitzar pagament',
   'pages.order.pay.seeOrder': 'Veure comanda',
+  'pages.order.pay.goToMyAccount': 'Anar al meu compte',
 
   'pages.order.status.paymentError': 'Error en el pagament',
   'pages.order.status.paymentNotAvailable':
