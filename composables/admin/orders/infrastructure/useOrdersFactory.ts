@@ -104,6 +104,9 @@ export const useOrdersFactory = (order: StrapiOrder, t: ComposerTranslation): Or
       shippingService: order.order_meta.shipping_service,
       shippingOffice: order.order_meta.shipping_office,
     },
+    orderPayment: {
+      totalAmount: order.order_payment.totalAmount,
+    },
   }
 }
 

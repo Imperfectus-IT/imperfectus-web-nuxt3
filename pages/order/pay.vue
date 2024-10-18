@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useGetOrderHandler } from '~/composables/admin/orders/application/getOne/useGetOrderHandler.ts'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 useHead({
   title: t('pages.order.pay.title'),
@@ -31,7 +32,7 @@ const route = useRoute()
 
 const order_id: number = Number(route.query.order)
 
-const { order } = useGetOrderHandler(order_id, t)
+const { order } = useGetOrderHandler<Order>(order_id, t)
 </script>
 
 <template>
@@ -39,24 +40,23 @@ const { order } = useGetOrderHandler(order_id, t)
     v-if="order"
     class="px-6"
   >
-    <h1 class="mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10">
+    <h1 class="mt-10 mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10">
       {{ $t("pages.order.pay.title") }}
     </h1>
 
-    <h3>order:</h3>
-    <pre>{{ order }}</pre>
-
-    <CompletePaymentOrderInfo
+    <CompletePaymentOrderDetails
       :order-id="order.order_id"
       :delivery-date="order.deliveryDate"
-      :total="30.72"
+      :total="order.orderPayment.totalAmount"
     />
 
-    <p class="mt-5 mb-5">
-      {{ $t('pages.order.pay.orderContents') }}
-    </p>
+    <TKTimeline
+      :order-status="order.status"
+      class="mt-12"
+      layout-type="horizontal"
+    />
 
-    <Panel>
+    <Panel class="mt-12">
       <OrderItemCard
         v-for="(item, index) in order?.orderItems"
         :key="index"
@@ -65,8 +65,34 @@ const { order } = useGetOrderHandler(order_id, t)
       />
     </Panel>
 
-    <CompletePaymentActions class="mt-10" />
-  </Container>
+    <CompletePaymentActions
+      class="mt-16 mb-16"
+      :order="order"
+    />
+
+    <Divider class="before:border-grey-secondary" />
+
+    <div class="flex justify-between mt-10">
+      <DeliveryInfo
+        :delivery-date="order.deliveryDate"
+        :shipping="order.shippingInfo"
+      />
+
+      <BillingInfo :data="order.billingInfo" />
+      <PaymentInfo :total="order.orderPayment.totalAmount" />
+    </div>
+
+    <Divider class="before:border-grey-secondary mt-10 mb-16" />
+
+    <NuxtLink
+      :to="localePath({ name: 'admin' })"
+      class="flex justify-center"
+    >
+      <Button
+        :label="$t('pages.order.pay.goToMyAccount')"
+      />
+    </NuxtLink>
+  </container>
 </template>
 
 <style scoped lang="scss"></style>

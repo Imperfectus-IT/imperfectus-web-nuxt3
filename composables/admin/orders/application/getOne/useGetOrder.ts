@@ -6,7 +6,6 @@ export const useGetOrder = (t: ComposerTranslation) => {
   const { findById } = useOrderRepository(t)
 
   const executeGetOrder = async (id: number) => {
-    console.info('executeGetOrder', id)
     order.value = await findById(id)
   }
 
