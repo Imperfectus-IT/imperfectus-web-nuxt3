@@ -13,6 +13,7 @@ export interface Order {
   deliveryInfo: OrderDelivery
   shippingInfo: OrderShipping
   billingInfo: OrderBilling
+  shippingCoverage: OrderCoverage
   orderReview: string
   coupon: Coupon
   subscription: number
@@ -47,10 +48,9 @@ export interface OrderDelivery {
   coverage: string
   deliveryTime: string
   tracking: {
-    trackingID: string
-    trackingLink: string
-    boxType: string
-  }[]
+    trackingId: string
+    trackingUrl: string
+  }
 }
 
 export interface OrderBilling {
@@ -80,6 +80,12 @@ export interface OrderShipping {
   shippingCountry: string
   shippingState: string
   shippingCoverage: string
+}
+
+export interface OrderCoverage {
+  shippingCoverage: string
+  shippingService: string | null
+  shippingOffice: string | null
 }
 
 export type TotalOrderDelivery = {

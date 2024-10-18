@@ -5,7 +5,7 @@ import type { updateOrderItemPayload } from '~/components/admin/my-orders/partia
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
 
 export const useUpdateOrder = (t: ComposerTranslation) => {
-  const { addOrderReview, addOrderCoupon, discardOrder, findOrdersByUser, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useOrderRepository(t)
+  const { addOrderReview, addOrderCoupon, discardOrder, findOrdersByUser, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping, updateShippingCoverage } = useOrderRepository(t)
   const { orders } = useOrdersState()
 
   const executeAddOrderReview = async (order: Order, review: string) => {
@@ -44,6 +44,11 @@ export const useUpdateOrder = (t: ComposerTranslation) => {
     orders.value = await findOrdersByUser()
   }
 
+  const executeUpdateShippingCoverage = async (orderMetaId: number, newCoverage: SubscriptionCoverage) => {
+    await updateShippingCoverage(orderMetaId, newCoverage)
+    orders.value = await findOrdersByUser()
+  }
+
   return {
     executeAddOrderReview,
     executeAddOrderCoupon,
@@ -52,5 +57,6 @@ export const useUpdateOrder = (t: ComposerTranslation) => {
     executeUpdateOrderItem,
     executeUpdateOrderBilling,
     executeUpdateOrderShipping,
+    executeUpdateShippingCoverage,
   }
 }

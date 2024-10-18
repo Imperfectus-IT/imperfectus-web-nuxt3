@@ -1,7 +1,7 @@
 <template>
   <div class="min-w-[1000px] lg:flex-grow">
     <Panel
-      :header="`Pedido ${order.id}`"
+      :header="`Pedido ${order.order_id} `"
       :style="{ minHeight: isOneStepOrder }"
       :class="`p-2 relative `"
     >
@@ -38,6 +38,7 @@
               :exclusions="orderItem.exclusions"
               :order-item="orderItem"
               :order-id="order.id"
+              :subscription="order.subscription"
               @update-item="handleUpdateOrderItem"
             />
           </div>
@@ -108,7 +109,7 @@
       </div>
       <OrderCoupon
         v-if="!isCollapsed && (order.status === 'pending' || order.status === 'failed')"
-        :order-coupon="order.coupon"
+        :order-coupon="order.orderItems[0].coupon"
         @add-coupon="handleAddOrderCoupon"
         @remove-coupon="handleRemoveOrderCoupon"
       />
@@ -141,6 +142,18 @@
       v-if="!isCollapsed"
       class="text-green-tertiary grid grid-cols-2 gap-x-5 gap-y-0"
     >
+      <SubscriptionShippingCoverage
+        class="lg:col-span-2 lg:row-start-1 lg:mt-5"
+        :available-coverages="availableShippingCoverages"
+        :subscription-shipping-coverage="props.order.shippingCoverage"
+        :postcode="props.order.shippingInfo.shippingPostCode"
+        @update-coverage="handleUpdateOrderCoverage"
+      />
+      <UpdateOrderCoverageModal
+        :is-visible="isUpdateCoverageModalVisible"
+        :subscription="props.order?.subscription"
+        @close-modal="isUpdateCoverageModalVisible = false"
+      />
       <OrderBillingPanel
         class="mt-5"
         :data="order.billing"
@@ -172,11 +185,12 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { Order, OrderBilling, OrderItem, OrderShipping } from '~/composables/admin/orders/domain/OrderType.ts'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
+import UpdateOrderCoverageModal from '~/components/admin/my-orders/partials/UpdateOrderCoverageModal.vue'
 
 const { t } = useI18n()
+const { executeGetShippingCompanies } = useGetShippingCompanies()
 const emits = defineEmits(['review-created'])
 const textData = 'orders.order.'
 const props = defineProps<{
@@ -185,10 +199,13 @@ const props = defineProps<{
   products: ItemProduct[]
 }>()
 
+const isUpdateCoverageModalVisible = ref(false)
+const { shippingPostCode } = props.order.shippingInfo
 const review = ref<string>(props.order.orderReview || '')
-const canWriteReview = computed (() => props.order.orderReview?.length < 1)
+const availableShippingCoverages = await executeGetShippingCompanies(shippingPostCode, props.order.deliveryDate)
+const canWriteReview = computed (() => props.order.orderReview?.length < 1 && props.order.isValidForReview)
 const { createReview } = useCreateOrderItemReviewHandler(t)
-const { addOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useUpdateOrderHandler(t)
+const { addOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping, updateOrderCoverage } = useUpdateOrderHandler(t)
 const handleCreateReview = async (newReviewData: createOrderItemReviewPayload) => {
   await createReview(newReviewData, textData)
 }
@@ -210,10 +227,15 @@ const handleAddOrderCoupon = async (coupon: string) => {
 const handleUpdateOrderItem = async (updateOrderItemData: updateOrderItemPayload) => {
   await updateOrderItem(updateOrderItemData, textData)
 }
+
+const handleUpdateOrderCoverage = async (newOrderCoverage: OrderCoverage) => {
+  await updateOrderCoverage(props.order.orderMeta, newOrderCoverage)
+  isUpdateCoverageModalVisible.value = true
+}
+
 const filteredProducts = (orderItem: OrderItem) => {
-  return props.products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name) && product.isActive
-  })
+  const exclusionsIds = orderItem.exclusions.map(exclusion => exclusion.id)
+  return props.products.filter(product => !exclusionsIds.includes(product.id))
 }
 
 const isOneStepOrder = computed(() => {

@@ -2,6 +2,12 @@ import type { ComposerTranslation } from 'vue-i18n'
 import type { Order, OrderBilling } from '~/composables/admin/orders/domain/OrderType.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
+import { useStrapiCouponFactory } from '~/composables/shared/coupons/infrastructure/useStrapiCouponFactory.ts'
+import {
+  useStrapiSubscriptionItemFactory,
+} from '~/composables/admin/subscriptions/infrastructure/factories/useStrapiSubscriptionItemFactory.ts'
+import { useStrapiOrderItemFactory } from '~/composables/shared/coupons/infrastructure/useStrapiOrderItemFactory.ts'
+import type { SubscriptionCoverage } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 
 export const useOrderRepository = (t: ComposerTranslation) => {
   const { find, update } = useStrapi()
@@ -16,15 +22,6 @@ export const useOrderRepository = (t: ComposerTranslation) => {
       _limit: 10,
     })
     return strapiOrders.map((order: any) => useOrdersFactory(order, t))
-    // @TODO PASS USER ID TO HTTP REQUEST QUERY AND GET TOKEN FROM COOKIES
-    // const token = useCookie('strapi_jwt')
-    // const orders = await $fetch(`${hostUrl}/api/v1/orders/getByUserId?user=11798`, {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // })
-    // console.log(orders)
   }
   const findById = async (id: number): Promise<Order> => {
     const { find } = useStrapi()
@@ -36,17 +33,21 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     return await update('orders', order.id, { order_review: review })
   }
   // @TODO API SHOULD RETURN ERROR KEY WHEN COUPON IS INVALID LIKE IN SUBSCRIPTIONS
+
   const addOrderCoupon = async (order: Order, coupon: string) => {
     const params = { coupon }
     const foundCoupon: Coupon = (await find<Coupon[]>(`coupons`, params))[0]
-    await client(`orders/${order.id}/coupon`, { method: 'PUT', body: { coupon: foundCoupon } })
+    await client(`orders/${order.id}/coupon`, { method: 'PUT', body: { coupon_id: foundCoupon } })
+    const orderItemsIds = order.orderItems.map((item: OrderItem) => item.id)
+    const strapiOrderItems = await find('order-items', { id_in: orderItemsIds })
     const payload = {
-      items: [...order.orderItems],
+      items: strapiOrderItems,
       coupon: foundCoupon,
       isPlaced: true,
       delivery: null,
       orderId: order.id,
     }
+    console.log('payload', payload)
     return await getAmount(payload)
   }
 
@@ -55,11 +56,13 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   }
 
   const removeOrderCoupon = async (order: Order, coupon: Coupon) => {
-    await client(`orders/${order.id}/coupon`, { method: 'PUT', body: { coupon: null } })
+    await client(`orders/${order.id}/coupon`, { method: 'PUT', body: { coupon_id: null } })
+    const orderItemsIds = order.orderItems.map((item: OrderItem) => item.id)
+    const strapiOrderItems = await find('order-items', { id_in: orderItemsIds })
     return await client('orders/total', {
       method: 'POST',
       body: {
-        items: [...order.orderItems],
+        items: strapiOrderItems,
         coupon,
         isPlaced: true,
         delivery: null,
@@ -117,6 +120,13 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     })
   }
 
+  const updateShippingCoverage = async (metaId: number, newShippingCoverage: SubscriptionCoverage) => {
+    return await client(`order-metas/${metaId}/transportShipping`, {
+      method: 'PUT',
+      body: newShippingCoverage,
+    })
+  }
+
   const getAmount = async (payload: OrderAmountQuery): Promise<any> => {
     return await client('orders/total', { method: 'POST', body: payload })
   }
@@ -137,5 +147,6 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     updateOrderItem,
     updateOrderShipping,
     updateOrderBilling,
+    updateShippingCoverage,
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Panel
-      :header="`Pedido ${order.id}`"
+      :header="`Pedido ${order.order_id}`"
       class="relative lg:min-h-[500px]"
     >
       <Divider class="mt-2" />
@@ -113,12 +113,6 @@
         :order-status="order.status"
       />
 
-      <OrderCoupon
-        v-if="!isCollapsed && (order.status === 'pending' || order.status === 'failed')"
-        :order-coupon="order.coupon"
-        @add-coupon="handleAddOrderCoupon"
-        @remove-coupon="handleRemoveOrderCoupon"
-      />
       <div
         v-if="order.status === 'completed' && !isCollapsed"
         class="mt-5"
@@ -129,7 +123,7 @@
         <Textarea
           v-model="review"
           :disabled="!canWriteReview"
-          class="w-2/3"
+          class="w-2/3 text-[14px]"
           rows="6"
           :pt="{
             root: 'border-[1px] border-green-tertiary bg-transparent px-4 py-3 rounded-lg w-full mb-4 outline-none',
@@ -144,25 +138,42 @@
           @click="saveOrderReview"
         />
       </div>
+      <OrderCoupon
+        v-if="!isCollapsed && (order.status === 'pending' || order.status === 'failed')"
+        :order-coupon="order.orderItems[0].coupon"
+        @add-coupon="handleAddOrderCoupon"
+        @remove-coupon="handleRemoveOrderCoupon"
+      />
     </Panel>
 
     <div
       v-if="!isCollapsed"
-      class="flex flex-col gap-5 text-green-tertiary lg:grid lg:grid-cols-2 lg:gap-x-5 lg:gap-y-0"
+      class="flex flex-col gap-5 text-green-tertiary"
     >
-      <OrderDeliveryPanel
+      <SubscriptionShippingCoverage
         class="mt-5"
+        :available-coverages="availableShippingCoverages"
+        :subscription-shipping-coverage="props.order.shippingCoverage"
+        :postcode="props.order.shippingInfo.shippingPostCode"
+        @update-coverage="handleUpdateOrderCoverage"
+      />
+
+      <UpdateOrderCoverageModal
+        :is-visible="isUpdateCoverageModalVisible"
+        :subscription="props.order?.subscription"
+        @close-modal="isUpdateCoverageModalVisible = false"
+      />
+
+      <OrderDeliveryPanel
         :data="order.deliveryInfo"
         :label-key="'orders.order.order_delivery'"
       />
       <OrderBillingPanel
-        class="mt-5"
         :data="order.billing"
         :label-key="'orders.order.billing'"
       />
 
       <OrderShippingPanel
-        class="mt-5"
         :data="order.shippingInfo"
         :label-key="'orders.order.order_shipping'"
         :order-id="order.id"
@@ -170,7 +181,6 @@
       />
 
       <OrderBillingInfoPanel
-        class="mt-5"
         :data="order.billingInfo"
         :label-key="'orders.order.order_billing_info'"
         @edit-billing-info="handleUpdateOrderBilling"
@@ -182,12 +192,12 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { Order, OrderBilling, OrderItem, OrderShipping } from '~/composables/admin/orders/domain/OrderType.ts'
 import type { ReviewRatings } from '~/components/admin/my-orders/partials/types/ReviewRatings.ts'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
+import UpdateOrderCoverageModal from '~/components/admin/my-orders/partials/UpdateOrderCoverageModal.vue'
 
 const { t } = useI18n()
+const { executeGetShippingCompanies } = useGetShippingCompanies()
 const emits = defineEmits(['review-created'])
 const textData = 'orders.order.'
 const props = defineProps<{
@@ -196,10 +206,13 @@ const props = defineProps<{
   products: ItemProduct[]
 }>()
 
+const isUpdateCoverageModalVisible = ref(false)
+const { shippingPostCode } = props.order.shippingInfo
+const availableShippingCoverages = await executeGetShippingCompanies(shippingPostCode, props.order.deliveryDate)
 const review = ref<string>(props.order.orderReview || '')
-const canWriteReview = computed (() => props.order.orderReview?.length < 1)
+const canWriteReview = computed (() => props.order.orderReview?.length < 1 && props.order.isValidForReview)
 const { createReview } = useCreateOrderItemReviewHandler(t)
-const { addOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping } = useUpdateOrderHandler(t)
+const { addOrderReview, addOrderCoupon, discardOrder, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping, updateOrderCoverage } = useUpdateOrderHandler(t)
 const handleCreateReview = async (newReviewData: createOrderItemReviewPayload) => {
   await createReview(newReviewData, textData, t)
 }
@@ -221,14 +234,22 @@ const handleAddOrderCoupon = async (coupon: string) => {
 const handleUpdateOrderItem = async (updateOrderItemData: updateOrderItemPayload) => {
   await updateOrderItem(updateOrderItemData, textData)
 }
+
+const handleUpdateOrderCoverage = async (newOrderCoverage: OrderCoverage) => {
+  await updateOrderCoverage(props.order.orderMeta, newOrderCoverage)
+  isUpdateCoverageModalVisible.value = true
+}
 const filteredProducts = (orderItem: OrderItem) => {
-  return props.products.filter((product) => {
-    return !orderItem.exclusions.includes(product.name) && product.isActive
-  })
+  const exclusionsIds = orderItem.exclusions.map(exclusion => exclusion.id)
+  return props.products.filter(product => !exclusionsIds.includes(product.id))
 }
 
+const isOneStepOrder = computed(() => {
+  const oneStepStatuses = ['refunded', 'cancelled', 'replaced']
+  return oneStepStatuses.includes(props.order.status) ? '150px' : '420px'
+})
 const saveOrderReview = async () => {
-  await handleAddOrderReview(props.order, review.value, textData)
+  await addOrderReview(props.order, review.value, textData)
 }
 
 export type updateOrderShippingPayload = OrderShipping & { order: number }

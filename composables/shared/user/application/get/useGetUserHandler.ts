@@ -2,13 +2,12 @@ import { useUserState } from '~/composables/shared/user/application/useUserState
 
 export const useGetUserHandler = () => {
   const { executeGetUser } = useGetUser()
-  const { domainUser } = useUserState()
-  const handleGetDomainUser = async () => {
+  const { user } = useUserState()
+  onMounted(async () => {
     await executeGetUser()
-  }
+  })
 
   return {
-    domainUser,
-    handleGetDomainUser,
+    user,
   }
 }

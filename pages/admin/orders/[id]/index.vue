@@ -10,15 +10,14 @@
       v-if="order && isMobile"
       :is-collapsed="false"
       :order="order"
-      :products="[]"
+      :products="[...activeVegetablesItemProducts, ...activeFruitsItemProducts]"
       @review-created="handleReviewCreated"
     />
     <DesktopOrder
-
       v-else
       :is-collapsed="false"
       :order="order"
-      :products="[]"
+      :products="[...activeVegetablesItemProducts, ...activeFruitsItemProducts]"
       @review-created="handleReviewCreated"
     />
   </div>
@@ -34,7 +33,7 @@ useHead({
 })
 
 const { isMobile } = useScreenSize()
-
+const { activeFruitsItemProducts, activeVegetablesItemProducts } = useProductsState()
 const { orders, executeGetOrdersByUser } = useGetOrdersHandler(t)
 
 const order: Ref<Order | null> = ref(null)

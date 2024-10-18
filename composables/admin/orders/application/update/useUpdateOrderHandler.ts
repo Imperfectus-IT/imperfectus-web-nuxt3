@@ -8,7 +8,7 @@ import type { updateOrderShippingPayload } from '~/components/admin/my-orders/De
 export const useUpdateOrderHandler = (t: ComposerTranslation) => {
   const toast = useToast()
   const { successToast, errorToast } = useToastService()
-  const { executeAddOrderReview, executeDiscardOrder, executeAddOrderCoupon, executeRemoveOrderCoupon, executeUpdateOrderItem, executeUpdateOrderBilling, executeUpdateOrderShipping } = useUpdateOrder(t)
+  const { executeAddOrderReview, executeDiscardOrder, executeAddOrderCoupon, executeRemoveOrderCoupon, executeUpdateOrderItem, executeUpdateOrderBilling, executeUpdateOrderShipping, executeUpdateShippingCoverage } = useUpdateOrder(t)
 
   const addOrderReview = async (order: Order, review: string, textData: string) => {
     try {
@@ -23,7 +23,7 @@ export const useUpdateOrderHandler = (t: ComposerTranslation) => {
   const addOrderCoupon = async (order: Order, coupon: string, textData: string) => {
     try {
       const response = await executeAddOrderCoupon(order, coupon)
-      if (response.discountValue) {
+      if (response.saved) {
         successToast(toast, t(`${textData}coupon.add.successToast.title`), t(`${textData}coupon.add.successToast.description`))
       }
       else {
@@ -86,6 +86,15 @@ export const useUpdateOrderHandler = (t: ComposerTranslation) => {
     }
   }
 
+  const updateOrderCoverage = async (metaId: number, newCoverage: SubscriptionCoverage) => {
+    try {
+      await executeUpdateShippingCoverage(metaId, newCoverage)
+    }
+    catch (error) {
+      console.log('Error on updating subscription coverage')
+    }
+  }
+
   return {
     addOrderReview,
     addOrderCoupon,
@@ -94,5 +103,6 @@ export const useUpdateOrderHandler = (t: ComposerTranslation) => {
     updateOrderItem,
     updateOrderBilling,
     updateOrderShipping,
+    updateOrderCoverage,
   }
 }

@@ -8,15 +8,9 @@
     <p class="mt-2">
       {{ $t(`${textData}description_2`) }}
     </p>
-    <InputText
-      v-model="email"
-      class="rounded-none border-0 border-b border-green-tertirary"
-      type="text"
-      :placeholder="$t(`${textData}inputPlaceholder`)"
-    />
     <Button
-      label="Enviar"
-      class="mt-4 lg:w-1/4"
+      label="Quiero suscribirme a la newsletter"
+      class="mt-4 lg:w-full"
       @click="subscribeToNewsletter"
     />
   </div>

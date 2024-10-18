@@ -20,7 +20,6 @@
           :products="[]"
         />
       </div>
-
       <DesktopOrder
         v-for="order in ordersToShow"
         v-else
@@ -58,7 +57,7 @@ defineI18nRoute({
 })
 
 const { orders } = useGetOrdersHandler(t)
-// const { products } = useGetProductsHandler()
+
 const { isMobile } = useScreenSize()
 const ordersToShow = ref([...orders.value])
 

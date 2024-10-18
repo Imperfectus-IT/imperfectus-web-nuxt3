@@ -34,7 +34,9 @@
           <label
             for="coverage"
             class="ml-2 text-[16px] font-normal leading-5 lg:text-md"
-          >{{ coveragesOptions.find(coverage => selectedCoverage.shippingCoverage === coverage.value).label }}</label>
+          >
+            {{ coveragesOptions.find(coverage => selectedCoverage.shippingCoverage === coverage.value).label }}
+          </label>
         </div>
         <div
           v-if="preselectedPickUpPoint"

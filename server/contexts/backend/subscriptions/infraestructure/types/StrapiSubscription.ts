@@ -1,5 +1,6 @@
 export type StrapiSubscription = {
   id: number
+  subscription_id: string
   status: string
   frequency: string
   skip: string[]

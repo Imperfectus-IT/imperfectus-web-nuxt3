@@ -1,6 +1,6 @@
 <template>
   <Dialog
-    :visible="true"
+    :visible="isVisible"
     modal
     :closable="false"
     :dismissable-mask="true"
@@ -172,8 +172,8 @@ const pauseInfo = reactive<PauseSubscriptionPayload>({
   nextDeliveryDate: '',
 })
 const modalLayersDisplayed = reactive({
-  pauseInfoModal: false,
-  pauseDatepickerModal: true,
+  pauseInfoModal: true,
+  pauseDatepickerModal: false,
 })
 const resetPauseInfo = () => {
   pauseInfo.reasonPaused = ''

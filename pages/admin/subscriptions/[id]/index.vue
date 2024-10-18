@@ -29,6 +29,6 @@ definePageMeta({
 const { subscriptions } = useGetSubscriptionsHandler()
 const subscription = ref<Subscription | null>(null)
 watch(subscriptions, () => {
-  subscription.value = subscriptions.value.find(subscription => subscription?.id === parseInt(route.params.id as string)) as Subscription
+  subscription.value = subscriptions.value.find(subscription => subscription?.subscriptionId === parseInt(route.params.id as string)) as Subscription
 })
 </script>

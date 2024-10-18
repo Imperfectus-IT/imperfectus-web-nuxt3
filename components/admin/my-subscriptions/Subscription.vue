@@ -17,7 +17,7 @@
     <div class="flex justify-end ">
       <NuxtLink
         class="lg:absolute lg:top-5"
-        :to="`/mi-cuenta/suscripciones/${subscription.id}`"
+        :to="`/mi-cuenta/suscripciones/${subscription.subscriptionId}`"
       >
         <Button
           v-if="subscription.status === 'active'"

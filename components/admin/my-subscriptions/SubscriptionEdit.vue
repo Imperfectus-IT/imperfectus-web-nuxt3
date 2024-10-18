@@ -33,6 +33,11 @@
         :postcode="props.subscription.shippingInfo.shippingPostCode"
         @update-coverage="handleUpdateSubscriptionCoverage"
       />
+      <SubscriptionUpdateShippingCoverageModal
+        :is-visible="isUpdateCoverageModalVisible"
+        :subscription="props.subscription.id"
+        @close-modal="isUpdateCoverageModalVisible = false"
+      />
       <SubscriptionCoupon
         class="lg:col-span-2"
         :subscription-coupon="subscription.subscriptionItems[0].coupon"
@@ -114,7 +119,7 @@ const availableShippingCoverages = await executeGetShippingCompanies(shippingPos
 
 const textData = 'subscriptions.subscription.'
 const isSubscriptionCancelledModalStyle = computed(() => props.subscription.status === 'cancelled' ? 'lg:col-span-2 lg:w-1/2 lg:mx-auto' : '')
-
+const isUpdateCoverageModalVisible = ref(false)
 const handleApplyCoupon = async (coupon: string) => {
   await addSubscriptionCoupon(props.subscription.id, coupon, textData, t)
 }
@@ -127,7 +132,10 @@ const handleUnPauseSubscription = async (subscriptionId: number) => {
   await unpauseSubscription(subscriptionId, textData, t, preferredDay, nextPayment)
   closePauseModal()
 }
-const handleUpdateSubscriptionCoverage = async (newSubscriptionCoverage: SubscriptionCoverage) => await updateSubscriptionCoverage(props.subscription.subscriptionMeta, newSubscriptionCoverage)
+const handleUpdateSubscriptionCoverage = async (newSubscriptionCoverage: SubscriptionCoverage) => {
+  await updateSubscriptionCoverage(props.subscription.subscriptionMeta, newSubscriptionCoverage)
+  isUpdateCoverageModalVisible.value = true
+}
 const handleCancelSubscription = async (cancelSubscriptionData: CancelSubscriptionPayload) => {
   await cancelSubscription(props.subscription.id, cancelSubscriptionData, textData, t)
   closeCancelModal()

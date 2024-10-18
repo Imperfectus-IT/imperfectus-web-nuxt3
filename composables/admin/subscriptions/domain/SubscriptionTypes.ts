@@ -4,6 +4,7 @@ import type { Payment } from '~/composables/payment/domain/Payment.ts'
 
 export type Subscription = {
   id: number
+  subscriptionId: string
   status: string
   frequency: string
   skip: string[]

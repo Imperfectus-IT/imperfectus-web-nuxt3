@@ -1,10 +1,14 @@
 import type { Subscription } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
+import type {
+  StrapiSubscription,
+} from '~/server/contexts/backend/subscriptions/infraestructure/types/StrapiSubscription.ts'
 
-export const useSubscriptionFactory = (subscription: any): Subscription => {
+export const useSubscriptionFactory = (subscription: StrapiSubscription): Subscription => {
   return {
     id: subscription.id,
     status: subscription.status,
     frequency: subscription.frequency,
+    subscriptionId: subscription.subscription_id,
     nextPayment: subscription.nextPayment,
     nextDeliveryDateFromPaused: subscription.next_delivery_date_from_paused_at,
     preferredDay: subscription.preferredDay,

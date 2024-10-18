@@ -8,7 +8,7 @@
         {{ $t(`${textData}question`) }}
       </p>
       <span
-        :class="[getTogglerIcon, 'text-[32px]']"
+        :class="[getTogglerIcon, 'text-[32px] cursor-pointer']"
         @click="toggleDisplayList"
       />
     </div>

@@ -10,6 +10,23 @@ const paymentMethods = [
   },
 ]
 const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
+
+// onMounted(async () => {
+//   await setGiftCardFailed()
+// })
+
+const handlePayment = async (submitForm) => {
+  // if (status.value !== 'error') {
+  //   const result = await executeCreateGiftCard();
+  //   orderId.value = result?.order?.id
+  // }
+  // else {
+  //   orderId.value = userGiftCards.value[0]?.order.id
+  // }
+  setTimeout(async () => {
+    await submitForm()
+  }, 1000)
+}
 </script>
 
 <template>
@@ -75,6 +92,7 @@ const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
         <div class="mt-5">
           <div
             v-for="checkOption in checkOptions"
+            :key="checkOption"
             class="flex"
           >
             <Checkbox
@@ -89,13 +107,13 @@ const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
               :value="$t(`order.steps.stepPayment.${checkOption}`)"
             />
           </div>
-          <div class="flex justify-center mt-6">
-            <Button
-              severity="secondary"
-              :label="$t('orderStepPayment.pay')"
-              @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
-            />
-          </div>
+          <RedsysPaymentForm
+            :is-button-outlined="false"
+            :order="72006"
+            @redirect="(submit) => handlePayment(submit)"
+          >
+            {{ $t('gift-card.payment.form.repeat-submit') }}
+          </RedsysPaymentForm>
         </div>
       </div>
       <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">

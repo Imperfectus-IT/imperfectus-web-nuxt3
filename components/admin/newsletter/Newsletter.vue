@@ -7,7 +7,7 @@
       class="lg:flex lg:flex-row"
     >
       <UnsubscribedPanel
-        v-if="isUserSubscribed"
+        v-if="!isUserSubscribed"
         :text-data="textData"
         @subscribe="handleSubscribeToNewsletter"
       />
@@ -28,16 +28,13 @@
 </template>
 
 <script setup lang="ts">
-import type { DomainUser } from '~/composables/shared/user/types/DomainUser.ts'
 import { useUpdateUser } from '~/composables/shared/user/application/update/useUpdateUser.ts'
+import { useUserState } from '~/composables/shared/user/application/useUserState.ts'
 
-const props = defineProps<{
-  user: DomainUser
-}>()
+const { user } = useUserState()
 const { executeSubscribeToNewsletter, executeUnsubscribeFromNewsletter } = useUpdateUser()
-
 const textData = 'newsletter.'
-const handleSubscribeToNewsletter = async () => await executeSubscribeToNewsletter(props.user)
-const handleUnsubscribeToNewsletter = async () => await executeUnsubscribeFromNewsletter(props.user)
-const isUserSubscribed = computed(() => !props.user.marketingInfoComm)
+const handleSubscribeToNewsletter = async () => await executeSubscribeToNewsletter(user.value)
+const handleUnsubscribeToNewsletter = async () => await executeUnsubscribeFromNewsletter(user.value)
+const isUserSubscribed = computed(() => user.value.marketingInfoComm)
 </script>

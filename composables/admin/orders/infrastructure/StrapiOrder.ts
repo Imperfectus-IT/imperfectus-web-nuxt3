@@ -30,6 +30,8 @@ export interface StrapiOrderItem {
   notes: string | null
   coupon_id: object
   exclusions: unknown[]
+  trackingUrl: string | null
+  trackingId: string | null
 }
 
 export type StrapiOrderMeta = {

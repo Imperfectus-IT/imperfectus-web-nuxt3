@@ -58,6 +58,7 @@ const sleep = (ms) => {
 
 const submitForm = async (): Promise<void> => {
   try {
+    console.log('orderpaymentform')
     const client = useStrapiClient()
     isPaymentAvailable.value = true
     let data

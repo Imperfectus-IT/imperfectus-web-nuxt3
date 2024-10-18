@@ -9,7 +9,7 @@
     />
     <Button
       outlined
-      :label="'ID ' + subscription.id"
+      :label="'ID ' + subscription.subscriptionId"
       :pt="{
         label: 'text-[12px]',
         root: 'px-4 py-1.5 bg-grey-quaternary bg-opacity-50 rounded-lg lg:px-8 lg:h-9 cursor-default',

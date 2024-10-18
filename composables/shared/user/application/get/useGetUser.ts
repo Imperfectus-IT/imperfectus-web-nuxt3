@@ -3,9 +3,9 @@ import { useUserRepository } from '~/composables/shared/user/infrastructure/useU
 
 export const useGetUser = () => {
   const { getUser } = useUserRepository()
-  const { domainUser } = useUserState()
+  const { user } = useUserState()
   const executeGetUser = async () => {
-    domainUser.value = await getUser()
+    user.value = await getUser()
   }
   return {
     executeGetUser,

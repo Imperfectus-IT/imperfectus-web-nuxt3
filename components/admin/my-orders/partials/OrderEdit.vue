@@ -44,9 +44,9 @@
         </p>
         <MultiSelect
           v-model="updateOrderItemData.exclusions"
-          :options="listProducts"
+          :options="[...fruitsItemProducts, ...vegetablesItemProducts]"
           filter
-          option-label="name_es"
+          :option-label="`name${getLanguage}`"
           option-value="id"
           :placeholder="$t(`${textData}exclusions.placeholder`)"
           :selection-limit="6"
@@ -64,19 +64,23 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
-import type { OrderItem } from '~/composables/admin/orders/domain/OrderType.ts'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
+import type { BoxProduct } from '~/composables/shared/products/domain/Product.ts'
+import { useGenerateSku } from '~/composables/shared/utils/useGenerateSku.ts'
 
 const props = defineProps<{
   exclusions: ItemProduct[]
   orderItem: OrderItem
   orderId: number
+  subscription: number
 }>()
+
+const { locale } = useI18n()
+const { generateSku } = useGenerateSku()
+const { activeBoxProducts, fruitsItemProducts, vegetablesItemProducts } = useProductsState()
 const displayEditOrder = ref(false)
-const listProducts: Ref<ItemProduct[]> = ref([])
 const emits = defineEmits(['update-item'])
 const textData = 'orders.order.edit.'
+const getLanguage = computed(() => locale.value === 'es' ? 'Es' : 'Ca')
 
 const updateOrderItemData = reactive({
   type: props.orderItem.sku.includes('FR')
@@ -97,8 +101,17 @@ const toggleDisplayEditOrder = () => {
 }
 
 const save = () => {
-  const frequency = props.orderItem.sku.includes('1') ? '1' : '2'
-  const newBoxProduct: BoxProduct | undefined = products.value.boxProducts.find((box: BoxProduct) => box.boxType === updateOrderItemData.type && box.sku.includes(`${updateOrderItemData.size}R${frequency}`))
+  let newBoxProduct: BoxProduct | undefined
+  const { type, size } = updateOrderItemData
+  if (props.subscription) {
+    const frequency = props.orderItem.sku.includes('1') ? '1' : '2'
+    const sku = generateSku(type, size, frequency)
+    newBoxProduct = activeBoxProducts.value.find((box: BoxProduct) => box.sku === sku)
+  }
+  else {
+    const sku = generateSku(type, size)
+    newBoxProduct = activeBoxProducts.value.find((box: BoxProduct) => box.sku === sku)
+  }
   const { exclusions } = updateOrderItemData
   emits('update-item', { newBoxProduct, orderItemId: props.orderItem.id, exclusions, order: props.orderId })
   toggleDisplayEditOrder()

@@ -18,7 +18,7 @@
     >
       <template #SlideContent="{ item }">
         <p class="text-[12px] ">
-          {{ item[`name_${locale}`] }}
+          {{ item[`name${getLocaleName}`] }}
         </p>
       </template>
     </TKCarousel>
@@ -38,4 +38,5 @@ defineProps<{
 const getImageClass = computed(() => {
   return isMobile.value ? ' w-[50px] h-[50px] object-cover' : ' w-[140px] h-[140px] object-cover'
 })
+const getLocaleName = computed(() => locale.value === 'es' ? 'Es' : 'Ca')
 </script>

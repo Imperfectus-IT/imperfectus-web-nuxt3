@@ -1,8 +1,12 @@
 export type Coupon = {
   id: number
-  name: string
+  coupon: string
   discountType: string
   discountValue: number
-  type: string
+  expire: string
   isActive: boolean
+  type: string
+  pendingUses: number
+  descriptionCa: string
+  descriptionEs: string
 }

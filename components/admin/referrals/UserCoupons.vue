@@ -36,10 +36,12 @@
 </template>
 
 <script setup lang="ts">
-import { useGetCouponsHandler } from '~/composables/admin/coupons/get/useGetCouponsHandler.ts'
+import {
+  useGetReferredCouponsHandler,
+} from '~/composables/shared/coupons/application/get-referred-coupons/useGetReferredCouponsHandler.ts'
 
+const { coupons } = useGetReferredCouponsHandler()
 const textData = 'referrals.my_coupons.'
-const { coupons } = useGetCouponsHandler()
 const couponsSelector = ref<'unusedCoupons' | 'usedCoupons'>('unusedCoupons')
 const setUnusedCoupons = () => couponsSelector.value = 'unusedCoupons'
 const setUsedCoupons = () => couponsSelector.value = 'usedCoupons'

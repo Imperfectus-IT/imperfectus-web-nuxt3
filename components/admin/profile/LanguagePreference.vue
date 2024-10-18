@@ -22,7 +22,7 @@
         <Button
           v-if="isOpen"
           :label="$t('profile.language_preference.save_modify_language_button')"
-          :pt="{ label: 'text-[16px] lg:w-1/5' }"
+          :pt="{ label: 'text-[16px] px-1' }"
           outlined
           @click.prevent="handleUpdateLanguage"
         />

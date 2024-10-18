@@ -1,5 +1,5 @@
 <template>
-  <Newsletter :user="domainUser" />
+  <Newsletter :user="user" />
 </template>
 
 <script setup lang="ts">
@@ -15,8 +15,5 @@ definePageMeta({
   middleware: ['auth'],
 })
 
-const { domainUser, handleGetDomainUser } = useGetUserHandler()
-onMounted(async () => {
-  await handleGetDomainUser()
-})
+const { user } = useGetUserHandler()
 </script>

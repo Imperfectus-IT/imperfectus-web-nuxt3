@@ -44,7 +44,7 @@ const currentProgress = computed(() => {
 
 onMounted(async () => {
   await executeGetAllProducts()
-  await executeStep(shoppingCart.value.step)
+  await executeStep('StepPayment')
 })
 </script>
 

@@ -1,8 +1,8 @@
+import type { ComposerTranslation } from 'vue-i18n'
 import { useOrderReviewValidator } from '~/composables/admin/orders/domain/useOrderReviewValidator.ts'
-import type { Order } from '~/composables/admin/orders/domain/OrderType.ts'
 
 const { isValidForReview } = useOrderReviewValidator()
-export const useOrdersFactory = (order: any, t: any): Order => {
+export const useOrdersFactory = (order: StrapiOrder, t: ComposerTranslation): Order => {
   return {
     id: order.id,
     order_id: order.order_id,
@@ -11,15 +11,32 @@ export const useOrdersFactory = (order: any, t: any): Order => {
     isValidForReview: isValidForReview(order),
     deliveryDate: order.deliveryDate,
     orderReview: order.order_review,
-    coupon: order.coupon,
     orderMeta: order.order_meta.id,
     subscription: order.subscriptions?.length > 0 ? order.subscriptions[0].id : null,
-    orderItems: order.order_items.map((order_item: any) => {
+    orderItems: order.order_items.map((order_item: StrapiOrderItem) => {
       return {
         id: order_item.id,
+        product: {
+          id: order_item.product.id,
+          sku: order_item.product.SKU,
+          type: order_item.product.type,
+          itemType: order_item.product.itemType,
+          boxType: order_item.product.boxType,
+          isActive: order_item.product.isActive,
+        },
         amount: order_item.final_amount ? order_item.final_amount : order_item.amount,
         sku: order_item.product.SKU,
         image: `images/boxes/Caixa-${getBoxImage(order_item.product.SKU)}.webp`,
+        coupon: order_item.coupon_id
+          ? {
+              coupon: order_item.coupon_id.coupon,
+              discountType: order_item.coupon_id.discountType,
+              discountValue: order_item.coupon_id.discountValue,
+              id: order_item.coupon_id.id,
+              isActive: order_item.coupon_id.isActive,
+              type: order_item.coupon_id.type,
+            }
+          : null,
         exclusions: order_item.exclusions.map((exclusion: any) => {
           return {
             id: exclusion.id,
@@ -48,15 +65,12 @@ export const useOrdersFactory = (order: any, t: any): Order => {
     },
     deliveryInfo: {
       deliveryDate: order.deliveryDate,
-      coverage: order.order_meta.shipping_coverage.toUpperCase(),
+      coverage: getCoverageLabel(order.order_meta.shipping_coverage),
       deliveryTime: order.deliveryHour,
-      tracking: order.order_items.map((order_item: any) => {
-        return {
-          trackingID: order_item.trackingId,
-          trackingLink: order_item.trackingUrl,
-          boxType: order_item.product.SKU,
-        }
-      }),
+      tracking: {
+        trackingId: order.order_items[0].trackingId || null,
+        trackingUrl: order.order_items[0].trackingUrl || null,
+      },
     },
     shippingInfo: {
       shippingFirstName: order.order_meta.shipping_firstname,
@@ -85,6 +99,11 @@ export const useOrdersFactory = (order: any, t: any): Order => {
       billingCif: order.order_meta.billing_cif,
       billingCountry: order.order_meta.billing_country,
     },
+    shippingCoverage: {
+      shippingCoverage: order.order_meta.shipping_coverage,
+      shippingService: order.order_meta.shipping_service,
+      shippingOffice: order.order_meta.shipping_office,
+    },
   }
 }
 
@@ -99,3 +118,8 @@ const getBoxImage = (sku: string) => {
 }
 
 const unpaidOrderStates = ['pending', 'failed']
+
+const getCoverageLabel = (coverageValue: string) => {
+  const coverage = Object.values(ALL_COVERAGES).find(c => c.value === coverageValue)
+  return coverage ? coverage.label : 'Unknown Coverage' // Fallback label in case it's not found
+}

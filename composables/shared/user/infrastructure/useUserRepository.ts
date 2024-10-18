@@ -10,19 +10,17 @@ export const useUserRepository = () => {
     const strapiUser = await find('users', { id })
     return useUserFactory(strapiUser[0])
   }
-  const subscribeToNewsletter = async (user: DomainUser) => {
-    return await client('/hubspot/marketing-communications', {
+  const subscribeToNewsletter = async (user: User) => {
+    return await client(`/profile/${user.id}/communications/email`, {
       method: 'POST',
-      body: {
-        email: user.email,
-        marketingInfoComm: 'yes',
-        talkualLegalBasis: 'freelyGivenConsentFromContact',
-        language: user.language,
-      },
+      body: user,
     })
   }
   const unsubscribeFromNewsletter = async (user: DomainUser) => {
-    await update('users', user.id, { marketingInfoComm: false })
+    return await client(`/profile/${user.id}/communications/email`, {
+      method: 'POST',
+      body: user,
+    })
   }
   return {
     getUser,
