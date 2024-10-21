@@ -48,9 +48,19 @@ export default defineNuxtConfig({
   hooks: {
     'pages:extend'(pages) {
       pages.push({
-        name: 'payment-completed',
+        name: 'gift-card-payment-completed',
         path: '/gift-card-payment-completed/',
         file: '~/pages/gift-card/payment-completed.vue',
+      },
+      {
+        name: 'order-payment-completed',
+        path: '/payment-completed/single-box',
+        file: '~/pages/newsroom.vue',
+      },
+      {
+        name: 'order-payment-failed',
+        path: '/ca/payment-failed/single-box',
+        redirect: '/order/pay?order=71996',
       },
       {
         name: 'payment-added',

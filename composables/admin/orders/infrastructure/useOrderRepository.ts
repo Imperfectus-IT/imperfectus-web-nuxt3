@@ -2,12 +2,8 @@ import type { ComposerTranslation } from 'vue-i18n'
 import type { Order, OrderBilling } from '~/composables/admin/orders/domain/OrderType.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
-import { useStrapiCouponFactory } from '~/composables/shared/coupons/infrastructure/useStrapiCouponFactory.ts'
-import {
-  useStrapiSubscriptionItemFactory,
-} from '~/composables/admin/subscriptions/infrastructure/factories/useStrapiSubscriptionItemFactory.ts'
-import { useStrapiOrderItemFactory } from '~/composables/shared/coupons/infrastructure/useStrapiOrderItemFactory.ts'
 import type { SubscriptionCoverage } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
+import { useOrdersFactory } from '~/composables/admin/orders/infrastructure/useOrdersFactory.ts'
 
 export const useOrderRepository = (t: ComposerTranslation) => {
   const { find, update } = useStrapi()
@@ -23,8 +19,13 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     })
     return strapiOrders.map((order: any) => useOrdersFactory(order, t))
   }
+
+  const findByNotification = async (notification: string) => {
+    const strapiOrder = await client(`orders/byNotification/${notification}`, { method: 'GET' })
+    return useOrdersFactory(strapiOrder, t)
+  }
+
   const findById = async (id: number): Promise<Order> => {
-    const { find } = useStrapi()
     const [order] = await find<Array<Order>>('orders', { id })
     return useOrdersFactory(order, t)
   }
@@ -139,6 +140,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     addOrderCoupon,
     addOrderReview,
     discardOrder,
+    findByNotification,
     findOrdersByUser,
     findById,
     getAmount,

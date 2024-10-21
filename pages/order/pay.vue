@@ -32,6 +32,12 @@ const route = useRoute()
 
 const order_id: number = Number(route.query.order)
 
+const handlePayment = async (submitForm) => {
+  setTimeout(async () => {
+    await submitForm()
+  }, 500)
+}
+
 const { order } = useGetOrderHandler<Order>(order_id, t)
 </script>
 
@@ -65,11 +71,17 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
       />
     </Panel>
 
-    <CompletePaymentActions
-      class="mt-16 mb-16"
-      :order="order"
-    />
+    <!--    <CompletePaymentActions -->
+    <!--      class="mt-16 mb-16" -->
+    <!--      :order="order" -->
+    <!--    /> -->
 
+    <RedsysPaymentForm
+      :order="72008"
+      @redirect="(submit) => handlePayment(submit)"
+    >
+      pay!
+    </RedsysPaymentForm>
     <Divider class="before:border-grey-secondary" />
 
     <div class="flex justify-between mt-10">

@@ -11,21 +11,10 @@ const paymentMethods = [
 ]
 const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
 
-// onMounted(async () => {
-//   await setGiftCardFailed()
-// })
-
 const handlePayment = async (submitForm) => {
-  // if (status.value !== 'error') {
-  //   const result = await executeCreateGiftCard();
-  //   orderId.value = result?.order?.id
-  // }
-  // else {
-  //   orderId.value = userGiftCards.value[0]?.order.id
-  // }
   setTimeout(async () => {
     await submitForm()
-  }, 1000)
+  }, 500)
 }
 </script>
 
@@ -112,7 +101,7 @@ const handlePayment = async (submitForm) => {
             :order="72006"
             @redirect="(submit) => handlePayment(submit)"
           >
-            {{ $t('gift-card.payment.form.repeat-submit') }}
+            {{ $t('gift-card.payment.form.repeat-submit') }}sss
           </RedsysPaymentForm>
         </div>
       </div>
