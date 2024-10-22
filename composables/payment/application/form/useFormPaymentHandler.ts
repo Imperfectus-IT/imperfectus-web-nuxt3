@@ -1,5 +1,5 @@
 import { useFormPaymentState } from '~/composables/payment/useFormPaymentState.ts'
-import { useFormPayment } from '~/composables/payment/form/useFormPayment.ts'
+import { useFormPayment } from '~/composables/payment/application/form/useFormPayment.ts'
 
 export const useFormPaymentHandler = () => {
   const { url, body } = useFormPaymentState()
