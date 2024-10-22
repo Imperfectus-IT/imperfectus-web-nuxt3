@@ -7,7 +7,7 @@
       width="130"
       height="100"
       alt="next-order"
-      class="rounded-lg h-[100px] my-auto"
+      class="rounded-lg h-[100px] my-auto mr-3 md:mr-6"
     />
     <div class="text-[15px] my-auto">
       <h4 class="font-semibold mb-2">
