@@ -57,12 +57,14 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     />
 
     <Panel class="mt-12">
-      <OrderItemCard
-        v-for="(item, index) in order?.orderItems"
-        :key="index"
-        class="!mt-0"
-        :order-item="item"
-      />
+      <div class="flex flex-col gap-5">
+        <OrderItemCard
+          v-for="(item, index) in order?.orderItems"
+          :key="index"
+          class="!mt-0"
+          :order-item="item"
+        />
+      </div>
     </Panel>
 
     <CompletePaymentActions
