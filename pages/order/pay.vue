@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useGetOrderHandler } from '~/composables/admin/orders/application/getOne/useGetOrderHandler.ts'
+import { useGetOrderByNotificationHandler } from '~/composables/admin/orders/application/get-by-notification/useGetOrderByNotificationHandler.ts'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -29,10 +29,8 @@ definePageMeta({
 // })
 
 const route = useRoute()
-
-const order_id: number = Number(route.query.order)
-
-const { order } = useGetOrderHandler<Order>(order_id, t)
+const orderNotificationHash: string = route.query.notification
+const { order } = useGetOrderByNotificationHandler(orderNotificationHash, t)
 </script>
 
 <template>
@@ -45,43 +43,46 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     </h1>
 
     <CompletePaymentOrderDetails
-      :order-id="order.order_id"
-      :delivery-date="order.deliveryDate"
-      :total="order.orderPayment.totalAmount"
+      :order-id="order?.order_id"
+      :delivery-date="order?.deliveryDate"
+      :total="order?.orderPayment.totalAmount"
     />
 
     <TKTimeline
-      :order-status="order.status"
+      :order-status="order?.status"
       class="mt-12"
       layout-type="horizontal"
     />
 
     <Panel class="mt-12">
-      <div class="flex flex-col gap-5">
-        <OrderItemCard
-          v-for="(item, index) in order?.orderItems"
-          :key="index"
-          class="!mt-0"
-          :order-item="item"
-        />
-      </div>
+      <OrderItemCard
+        v-for="(item, index) in order?.orderItems"
+        :key="index"
+        class="!mt-0"
+        :order-item="item"
+      />
     </Panel>
 
-    <CompletePaymentActions
-      class="mt-16 mb-16"
-      :order="order"
-    />
+    <!--    <CompletePaymentActions -->
+    <!--      class="mt-16 mb-16" -->
+    <!--      :order="order" -->
+    <!--    /> -->
 
+    <RedsysPaymentForm
+      :order="order"
+    >
+      pay!
+    </RedsysPaymentForm>
     <Divider class="before:border-grey-secondary" />
 
     <div class="flex justify-between mt-10">
       <DeliveryInfo
-        :delivery-date="order.deliveryDate"
-        :shipping="order.shippingInfo"
+        :delivery-date="order?.deliveryDate"
+        :shipping="order?.shippingInfo"
       />
 
-      <BillingInfo :data="order.billingInfo" />
-      <PaymentInfo :total="order.orderPayment.totalAmount" />
+      <BillingInfo :data="order?.billingInfo" />
+      <PaymentInfo :total="order?.orderPayment.totalAmount" />
     </div>
 
     <Divider class="before:border-grey-secondary mt-10 mb-16" />
@@ -96,5 +97,3 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     </NuxtLink>
   </container>
 </template>
-
-<style scoped lang="scss"></style>

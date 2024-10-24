@@ -24,9 +24,9 @@ const { executeGetAllProducts } = useGetAllStrapiProducts()
 
 const componentToRenderFromStep: Record<string, any> = {
   [AVAILABILITY_STEP]: resolveComponent('LazyShoppingCartAvailabilityStep'),
-  [PURCHASE_TYPE_STEP]: resolveComponent('LazyShoppingCartPurchaseTypeStep'),
   [CUSTOMIZE_STEP]: resolveComponent('LazyShoppingCartCustomizeStep'),
   [BOX_STEP]: resolveComponent('LazyShoppingCartBoxStep'),
+  [PURCHASE_TYPE_STEP]: resolveComponent('LazyShoppingCartPurchaseTypeStep'),
   [FREQUENCY_SUBSCRIPTION_TYPE_STEP]: resolveComponent('LazyShoppingCartFrequencySubscriptionStep'),
   [AUTH_STEP]: resolveComponent('LazyShoppingCartAuthStep'),
   [RESUME_ITEM_STEP]: resolveComponent('LazyShoppingCartResumeStep'),
@@ -44,11 +44,12 @@ const currentProgress = computed(() => {
 
 onMounted(async () => {
   await executeGetAllProducts()
-  await executeStep('StepPayment')
+  await executeStep('StepAvailability')
 })
 </script>
 
 <template>
+  {{ shoppingCart.currentItem }}
   <section>
     <ProgressBar
       class="my-5 w-full"

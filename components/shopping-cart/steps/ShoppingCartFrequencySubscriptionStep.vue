@@ -7,6 +7,11 @@ const isBiweeklyFrequency = computed(() => shoppingCart.value.currentItem?.frequ
 const goBack = () => {
   emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
 }
+
+const goToNextStep = () => {
+  const user = useStrapiUser()
+  emit(GO_TO_STEP_EVENT, user?.value?.id ? RESUME_ITEM_STEP : AUTH_STEP)
+}
 </script>
 
 <template>
@@ -56,7 +61,7 @@ const goBack = () => {
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
+        @click.prevent="goToNextStep"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

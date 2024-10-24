@@ -5,7 +5,6 @@ export const useUpdatePersonalData = () => {
     const { user } = useUserState()
     await update(id, personalData)
     user.value = await getUser(id)
-    console.log('USER')
   }
 
   return {

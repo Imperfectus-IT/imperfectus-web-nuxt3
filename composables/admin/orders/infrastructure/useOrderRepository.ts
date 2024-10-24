@@ -6,8 +6,16 @@ import type { SubscriptionCoverage } from '~/composables/admin/subscriptions/dom
 import { useOrdersFactory } from '~/composables/admin/orders/infrastructure/useOrdersFactory.ts'
 
 export const useOrderRepository = (t: ComposerTranslation) => {
-  const { find, update } = useStrapi()
+  const { find, update, create } = useStrapi()
   const client = useStrapiClient()
+
+  const createOrderItemReview = async (newReview: createOrderItemReviewPayload) => {
+    const { newRatings, orderItemId } = newReview
+    return await create('order-item-reviews', {
+      order_item: orderItemId,
+      ratings: newRatings,
+    })
+  }
 
   const findOrdersByUser = async (): Promise<Order[]> => {
     const user = useStrapiUser()
@@ -20,8 +28,9 @@ export const useOrderRepository = (t: ComposerTranslation) => {
     return strapiOrders.map((order: any) => useOrdersFactory(order, t))
   }
 
-  const findByNotification = async (notification: string) => {
-    const strapiOrder = await client(`orders/byNotification/${notification}`, { method: 'GET' })
+  const findByNotification = async (notification: string, t: ComposerTranslation) => {
+    const [strapiOrder] = await client(`orders/byNotification/${notification}`, { method: 'GET' })
+    console.log('strapiOrder', strapiOrder)
     return useOrdersFactory(strapiOrder, t)
   }
 
@@ -48,7 +57,6 @@ export const useOrderRepository = (t: ComposerTranslation) => {
       delivery: null,
       orderId: order.id,
     }
-    console.log('payload', payload)
     return await getAmount(payload)
   }
 
@@ -139,6 +147,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   return {
     addOrderCoupon,
     addOrderReview,
+    createOrderItemReview,
     discardOrder,
     findByNotification,
     findOrdersByUser,

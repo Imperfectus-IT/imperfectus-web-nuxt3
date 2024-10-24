@@ -10,12 +10,6 @@ const paymentMethods = [
   },
 ]
 const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
-
-const handlePayment = async (submitForm) => {
-  setTimeout(async () => {
-    await submitForm()
-  }, 500)
-}
 </script>
 
 <template>
@@ -98,8 +92,7 @@ const handlePayment = async (submitForm) => {
           </div>
           <RedsysPaymentForm
             :is-button-outlined="false"
-            :order="72006"
-            @redirect="(submit) => handlePayment(submit)"
+            :order="{ id: 72006 }"
           >
             {{ $t('gift-card.payment.form.repeat-submit') }}sss
           </RedsysPaymentForm>

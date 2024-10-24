@@ -1,28 +1,28 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
-const { products } = useProductsState()
+const { fruitsItemProducts, vegetablesItemProducts } = useProductsState()
 
 const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const isSelectedBox = (boxType: string) => boxType === shoppingCart.value.currentItem.boxType
 const activeButtonSelected = (boxType: string) => isSelectedBox(boxType) ? 'bg-green-primary' : 'bg-transparent'
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
-    src: '/images/boxes/Caixa-S.webp',
+    src: '/images/boxes/mBox/IM_1.webp',
     alt: t('string.box.mixed'),
   },
   [FRUITS_BOX_TYPE]: {
-    src: '/images/boxes/sBox/SFR_1.webp',
+    src: '/images/boxes/mBox/IMFR_1.webp',
     alt: t('string.box.fruits'),
   },
   [VEGETABLES_BOX_TYPE]: {
-    src: '/images/boxes/Caixa-XL.webp',
+    src: '/images/boxes/mBox/IMVG_1.webp',
     alt: t('string.box.vegetables'),
   },
 }
 const productExclusions = computed(() => {
-  return products.value.itemProducts.map(product => createProductExclusion(product, locale.value))
+  return [...vegetablesItemProducts.value, ...fruitsItemProducts.value]
 })
 
 const nexStep = () => {
@@ -33,8 +33,7 @@ const nexStep = () => {
   else {
     shoppingCart.value.items.push(shoppingCart.value.currentItem)
   }
-  const user = useStrapiUser()
-  user?.value?.id ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, AUTH_STEP)
+  emit(GO_TO_STEP_EVENT, BOX_STEP)
 }
 </script>
 
@@ -47,7 +46,7 @@ const nexStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, AVAILABILITY_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>

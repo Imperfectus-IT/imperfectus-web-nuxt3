@@ -20,6 +20,10 @@ export const useShoppingCartFactory = () => {
     }
   }
 
+  const sBoxItem = (): Item => {
+
+  }
+
   const emptyBillingAddress = (): BillingAddress => {
     return {
       firstname: '',
@@ -36,6 +40,7 @@ export const useShoppingCartFactory = () => {
       country: '',
     }
   }
+
   const emptyShippingAddress = (): ShippingAddress => {
     return {
       firstname: '',
@@ -73,10 +78,77 @@ export const useShoppingCartFactory = () => {
     }
   }
 
+  const sBoxShoppingCart = (): ShoppingCart => {
+    return {
+      deliveryHour: '',
+      preferredDay: '',
+      preferredHour: '',
+      invoiceRequired: false,
+      step: AVAILABILITY_STEP,
+      status: 'pending',
+      deliveryDate: '',
+      coverage: null,
+      items: [],
+      currentItem: null,
+      coupon: null,
+      termConditions: false,
+      whatsappInfo: false,
+      marketingInfo: false,
+      billingAddress: emptyBillingAddress(),
+      shippingAddress: emptyShippingAddress(),
+    }
+  }
+
+  const imBoxShoppingCart = (): ShoppingCart => {
+    return {
+      deliveryHour: '',
+      preferredDay: '',
+      preferredHour: '',
+      invoiceRequired: false,
+      step: AVAILABILITY_STEP,
+      status: 'pending',
+      deliveryDate: '',
+      coverage: null,
+      items: [],
+      currentItem: null,
+      coupon: null,
+      termConditions: false,
+      whatsappInfo: false,
+      marketingInfo: false,
+      billingAddress: emptyBillingAddress(),
+      shippingAddress: emptyShippingAddress(),
+    }
+  }
+
+  const xlBoxShoppingCart = (): ShoppingCart => {
+    return {
+      deliveryHour: '',
+      preferredDay: '',
+      preferredHour: '',
+      invoiceRequired: false,
+      step: AVAILABILITY_STEP,
+      status: 'pending',
+      deliveryDate: '',
+      coverage: null,
+      items: [],
+      currentItem: null,
+      coupon: null,
+      termConditions: false,
+      whatsappInfo: false,
+      marketingInfo: false,
+      billingAddress: emptyBillingAddress(),
+      shippingAddress: emptyShippingAddress(),
+    }
+  }
+
   return {
     emptyShoppingCart,
     emptyItem,
     emptyBillingAddress,
     emptyShippingAddress,
+    sBoxShoppingCart,
+    imBoxShoppingCart,
+    xlBoxShoppingCart,
+
   }
 }

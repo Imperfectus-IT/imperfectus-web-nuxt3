@@ -12,7 +12,7 @@ const exclusionLists = computed(() => {
 
 <template>
   <Panel
-    class="rounded-tl-lg rounded-tr-lg bg-beige-primary"
+    class="rounded-tl-lg rounded-tr-lg bg-beige-primary w-1/4"
     :header="$t('purchase_summary.title')"
     toggleable
     collapsed

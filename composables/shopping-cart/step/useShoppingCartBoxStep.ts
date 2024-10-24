@@ -4,9 +4,17 @@ export const useShoppingCartBoxStep = () => {
   const { shoppingCart } = useShoppingCartState()
   const { locale } = useI18n()
   const { boxProductBySize } = useProductCatalog()
+  const { activeBoxProducts } = useProductsState()
+  const { generateSku } = useGenerateSku()
 
   const setBoxSize = (boxSize: string) => {
     shoppingCart.value.currentItem.boxSize = boxSize
+    const sku = generateSku(shoppingCart.value.currentItem.boxType, boxSize)
+    console.log('SKU', sku)
+    shoppingCart.value.currentItem.product = activeBoxProducts.value.find((boxProduct: BoxProduct) => {
+      return boxProduct.boxType === shoppingCart.value.currentItem.boxType && boxProduct.sku === boxSize
+    })
+    console.log(shoppingCart.value.currentItem.sku)
   }
 
   const addBoxProduct = () => {
@@ -16,7 +24,7 @@ export const useShoppingCartBoxStep = () => {
 
   const onSetBoxSize = (boxSize: string) => {
     setBoxSize(boxSize)
-    addBoxProduct()
+    // addBoxProduct()
   }
 
   return {

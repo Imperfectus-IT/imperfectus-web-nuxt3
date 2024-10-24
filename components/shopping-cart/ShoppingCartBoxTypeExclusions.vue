@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
+
 const props = defineProps<{
   productExclusions: ProductExclusion[]
 }>()
 const { shoppingCart } = useShoppingCartState()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const isExclusionSelected = ref(false)
 const searchExclusion = ref('')
 const filteredExclusions = computed(() => {
@@ -39,6 +41,8 @@ const onClickSelectExclusion = (isSelected: boolean) => {
 const initData = () => {
   isExclusionSelected.value = shoppingCart.value.currentItem.exclusions.length > 0
 }
+
+const { getLocaleName } = useGetLocaleLanguage(locale)
 
 onMounted(() => {
   initData()
@@ -102,12 +106,12 @@ onMounted(() => {
               :input-id="item.id"
               name="productExclusion"
               :disabled="disabledExclusion(item)"
-              :value="item"
+              :value="item.id"
             />
             <label
               class="font-solina-extended-book tex-base"
               :for="item?.name"
-            >{{ item?.name }}</label>
+            >{{ item['name' + getLocaleName] }}</label>
           </div>
         </template>
       </VirtualScroller>

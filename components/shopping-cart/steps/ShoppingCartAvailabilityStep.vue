@@ -65,7 +65,7 @@ watch(
         :disabled="isInvalid"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
       />
     </div>
   </div>
