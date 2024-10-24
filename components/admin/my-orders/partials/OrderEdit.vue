@@ -57,7 +57,7 @@
           class="!px-5 !h-5 mb-2"
           @click="save"
         />
-        <Divider class="before:border-t-[1px] before:border-green-primary" />
+        <!--        <Divider class="before:border-t-[1px] before:border-green-primary" /> -->
       </div>
     </div>
   </div>

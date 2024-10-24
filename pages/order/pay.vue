@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useGetOrderHandler } from '~/composables/admin/orders/application/getOne/useGetOrderHandler.ts'
+import { useGetOrderByNotificationHandler } from '~/composables/admin/orders/application/get-by-notification/useGetOrderByNotificationHandler.ts'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -21,24 +21,9 @@ definePageMeta({
   middleware: ['auth'],
 })
 
-// defineI18nRoute({
-//   paths: {
-//     es: '/order/pay?order=[order]',
-//     ca: '/el-meu-compte/subscripcions/properes-entregues/[id]',
-//   },
-// })
-
 const route = useRoute()
-
-const order_id: number = Number(route.query.order)
-
-const handlePayment = async (submitForm) => {
-  setTimeout(async () => {
-    await submitForm()
-  }, 500)
-}
-
-const { order } = useGetOrderHandler<Order>(order_id, t)
+const orderNotificationHash: string = route.query.notification
+const { order } = useGetOrderByNotificationHandler(orderNotificationHash, t)
 </script>
 
 <template>
@@ -51,13 +36,13 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     </h1>
 
     <CompletePaymentOrderDetails
-      :order-id="order.order_id"
-      :delivery-date="order.deliveryDate"
-      :total="order.orderPayment.totalAmount"
+      :order-id="order?.order_id"
+      :delivery-date="order?.deliveryDate"
+      :total="order?.orderPayment.totalAmount"
     />
 
     <TKTimeline
-      :order-status="order.status"
+      :order-status="order?.status"
       class="mt-12"
       layout-type="horizontal"
     />
@@ -77,8 +62,7 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     <!--    /> -->
 
     <RedsysPaymentForm
-      :order="72008"
-      @redirect="(submit) => handlePayment(submit)"
+      :order="order"
     >
       pay!
     </RedsysPaymentForm>
@@ -86,12 +70,12 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
 
     <div class="flex justify-between mt-10">
       <DeliveryInfo
-        :delivery-date="order.deliveryDate"
-        :shipping="order.shippingInfo"
+        :delivery-date="order?.deliveryDate"
+        :shipping="order?.shippingInfo"
       />
 
-      <BillingInfo :data="order.billingInfo" />
-      <PaymentInfo :total="order.orderPayment.totalAmount" />
+      <BillingInfo :data="order?.billingInfo" />
+      <PaymentInfo :total="order?.orderPayment.totalAmount" />
     </div>
 
     <Divider class="before:border-grey-secondary mt-10 mb-16" />
@@ -106,5 +90,3 @@ const { order } = useGetOrderHandler<Order>(order_id, t)
     </NuxtLink>
   </container>
 </template>
-
-<style scoped lang="scss"></style>

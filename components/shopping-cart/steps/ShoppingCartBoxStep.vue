@@ -1,25 +1,27 @@
 <script setup lang="ts">
+import { IM_PRODUCT_TYPE, S_PRODUCT_TYPE } from '~/composables/shared/products/domain/ProductConstants.ts'
+
 const { shoppingCart } = useShoppingCartState()
 const { onSetBoxSize } = useShoppingCartBoxStep()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const boxDetails = [
   {
-    size: SMALL_BOX_SIZE,
+    size: S_PRODUCT_TYPE,
     stepBox: 'order.steps.stepBox.smallBox',
   },
   {
-    size: MEDIUM_BOX_SIZE,
+    size: IM_PRODUCT_TYPE,
     stepBox: 'order.steps.stepBox.mediumBox',
   },
   {
-    size: XLARGE_BOX_SIZE,
+    size: XL_PRODUCT_TYPE,
     stepBox: 'order.steps.stepBox.largeBox',
   },
 ]
-const goToPreviousStep = () => {
-  const previousStep = shoppingCart.value.currentItem.purchaseType === SUBSCRIPTION_TYPE ? FREQUENCY_SUBSCRIPTION_TYPE_STEP : PURCHASE_TYPE_STEP
-  emit(GO_TO_STEP_EVENT, previousStep)
-}
+// const goToPreviousStep = () => {
+//   const previousStep = shoppingCart.value.currentItem.purchaseType === SUBSCRIPTION_TYPE ? FREQUENCY_SUBSCRIPTION_TYPE_STEP : PURCHASE_TYPE_STEP
+//   emit(GO_TO_STEP_EVENT, previousStep)
+// }
 </script>
 
 <template>
@@ -31,7 +33,7 @@ const goToPreviousStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="goToPreviousStep"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -55,18 +57,12 @@ const goToPreviousStep = () => {
           outlined
           @click.prevent="onSetBoxSize(box.size)"
         />
-
-        <ShoppingCartBoxDetail
-          v-if="shoppingCart.currentItem.boxSize === box.size && shoppingCart.currentItem.boxProduct"
-          class="mt-5 lg:hidden"
-          :box-product="shoppingCart.currentItem.boxProduct"
-        />
       </div>
     </div>
     <ShoppingCartBoxDetail
-      v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.boxProduct"
+      v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.product"
       class="mt-5 hidden lg:block"
-      :box-product="shoppingCart.currentItem.boxProduct"
+      :box-product="shoppingCart.currentItem.product"
     />
     <NuxtImg
       v-if="!shoppingCart.currentItem.boxSize"
@@ -79,7 +75,7 @@ const goToPreviousStep = () => {
         v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)"
       />
     </div>
     <!--    <ShoppingCartPurchaseSummaryFloating -->

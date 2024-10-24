@@ -10,8 +10,8 @@ export type Item = {
   purchaseType: string
   frequency?: string
   quantity: number
-  exclusions: Product[]
-  product?: Product | null
+  exclusions: ItemProduct[]
+  product: number
 }
 
 export function createEmpty(): Item {

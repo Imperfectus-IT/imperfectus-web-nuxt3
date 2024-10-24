@@ -28,7 +28,7 @@ defineI18nRoute({
 onMounted(async () => {
   await handleGetDomainUser()
 })
-const { domainUser, handleGetDomainUser } = useGetUserHandler()
+const { user } = useGetUserHandler()
 const lastOrder: Ref<Order> = ref({} as Order)
 const isLoading = ref(true)
 
@@ -52,7 +52,7 @@ const getSubscriptionId = computed(() => lastOrder.value?.subscription)
 
 <template>
   <div class="lg:mt-2 xl:w-full">
-    <Introduction :user="domainUser" />
+    <Introduction :user="user" />
     <ImagesAndData kgs="50" />
     <div v-if="isLoading">
       <CardSkeleton />
@@ -63,6 +63,9 @@ const getSubscriptionId = computed(() => lastOrder.value?.subscription)
         :order="lastOrder"
       />
     </div>
-    <HandleNextDeliveries :subscription-id="getSubscriptionId" />
+    <HandleNextDeliveries
+      v-if="getSubscriptionId"
+      :subscription-id="getSubscriptionId"
+    />
   </div>
 </template>

@@ -17,12 +17,14 @@ const isOrderPurchaseType = computed(() => shoppingCart.value.currentItem?.purch
 const goToNextStep = () => {
   const purchaseTypesForStep = {
     [SUBSCRIPTION_TYPE]: FREQUENCY_SUBSCRIPTION_TYPE_STEP,
-    [ORDER_TYPE]: BOX_STEP,
+    [ORDER_TYPE]: RESUME_ITEM_STEP,
   }
 
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
+  console.log('nextStep', nextStep)
+  const user = useStrapiUser()
 
-  emit(GO_TO_STEP_EVENT, nextStep)
+  emit(GO_TO_STEP_EVENT, user?.value?.id ? nextStep : AUTH_STEP)
 }
 </script>
 
@@ -35,7 +37,7 @@ const goToNextStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="$emit(GO_TO_STEP_EVENT, AVAILABILITY_STEP)"
+          @click.prevent="$emit(GO_TO_STEP_EVENT, BOX_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>

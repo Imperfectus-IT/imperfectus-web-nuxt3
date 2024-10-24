@@ -1,14 +1,14 @@
 import type { ComposerTranslation } from 'vue-i18n'
 
-export const useGetOrderByNotificationHandler = (t: ComposerTranslation) => {
-  const { executeGetOrderByNotification, orders } = useGetOrderByNotification(t)
+export const useGetOrderByNotificationHandler = (notification: string, t: ComposerTranslation) => {
+  const { executeGetOrderByNotification, order } = useGetOrderByNotification(t)
 
   onMounted(async () => {
-    await executeGetOrderByNotification()
+    await executeGetOrderByNotification(notification)
   })
 
   return {
-    orders,
+    order,
     executeGetOrderByNotification,
   }
 }

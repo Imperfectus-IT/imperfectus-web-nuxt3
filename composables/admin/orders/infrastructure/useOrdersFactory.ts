@@ -3,6 +3,7 @@ import { useOrderReviewValidator } from '~/composables/admin/orders/domain/useOr
 
 const { isValidForReview } = useOrderReviewValidator()
 export const useOrdersFactory = (order: StrapiOrder, t: ComposerTranslation): Order => {
+  console.log('order', order)
   return {
     id: order.id,
     order_id: order.order_id,
