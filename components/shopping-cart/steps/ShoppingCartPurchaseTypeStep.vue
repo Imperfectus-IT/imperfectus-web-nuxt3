@@ -9,6 +9,7 @@ const setPurchaseType = (purchaseType: string) => {
     shoppingCart.value.currentItem = emptyItem()
   }
   shoppingCart.value.currentItem.purchaseType = purchaseType
+  purchaseType === 'order' ? shoppingCart.value.currentItem.frequency = 'once' : ''
 }
 
 const isSubscriptionPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === SUBSCRIPTION_TYPE)
@@ -21,9 +22,7 @@ const goToNextStep = () => {
   }
 
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
-  console.log('nextStep', nextStep)
   const user = useStrapiUser()
-
   emit(GO_TO_STEP_EVENT, user?.value?.id ? nextStep : AUTH_STEP)
 }
 </script>

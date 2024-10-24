@@ -97,7 +97,7 @@ const timeOptions = [
           </p>
           <div>
             <div
-              v-for="carrier in carrierOptions"
+              v-for="(carrier, index) in carrierOptions"
               :key="carrier"
               :class="['flex items-center mb-3 border cursor-pointer rounded-xl lg:w-2/3 p-3', { 'border-green-primary': shoppingCart.coverage === carrier }]"
               @click.prevent="shoppingCart.coverage = carrier"
@@ -113,7 +113,7 @@ const timeOptions = [
                 class="ml-2 text-xs font-normal leading-5"
               >{{ $t(`orderStepDate.carrier.${carrier}`) }}</label>
               <span
-                v-if="shoppingCart.coverage === carrier"
+                v-if="index === 0"
                 class="mdi mdi-star text-lg text-green-primary ml-3"
               />
             </div>

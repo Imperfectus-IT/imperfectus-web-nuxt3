@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useSleep } from '~/composables/shared/useSleep.ts'
-import { useFormPaymentHandler } from '~/composables/payment/form/useFormPaymentHandler.ts'
+import { useFormPaymentHandler } from '~/composables/payment/application/form/useFormPaymentHandler.ts'
 
 const props = defineProps({
   order: {

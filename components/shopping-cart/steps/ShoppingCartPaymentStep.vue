@@ -10,6 +10,11 @@ const paymentMethods = [
   },
 ]
 const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
+const { createPurchase } = useCreatePurchase()
+const handleCreatePurchase = async () => {
+  console.log('handleCreatePurchase')
+  await createPurchase(shoppingCart.value)
+}
 </script>
 
 <template>
@@ -90,22 +95,29 @@ const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
               :value="$t(`order.steps.stepPayment.${checkOption}`)"
             />
           </div>
-          <RedsysPaymentForm
-            :is-button-outlined="false"
-            :order="{ id: 72006 }"
-          >
-            {{ $t('gift-card.payment.form.repeat-submit') }}sss
-          </RedsysPaymentForm>
+          <div class="mt-5">
+            <Button
+              class="w-full"
+              :label="$t('order.steps.stepPayment.submit')"
+              @click.prevent="handleCreatePurchase"
+            />
+            <RedsysPaymentForm
+              :is-button-outlined="false"
+              :order="{ id: 72020 }"
+            >
+              {{ $t('gift-card.payment.form.repeat-submit') }}
+            </RedsysPaymentForm>
+          </div>
         </div>
-      </div>
-      <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
-        <ShoppingCartSummaryBox>
-          <template #title>
-            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
-              {{ $t('order.steps.stepResume') }}
-            </h3>
-          </template>
-        </ShoppingCartSummaryBox>
+        <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
+          <ShoppingCartSummaryBox>
+            <template #title>
+              <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
+                {{ $t('order.steps.stepResume') }}
+              </h3>
+            </template>
+          </ShoppingCartSummaryBox>
+        </div>
       </div>
     </div>
   </div>

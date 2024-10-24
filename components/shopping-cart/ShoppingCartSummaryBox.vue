@@ -75,13 +75,13 @@ const getOrderAmount = async () => {
   <div
     v-for="(item, index) in shoppingCart.items"
     :key="index"
-    class="lg:flex mb-5 lg:mb-0 lg:gap-4 lg:flex-wrap"
+    class="lg:flex mb-5 lg:mb-0 lg:gap-4 lg:flex-wrap lg:justify-center"
   >
     <NuxtImg
-      :src="'/images/boxes/Caixa-M.webp'"
+      :src="item.product.image"
       loading="lazy"
       format="webp"
-      class="rounded-lg mt-6 w-full lg:w-[100px] lg:h-[100px]"
+      class="rounded-lg mt-6 w-full lg:w-[140px] lg:h-[100px]"
     />
     <div class="p-4 lg:my-auto lg:p-0 lg:py-4 mt-5">
       <div class="flex justify-between items-center">
@@ -92,14 +92,15 @@ const getOrderAmount = async () => {
         {{ item.boxProduct?.description }}
       </p>
       <ul class="list-square ml-5 text-base leading-7 mt-2 lg:mt-0 lg:text-xs lg:leading-[18px]">
-        <li>{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</li>
+        <li>{{ item?.frequency ? $t(`boxes.frequency.${item?.frequency}`) : $t('companies.frequency.once') }}</li>
         <li>{{ item?.boxType ? $t(`string.box.${item?.boxType}`) : '-' }}</li>
-        <li>{{ exclusionLists(item) }}</li>
+        <li>{{ item.exclusions.length }}</li>
       </ul>
       <span class="font-bold text-lg hidden lg:block lg:mt-2 lg:text-base">{{ item.boxProduct?.price }} €</span>
     </div>
     <div class="flex flex-row-reverse justify-between px-4 lg:flex-col lg:items-end lg:justify-around lg:gap-14">
       <span
+        v-if="shoppingCart.items.length > 1"
         class="mdi mdi-close text-red-primary cursor-pointer"
         @click.prevent="removeItem(item.id)"
       />

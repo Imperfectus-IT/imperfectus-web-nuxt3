@@ -7,6 +7,7 @@ const { dateBuilder } = useDateBuilder()
 const { shoppingCart } = useShoppingCartState()
 
 const selectedDate = ref(dayjs().toDate())
+
 const isSelectedDate = (date: CalendarDate) => {
   const formattedDate = dateBuilder(date)
   return dayjs(formattedDate).format('YYYY-MM-DD') === dayjs(selectedDate.value).format('YYYY-MM-DD')
@@ -15,10 +16,17 @@ const isSelectedDate = (date: CalendarDate) => {
 const getDateCellStyle = (date: CalendarDate) => {
   return date.selectable ? 'border-[1px] rounded-md w-7 h-7 flex justify-center items-center text-[13px]' : 'text-[13px]'
 }
+
+const goToNextStep = () => {
+  shoppingCart.value.deliveryDate = dayjs(selectedDate.value).format('YYYY-MM-DD')
+  shoppingCart.value.preferredDay = dayjs(selectedDate.value).format('dddd').toLowerCase()
+  emit(GO_TO_STEP_EVENT, DELIVERY_STEP)
+}
 </script>
 
 <template>
   <div class="px-10 md:px-[28%] lg:px-[2%] 2xl:px-[20%] relative">
+    {{ selectedDate }}
     <div class="flex items-center justify-center gap-3 lg:mt-14">
       <div class="!absolute left-5 flex flex-row gap-3">
         <Button
@@ -85,7 +93,7 @@ const getDateCellStyle = (date: CalendarDate) => {
       <Button
         severity="secondary"
         :label="$t('orderMeta.continue')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
+        @click.prevent="goToNextStep"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

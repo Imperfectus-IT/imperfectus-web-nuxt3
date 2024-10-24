@@ -4,8 +4,8 @@ import type { Coupon } from '~/composables/admin/subscriptions/domain/Subscripti
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
 
-export const useUpdateOrder = (t: ComposerTranslation) => {
-  const { addOrderReview, addOrderCoupon, discardOrder, findOrdersByUser, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping, updateShippingCoverage } = useOrderRepository(t)
+export const useUpdateOrder = () => {
+  const { addOrderReview, addOrderCoupon, discardOrder, findOrdersByUser, removeOrderCoupon, updateOrderItem, updateOrderBilling, updateOrderShipping, updateShippingCoverage } = useOrderRepository()
   const { orders } = useOrdersState()
 
   const executeAddOrderReview = async (order: Order, review: string) => {

@@ -1,6 +1,6 @@
 import type { BillingAddress } from './BillingAddress.ts'
 import type { ShippingAddress } from './ShippingAddress.ts'
-import type { Item } from './Item.ts'
+import type { ShoppingCartItem } from './Item.ts'
 import { createEmpty as createEmptyBillingAddress } from './BillingAddress.ts'
 import { createEmpty as createEmptyShippingAddress } from './ShippingAddress.ts'
 import { createEmpty as createEmptyItem } from './Item.ts'
@@ -21,8 +21,8 @@ export type ShoppingCart = {
   marketingInfo: boolean
   billingAddress: BillingAddress
   shippingAddress: ShippingAddress
-  items: Item[]
-  currentItem: Item | null
+  items: ShoppingCartItem[]
+  currentItem: ShoppingCartItem | null
 }
 export const AVAILABILITY_STEP = 'StepAvailability'
 export const PURCHASE_TYPE_STEP = 'StepPurchaseType'
@@ -39,7 +39,6 @@ export const PAYMENT_STEP = 'StepPayment'
 export function createEmpty(): ShoppingCart {
   return {
     id: generateId(),
-    status: 'pending',
     step: AVAILABILITY_STEP,
     deliveryDate: '',
     deliveryHour: '',

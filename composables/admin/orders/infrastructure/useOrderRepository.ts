@@ -4,10 +4,20 @@ import type { updateOrderItemPayload } from '~/components/admin/my-orders/partia
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
 import type { SubscriptionCoverage } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 import { useOrdersFactory } from '~/composables/admin/orders/infrastructure/useOrdersFactory.ts'
+import type { createOrderItemReviewPayload } from '~/components/admin/my-orders/MobileOrder.vue'
 
-export const useOrderRepository = (t: ComposerTranslation) => {
+export const useOrderRepository = () => {
   const { find, update, create } = useStrapi()
   const client = useStrapiClient()
+
+  const createOrder = async (cart: ShoppingCart) => {
+    const newOrder = useStrapiPurchaseFactory(cart)
+    const strapiOrderCreated = await client('orders/order', {
+      method: 'POST',
+      body: newOrder,
+    })
+    console.log('strapiOrderCreated', newOrder, strapiOrderCreated)
+  }
 
   const createOrderItemReview = async (newReview: createOrderItemReviewPayload) => {
     const { newRatings, orderItemId } = newReview
@@ -25,10 +35,10 @@ export const useOrderRepository = (t: ComposerTranslation) => {
       _sort: 'created_at:desc',
       _limit: 10,
     })
-    return strapiOrders.map((order: any) => useOrdersFactory(order, t))
+    return strapiOrders.map((order: any) => useOrdersFactory(order))
   }
 
-  const findByNotification = async (notification: string, t: ComposerTranslation) => {
+  const findByNotification = async (notification: string) => {
     const [strapiOrder] = await client(`orders/byNotification/${notification}`, { method: 'GET' })
     console.log('strapiOrder', strapiOrder)
     return useOrdersFactory(strapiOrder, t)
@@ -36,7 +46,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
 
   const findById = async (id: number): Promise<Order> => {
     const [order] = await find<Array<Order>>('orders', { id })
-    return useOrdersFactory(order, t)
+    return useOrdersFactory(order)
   }
   const addOrderReview = async (order: Order, review: string) => {
     const { update } = useStrapi()
@@ -147,6 +157,7 @@ export const useOrderRepository = (t: ComposerTranslation) => {
   return {
     addOrderCoupon,
     addOrderReview,
+    createOrder,
     createOrderItemReview,
     discardOrder,
     findByNotification,

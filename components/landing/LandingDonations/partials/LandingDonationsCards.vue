@@ -17,7 +17,7 @@
       />
       <div
         class="bg-green-tertiary w-auto absolute top-0 h-full text-white-primary "
-        :class="{ 'translate-y-0 duration-1000 opacity-90': display[item.index as number], '-translate-y-[-390px] duration-700 opacity-55': !display[item.index as number] }"
+        :class="{ 'translate-y-0 duration-200 opacity-90': display[item.index as number], '-translate-y-[-390px] duration-200 opacity-55': !display[item.index as number] }"
       >
         <h4
           class="text-center mt-4 max-w-[400px] font-recoleta-semibold text-[30px] w-11/12 mx-auto hover:cursor-pointer"

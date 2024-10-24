@@ -1,9 +1,8 @@
-import type { ComposerTranslation } from 'vue-i18n'
 import { useOrderReviewValidator } from '~/composables/admin/orders/domain/useOrderReviewValidator.ts'
+import { ALL_COVERAGES } from '~/composables/locations/domain/CompaniesConstants.ts'
 
 const { isValidForReview } = useOrderReviewValidator()
-export const useOrdersFactory = (order: StrapiOrder, t: ComposerTranslation): Order => {
-  console.log('order', order)
+export const useOrdersFactory = (order: StrapiOrder): Order => {
   return {
     id: order.id,
     order_id: order.order_id,
@@ -59,9 +58,9 @@ export const useOrdersFactory = (order: StrapiOrder, t: ComposerTranslation): Or
       }
     }),
     billing: {
-      state: unpaidOrderStates.includes(order.status) ? t('orders.order.billing.order_pending') : t('orders.order.billing.order_paid'),
+      state: order.status,
       amount: order.order_payment.totalAmount,
-      shippingCosts: shippingSuplementsAmount(order.order_shipping_supplements) === 0 ? t('orders.order.billing.free_shipping') : shippingSuplementsAmount(order.order_shipping_supplements) + ' €',
+      shippingCosts: order.order_shipping_supplements,
       total: order.order_payment.totalAmount + shippingSuplementsAmount(order.order_shipping_supplements),
     },
     deliveryInfo: {
@@ -121,9 +120,7 @@ const getBoxImage = (sku: string) => {
   return sku.includes('IM') ? 'M' : sku.includes('XL') ? 'XL' : 'S'
 }
 
-const unpaidOrderStates = ['pending', 'failed']
-
 const getCoverageLabel = (coverageValue: string) => {
-  const coverage = Object.values(ALL_COVERAGES).find(c => c.value === coverageValue)
+  const coverage = Object.values(ALL_COVERAGES).find(coverage => coverage.value === coverageValue)
   return coverage ? coverage.label : 'Unknown Coverage' // Fallback label in case it's not found
 }

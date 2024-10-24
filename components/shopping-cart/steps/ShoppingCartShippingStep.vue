@@ -32,7 +32,7 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
         }"
       />
     </div>
-    <div class="lg:flex lg:gap-4">
+    <div class="lg:flex lg:justify-evenly lg:gap-4">
       <div class="lg:w-2/4">
         <div class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
           <ShoppingCartShippingAddress />
