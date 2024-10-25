@@ -63,16 +63,11 @@ const { order } = useGetOrderByNotificationHandler(orderNotificationHash, t)
       />
     </Panel>
 
-    <!--    <CompletePaymentActions -->
-    <!--      class="mt-16 mb-16" -->
-    <!--      :order="order" -->
-    <!--    /> -->
-
-    <RedsysPaymentForm
+    <CompletePaymentActions
+      class="mt-16 mb-16"
       :order="order"
-    >
-      pay!
-    </RedsysPaymentForm>
+    />
+
     <Divider class="before:border-grey-secondary" />
 
     <div class="flex justify-between mt-10">

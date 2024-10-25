@@ -19,8 +19,8 @@ const formRef = ref<HTMLFormElement | null>(null)
 const submit = async () => {
   paymentNotAvailable.value = false
   try {
+    // await create order / subscription
     await formPaymentHandler(props.order.id)
-
     if (url.value && formRef.value) {
       await sleep(200)
       formRef.value.submit()
