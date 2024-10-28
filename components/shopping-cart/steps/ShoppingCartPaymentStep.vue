@@ -9,11 +9,18 @@ const paymentMethods = [
     value: 'redsys',
   },
 ]
+const { order } = useOrdersState()
 const checkOptions = ['termConditions', 'whatsappInfo', 'marketingInfo']
 const { createPurchase } = useCreatePurchase()
+const redsysForm = ref<InstanceType<typeof RedsysPaymentForm> | null>(null)
 const handleCreatePurchase = async () => {
-  console.log('handleCreatePurchase')
-  await createPurchase(shoppingCart.value)
+  try {
+    await createPurchase(shoppingCart.value)
+    redsysForm.value?.submit()
+  }
+  catch (error) {
+    console.error(error.message)
+  }
 }
 </script>
 
@@ -96,18 +103,18 @@ const handleCreatePurchase = async () => {
             />
           </div>
           <div class="mt-5">
+            <RedsysPaymentForm
+              ref="redsysForm"
+              :is-button-outlined="false"
+              :order="order"
+            />
             <Button
               class="w-full"
               :label="$t('order.steps.stepPayment.submit')"
               @click.prevent="handleCreatePurchase"
             />
-            <RedsysPaymentForm
-              :is-button-outlined="false"
-              :order="{ id: 72020 }"
-            >
-              {{ $t('gift-card.payment.form.repeat-submit') }}
-            </RedsysPaymentForm>
           </div>
+          {{ order }}
         </div>
         <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
           <ShoppingCartSummaryBox>

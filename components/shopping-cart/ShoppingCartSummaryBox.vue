@@ -1,45 +1,41 @@
 <script setup lang="ts">
-const { validateCoupon,
-  validationMessage,
-  setValidationMessage } = useCouponValidator()
+// const { validateCoupon,
+//   validationMessage,
+//   setValidationMessage } = useCouponValidator()
 const { backButton } = defineProps({
   backButton: {
     type: Boolean,
     default: false,
   },
-})
-defineEmits(['goBack'])
-const { t } = useI18n()
-const { shoppingCart } = useShoppingCartState()
+});
+defineEmits(['goBack']);
+const { t } = useI18n();
+const { shoppingCart } = useShoppingCartState();
 const incrementQuantity = (item) => {
   item.quantity += 1
-}
+};
 
 const decrementQuantity = (item) => {
-  const MIN_QUANTITY = 1
+  const MIN_QUANTITY = 1;
   return item.quantity === MIN_QUANTITY ? MIN_QUANTITY : item.quantity -= 1
-}
-
-const exclusionLists = (item) => {
-  return item.exclusions.map(exclusion => exclusion?.name).join(', ') || '-'
-}
+};
 
 const removeItem = (id: number) => {
-  const index = shoppingCart.value.items.findIndex(item => item.id === id)
+  const index = shoppingCart.value.items.findIndex(item => item.id === id);
   shoppingCart.value.items.splice(index, 1)
-}
+};
 
-const { executeFindCoupon } = useFindCoupon()
-const { executeGetOrderAmount } = useGetOrderAmount()
+const { executeFindCoupon } = useFindCoupon();
+const { executeGetOrderAmount } = useGetOrderAmount();
 
 const addCoupon = async (coupon: string) => {
-  const couponFound = await executeFindCoupon({ coupon })
+  const couponFound = await executeFindCoupon({ coupon });
   if (!couponFound.length) {
-    setValidationMessage(ERROR_MESSAGE_STATUS, t('orderCoupon.errorMessage'))
+    setValidationMessage(ERROR_MESSAGE_STATUS, t('orderCoupon.errorMessage'));
     return
   }
   await validateCoupon(couponFound[0], validationMessage)
-}
+};
 const getOrderAmount = async () => {
   const payload = {
     items: shoppingCart.value.items.map(item => ({
@@ -47,7 +43,7 @@ const getOrderAmount = async () => {
       quantity: item.quantity,
     })),
     coupon: shoppingCart.value.coupon,
-  }
+  };
   await executeGetOrderAmount(payload)
 }
 </script>

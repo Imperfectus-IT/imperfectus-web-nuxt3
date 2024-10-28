@@ -5,7 +5,7 @@ export default function () {
   const { shoppingCart } = useShoppingCartState()
   const { executeFindCoverageByPostalCode } = useGetCoverageByPostalCode()
 
-  const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.postalCode) || !isCoverageValid(shoppingCart.value.coverage))
+  const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostCode))
   const findCoverageByPostalCode = async (postalCode: string | null) => {
     if (!isPostalCodeLengthValid(postalCode)) {
       return

@@ -18,10 +18,11 @@ const boxDetails = [
     stepBox: 'order.steps.stepBox.largeBox',
   },
 ]
-// const goToPreviousStep = () => {
-//   const previousStep = shoppingCart.value.currentItem.purchaseType === SUBSCRIPTION_TYPE ? FREQUENCY_SUBSCRIPTION_TYPE_STEP : PURCHASE_TYPE_STEP
-//   emit(GO_TO_STEP_EVENT, previousStep)
-// }
+
+const goToNextStep = () => {
+  shoppingCart.value.items.push(shoppingCart.value.currentItem)
+  shoppingCart.value.items.length ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
+}
 </script>
 
 <template>
@@ -75,7 +76,7 @@ const boxDetails = [
         v-if="shoppingCart.currentItem.boxSize"
         severity="secondary"
         :label="$t('order.steps.stepPurchase.btn-continue')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)"
+        @click.prevent="goToNextStep"
       />
     </div>
     <!--    <ShoppingCartPurchaseSummaryFloating -->

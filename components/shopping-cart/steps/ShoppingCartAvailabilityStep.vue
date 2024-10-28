@@ -7,9 +7,10 @@ const { t } = useI18n()
 
 defineEmits([GO_TO_STEP_EVENT])
 watch(
-  () => shoppingCart.value.shippingAddress.postalCode,
+  () => shoppingCart.value.shippingAddress.shippingPostCode,
   async (newPostalCode) => {
     await findCoverageByPostalCode(newPostalCode)
+    console.log('isInvalid.value', isInvalid.value, newPostalCode)
     if (isInvalid.value && isPostalCodeLengthValid(newPostalCode)) {
       await errorToast(toast, t('adminOrderShipment.postCode'), t('validations.postcode.notCovered'))
     }
@@ -42,7 +43,7 @@ watch(
         }}
       </p>
       <InputOtp
-        v-model="shoppingCart.shippingAddress.postalCode"
+        v-model="shoppingCart.shippingAddress.shippingPostCode"
         class="mt-4"
         :pt="{
           input: 'text-[45px]',

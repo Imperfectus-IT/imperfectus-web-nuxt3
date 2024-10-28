@@ -19,7 +19,6 @@ const formRef = ref<HTMLFormElement | null>(null)
 const submit = async () => {
   paymentNotAvailable.value = false
   try {
-    // await create order / subscription
     await formPaymentHandler(props.order.id)
     if (url.value && formRef.value) {
       await sleep(200)
@@ -34,6 +33,10 @@ const submit = async () => {
     console.info(error.message)
   }
 }
+
+defineExpose({
+  submit,
+})
 </script>
 
 <template>
@@ -68,9 +71,8 @@ const submit = async () => {
         {{ $t('pages.order.status.paymentNotAvailable') }}
       </span>
       <Button
-        class=""
+        class="hidden"
         type="submit"
-        :label="$t('pages.order.pay.pay')"
       />
     </form>
   </div>

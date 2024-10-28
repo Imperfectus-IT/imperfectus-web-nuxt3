@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
+import { useValidateCouponHandler } from '~/composables/shared/coupons/application/validate/useValidateCouponHandler.ts'
+import { useGetOrderAmount } from '~/composables/admin/orders/application/getOrderAmount/useGetOrderAmount.ts'
+import { createEmpty as createEmptyShoppingCartItem } from '@/composables/shopping-cart/domain/Item.ts'
 
+const toast = useToast()
+const { errorToast, successToast } = useToastService()
 const { t } = useI18n()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const goToNextStep = () => {
@@ -12,17 +17,54 @@ const goBack = () => {
 const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const { getLocaleName } = useGetLocaleLanguage(locale)
-const { addOrderCoupon, removeOrderCoupon } = useUpdateOrderHandler(t)
+const { validateCoupon } = useValidateCouponHandler(t)
+const { executeGetOrderAmount } = useGetOrderAmount()
+const getSubtotal = computed(() => {
+  return shoppingCart.value.items.reduce((acc, item) => acc + item.product.price, 0)
+})
 
-const handleRemoveOrderCoupon = async () => {
-  await removeOrderCoupon(props.order, props.order.coupon, textData)
+const amount = reactive({
+  shippingCost: 0,
+  saved: 0,
+  total: 0,
+})
+
+const handleNewProduct = () => {
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
+  shoppingCart.value.currentItem = createEmptyShoppingCartItem()
 }
+
 const handleAddOrderCoupon = async (coupon: string) => {
-  await addOrderCoupon(props.order, coupon, textData)
+  const couponValidateData: ValidateCouponPayload = {
+    coupon,
+    user: useStrapiUser().value,
+    postcode: shoppingCart.value.shippingAddress.postalCode,
+    items: shoppingCart.value.items.map(item => item.product.sku),
+  }
+  await validateCoupon(couponValidateData)
+  const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
+  amount.shippingCost = newAmount.shipping
+  amount.saved = newAmount.saved
+  amount.total = newAmount.total
+}
+
+const handleRemoveCoupon = () => {
+  shoppingCart.value.currentItem.coupon = null
+}
+
+const removeItem = (id: string) => {
+  if (shoppingCart.value.items.length === 1) {
+    errorToast(toast, t('validations.one.item.required.title'), t('validations.one.item.required.description'))
+  }
+  else {
+    shoppingCart.value.items = shoppingCart.value.items.filter(item => item.uuid !== id)
+    successToast(toast, 'Producot eliminado', 'El producto ha sido eliminado correctamente')
+  }
 }
 </script>
 
 <template>
+  <Toast />
   <div class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[20%] relative">
     <slot name="title" />
     <div class="!absolute left-[25px] lg:left-[35px] flex flex-row gap-3">
@@ -70,11 +112,11 @@ const handleAddOrderCoupon = async (coupon: string) => {
         </ul>
         <!--        <span class="font-bold text-lg hidden lg:hidden lg:mt-2 lg:text-base">{{ item.product.price }} €</span> -->
       </div>
-      <div class="flex flex-row-reverse justify-between px-4 lg:flex-col lg:items-end lg:justify-around lg:gap-14">
-        <!--        <span -->
-        <!--          class="mdi mdi-close text-red-primary cursor-pointer" -->
-        <!--          @click.prevent="removeItem(item.id)" -->
-        <!--        /> -->
+      <div class="flex flex-row-reverse justify-between px- lg:gap-14">
+        <span
+          class="mdi mdi-close text-red-primary cursor-pointer"
+          @click.prevent="removeItem(item.uuid)"
+        />
         <!--          <div class="flex gap-2"> -->
         <!--            <Button -->
         <!--              icon="mdi mdi-minus" -->
@@ -110,29 +152,31 @@ const handleAddOrderCoupon = async (coupon: string) => {
       :label="$t('orderResume.add')"
       outlined
       class="lg: mb-10"
+      @click.prevent="handleNewProduct"
     />
     <OrderCoupon
       :show-title="false"
+      :order-coupon="shoppingCart.currentItem.coupon"
       @add-coupon="handleAddOrderCoupon"
-      @remove-coupon="handleRemoveOrderCoupon"
+      @remove-coupon="handleRemoveCoupon"
     />
     <Divider class="text-grey-secondary mt-7" />
     <div class="flex justify-between">
       <span>{{ $t('orderAmount.subtotal') }}</span>
-      <span>19.18€</span>
+      <span>{{ getSubtotal }}€</span>
     </div>
     <div class="flex justify-between mt-2">
       <span>{{ $t('orderAmount.shippingCost') }}</span>
-      <span>0,00€</span>
+      <span>{{ amount.shippingCost }}€</span>
     </div>
     <div class="flex justify-between mt-2">
       <span>{{ $t('orderAmount.discount') }}</span>
-      <span>0,00€</span>
+      <span>{{ amount.saved }}€</span>
     </div>
     <Divider class="text-grey-secondary" />
     <div class="flex justify-between text-[22px] font-solina-extended-medium">
       <span>{{ $t('orderAmount.total') }}</span>
-      <span>19.18€</span>
+      <span>{{ amount.total || getSubtotal }}€</span>
     </div>
     <div class="flex justify-center">
       <Button
@@ -142,5 +186,6 @@ const handleAddOrderCoupon = async (coupon: string) => {
         @click.prevent="goToNextStep"
       />
     </div>
+    <Toast />
   </div>
 </template>

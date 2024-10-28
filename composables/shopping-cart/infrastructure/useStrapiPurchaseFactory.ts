@@ -39,7 +39,6 @@ export const useStrapiPurchaseFactory = (cart: ShoppingCart): StrapiPurchase => 
       shipping_phone: cart.shippingAddress.phone,
     },
     order_items: cart.items.map((item: ShoppingCartItem) => {
-      console.log('item', item)
       return {
         product: item.product.id,
         quantity: item.quantity,

@@ -4,12 +4,13 @@ import type { Order, OrderBilling } from '~/composables/admin/orders/domain/Orde
 import type { Coupon } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
 import type { updateOrderItemPayload } from '~/components/admin/my-orders/partials/OrderEdit.vue'
 import type { updateOrderShippingPayload } from '~/components/admin/my-orders/DesktopOrder.vue'
+import { useFindCoupon } from '~/composables/shared/coupons/application/find/useFindCoupon.ts'
 
 export const useUpdateOrderHandler = (t: ComposerTranslation) => {
   const toast = useToast()
   const { successToast, errorToast } = useToastService()
   const { executeAddOrderReview, executeDiscardOrder, executeAddOrderCoupon, executeRemoveOrderCoupon, executeUpdateOrderItem, executeUpdateOrderBilling, executeUpdateOrderShipping, executeUpdateShippingCoverage } = useUpdateOrder(t)
-
+  const { executeFindCoupon } = useFindCoupon()
   const addOrderReview = async (order: Order, review: string, textData: string) => {
     try {
       await executeAddOrderReview(order, review)
@@ -20,19 +21,22 @@ export const useUpdateOrderHandler = (t: ComposerTranslation) => {
       errorToast(toast, t(`${textData}review.errorToast.title`), t(`${textData}review.errorToast.description`))
     }
   }
-  const addOrderCoupon = async (order: Order, coupon: string, textData: string) => {
+
+  const addOrderCoupon = async (order: Order, coupon: string) => {
     try {
-      const response = await executeAddOrderCoupon(order, coupon)
-      if (response.saved) {
-        successToast(toast, t(`${textData}coupon.add.successToast.title`), t(`${textData}coupon.add.successToast.description`))
-      }
-      else {
-        errorToast(toast, t(`${textData}coupon.add.notValidToast.title`), t(`${textData}coupon.add.notValidToast.description`))
-      }
+      const foundCoupon = await executeFindCoupon(coupon)
+      await executeAddOrderCoupon(order, foundCoupon)
+      successToast(toast, t(`subscriptions.subscription.addCoupon.successToast.add.title`), t(`subscriptions.subscription.addCoupon.successToast.add.description`))
     }
     catch (error) {
-      console.log('Error on adding coupon', error)
-      errorToast(toast, t(`${textData}coupon.errorToast.title`), t(`${textData}coupon.errorToast.description`))
+      console.log('Error on adding subscription coupon', error)
+      if (error && typeof error === 'object' && 'key' in error) {
+        const typedError = error as { key: string, message: string }
+        errorToast(toast, t(`subscriptions.subscription.addCoupon.errorToast.title`), t(`subscriptions.subscription.addCoupon.errorToast.${typedError.key}`))
+      }
+      else {
+        errorToast(toast, t(`subscriptions.subscription.addCoupon.errorToast.title`), t(`subscriptions.subscription.addCoupon.errorToast.description`))
+      }
     }
   }
   const discardOrder = async (orderId: number, textData: string) => {

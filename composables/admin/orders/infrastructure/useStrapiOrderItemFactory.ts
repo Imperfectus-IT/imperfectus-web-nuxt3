@@ -1,5 +1,5 @@
 export const useStrapiOrderItemFactory = (orderItem: OrderItem): StrapiOrderItem => {
-  console.log('orderItem', orderItem)
+  console.log('orderItem', orderItem);
   return {
     id: orderItem.id,
     product: orderItem.product,
@@ -16,4 +16,4 @@ export const useStrapiOrderItemFactory = (orderItem: OrderItem): StrapiOrderItem
     trackingUrl: orderItem.trackingUrl,
     trackingId: orderItem.trackingId,
   }
-}
+};

@@ -1344,6 +1344,8 @@ export default {
   'content.contact.description': 'Estamos encantados de poder escucharos!',
 
   // Validations
+  'validations.one.item.required.title': 'No se puede eliminar',
+  'validations.one.item.required.description': 'El pedido debe contener almenos un producto',
   'validations.postcode.invalid': 'Código postal incorrecto',
   'validations.postcode.valid': 'Código postal correcto',
   'validations.postcode.notCovered': 'Todavía no entregamos en tu zona',

@@ -1,5 +1,3 @@
-import type { BillingAddress } from './BillingAddress.ts'
-import type { ShippingAddress } from './ShippingAddress.ts'
 import type { ShoppingCartItem } from './Item.ts'
 import { createEmpty as createEmptyBillingAddress } from './BillingAddress.ts'
 import { createEmpty as createEmptyShippingAddress } from './ShippingAddress.ts'
@@ -7,7 +5,7 @@ import { createEmpty as createEmptyItem } from './Item.ts'
 import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
 
 export type ShoppingCart = {
-  id: string
+  uuid: string
   status: string
   step: string
   deliveryDate: string
@@ -19,8 +17,9 @@ export type ShoppingCart = {
   termConditions: boolean
   whatsappInfo: boolean
   marketingInfo: boolean
-  billingAddress: BillingAddress
-  shippingAddress: ShippingAddress
+  billingAddress: OrderBilling
+  shippingAddress: OrderShipping
+  shippingCoverage: shoppingCartCoverage
   items: ShoppingCartItem[]
   currentItem: ShoppingCartItem | null
 }
@@ -38,7 +37,7 @@ export const PAYMENT_STEP = 'StepPayment'
 
 export function createEmpty(): ShoppingCart {
   return {
-    id: generateId(),
+    uuid: generateId(),
     step: AVAILABILITY_STEP,
     deliveryDate: '',
     deliveryHour: '',
@@ -56,6 +55,6 @@ export function createEmpty(): ShoppingCart {
   }
 }
 
-export function isCoverageValid(coverage: string | null | undefined): boolean {
-  return coverage !== null && coverage !== undefined
-}
+// export function isCoverageValid(coverage: string | null | undefined): boolean {
+//   return coverage !== null && coverage !== undefined
+// }

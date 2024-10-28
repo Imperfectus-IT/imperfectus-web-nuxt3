@@ -6,7 +6,7 @@ export const useCreateOrder = () => {
   const { createOrder } = useOrderRepository()
 
   const executeCreateOrder = async (cart: ShoppingCart) => {
-    await createOrder(cart)
+    order.value = await createOrder(cart)
   }
   return {
     executeCreateOrder,

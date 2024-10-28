@@ -14,6 +14,7 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     orderMeta: order.order_meta.id,
     subscription: order.subscriptions?.length > 0 ? order.subscriptions[0].id : null,
     orderItems: order.order_items.map((order_item: StrapiOrderItem) => {
+      console.log('order_item', order_item)
       return {
         id: order_item.id,
         product: {
@@ -26,7 +27,7 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
         },
         amount: order_item.final_amount ? order_item.final_amount : order_item.amount,
         sku: order_item.product.SKU,
-        image: `images/boxes/Caixa-${getBoxImage(order_item.product.SKU)}.webp`,
+        image: order_item.product?.imagePath?.[0],
         coupon: order_item.coupon_id
           ? {
               coupon: order_item.coupon_id.coupon,
@@ -37,7 +38,7 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
               type: order_item.coupon_id.type,
             }
           : null,
-        exclusions: order_item.exclusions.map((exclusion: any) => {
+        exclusions: order_item.exclusions?.map((exclusion: any) => {
           return {
             id: exclusion.id,
             nameEs: exclusion.name_es,
@@ -114,10 +115,6 @@ const shippingSuplementsAmount = (shippingSupplements: any) => {
   return shippingSupplements.reduce((acc: number, supplement: any) => {
     return acc + supplement.amount
   }, 0)
-}
-
-const getBoxImage = (sku: string) => {
-  return sku.includes('IM') ? 'M' : sku.includes('XL') ? 'XL' : 'S'
 }
 
 const getCoverageLabel = (coverageValue: string) => {

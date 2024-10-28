@@ -1,3 +1,5 @@
+import { createEmpty as createEmptyCoverage } from './Coverage.ts'
+
 export type ShippingAddress = {
   id?: number
   firstname: string
@@ -16,21 +18,20 @@ export type ShippingAddress = {
 
 export const MAX_POSTAL_CODE_LENGTH = 5
 
-export function createEmpty(): ShippingAddress {
+export function createEmpty(): OrderShipping {
   return {
-    id: null,
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    company: '',
-    address1: '',
-    address2: '',
-    postalCode: '',
-    city: '',
-    state: '',
-    country: '',
-    notes: '',
+    shippingFirstName: '',
+    shippingLastName: '',
+    shippingEmail: '',
+    shippingPhone: '',
+    shippingAddress: '',
+    shippingAddress2: '',
+    shippingPostCode: '',
+    shippingCity: '',
+    shippingNotes: '',
+    shippingCountry: '',
+    shippingState: '',
+    shippingCoverage: createEmptyCoverage(),
   }
 }
 

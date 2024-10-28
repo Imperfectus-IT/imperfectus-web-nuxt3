@@ -2,7 +2,7 @@ import type { Product } from './Product.ts'
 import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
 
 export type ShoppingCartItem = {
-  id: string
+  uuid: string
   amount: number
   coupon?: Coupon | null
   boxType: string
@@ -16,7 +16,7 @@ export type ShoppingCartItem = {
 
 export function createEmpty(): ShoppingCartItem {
   return {
-    id: generateId(),
+    uuid: generateId(),
     amount: 0,
     coupon: null,
     boxType: '',

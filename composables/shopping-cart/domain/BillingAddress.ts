@@ -14,20 +14,17 @@ export type BillingAddress = {
   country: string
 }
 
-export function createEmpty(): BillingAddress {
+export function createEmpty(): OrderBilling {
   return {
-    id: null,
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    company: '',
-    address1: '',
-    address2: '',
-    postalCode: '',
-    city: '',
-    state: '',
-    cif: '',
-    country: '',
+    billingFirstName: '',
+    billingLastName: '',
+    billingEmail: '',
+    billingPhone: '',
+    billingAddress: '',
+    billingAddress2: '',
+    billingPostCode: '',
+    billingCity: '',
+    billingState: '',
+    billingCif: '',
   }
 }
