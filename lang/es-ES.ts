@@ -1090,7 +1090,7 @@ export default {
   'string.hour.afternoon': 'Entre las 14:00 y las 18:00',
   'string.hour.b2b_afternoon': 'Entre las 16:00 y las 20:00',
   'string.hour.night': 'Entre las 18:00 y las 22:00',
-  'string.hour.timeSlot': 'Entre las {0} y las {1}',
+  'string.hour.timeSlot': 'Entre las {from} y las {to}',
   'string.frequency.weekly': 'cada semana',
   'string.frequency.biweekly': 'cada dos semanas',
   'string.frequency.once': 'compra única',
@@ -4027,4 +4027,11 @@ export default {
       handleButton: 'Gestionar suscripción de comunicaciones',
     },
   },
+  'deliveryDatePayment': {
+    timeSlot: 'Franja horaria',
+    attention: 'Ten en cuenta:',
+    message_1: 'Las entregas de la caja serán semanales para suscripciones semanales y quincenales de manera alterna.',
+    message_2: 'El pago se realizará cada domingo previo.',
+  },
+
 }

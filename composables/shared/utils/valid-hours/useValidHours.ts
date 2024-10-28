@@ -4,8 +4,12 @@ export const useGetValidHours = () => {
   const { validHours } = useValidHoursState()
 
   const executeGetValidHours = (timeSlot: TimeSlot) => {
-    console.info('executeGetValidHours', timeSlot)
-    if (timeSlot === '6h') {
+    if (!timeSlot) {
+      validHours.value = [
+        { timeSlot: 'full', from: '10:00', to: '22:00' },
+      ]
+    }
+    else if (timeSlot === '6h') {
       validHours.value = [
         { timeSlot: 'full', from: '10:00', to: '22:00' },
         { timeSlot: 'morning', from: '10:00', to: '16:00' },

@@ -3166,4 +3166,10 @@ export default {
       },
     },
   },
+  'deliveryDatePayment': {
+    timeSlot: 'Franja horària',
+    attention: 'Tingues en compte:',
+    message_1: 'Els lliuraments de la caixa seran setmanals per a subscripcions setmanals i quinzenals de manera alterna.',
+    message_2: 'El pagament es realitzarà cada diumenge previ.',
+  },
 }

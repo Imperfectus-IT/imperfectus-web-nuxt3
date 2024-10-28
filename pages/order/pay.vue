@@ -36,7 +36,7 @@ const currentStep = ref(FINISH_PAYMENT_PAY)
 
 const { order } = useGetOrderHandler<Order>(order_id, t)
 
-const componentToRenderFromStep: Record<string, any> = {
+const componentToRenderFromStep: Record<string, Component> = {
   [FINISH_PAYMENT_PAY]: resolveComponent('FinishPaymentStep'),
   [FINISH_PAYMENT_DELIVERY_DATE]: resolveComponent('DeliveryDatePaymentStep'),
 }
@@ -52,9 +52,6 @@ watch(order, async (newOrder) => {
 </script>
 
 <template>
-  <pre>Is valid delivery date: {{ isValidDeliveryDate }}</pre>
-  <h3>Current step: {{ currentStep }}</h3>
-  <!--  <FinishPaymentStep :order="order" /> -->
   <component
     :is="componentToRenderFromStep[currentStep]"
     :order="order"

@@ -30,7 +30,16 @@ export const useStrapiLocationRepository = () => {
   }
 
   const getTimeSlot = async (postcode: string, coverage: string): Promise<string> => {
-    return await client(`/locations/timeSlot?coverage=${coverage}&postcode=${postcode}`, { method: 'GET' })
+    try {
+      return await client(`/locations/timeSlot?coverage=${coverage}&postcode=${postcode}`, { method: 'GET' })
+    }
+    catch (error) {
+      console.info(`Error getting time slot for postcode ${postcode} and coverage ${coverage}`, error)
+      if (error === 'Not Found') {
+        return ''
+      }
+      throw error
+    }
   }
 
   return {
