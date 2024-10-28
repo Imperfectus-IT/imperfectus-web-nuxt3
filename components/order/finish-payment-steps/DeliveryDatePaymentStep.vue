@@ -19,6 +19,7 @@ const { availableWeekDays, getAvailableWeekDaysHandler } = availableWeekDaysHand
 
 const selectedDate = ref(null)
 const selectedHour = ref(null)
+const minDate = ref(dayjs().add(2, 'day').toDate())
 
 onMounted(async () => {
   await getTimeSlotHandler(props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage, selectedDate.value)
@@ -87,6 +88,7 @@ const mapValidHours = (validHours: ValidHour[]) => {
           inline
           :disabled-dates="unavailableDates"
           :disabled-days="disabledDays"
+          :min-date="minDate"
         >
           <template #date="slotProps">
             <div
