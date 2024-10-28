@@ -23,7 +23,7 @@ const minDate = ref(dayjs().add(2, 'day').toDate())
 
 onMounted(async () => {
   await getTimeSlotHandler(props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage, selectedDate.value)
-  await getUnavailableDates([], props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage)
+  await getUnavailableDates(props.order.orderItems.map(item => item.product.id), props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage)
   await getAvailableWeekDaysHandler(props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage)
 })
 
@@ -75,6 +75,8 @@ const mapValidHours = (validHours: ValidHour[]) => {
     <pre>availableWeekDays: {{ availableWeekDays }}</pre>
     <pre>validHours: {{ validHours }}</pre>
     <pre>timeSlot: {{ timeSlot }}</pre>
+    <pre>Products: {{ props.order.orderItems.map(item => item.product.id) }}</pre>
+
     <div class="flex my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[50%] lg:mt-14">
       <div class="flex flex-col ">
         <p class="font-recoleta-regular text-lg font-normal text-center lg:text-start lg:text-xl hidden lg:block">
