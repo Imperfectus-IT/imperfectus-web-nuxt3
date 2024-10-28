@@ -66,6 +66,15 @@ const mapValidHours = (validHours: ValidHour[]) => {
     value: hour.timeSlot,
   }))
 }
+
+/**
+ * The purchase is disabled if the order was created more than 3 months ago
+ * @returns boolean
+ */
+const isPurchaseDisabled = computed(() => {
+  console.info('props.order.createdAt:', props.order.createdAt)
+  return dayjs(props.order.createdAt).isBefore(dayjs().subtract(3, 'month'))
+})
 </script>
 
 <template>
@@ -76,6 +85,8 @@ const mapValidHours = (validHours: ValidHour[]) => {
     <pre>validHours: {{ validHours }}</pre>
     <pre>timeSlot: {{ timeSlot }}</pre>
     <pre>Products: {{ props.order.orderItems.map(item => item.product.id) }}</pre>
+    <pre>Order created at: {{ props.order.createdAt }}</pre>
+    <pre>isPurchaseDisabled: {{ isPurchaseDisabled }}</pre>
 
     <div class="flex my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[50%] lg:mt-14">
       <div class="flex flex-col ">
@@ -140,7 +151,7 @@ const mapValidHours = (validHours: ValidHour[]) => {
         </span>
       </div>
     </div>
-  </div>>
+  </div>
 </template>
 
 <style scoped lang="scss">

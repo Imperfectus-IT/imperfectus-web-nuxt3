@@ -108,6 +108,7 @@ export const useOrdersFactory = (order: StrapiOrder, t: ComposerTranslation): Or
     orderPayment: {
       totalAmount: order.order_payment.totalAmount,
     },
+    createdAt: order.created_at,
   }
 }
 
