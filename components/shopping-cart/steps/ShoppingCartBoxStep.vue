@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { IM_PRODUCT_TYPE, S_PRODUCT_TYPE } from '~/composables/shared/products/domain/ProductConstants.ts'
-
 const { shoppingCart } = useShoppingCartState()
 const { onSetBoxSize } = useShoppingCartBoxStep()
 const emit = defineEmits([GO_TO_STEP_EVENT])
