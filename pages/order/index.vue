@@ -20,7 +20,6 @@ defineI18nRoute({
 })
 const { shoppingCart } = useShoppingCartState()
 const { executeStep } = useStep()
-const { executeGetAllProducts } = useGetAllStrapiProducts()
 
 const componentToRenderFromStep: Record<string, any> = {
   [AVAILABILITY_STEP]: resolveComponent('LazyShoppingCartAvailabilityStep'),
@@ -43,7 +42,6 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  await executeGetAllProducts()
   await executeStep('StepAvailability')
 })
 </script>

@@ -1,6 +1,6 @@
 import type { UserRepository } from '~/server/contexts/backend/users/domain/UserRepository'
 import { User } from '~/server/contexts/backend/users/domain/User'
-import { Role } from "~/server/contexts/backend/users/domain/Role";
+import { Role } from '~/server/contexts/backend/users/domain/Role'
 
 export class StrapiUserRepository implements UserRepository {
   async login(identifier, password) {

@@ -65,6 +65,8 @@ export interface OrderBilling {
   billingState: string
   billingCif: string
   billingCountry: string
+  billingCompany?: string
+  billingSocialName?: string
 }
 
 export interface OrderShipping {

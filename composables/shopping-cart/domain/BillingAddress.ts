@@ -26,5 +26,8 @@ export function createEmpty(): OrderBilling {
     billingCity: '',
     billingState: '',
     billingCif: '',
+    billingCountry: '',
+    billingCompany: '',
+    billingSocialName: '',
   }
 }

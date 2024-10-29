@@ -11,6 +11,7 @@ const goBack = () => {
 const goToNextStep = () => {
   const user = useStrapiUser()
   emit(GO_TO_STEP_EVENT, user?.value?.id ? RESUME_ITEM_STEP : AUTH_STEP)
+  shoppingCart.value.items.push(shoppingCart.value.currentItem)
 }
 </script>
 

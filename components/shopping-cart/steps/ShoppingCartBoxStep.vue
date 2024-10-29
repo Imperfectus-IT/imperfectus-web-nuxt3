@@ -20,8 +20,13 @@ const boxDetails = [
 ]
 
 const goToNextStep = () => {
-  shoppingCart.value.items.push(shoppingCart.value.currentItem)
-  shoppingCart.value.items.length ? emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP) : emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
+  emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
+}
+
+const goToPreviousStep = () => {
+  shoppingCart.value.currentItem.product = null
+  shoppingCart.value.items.filter(item => item.uuid !== shoppingCart.value.currentItem.uuid)
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
 }
 </script>
 
@@ -34,7 +39,7 @@ const goToNextStep = () => {
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
+          @click.prevent="goToPreviousStep"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>

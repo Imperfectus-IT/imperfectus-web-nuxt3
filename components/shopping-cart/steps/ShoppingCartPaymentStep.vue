@@ -116,16 +116,16 @@ const handleCreatePurchase = async () => {
           </div>
           {{ order }}
         </div>
-        <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
-          <ShoppingCartSummaryBox>
-            <template #title>
-              <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
-                {{ $t('order.steps.stepResume') }}
-              </h3>
-            </template>
-          </ShoppingCartSummaryBox>
-        </div>
       </div>
+      <!--      <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14"> -->
+      <!--        <ShoppingCartSummaryBox> -->
+      <!--          <template #title> -->
+      <!--            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3"> -->
+      <!--              {{ $t('order.steps.stepResume') }} -->
+      <!--            </h3> -->
+      <!--          </template> -->
+      <!--        </ShoppingCartSummaryBox> -->
+      <!--      </div> -->
     </div>
   </div>
 </template>

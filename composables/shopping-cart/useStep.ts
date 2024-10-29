@@ -9,6 +9,7 @@ export const useStep = () => {
   }
 
   const executeStep = async (step: string) => {
+    console.log('executeStep', step)
     setStep(step)
     await router.push({
       path: route.path,

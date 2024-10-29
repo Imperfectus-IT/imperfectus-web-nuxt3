@@ -1,6 +1,29 @@
 <script setup lang="ts">
+import type { z } from 'zod'
+import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
+import ShoppingCartTopSummaryBoxSmall from '~/components/shopping-cart/partials/ShoppingCartTopSummaryBoxSmall.vue'
+import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shopping-cart/domain/Item.ts'
+
+const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const emit = defineEmits([GO_TO_STEP_EVENT])
+const shippingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
+const billingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
+const { getLocaleName } = useGetLocaleLanguage(locale)
+
+const isFormValid = computed(() => {
+  if (shoppingCart.value.invoiceRequired) {
+    return !!shippingFormErrors.value?.errors || !!billingFormErrors.value?.errors
+  }
+  else {
+    return shippingFormErrors.value?.errors
+  }
+})
+
+const handleNewProduct = () => {
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
+  shoppingCart.value.currentItem = createEmptyShoppingCartItem()
+}
 </script>
 
 <template>
@@ -33,9 +56,9 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
       />
     </div>
     <div class="lg:flex lg:justify-evenly lg:gap-4">
-      <div class="lg:w-2/4">
+      <div class="lg:w-7/12">
         <div class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
-          <ShoppingCartShippingAddress />
+          <ShoppingCartShippingAddress ref="shippingFormErrors" />
         </div>
         <div class="flex items-center lg:mt-4">
           <Checkbox
@@ -53,17 +76,31 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
         </div>
         <div
           v-if="shoppingCart.invoiceRequired"
-          class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:mt-5"
+          class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12"
         >
-          <ShoppingCartBillingAddress />
+          <ShoppingCartBillingAddress ref="billingFormErrors" />
         </div>
       </div>
-      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5">
-        <ShoppingCartSummaryBox />
+      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5 lg:pt-8 lg:w-5/12">
+        <ShoppingCartPartialResumeList
+          :display-next-step-button="false"
+          @go-to-next-step="$emit(GO_TO_STEP_EVENT, DELIVERY_DATE_STEP)"
+          @add-new-product="handleNewProduct"
+        >
+          <template #title>
+            <h3 class="font-recoleta-regular text-center lg:text-[36px] font-medium mb-3">
+              {{ $t('order.steps.stepResume') }}
+            </h3>
+          </template>
+          <template #boxCard>
+            <ShoppingCartTopSummaryBoxSmall />
+          </template>
+        </ShoppingCartPartialResumeList>
       </div>
     </div>
-    <div class="flex justify-center lg:justify-end mt-4 lg:w-2/4">
+    <div class="flex justify-center mt-4 lg:justify-center">
       <Button
+        :disabled="isFormValid"
         severity="secondary"
         :label="$t('orderMeta.continue')"
         @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_DATE_STEP)"
@@ -73,5 +110,6 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
       class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
       :item="shoppingCart.currentItem"
     />
+    <Toast />
   </div>
 </template>

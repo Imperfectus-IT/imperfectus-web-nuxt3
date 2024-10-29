@@ -25,8 +25,7 @@ const goToNextStep = () => {
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[2%] 2xl:px-[20%] relative">
-    {{ selectedDate }}
+  <div class="px-10 ">
     <div class="flex items-center justify-center gap-3 lg:mt-14">
       <div class="!absolute left-5 flex flex-row gap-3">
         <Button
@@ -44,9 +43,9 @@ const goToNextStep = () => {
         }}
       </p>
     </div>
-    <div class="lg:flex gap-5">
-      <div class="my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] lg:mt-14">
-        <p class="font-recoleta-regular text-lg font-normal text-center lg:text-start lg:text-xl hidden lg:block">
+    <div class="lg:flex gap-5 lg:mt-10">
+      <div class=" lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] ">
+        <p class="font-recoleta-regular text-lg font-normal text-center lg:text-start lg:text-[40px] lg:mb-5 hidden lg:block">
           {{
             $t("orderStepDate.message")
           }}
@@ -79,14 +78,17 @@ const goToNextStep = () => {
           <span class="inline-block align-top">{{ $t('orderStepDate.selected') }}</span>
         </div>
       </div>
-      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
-        <ShoppingCartSummaryBox>
+      <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:p-5 lg:w-5/12">
+        <ShoppingCartPartialResumeList>
           <template #title>
-            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
+            <h3 class="font-recoleta-regular text-center lg:text-[36px] font-medium mb-3">
               {{ $t('order.steps.stepResume') }}
             </h3>
           </template>
-        </ShoppingCartSummaryBox>
+          <template #boxCard>
+            <ShoppingCartTopSummaryBoxSmall />
+          </template>
+        </ShoppingCartPartialResumeList>
       </div>
     </div>
     <div class="flex justify-center mt-6">
