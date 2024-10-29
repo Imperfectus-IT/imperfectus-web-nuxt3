@@ -117,19 +117,15 @@ const goToPayment = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col lg:justify-center lg:items-center lg:mt-14">
-    <ProgressSpinner
-      v-if="isLoading"
-      style="width: 50px; height: 50px"
-      stroke-width="8"
-      fill="transparent"
-      animation-duration=".5s"
-      aria-label="Custom ProgressSpinner"
+  <div class="flex flex-col lg:mt-14 lg:items-center lg:justify-center">
+    <Loading
+      :is-loading="isLoading"
+      image="/images/products/fruits/Poma.webp"
     />
 
-    <div class="flex my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[50%] lg:mt-14">
-      <div class="flex flex-col ">
-        <p class="font-recoleta-regular text-lg font-normal text-center lg:text-start lg:text-xl hidden lg:block">
+    <div class="my-auto flex lg:border-[1px] lg:w-[50%] lg:mt-14 lg:rounded-lg lg:px-14 lg:py-8">
+      <div class="flex flex-col">
+        <p class="hidden text-center text-lg font-normal font-recoleta-regular lg:block lg:text-start lg:text-xl">
           {{
             $t("orderStepDate.message")
           }}
@@ -145,7 +141,7 @@ const goToPayment = async () => {
           <template #date="slotProps">
             <div
               v-if="isSelectedDate(slotProps.date)"
-              class="bg-green-primary rounded-md w-7 h-7 flex justify-center items-center text-[13px]"
+              class="flex h-7 w-7 items-center justify-center rounded-md bg-green-primary text-[13px]"
             >
               {{ slotProps.date.day }}
             </div>
@@ -158,16 +154,16 @@ const goToPayment = async () => {
           </template>
         </Calendar>
 
-        <div class="w-64 text-center align-baseline mt-5">
-          <span class="mdi mdi-square-outline text-lg inline-block align-top rounded-xl" />
-          <span class="inline-block align-top mr-3">{{ $t('orderStepDate.available') }}</span>
-          <span class="mdi mdi-square text-green-primary text-lg inline-block align-top rounded-xl" />
+        <div class="mt-5 w-64 text-center align-baseline">
+          <span class="inline-block rounded-xl align-top text-lg mdi mdi-square-outline" />
+          <span class="mr-3 inline-block align-top">{{ $t('orderStepDate.available') }}</span>
+          <span class="inline-block rounded-xl align-top text-lg mdi mdi-square text-green-primary" />
           <span class="inline-block align-top">{{ $t('orderStepDate.selected') }}</span>
         </div>
       </div>
 
-      <div class="self-center center mx-auto  max-w-sm">
-        <p class="font-recoleta-regular text-[16px] font-semibold   mb-2">
+      <div class="mx-auto max-w-sm self-center center">
+        <p class="mb-2 font-semibold font-recoleta-regular text-[16px]">
           {{ $t('deliveryDatePayment.timeSlot') }}
         </p>
         <Dropdown
@@ -175,17 +171,17 @@ const goToPayment = async () => {
           :options="mapValidHours(validHours)"
           option-label="label"
           option-value="value"
-          class="text-[16px] mt-2 mb-5 lg:mt-0"
+          class="mt-2 mb-5 text-[16px] lg:mt-0"
         />
 
-        <p class="font-recoleta-regular text-[16px] font-semibold mt-2 mb-2">
+        <p class="mt-2 mb-2 font-semibold font-recoleta-regular text-[16px]">
           {{ $t('deliveryDatePayment.attention') }}
         </p>
 
         <span class="font-recoleta-regular text-[16px]">
           {{ $t('deliveryDatePayment.message_1') }}
         </span>
-        <span class="font-recoleta-regular text-[16px] font-semibold ml-1">
+        <span class="ml-1 font-semibold font-recoleta-regular text-[16px]">
           {{ $t('deliveryDatePayment.message_2') }}
         </span>
       </div>
