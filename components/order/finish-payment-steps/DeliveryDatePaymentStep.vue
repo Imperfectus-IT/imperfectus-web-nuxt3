@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
+import { ref } from 'vue'
 import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
 import type { ValidHour } from '~/composables/shared/utils/types/ValidHour.ts'
+import { useSleep } from '~/composables/shared/useSleep.ts'
+import { useFormPaymentHandler } from '~/composables/payment/application/form/useFormPaymentHandler.ts'
+import { useUpdateDeliveryHandler } from '~/composables/orders/application/update-delivery/useUpdateDeliveryHandler.ts'
 
 const props = defineProps({
   order: {
@@ -20,6 +24,12 @@ const { availableWeekDays, getAvailableWeekDaysHandler } = availableWeekDaysHand
 const selectedDate = ref(null)
 const selectedHour = ref(null)
 const minDate = ref(dayjs().add(2, 'day').toDate())
+
+const { sleep } = useSleep()
+const { url, body, formPaymentHandler } = useFormPaymentHandler()
+const formRef = ref<HTMLFormElement | null>(null)
+const { executeUpdateDeliveryHandler } = useUpdateDeliveryHandler()
+const isLoading = ref(false)
 
 onMounted(async () => {
   await getTimeSlotHandler(props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage, selectedDate.value)
@@ -42,6 +52,10 @@ watch(validHours, (newValidHours: ValidHour[]) => {
   else {
     selectedHour.value = firstTimeSlot.timeSlot
   }
+})
+
+const isInValid = computed(() => {
+  return !selectedDate.value || !selectedHour.value
 })
 
 const disabledDays = computed(() => {
@@ -67,26 +81,51 @@ const mapValidHours = (validHours: ValidHour[]) => {
   }))
 }
 
-/**
- * The purchase is disabled if the order was created more than 3 months ago
- * @returns boolean
- */
-const isPurchaseDisabled = computed(() => {
-  console.info('props.order.createdAt:', props.order.createdAt)
-  return dayjs(props.order.createdAt).isBefore(dayjs().subtract(3, 'month'))
-})
+const completeStep = async () => {
+  try {
+    isLoading.value = true
+    await executeUpdateDeliveryHandler(props.order.id, dayjs(selectedDate.value).format('YYYY-MM-DD'), selectedHour.value)
+    await goToPayment()
+  }
+  catch (error) {
+    console.info('completeStep error')
+    console.info(error.message)
+  }
+  finally {
+    isLoading.value = false
+  }
+}
+
+const goToPayment = async () => {
+  try {
+    await formPaymentHandler(props.order.id)
+
+    if (!url.value || !formRef.value) {
+      paymentNotAvailable.value = true
+      return
+    }
+
+    await sleep(200)
+    console.info('submitting form')
+    formRef.value.submit()
+  }
+  catch (error) {
+    console.info('orderpaymentform error')
+    console.info(error.message)
+  }
+}
 </script>
 
 <template>
-  <div>
-    <pre>SelectedHour: {{ selectedHour }}</pre>
-    <pre>UnavailableDates: {{ unavailableDates }}</pre>
-    <pre>availableWeekDays: {{ availableWeekDays }}</pre>
-    <pre>validHours: {{ validHours }}</pre>
-    <pre>timeSlot: {{ timeSlot }}</pre>
-    <pre>Products: {{ props.order.orderItems.map(item => item.product.id) }}</pre>
-    <pre>Order created at: {{ props.order.createdAt }}</pre>
-    <pre>isPurchaseDisabled: {{ isPurchaseDisabled }}</pre>
+  <div class="flex flex-col lg:justify-center lg:items-center lg:mt-14">
+    <ProgressSpinner
+      v-if="isLoading"
+      style="width: 50px; height: 50px"
+      stroke-width="8"
+      fill="transparent"
+      animation-duration=".5s"
+      aria-label="Custom ProgressSpinner"
+    />
 
     <div class="flex my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[50%] lg:mt-14">
       <div class="flex flex-col ">
@@ -151,6 +190,16 @@ const isPurchaseDisabled = computed(() => {
         </span>
       </div>
     </div>
+
+    <CompletePaymentActions
+      v-model:form-ref="formRef"
+      class="mt-16 mb-16"
+      :order="order"
+      :url="url"
+      :body="body"
+      :disabled="isInValid"
+      @on-submit="() => completeStep()"
+    />
   </div>
 </template>
 

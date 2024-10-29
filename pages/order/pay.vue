@@ -5,6 +5,7 @@ import { useGetOrderHandler } from '~/composables/admin/orders/application/getOn
 import { FINISH_PAYMENT_DELIVERY_DATE } from '~/composables/orders/types/FinishPaymentConstants.ts'
 
 const { t } = useI18n()
+// TODO: Use the useLocalePath composable
 const localePath = useLocalePath()
 
 useHead({
@@ -48,6 +49,16 @@ watch(order, async (newOrder) => {
       currentStep.value = FINISH_PAYMENT_DELIVERY_DATE
     }
   }
+})
+
+/**
+ * The purchase is disabled if the order was created more than 3 months ago
+ * @returns boolean
+ */
+// TODO: Show a popup
+const isPurchaseDisabled = computed(() => {
+  console.info('props.order.createdAt:', props.order.createdAt)
+  return dayjs(props.order.createdAt).isBefore(dayjs().subtract(3, 'month'))
 })
 </script>
 

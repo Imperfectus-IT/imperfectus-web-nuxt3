@@ -1,51 +1,51 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useSleep } from '~/composables/shared/useSleep.ts'
-import { useFormPaymentHandler } from '~/composables/payment/application/form/useFormPaymentHandler.ts'
+import { ref, watch } from 'vue'
 
-const props = defineProps({
+defineProps({
   order: {
     type: Object as () => Order,
     required: true,
   },
+  url: {
+    type: String,
+    required: true,
+  },
+  body: {
+    type: Object,
+    required: true,
+  },
+  formRef: {
+    type: Object as () => HTMLFormElement | null,
+    required: true,
+  },
+  paymentNotAvailable: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 })
 
-const { url, body, formPaymentHandler } = useFormPaymentHandler()
+const emit = defineEmits(['update:formRef', 'on-submit'])
 
-const { sleep } = useSleep()
-const paymentNotAvailable = ref(false)
-const formRef = ref<HTMLFormElement | null>(null)
+const localFormRef = ref<HTMLFormElement | null>(null)
 
-const submit = async () => {
-  paymentNotAvailable.value = false
-  try {
-    await formPaymentHandler(props.order.id)
-
-    if (url.value && formRef.value) {
-      await sleep(200)
-      console.info('submitting form')
-      formRef.value.submit()
-    }
-    else {
-      paymentNotAvailable.value = true
-    }
-  }
-  catch (error) {
-    console.info('orderpaymentform error')
-    console.info(error.message)
-  }
-}
+watch(localFormRef, (newVal) => {
+  emit('update:formRef', newVal)
+})
 </script>
 
 <template>
   <div class="flex flex-col gap-5 items-center">
     <form
       v-if="body"
-      ref="formRef"
+      ref="localFormRef"
       :action="url"
       method="POST"
       class="OrderPaymentForm"
-      @submit.prevent="submit"
+      @submit.prevent="emit('on-submit')"
     >
       <input
         :value="body.Ds_SignatureVersion"
@@ -69,8 +69,8 @@ const submit = async () => {
         {{ $t('pages.order.status.paymentNotAvailable') }}
       </span>
       <Button
-        class=""
         type="submit"
+        :disabled="disabled"
         :label="$t('pages.order.pay.pay')"
       />
     </form>

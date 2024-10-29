@@ -1,7 +1,37 @@
 <script setup lang="ts">
-defineProps<{
+import { ref } from 'vue'
+import { useFormPaymentHandler } from '~/composables/payment/application/form/useFormPaymentHandler.ts'
+import { useSleep } from '~/composables/shared/useSleep.ts'
+
+const props = defineProps<{
   order: Order
 }>()
+
+const localePath = useLocalePath()
+const { sleep } = useSleep()
+const { url, body, formPaymentHandler } = useFormPaymentHandler()
+const formRef = ref<HTMLFormElement | null>(null)
+
+const paymentNotAvailable = ref(false)
+
+const goToPayment = async () => {
+  try {
+    await formPaymentHandler(props.order.id)
+
+    if (!url.value || !formRef.value) {
+      paymentNotAvailable.value = true
+      return
+    }
+
+    await sleep(200)
+    console.info('submitting form')
+    formRef.value.submit()
+  }
+  catch (error) {
+    console.info('orderpaymentform error')
+    console.info(error.message)
+  }
+}
 </script>
 
 <template>
@@ -37,8 +67,12 @@ defineProps<{
     </Panel>
 
     <CompletePaymentActions
+      v-model:form-ref="formRef"
       class="mt-16 mb-16"
       :order="order"
+      :url="url"
+      :body="body"
+      @on-submit="goToPayment"
     />
 
     <Divider class="before:border-grey-secondary" />
