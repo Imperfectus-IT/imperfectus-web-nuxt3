@@ -25,9 +25,13 @@ defineProps({
       class="absolute z-50 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center top-[50%] left-[50%]"
     >
       <ProgressSpinner
-        class="stroke-dasharray-[89,200] stroke-dashoffset-0 animate-[p-progress-spinner-dash_1.5s_ease-in-out_infinite] stroke-linecap-round"
         :style="{ width: width, height: height, stroke: '#002625' }"
-        stroke-color="#00ff00"
+        :pt="{
+          circle: {
+            stroke: '#002625',
+            class: 'stroke-dasharray-[89,200] stroke-dashoffset-0 animate-[p-progress-spinner-dash_1.5s_ease-in-out_infinite] stroke-linecap-round',
+          },
+        }"
       />
       <img
         v-if="image"
@@ -40,5 +44,18 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-
+@keyframes p-progress-spinner-color {
+  100%, 0% {
+    stroke: #00ff00;
+  }
+  40% {
+    stroke: #00ff00;
+  }
+  66% {
+    stroke: #00ff00;
+  }
+  80%, 90% {
+    stroke: #00ff00;
+  }
+}
 </style>
