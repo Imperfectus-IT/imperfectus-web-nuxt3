@@ -47,7 +47,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  {{ shoppingCart }}
+  <DevOnly>
+    {{ shoppingCart }}
+  </DevOnly>
   <section>
     <ProgressBar
       class="my-5 w-full"
