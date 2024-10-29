@@ -55,6 +55,6 @@ export function createEmpty(): ShoppingCart {
   }
 }
 
-// export function isCoverageValid(coverage: string | null | undefined): boolean {
-//   return coverage !== null && coverage !== undefined
-// }
+export function isCoverageValid(coverage: string | null | undefined): boolean {
+  return coverage !== null && coverage !== undefined
+}

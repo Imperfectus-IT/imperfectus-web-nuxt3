@@ -1,11 +1,8 @@
-import { isCoverageValid } from '~/composables/shopping-cart/domain/ShoppingCart.ts'
-import { isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } from '~/composables/shopping-cart/domain/ShippingAddress.ts'
-
 export default function () {
   const { shoppingCart } = useShoppingCartState()
   const { executeFindCoverageByPostalCode } = useGetCoverageByPostalCode()
 
-  const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostCode))
+  const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostCode) || !isCoverageValid(shoppingCart.value.coverage))
   const findCoverageByPostalCode = async (postalCode: string | null) => {
     if (!isPostalCodeLengthValid(postalCode)) {
       return
