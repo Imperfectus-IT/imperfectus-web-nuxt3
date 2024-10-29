@@ -10,6 +10,7 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     discarded: order.discaded,
     isValidForReview: isValidForReview(order),
     deliveryDate: order.deliveryDate,
+    deliveryHour: order.deliveryHour,
     orderReview: order.order_review,
     orderMeta: order.order_meta.id,
     subscription: order.subscriptions?.length > 0 ? order.subscriptions[0].id : null,
@@ -108,6 +109,7 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     orderPayment: {
       totalAmount: order.order_payment.totalAmount,
     },
+    createdAt: order.created_at,
   }
 }
 

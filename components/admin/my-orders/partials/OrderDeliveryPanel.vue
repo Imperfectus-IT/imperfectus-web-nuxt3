@@ -54,7 +54,7 @@ const deliveryHourData = {
   morning: t('string.hour.morning'),
   afternoon: t('string.hour.afternoon'),
   night: t('string.hour.night'),
-  morning_b2b: t('string.hour.b2b_morning'),
+  b2b: t('string.hour.b2b_morning'),
   afternoon_b2b: t('string.hour.b2b_afternoon'),
 }
 

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useGetOrderByNotificationHandler } from '~/composables/admin/orders/application/get-by-notification/useGetOrderByNotificationHandler.ts'
+import { useGetOrderHandler } from '~/composables/admin/orders/application/getOne/useGetOrderHandler.ts'
+import { FINISH_PAYMENT_DELIVERY_DATE } from '~/composables/orders/types/FinishPaymentConstants.ts'
 
 const { t } = useI18n()
+// TODO: Use the useLocalePath composable
 const localePath = useLocalePath()
 
 useHead({
@@ -29,66 +31,42 @@ definePageMeta({
 // })
 
 const route = useRoute()
-const orderNotificationHash: string = route.query.notification
-const { order } = useGetOrderByNotificationHandler(orderNotificationHash, t)
+const { validateDeliveryDate, isValidDeliveryDate } = useValidateDeliveryDateHandler()
+const order_id: number = Number(route.query.order)
+const currentStep = ref(FINISH_PAYMENT_PAY)
+
+const { order } = useGetOrderHandler<Order>(order_id, t)
+
+const componentToRenderFromStep: Record<string, Component> = {
+  [FINISH_PAYMENT_PAY]: resolveComponent('FinishPaymentStep'),
+  [FINISH_PAYMENT_DELIVERY_DATE]: resolveComponent('DeliveryDatePaymentStep'),
+}
+
+watch(order, async (newOrder) => {
+  if (newOrder) {
+    await validateDeliveryDate(newOrder.id, newOrder.deliveryDate)
+    if (!isValidDeliveryDate.value) {
+      currentStep.value = FINISH_PAYMENT_DELIVERY_DATE
+    }
+  }
+})
+
+/**
+ * The purchase is disabled if the order was created more than 3 months ago
+ * @returns boolean
+ */
+// TODO: Show a popup
+const isPurchaseDisabled = computed(() => {
+  console.info('props.order.createdAt:', props.order.createdAt)
+  return dayjs(props.order.createdAt).isBefore(dayjs().subtract(3, 'month'))
+})
 </script>
 
 <template>
-  <Container
-    v-if="order"
-    class="px-6"
-  >
-    <h1 class="mt-10 mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10">
-      {{ $t("pages.order.pay.title") }}
-    </h1>
-
-    <CompletePaymentOrderDetails
-      :order-id="order?.order_id"
-      :delivery-date="order?.deliveryDate"
-      :total="order?.orderPayment.totalAmount"
-    />
-
-    <TKTimeline
-      :order-status="order?.status"
-      class="mt-12"
-      layout-type="horizontal"
-    />
-
-    <Panel class="mt-12">
-      <OrderItemCard
-        v-for="(item, index) in order?.orderItems"
-        :key="index"
-        class="!mt-0"
-        :order-item="item"
-      />
-    </Panel>
-
-    <CompletePaymentActions
-      class="mt-16 mb-16"
-      :order="order"
-    />
-
-    <Divider class="before:border-grey-secondary" />
-
-    <div class="flex justify-between mt-10">
-      <DeliveryInfo
-        :delivery-date="order?.deliveryDate"
-        :shipping="order?.shippingInfo"
-      />
-
-      <BillingInfo :data="order?.billingInfo" />
-      <PaymentInfo :total="order?.orderPayment.totalAmount" />
-    </div>
-
-    <Divider class="before:border-grey-secondary mt-10 mb-16" />
-
-    <NuxtLink
-      :to="localePath({ name: 'admin' })"
-      class="flex justify-center"
-    >
-      <Button
-        :label="$t('pages.order.pay.goToMyAccount')"
-      />
-    </NuxtLink>
-  </container>
+  <component
+    :is="componentToRenderFromStep[currentStep]"
+    :order="order"
+  />
 </template>
+
+<style scoped lang="scss"></style>

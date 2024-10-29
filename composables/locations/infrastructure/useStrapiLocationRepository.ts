@@ -29,6 +29,19 @@ export const useStrapiLocationRepository = () => {
     return await client(`/locations/shippingCompanies?postcode=${postcode}&deliveryDate=${deliveryDate}`, { method: 'GET' })
   }
 
+  const getTimeSlot = async (postcode: string, coverage: string): Promise<string> => {
+    try {
+      return await client(`/locations/timeSlot?coverage=${coverage}&postcode=${postcode}`, { method: 'GET' })
+    }
+    catch (error) {
+      console.info(`Error getting time slot for postcode ${postcode} and coverage ${coverage}`, error)
+      if (error === 'Not Found') {
+        return ''
+      }
+      throw error
+    }
+  }
+
   return {
     findLocations,
     getLocationsAvailability,
@@ -36,5 +49,6 @@ export const useStrapiLocationRepository = () => {
     getCorreosPickUpPoints,
     getPickUpPointById,
     getShippingCompaniesByPostcodeAndDate,
+    getTimeSlot,
   }
 }

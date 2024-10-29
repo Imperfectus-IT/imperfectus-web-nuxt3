@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'
 
 export const useGetAllHolidays = () => {
+  const { holidays } = useGetAllHolidaysState()
+
   const executeGetAllHolidays = async (query: HolidayQuery): Promise<BankHoliday[]> => {
     const { getAll } = useStrapiHolidayRepository()
     const params: HolidayQuery = {
@@ -14,6 +16,7 @@ export const useGetAllHolidays = () => {
     return await getAll(params)
   }
   return {
+    holidays,
     executeGetAllHolidays,
   }
 }
