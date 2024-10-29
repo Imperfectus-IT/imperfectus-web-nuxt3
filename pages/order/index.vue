@@ -30,7 +30,7 @@ const componentToRenderFromStep: Record<string, any> = {
   [AUTH_STEP]: resolveComponent('LazyShoppingCartAuthStep'),
   [RESUME_ITEM_STEP]: resolveComponent('LazyShoppingCartResumeStep'),
   [SHIPPING_STEP]: resolveComponent('LazyShoppingCartShippingStep'),
-  [DELIVERY_DATE_STEP]: resolveComponent('LazyShoppingCartDeliveryDateStep'),
+  // [DELIVERY_DATE_STEP]: resolveComponent('LazyShoppingCartDeliveryDateStep'),
   [DELIVERY_STEP]: resolveComponent('LazyShoppingCartDeliveryStep'),
   [PAYMENT_STEP]: resolveComponent('LazyShoppingCartPaymentStep'),
 }
@@ -42,7 +42,7 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  await executeStep('StepAvailability')
+  await executeStep('StepDelivery')
 })
 </script>
 

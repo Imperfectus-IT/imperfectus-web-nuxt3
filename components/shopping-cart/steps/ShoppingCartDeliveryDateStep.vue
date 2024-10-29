@@ -79,7 +79,7 @@ const goToNextStep = () => {
         </div>
       </div>
       <div class="hidden lg:block lg:border-[1px] lg:rounded-lg lg:p-5 lg:w-5/12">
-        <ShoppingCartPartialResumeList>
+        <ShoppingCartResumeBox>
           <template #title>
             <h3 class="font-recoleta-regular text-center lg:text-[36px] font-medium mb-3">
               {{ $t('order.steps.stepResume') }}
@@ -88,7 +88,7 @@ const goToNextStep = () => {
           <template #boxCard>
             <ShoppingCartTopSummaryBoxSmall />
           </template>
-        </ShoppingCartPartialResumeList>
+        </ShoppingCartResumeBox>
       </div>
     </div>
     <div class="flex justify-center mt-6">

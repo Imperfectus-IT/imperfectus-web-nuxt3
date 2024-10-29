@@ -82,9 +82,8 @@ const handleNewProduct = () => {
         </div>
       </div>
       <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5 lg:pt-8 lg:w-5/12">
-        <ShoppingCartPartialResumeList
+        <ShoppingCartResumeBox
           :display-next-step-button="false"
-          @go-to-next-step="$emit(GO_TO_STEP_EVENT, DELIVERY_DATE_STEP)"
           @add-new-product="handleNewProduct"
         >
           <template #title>
@@ -95,7 +94,7 @@ const handleNewProduct = () => {
           <template #boxCard>
             <ShoppingCartTopSummaryBoxSmall />
           </template>
-        </ShoppingCartPartialResumeList>
+        </ShoppingCartResumeBox>
       </div>
     </div>
     <div class="flex justify-center mt-4 lg:justify-center">
@@ -103,7 +102,7 @@ const handleNewProduct = () => {
         :disabled="isFormValid"
         severity="secondary"
         :label="$t('orderMeta.continue')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_DATE_STEP)"
+        @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating

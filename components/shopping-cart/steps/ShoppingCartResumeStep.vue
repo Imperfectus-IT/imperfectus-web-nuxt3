@@ -35,7 +35,7 @@ const goBack = () => {
 <template>
   <div class="">
     <Toast />
-    <ShoppingCartPartialResumeList
+    <ShoppingCartResumeBox
       class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[20%] relative"
       :display-next-step-button="true"
       @go-to-next-step="goToNextStep"
@@ -127,6 +127,6 @@ const goBack = () => {
           <Divider class="text-grey-secondary" />
         </div>
       </template>
-    </Shoppingcartpartialresumelist>
+    </ShoppingCartResumeBox>
   </div>
 </template>

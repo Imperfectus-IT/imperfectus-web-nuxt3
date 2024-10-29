@@ -10,7 +10,7 @@ export const useUnavailableDates = () => {
 
     unavailableDates.value = [
       ...closedDays.map((date: string) => new Date(date)),
-      ...holidays,
+      // ...holidays,
     ]
   }
 

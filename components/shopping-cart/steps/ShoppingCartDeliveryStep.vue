@@ -1,8 +1,60 @@
 <script setup lang="ts">
+import dayjs from 'dayjs'
+import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
+import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
+
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
 const { t } = useI18n()
 const deliveryType = ref(PICKUP_POINT_DELIVERY_TYPE)
+
+const { dateBuilder } = useDateBuilder()
+const { timeSlot, getTimeSlotHandler } = useGetTimeSlotHandler()
+const { validHours, getValidHoursHandler } = useValidHoursHandler()
+const { unavailableDates, getUnavailableDates } = useUnavailableDatesHandler()
+const { availableWeekDays, getAvailableWeekDaysHandler } = availableWeekDaysHandler()
+
+const initializeCalendarDate = computed(() => {
+  const minDateDayNumber = dayjs().add(2, 'd').day()
+  const daysUntilThursday = (4 - minDateDayNumber + 7) % 7
+  const firstThursday = dayjs().add(2 + daysUntilThursday, 'd').toDate()
+
+  const isFirstThursdayUnavailable = unavailableDates.value.some((date: Date) => {
+    console.log('date', date)
+    console.log('firstThursday', firstThursday)
+    return dayjs(date).format('YYYY-MM-DD') === dayjs(firstThursday).format('YYYY-MM-DD')
+  })
+  return isFirstThursdayUnavailable ? dayjs(firstThursday).add(1, 'w').toDate() : firstThursday
+})
+
+const selectedDate = ref(initializeCalendarDate.value)
+
+const getFullAddress = computed(() => {
+  return `${shoppingCart.value.shippingAddress.shippingAddress}, ${shoppingCart.value.shippingAddress.shippingPostCode}, ${shoppingCart.value.shippingAddress.shippingCity}, ${shoppingCart.value.shippingAddress.shippingCountry}`
+})
+
+const isSelectedDate = (date: CalendarDate) => {
+  const formattedDate = dateBuilder(date)
+  return dayjs(formattedDate).format('YYYY-MM-DD') === dayjs(selectedDate.value).format('YYYY-MM-DD')
+}
+
+const getDateCellStyle = (date: CalendarDate) => {
+  return date.selectable ? 'border-[1px] rounded-md w-7 h-7 flex justify-center items-center text-[13px]' : 'text-[13px]'
+}
+
+const getAvailableWeekDays = computed(() => {
+  const allDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+  return allDays.filter(day => !availableWeekDays.value.includes(day)).map(day => DayMapping[day])
+})
+
+const getFormattedUnavailableDates = computed(() => unavailableDates.value.map(date => dayjs(date).toDate()))
+
+onMounted(async () => {
+  // await getTimeSlotHandler(shoppingCart.value.shippingAddress.shippingPostCode, props.order.shippingInfo.shippingCoverage, selectedDate.value)
+  // await getUnavailableDates(props.order.orderItems.map(item => item.product.id), props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage)
+  await getAvailableWeekDaysHandler('25250', 'paack')
+  await getUnavailableDates([547], '25250', 'paack')
+})
 
 const carrierOptions = ['mensakas', 'paack', 'correosexp', 'seur', 'ctt', 'talkual']
 const pickupCarrierOptions = [
@@ -42,7 +94,7 @@ const timeOptions = [
 </script>
 
 <template>
-  <div class="px-5 md:px-[28%] lg:px-[2%] 2xl:px-[20%] relative">
+  <div class="px-5 relative">
     <div class="flex items-center justify-center gap-3 lg:mt-14">
       <div class="!absolute left-5 flex flex-row gap-3 mt-5">
         <Button
@@ -50,7 +102,7 @@ const timeOptions = [
           icon="mdi mdi-chevron-left"
           rounded
           outlined
-          @click.prevent="emit(GO_TO_STEP_EVENT, DELIVERY_DATE_STEP)"
+          @click.prevent="emit(GO_TO_STEP_EVENT, SHIPPING_STEP)"
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
@@ -59,17 +111,63 @@ const timeOptions = [
       <div class="my-auto lg:border lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] mt-10 lg:mt-14 font-solina-extended-book text-xs leading-5">
         <div class="border rounded-lg lg:border-green-tertiary/50 p-4">
           <div class="flex justify-between items-center">
-            <span>Aurora Beatrici</span>
-            <NuxtLink class="text-[0.625rem] underline font-semibold leading-4">
+            <span>{{ shoppingCart.shippingAddress.shippingFirstName }} {{ shoppingCart.shippingAddress.shippingLastName }}</span>
+            <Button
+              class="text-[0.625rem] underline font-semibold leading-4"
+              :pt="{
+                root: '',
+              }"
+              @click.prevent="emit(GO_TO_STEP_EVENT, SHIPPING_STEP)"
+            >
               {{ $t('orderStepDate.address.update') }}
-            </NuxtLink>
+            </Button>
           </div>
           <Divider class="text-grey-secondary" />
           <p class="leading-5">
-            Calle del Tossal Blanc 36, 25230, Mollerussa España
+            {{ getFullAddress }}
           </p>
         </div>
-        <div class="mt-6">
+        <div>
+          <p class="font-recoleta-regular text-lg font-normal text-center lg:text-start lg:text-[30px] lg:mt-10 lg:mb-3 hidden lg:block">
+            {{
+              $t("orderStepDate.message")
+            }}
+          </p>
+          {{ availableWeekDays }}
+          {{ unavailableDates }}sss
+          {{ getAvailableWeekDays }}
+          <Calendar
+            v-model="selectedDate"
+            class="mt-5"
+            inline
+            :disabled-days="getAvailableWeekDays"
+            :disabled-dates="getFormattedUnavailableDates"
+          >
+            <template #date="slotProps">
+              <div
+                v-if="isSelectedDate(slotProps.date)"
+                class="bg-green-primary rounded-md w-7 h-7 flex justify-center items-center text-[13px]"
+              >
+                {{ slotProps.date.day }}
+              </div>
+              <div
+                v-else
+                :class="getDateCellStyle(slotProps.date)"
+              >
+                {{ slotProps.date.day }}
+              </div>
+            </template>
+          </Calendar>
+          <div class="w-64 text-center align-baseline mt-5">
+            <span class="mdi mdi-square-outline text-lg inline-block align-top rounded-xl" />
+            <span class="inline-block align-top mr-3">{{ $t('orderStepDate.available') }}</span>
+            <span class="mdi mdi-square text-green-primary text-lg inline-block align-top rounded-xl" />
+            <span class="inline-block align-top">{{ $t('orderStepDate.selected') }}</span>
+          </div>
+        </div>
+        <div
+          class="mt-6"
+        >
           <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
             {{ $t('orderStepDate.nextDeliveryDay.methodType.title') }}
           </p>
@@ -180,15 +278,16 @@ const timeOptions = [
         </div>
       </div>
       <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
-        <ShoppingCartSummaryBox>
+        <ShoppingCartResumeBox>
           <template #title>
-            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3">
-              {{
-                $t('order.steps.stepResume')
-              }}
+            <h3 class="font-recoleta-regular text-center lg:text-[36px] font-medium mb-3">
+              {{ $t('order.steps.stepResume') }}
             </h3>
           </template>
-        </ShoppingCartSummaryBox>
+          <template #boxCard>
+            <ShoppingCartTopSummaryBoxSmall />
+          </template>
+        </ShoppingCartResumeBox>
       </div>
       <ShoppingCartPurchaseSummaryFloating
         class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
