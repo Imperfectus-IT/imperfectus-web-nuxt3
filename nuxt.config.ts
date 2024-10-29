@@ -160,6 +160,7 @@ export default defineNuxtConfig({
         'PanelMenu',
         'Password',
         'ProgressBar',
+        'ProgressSpinner',
         'RadioButton',
         'Rating',
         'Sidebar',
