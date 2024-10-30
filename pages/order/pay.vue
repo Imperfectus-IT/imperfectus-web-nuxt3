@@ -66,8 +66,6 @@ const isPurchaseDisabled = computed(() => {
 </script>
 
 <template>
-  <pre>isPurchaseDisabled: {{ isPurchaseDisabled }}</pre>
-  <pre>order: {{ order }}</pre>
   <Dialog
     :visible="isPurchaseDisabled"
     modal
