@@ -117,7 +117,7 @@ const goToPayment = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col lg:mt-14 lg:items-center lg:justify-center">
+  <div class="flex flex-col lg:mt-14 lg:items-center lg:justify-center px-10">
     <Loading
       :is-loading="isLoading"
       image="/images/products/fruits/Poma.webp"
@@ -130,7 +130,7 @@ const goToPayment = async () => {
         }}
       </p>
 
-      <div class="flex gap-8 lg:mt-6">
+      <div class="flex flex-col gap-8 md:flex-row lg:mt-6">
         <div class="flex flex-col">
           <Calendar
             v-model="selectedDate"
