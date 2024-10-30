@@ -48,7 +48,11 @@ export default {
   'pages.order.pay.pay': 'Realizar pago',
   'pages.order.pay.seeOrder': 'Ver pedido',
   'pages.order.pay.goToMyAccount': 'Ir a mi cuenta',
-
+  'purchaseDisabled': {
+    title: '¡Error!',
+    message: 'No es posible procesar el pago de este pedido debido al tiempo transcurrido. Realiza un nuevo pedido por favor.',
+    newOrder: 'Realizar pedido',
+  },
   'pages.order.status.paymentError': 'Error en el pago',
   'pages.order.status.paymentNotAvailable':
     'La pasarela de pago no está disponible, disculpa las molestias.',
