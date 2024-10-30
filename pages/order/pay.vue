@@ -6,7 +6,7 @@ import { useGetOrderHandler } from '~/composables/admin/orders/application/getOn
 import { FINISH_PAYMENT_DELIVERY_DATE } from '~/composables/orders/types/FinishPaymentConstants.ts'
 
 const { t } = useI18n()
-// TODO: Use the useLocalePath composable
+
 const localePath = useLocalePath()
 const router = useRouter()
 
@@ -24,13 +24,6 @@ definePageMeta({
   layout: 'default',
   middleware: ['auth'],
 })
-
-// defineI18nRoute({
-//   paths: {
-//     es: '/order/pay?order=[order]',
-//     ca: '/el-meu-compte/subscripcions/properes-entregues/[id]',
-//   },
-// })
 
 const route = useRoute()
 const { validateDeliveryDate, isValidDeliveryDate } = useValidateDeliveryDateHandler()
