@@ -53,6 +53,8 @@ export default {
     message: 'No es pot processar el pagament d’aquesta comanda a causa del temps transcorregut. Realitza una nova comanda, si us plau.',
     newOrder: 'Realitzar comanda',
   },
+  'pages.order.pay.invalidCoupon.title': 'Cupó no vàlid',
+  'pages.order.pay.invalidCoupon.close': 'Acceptar',
   'pages.order.status.paymentError': 'Error en el pagament',
   'pages.order.status.paymentNotAvailable':
         'La passarel·la de pagament no està disponible, disculpa les molèsties.',

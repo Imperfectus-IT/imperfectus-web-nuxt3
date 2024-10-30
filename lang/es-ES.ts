@@ -53,6 +53,8 @@ export default {
     message: 'No es posible procesar el pago de este pedido debido al tiempo transcurrido. Realiza un nuevo pedido por favor.',
     newOrder: 'Realizar pedido',
   },
+  'pages.order.pay.invalidCoupon.title': 'Cupón no válido',
+  'pages.order.pay.invalidCoupon.close': 'Aceptar',
   'pages.order.status.paymentError': 'Error en el pago',
   'pages.order.status.paymentNotAvailable':
     'La pasarela de pago no está disponible, disculpa las molestias.',
