@@ -1084,7 +1084,7 @@ export default {
   'string.hour.afternoon': 'Entre les 14:00 y les 18:00',
   'string.hour.b2b_afternoon': 'Entre les 16:00 y les 20:00',
   'string.hour.night': 'Entre les 18.00 i les 22.00',
-  'string.hour.timeSlot': 'Entre les {0} i les {1}',
+  'string.hour.timeSlot': 'Entre les {from} i les {to}',
   'string.frequency.weekly': 'cada setmana',
   'string.frequency.biweekly': 'cada dues setmanes',
   'string.frequency.once': 'compra única',
