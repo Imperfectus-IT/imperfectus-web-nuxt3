@@ -123,67 +123,72 @@ const goToPayment = async () => {
       image="/images/products/fruits/Poma.webp"
     />
 
-    <div class="my-auto flex lg:border-[1px] lg:w-[50%] lg:mt-14 lg:rounded-lg lg:px-14 lg:py-8">
-      <div class="flex flex-col">
-        <p class="hidden text-center text-lg font-normal font-recoleta-regular lg:block lg:text-start lg:text-xl">
-          {{
-            $t("orderStepDate.message")
-          }}
-        </p>
-        <Calendar
-          v-model="selectedDate"
-          class="mt-5"
-          inline
-          :disabled-dates="unavailableDates"
-          :disabled-days="disabledDays"
-          :min-date="minDate"
-        >
-          <template #date="slotProps">
-            <div
-              v-if="isSelectedDate(slotProps.date)"
-              class="flex h-7 w-7 items-center justify-center rounded-md bg-green-primary text-[13px]"
-            >
-              {{ slotProps.date.day }}
-            </div>
-            <div
-              v-else
-              :class="getDateCellStyle(slotProps.date)"
-            >
-              {{ slotProps.date.day }}
-            </div>
-          </template>
-        </Calendar>
+    <div class="my-auto flex flex-col lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-14">
+      <p class="hidden text-center text-lg font-normal font-recoleta-regular lg:text-[40px] lg:block lg:text-start">
+        {{
+          $t("orderStepDate.message")
+        }}
+      </p>
 
-        <div class="mt-5 w-64 text-center align-baseline">
-          <span class="inline-block rounded-xl align-top text-lg mdi mdi-square-outline" />
-          <span class="mr-3 inline-block align-top">{{ $t('orderStepDate.available') }}</span>
-          <span class="inline-block rounded-xl align-top text-lg mdi mdi-square text-green-primary" />
-          <span class="inline-block align-top">{{ $t('orderStepDate.selected') }}</span>
+      <div class="flex gap-8 lg:mt-6">
+        <div class="flex flex-col">
+          <Calendar
+            v-model="selectedDate"
+            class="mt-5"
+            inline
+            :disabled-dates="unavailableDates"
+            :disabled-days="disabledDays"
+            :min-date="minDate"
+          >
+            <template #date="slotProps">
+              <div
+                v-if="isSelectedDate(slotProps.date)"
+                class="flex h-7 w-7 items-center justify-center rounded-md bg-green-primary text-[13px]"
+              >
+                {{ slotProps.date.day }}
+              </div>
+              <div
+                v-else
+                :class="getDateCellStyle(slotProps.date)"
+              >
+                {{ slotProps.date.day }}
+              </div>
+            </template>
+          </Calendar>
+
+          <div class="mt-5 w-64 text-center align-baseline">
+            <span class="inline-block rounded-xl align-top text-lg mdi mdi-square-outline" />
+            <span class="mr-3 inline-block align-top">{{ $t('orderStepDate.available') }}</span>
+            <span class="inline-block rounded-xl align-top text-lg mdi mdi-square text-green-primary" />
+            <span class="inline-block align-top">{{ $t('orderStepDate.selected') }}</span>
+          </div>
         </div>
-      </div>
 
-      <div class="mx-auto max-w-sm self-center center">
-        <p class="mb-2 font-semibold font-recoleta-regular text-[16px]">
-          {{ $t('deliveryDatePayment.timeSlot') }}
-        </p>
-        <Dropdown
-          v-model="selectedHour"
-          :options="mapValidHours(validHours)"
-          option-label="label"
-          option-value="value"
-          class="mt-2 mb-5 text-[16px] lg:mt-0"
-        />
+        <div class="mx-auto max-w-sm self-center center">
+          <p class="mb-2 font-semibold font-recoleta-regular text-[16px]">
+            {{ $t('deliveryDatePayment.timeSlot') }}
+          </p>
+          <Dropdown
+            v-model="selectedHour"
+            :options="mapValidHours(validHours)"
+            option-label="label"
+            option-value="value"
+            class="mt-2 mb-5 text-[16px] lg:mt-0"
+          />
 
-        <p class="mt-2 mb-2 font-semibold font-recoleta-regular text-[16px]">
-          {{ $t('deliveryDatePayment.attention') }}
-        </p>
+          <div class="w-64">
+            <p class="mt-2 mb-2 font-semibold font-recoleta-regular text-[16px]">
+              {{ $t('deliveryDatePayment.attention') }}
+            </p>
 
-        <span class="font-recoleta-regular text-[16px]">
-          {{ $t('deliveryDatePayment.message_1') }}
-        </span>
-        <span class="ml-1 font-semibold font-recoleta-regular text-[16px]">
-          {{ $t('deliveryDatePayment.message_2') }}
-        </span>
+            <span class="font-recoleta-regular text-[16px]">
+              {{ $t('deliveryDatePayment.message_1') }}
+            </span>
+            <span class="ml-1 font-semibold font-recoleta-regular text-[16px]">
+              {{ $t('deliveryDatePayment.message_2') }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
 
