@@ -38,12 +38,10 @@ onMounted(async () => {
 })
 
 watch(timeSlot, async (newTimeSlot) => {
-  console.info('newTimeSlot', newTimeSlot)
   await getValidHoursHandler(newTimeSlot)
 })
 
 watch(validHours, (newValidHours: ValidHour[]) => {
-  console.info('newValidHours', newValidHours)
   const firstTimeSlot = newValidHours[0]
   const currentHour: ValidHour = validHours.value.find(hour => hour.timeSlot === props.order.deliveryHour)
   if (currentHour) {
