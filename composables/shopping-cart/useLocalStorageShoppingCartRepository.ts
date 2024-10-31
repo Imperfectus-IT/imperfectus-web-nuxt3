@@ -1,9 +1,20 @@
+import { createEmpty } from '../shopping-cart/domain/ShoppingCart.ts'
+
 export const useLocalStorageShoppingCartRepository = () => {
-  const { emptyShoppingCart } = useShoppingCartFactory()
   const { getItem, setItem } = useLocalStorage()
   const key: string = 'shoppingCart'
   return {
-    getShoppingCart: () => getItem(key)?.length ? getItem(key) : emptyShoppingCart(),
-    setShoppingCart: (item: ShoppingCart) => setItem(key, item),
+    getShoppingCart: () => {
+      const response = getItem(key)
+      if (response.length === 0) {
+        return createEmpty()
+      }
+      else {
+        return response
+      }
+    },
+    setShoppingCart: (item: ShoppingCart) => {
+      setItem(key, item)
+    },
   }
 }

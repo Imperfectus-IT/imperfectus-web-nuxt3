@@ -6,6 +6,7 @@ import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shoppi
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { t } = useI18n()
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 
 const paymentMethods = [
   {
@@ -19,6 +20,7 @@ const { createPurchase } = useCreatePurchase()
 const redsysForm = ref<InstanceType<typeof RedsysPaymentForm> | null>(null)
 const handleCreatePurchase = async () => {
   try {
+    setShoppingCart(shoppingCart.value)
     await createPurchase(shoppingCart.value)
     redsysForm.value?.submit()
   }

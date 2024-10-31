@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { isInvalid, findCoverageByPostalCode, goBack, isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } = useShoppingCartAvailabilityStep()
 const toast = useToast()
 const { errorToast } = useToastService()
 const { t } = useI18n()
 
-defineEmits([GO_TO_STEP_EVENT])
+const emit = defineEmits([GO_TO_STEP_EVENT])
 watch(
   () => shoppingCart.value.shippingAddress.shippingPostCode,
   async (newPostalCode) => {
@@ -15,6 +16,11 @@ watch(
     }
   },
 )
+
+const goToNextStep = () => {
+  setShoppingCart(shoppingCart.value)
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
+}
 </script>
 
 <template>
@@ -65,7 +71,7 @@ watch(
         :disabled="isInvalid"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)"
+        @click.prevent="goToNextStep"
       />
     </div>
   </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { activeBoxProducts } = useProductsState()
 const { generateSku } = useGenerateSku()
 const setFrequency = (frequency: string) => shoppingCart.value.currentItem.frequency = frequency
@@ -20,6 +21,7 @@ const goToNextStep = () => {
     shoppingCart.value.items.push(currentItem)
   }
   const user = useStrapiUser()
+  setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, user?.value?.id ? RESUME_ITEM_STEP : AUTH_STEP)
 }
 </script>

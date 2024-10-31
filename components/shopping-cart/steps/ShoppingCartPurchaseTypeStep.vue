@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 
 const { emptyItem } = useShoppingCartFactory()
 
@@ -30,6 +31,7 @@ const goToNextStep = () => {
       shoppingCart.value.items.push(currentItem)
     }
   }
+  setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, user?.value?.id ? nextStep : AUTH_STEP)
 }
 </script>

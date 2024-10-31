@@ -6,6 +6,7 @@ import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shoppi
 
 const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const shippingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
 const billingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
@@ -23,6 +24,11 @@ const isFormValid = computed(() => {
 const handleNewProduct = () => {
   emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
   shoppingCart.value.currentItem = createEmptyShoppingCartItem()
+}
+
+const goToNextStep = () => {
+  setShoppingCart(shoppingCart.value)
+  emit(GO_TO_STEP_EVENT, DELIVERY_STEP)
 }
 </script>
 
@@ -102,11 +108,11 @@ const handleNewProduct = () => {
         :disabled="isFormValid"
         severity="secondary"
         :label="$t('orderMeta.continue')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, DELIVERY_STEP)"
+        @click.prevent="goToNextStep"
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
+      class="fixed z-10 inset-x-0 bottom-0 w-1/2 lg:hidden"
       :item="shoppingCart.currentItem"
     />
     <Toast />

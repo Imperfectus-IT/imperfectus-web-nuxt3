@@ -20,6 +20,7 @@ const { validateCoupon } = useValidateCouponHandler(t)
 const { executeGetOrderAmount } = useGetOrderAmount()
 watch(() => shoppingCart.value.items, async () => {
   const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
+  shoppingCart.value.amount.subtotal = shoppingCart.value.items.reduce((acc, item) => acc + (item.product.priceWithTax * item.quantity), 0).toFixed(2)
   shoppingCart.value.amount.shippingCost = newAmount.shipping
   shoppingCart.value.amount.saved = newAmount.saved
   shoppingCart.value.amount.total = newAmount.total
@@ -89,8 +90,8 @@ const handleRemoveCoupon = () => {
       <span>{{ shoppingCart.amount.shippingCost }}€</span>
     </div>
     <div class="flex justify-between mt-2">
-      <span>{{ $t('orderAmount.discount') }} {{ shoppingCart.items[0]?.coupon?.discountValue }}%</span>
-      <span :class="shoppingCart.amount.saved > 0 ? 'text-green-secondary' : ''">{{ shoppingCart.amount.saved }}€</span>
+      <span>{{ $t('orderAmount.discount') }} <span v-if="shoppingCart.items[0]?.coupon">(</span>{{ shoppingCart.items[0]?.coupon?.discountValue }}<span v-if="shoppingCart.items[0]?.coupon">%)</span></span>
+      <span :class="shoppingCart.amount.saved > 0 ? 'text-green-secondary' : ''"><span v-if="shoppingCart.items[0]?.coupon">-</span>{{ shoppingCart.amount.saved }}€</span>
     </div>
     <Divider class="text-grey-secondary" />
     <div class="flex justify-between text-[22px] font-solina-extended-medium">

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { onSetBoxSize } = useShoppingCartBoxStep()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const boxDetails = [
@@ -18,6 +19,7 @@ const boxDetails = [
 ]
 
 const goToNextStep = () => {
+  setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
 }
 
@@ -60,6 +62,11 @@ const goToPreviousStep = () => {
           icon-pos="right"
           outlined
           @click.prevent="onSetBoxSize(box.size)"
+        />
+        <ShoppingCartBoxDetail
+          v-if="shoppingCart.currentItem.boxSize && shoppingCart.currentItem.product && shoppingCart.currentItem.boxSize === box.size"
+          class="mt-5 lg:hidden "
+          :box-product="shoppingCart.currentItem.product"
         />
       </div>
     </div>

@@ -19,6 +19,7 @@ defineI18nRoute({
   },
 })
 const { shoppingCart } = useShoppingCartState()
+const { getShoppingCart } = useLocalStorageShoppingCartRepository()
 const { executeStep } = useStep()
 
 const componentToRenderFromStep: Record<string, any> = {
@@ -41,7 +42,8 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  await executeStep('StepAvailability')
+  shoppingCart.value = getShoppingCart()
+  await executeStep(shoppingCart.value.step)
 })
 </script>
 
@@ -51,6 +53,9 @@ onMounted(async () => {
       class="my-5 w-full"
       :value="currentProgress"
     />
+    <pre class="text-xs">
+      {{ shoppingCart }}
+    </pre>
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

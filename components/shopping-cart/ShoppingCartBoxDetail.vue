@@ -2,7 +2,7 @@
 import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
 
 defineProps<{
-  boxProduct: ProductDetail
+  boxProduct: BoxProduct
 }>()
 const { locale } = useI18n()
 const { getLocaleName } = useGetLocaleLanguage(locale)

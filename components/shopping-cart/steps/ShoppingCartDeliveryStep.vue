@@ -9,6 +9,7 @@ import { ALLSERVICES } from '@/composables/locations/domain/ServicesConstants.ts
 
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { t } = useI18n()
 const deliveryType = ref(HOME_DELIVERY_TYPE)
 
@@ -140,6 +141,11 @@ const pickupPointList = computed(() => {
   }
   return []
 })
+
+const goToNextStep = () => {
+  setShoppingCart(shoppingCart.value)
+  emit(GO_TO_STEP_EVENT, PAYMENT_STEP)
+}
 </script>
 
 <template>
@@ -380,7 +386,7 @@ const pickupPointList = computed(() => {
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"
-        @click.prevent="$emit(GO_TO_STEP_EVENT, PAYMENT_STEP)"
+        @click.prevent="goToNextStep"
       />
     </div>
   </div>

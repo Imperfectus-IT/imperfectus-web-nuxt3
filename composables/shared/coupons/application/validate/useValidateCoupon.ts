@@ -3,7 +3,6 @@ export const useValidateCoupon = () => {
   const { shoppingCart } = useShoppingCartState()
   const executeValidateCoupon = async (validateCouponData: ValidateCouponPayload) => {
     const foundCoupon = await validateCoupon(validateCouponData)
-    console.log('foundCoupon', foundCoupon)
     const { items } = shoppingCart.value
     shoppingCart.value.items = items.map((item: ShoppingCartItem) => {
       item.coupon = foundCoupon

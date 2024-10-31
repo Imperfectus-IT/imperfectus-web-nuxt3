@@ -10,6 +10,7 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
 
 const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { getLocaleName } = useGetLocaleLanguage(locale)
 const { executeGetOrderAmount } = useGetOrderAmount()
 
@@ -35,6 +36,7 @@ const removeItem = (id: string) => {
   }
 }
 const goToNextStep = () => {
+  setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, SHIPPING_STEP)
 }
 const goBack = () => {
@@ -85,10 +87,7 @@ const goBack = () => {
               <span class="font-bold my-3 lg:my-1 text-lg lg:text-md">{{ item.product[`name${getLocaleName}`] }}</span>
               <span class="font-bold text-lg inline lg:ml-20">{{ item.product.priceWithTax }} €</span>
             </div>
-            <p class="mt-6 lg:mt-3 lg:hidden">
-              {{ item.product[`description${getLocaleName}`] }}
-            </p>
-            <ul class="list-square ml-5 text-base leading-7 mt-2 lg:mt-6 lg:text-md lg:leading-[18px]">
+            <ul class="list-square ml-5 text-base leading-4 mt-2 lg:mt-6 lg:text-md lg:leading-[18px]">
               <li
                 v-if="item.frequency"
                 class="mb-3"
@@ -105,7 +104,7 @@ const goBack = () => {
           </div>
           <div class="flex flex-row-reverse justify-between px- lg:gap-14">
             <span
-              class="mdi mdi-close text-red-primary cursor-pointer"
+              class="mdi mdi-close text-red-primary cursor-pointer hidden"
               @click.prevent="removeItem(item.uuid)"
             />
           </div>

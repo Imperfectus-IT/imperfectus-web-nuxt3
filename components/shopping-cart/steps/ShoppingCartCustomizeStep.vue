@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { fruitsItemProducts, vegetablesItemProducts } = useProductsState()
 
 const setBoxType = (boxSize: string) => shoppingCart.value.currentItem.boxType = boxSize
@@ -26,6 +27,7 @@ const productExclusions = computed(() => {
 })
 
 const nexStep = () => {
+  setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, BOX_STEP)
 }
 </script>
