@@ -41,6 +41,7 @@ export default {
   'pages.order.description':
     'Aquí puedes comprar los tres tipos de cajas TALKUAL que ofrecemos',
   'pages.order.pay.title': '¡Ups! Error en el pago',
+  'pages.order.pay.description': 'Hubo un problema al procesar tu pago en TALKUAL. Por favor, intenta nuevamente. Si necesitas ayuda, contacta con nuestro equipo de atención al cliente para completar tu pedido.',
   'pages.order.pay.message': '¡Gracias por tu compra!',
   'pages.order.pay.orderNumber': 'Número de pedido:',
   'pages.order.pay.deliveryEstimate': 'Fecha de entrega estimada:',
@@ -48,7 +49,13 @@ export default {
   'pages.order.pay.pay': 'Realizar pago',
   'pages.order.pay.seeOrder': 'Ver pedido',
   'pages.order.pay.goToMyAccount': 'Ir a mi cuenta',
-
+  'purchaseDisabled': {
+    title: '¡Error!',
+    message: 'No es posible procesar el pago de este pedido debido al tiempo transcurrido. Realiza un nuevo pedido por favor.',
+    newOrder: 'Realizar pedido',
+  },
+  'pages.order.pay.invalidCoupon.title': 'Cupón no válido',
+  'pages.order.pay.invalidCoupon.close': 'Aceptar',
   'pages.order.status.paymentError': 'Error en el pago',
   'pages.order.status.paymentNotAvailable':
     'La pasarela de pago no está disponible, disculpa las molestias.',

@@ -77,7 +77,7 @@ const goToPayment = async () => {
 
     <Divider class="before:border-grey-secondary" />
 
-    <div class="flex justify-around mt-10">
+    <div class="mt-10 flex flex-col items-center justify-around md:flex-row md:items-start gap-10 md:gap-0">
       <DeliveryInfo
         :delivery-date="order.deliveryDate"
         :shipping="order.shippingInfo"
@@ -86,7 +86,7 @@ const goToPayment = async () => {
       <BillingInfo :data="order.billingInfo" />
     </div>
 
-    <Divider class="before:border-grey-secondary mt-10 mb-16" />
+    <Divider class="mt-10 mb-16 before:border-grey-secondary" />
 
     <NuxtLink
       :to="localePath({ name: 'admin' })"

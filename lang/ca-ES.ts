@@ -38,9 +38,10 @@ export default {
         'En TALKUAL treballem per a reduir els aliments que es perden i lluitem contra el malbaratament alimentari.',
 
   'pages.order.title': 'Compra',
-  'pages.order.pay.title': 'Ups! Error en el pagament',
   'pages.order.description':
         'Aquí pots comprar els tres tipus de caixes TALKUAL que oferim',
+  'pages.order.pay.title': 'Ups! Error en el pagament',
+  'pages.order.pay.description': 'Hi ha hagut un problema en processar el teu pagament a TALKUAL. Si us plau, intenta-ho novament. Si necessites ajuda, contacta amb el nostre equip d\'atenció al client per completar la teva comanda.',
   'pages.order.pay.message': 'Gràcies per la seva compra!',
   'pages.order.pay.orderNumber': 'Número de comanda:',
   'pages.order.pay.deliveryEstimate': 'Data de lliurament estimada:',
@@ -48,7 +49,13 @@ export default {
   'pages.order.pay.pay': 'Realitzar pagament',
   'pages.order.pay.seeOrder': 'Veure comanda',
   'pages.order.pay.goToMyAccount': 'Anar al meu compte',
-
+  'purchaseDisabled': {
+    title: 'Error!',
+    message: 'No es pot processar el pagament d’aquesta comanda a causa del temps transcorregut. Realitza una nova comanda, si us plau.',
+    newOrder: 'Realitzar comanda',
+  },
+  'pages.order.pay.invalidCoupon.title': 'Cupó no vàlid',
+  'pages.order.pay.invalidCoupon.close': 'Acceptar',
   'pages.order.status.paymentError': 'Error en el pagament',
   'pages.order.status.paymentNotAvailable':
         'La passarel·la de pagament no està disponible, disculpa les molèsties.',
@@ -1080,7 +1087,7 @@ export default {
   'string.hour.afternoon': 'Entre les 14:00 y les 18:00',
   'string.hour.b2b_afternoon': 'Entre les 16:00 y les 20:00',
   'string.hour.night': 'Entre les 18.00 i les 22.00',
-  'string.hour.timeSlot': 'Entre les {0} i les {1}',
+  'string.hour.timeSlot': 'Entre les {from} i les {to}',
   'string.frequency.weekly': 'cada setmana',
   'string.frequency.biweekly': 'cada dues setmanes',
   'string.frequency.once': 'compra única',
@@ -3172,4 +3179,168 @@ export default {
     message_1: 'Els lliuraments de la caixa seran setmanals per a subscripcions setmanals i quinzenals de manera alterna.',
     message_2: 'El pagament es realitzarà cada diumenge previ.',
   },
+  'orders': {
+    title: 'Les Meves Comandes',
+    ordersSelector: {
+      all: 'Totes ({quantity})',
+      current: 'Actuals ({quantity})',
+      past: 'Passades ({quantity})',
+    },
+    order: {
+      pending: 'Aquesta comanda està pendent de pagament',
+      details: 'Detalls de la comanda',
+      payment: 'Finalitzar pagament',
+      discard: {
+        title: 'Descartar comanda',
+        successToast: {
+          title: 'Comanda descartada!',
+          description: 'La teva comanda s’ha descartat correctament',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'No s’ha pogut descartar la teva comanda. Si us plau, intenta-ho de nou',
+        },
+      },
+      carouselTitle: 'Què porta la teva caixa?',
+      cancelledDate: 'Data de cancel·lació: {date}',
+      coupon: {
+        buttonAdd: 'Aplicar',
+        buttonRemove: 'Eliminar',
+        add: {
+          successToast: {
+            title: 'Cupó afegit amb èxit!',
+            description: 'El teu cupó s’ha afegit correctament a la comanda.',
+          },
+          notValidToast: {
+            title: 'Cupó incorrecte!',
+            description: 'El cupó introduït no és vàlid',
+          },
+        },
+        remove: {
+          successToast: {
+            title: 'Cupó eliminat amb èxit!',
+            description: 'El teu cupó s’ha eliminat correctament de la comanda.',
+          },
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'El procés ha fallat. Si us plau, intenta-ho de nou.',
+        },
+      },
+      billing: {
+        header: 'Facturació',
+        item_0: 'Estat:',
+        item_1: 'Preu:',
+        item_2: 'Despeses d’enviament:',
+        item_3: 'Total:',
+        free_shipping: 'Gratuït',
+        order_paid: 'Pagat',
+        order_pending: 'Pendent de pagament',
+      },
+      delivery: {
+        header: 'Dades de lliurament',
+        item_0: 'Dia de lliurament:',
+        item_1: 'Empresa de transport',
+        item_2: 'Hora estimada de lliurament:',
+        item_3: 'ID de seguiment',
+        item_4: 'Enllaç: ',
+        trackingID: 'ID de seguiment: {tracking}',
+      },
+      shipping: {
+        header: 'Adreça d’enviament',
+        item_0: 'Nom',
+        item_1: 'Cognoms',
+        item_2: 'Email',
+        item_3: 'Telèfon de contacte',
+        item_4: 'Adreça (carrer i número)',
+        item_5: 'Pis i porta',
+        item_6: 'Codi postal',
+        item_7: 'Localitat',
+        item_8: 'Notes',
+        saveButton: 'Guardar',
+        editButton: 'Modificar dades',
+        successToast: {
+          title: 'Dades guardades!',
+          description: 'Les dades d’enviament s’han guardat correctament',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en guardar les dades',
+        },
+      },
+      billingInfo: {
+        header: 'Dades de facturació',
+        item_0: 'Nom',
+        item_1: 'Cognoms',
+        item_2: 'Email',
+        item_3: 'Telèfon de contacte',
+        item_4: 'Adreça (carrer i número)',
+        item_5: 'Pis i porta',
+        item_6: 'Codi postal',
+        item_7: 'Localitat',
+        buttonModify: 'Modificar dades',
+        buttonSave: 'Guardar',
+        successToast: {
+          title: 'Dades guardades!',
+          description: 'Les dades de facturació s’han guardat correctament',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en guardar les dades. Si us plau, intenta-ho de nou.',
+        },
+      },
+      review: {
+        title: 'Valoració de la caixa',
+        item_0: {
+          title: 'Qualitat del producte',
+          value: 'productQuality',
+        },
+        item_1: {
+          title: 'Servei de lliurament',
+          value: 'deliveryService',
+        },
+        item_2: {
+          title: 'Experiència general',
+          value: 'overallExperience',
+        },
+        values: {
+          option_0: 'Fatal',
+          option_1: 'Malament',
+          option_2: 'Ni fu ni fa',
+          option_3: 'Bé',
+          option_4: 'Genial',
+        },
+        successToast: {
+          title: 'Valoració guardada',
+          description: 'La teva valoració s’ha guardat. Moltes gràcies!',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'No s’ha pogut guardar la teva valoració. Si us plau, intenta-ho de nou.',
+        },
+        button: 'Guardar valoració',
+      },
+      edit: {
+        title: 'Vols editar la teva caixa?',
+        boxType: 'Tipus de caixa',
+        boxSize: 'Mida de la caixa',
+        exclusions: {
+          title: 'Vols excloure algun aliment?',
+          description_1: 'Pots excloure fins a 6 aliments.',
+          description_2: 'Cada divendres enviem un email amb les fruites i verdures que hi haurà a la caixa de la setmana següent perquè puguis editar les exclusions segons el contingut de la caixa.',
+          placeholder: 'Buscar',
+        },
+        saveButton: 'Guardar',
+        successToast: {
+          title: 'Caixa actualitzada!',
+          description: 'Els canvis en la teva caixa s’han guardat correctament',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en guardar les dades',
+        },
+      },
+    },
+  },
+
 }
