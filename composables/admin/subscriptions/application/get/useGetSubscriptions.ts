@@ -8,7 +8,6 @@ export const useGetSubscriptions = () => {
   const executeGetSubscriptionsByUser = async () => {
     try {
       subscriptions.value = await findSubscriptionsByUser()
-      console.log('Subscriptions', subscriptions.value)
     }
     catch (e) {
       console.log('Error', e)

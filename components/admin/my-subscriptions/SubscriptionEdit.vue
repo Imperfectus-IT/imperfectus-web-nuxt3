@@ -115,7 +115,7 @@ const { getDeliveryDateFromNextPayment } = useGetDeliveryDateFromNextPayment()
 const { executeGetShippingCompanies } = useGetShippingCompanies()
 const { shippingPostCode } = props.subscription.shippingInfo
 const expectedDeliveryDate = computed(() => getDeliveryDateFromNextPayment(props.subscription.nextPayment, props.subscription.preferredDay))
-const availableShippingCoverages = await executeGetShippingCompanies(shippingPostCode, expectedDeliveryDate.value)
+const availableShippingCoverages = await executeGetShippingCompanies(shippingPostCode, expectedDeliveryDate.value as string)
 
 const textData = 'subscriptions.subscription.'
 const isSubscriptionCancelledModalStyle = computed(() => props.subscription.status === 'cancelled' ? 'lg:col-span-2 lg:w-1/2 lg:mx-auto' : '')

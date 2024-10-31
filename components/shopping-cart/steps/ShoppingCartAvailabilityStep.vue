@@ -10,7 +10,6 @@ watch(
   () => shoppingCart.value.shippingAddress.shippingPostCode,
   async (newPostalCode) => {
     await findCoverageByPostalCode(newPostalCode)
-    console.log('isInvalid.value', isInvalid.value, newPostalCode)
     if (isInvalid.value && isPostalCodeLengthValid(newPostalCode)) {
       await errorToast(toast, t('adminOrderShipment.postCode'), t('validations.postcode.notCovered'))
     }

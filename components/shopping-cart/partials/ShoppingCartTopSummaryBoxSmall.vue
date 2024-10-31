@@ -37,7 +37,7 @@ const decrementQuantity = (uuid: string) => {
         <li>{{ $t('adminSubscriptionItems.exclusions') }}: {{ item.exclusions.length }}</li>
       </ul>
       <div class="flex justify-between items-center lg:mt-2">
-        <span class="font-bold text-lg hidden lg:block lg:text-base">{{ item.product?.price }} €</span>
+        <span class="font-bold text-lg hidden lg:block lg:text-base">{{ item.product?.priceWithTax }} €</span>
         <div class="flex gap-2 relative left-7">
           <Button
             icon="mdi mdi-minus"

@@ -40,7 +40,6 @@ export const useOrderRepository = () => {
 
   const findByNotification = async (notification: string) => {
     const [strapiOrder] = await client(`orders/byNotification/${notification}`, { method: 'GET' })
-    console.log('strapiOrder', strapiOrder)
     return useOrdersFactory(strapiOrder, t)
   }
 

@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
 import { useValidateCouponHandler } from '~/composables/shared/coupons/application/validate/useValidateCouponHandler.ts'
 import { useGetOrderAmount } from '~/composables/admin/orders/application/getOrderAmount/useGetOrderAmount.ts'
-import { createEmpty as createEmptyShoppingCartItem } from '@/composables/shopping-cart/domain/Item.ts'
 
 const { t } = useI18n()
 const emit = defineEmits(['goToNextStep', 'addNewProduct'])
@@ -20,35 +18,42 @@ defineProps<{
 const { shoppingCart } = useShoppingCartState()
 const { validateCoupon } = useValidateCouponHandler(t)
 const { executeGetOrderAmount } = useGetOrderAmount()
-const getSubtotal = computed(() => {
-  return shoppingCart.value.items.reduce((acc, item) => acc + item.product.price, 0)
-})
-
-const amount = reactive({
-  shippingCost: 0,
-  saved: 0,
-  total: 0,
-})
+watch(() => shoppingCart.value.items, async () => {
+  const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
+  shoppingCart.value.amount.shippingCost = newAmount.shipping
+  shoppingCart.value.amount.saved = newAmount.saved
+  shoppingCart.value.amount.total = newAmount.total
+}, { deep: true })
 
 const handleAddOrderCoupon = async (coupon: string) => {
-  const couponValidateData: ValidateCouponPayload = {
-    coupon,
-    user: useStrapiUser().value,
-    postcode: shoppingCart.value.shippingAddress.postalCode,
-    items: shoppingCart.value.items.map(item => item.product.sku),
+  try {
+    const couponValidateData: ValidateCouponPayload = {
+      coupon,
+      user: useStrapiUser().value,
+      postcode: shoppingCart.value.shippingAddress.shippingPostCode,
+      items: shoppingCart.value.items.map((item) => {
+        return {
+          product: item.product.id as number,
+        }
+      }),
+    }
+    await validateCoupon(couponValidateData)
   }
-  await validateCoupon(couponValidateData)
-  const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
-  amount.shippingCost = newAmount.shipping
-  amount.saved = newAmount.saved
-  amount.total = newAmount.total
+  catch (error) {
+    console.error('Error on adding Coupon', error)
+  }
 }
 
 const handleRemoveCoupon = () => {
-  shoppingCart.value.currentItem.coupon = null
-  amount.saved = 0
-  amount.total = getSubtotal.value
-  amount.shippingCost = 0
+  const { items } = shoppingCart.value
+  shoppingCart.value.items = items.map((item) => {
+    item.coupon = null
+    return item
+  })
+  shoppingCart.value.amount.subtotal = shoppingCart.value.items.reduce((acc, item) => acc + (item.product.priceWithTax * item.quantity), 0)
+  shoppingCart.value.amount.saved = 0
+  shoppingCart.value.amount.total = shoppingCart.value.amount.subtotal
+  shoppingCart.value.amount.shippingCost = 0
 }
 </script>
 
@@ -64,27 +69,33 @@ const handleRemoveCoupon = () => {
     />
     <OrderCoupon
       :show-title="false"
-      :order-coupon="shoppingCart.currentItem.coupon"
+      :order-coupon="shoppingCart.items[0].coupon"
       @add-coupon="handleAddOrderCoupon"
       @remove-coupon="handleRemoveCoupon"
     />
+    <p
+      v-if="shoppingCart.items[0].coupon"
+      class="text-green-secondary"
+    >
+      {{ shoppingCart.items[0].coupon.descriptionEs }}
+    </p>
     <Divider class="text-grey-secondary mt-7" />
     <div class="flex justify-between">
       <span>{{ $t('orderAmount.subtotal') }}</span>
-      <span>{{ getSubtotal }}€</span>
+      <span>{{ shoppingCart.amount.subtotal }}€</span>
     </div>
     <div class="flex justify-between mt-2">
       <span>{{ $t('orderAmount.shippingCost') }}</span>
-      <span>{{ amount.shippingCost }}€</span>
+      <span>{{ shoppingCart.amount.shippingCost }}€</span>
     </div>
     <div class="flex justify-between mt-2">
-      <span>{{ $t('orderAmount.discount') }}</span>
-      <span>{{ amount.saved }}€</span>
+      <span>{{ $t('orderAmount.discount') }} {{ shoppingCart.items[0]?.coupon?.discountValue }}%</span>
+      <span :class="shoppingCart.amount.saved > 0 ? 'text-green-secondary' : ''">{{ shoppingCart.amount.saved }}€</span>
     </div>
     <Divider class="text-grey-secondary" />
     <div class="flex justify-between text-[22px] font-solina-extended-medium">
       <span>{{ $t('orderAmount.total') }}</span>
-      <span>{{ amount.total || getSubtotal }}€</span>
+      <span>{{ shoppingCart.amount.total }}€</span>
     </div>
     <div class="flex justify-center">
       <Button

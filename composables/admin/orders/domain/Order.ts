@@ -81,7 +81,7 @@ export interface OrderShipping {
   shippingNotes: string
   shippingCountry: string
   shippingState: string
-  shippingCoverage: string
+  shippingCoverage: OrderCoverage
 }
 
 export interface OrderCoverage {
@@ -96,7 +96,7 @@ export type TotalOrderDelivery = {
 }
 
 export type TotalOrderAmountQuery = {
-  items: OrderItem[]
+  items: OrderItem[] | ShoppingCartItem[]
   coupon: Partial<Coupon>
   isPlaced?: boolean
   delivery?: TotalOrderDelivery

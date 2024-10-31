@@ -48,7 +48,6 @@ const getTeamInfo = async () => {
 
 onMounted(async () => {
   await getTeamInfo()
-  console.log(team.value)
 })
 
 defineI18nRoute({

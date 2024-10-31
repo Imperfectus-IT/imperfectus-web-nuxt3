@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import ShoppingCartTopSummaryBoxSmall from '~/components/shopping-cart/partials/ShoppingCartTopSummaryBoxSmall.vue'
+import type RedsysPaymentForm from '~/components/share/RedsysPaymentForm.vue'
+import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shopping-cart/domain/Item.ts'
+
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { t } = useI18n()
 const { shoppingCart } = useShoppingCartState()
@@ -22,10 +26,15 @@ const handleCreatePurchase = async () => {
     console.error(error.message)
   }
 }
+
+const handleNewProduct = () => {
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
+  shoppingCart.value.currentItem = createEmptyShoppingCartItem()
+}
 </script>
 
 <template>
-  <div class="px-10 md:px-[28%] lg:px-[2%] 2xl:px-[20%] relative">
+  <div class="px-10 relative">
     <div class="flex items-center justify-center gap-3 lg:mt-14">
       <div class="!absolute left-5 flex flex-row gap-3">
         <Button
@@ -37,7 +46,7 @@ const handleCreatePurchase = async () => {
         />
         <span class="my-auto hidden lg:block">{{ $t('string.back') }}</span>
       </div>
-      <p class="font-recoleta-regular text-lg font-normal text-center w-2/3 lg:text-2xl lg:hidden">
+      <p class="font-recoleta-regular text-lg font-normal text-center w-2/3 lg:text-xl lg:hidden">
         {{
           $t("order.steps.stepPayment.title")
         }}
@@ -45,7 +54,7 @@ const handleCreatePurchase = async () => {
     </div>
     <div class="lg:flex gap-5">
       <div class="my-auto lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 lg:w-[57%] lg:mt-14">
-        <p class="font-recoleta-regular text-lg font-normal text-center lg:text-xl hidden lg:block">
+        <p class="font-recoleta-regular text-lg font-normal text-center lg:text-[36px] hidden lg:block lg:mt-2">
           {{
             $t("order.steps.stepPayment.title")
           }}
@@ -53,7 +62,7 @@ const handleCreatePurchase = async () => {
         <div
           v-for="paymentMethod in paymentMethods"
           :key="paymentMethod.value"
-          class="mt-5"
+          class="mt-5 "
         >
           <RadioButton
             v-model="paymentMethod.value"
@@ -88,7 +97,7 @@ const handleCreatePurchase = async () => {
           <div
             v-for="checkOption in checkOptions"
             :key="checkOption"
-            class="flex"
+            class="flex lg:mb-3"
           >
             <Checkbox
               :id="checkOption"
@@ -102,30 +111,35 @@ const handleCreatePurchase = async () => {
               :value="$t(`order.steps.stepPayment.${checkOption}`)"
             />
           </div>
-          <div class="mt-5">
+          <div class="mt-5 flex justify-center">
             <RedsysPaymentForm
               ref="redsysForm"
               :is-button-outlined="false"
-              :order="order"
+              :order="order as Order"
             />
             <Button
-              class="w-full"
-              :label="$t('order.steps.stepPayment.submit')"
+              :disabled="!shoppingCart.termConditions"
+              :label="$t('pages.order.pay.pay')"
               @click.prevent="handleCreatePurchase"
             />
           </div>
-          {{ order }}
         </div>
       </div>
-      <!--      <div class="hidden my-auto lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14"> -->
-      <!--        <ShoppingCartSummaryBox> -->
-      <!--          <template #title> -->
-      <!--            <h3 class="font-recoleta-semibold text-center text-xl font-medium mb-3"> -->
-      <!--              {{ $t('order.steps.stepResume') }} -->
-      <!--            </h3> -->
-      <!--          </template> -->
-      <!--        </ShoppingCartSummaryBox> -->
-      <!--      </div> -->
+      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-14 lg:p-5 lg:pt-8 lg:w-5/12">
+        <ShoppingCartResumeBox
+          :display-next-step-button="false"
+          @add-new-product="handleNewProduct"
+        >
+          <template #title>
+            <h3 class="font-recoleta-regular text-center lg:text-[36px] font-medium mb-3">
+              {{ $t('order.steps.stepResume') }}
+            </h3>
+          </template>
+          <template #boxCard>
+            <ShoppingCartTopSummaryBoxSmall />
+          </template>
+        </ShoppingCartResumeBox>
+      </div>
     </div>
   </div>
 </template>

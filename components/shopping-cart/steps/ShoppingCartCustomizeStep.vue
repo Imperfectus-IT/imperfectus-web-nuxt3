@@ -26,14 +26,6 @@ const productExclusions = computed(() => {
 })
 
 const nexStep = () => {
-  // const currentItemIndex = shoppingCart.value.items.findIndex(item => item.id === shoppingCart.value.currentItem.id)
-  // console.log(currentItemIndex)
-  // if (currentItemIndex > -1) {
-  //   shoppingCart.value.items[currentItemIndex] = shoppingCart.value.currentItem
-  // }
-  // else {
-  //   shoppingCart.value.items.push(shoppingCart.value.currentItem)
-  // }
   emit(GO_TO_STEP_EVENT, BOX_STEP)
 }
 </script>

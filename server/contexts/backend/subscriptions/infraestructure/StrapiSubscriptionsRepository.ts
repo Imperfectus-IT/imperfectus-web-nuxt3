@@ -87,7 +87,6 @@ export class StrapiSubscriptionsRepository implements SubscriptionRepository {
         Authorization: `Bearer ${this.JWT}`,
       },
     })
-    console.log(subscription)
     return this.createSubscription(subscription)
   }
 

@@ -10,7 +10,7 @@ export const useStrapiCouponRepository = () => {
     return response.map((coupon: unknown) => useCouponFactory(coupon))
   }
 
-  const validateCoupon = async (validateCouponData: ValidateCouponPayload) => {
+  const validateCoupon = async (validateCouponData: ValidateCouponPayload): Promise<Coupon | null> => {
     const response = await client('/coupons/validate', {
       method: 'POST',
       body: {

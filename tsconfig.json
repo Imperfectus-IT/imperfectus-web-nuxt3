@@ -3,6 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "noUnterminatedStrings": false
+    "noUnterminatedStrings": false,
+    "strict": true
   }
 }

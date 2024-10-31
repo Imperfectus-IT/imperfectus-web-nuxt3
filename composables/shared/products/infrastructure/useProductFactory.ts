@@ -11,10 +11,12 @@ export default function () {
       isActive: product.isActive,
       type: product.type,
       price: product.price,
+      priceWithTax: parseFloat((product.price * (1 + product.tax_id.amount_value)).toFixed(2)),
       weight: product.weight,
       boxType: product.boxType,
       isImperfectusProduct: product.isImperfectusProduct,
       sku: product.SKU,
+      tax: product.tax_id.amount,
     }
   }
   const createItemProduct = (product: StrapiProduct): ItemProduct => {

@@ -13,7 +13,6 @@ export default defineEventHandler(async (event: H3Event) => {
       return new Error('Unauthorized')
     }
     const updateItemData: updateItemPayload = await readBody(event)
-    console.log('updateItemData', updateItemData)
 
     const updateItem = new UpdateItem(new StrapiSubscriptionsRepository(JWT))
     return await updateItem.execute(updateItemData)

@@ -1,5 +1,3 @@
-import {} from '@/composables/'
-
 export type StrapiOrder = {
   id: number
   order_id: number
@@ -65,7 +63,7 @@ export type StrapiOrderMeta = {
   created_at: string
   updated_at: string
   purpose: string | null
-  shipping_service: string
+  shipping_service: string | null
   shipping_office: string | null
   billing_customer_invoice_id: string | null
 }

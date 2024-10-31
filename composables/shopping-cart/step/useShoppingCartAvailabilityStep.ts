@@ -2,7 +2,7 @@ export default function () {
   const { shoppingCart } = useShoppingCartState()
   const { executeFindCoverageByPostalCode } = useGetCoverageByPostalCode()
 
-  const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostCode) || !isCoverageValid(shoppingCart.value.coverage))
+  const isInvalid = computed(() => !isPostalCodeLengthValid(shoppingCart.value.shippingAddress.shippingPostCode) || !isCoverageValid(shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage))
   const findCoverageByPostalCode = async (postalCode: string | null) => {
     if (!isPostalCodeLengthValid(postalCode)) {
       return
@@ -11,7 +11,7 @@ export default function () {
       postcode: Number(postalCode),
       deliveryDate: shoppingCart.value.deliveryDate,
     }
-    shoppingCart.value.coverage = await executeFindCoverageByPostalCode(query)
+    shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = await executeFindCoverageByPostalCode(query) as string
   }
 
   const goBack = () => {

@@ -23,8 +23,14 @@ const goToNextStep = () => {
 
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
   const user = useStrapiUser()
+  if (shoppingCart.value.currentItem.purchaseType === ORDER_TYPE) {
+    const currentItem: ShoppingCartItem = shoppingCart.value.currentItem
+    const itemExists = shoppingCart.value.items.some(item => item.uuid === currentItem.uuid)
+    if (!itemExists) {
+      shoppingCart.value.items.push(currentItem)
+    }
+  }
   emit(GO_TO_STEP_EVENT, user?.value?.id ? nextStep : AUTH_STEP)
-  shoppingCart.value.currentItem.purchaseType === ORDER_TYPE ? shoppingCart.value.items.push(shoppingCart.value.currentItem) : ''
 }
 </script>
 

@@ -2,35 +2,113 @@
 import dayjs from 'dayjs'
 import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
+import type { ValidHour } from '~/composables/shared/utils/types/ValidHour.ts'
+import ShoppingCartTopSummaryBoxSmall from '~/components/shopping-cart/partials/ShoppingCartTopSummaryBoxSmall.vue'
+import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shopping-cart/domain/Item.ts'
+import { ALLSERVICES } from '@/composables/locations/domain/ServicesConstants.ts'
 
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
 const { t } = useI18n()
-const deliveryType = ref(PICKUP_POINT_DELIVERY_TYPE)
+const deliveryType = ref(HOME_DELIVERY_TYPE)
 
+const { executeGetShippingCompanies } = useGetShippingCompanies()
+const { executeGetSeurPickUpPoints } = useGetSeurPickUpPoints()
+const { executeGetCorreosPickUpPoints } = useGetCorreosPickUpPoints()
 const { dateBuilder } = useDateBuilder()
 const { timeSlot, getTimeSlotHandler } = useGetTimeSlotHandler()
 const { validHours, getValidHoursHandler } = useValidHoursHandler()
 const { unavailableDates, getUnavailableDates } = useUnavailableDatesHandler()
 const { availableWeekDays, getAvailableWeekDaysHandler } = availableWeekDaysHandler()
 
+const setHomeDelivery = () => {
+  deliveryType.value = HOME_DELIVERY_TYPE
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = ''
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingOffice = null
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingService = null
+}
+
+const setPickupPointDelivery = () => {
+  deliveryType.value = PICKUP_POINT_DELIVERY_TYPE
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = ''
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingOffice = null
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingService = ALLSERVICES.PICK_UP_POINT
+}
+const hasAllDataSet = computed(() => {
+  const { shippingCoverage, shippingOffice, shippingService } = shoppingCart.value.shippingAddress.shippingCoverage
+  const { deliveryDate } = shoppingCart.value
+  return !!shippingCoverage && !!deliveryDate && (shippingService !== ALLSERVICES.PICK_UP_POINT || !!shippingOffice)
+})
+
+const handleNewProduct = () => {
+  emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
+  shoppingCart.value.currentItem = createEmptyShoppingCartItem()
+}
+
+watch(() => shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage,
+  async (newCoverage) => {
+    const { shippingService } = shoppingCart.value.shippingAddress.shippingCoverage
+    await getTimeSlotHandler(shoppingCart.value.shippingAddress.shippingPostCode, newCoverage)
+    await getValidHoursHandler(timeSlot.value)
+    await getAvailableWeekDaysHandler(shoppingCart.value.shippingAddress.shippingPostCode, shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage)
+    newCoverage === ALL_COVERAGES.CORREOSEXPRESS.value && shippingService !== ALLSERVICES.PICK_UP_POINT
+      ? shoppingCart.value.shippingAddress.shippingCoverage.shippingService = ALLSERVICES.CORREOSB2C
+      : newCoverage !== ALL_COVERAGES.CORREOSEXPRESS.value && shippingService !== ALLSERVICES.PICK_UP_POINT
+        ? shoppingCart.value.shippingAddress.shippingCoverage.shippingService = ''
+        : ''
+  },
+)
+
+const mapValidHours = (validHours: ValidHour[]) => {
+  return validHours.map(hour => ({
+    label: t('string.hour.timeSlot', { from: hour.from, to: hour.to }),
+    value: hour.timeSlot,
+  }))
+}
+
+const getItemProductIds = computed(() => shoppingCart.value.items.map(item => item.product.id))
+onMounted(async () => {
+  await getAvailableWeekDaysHandler(shoppingCart.value.shippingAddress.shippingPostCode, '')
+  await getUnavailableDates(getItemProductIds.value, shoppingCart.value.shippingAddress.shippingPostCode, '')
+})
+
+const getFullAddress = computed(() => {
+  return `${shoppingCart.value.shippingAddress.shippingAddress}, ${shoppingCart.value.shippingAddress.shippingPostCode}, ${shoppingCart.value.shippingAddress.shippingCity}, ${shoppingCart.value.shippingAddress.shippingCountry}`
+})
+
+// Calendar
 const initializeCalendarDate = computed(() => {
   const minDateDayNumber = dayjs().add(2, 'd').day()
   const daysUntilThursday = (4 - minDateDayNumber + 7) % 7
   const firstThursday = dayjs().add(2 + daysUntilThursday, 'd').toDate()
-
   const isFirstThursdayUnavailable = unavailableDates.value.some((date: Date) => {
-    console.log('date', date)
-    console.log('firstThursday', firstThursday)
     return dayjs(date).format('YYYY-MM-DD') === dayjs(firstThursday).format('YYYY-MM-DD')
   })
-  return isFirstThursdayUnavailable ? dayjs(firstThursday).add(1, 'w').toDate() : firstThursday
+  const FirstThursdayAvaiable = isFirstThursdayUnavailable ? dayjs(firstThursday).add(1, 'w').toDate() : firstThursday
+  shoppingCart.value.deliveryDate = dayjs(FirstThursdayAvaiable).format('YYYY-MM-DD')
+  return FirstThursdayAvaiable
 })
-
 const selectedDate = ref(initializeCalendarDate.value)
 
-const getFullAddress = computed(() => {
-  return `${shoppingCart.value.shippingAddress.shippingAddress}, ${shoppingCart.value.shippingAddress.shippingPostCode}, ${shoppingCart.value.shippingAddress.shippingCity}, ${shoppingCart.value.shippingAddress.shippingCountry}`
+// Home delivery
+const availableCarriers = ref<string[]>(await executeGetShippingCompanies(shoppingCart.value.shippingAddress.shippingPostCode, shoppingCart.value.deliveryDate))
+const coveragesOptions = computed(() =>
+  Object.values(ALL_COVERAGES).filter((coverage: CoverageOption) =>
+    availableCarriers.value.includes(coverage.value),
+  ),
+)
+// Update carriers availability and Timeslot
+watch(selectedDate, async () => {
+  shoppingCart.value.deliveryDate = dayjs(selectedDate.value).format('YYYY-MM-DD')
+  try {
+    availableCarriers.value = await executeGetShippingCompanies(
+      shoppingCart.value.shippingAddress.shippingPostCode,
+      shoppingCart.value.deliveryDate,
+    )
+  }
+  catch (error) {
+    console.error('Failed to fetch shipping companies:', error)
+  }
 })
 
 const isSelectedDate = (date: CalendarDate) => {
@@ -46,51 +124,22 @@ const getAvailableWeekDays = computed(() => {
   const allDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
   return allDays.filter(day => !availableWeekDays.value.includes(day)).map(day => DayMapping[day])
 })
-
 const getFormattedUnavailableDates = computed(() => unavailableDates.value.map(date => dayjs(date).toDate()))
 
-onMounted(async () => {
-  // await getTimeSlotHandler(shoppingCart.value.shippingAddress.shippingPostCode, props.order.shippingInfo.shippingCoverage, selectedDate.value)
-  // await getUnavailableDates(props.order.orderItems.map(item => item.product.id), props.order.shippingInfo.shippingPostCode, props.order.shippingInfo.shippingCoverage)
-  await getAvailableWeekDaysHandler('25250', 'paack')
-  await getUnavailableDates([547], '25250', 'paack')
+// Pickup point delivery
+const seurPickUpPoints = await executeGetSeurPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
+const correosPickUpPoints = await executeGetCorreosPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
+const pickupCarrierOptions = [ALL_COVERAGES.CORREOSEXPRESS, seurPickUpPoints.length > 0 ? ALL_COVERAGES.SEUR : null]
+const pickupPointList = computed(() => {
+  const coverageType = shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage
+  if (coverageType === ALL_COVERAGES.SEUR.value) {
+    return seurPickUpPoints
+  }
+  else if (coverageType === ALL_COVERAGES.CORREOSEXPRESS.value) {
+    return correosPickUpPoints
+  }
+  return []
 })
-
-const carrierOptions = ['mensakas', 'paack', 'correosexp', 'seur', 'ctt', 'talkual']
-const pickupCarrierOptions = [
-  {
-    label: t('orderStepDate.carrier.seur'),
-    value: 'seur',
-  },
-]
-const pickupPointList = [
-  {
-    id: 1,
-    address: 'OF.CORREOS: BARCELONA. PS. SANT JOAN, 196, Barcelona, Barcelona, 08037',
-  },
-  {
-    id: 2,
-    address: 'OF.CORREOS: BARCELONA. PS. SANT JOAN, 196, Barcelona, Barcelona, 08037',
-  },
-]
-const timeOptions = [
-  {
-    label: t('orderStepDate.timePreferenceOption1'),
-    value: 'full',
-  },
-  {
-    label: t('orderStepDate.timePreferenceOption2'),
-    value: 'morning',
-  },
-  {
-    label: t('orderStepDate.timePreferenceOption3'),
-    value: 'afternoon',
-  },
-  {
-    label: t('orderStepDate.timePreferenceOption4'),
-    value: 'night',
-  },
-]
 </script>
 
 <template>
@@ -133,15 +182,14 @@ const timeOptions = [
               $t("orderStepDate.message")
             }}
           </p>
-          {{ availableWeekDays }}
-          {{ unavailableDates }}sss
-          {{ getAvailableWeekDays }}
           <Calendar
+            id="calendar"
             v-model="selectedDate"
             class="mt-5"
             inline
-            :disabled-days="getAvailableWeekDays"
+            :disabled-days="[...getAvailableWeekDays, 1]"
             :disabled-dates="getFormattedUnavailableDates"
+            :min-date="dayjs().add(2, 'd').toDate()"
           >
             <template #date="slotProps">
               <div
@@ -176,13 +224,13 @@ const timeOptions = [
               :class="['w-1/2 rounded-none rounded-l-xl h-[34px]', { 'bg-green-primary': deliveryType === PICKUP_POINT_DELIVERY_TYPE }]"
               :label="$t('orderStepDate.nextDeliveryDay.methodType.pickup')"
               outlined
-              @click.prevent="deliveryType = PICKUP_POINT_DELIVERY_TYPE"
+              @click.prevent="setPickupPointDelivery"
             />
             <Button
               :class="['w-1/2 rounded-none rounded-r-xl h-[34px]', { 'bg-green-primary': deliveryType === HOME_DELIVERY_TYPE }]"
               :label="$t('orderStepDate.nextDeliveryDay.methodType.home')"
               outlined
-              @click.prevent="deliveryType = HOME_DELIVERY_TYPE"
+              @click.prevent="setHomeDelivery()"
             />
           </InputGroup>
         </div>
@@ -195,21 +243,21 @@ const timeOptions = [
           </p>
           <div>
             <div
-              v-for="(carrier, index) in carrierOptions"
-              :key="carrier"
+              v-for="(carrier, index) in coveragesOptions"
+              :key="index"
               :class="['flex items-center mb-3 border cursor-pointer rounded-xl lg:w-2/3 p-3', { 'border-green-primary': shoppingCart.coverage === carrier }]"
-              @click.prevent="shoppingCart.coverage = carrier"
+              @click.prevent="shoppingCart.shippingAddress.shippingCoverage.shippingCoverage = carrier.value"
             >
               <RadioButton
-                v-model="shoppingCart.coverage"
+                v-model="shoppingCart.shippingAddress.shippingCoverage.shippingCoverage"
                 input-id="ingredient1"
                 name="coverage"
-                :value="carrier"
+                :value="carrier.value"
               />
               <label
                 for="coverage"
                 class="ml-2 text-xs font-normal leading-5"
-              >{{ $t(`orderStepDate.carrier.${carrier}`) }}</label>
+              >{{ carrier.label }}</label>
               <span
                 v-if="index === 0"
                 class="mdi mdi-star text-lg text-green-primary ml-3"
@@ -222,13 +270,16 @@ const timeOptions = [
               </p>
             </div>
           </div>
-          <div class="mt-6">
+          <div
+            v-if="shoppingCart.shippingAddress.shippingCoverage.shippingCoverage"
+            class="mt-6"
+          >
             <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
               {{ $t('orderStepDate.time') }}
             </p>
             <Dropdown
               v-model="shoppingCart.preferredHour"
-              :options="timeOptions"
+              :options="mapValidHours(validHours)"
               option-label="label"
               option-value="value"
               class="lg:w-full text-base"
@@ -240,16 +291,20 @@ const timeOptions = [
           class="mt-6"
         >
           <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
-            {{ $t('orderStepDate.time') }}
+            Empresa de transporte:
           </p>
           <Dropdown
-            v-model="shoppingCart.coverage"
+            v-model="shoppingCart.shippingAddress.shippingCoverage.shippingCoverage"
             :options="pickupCarrierOptions"
             option-label="label"
             option-value="value"
             class="lg:w-full text-base border rounded-lg"
+            placeholder="Selecciona una empresa de transporte"
           />
-          <div class="mt-6">
+          <div
+            v-if="true"
+            class="mt-6"
+          >
             <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
               {{ $t('orderStepDate.carrier.preferredPickup') }}
             </p>
@@ -261,24 +316,49 @@ const timeOptions = [
               v-for="pickupPoint in pickupPointList"
               :key="pickupPoint.id"
               class="mb-3 cursor-pointer lg:w-2/3"
-              @click.prevent="shoppingCart.shippingAddress.address1 = pickupPoint.id"
+              @click.prevent="shoppingCart.shippingAddress.shippingCoverage.shippingOffice = pickupPoint.id"
             >
-              <RadioButton
-                v-model="shoppingCart.shippingAddress.address1"
-                input-id="pickupPoint"
-                name="pickupPoint"
-                :value="pickupPoint.id"
-              />
-              <label
-                for="coverage"
-                class="ml-2 text-xs font-normal leading-5"
-              >{{ pickupPoint.address }}</label>
+              <div class="flex items-start text-[14px]">
+                <RadioButton
+                  v-model="shoppingCart.shippingAddress.shippingCoverage.shippingOffice"
+                  class="mr-2"
+                  :input-id="pickupPoint?.id"
+                  name="pickuppoint"
+                  :value="pickupPoint?.id"
+                />
+                <div class="flex flex-col text-[12px] font-solina-extended-medium ">
+                  <label
+                    :for="pickupPoint?.id"
+                    class=" font-bold leading-5 cursor-pointer"
+                  ><p class="m">{{ pickupPoint?.name }}: <span class="uppercase">{{ pickupPoint?.city }}</span></p></label>
+                  <p>
+                    {{ pickupPoint?.address }}
+                  </p>
+                  <p>
+                    {{ pickupPoint?.city }} {{ pickupPoint?.postcode }}
+                  </p>
+                </div>
+              </div>
+              <Divider class="mt-2" />
+              <!--              <RadioButton -->
+              <!--                v-model="shoppingCart.shippingAddress.shippingCoverage.shippingOffice" -->
+              <!--                input-id="pickupPoint" -->
+              <!--                name="pickupPoint" -->
+              <!--                :value="pickupPoint.id" -->
+              <!--              /> -->
+              <!--              <label -->
+              <!--                for="coverage" -->
+              <!--                class="ml-2 text-xs font-normal leading-5" -->
+              <!--              >{{ pickupPoint.address }}</label> -->
             </div>
           </div>
         </div>
       </div>
-      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:px-14 lg:py-8 mt-14">
-        <ShoppingCartResumeBox>
+      <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-14 lg:p-5 lg:pt-8 lg:w-5/12">
+        <ShoppingCartResumeBox
+          :display-next-step-button="false"
+          @add-new-product="handleNewProduct"
+        >
           <template #title>
             <h3 class="font-recoleta-regular text-center lg:text-[36px] font-medium mb-3">
               {{ $t('order.steps.stepResume') }}
@@ -296,6 +376,7 @@ const timeOptions = [
     </div>
     <div class="flex justify-center lg:mt-6">
       <Button
+        :disabled="!hasAllDataSet"
         class="mt-4"
         severity="secondary"
         :label="$t('order.next')"

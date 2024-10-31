@@ -25,7 +25,7 @@ export const useStrapiLocationRepository = () => {
     return Promise.all(strapiPickUpPoints.map(pickUpPoint => usePickUpPointFactory().seurPickUpPoint(pickUpPoint)))
   }
 
-  const getShippingCompaniesByPostcodeAndDate = async (postcode: string, deliveryDate: string) => {
+  const getShippingCompaniesByPostcodeAndDate = async (postcode: string, deliveryDate: string): Promise<string[]> => {
     return await client(`/locations/shippingCompanies?postcode=${postcode}&deliveryDate=${deliveryDate}`, { method: 'GET' })
   }
 

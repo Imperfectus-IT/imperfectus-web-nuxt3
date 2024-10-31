@@ -40,7 +40,6 @@ const handleCloseMoodal = () => {
   emits('close-modal')
 }
 const getSubscriptionId = computed(() => {
-  console.log('subscriptions', subscriptions.value)
   const subscription = subscriptions.value.find((subscription: Subscription) => {
     return subscription.id === props.subscriptionId
   })

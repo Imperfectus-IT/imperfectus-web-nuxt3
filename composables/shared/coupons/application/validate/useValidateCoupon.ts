@@ -2,7 +2,13 @@ export const useValidateCoupon = () => {
   const { validateCoupon } = useStrapiCouponRepository()
   const { shoppingCart } = useShoppingCartState()
   const executeValidateCoupon = async (validateCouponData: ValidateCouponPayload) => {
-    shoppingCart.value.currentItem.coupon = await validateCoupon(validateCouponData)
+    const foundCoupon = await validateCoupon(validateCouponData)
+    console.log('foundCoupon', foundCoupon)
+    const { items } = shoppingCart.value
+    shoppingCart.value.items = items.map((item: ShoppingCartItem) => {
+      item.coupon = foundCoupon
+      return item
+    })
   }
   return {
     executeValidateCoupon,

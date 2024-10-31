@@ -1,25 +1,25 @@
 import type { ShoppingCartItem } from './Item.ts'
 import { createEmpty as createEmptyBillingAddress } from './BillingAddress.ts'
 import { createEmpty as createEmptyShippingAddress } from './ShippingAddress.ts'
-import { createEmpty as createEmptyItem } from './Item.ts'
+import { createEmpty as createEmptyItem, createIMBoxItem } from './Item.ts'
+import { createEmpty as createEmptyAmount } from './Amount.ts'
 import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
+import type { ShoppingCartAmount } from '~/composables/shopping-cart/domain/Amount.ts'
 
 export type ShoppingCart = {
   uuid: string
-  status: string
   step: string
   deliveryDate: string
   deliveryHour: string
   preferredDay: string
-  preferredHour: string
+  preferredHour: string | null
   invoiceRequired: boolean
-  coverage?: string | null | undefined
   termConditions: boolean
   whatsappInfo: boolean
   marketingInfo: boolean
+  amount: ShoppingCartAmount
   billingAddress: OrderBilling
   shippingAddress: OrderShipping
-  shippingCoverage: shoppingCartCoverage
   items: ShoppingCartItem[]
   currentItem: ShoppingCartItem | null
 }
@@ -42,9 +42,69 @@ export function createEmpty(): ShoppingCart {
     deliveryDate: '',
     deliveryHour: '',
     preferredDay: '',
-    preferredHour: '',
+    preferredHour: 'full',
     invoiceRequired: false,
-    coverage: null,
+    amount: createEmptyAmount(),
+    termConditions: false,
+    whatsappInfo: false,
+    marketingInfo: false,
+    billingAddress: createEmptyBillingAddress(),
+    shippingAddress: createEmptyShippingAddress(),
+    items: [],
+    currentItem: createEmptyItem(),
+  }
+}
+
+export function createIMBoxSelected(): ShoppingCart {
+  return {
+    uuid: generateId(),
+    step: AVAILABILITY_STEP,
+    deliveryDate: '',
+    deliveryHour: '',
+    preferredDay: '',
+    preferredHour: 'full',
+    invoiceRequired: false,
+    amount: createEmptyAmount(),
+    termConditions: false,
+    whatsappInfo: false,
+    marketingInfo: false,
+    billingAddress: createEmptyBillingAddress(),
+    shippingAddress: createEmptyShippingAddress(),
+    items: [],
+    currentItem: createIMBoxItem(),
+  }
+}
+
+export function createXLBoxSelected(): ShoppingCart {
+  return {
+    uuid: generateId(),
+    step: AVAILABILITY_STEP,
+    deliveryDate: '',
+    deliveryHour: '',
+    preferredDay: '',
+    preferredHour: 'full',
+    invoiceRequired: false,
+    amount: createEmptyAmount(),
+    termConditions: false,
+    whatsappInfo: false,
+    marketingInfo: false,
+    billingAddress: createEmptyBillingAddress(),
+    shippingAddress: createEmptyShippingAddress(),
+    items: [],
+    currentItem: createEmptyItem(),
+  }
+}
+
+export function createSBoxSelected(): ShoppingCart {
+  return {
+    uuid: generateId(),
+    step: AVAILABILITY_STEP,
+    deliveryDate: '',
+    deliveryHour: '',
+    preferredDay: '',
+    preferredHour: 'full',
+    invoiceRequired: false,
+    amount: createEmptyAmount(),
     termConditions: false,
     whatsappInfo: false,
     marketingInfo: false,

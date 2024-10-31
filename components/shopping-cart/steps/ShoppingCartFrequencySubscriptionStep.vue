@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
+const { activeBoxProducts } = useProductsState()
+const { generateSku } = useGenerateSku()
 const setFrequency = (frequency: string) => shoppingCart.value.currentItem.frequency = frequency
 const isWeeklyFrequency = computed(() => shoppingCart.value.currentItem?.frequency === WEEKLY_FREQUENCY)
 const isBiweeklyFrequency = computed(() => shoppingCart.value.currentItem?.frequency === BIWEEKLY_FREQUENCY)
@@ -9,9 +11,16 @@ const goBack = () => {
 }
 
 const goToNextStep = () => {
+  const { boxType, boxSize, frequency } = shoppingCart.value.currentItem
+  const newSku = generateSku(boxType, boxSize, frequency)
+  shoppingCart.value.currentItem.product = activeBoxProducts.value.find((product: BoxProduct) => product.sku === newSku)
+  const currentItem: ShoppingCartItem = shoppingCart.value.currentItem as ShoppingCartItem
+  const itemExists = shoppingCart.value.items.some(item => item.uuid === currentItem.uuid)
+  if (!itemExists) {
+    shoppingCart.value.items.push(currentItem)
+  }
   const user = useStrapiUser()
   emit(GO_TO_STEP_EVENT, user?.value?.id ? RESUME_ITEM_STEP : AUTH_STEP)
-  shoppingCart.value.items.push(shoppingCart.value.currentItem)
 }
 </script>
 

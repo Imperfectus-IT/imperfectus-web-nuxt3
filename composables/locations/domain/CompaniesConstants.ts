@@ -1,4 +1,4 @@
-export const ALL_COVERAGES = {
+export const ALL_COVERAGES: AllCoverages = {
   PAACK: {
     label: 'Paack',
     value: 'paack',
@@ -19,4 +19,17 @@ export const ALL_COVERAGES = {
     label: 'Talkual',
     value: 'talkual',
   },
+}
+
+export type CoverageOption = {
+  label: string
+  value: string
+}
+
+type AllCoverages = {
+  PAACK: CoverageOption
+  MENSAKAS: CoverageOption
+  CORREOSEXPRESS: CoverageOption
+  SEUR: CoverageOption
+  TALKUAL: CoverageOption
 }

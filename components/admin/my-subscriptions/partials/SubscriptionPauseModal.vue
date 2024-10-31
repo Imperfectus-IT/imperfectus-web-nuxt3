@@ -195,11 +195,7 @@ const toggleModalLayers = () => {
 }
 
 const isNextDeliveryDateSelected = (date: CalendarDate) => {
-  console.log('date', date)
   const result = dateBuilder(date) === dayjs(pauseInfo.nextDeliveryDate).format('YYYY-MM-DD')
-  console.log(dateBuilder(date))
-  console.log(dayjs(pauseInfo.nextDeliveryDate).subtract(1, 'month').format('YYYY-MM-DD'))
-  console.log('result', result)
   return result
 }
 const pauseSubscription = () => {

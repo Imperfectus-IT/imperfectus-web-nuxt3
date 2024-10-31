@@ -20,7 +20,7 @@ const { getLocaleName } = useGetLocaleLanguage(locale)
     <div class="lg:my-auto lg:text-[20px] lg:w-1/2 lg:p-8">
       <div class="flex justify-between items-center font-bold px-1 my-3">
         <span>{{ boxProduct[`name${getLocaleName}`] }}</span>
-        <span>{{ boxProduct?.price }} €</span>
+        <span>{{ boxProduct?.priceWithTax }} €</span>
       </div>
       <p class="text-base leading-6 font-extralight lg:mt-10">
         {{ boxProduct[`description${getLocaleName}`] }}

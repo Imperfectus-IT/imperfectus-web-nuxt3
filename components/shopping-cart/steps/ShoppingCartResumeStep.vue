@@ -2,6 +2,7 @@
 import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
 import { createEmpty as createEmptyShoppingCartItem } from '@/composables/shopping-cart/domain/Item.ts'
 
+onMounted(() => shoppingCart.value.currentItem = createEmptyShoppingCartItem())
 const toast = useToast()
 const { errorToast, successToast } = useToastService()
 const { t } = useI18n()
@@ -10,6 +11,15 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
 const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const { getLocaleName } = useGetLocaleLanguage(locale)
+const { executeGetOrderAmount } = useGetOrderAmount()
+
+onMounted(async () => {
+  const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
+  shoppingCart.value.amount.subtotal = shoppingCart.value.items.reduce((acc, item) => acc + item.product.priceWithTax, 0)
+  shoppingCart.value.amount.shippingCost = newAmount.shipping
+  shoppingCart.value.amount.saved = newAmount.saved
+  shoppingCart.value.amount.total = newAmount.total
+})
 const handleNewProduct = () => {
   emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
   shoppingCart.value.currentItem = createEmptyShoppingCartItem()
@@ -28,6 +38,8 @@ const goToNextStep = () => {
   emit(GO_TO_STEP_EVENT, SHIPPING_STEP)
 }
 const goBack = () => {
+  const { items } = shoppingCart.value
+  shoppingCart.value.currentItem = items[items.length - 1]
   emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
 }
 </script>
@@ -71,7 +83,7 @@ const goBack = () => {
           <div class="p-4 lg:my-auto lg:p-0 lg:py-4 mt-5">
             <div class="flex justify-between items-center">
               <span class="font-bold my-3 lg:my-1 text-lg lg:text-md">{{ item.product[`name${getLocaleName}`] }}</span>
-              <span class="font-bold text-lg inline lg:ml-20">{{ item.product.price }} €</span>
+              <span class="font-bold text-lg inline lg:ml-20">{{ item.product.priceWithTax }} €</span>
             </div>
             <p class="mt-6 lg:mt-3 lg:hidden">
               {{ item.product[`description${getLocaleName}`] }}
@@ -96,33 +108,6 @@ const goBack = () => {
               class="mdi mdi-close text-red-primary cursor-pointer"
               @click.prevent="removeItem(item.uuid)"
             />
-            <!--          <div class="flex gap-2"> -->
-            <!--            <Button -->
-            <!--              icon="mdi mdi-minus" -->
-            <!--              outlined -->
-            <!--              :pt="{ -->
-            <!--                root: ['h-4 w-7'], -->
-            <!--              }" -->
-            <!--              :pt-options="{ -->
-            <!--                mergeSections: true, -->
-            <!--                mergeProps: true, -->
-            <!--              }" -->
-            <!--              @click.prevent="decrementQuantity(item)" -->
-            <!--            /> -->
-            <!--            <span>{{ item.quantity }}</span> -->
-            <!--            <Button -->
-            <!--              icon="mdi mdi-plus" -->
-            <!--              outlined -->
-            <!--              :pt="{ -->
-            <!--                root: ['h-4 w-7'], -->
-            <!--              }" -->
-            <!--              :pt-options="{ -->
-            <!--                mergeSections: true, -->
-            <!--                mergeProps: true, -->
-            <!--              }" -->
-            <!--              @click.prevent="incrementQuantity(item)" -->
-            <!--            /> -->
-            <!--          </div> -->
           </div>
           <Divider class="text-grey-secondary" />
         </div>

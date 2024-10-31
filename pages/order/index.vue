@@ -30,7 +30,6 @@ const componentToRenderFromStep: Record<string, any> = {
   [AUTH_STEP]: resolveComponent('LazyShoppingCartAuthStep'),
   [RESUME_ITEM_STEP]: resolveComponent('LazyShoppingCartResumeStep'),
   [SHIPPING_STEP]: resolveComponent('LazyShoppingCartShippingStep'),
-  // [DELIVERY_DATE_STEP]: resolveComponent('LazyShoppingCartDeliveryDateStep'),
   [DELIVERY_STEP]: resolveComponent('LazyShoppingCartDeliveryStep'),
   [PAYMENT_STEP]: resolveComponent('LazyShoppingCartPaymentStep'),
 }
@@ -38,18 +37,15 @@ const componentToRenderFromStep: Record<string, any> = {
 const currentProgress = computed(() => {
   const totalSteps = Object.keys(componentToRenderFromStep).length - 1
   const currentStepIndex = Object.keys(componentToRenderFromStep).findIndex(step => step === shoppingCart.value.step)
-  return (currentStepIndex / (totalSteps - 1)) * 100
+  return (currentStepIndex / totalSteps) * 100
 })
 
 onMounted(async () => {
-  await executeStep('StepDelivery')
+  await executeStep('StepAvailability')
 })
 </script>
 
 <template>
-  <DevOnly>
-    {{ shoppingCart }}
-  </DevOnly>
   <section>
     <ProgressBar
       class="my-5 w-full"

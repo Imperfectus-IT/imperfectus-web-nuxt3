@@ -26,11 +26,16 @@
           </p>
         </template>
         <template #footer>
-          <Button
-            class="w-full lg:rounded-t-[0px]"
-            label="Comprar"
-            severity="secondary"
-          />
+          <NuxtLinkLocale
+            class="mt-4 lg:mt-0"
+            to="order"
+          >
+            <Button
+              class="w-full lg:rounded-t-[0px]"
+              label="Comprar"
+              severity="secondary"
+            />
+          </NuxtLinkLocale>
         </template>
       </Card>
     </div>

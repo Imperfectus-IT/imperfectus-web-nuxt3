@@ -44,7 +44,6 @@ const boxes = ref<CarouselSlideObject[]>([
     name: 'S-box',
     title: t('content.home.ourBoxes.item0.title'),
     description: t('content.home.ourBoxes.item0.description'),
-
   },
   {
     index: 2,
@@ -52,7 +51,6 @@ const boxes = ref<CarouselSlideObject[]>([
     name: 'M-box',
     title: t('content.home.ourBoxes.item1.title'),
     description: t('content.home.ourBoxes.item1.description'),
-
   },
   {
     index: 3,
@@ -60,7 +58,6 @@ const boxes = ref<CarouselSlideObject[]>([
     name: 'XL-box',
     title: t('content.home.ourBoxes.item2.title'),
     description: t('content.home.ourBoxes.item2.description'),
-
   },
 ])
 </script>

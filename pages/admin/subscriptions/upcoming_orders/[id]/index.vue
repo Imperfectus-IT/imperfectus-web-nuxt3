@@ -242,7 +242,6 @@ watchEffect(() => {
     : ''
 })
 const calculateNextDeliveryDate = (date: string) => {
-  console.log('date', date)
   const dayNumber: number = DayMapping[subscription.value.preferredDay]
   return dayjs(date).day(dayNumber).format('YYYY-MM-DD')
 }

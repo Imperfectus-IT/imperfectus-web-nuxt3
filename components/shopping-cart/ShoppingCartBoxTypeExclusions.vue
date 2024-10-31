@@ -2,10 +2,11 @@
 import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
 
 const props = defineProps<{
-  productExclusions: ProductExclusion[]
+  productExclusions: ItemProduct[]
 }>()
 const { shoppingCart } = useShoppingCartState()
 const { t, locale } = useI18n()
+const { getLocaleName } = useGetLocaleLanguage(locale)
 const isExclusionSelected = ref(false)
 const searchExclusion = ref('')
 const filteredExclusions = computed(() => {
@@ -13,7 +14,7 @@ const filteredExclusions = computed(() => {
     return props.productExclusions
   }
   return props.productExclusions.filter((product) => {
-    return product.name.toLowerCase().includes(searchExclusion.value.toLowerCase())
+    return product[`name${getLocaleName.value}`].toLowerCase().includes(searchExclusion.value.toLowerCase())
   })
 })
 const MAX_MIXED_EXCLUSIONS = 6
@@ -41,8 +42,6 @@ const onClickSelectExclusion = (isSelected: boolean) => {
 const initData = () => {
   isExclusionSelected.value = shoppingCart.value.currentItem.exclusions.length > 0
 }
-
-const { getLocaleName } = useGetLocaleLanguage(locale)
 
 onMounted(() => {
   initData()
@@ -103,7 +102,7 @@ onMounted(() => {
             <Checkbox
               v-model="shoppingCart.currentItem.exclusions"
               class="mr-3"
-              :input-id="item.id"
+              :input-id="String(item.id)"
               name="productExclusion"
               :disabled="disabledExclusion(item)"
               :value="item.id"

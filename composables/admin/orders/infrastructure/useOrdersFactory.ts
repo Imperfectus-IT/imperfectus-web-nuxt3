@@ -15,7 +15,6 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     orderMeta: order.order_meta.id,
     subscription: order.subscriptions?.length > 0 ? order.subscriptions[0].id : null,
     orderItems: order.order_items.map((order_item: StrapiOrderItem) => {
-      console.log('order_item', order_item)
       return {
         id: order_item.id,
         product: {
