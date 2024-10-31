@@ -38,9 +38,10 @@ export default {
         'En TALKUAL treballem per a reduir els aliments que es perden i lluitem contra el malbaratament alimentari.',
 
   'pages.order.title': 'Compra',
-  'pages.order.pay.title': 'Ups! Error en el pagament',
   'pages.order.description':
         'Aquí pots comprar els tres tipus de caixes TALKUAL que oferim',
+  'pages.order.pay.title': 'Ups! Error en el pagament',
+  'pages.order.pay.description': 'Hi ha hagut un problema en processar el teu pagament a TALKUAL. Si us plau, intenta-ho novament. Si necessites ajuda, contacta amb el nostre equip d\'atenció al client per completar la teva comanda.',
   'pages.order.pay.message': 'Gràcies per la seva compra!',
   'pages.order.pay.orderNumber': 'Número de comanda:',
   'pages.order.pay.deliveryEstimate': 'Data de lliurament estimada:',

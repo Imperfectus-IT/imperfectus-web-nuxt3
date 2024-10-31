@@ -41,6 +41,7 @@ export default {
   'pages.order.description':
     'Aquí puedes comprar los tres tipos de cajas TALKUAL que ofrecemos',
   'pages.order.pay.title': '¡Ups! Error en el pago',
+  'pages.order.pay.description': 'Hubo un problema al procesar tu pago en TALKUAL. Por favor, intenta nuevamente. Si necesitas ayuda, contacta con nuestro equipo de atención al cliente para completar tu pedido.',
   'pages.order.pay.message': '¡Gracias por tu compra!',
   'pages.order.pay.orderNumber': 'Número de pedido:',
   'pages.order.pay.deliveryEstimate': 'Fecha de entrega estimada:',
