@@ -15,7 +15,7 @@
       <div :class="slideClass">
         <NuxtImg
           v-if="item.image"
-          :src="item.image[0]"
+          :src="item.image"
           :alt="item.name"
           :class="imageClass || item.imageClass"
           loading="lazy"

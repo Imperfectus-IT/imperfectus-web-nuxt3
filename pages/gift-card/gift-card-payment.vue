@@ -56,36 +56,42 @@
       </NuxtLink>
       <RedsysPaymentForm
         ref="redsys"
-        class="mt-6"
-        :order="orderId"
+        :order="order"
         :is-button-outlined="false"
-        @redirect="(submit) => handlePayment(submit)"
+      />
+      <Button
+        class="w-full lg:mx-auto lg:mt-8 border-none font-solina-extended-medium font-bold lg:text-[20px] py-3"
+        @click="handlePayment"
       >
         {{
           route.query.status === 'error'
             ? $t('gift-card.payment.form.repeat-submit')
             : $t('gift-card.payment.form.submit', { amount: getTotalAmount })
         }}
-      </RedsysPaymentForm>
+      </Button>
     </div>
   </div>
 
   <GiftCardDoubts />
+  <Toast />
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
+const redsys = ref<HTMLFormElement | null>(null)
 const localePath = useLocalePath()
 const section = 'gift-card.payment'
 const router = useRouter()
 const route = useRoute()
-const orderId = ref(null)
-const status = ref('s')
+const order = ref<Order>(null)
+const status = ref('')
 const notification = ref('')
 const userGiftCards = ref([])
 const { t } = useI18n()
+const toast = useToast()
+const { errorToast } = useToastService()
 
 const { giftCard, addGiftCard, removeGiftCard, executeCreateGiftCard } = useCreateGiftCardHandler()
 const { getGiftCardByUser } = useGetGiftCardsHandler()
@@ -112,7 +118,7 @@ const setGiftCardFailed = async () => {
     notification.value = route.query.notification
     status.value = route.query.status
     userGiftCards.value = await getGiftCardByUser()
-    orderId.value = userGiftCards.value[0]?.order.id
+    order.value = userGiftCards.value[0]?.order
     giftCard.value = [userGiftCards.value[0]]
   }
 }
@@ -121,17 +127,17 @@ onMounted(async () => {
   await setGiftCardFailed()
 })
 
-const handlePayment = async (submitForm) => {
+const handlePayment = async () => {
   if (status.value !== 'error') {
     const result = await executeCreateGiftCard()
-    orderId.value = result?.order?.id
+    order.value = result?.order
   }
   else {
-    orderId.value = userGiftCards.value[0]?.order.id
+    order.value = userGiftCards.value[0]?.order
   }
   setTimeout(async () => {
-    await submitForm()
-  }, 1000)
+    await redsys.value?.submit()
+  }, 200)
 }
 
 const getTotalAmount = computed(() => {
@@ -142,16 +148,16 @@ const getTotalAmount = computed(() => {
     })
   }
   else {
-    return giftCard.value[0].amount
+    return giftCard.value[0]?.amount
   }
   return amount
 })
 
 const unshiftGiftCard = (id: string) => {
   const card = giftCard.value.find(card => card.id === id)
-  const index = giftCard.value.indexOf(card)
+  const index = giftCard.value.indexOf(card as GiftCard)
   giftCard.value.splice(index, 1)
-  giftCard.value.unshift(card)
+  giftCard.value.unshift(card as GiftCard)
   router.push(localePath({ name: 'gift-card-gift-card-create', query: { card: card?.id } }))
 }
 </script>

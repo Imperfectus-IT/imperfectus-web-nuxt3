@@ -10,7 +10,6 @@ const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const shippingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
 const billingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
-const { getLocaleName } = useGetLocaleLanguage(locale)
 
 const isFormValid = computed(() => {
   if (shoppingCart.value.invoiceRequired) {
@@ -112,7 +111,7 @@ const goToNextStep = () => {
       />
     </div>
     <ShoppingCartPurchaseSummaryFloating
-      class="fixed z-10 inset-x-0 bottom-0 w-1/2 lg:hidden"
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
       :item="shoppingCart.currentItem"
     />
     <Toast />

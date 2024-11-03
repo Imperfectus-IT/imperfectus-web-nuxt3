@@ -9,9 +9,7 @@ export const useLocalStorageShoppingCartRepository = () => {
       if (response.length === 0) {
         return createEmpty()
       }
-      else {
-        return response
-      }
+      return response
     },
     setShoppingCart: (item: ShoppingCart) => {
       setItem(key, item)

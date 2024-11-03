@@ -74,6 +74,7 @@ defineExpose({
         class="hidden"
         type="submit"
       />
+      <slot />
     </form>
   </div>
 </template>
