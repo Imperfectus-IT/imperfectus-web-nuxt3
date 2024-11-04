@@ -42,7 +42,7 @@ const billingStateAndCountry = computed(() => `${props.data.billingState} ${prop
     </p>
 
     <p class="font-solina-extended-book font-bold text-[16px]">
-      {{ t('orders.order.billingInfo.item_1') }}
+      {{ t('orders.order.billingInfo.item_3') }}
     </p>
     <p class="font-solina-extended-book text-[16px] mt-2 mb-5">
       {{ props.data.billingPhone }}

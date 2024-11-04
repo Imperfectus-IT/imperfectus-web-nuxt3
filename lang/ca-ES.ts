@@ -3274,7 +3274,7 @@ export default {
         item_1: 'Cognoms',
         item_2: 'Email',
         item_3: 'Telèfon de contacte',
-        item_4: 'Adreça (carrer i número)',
+        item_4: 'Adreça',
         item_5: 'Pis i porta',
         item_6: 'Codi postal',
         item_7: 'Localitat',
