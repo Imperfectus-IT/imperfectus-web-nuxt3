@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import type { OrderBilling } from '~/composables/admin/orders/types/OrderType.ts'
-
 const { t } = useI18n()
 
 const props = defineProps<{
