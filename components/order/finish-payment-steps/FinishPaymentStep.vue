@@ -77,7 +77,7 @@ const goToPayment = async () => {
 
     <Divider class="before:border-grey-secondary" />
 
-    <div class="mt-10 flex flex-col items-center justify-around md:flex-row md:items-start gap-10 md:gap-0">
+    <div class="mt-5 flex flex-col items-center justify-around md:flex-row md:items-start gap-10 md:gap-0">
       <DeliveryInfo
         :delivery-date="order.deliveryDate"
         :shipping="order.shippingInfo"
