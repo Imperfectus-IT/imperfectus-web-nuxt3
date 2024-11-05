@@ -1,4 +1,4 @@
-import { createEmpty } from '../shopping-cart/domain/ShoppingCart.ts'
+import { createEmpty } from '../domain/ShoppingCart.ts'
 
 export const useLocalStorageShoppingCartRepository = () => {
   const { getItem, setItem } = useLocalStorage()

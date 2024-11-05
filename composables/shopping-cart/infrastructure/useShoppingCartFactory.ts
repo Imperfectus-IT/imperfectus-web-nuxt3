@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
-import type { ShoppingCart } from './types/ShoppingCartType.ts'
+import type { ShoppingCart } from '../types/ShoppingCartType.ts'
 import {
   AVAILABILITY_STEP,
-} from './types/ShoppingCartConstants.ts'
+} from '../types/ShoppingCartConstants.ts'
 
 export const useShoppingCartFactory = () => {
   const emptyItem = (): Item => {

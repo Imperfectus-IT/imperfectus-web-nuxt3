@@ -27,7 +27,7 @@ type StrapiTax = {
   name: string
   type: string
   amount_type: string
-  amount: string
+  amount: number
   amount_value: number
   country_code: string
 }

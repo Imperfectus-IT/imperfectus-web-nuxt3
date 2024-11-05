@@ -51,19 +51,19 @@ const donations = ref<CarouselSlideObject[]>([
     index: 1,
     title: t('homeDonations.foundation1.title'),
     description: t('homeDonations.foundation1.description'),
-    image: ['/images/landing/donations/donations1.webp'],
+    image: '/images/landing/donations/donations1.webp',
   },
   {
     index: 3,
     title: t('homeDonations.foundation3.title'),
     description: t('homeDonations.foundation3.description'),
-    image: ['/images/landing/donations/donations3.webp'],
+    image: '/images/landing/donations/donations3.webp',
   },
   {
     index: 2,
     title: t('homeDonations.foundation2.title'),
     description: t('homeDonations.foundation2.description'),
-    image: ['/images/landing/donations/donations2.webp'],
+    image: '/images/landing/donations/donations2.webp',
   },
 ])
 </script>

@@ -1,9 +1,9 @@
 type BaseProduct = {
-  id: number
+  id?: number
   nameEs: string
   nameCa: string
   isImperfectusProduct: boolean
-  image: string | string[]
+  image: string
   type: string
   isActive: boolean
 }
@@ -21,4 +21,5 @@ export type BoxProduct = BaseProduct & {
   priceWithTax: number
   sku: string
   tax: number
+  allImages: string[]
 }

@@ -25,9 +25,6 @@ defineI18nRoute({
     ca: '/el-meu-compte',
   },
 })
-onMounted(async () => {
-  await handleGetDomainUser()
-})
 const { user } = useGetUserHandler()
 const lastOrder: Ref<Order> = ref({} as Order)
 const isLoading = ref(true)
