@@ -3420,7 +3420,7 @@ export default {
         item_1: 'Apellidos',
         item_2: 'Email',
         item_3: 'Teléfono de contacto',
-        item_4: 'Dirección (calle y número)',
+        item_4: 'Dirección',
         item_5: 'Piso y puerta',
         item_6: 'Código postal',
         item_7: 'Localidad',

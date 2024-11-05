@@ -2,7 +2,7 @@ export default {
   root: ({ props }) => ({
     class: [
       // Flex and Position
-      'flex relative',
+      'inline-block relative',
       { 'justify-center': props.layout == 'vertical' },
       { 'items-center': props.layout == 'vertical' },
       {
