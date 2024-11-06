@@ -54,13 +54,13 @@ export default defineNuxtConfig({
       },
       {
         name: 'order-payment-completed',
-        path: '/payment-completed/single-box',
-        file: '~/pages/newsroom.vue',
+        path: '/payment-completed/:slug?',
+        file: '~/pages/order/status.vue',
       },
       {
         name: 'order-payment-failed',
-        path: '/ca/payment-failed/single-box',
-        redirect: '/order/pay?order=71996',
+        path: '/ca/payment-failed/:slug?',
+        file: '~/pages/order/status.vue',
       },
       {
         name: 'payment-added',

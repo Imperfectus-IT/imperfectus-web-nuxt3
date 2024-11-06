@@ -47,7 +47,6 @@ watch(order, async (newOrder) => {
     }
 
     const coupon = newOrder.orderItems[0].coupon?.coupon
-    console.info('Order item:', coupon)
     if (coupon) {
       await addOrderCoupon(newOrder, coupon)
       isModalErrorCouponVisible.value = !!order.value.orderItems[0].coupon

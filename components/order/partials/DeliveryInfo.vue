@@ -4,13 +4,16 @@ import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
 import 'dayjs/locale/ca'
-import type { OrderShipping } from '~/composables/admin/orders/types/OrderType.ts'
 
 const { locale } = useI18n()
 const { t } = useI18n()
 
 const props = defineProps({
   deliveryDate: {
+    type: String,
+    required: true,
+  },
+  deliveryHour: {
     type: String,
     required: true,
   },
@@ -54,6 +57,13 @@ const shippingStateAndCountry = computed(() => {
     </p>
     <p class="font-solina-extended-book text-[16px] mt-2 mb-5">
       {{ deliveryDate }}
+    </p>
+
+    <p class="font-solina-extended-book font-bold text-[16px]">
+      {{ t('pages.order.status.estimateTime') }}
+    </p>
+    <p class="font-solina-extended-book text-[16px] mt-2 mb-5">
+      {{ deliveryHour }}
     </p>
 
     <p class="font-solina-extended-book font-bold text-[16px]">
