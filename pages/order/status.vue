@@ -15,9 +15,6 @@ const route = useRoute()
 const localePath = useLocalePath()
 
 const notification = ref(route.query.notification || '')
-const totalAmountWithoutDiscount = ref(100) // Example value
-const meta = ref({ shipping_email: 'example@example.com' }) // Example value
-const coupon = ref({ coupon: 'DISCOUNT10' }) // Example value
 
 const { data: order } = useAsyncData(async () => {
   const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler()
@@ -32,6 +29,25 @@ const { data: order } = useAsyncData(async () => {
   catch (err) {
     throw new Error('Internal Server Error')
   }
+})
+
+const totalAmountWithoutDiscount = computed(() => {
+  if (!order.value?.orderPayment.totalAmount) {
+    return null
+  }
+  const amountWithoutDiscount = order.value?.orderPayment.totalAmount + order.value?.orderPayment.totalDiscount + order.value?.orderPayment.totalTax
+  return parseFloat(amountWithoutDiscount.toFixed(2))
+})
+
+const couponCode = computed(() => {
+  if (!order.value?.orderItems) {
+    return ''
+  }
+  const orderItemWithCoupon = order.value.orderItems.find(item => item.coupon)
+  if (!orderItemWithCoupon) {
+    return ''
+  }
+  return orderItemWithCoupon.coupon.coupon
 })
 
 useHead({
@@ -52,14 +68,16 @@ useHead({
         ADT.Tag.tp = 1829209966;
         ADT.Tag.am = ${totalAmountWithoutDiscount.value};
         ADT.Tag.ti = "${order.value?.id}";
-        ADT.Tag.xd = "${MD5(meta.value?.shipping_email)}";
-        ADT.Tag.cpn = "${coupon.value && coupon.value.coupon ? coupon.value.coupon : ''}";
+        ADT.Tag.xd = "${MD5(order.value?.shippingInfo?.shippingEmail).toString()}";
+        ADT.Tag.cpn = "${couponCode.value}";
       `,
       type: 'text/javascript',
+      key: 'ADT-script',
     },
     {
       defer: true,
       src: 'https://ion.talkualfoods.com/jsTag?ap=1829209928',
+      key: 'ADT-src-script',
     },
   ],
 })
