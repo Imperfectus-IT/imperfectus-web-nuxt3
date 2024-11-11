@@ -20,9 +20,11 @@
       <Button
         :label="$t('gift-card.create.form.button')"
         class="w-1/2 ml-[25%]"
+        @click.prevent="handleNextStep"
       />
     </NuxtLink>
   </div>
+  {{ giftCard }}
 </template>
 
 <script setup lang="ts">
@@ -50,6 +52,7 @@ defineI18nRoute({
 
 const localePath = useLocalePath()
 const { orders } = useGetOrdersHandler(t)
+const { giftCard } = useGiftCardState()
 
 const textData = {
   fields: 10,
@@ -68,6 +71,12 @@ const formData = ref<BillingForm>({
   state: '',
   country: 'ES',
 })
+
+const router = useRouter()
+
+const handleNextStep = () => {
+  router.push(localePath({ name: 'gift-card-gift-card-payment' }))
+}
 
 watchEffect(() => {
   if (orders) {

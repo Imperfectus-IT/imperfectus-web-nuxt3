@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid'
-import type { ShoppingCart } from '../types/ShoppingCartType.ts'
 import {
   AVAILABILITY_STEP,
 } from '../types/ShoppingCartConstants.ts'
@@ -18,10 +17,6 @@ export const useShoppingCartFactory = () => {
       frequency: 'once',
       quantity: 1,
     }
-  }
-
-  const sBoxItem = (): Item => {
-
   }
 
   const emptyBillingAddress = (): BillingAddress => {
@@ -78,77 +73,10 @@ export const useShoppingCartFactory = () => {
     }
   }
 
-  const sBoxShoppingCart = (): ShoppingCart => {
-    return {
-      deliveryHour: '',
-      preferredDay: '',
-      preferredHour: '',
-      invoiceRequired: false,
-      step: AVAILABILITY_STEP,
-      status: 'pending',
-      deliveryDate: '',
-      coverage: null,
-      items: [],
-      currentItem: null,
-      coupon: null,
-      termConditions: false,
-      whatsappInfo: false,
-      marketingInfo: false,
-      billingAddress: emptyBillingAddress(),
-      shippingAddress: emptyShippingAddress(),
-    }
-  }
-
-  const imBoxShoppingCart = (): ShoppingCart => {
-    return {
-      deliveryHour: '',
-      preferredDay: '',
-      preferredHour: '',
-      invoiceRequired: false,
-      step: AVAILABILITY_STEP,
-      status: 'pending',
-      deliveryDate: '',
-      coverage: null,
-      items: [],
-      currentItem: null,
-      coupon: null,
-      termConditions: false,
-      whatsappInfo: false,
-      marketingInfo: false,
-      billingAddress: emptyBillingAddress(),
-      shippingAddress: emptyShippingAddress(),
-    }
-  }
-
-  const xlBoxShoppingCart = (): ShoppingCart => {
-    return {
-      deliveryHour: '',
-      preferredDay: '',
-      preferredHour: '',
-      invoiceRequired: false,
-      step: AVAILABILITY_STEP,
-      status: 'pending',
-      deliveryDate: '',
-      coverage: null,
-      items: [],
-      currentItem: null,
-      coupon: null,
-      termConditions: false,
-      whatsappInfo: false,
-      marketingInfo: false,
-      billingAddress: emptyBillingAddress(),
-      shippingAddress: emptyShippingAddress(),
-    }
-  }
-
   return {
     emptyShoppingCart,
     emptyItem,
     emptyBillingAddress,
     emptyShippingAddress,
-    sBoxShoppingCart,
-    imBoxShoppingCart,
-    xlBoxShoppingCart,
-
   }
 }

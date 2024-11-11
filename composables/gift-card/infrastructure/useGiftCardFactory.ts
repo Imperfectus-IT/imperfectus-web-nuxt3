@@ -1,5 +1,3 @@
-import type { GiftCard } from '~/composables/gift-card/application/useGiftCardState.ts'
-
 export const useGiftCardFactory = (giftCard: any): GiftCard => {
   return {
     id: giftCard.id,

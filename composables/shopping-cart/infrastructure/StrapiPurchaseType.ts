@@ -4,7 +4,7 @@ export type StrapiPurchase = {
   deliveryHour: string
   preferredDay: string
   preferredHour: string | null
-  user: StrapiUser
+  user: number
   talkualLegalBasis: string
   marketingInfoComm: boolean
   whatsappInfoComm: boolean
@@ -16,10 +16,9 @@ export type StrapiPurchase = {
 type StrapiPurchaseItem = {
   product: number
   quantity: number
-  frequency: string | null
+  frequency: string
   amount: number
   exclusions: number[]
-  coupon: number | null
+  coupon_id: Coupon | null
   weight: number
-  tax_id: number
 }

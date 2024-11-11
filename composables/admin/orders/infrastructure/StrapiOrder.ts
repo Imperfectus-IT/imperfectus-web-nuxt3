@@ -13,6 +13,7 @@ export type StrapiOrder = {
   preferredHour: string
   coupon: object | null
   payment: object | number
+  order_review: string | null
 }
 
 export interface StrapiOrderItem {

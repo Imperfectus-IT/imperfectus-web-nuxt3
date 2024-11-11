@@ -36,7 +36,6 @@ export const DELIVERY_DATE_STEP = 'StepDeliveryDate'
 export const PAYMENT_STEP = 'StepPayment'
 
 export function createEmpty(): ShoppingCart {
-  console.log('creating empty shopping cart')
   return {
     uuid: generateId(),
     step: AVAILABILITY_STEP,

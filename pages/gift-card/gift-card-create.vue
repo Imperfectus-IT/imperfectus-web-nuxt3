@@ -6,18 +6,8 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
 
-const { setGiftCard } = useLocalStorageGiftCardRepository();
-
-setGiftCard({
-  amount: 0,
-  message: '',
-  recipientEmail: '',
-  recipientName: '',
-  senderName: '',
-});
-const { t } = useI18n();
+const { t } = useI18n()
 useHead({
   title: t('gift-card-create.title'),
   meta: [
@@ -26,7 +16,7 @@ useHead({
       content: t('git-card-create.description'),
     },
   ],
-});
+})
 
 defineI18nRoute({
   paths: {

@@ -1,4 +1,5 @@
 <template>
+  {{ giftCard }}
   <h4 class="text-[60px] font-recoleta-regular leading-[60px] text-center">
     {{ route.query.status !== 'error' ? $t(`${section}.title`) : $t('gift-card.payment.fail') }}
   </h4>
@@ -90,8 +91,6 @@ const status = ref('')
 const notification = ref('')
 const userGiftCards = ref([])
 const { t } = useI18n()
-const toast = useToast()
-const { errorToast } = useToastService()
 
 const { giftCard, addGiftCard, removeGiftCard, executeCreateGiftCard } = useCreateGiftCardHandler()
 const { getGiftCardByUser } = useGetGiftCardsHandler()

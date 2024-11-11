@@ -26,35 +26,42 @@
       @click="submitForm"
     />
   </div>
+  {{ giftCardPurchase }}
 </template>
 
 <script setup lang="ts">
 import type { GiftCardForm } from './types/types'
+import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
+
+const { setGiftCard } = useLocalStorageGiftCardRepository()
 
 const router = useRouter()
 const localePath = useLocalePath()
 const userLoggedIn = useStrapiUser()
 const isFormErrored = ref<boolean>(true)
-const { giftCard } = useCreateGiftCardHandler()
-
+const { giftCardPurchase } = useGiftCardState()
+onMounted(() => {
+  setGiftCard(giftCardPurchase.value)
+})
 const submitForm = () => {
   if (!userLoggedIn.value) {
     router.push(localePath('auth-login'))
   }
   else {
     router.push(localePath('gift-card-gift-card-billing-form'))
+    setGiftCard(giftCardPurchase.value)
   }
 }
 
 const updateFormData = (payload: { formData: GiftCardForm, errors: any }) => {
   setIsFormErrored(payload.errors)
-  giftCard.value[0] = { ...giftCard.value[0], ...payload.formData }
+  giftCardPurchase.value.currentItem = payload.formData
 }
 
 const updateDesignId = (designId: number) => {
-  giftCard.value[0].designId = designId
+  giftCardPurchase.value.currentItem.designId = designId
 }
-
+//
 const setIsFormErrored = (formErrors: any) => {
   isFormErrored.value = formErrors.value
 }

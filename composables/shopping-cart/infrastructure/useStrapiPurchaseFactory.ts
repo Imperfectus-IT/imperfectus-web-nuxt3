@@ -5,7 +5,7 @@ export const useStrapiPurchaseFactory = (cart: ShoppingCart): StrapiPurchase => 
   return {
     deliveryDate: cart.deliveryDate,
     deliveryHour: cart.deliveryHour,
-    user: strapiUser.value.id,
+    user: strapiUser.value?.id as number,
     preferredDay: cart.preferredDay,
     preferredHour: cart.preferredHour === 'full' ? null : cart.preferredHour,
     talkualLegalBasis: 'freelyGivenConsentFromContact',
@@ -21,7 +21,7 @@ export const useStrapiPurchaseFactory = (cart: ShoppingCart): StrapiPurchase => 
       billing_state: cart.billingAddress.billingCity,
       billing_country: cart.billingAddress.billingCountry,
       billing_postcode: cart.billingAddress.billingPostCode,
-      billing_company: cart.billingAddress.billingCompany,
+      billing_company: cart.billingAddress.billingCompany || null,
       billing_phone: cart.billingAddress.billingPhone,
       billing_email: cart.billingAddress.billingEmail,
       shipping_notes: cart.shippingAddress.shippingNotes,

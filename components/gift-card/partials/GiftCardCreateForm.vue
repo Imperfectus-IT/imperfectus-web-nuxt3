@@ -109,7 +109,7 @@ import { useCreateGiftCardHandler } from '~/composables/gift-card/application/cr
 const emit = defineEmits(['formUpdated'])
 
 const { validateSchema, validationErrors } = useGiftFormValidator()
-const { giftCard } = useCreateGiftCardHandler()
+const { giftCardPurchase } = useCreateGiftCardHandler()
 
 const textData = {
   priceButtons: 3,
@@ -128,15 +128,17 @@ const formData: GiftCardForm = reactive({
 })
 
 watchEffect(() => {
-  formData.amount = giftCard.value[0].amount
-  formData.quantity = giftCard.value[0].quantity
-  formData.message = giftCard.value[0].message
-  formData.whoSend = giftCard.value[0].whoSend
-  formData.forWho = giftCard.value[0].forWho
-  formData.sendMethod = giftCard.value[0].sendMethod
+  console.log('watch')
+  formData.amount = giftCardPurchase.value.currentItem.amount
+  formData.quantity = giftCardPurchase.value.currentItem.quantity
+  formData.message = giftCardPurchase.value.currentItem.message
+  formData.whoSend = giftCardPurchase.value.currentItem.whoSend
+  formData.forWho = giftCardPurchase.value.currentItem.forWho
+  formData.sendMethod = giftCardPurchase.value.currentItem.sendMethod
 })
 
 watch(formData, () => {
+  console.log('watch', formData)
   validateSchema(formData)
   emit('formUpdated', { formData, errors: validationErrors })
 })

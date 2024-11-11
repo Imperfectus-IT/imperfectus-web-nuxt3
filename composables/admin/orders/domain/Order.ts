@@ -14,8 +14,7 @@ export interface Order {
   shippingInfo: OrderShipping
   billingInfo: OrderBilling
   shippingCoverage: OrderCoverage
-  orderReview: string
-  coupon: Coupon
+  orderReview: string | null
   subscription: number
 }
 
@@ -26,6 +25,7 @@ export interface OrderItem {
   exclusions: ItemProduct []
   image: string
   product: BoxProduct
+  coupon: Coupon
   review: {
     id: number
     ratings: {

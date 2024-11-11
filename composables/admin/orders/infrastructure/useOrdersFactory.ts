@@ -7,7 +7,7 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     id: order.id,
     order_id: order.order_id,
     status: order.status,
-    discarded: order.discaded,
+    discarded: order.discarded,
     isValidForReview: isValidForReview(order),
     deliveryDate: order.deliveryDate,
     deliveryHour: order.deliveryHour,
