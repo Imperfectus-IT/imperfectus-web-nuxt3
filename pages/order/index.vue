@@ -53,7 +53,6 @@ onMounted(async () => {
       class="my-5 w-full"
       :value="currentProgress"
     />
-    <!--    {{ shoppingCart }} -->
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

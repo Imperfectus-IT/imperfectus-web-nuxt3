@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
+import { v4 } from 'uuid'
 
 export type GiftCardPurchase = {
   items: GiftCard[]
@@ -21,14 +21,14 @@ export type GiftCard = {
 export const createEmpty = (): GiftCardPurchase => {
   return {
     items: [],
-    currentItem: createEmptyGiftCardItem(),
+    currentItem: createEmptyGiftCard(),
     billing: createEmptyBilling(),
   }
 }
 
-const createEmptyGiftCardItem = (): GiftCardItem => {
+const createEmptyGiftCard = (): GiftCard => {
   return {
-    uuid: uuidv4(),
+    uuid: v4(),
     designId: 1,
     amount: 21.07,
     forWho: '',

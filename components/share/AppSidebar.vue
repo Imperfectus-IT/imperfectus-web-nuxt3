@@ -64,7 +64,7 @@ const itemLinks = [
   {
     id: useId(),
     label: t('layout.navbar.giftcards'),
-    path: localePath('gift-card-gift-card-create'),
+    path: localePath('gift-card'),
   },
   {
     id: useId(),

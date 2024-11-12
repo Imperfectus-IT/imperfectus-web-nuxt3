@@ -26,11 +26,10 @@
       @click="submitForm"
     />
   </div>
-  {{ giftCardPurchase }}
 </template>
 
 <script setup lang="ts">
-import type { GiftCardForm } from './types/types'
+import type { GiftCardForm } from '../types/types.ts'
 import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
 
 const { setGiftCard } = useLocalStorageGiftCardRepository()
