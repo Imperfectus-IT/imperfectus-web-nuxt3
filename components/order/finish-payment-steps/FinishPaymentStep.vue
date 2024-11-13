@@ -80,6 +80,7 @@ const goToPayment = async () => {
     <div class="mt-5 flex flex-col items-center justify-around md:flex-row md:items-start gap-10 md:gap-0">
       <DeliveryInfo
         :delivery-date="order.deliveryDate"
+        :delivery-hour="order.deliveryHour"
         :shipping="order.shippingInfo"
       />
 

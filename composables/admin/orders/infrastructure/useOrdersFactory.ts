@@ -107,6 +107,9 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     },
     orderPayment: {
       totalAmount: order.order_payment.totalAmount,
+      paidAt: order.order_payment.paidAt,
+      totalDiscount: order.order_payment.totalDiscount,
+      totalTax: order.order_payment.totalTax,
     },
     createdAt: order.created_at,
   }
