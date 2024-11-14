@@ -18,7 +18,6 @@
           :key="index"
           class="mt-7 w-2/3"
         >
-          {{ orderItem }}
           <div class="flex flex-col">
             <OrderItemCard
               :order-item="orderItem"

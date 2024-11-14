@@ -1,1 +1,1 @@
-export type Size = 's' | 'm' | 'xl'
+export type Size = 'S' | 'IM' | 'XL'

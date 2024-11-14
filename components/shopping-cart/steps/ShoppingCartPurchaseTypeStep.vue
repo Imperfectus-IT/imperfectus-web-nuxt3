@@ -38,9 +38,13 @@ const goToNextStep = () => {
     if (!itemExists) {
       shoppingCart.value.items.push(currentItem)
     }
+    setShoppingCart(shoppingCart.value)
+    emit(GO_TO_STEP_EVENT, user?.value?.id ? nextStep : AUTH_STEP)
   }
-  setShoppingCart(shoppingCart.value)
-  emit(GO_TO_STEP_EVENT, user?.value?.id ? nextStep : AUTH_STEP)
+  else {
+    setShoppingCart(shoppingCart.value)
+    emit(GO_TO_STEP_EVENT, nextStep)
+  }
 }
 </script>
 

@@ -55,6 +55,26 @@ export function createEmpty(): ShoppingCart {
   }
 }
 
+export function createSBoxShoppingCart(): ShoppingCart {
+  return {
+    uuid: generateId(),
+    step: AVAILABILITY_STEP,
+    deliveryDate: '',
+    deliveryHour: '',
+    preferredDay: '',
+    preferredHour: 'full',
+    invoiceRequired: false,
+    amount: createEmptyAmount(),
+    termConditions: false,
+    whatsappInfo: false,
+    marketingInfo: false,
+    billingAddress: createEmptyBillingAddress(),
+    shippingAddress: createEmptyShippingAddress(),
+    items: [],
+    currentItem: createEmptyItem(),
+  }
+}
+
 export function isCoverageValid(coverage: string | null | undefined): boolean {
   return coverage !== null && coverage !== undefined
 }

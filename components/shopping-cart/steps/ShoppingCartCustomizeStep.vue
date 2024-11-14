@@ -10,15 +10,15 @@ const isSelectedBox = (boxType: string) => boxType === shoppingCart.value.curren
 const activeButtonSelected = (boxType: string) => isSelectedBox(boxType) ? 'bg-green-primary' : 'bg-transparent'
 const boxTypeImages = {
   [MIXED_BOX_TYPE]: {
-    src: '/images/boxes/mBox/IM_1.webp',
+    src: '/images/boxes/imBox/IM_1.webp',
     alt: t('string.box.mixed'),
   },
   [FRUITS_BOX_TYPE]: {
-    src: '/images/boxes/mBox/IMFR_1.webp',
+    src: '/images/boxes/imBox/IMFR_1.webp',
     alt: t('string.box.fruits'),
   },
   [VEGETABLES_BOX_TYPE]: {
-    src: '/images/boxes/mBox/IMVG_1.webp',
+    src: '/images/boxes/imBox/IMVG_1.webp',
     alt: t('string.box.vegetables'),
   },
 }

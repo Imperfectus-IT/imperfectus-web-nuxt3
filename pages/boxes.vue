@@ -24,33 +24,33 @@
     <div class="mx-3">
       <CarouselAndCard
         :card-data="sBoxData"
-        :carousel-data="imagesForCarousel('s').value"
-        :selected-box="boxSelected.s"
+        :carousel-data="imagesForCarousel('S') as object[]"
+        :selected-box="boxSelected.S"
         card-order="1"
         carousel-order="2"
         @update-item-on-parent="
-          (payload: SelectedBox) => updateBoxSelected('s', payload)
+          (payload: SelectedBox) => updateBoxSelected('S', payload)
         "
       />
 
       <CarouselAndCard
         :card-data="mBoxData"
-        :carousel-data="imagesForCarousel('m').value"
-        :selected-box="boxSelected.m"
+        :carousel-data="imagesForCarousel('IM') as object[]"
+        :selected-box="boxSelected.IM"
         card-order="2"
         carousel-order="1"
         @update-item-on-parent="
-          (payload: SelectedBox) => updateBoxSelected('m', payload)
+          (payload: SelectedBox) => updateBoxSelected('IM', payload)
         "
       />
       <CarouselAndCard
         :card-data="xlBoxData"
-        :carousel-data="imagesForCarousel('xl').value"
-        :selected-box="boxSelected.xl"
+        :carousel-data="imagesForCarousel('XL') as object[]"
+        :selected-box="boxSelected.XL"
         card-order="1"
         carousel-order="2"
         @update-item-on-parent="
-          (payload: SelectedBox) => updateBoxSelected('xl', payload)
+          (payload: SelectedBox) => updateBoxSelected('XL', payload)
         "
       />
     </div>
@@ -131,8 +131,6 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import BoxesBuyOptions from '~/components/boxes/BoxesBuyOptionsSubscription.vue'
-import type { BoxImages } from '~/components/boxes/types/BoxImages'
 import type { SelectedBox } from '~/components/boxes/types/BoxSelected'
 import type { Size } from '~/components/boxes/types/Size'
 
@@ -165,21 +163,23 @@ onBeforeUnmount(() => {
   removeResize()
 })
 
+const { activeBoxProducts } = useProductsState()
+const { generateSku } = useGenerateSku()
 const isDisplayDesktop = computed(() => windowWidth.value > 768)
 const classItemsToShow = ref('fruits')
 
 const boxSelected = reactive({
-  s: {
+  S: {
     content: 'mixed',
     frequency: 'weekly',
     units: 1,
   },
-  m: {
+  IM: {
     content: 'mixed',
     frequency: 'weekly',
     units: 1,
   },
-  xl: {
+  XL: {
     content: 'mixed',
     frequency: 'weekly',
     units: 1,
@@ -190,168 +190,36 @@ const handleToggleType = (type: string) => {
   classItemsToShow.value = type
 }
 
-const imagesForCarousel = (size: Size) =>
-  computed(() => {
-    return boxImages[size][boxSelected[size].content as keyof BoxImages[Size]]
-  })
+const imagesForCarousel = (size: Size) => {
+  const sku = generateSku(boxSelected[size].content, size, boxSelected[size].frequency)
+  const boxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === sku)
+  const images = boxProduct?.allImages.map((image, index) => ({
+    image: image,
+    title: index,
+  }))
+  console.log(images, sku, boxProduct)
+  return images
+}
 
 const updateBoxSelected = (size: Size, payload: SelectedBox) =>
   Object.assign(boxSelected[size], payload)
 
-const boxImages = {
-  s: {
-    mixed: [
-      {
-        image: '/images/boxes/sBox/S_1.webp',
-        title: 'S_1',
-      },
-
-      {
-        image: '/images/boxes/sBox/S_2.webp',
-        title: 'S_2',
-      },
-      {
-        image: '/images/boxes/sBox/S_3.webp',
-        title: 'S_3',
-      },
-    ],
-    fruits: [
-      {
-        image: '/images/boxes/sBox/SFR_1.webp',
-        title: 'SFR_1',
-      },
-
-      {
-        image: '/images/boxes/sBox/SFR_2.webp',
-        title: 'SFR_2',
-      },
-      {
-        image: '/images/boxes/sBox/SFR_3.webp',
-        title: 'SFR_3',
-      },
-    ],
-    vegetables: [
-      {
-        image: '/images/boxes/sBox/SVG_1.webp',
-        title: 'SVG_1',
-      },
-
-      {
-        image: '/images/boxes/sBox/SVG_2.webp',
-        title: 'SVG_2',
-      },
-      {
-        image: '/images/boxes/sBox/SVG_3.webp',
-        title: 'SVG_3',
-      },
-    ],
-  },
-  m: {
-    mixed: [
-      {
-        image: '/images/boxes/mBox/M_1.webp',
-        title: 'M_1',
-      },
-
-      {
-        image: '/images/boxes/mBox/M_2.webp',
-        title: 'M_2',
-      },
-      {
-        image: '/images/boxes/mBox/M_3.webp',
-        title: 'M_3',
-      },
-    ],
-    fruits: [
-      {
-        image: '/images/boxes/mBox/MFR_1.webp',
-        title: 'MFR_1',
-      },
-
-      {
-        image: '/images/boxes/mBox/MFR_2.webp',
-        title: 'MFR_2',
-      },
-      {
-        image: '/images/boxes/mBox/MFR_3.webp',
-        title: 'MFR_3',
-      },
-    ],
-    vegetables: [
-      {
-        image: '/images/boxes/mBox/MVG_1.webp',
-        title: 'MVG_1',
-      },
-
-      {
-        image: '/images/boxes/mBox/MVG_2.webp',
-        title: 'MVG_2',
-      },
-      {
-        image: '/images/boxes/mBox/MVG_3.webp',
-        title: 'MVG_3',
-      },
-    ],
-  },
-  xl: {
-    mixed: [
-      {
-        image: '/images/boxes/xlBox/XL_1.webp',
-        title: 'XL_1',
-      },
-
-      {
-        image: '/images/boxes/xlBox/XL_2.webp',
-        title: 'XL_2',
-      },
-      {
-        image: '/images/boxes/xlBox/XL_3.webp',
-        title: 'XL_3',
-      },
-    ],
-    fruits: [
-      {
-        image: '/images/boxes/xlBox/XLFR_1.webp',
-        title: 'XLFR_1',
-      },
-      {
-        image: '/images/boxes/xlBox/XLFR_2.webp',
-        title: 'XLFR_2',
-      },
-    ],
-    vegetables: [
-      {
-        image: '/images/boxes/xlBox/XLVG_1.webp',
-        title: 'XLVG_1',
-      },
-      {
-        image: '/images/boxes/xlBox/XLVG_2.webp',
-        title: 'XLVG_2',
-      },
-      {
-        image: '/images/boxes/xlBox/XLVG_3.webp',
-        title: 'XLVG_3',
-      },
-    ],
-  },
-}
-
 const sBoxData = {
   title: t('content.home.ourBoxes.item0.title'),
   description: t('content.home.ourBoxes.item0.description'),
-  price: '19.18€',
+  price: '19.56€',
 }
 
 const mBoxData = {
   title: t('content.home.ourBoxes.item1.title'),
   description: t('content.home.ourBoxes.item1.description'),
-  price: '23.99€',
+  price: '24.47€',
 }
 
 const xlBoxData = {
   title: t('content.home.ourBoxes.item2.title'),
   description: t('content.home.ourBoxes.item2.description'),
-  price: '30.72€',
+  price: '31.33€',
 }
 
 const subscriptionList = [
@@ -371,66 +239,5 @@ const uniqueOrderList = [
   'boxes.order-description.2.description.3',
   'boxes.order-description.2.description.4',
   'boxes.order-description.2.description.5',
-]
-
-const fruits = [
-  {
-    index: 1,
-    name: 'Fresas',
-    image: '/images/landing/products/frutas/fresas.webp',
-  },
-  {
-    index: 2,
-    name: 'Ciruela',
-    image: '/images/landing/products/frutas/ciruela.webp',
-  },
-  {
-    index: 3,
-    name: 'Kiwi',
-    image: '/images/landing/products/frutas/kiwi.webp',
-  },
-  {
-    index: 4,
-    name: 'Mango',
-    image: '/images/landing/products/frutas/mango.webp',
-  },
-  {
-    index: 5,
-    name: 'Manzana',
-    image: '/images/landing/products/frutas/manzana.webp',
-  },
-  {
-    index: 6,
-    name: 'Naranja',
-    image: '/images/landing/products/frutas/naranja.webp',
-  },
-  {
-    index: 7,
-    name: 'Limón',
-    image: '/images/landing/products/frutas/limon.webp',
-  },
-]
-
-const vegetables = [
-  {
-    index: 1,
-    name: 'Acelgas',
-    image: '/images/landing/products/verduras/acelgas.webp',
-  },
-  {
-    index: 2,
-    name: 'Alcachofas',
-    image: '/images/landing/products/verduras/alcachofas.webp',
-  },
-  {
-    index: 3,
-    name: 'Acelgas',
-    image: '/images/landing/products/verduras/acelgas.webp',
-  },
-  {
-    index: 4,
-    name: 'Alcachofas',
-    image: '/images/landing/products/verduras/alcachofas.webp',
-  },
 ]
 </script>

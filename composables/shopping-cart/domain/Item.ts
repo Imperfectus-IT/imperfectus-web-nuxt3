@@ -27,3 +27,18 @@ export function createEmpty(): ShoppingCartItem {
     product: null,
   }
 }
+
+export function createSBoxItem(): ShoppingCartItem {
+  return {
+    uuid: generateId(),
+    amount: 19.56,
+    coupon: null,
+    boxType: '',
+    boxSize: '',
+    purchaseType: 'subscription',
+    frequency: 'weekly',
+    quantity: 1,
+    exclusions: [],
+    product: null,
+  }
+}

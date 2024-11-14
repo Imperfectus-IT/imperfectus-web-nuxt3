@@ -67,6 +67,7 @@
         {{ t("boxes.free-shipping") }}
       </p>
     </div>
+    {{ selectedBox }}
     <Button
       class="w-full py-5 border-t-0 rounded-t-[0px] rounded-b-[20px] font-solina-extended-medium lg:mt-auto"
       :label="t('string.misc.buy.now')"
