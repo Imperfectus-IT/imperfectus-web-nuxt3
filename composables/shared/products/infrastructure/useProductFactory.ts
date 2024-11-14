@@ -24,7 +24,7 @@ export default function () {
       id: product?.id,
       nameEs: product.name_es,
       nameCa: product.name_ca,
-      image: product?.imagePath[0] || '',
+      image: product?.imagePath?.[0] ?? '',
       isActive: product.isActive,
       type: product.type,
       itemType: product.itemType,
