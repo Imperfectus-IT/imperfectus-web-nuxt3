@@ -2,6 +2,8 @@
 const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
 const { setShoppingCart } = useLocalStorageShoppingCartRepository()
+const { activeBoxProducts } = useProductsState()
+const { generateSku } = useGenerateSku()
 
 const { emptyItem } = useShoppingCartFactory()
 
@@ -25,7 +27,13 @@ const goToNextStep = () => {
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
   const user = useStrapiUser()
   if (shoppingCart.value.currentItem.purchaseType === ORDER_TYPE) {
-    const currentItem: ShoppingCartItem = shoppingCart.value.currentItem
+    const newSku = generateSku(shoppingCart.value.currentItem.boxType, shoppingCart.value.currentItem.boxSize, shoppingCart.value.frequency as string)
+    shoppingCart.value.currentItem.product = activeBoxProducts.value
+      .find((boxProduct: BoxProduct) => {
+        return boxProduct.boxType === shoppingCart.value.currentItem.boxType && boxProduct.sku === newSku
+      })
+    shoppingCart.value.currentItem.amount = shoppingCart.value.currentItem.product?.price ?? 0
+    const currentItem: ShoppingCartItem = shoppingCart.value.currentItem as ShoppingCartItem
     const itemExists = shoppingCart.value.items.some(item => item.uuid === currentItem.uuid)
     if (!itemExists) {
       shoppingCart.value.items.push(currentItem)
