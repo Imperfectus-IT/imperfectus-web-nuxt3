@@ -21,7 +21,7 @@ export function createEmpty(): ShoppingCartItem {
     boxType: '',
     boxSize: '',
     purchaseType: '',
-    frequency: '',
+    frequency: 'weekly',
     quantity: 1,
     exclusions: [],
     product: null,
