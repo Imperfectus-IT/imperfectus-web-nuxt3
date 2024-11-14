@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import MD5 from 'crypto-js/md5'
 import { validate as uuidValidate, version as uuidVersion } from 'uuid'
+import type RedsysPaymentForm from '~/components/share/RedsysPaymentForm.vue'
 
 definePageMeta({
   layout: 'default',
@@ -13,17 +14,19 @@ definePageMeta({
 const { t } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
+const redsysForm = ref<HTMLFormElement | null>(null)
 
 const notification = ref(route.query.notification || '')
+const isOrderFailed = computed(() => route.path.includes('failed'))
 
 const { data: order } = useAsyncData(async () => {
-  const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler()
+  const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler(notification.value as string)
   if (!notification.value || !uuidValidate(notification.value) || uuidVersion(notification.value) !== 4) {
     throw new Error('Bad request')
   }
 
   try {
-    await executeGetOrderByNotification(notification.value, t)
+    await executeGetOrderByNotification(notification.value)
     return order
   }
   catch (err) {
@@ -49,6 +52,10 @@ const couponCode = computed(() => {
   }
   return orderItemWithCoupon.coupon.coupon
 })
+
+const retryPayment = () => {
+  redsysForm.value.submit()
+}
 
 useHead({
   title: t('pages.order.status.thanks'),
@@ -88,10 +95,18 @@ useHead({
     v-if="order"
     class="px-6"
   >
-    <h1 class="mt-10 mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10">
+    <h1
+      v-if="!isOrderFailed"
+      class="mt-10 mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10"
+    >
       {{ $t("pages.order.status.thanks") }}
     </h1>
-
+    <h1
+      v-if="isOrderFailed"
+      class="mt-10 mb-5 text-center font-recoleta-regular text-[40px] text-grey-primary md:mb-10"
+    >
+      {{ $t("pages.order.pay.title") }}
+    </h1>
     <CompletePaymentOrderDetails
       v-if="order.orderPayment"
       :order-id="order.order_id"
@@ -120,6 +135,21 @@ useHead({
       </div>
     </Panel>
 
+    <div
+      v-if="isOrderFailed"
+      class="mt-5 flex justify-center"
+    >
+      <RedsysPaymentForm
+        ref="redsysForm"
+        :is-button-outlined="false"
+        :order="order"
+      />
+      <Button
+        :label="$t('pages.order.pay.pay')"
+        @click.prevent="retryPayment"
+      />
+    </div>
+
     <Divider class="before:border-grey-secondary mt-14" />
 
     <div class="mt-5 flex flex-col justify-around md:flex-row md:items-start gap-10 md:gap-0">
@@ -134,9 +164,8 @@ useHead({
         v-if="order.billingInfo"
         :data="order.billingInfo"
       />
-
       <PaymentInfo
-        v-if="order.orderPayment"
+        v-if="order.orderPayment && !isOrderFailed"
         :order-payment="order.orderPayment"
       />
     </div>
@@ -153,7 +182,3 @@ useHead({
     </NuxtLink>
   </Container>
 </template>
-
-<style scoped lang="scss">
-/* Your styles here */
-</style>

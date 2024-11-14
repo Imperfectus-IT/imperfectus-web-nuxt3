@@ -7,11 +7,11 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     id: order.id,
     order_id: order.order_id,
     status: order.status,
-    discarded: order.discaded,
+    discarded: order.discarded,
     isValidForReview: isValidForReview(order),
     deliveryDate: order.deliveryDate,
     deliveryHour: order.deliveryHour,
-    orderReview: order.order_review,
+    orderReview: order.order_review ? order.order_review : '',
     orderMeta: order.order_meta.id,
     subscription: order.subscriptions?.length > 0 ? order.subscriptions[0].id : null,
     orderItems: order.order_items.map((order_item: StrapiOrderItem) => {
