@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useValidateCouponHandler } from '~/composables/shared/coupons/application/validate/useValidateCouponHandler.ts'
-import { useGetOrderAmount } from '~/composables/admin/orders/application/getOrderAmount/useGetOrderAmount.ts'
-
 const { t } = useI18n()
 const emit = defineEmits(['goToNextStep', 'addNewProduct'])
 const goToNextStep = () => {
@@ -70,15 +67,15 @@ const handleRemoveCoupon = () => {
     />
     <OrderCoupon
       :show-title="false"
-      :order-coupon="shoppingCart.items[0].coupon"
+      :order-coupon="shoppingCart?.items[0]?.coupon"
       @add-coupon="handleAddOrderCoupon"
       @remove-coupon="handleRemoveCoupon"
     />
     <p
-      v-if="shoppingCart.items[0].coupon"
+      v-if="shoppingCart?.items[0]?.coupon"
       class="text-green-secondary"
     >
-      {{ shoppingCart.items[0].coupon.descriptionEs }}
+      {{ shoppingCart?.items[0]?.coupon?.descriptionEs }}
     </p>
     <Divider class="text-grey-secondary mt-7" />
     <div class="flex justify-between">
@@ -90,8 +87,8 @@ const handleRemoveCoupon = () => {
       <span>{{ shoppingCart.amount.shippingCost }}€</span>
     </div>
     <div class="flex justify-between mt-2">
-      <span>{{ $t('orderAmount.discount') }} <span v-if="shoppingCart.items[0]?.coupon">(</span>{{ shoppingCart.items[0]?.coupon?.discountValue }}<span v-if="shoppingCart.items[0]?.coupon">%)</span></span>
-      <span :class="shoppingCart.amount.saved > 0 ? 'text-green-secondary' : ''"><span v-if="shoppingCart.items[0]?.coupon">-</span>{{ shoppingCart.amount.saved }}€</span>
+      <span>{{ $t('orderAmount.discount') }} <span v-if="shoppingCart?.items[0]?.coupon">(</span>{{ shoppingCart?.items[0]?.coupon?.discountValue }}<span v-if="shoppingCart?.items[0]?.coupon">%)</span></span>
+      <span :class="shoppingCart.amount.saved > 0 ? 'text-green-secondary' : ''"><span v-if="shoppingCart?.items[0]?.coupon">-</span>{{ shoppingCart.amount.saved }}€</span>
     </div>
     <Divider class="text-grey-secondary" />
     <div class="flex justify-between text-[22px] font-solina-extended-medium">

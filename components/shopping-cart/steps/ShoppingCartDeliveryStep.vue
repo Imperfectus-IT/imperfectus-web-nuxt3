@@ -3,7 +3,6 @@ import dayjs from 'dayjs'
 import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
 import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 import type { ValidHour } from '~/composables/shared/utils/types/ValidHour.ts'
-import ShoppingCartTopSummaryBoxSmall from '~/components/shopping-cart/partials/ShoppingCartTopSummaryBoxSmall.vue'
 import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shopping-cart/domain/Item.ts'
 import { ALLSERVICES } from '@/composables/locations/domain/ServicesConstants.ts'
 

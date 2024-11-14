@@ -1,9 +1,10 @@
-import type { UserLogin } from '~/composables/shared/auth/domain/Auth.ts'
+import type { StrapiAuthenticationResponse } from '@nuxtjs/strapi'
+import type { UserLogin } from '~/composables/shared/auth/infrastructure/types/UserPayload.ts'
 
 export const useLoginUser = () => {
-  const executeLoginUser = async (userData: UserLogin): Promise<void> => {
+  const executeLoginUser = async (userData: UserLogin): Promise<StrapiAuthenticationResponse> => {
     const { login } = useAuthStrapiRepository()
-    await login(userData)
+    return login(userData)
   }
 
   return { executeLoginUser }

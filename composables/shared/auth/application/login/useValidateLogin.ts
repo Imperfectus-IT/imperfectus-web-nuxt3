@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 export const useValidateLogin = () => {
+  const { t } = useI18n()
   const loginFormSchema = z
     .object({
       identifier: z.string().email().min(6),
@@ -26,7 +27,11 @@ export const useValidateLogin = () => {
 
   const validationErrorsLoginResponse = useState('validationErrorsLoginResponse', () => [])
   const setValidationErrorsLoginResponse = (err: any) => {
-    validationErrorsLoginResponse.value = err?.message?.length ? err?.message?.map((error: any) => error.messages?.map((item: any) => item.message)).flat() : []
+    validationErrorsLoginResponse.value = err?.message?.length
+      ? err?.message?.map((error: any) => error.messages?.map((item: any) => {
+        return t(item.id) ?? item.message
+      }).flat()).flat()
+      : []
   }
 
   return { validationErrors, validationErrorsLoginResponse, setValidationErrorsLoginResponse, validateSchema }

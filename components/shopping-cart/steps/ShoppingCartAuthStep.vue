@@ -26,7 +26,7 @@ const {
     @auth-form-requested="loadComponent"
   >
     <template #backButton>
-      <BackButton @go-to-back="$emit(GO_TO_STEP_EVENT, RESUME_ITEM_STEP)" />
+      <BackButton @go-to-back="$emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)" />
     </template>
   </LoginForm>
 </template>

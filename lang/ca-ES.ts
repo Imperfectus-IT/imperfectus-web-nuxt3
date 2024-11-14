@@ -171,7 +171,7 @@ export default {
   'pages.legal.conditions.description':
         'Coneix les condicions d\'ús del lloc web de TALKUAL, així com les condicions de compra dels productes.',
   'pages': {
-    legal: {
+    'legal': {
       notice: {
         title: 'Avís legal',
         description: 'Informació legal sobre la web de TALKUAL. Coneix tota la informació sobre les nostres polítiques de protecció de dades aquí.',
@@ -345,12 +345,15 @@ export default {
         },
       },
     },
-    auth: {
+    'auth': {
       login: {
         title: 'Iniciar sessió',
         description: 'Inicia sessió per continuar',
         recovery: {
           title: 'Recuperar contrasenya',
+        },
+        errors: {
+          invalid: 'Las credenciales son incorrectas',
         },
       },
       register: {
@@ -358,6 +361,7 @@ export default {
         description: 'Registra\'t per continuar',
       },
     },
+    'Auth.form.error.invalid': 'Las credenciales son incorrectas',
   },
 
   // Pages Terms and Conditions

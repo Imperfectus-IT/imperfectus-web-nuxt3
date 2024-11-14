@@ -15,6 +15,7 @@ export const useLoginUserHandler = () => {
     catch (err: any) {
       setValidationErrorsLoginResponse(err)
       console.error(err)
+      throw new Error(err)
     }
   }
 

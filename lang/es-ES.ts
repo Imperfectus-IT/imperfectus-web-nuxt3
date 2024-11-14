@@ -355,6 +355,9 @@ export default {
         recovery: {
           title: 'Recuperar contraseña',
         },
+        errors: {
+          invalid: 'Las credenciales son incorrectas',
+        },
       },
       register: {
         title: 'Registro de usuario',
@@ -362,6 +365,7 @@ export default {
       },
     },
   },
+  'Auth.form.error.invalid': 'Las credenciales son incorrectas',
 
   // Terms and conditions
   'pages.legal.terms.title': 'CONDICIONES GENERALES DE VENTA',

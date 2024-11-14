@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ShoppingCartTopSummaryBoxSmall from '~/components/shopping-cart/partials/ShoppingCartTopSummaryBoxSmall.vue'
 import type RedsysPaymentForm from '~/components/share/RedsysPaymentForm.vue'
 import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shopping-cart/domain/Item.ts'
 

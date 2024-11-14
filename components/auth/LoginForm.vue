@@ -16,8 +16,13 @@ const isButtonDisabled = computed(() => {
 })
 
 const submitLoginForm = async () => {
-  await handleLoginUser()
-  emit('login')
+  try {
+    await handleLoginUser()
+    emit('login')
+  }
+  catch (error) {
+    console.error(error)
+  }
 }
 </script>
 
