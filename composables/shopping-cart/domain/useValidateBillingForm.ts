@@ -21,7 +21,6 @@ export const useValidateBillingForm = () => {
   })
 
   const validateSchema = (data: FormData) => {
-    console.log(data)
     const validSchema = billingSchema.safeParse(data)
 
     if (!validSchema.success) {
