@@ -1,6 +1,6 @@
 export const useGiftCardRepository = () => {
-  const user = useStrapiUser();
-  const { create, find } = useStrapi();
+  const user = useStrapiUser()
+  const { create, find } = useStrapi()
   // const createGiftCard = async (giftCardPurchase: GiftCardPurchase): Promise<GiftCard> => {
   //   giftCards = giftCards.map(card => ({
   //     ...card,
@@ -24,4 +24,4 @@ export const useGiftCardRepository = () => {
   return {
     // createGiftCard,
   }
-};
+}
