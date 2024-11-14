@@ -3,14 +3,16 @@
     <h4 class="!font-bold text-[16px] mt-4">
       {{ $t(`${textData}title`) }}
     </h4>
-    <Divider class="mt-2 !w-2/3" />
-    <Button
-      v-if="!displayEditOrder"
-      label="Editar"
-      outlined
-      class="!px-5 !h-5 mb-2"
-      @click="toggleDisplayEditOrder"
-    />
+    <div class="flex flex-col">
+      <Divider class="mt-2 !w-2/3" />
+      <Button
+        v-if="!displayEditOrder"
+        label="Editar"
+        outlined
+        class="!h-5 mb-5 w-1/5"
+        @click="toggleDisplayEditOrder"
+      />
+    </div>
     <div v-if="displayEditOrder">
       <h4 class="font-bold">
         {{ $t(`${textData}boxType`) }}
