@@ -1,6 +1,5 @@
 export default function () {
   const createBoxProduct = (product: StrapiProduct): BoxProduct => {
-    console.log(product)
     return {
       id: product?.id,
       nameEs: product.name_es,

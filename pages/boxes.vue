@@ -197,7 +197,6 @@ const imagesForCarousel = (size: Size) => {
     image: image,
     title: index,
   }))
-  console.log(images, sku, boxProduct)
   return images
 }
 

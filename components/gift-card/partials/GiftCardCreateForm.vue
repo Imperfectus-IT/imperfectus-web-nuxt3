@@ -128,7 +128,6 @@ const formData: GiftCardForm = reactive({
 })
 
 watchEffect(() => {
-  console.log('watch')
   formData.amount = giftCardPurchase.value.currentItem.amount
   formData.quantity = giftCardPurchase.value.currentItem.quantity
   formData.message = giftCardPurchase.value.currentItem.message
@@ -138,7 +137,6 @@ watchEffect(() => {
 })
 
 watch(formData, () => {
-  console.log('watch', formData)
   validateSchema(formData)
   emit('formUpdated', { formData, errors: validationErrors })
 })
