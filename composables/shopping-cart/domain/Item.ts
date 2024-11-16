@@ -1,4 +1,5 @@
 import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
+import type { SelectedBox } from '~/components/boxes/types/BoxSelected.ts'
 
 export type ShoppingCartItem = {
   uuid: string
@@ -28,17 +29,17 @@ export function createEmpty(): ShoppingCartItem {
   }
 }
 
-export function createSBoxItem(): ShoppingCartItem {
+export function createPreselectedBoxItem(boxSize: string, newBox: SelectedBox, purchaseType: string, product: BoxProduct): ShoppingCartItem {
   return {
     uuid: generateId(),
-    amount: 19.56,
+    amount: 0,
     coupon: null,
-    boxType: '',
-    boxSize: '',
-    purchaseType: 'subscription',
-    frequency: 'weekly',
-    quantity: 1,
+    boxType: newBox.content,
+    boxSize,
+    purchaseType,
+    frequency: newBox.frequency,
+    quantity: newBox.units,
     exclusions: [],
-    product: null,
+    product,
   }
 }

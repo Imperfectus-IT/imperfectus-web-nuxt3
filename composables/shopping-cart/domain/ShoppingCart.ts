@@ -1,10 +1,11 @@
 import type { ShoppingCartItem } from './Item.ts'
 import { createEmpty as createEmptyBillingAddress } from './BillingAddress.ts'
 import { createEmpty as createEmptyShippingAddress } from './ShippingAddress.ts'
-import { createEmpty as createEmptyItem } from './Item.ts'
+import { createEmpty as createEmptyItem, createPreselectedBoxItem } from './Item.ts'
 import { createEmpty as createEmptyAmount } from './Amount.ts'
 import { generateId } from '~/composables/shared/utils/infrastructure/UuidGenerator.ts'
 import type { ShoppingCartAmount } from '~/composables/shopping-cart/domain/Amount.ts'
+import type { SelectedBox } from '~/components/boxes/types/BoxSelected.ts'
 
 export type ShoppingCart = {
   uuid: string
@@ -55,7 +56,7 @@ export function createEmpty(): ShoppingCart {
   }
 }
 
-export function createSBoxShoppingCart(): ShoppingCart {
+export function createPreselectedShoppingCart(boxSize: string, newBox: SelectedBox, purchaseType: string, product: BoxProduct): ShoppingCart {
   return {
     uuid: generateId(),
     step: AVAILABILITY_STEP,
@@ -71,7 +72,7 @@ export function createSBoxShoppingCart(): ShoppingCart {
     billingAddress: createEmptyBillingAddress(),
     shippingAddress: createEmptyShippingAddress(),
     items: [],
-    currentItem: createEmptyItem(),
+    currentItem: createPreselectedBoxItem(boxSize, newBox, purchaseType, product),
   }
 }
 

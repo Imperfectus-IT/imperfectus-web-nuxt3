@@ -28,9 +28,8 @@
         :selected-box="boxSelected.S"
         card-order="1"
         carousel-order="2"
-        @update-item-on-parent="
-          (payload: SelectedBox) => updateBoxSelected('S', payload)
-        "
+        @update-item-on-parent="(payload: SelectedBox) => updateBoxSelected('S', payload)"
+        @create-shopping-cart="(payload: SelectedBox) => handleCreatePresetShoppingCart('S', payload)"
       />
 
       <CarouselAndCard
@@ -39,9 +38,8 @@
         :selected-box="boxSelected.IM"
         card-order="2"
         carousel-order="1"
-        @update-item-on-parent="
-          (payload: SelectedBox) => updateBoxSelected('IM', payload)
-        "
+        @update-item-on-parent="(payload: SelectedBox) => updateBoxSelected('IM', payload)"
+        @create-shopping-cart="(payload: SelectedBox) => handleCreatePresetShoppingCart('IM', payload)"
       />
       <CarouselAndCard
         :card-data="xlBoxData"
@@ -49,9 +47,8 @@
         :selected-box="boxSelected.XL"
         card-order="1"
         carousel-order="2"
-        @update-item-on-parent="
-          (payload: SelectedBox) => updateBoxSelected('XL', payload)
-        "
+        @update-item-on-parent="(payload: SelectedBox) => updateBoxSelected('XL', payload)"
+        @create-shopping-cart="(payload: SelectedBox) => handleCreatePresetShoppingCart('XL', payload)"
       />
     </div>
 
@@ -167,6 +164,10 @@ const { activeBoxProducts } = useProductsState()
 const { generateSku } = useGenerateSku()
 const isDisplayDesktop = computed(() => windowWidth.value > 768)
 const classItemsToShow = ref('fruits')
+const { shoppingCart } = useShoppingCartState()
+const router = useRouter()
+const localePath = useLocalePath()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 
 const boxSelected = reactive({
   S: {
@@ -185,6 +186,14 @@ const boxSelected = reactive({
     units: 1,
   },
 })
+
+const handleCreatePresetShoppingCart = (size: string, payload: SelectedBox) => {
+  const sBoxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === `${size}R1`) as BoxProduct
+  const phurcaseType = payload.frequency === 'once' ? 'order' : 'subscription'
+  shoppingCart.value = createPreselectedShoppingCart(size, payload, phurcaseType, sBoxProduct)
+  setShoppingCart(shoppingCart.value)
+  router.push(localePath('order'))
+}
 
 const handleToggleType = (type: string) => {
   classItemsToShow.value = type

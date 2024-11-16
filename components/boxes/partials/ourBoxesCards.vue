@@ -67,11 +67,11 @@
         {{ t("boxes.free-shipping") }}
       </p>
     </div>
-    {{ selectedBox }}
     <Button
       class="w-full py-5 border-t-0 rounded-t-[0px] rounded-b-[20px] font-solina-extended-medium lg:mt-auto"
       :label="t('string.misc.buy.now')"
       severity="secondary"
+      @click.prevent="handleCreatePreselectedShoppingCart"
     />
   </div>
 </template>
@@ -96,7 +96,11 @@ const getSelectedBoxData = computed(() => {
   return props.boxOptions.length > 0 ? props.boxOptions : TKBoxOptions
 })
 
-const emit = defineEmits(['updateItemOnParent'])
+const emit = defineEmits(['updateItemOnParent', 'createShoppingCart'])
+
+const handleCreatePreselectedShoppingCart = () => {
+  emit('createShoppingCart', props.selectedBox)
+}
 
 const updateContentOnParent = (newContent: string) => {
   emit('updateItemOnParent', { ...props.selectedBox, content: newContent })

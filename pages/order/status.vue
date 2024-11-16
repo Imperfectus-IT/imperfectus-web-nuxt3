@@ -15,12 +15,12 @@ const { t } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const redsysForm = ref<HTMLFormElement | null>(null)
-
+const { removeShoppingCart } = useLocalStorageShoppingCartRepository()
 const notification = ref(route.query.notification || '')
 const isOrderFailed = computed(() => route.path.includes('failed'))
 
 const { data: order } = useAsyncData(async () => {
-  const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler(notification.value as string)
+  const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler(notification.value)
   if (!notification.value || !uuidValidate(notification.value) || uuidVersion(notification.value) !== 4) {
     throw new Error('Bad request')
   }
@@ -56,6 +56,12 @@ const couponCode = computed(() => {
 const retryPayment = () => {
   redsysForm.value.submit()
 }
+
+onMounted(() => {
+  if (!isOrderFailed.value) {
+    removeShoppingCart()
+  }
+})
 
 useHead({
   title: t('pages.order.status.thanks'),

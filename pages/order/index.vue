@@ -42,7 +42,8 @@ const currentProgress = computed(() => {
 })
 
 onMounted(async () => {
-  shoppingCart.value = getShoppingCart()
+  const localStorage = getShoppingCart()
+  shoppingCart.value = localStorage ? localStorage : shoppingCart.value
   await executeStep(shoppingCart.value.step)
 })
 </script>
@@ -53,9 +54,6 @@ onMounted(async () => {
       class="my-5 w-full"
       :value="currentProgress"
     />
-    <!--    <pre class="text-xs"> -->
-    <!--        {{ shoppingCart }} -->
-    <!--       </pre> -->
     <component
       :is="componentToRenderFromStep[shoppingCart.step]"
       @go-to-step="executeStep"

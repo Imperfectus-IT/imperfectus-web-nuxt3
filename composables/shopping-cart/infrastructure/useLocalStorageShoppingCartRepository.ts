@@ -1,5 +1,3 @@
-import { createEmpty as createEmptyShoppingCart } from '../domain/ShoppingCart.ts'
-
 export const useLocalStorageShoppingCartRepository = () => {
   const { getItem, setItem, removeItem } = useLocalStorage()
   const key: string = 'shoppingCart'
@@ -7,7 +5,6 @@ export const useLocalStorageShoppingCartRepository = () => {
     getShoppingCart: () => {
       const response = getItem(key)
       if (response.length === 0) {
-        setItem(key, createEmptyShoppingCart())
         return
       }
       return response
@@ -15,7 +12,7 @@ export const useLocalStorageShoppingCartRepository = () => {
     setShoppingCart: (item: ShoppingCart) => {
       setItem(key, item)
     },
-    removeShoppingCart: (key: string) => {
+    removeShoppingCart: () => {
       removeItem(key)
     },
   }

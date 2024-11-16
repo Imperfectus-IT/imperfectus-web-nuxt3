@@ -13,6 +13,7 @@
       :selected-box="selectedBox"
       :box-options="boxOptions"
       @update-item-on-parent="updateItemOnParent"
+      @create-shopping-cart="handleCreateShoppingCart"
     />
   </div>
 </template>
@@ -59,9 +60,13 @@ onBeforeUnmount(() => {
 
 const displayDesktop = computed(() => windowWidth.value > 768)
 
-const emit = defineEmits(['update-item-on-parent'])
+const handleCreateShoppingCart = (selectedBox: SelectedBox) => {
+  emit('createShoppingCart', selectedBox)
+}
+
+const emit = defineEmits(['updateItemOnParent', 'createShoppingCart'])
 
 const updateItemOnParent = (payload: SelectedBox) => {
-  emit('update-item-on-parent', payload)
+  emit('updateItemOnParent', payload)
 }
 </script>

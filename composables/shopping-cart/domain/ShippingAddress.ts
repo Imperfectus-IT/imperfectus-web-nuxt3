@@ -29,7 +29,7 @@ export function createEmpty(): OrderShipping {
     shippingPostCode: '',
     shippingCity: '',
     shippingNotes: '',
-    shippingCountry: '',
+    shippingCountry: 'ES',
     shippingState: '',
     shippingCoverage: createEmptyCoverage(),
   }

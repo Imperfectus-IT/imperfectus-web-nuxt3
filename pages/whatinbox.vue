@@ -21,7 +21,7 @@
       <ImageTextCard
         v-for="(product, index) in productsToShow"
         :key="index"
-        :image="product?.image[0]"
+        :image="product?.image"
         container-class="w-10/12 mx-auto bg-beige-secondary my-5 lg:my-4 rounded-xl"
         image-class="mx-auto w-[250px] h-[250px] object-cover"
       >
@@ -62,7 +62,7 @@ const { locale } = useI18n()
 const searchField = ref<string>('')
 const language = computed(() => locale.value === 'ca' ? 'Ca' : 'Es')
 
-const productsToShow: ComputedRef<StrapiProduct[]> = computed(() => {
+const productsToShow: ComputedRef<ItemProduct[]> = computed(() => {
   if (searchField.value) {
     return activeItemProducts.value.filter(product => product[`name${language.value}`].toLowerCase().includes(searchField.value.toLowerCase()))
   }
