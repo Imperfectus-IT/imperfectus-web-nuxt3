@@ -10,8 +10,11 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
 const { shoppingCart } = useShoppingCartState()
 const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { t } = useI18n()
-const deliveryType = ref(HOME_DELIVERY_TYPE)
 
+const deliveryType = ref(HOME_DELIVERY_TYPE)
+const pickupCarrierOptions = ref<CoverageOption[]>([])
+const seurPickUpPoints = ref<PickUpPoint[]>([])
+const correosPickUpPoints = ref<PickUpPoint[]>([])
 const { executeGetShippingCompanies } = useGetShippingCompanies()
 const { executeGetSeurPickUpPoints } = useGetSeurPickUpPoints()
 const { executeGetCorreosPickUpPoints } = useGetCorreosPickUpPoints()
@@ -23,14 +26,14 @@ const { availableWeekDays, getAvailableWeekDaysHandler } = availableWeekDaysHand
 
 const setHomeDelivery = () => {
   deliveryType.value = HOME_DELIVERY_TYPE
-  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = ''
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = coveragesOptions.value[0]?.value as string
   shoppingCart.value.shippingAddress.shippingCoverage.shippingOffice = null
   shoppingCart.value.shippingAddress.shippingCoverage.shippingService = null
 }
 
 const setPickupPointDelivery = () => {
   deliveryType.value = PICKUP_POINT_DELIVERY_TYPE
-  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = ''
+  // shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = ''
   shoppingCart.value.shippingAddress.shippingCoverage.shippingOffice = null
   shoppingCart.value.shippingAddress.shippingCoverage.shippingService = ALLSERVICES.PICK_UP_POINT
 }
@@ -127,20 +130,26 @@ const getAvailableWeekDays = computed(() => {
 const getFormattedUnavailableDates = computed(() => unavailableDates.value.map(date => dayjs(date).toDate()))
 
 // Pickup point delivery
-const seurPickUpPoints = await executeGetSeurPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
-const correosPickUpPoints = await executeGetCorreosPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
-const pickupCarrierOptions = [ALL_COVERAGES.CORREOSEXPRESS, seurPickUpPoints.length > 0 ? ALL_COVERAGES.SEUR : null]
+watch(deliveryType, async () => {
+  if (deliveryType.value === PICKUP_POINT_DELIVERY_TYPE) {
+    seurPickUpPoints.value = await executeGetSeurPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
+    correosPickUpPoints.value = await executeGetCorreosPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
+    pickupCarrierOptions.value = [
+      ALL_COVERAGES.CORREOSEXPRESS,
+      ...(seurPickUpPoints.value.length > 0 ? [ALL_COVERAGES.SEUR] : []),
+    ]
+  }
+})
 const pickupPointList = computed(() => {
   const coverageType = shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage
   if (coverageType === ALL_COVERAGES.SEUR.value) {
-    return seurPickUpPoints
+    return seurPickUpPoints.value
   }
   else if (coverageType === ALL_COVERAGES.CORREOSEXPRESS.value) {
-    return correosPickUpPoints
+    return correosPickUpPoints.value
   }
   return []
 })
-
 const goToNextStep = () => {
   setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, PAYMENT_STEP)
