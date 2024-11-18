@@ -81,10 +81,10 @@ const goToNextStep = () => {
       class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
       :item="shoppingCart.currentItem"
     />
-    <ShoppingCartPurchaseSummaryFloating
-      v-if="shoppingCart.currentItem?.frequency"
-      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block"
-      :item="shoppingCart.currentItem"
-    />
+    <!--    <ShoppingCartPurchaseSummaryFloating -->
+    <!--      v-if="shoppingCart.currentItem?.frequency" -->
+    <!--      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block" -->
+    <!--      :item="shoppingCart.currentItem" -->
+    <!--    /> -->
   </div>
 </template>

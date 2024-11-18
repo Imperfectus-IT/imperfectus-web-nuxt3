@@ -13,10 +13,10 @@ const billingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
 
 const isFormValid = computed(() => {
   if (shoppingCart.value.invoiceRequired) {
-    return !!shippingFormErrors.value?.errors || !!billingFormErrors.value?.errors
+    return !!shippingFormErrors.value?._errors || !!billingFormErrors.value?._errors
   }
   else {
-    return shippingFormErrors.value?.errors
+    return shippingFormErrors.value?._errors
   }
 })
 
@@ -26,6 +26,18 @@ const handleNewProduct = () => {
 }
 
 const goToNextStep = () => {
+  if (!shoppingCart.value.invoiceRequired) {
+    shoppingCart.value.billingAddress.billingFirstName = shoppingCart.value.shippingAddress.shippingFirstName
+    shoppingCart.value.billingAddress.billingLastName = shoppingCart.value.shippingAddress.shippingLastName
+    shoppingCart.value.billingAddress.billingEmail = shoppingCart.value.shippingAddress.shippingEmail
+    shoppingCart.value.billingAddress.billingPhone = shoppingCart.value.shippingAddress.shippingPhone
+    shoppingCart.value.billingAddress.billingAddress = shoppingCart.value.shippingAddress.shippingAddress
+    shoppingCart.value.billingAddress.billingAddress2 = shoppingCart.value.shippingAddress.shippingAddress2
+    shoppingCart.value.billingAddress.billingPostCode = shoppingCart.value.shippingAddress.shippingPostCode
+    shoppingCart.value.billingAddress.billingCity = shoppingCart.value.shippingAddress.shippingCity
+    shoppingCart.value.billingAddress.billingCountry = shoppingCart.value.shippingAddress.shippingCountry
+    shoppingCart.value.billingAddress.billingState = shoppingCart.value.shippingAddress.shippingState
+  }
   setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, DELIVERY_STEP)
 }

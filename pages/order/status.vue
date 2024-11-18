@@ -18,21 +18,23 @@ const redsysForm = ref<HTMLFormElement | null>(null)
 const { removeShoppingCart } = useLocalStorageShoppingCartRepository()
 const notification = ref(route.query.notification || '')
 const isOrderFailed = computed(() => route.path.includes('failed'))
+const { order } = useOrdersState()
+useGetOrderByNotificationHandler(notification.value as string)
 
-const { data: order } = useAsyncData(async () => {
-  const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler(notification.value)
-  if (!notification.value || !uuidValidate(notification.value) || uuidVersion(notification.value) !== 4) {
-    throw new Error('Bad request')
-  }
-
-  try {
-    await executeGetOrderByNotification(notification.value)
-    return order
-  }
-  catch (err) {
-    throw new Error('Internal Server Error')
-  }
-})
+// const { data: order } = useAsyncData(async () => {
+//   const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler(notification.value)
+//   if (!notification.value || !uuidValidate(notification.value) || uuidVersion(notification.value) !== 4) {
+//     throw new Error('Bad request')
+//   }
+//
+//   try {
+//     await executeGetOrderByNotification(notification.value)
+//     return order
+//   }
+//   catch (err) {
+//     throw new Error('Internal Server Error')
+//   }
+// })
 
 const totalAmountWithoutDiscount = computed(() => {
   if (!order.value?.orderPayment.totalAmount) {
