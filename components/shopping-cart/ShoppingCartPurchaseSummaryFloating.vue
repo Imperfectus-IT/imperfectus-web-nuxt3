@@ -10,7 +10,7 @@ const { shoppingCart } = useShoppingCartState()
 
 <template>
   <Panel
-    class="rounded-tl-lg rounded-tr-lg bg-beige-primary w-1/4"
+    class="rounded-tl-lg rounded-tr-lg bg-beige-primary w-full"
     :header="$t('purchase_summary.title')"
     toggleable
     collapsed

@@ -69,14 +69,18 @@ const goToNextStep = () => {
     </div>
     <div class="flex flex-col items-center gap-5 mt-6 lg:flex-row lg:mt-4 lg:justify-center">
       <Button
-        :class="[isSubscriptionPurchaseType ? 'bg-green-primary' : 'bg-transparent']"
+        :class="[isSubscriptionPurchaseType ? 'bg-green-primary' : 'bg-transparent', 'text-xl']"
+        :icon="shoppingCart.currentItem.purchaseType === SUBSCRIPTION_TYPE ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
+        icon-pos="right"
         outlined
         :label="$t('order.steps.stepPurchase.btn-subscription')"
         @click.prevent="setPurchaseType(SUBSCRIPTION_TYPE)"
       />
       <Button
-        :class="[isOrderPurchaseType ? 'bg-green-primary' : 'bg-transparent']"
+        :class="[isOrderPurchaseType ? 'bg-green-primary' : 'bg-transparent', 'text-xl']"
         outlined
+        :icon="shoppingCart.currentItem.purchaseType === ORDER_TYPE ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
+        icon-pos="right"
         :label="$t('order.steps.stepPurchase.btn-order')"
         @click.prevent="setPurchaseType(ORDER_TYPE)"
       />

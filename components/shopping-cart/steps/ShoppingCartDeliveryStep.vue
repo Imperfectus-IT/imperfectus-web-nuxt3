@@ -199,7 +199,7 @@ const goToNextStep = () => {
           <Calendar
             id="calendar"
             v-model="selectedDate"
-            class="mt-5"
+            class="mt-5 w-full lg:w-1/2"
             inline
             :disabled-days="[...getAvailableWeekDays, 1]"
             :disabled-dates="getFormattedUnavailableDates"
