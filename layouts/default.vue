@@ -1,9 +1,15 @@
+<script setup lang="ts">
+const { shoppingCart } = useGetShoppingCartHandler()
+</script>
+
 <template>
   <main>
     <section class="sticky top-0 z-10">
       <TopToolbar />
       <MobileNavbarHeader class="lg:hidden bg-beige-primary" />
       <DesktopNavbarHeader class="hidden lg:block bg-beige-primary" />
+      <pre>shoppingCart =></pre>
+      <pre>{{ shoppingCart }}</pre>
     </section>
     <div class="text-green-tertiary">
       <slot />
