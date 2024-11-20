@@ -64,7 +64,10 @@ const items = ref([
         </Menubar>
       </template>
       <template #center>
-        <NuxtLink to="/">
+        <NuxtLink
+          to="/"
+          class="flex-1 flex justify-center"
+        >
           <TalkualLogoDark
             class="h-7"
             :font-controlled="false"
@@ -72,7 +75,7 @@ const items = ref([
         </NuxtLink>
       </template>
       <template #end>
-        <div class="flex items-center justify-center gap-x-5 pr-8">
+        <div class="flex items-center justify-end gap-x-5 pr-8 flex-1">
           <NuxtLink
             :to="localePath({ name: 'order' })"
             :class="isOrderBuyRoute ? 'invisible pointer-events-none' : 'visible cursor-pointer'"
