@@ -12,7 +12,7 @@ const setPurchaseType = (purchaseType: string) => {
     shoppingCart.value.currentItem = emptyItem()
   }
   shoppingCart.value.currentItem.purchaseType = purchaseType
-  purchaseType === 'order' ? shoppingCart.value.currentItem.frequency = 'once' : ''
+  purchaseType === 'order' ? shoppingCart.value.currentItem.frequency = 'once' : shoppingCart.value.currentItem.frequency = ''
 }
 
 const isSubscriptionPurchaseType = computed(() => shoppingCart.value.currentItem?.purchaseType === SUBSCRIPTION_TYPE)
@@ -141,4 +141,5 @@ const goToNextStep = () => {
       />
     </div>
   </div>
+  <ShoppingCartPurchaseSummaryFloating class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" />
 </template>

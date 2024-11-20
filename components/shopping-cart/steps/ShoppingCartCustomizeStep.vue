@@ -140,5 +140,5 @@ const nexStep = () => {
     <!--      :item="shoppingCart.currentItem" -->
     <!--    /> -->
   </div>
-  <ShoppingCartPurchaseSummaryFloating />
+  <ShoppingCartPurchaseSummaryFloating class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" />
 </template>

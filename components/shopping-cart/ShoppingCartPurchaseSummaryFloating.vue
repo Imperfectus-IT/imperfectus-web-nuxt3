@@ -6,6 +6,11 @@
 // })
 
 const { shoppingCart } = useShoppingCartState()
+//
+const floatingItems: ComputedRef<ShoppingCartItem[]> = computed(() => {
+  const hiddenSteps = [AUTH_STEP, RESUME_ITEM_STEP, DELIVERY_STEP, PAYMENT_STEP, SHIPPING_STEP]
+  return [...shoppingCart.value.items, ...(hiddenSteps.includes(shoppingCart.value.step) ? [] : [shoppingCart.value.currentItem as ShoppingCartItem])]
+})
 </script>
 
 <template>
@@ -13,7 +18,7 @@ const { shoppingCart } = useShoppingCartState()
     class="rounded-tl-lg rounded-tr-lg bg-beige-primary w-full"
     :header="$t('purchase_summary.title')"
     toggleable
-    collapsed
+    :collapsed="true"
     :pt="{
       header: 'h-20',
     }"
@@ -34,47 +39,51 @@ const { shoppingCart } = useShoppingCartState()
     </template>
     <div class="py-3 flex flex-col">
       <div
-        v-for="item in shoppingCart.items"
+        v-for="item in floatingItems"
         :key="item.uuid"
-        class="flex flex-row gap-3"
+        class="flex flex-col"
       >
-        <div>
+        {{ item.purchaseType }}
+        <div
+          v-if="item.product"
+          class="flex gap-3"
+        >
           <NuxtImg
-            class="rounded-lg w-[120px]"
+            class="rounded-lg !w-[120px]"
             format="webp"
             alt="Caixa-S"
             fit="cover"
             :src="item.product.image"
           />
-          <div class="my-auto">
+          <div class="my-auto w-3/4">
             <span class="text-xs leading-3">{{ $t('purchase_summary.fromPrice') }}</span>
-            <span class="text-xs font-bold">{{ item?.product?.price }}</span>
-            <p class="text-xs leading-3">
+            <span class="text-xs font-bold">{{ item?.product?.price + '€' }}</span>
+            <p class="text-xs leading-4">
               {{ item?.product?.descriptionEs }}
             </p>
           </div>
         </div>
-        <!--        <Divider -->
-        <!--          v-if="item?.product" -->
-        <!--          class="opacity-50" -->
-        <!--        /> -->
-        <!--        <div class="flex justify-between mt-3"> -->
-        <!--          <span class="text-xs leading-3">{{ $t('purchase_summary.frequency') }}</span> -->
-        <!--          <span class="text-xs leading-3">{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</span> -->
-        <!--        </div> -->
-        <!--        <div class="flex justify-between mt-3"> -->
-        <!--          <span class="text-xs leading-3">{{ $t('purchase_summary.boxSize') }}</span> -->
-        <!--          <span class="text-xs leading-3">{{ item?.boxSize ? $t(`order.steps.stepBoxDetail.${item?.boxSize}`) : '-' }}</span> -->
-        <!--        </div> -->
-        <!--        <div class="flex justify-between mt-3"> -->
-        <!--          <span class="text-xs leading-3">{{ $t('purchase_summary.boxType') }}</span> -->
-        <!--          <span class="text-xs leading-3">{{ item?.boxType ? $t(`string.box.${item?.boxType}`) : '-' }}</span> -->
-        <!--        </div> -->
-        <!--        <div class="flex justify-between mt-3"> -->
-        <!--          <span class="text-xs leading-3 grow">{{ $t('purchase_summary.exclusions') }}</span> -->
-        <!--          <span class="text-xs leading-3 text-end w-[30%]">{{ item.exclusions.length }}</span> -->
-        <!--        </div> -->
-        <!--        <Divider class="opacity-50" /> -->
+        <Divider
+          v-if="item?.product"
+          class="opacity-50"
+        />
+        <div class="flex justify-between mt-3">
+          <span class="text-xs leading-3">{{ $t('purchase_summary.frequency') }}</span>
+          <span class="text-xs leading-3">{{ item?.frequency ?$t(`boxes.frequency.${item?.frequency}`) : '-' }}</span>
+        </div>
+        <div class="flex justify-between mt-3">
+          <span class="text-xs leading-3">{{ $t('purchase_summary.boxSize') }}</span>
+          <span class="text-xs leading-3">{{ item?.boxSize ? $t(`order.steps.stepBoxDetail.${item?.boxSize}`) : '-' }}</span>
+        </div>
+        <div class="flex justify-between mt-3">
+          <span class="text-xs leading-3">{{ $t('purchase_summary.boxType') }}</span>
+          <span class="text-xs leading-3">{{ item?.boxType ? $t(`string.box.${item?.boxType}`) : '-' }}</span>
+        </div>
+        <div class="flex justify-between mt-3">
+          <span class="text-xs leading-3 grow">{{ $t('purchase_summary.exclusions') }}</span>
+          <span class="text-xs leading-3 text-end w-[30%]">{{ item.exclusions.length }}</span>
+        </div>
+        <Divider class="opacity-50" />
       </div>
       <div class="flex justify-between mt-3 font-solina-extended-medium">
         <span class="text-xl leading-3">{{ $t('purchase_summary.total') }}</span>

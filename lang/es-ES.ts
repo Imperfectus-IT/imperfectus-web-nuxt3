@@ -1201,9 +1201,9 @@ export default {
   'order.steps.stepBox.smallBox': 'Caja Pequeña',
   'order.steps.stepBox.mediumBox': 'Caja Mediana',
   'order.steps.stepBox.largeBox': 'Caja Grande',
-  'order.steps.stepBoxDetail.small': 'Pequeña',
-  'order.steps.stepBoxDetail.medium': 'Mediana',
-  'order.steps.stepBoxDetail.xlarge': 'Grande',
+  'order.steps.stepBoxDetail.S': 'Pequeña',
+  'order.steps.stepBoxDetail.IM': 'Mediana',
+  'order.steps.stepBoxDetail.XL': 'Grande',
   'order.steps.stepCustomize.title': 'Elige tu caja',
   'order.steps.stepCustomize.section1': '¿Qué tipo de caja quieres?',
   'order.steps.stepCustomize.frequency':
