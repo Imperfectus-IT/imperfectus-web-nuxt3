@@ -3,10 +3,7 @@ export const useGetShoppingCart = () => {
   const { getShoppingCart } = useLocalStorageShoppingCartRepository()
 
   const executeGetShoppingCart = () => {
-    const response = getShoppingCart()
-    if (response) {
-      shoppingCart.value = response
-    }
+    shoppingCart.value = getShoppingCart()
   }
 
   return {
