@@ -45,7 +45,7 @@ const items = ref([
     <Toolbar class="!p-0 bg-transparent border-none gap-x-2">
       <template #start>
         <Menubar
-          class="h-16"
+          class="h-16 flex-1"
           :model="items"
         >
           <template #item="{ item, props }">
@@ -64,15 +64,14 @@ const items = ref([
         </Menubar>
       </template>
       <template #center>
-        <NuxtLink
-          to="/"
-          class="flex-1 flex justify-center"
-        >
-          <TalkualLogoDark
-            class="h-7"
-            :font-controlled="false"
-          />
-        </NuxtLink>
+        <div class="flex flex-1 items-center justify-center">
+          <NuxtLink to="/">
+            <TalkualLogoDark
+              class="h-7"
+              :font-controlled="false"
+            />
+          </NuxtLink>
+        </div>
       </template>
       <template #end>
         <div class="flex items-center justify-end gap-x-5 pr-8 flex-1">

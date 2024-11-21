@@ -14,12 +14,12 @@ export default {
     ],
   },
   start: {
-    class: 'flex items-center',
+    class: 'flex items-center flex-1',
   },
   center: {
-    class: 'flex items-center',
+    class: 'flex items-center justify-center',
   },
   end: {
-    class: 'flex items-center',
+    class: 'flex items-center justify-end flex-1',
   },
 }
