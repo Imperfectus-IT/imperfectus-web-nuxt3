@@ -4,4 +4,5 @@ export type SubscriptionStatus = {
   cancelled: string
   failed: string
   waiting: string
+  pending: string
 }

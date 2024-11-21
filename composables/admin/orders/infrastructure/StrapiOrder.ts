@@ -18,7 +18,7 @@ export type StrapiOrder = {
 
 export interface StrapiOrderItem {
   id: number
-  product: object
+  product: BoxProduct
   quantity: number
   status: string
   amount: number

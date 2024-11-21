@@ -98,11 +98,14 @@ const availableCarriers = ref<string[]>(await executeGetShippingCompanies(shoppi
 const coveragesOptions = computed(() =>
   Object.values(ALL_COVERAGES).filter((coverage: CoverageOption) =>
     availableCarriers.value.includes(coverage.value),
-  ),
+  ).sort((a, b) => availableCarriers.value.indexOf(a.value) - availableCarriers.value.indexOf(b.value)),
 )
 // Update carriers availability and Timeslot
 watch(selectedDate, async () => {
   shoppingCart.value.deliveryDate = dayjs(selectedDate.value).format('YYYY-MM-DD')
+  const dayNumber = dayjs(selectedDate.value).day()
+  const preferredDay = Object.keys(DayMapping).find(key => DayMapping[key] === dayNumber)
+  shoppingCart.value.preferredDay = preferredDay
   try {
     availableCarriers.value = await executeGetShippingCompanies(
       shoppingCart.value.shippingAddress.shippingPostCode,
@@ -354,16 +357,6 @@ const goToNextStep = () => {
                 </div>
               </div>
               <Divider class="mt-2" />
-              <!--              <RadioButton -->
-              <!--                v-model="shoppingCart.shippingAddress.shippingCoverage.shippingOffice" -->
-              <!--                input-id="pickupPoint" -->
-              <!--                name="pickupPoint" -->
-              <!--                :value="pickupPoint.id" -->
-              <!--              /> -->
-              <!--              <label -->
-              <!--                for="coverage" -->
-              <!--                class="ml-2 text-xs font-normal leading-5" -->
-              <!--              >{{ pickupPoint.address }}</label> -->
             </div>
           </div>
         </div>

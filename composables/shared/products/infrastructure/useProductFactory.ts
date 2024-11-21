@@ -16,7 +16,7 @@ export default function () {
       boxType: product.boxType,
       isImperfectusProduct: product.isImperfectusProduct,
       sku: product.SKU,
-      tax: product.tax_id.amount,
+      tax: product.tax_id.amount_value,
     }
   }
   const createItemProduct = (product: StrapiProduct): ItemProduct => {

@@ -27,12 +27,13 @@
       v-if="subscription.status === 'cancelled'"
       class="mt-5 lg:order-3 text-[14px] hidden lg:block lg:mt-0 lg:relative left-[35%] "
     >
-      Fecha de cancelación: {{ subscription.cancelDate }}
+      Fecha de cancelación: {{ dayjs(subscription.cancelledAt).format('HH:mm:ss DD-MM-YYYY') }}
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
+import dayjs from 'dayjs'
 import type { SubscriptionStatus } from '~/components/admin/my-subscriptions/types/SubscriptionStatus.ts'
 
 const props = defineProps<{
@@ -57,5 +58,6 @@ const subscriptionStatuses: SubscriptionStatus = {
   cancelled: 'Cancelada',
   failed: 'Failed',
   waiting: 'Esperando...',
+  pending: 'Pago fallado',
 }
 </script>

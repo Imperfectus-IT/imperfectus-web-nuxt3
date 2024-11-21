@@ -22,12 +22,12 @@ export const useSubscriptionFactory = (subscription: StrapiSubscription): Subscr
       shippingEmail: subscription.subscription_meta.shipping_email,
       shippingPhone: subscription.subscription_meta.shipping_phone,
       shippingAddress: subscription.subscription_meta.shipping_address1,
-      shippingAddress2: subscription.subscription_meta.shipping_address2,
+      shippingAddress2: subscription.subscription_meta.shipping_address2 || '',
       shippingPostCode: subscription.subscription_meta.shipping_postcode,
       shippingCity: subscription.subscription_meta.shipping_city,
       shippingState: subscription.subscription_meta.shipping_state,
       shippingCountry: subscription.subscription_meta.shipping_country,
-      shippingNotes: subscription.subscription_meta.shipping_notes,
+      shippingNotes: subscription.subscription_meta.shipping_notes || '',
     },
     shippingCoverage: {
       shippingCoverage: subscription.subscription_meta.shipping_coverage,
@@ -40,12 +40,12 @@ export const useSubscriptionFactory = (subscription: StrapiSubscription): Subscr
       billingEmail: subscription.subscription_meta.billing_email,
       billingPhone: subscription.subscription_meta.billing_phone,
       billingAddress: subscription.subscription_meta.billing_address1,
-      billingAddress2: subscription.subscription_meta.billing_address2,
+      billingAddress2: subscription.subscription_meta.billing_address2 || '',
       billingPostCode: subscription.subscription_meta.billing_postcode,
       billingCity: subscription.subscription_meta.billing_city,
       billingState: subscription.subscription_meta.billing_state,
       billingCountry: subscription.subscription_meta.billing_country,
-      billingCif: subscription.subscription_meta.billing_cif,
+      billingCif: subscription.subscription_meta.billing_cif || '',
     },
 
     subscriptionItems: subscription.subscription_items.map((item: any) => {
@@ -63,7 +63,7 @@ export const useSubscriptionFactory = (subscription: StrapiSubscription): Subscr
         id: item.id,
         amount: item.amount,
         sku: item.product.SKU,
-        image: `images/boxes/Caixa-${getBoxImage(item?.product.SKU)}.webp`,
+        image: item.product.imagePath[0],
         exclusions: item.exclusions.map((exclusion: any) => {
           return {
             id: exclusion.id,

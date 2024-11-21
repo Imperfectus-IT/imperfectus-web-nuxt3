@@ -140,7 +140,6 @@ export const useOrderRepository = () => {
 
   const getAmount = async (payload: GetAmountPayload): Promise<any> => {
     const strapiItems = payload.items.map((item: OrderItem) => useStrapiOrderItemFactory(item))
-    console.log('strapiitem', strapiItems)
     return await client('orders/total', { method: 'POST', body: { items: strapiItems, orderId: payload.orderId } })
   }
 

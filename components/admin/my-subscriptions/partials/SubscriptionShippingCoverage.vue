@@ -39,7 +39,7 @@
           </label>
         </div>
         <div
-          v-if="preselectedPickUpPoint"
+          v-if="preselectedPickUpPointId"
           class="flex flex-col text-[12px] font-solina-extended-medium "
         >
           <label
@@ -132,15 +132,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  useGetSeurPickUpPoints,
-} from '~/composables/locations/application/get-seur-pick-up-points/useGetSeurPickUpPoints.ts'
-import {
-  useGetCorreosPickUpPoints,
-} from '~/composables/locations/application/get-correos-pick-up-points/useGetCorreosPickUpPoints.ts'
-import { useGetPickUpPointById } from '~/composables/locations/application/get-pick-up-point-by-id/getPickUpPointById.ts'
-import { ALLSERVICES } from '~/composables/locations/domain/ServicesConstants.ts'
-
 const props = defineProps<{
   availableCoverages: string[]
   subscriptionShippingCoverage: SubscriptionCoverage
@@ -155,16 +146,16 @@ const isCollapsed = ref<boolean>(true)
 const displayPickUpPoints = ref<boolean>(false)
 
 const coveragesOptions = Object.values(ALL_COVERAGES).filter(coverage => props.availableCoverages.includes(coverage.value))
-
-const selectedCoverage = ref<SubscriptionCoverage | null>({
-  shippingCoverage: coveragesOptions.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value,
-  shippingService: props.subscriptionShippingCoverage.shippingService || null,
-  shippingOffice: props.subscriptionShippingCoverage.shippingOffice || null,
+const selectedCoverage = ref<SubscriptionCoverage>({
+  shippingCoverage: coveragesOptions.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value as string,
+  shippingService: props.subscriptionShippingCoverage.shippingService,
+  shippingOffice: props.subscriptionShippingCoverage.shippingOffice,
 })
 
-const preselectedPickUpPoint = ref<string | null>(props.subscriptionShippingCoverage.shippingOffice || null)
-const pickUpPoints = ref([])
-const canSaveChanges = computed(() => selectedCoverage.value === ALL_COVERAGES.SEUR.label ? selectedPickUpPoint.value !== '' : true)
+const preselectedPickUpPointId = ref<string | null>(props.subscriptionShippingCoverage.shippingOffice || null)
+const preselectedPickUpPoint = ref<PickUpPoint | null>(null)
+const pickUpPoints = ref<PickUpPoint[]>([])
+const canSaveChanges = computed(() => selectedCoverage.value === ALL_COVERAGES.SEUR.label ? preselectedPickUpPointId.value !== '' : true)
 
 onMounted(async () => {
   if (selectedCoverage.value.shippingService === ALLSERVICES.PICK_UP_POINT) {
@@ -173,10 +164,10 @@ onMounted(async () => {
 })
 
 const getSelectedPickUpPoint = async () => {
-  preselectedPickUpPoint.value = await executeGetPickUpPointById(selectedCoverage.value.shippingOffice, props.postcode, selectedCoverage.value.shippingCoverage)
   pickUpPoints.value = props.subscriptionShippingCoverage.shippingCoverage === ALL_COVERAGES.SEUR.value
     ? await executeGetSeurPickUpPoints(props.postcode)
     : await executeGetCorreosPickUpPoints(props.postcode)
+  preselectedPickUpPoint.value = pickUpPoints.value.filter(pickUpPoint => pickUpPoint.id === preselectedPickUpPointId.value)[0]
   displayPickUpPoints.value = true
 }
 
@@ -207,7 +198,7 @@ watch(selectedCoverage, async (newValue, oldValue) => {
 }, { deep: true })
 
 const handleUpdateCoverage = async () => {
-  preselectedPickUpPoint.value = null
+  preselectedPickUpPointId.value = null
   pickUpPoints.value = []
   emits('update-coverage', selectedCoverage.value)
   if (selectedCoverage.value.shippingService === ALLSERVICES.PICK_UP_POINT) {

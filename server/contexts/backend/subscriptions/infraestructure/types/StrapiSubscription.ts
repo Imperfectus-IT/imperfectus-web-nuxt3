@@ -1,3 +1,5 @@
+import type { DayMapping } from '~/components/admin/my-subscriptions/DayMapping'
+
 export type StrapiSubscription = {
   id: number
   subscription_id: string
@@ -7,7 +9,7 @@ export type StrapiSubscription = {
   nextPayment: string
   next_delivery_date_from_paused_at: string
   cancelledAt: string
-  preferredDay: string
+  preferredDay: keyof typeof DayMapping
   subscription_items: StrapiSubscriptionItem[]
   given: object[]
   subscription_meta: StrapiSubscriptionMeta

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-const { shoppingCart } = useShoppingCartState()
-const { setShoppingCart } = useLocalStorageShoppingCartRepository()
-const { isInvalid, findCoverageByPostalCode, goBack, isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } = useShoppingCartAvailabilityStep()
-const toast = useToast()
-const { errorToast } = useToastService()
-const { t } = useI18n()
+const { shoppingCart } = useShoppingCartState();
+const { setShoppingCart } = useLocalStorageShoppingCartRepository();
+const { isInvalid, findCoverageByPostalCode, goBack, isPostalCodeLengthValid, MAX_POSTAL_CODE_LENGTH } = useShoppingCartAvailabilityStep();
+const toast = useToast();
+const { errorToast } = useToastService();
+const { t } = useI18n();
 
-const emit = defineEmits([GO_TO_STEP_EVENT])
+const emit = defineEmits([GO_TO_STEP_EVENT]);
 watch(
   () => shoppingCart.value.shippingAddress.shippingPostCode,
   async (newPostalCode) => {
-    await findCoverageByPostalCode(newPostalCode)
+    await findCoverageByPostalCode(newPostalCode);
     if (isInvalid.value && isPostalCodeLengthValid(newPostalCode)) {
       await errorToast(toast, t('adminOrderShipment.postCode'), t('validations.postcode.notCovered'))
     }
   },
-)
+);
 
 const goToNextStep = () => {
-  setShoppingCart(shoppingCart.value)
+  setShoppingCart(shoppingCart.value);
   emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
 }
 </script>
@@ -47,6 +47,7 @@ const goToNextStep = () => {
           $t("order.steps.stepAvailability.subTitle")
         }}
       </p>
+
       <InputOtp
         v-model="shoppingCart.shippingAddress.shippingPostCode"
         class="mt-4"
