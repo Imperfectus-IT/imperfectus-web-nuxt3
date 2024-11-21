@@ -11,16 +11,17 @@ const emit = defineEmits([GO_TO_STEP_EVENT])
 const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const { setShoppingCart } = useLocalStorageShoppingCartRepository()
-const { getLocaleName } = useGetLocaleLanguage(locale)
+const { getLocaleName } = useGetLocaleLanguage(locale.value)
 const { executeGetOrderAmount } = useGetOrderAmount()
 
 onMounted(async () => {
   const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
-  shoppingCart.value.amount.subtotal = shoppingCart.value.items.reduce((acc, item) => acc + item.product.priceWithTax, 0)
-  shoppingCart.value.amount.shippingCost = newAmount.shipping
-  shoppingCart.value.amount.saved = newAmount.saved
-  shoppingCart.value.amount.total = newAmount.total
+  shoppingCart.value.amount.subtotal = parseFloat(shoppingCart.value.items.reduce((acc, item) => acc + item.product.priceWithTax, 0).toFixed(2))
+  shoppingCart.value.amount.shippingCost = newAmount.shipping.toFixed(2)
+  shoppingCart.value.amount.saved = newAmount.savedWithTax.toFixed(2)
+  shoppingCart.value.amount.total = newAmount.total.toFixed(2)
 })
+
 const handleNewProduct = () => {
   emit(GO_TO_STEP_EVENT, CUSTOMIZE_STEP)
   shoppingCart.value.currentItem = createEmptyShoppingCartItem()
@@ -40,8 +41,8 @@ const goToNextStep = () => {
   emit(GO_TO_STEP_EVENT, SHIPPING_STEP)
 }
 const goBack = () => {
-  const { items } = shoppingCart.value
-  shoppingCart.value.currentItem = items[items.length - 1]
+  shoppingCart.value.currentItem = shoppingCart.value.items[shoppingCart.value.items.length - 1]
+  shoppingCart.value.items.splice(shoppingCart.value.items.length - 1, 1)
   emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
 }
 </script>
@@ -102,7 +103,7 @@ const goBack = () => {
               </li>
             </ul>
           </div>
-          <div class="flex flex-row-reverse justify-between px- lg:gap-14">
+          <div class="flex flex-row-reverse justify-between lg:gap-14">
             <span
               class="mdi mdi-close text-red-primary cursor-pointer hidden"
               @click.prevent="removeItem(item.uuid)"

@@ -13,10 +13,11 @@ const billingFormErrors = ref<z.ZodFormattedError<FormData> | null>(null)
 
 const isFormValid = computed(() => {
   if (shoppingCart.value.invoiceRequired) {
-    return !!shippingFormErrors.value?._errors || !!billingFormErrors.value?._errors
+    return !!shippingFormErrors.value?.errors || !!billingFormErrors.value?.errors
   }
   else {
-    return shippingFormErrors.value?._errors
+    console.log(shippingFormErrors.value?.errors)
+    return shippingFormErrors.value?.errors
   }
 })
 

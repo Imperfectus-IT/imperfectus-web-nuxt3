@@ -5,12 +5,11 @@ defineProps<{
   boxProduct: BoxProduct
 }>()
 const { locale } = useI18n()
-const { getLocaleName } = useGetLocaleLanguage(locale)
+const { getLocaleName } = useGetLocaleLanguage(locale.value)
 </script>
 
 <template>
   <div class="lg:flex lg:flex-row lg:justify-center lg:mt-10">
-    {{ 'hola' }}
     <NuxtImg
       class="rounded-lg w-full lg:w-[350px]"
       :src="boxProduct?.image"

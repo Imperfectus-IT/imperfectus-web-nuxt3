@@ -1,15 +1,16 @@
 <script setup lang="ts">
-// const showForSubscription = computed(() => item?.purchaseType === SUBSCRIPTION_TYPE && item.boxSize)
-// const showForOrder = computed(() => item?.purchaseType === ORDER_TYPE && item)
-// const exclusionLists = computed(() => {
-//   return item.exclusions.map(exclusion => exclusion?.name).join(', ') || '-'
-// })
-
 const { shoppingCart } = useShoppingCartState()
-//
 const floatingItems: ComputedRef<ShoppingCartItem[]> = computed(() => {
   const hiddenSteps = [AUTH_STEP, RESUME_ITEM_STEP, DELIVERY_STEP, PAYMENT_STEP, SHIPPING_STEP]
   return [...shoppingCart.value.items, ...(hiddenSteps.includes(shoppingCart.value.step) ? [] : [shoppingCart.value.currentItem as ShoppingCartItem])]
+})
+
+const getPricesWithoutDiscount = computed(() => {
+  let itemsTotal = 0
+  if (shoppingCart.value.items.length > 0) {
+    itemsTotal = shoppingCart.value.items.reduce((acc, item) => acc + item.product?.priceWithTax, 0)
+  }
+  return itemsTotal + shoppingCart.value.currentItem.product?.priceWithTax || 0
 })
 </script>
 
@@ -18,7 +19,7 @@ const floatingItems: ComputedRef<ShoppingCartItem[]> = computed(() => {
     class="rounded-tl-lg rounded-tr-lg bg-beige-primary w-full"
     :header="$t('purchase_summary.title')"
     toggleable
-    :collapsed="true"
+    collapsed
     :pt="{
       header: 'h-20',
     }"
@@ -29,21 +30,16 @@ const floatingItems: ComputedRef<ShoppingCartItem[]> = computed(() => {
   >
     <template #header>
       <span class="font-solina-extended-medium text-base font-medium">{{ $t('purchase_summary.title') }}</span>
-      <!--      <span -->
-      <!--        v-if="item?.boxProduct" -->
-      <!--        class="font-solina-extended-medium text-base font-medium" -->
-      <!--      >{{ item.boxProduct.price }}€</span> -->
     </template>
     <template #togglericon="{ collapsed }">
       <span :class="[collapsed ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down', 'rounded-full border border-green-tertiary bg-green-primary h-[32px] w-[32px] text-[22px]']" />
     </template>
-    <div class="py-3 flex flex-col">
+    <div class="py-3 flex flex-col max-h-[80vh] overflow-y-auto">
       <div
         v-for="item in floatingItems"
         :key="item.uuid"
         class="flex flex-col"
       >
-        {{ item.purchaseType }}
         <div
           v-if="item.product"
           class="flex gap-3"
@@ -57,7 +53,7 @@ const floatingItems: ComputedRef<ShoppingCartItem[]> = computed(() => {
           />
           <div class="my-auto w-3/4">
             <span class="text-xs leading-3">{{ $t('purchase_summary.fromPrice') }}</span>
-            <span class="text-xs font-bold">{{ item?.product?.price + '€' }}</span>
+            <span class="text-xs font-bold">{{ item?.product?.priceWithTax + '€' }}</span>
             <p class="text-xs leading-4">
               {{ item?.product?.descriptionEs }}
             </p>
@@ -85,9 +81,22 @@ const floatingItems: ComputedRef<ShoppingCartItem[]> = computed(() => {
         </div>
         <Divider class="opacity-50" />
       </div>
+      <div class="flex justify-between">
+        <span>{{ $t('orderAmount.subtotal') }}</span>
+        <span>{{ getPricesWithoutDiscount }}€</span>
+      </div>
+      <div class="flex justify-between mt-2">
+        <span>{{ $t('orderAmount.shippingCost') }}</span>
+        <span>{{ shoppingCart.amount.shippingCost }}€</span>
+      </div>
+      <div class="flex justify-between mt-2">
+        <span>{{ $t('orderAmount.discount') }} <span v-if="shoppingCart?.items[0]?.coupon">(</span>{{ shoppingCart?.items[0]?.coupon?.discountValue }}<span v-if="shoppingCart?.items[0]?.coupon">%)</span></span>
+        <span :class="shoppingCart.amount.saved > 0 ? 'text-green-secondary' : ''"><span v-if="shoppingCart?.items[0]?.coupon">-</span>{{ shoppingCart.amount.saved }}€</span>
+      </div>
+      <Divider class="opacity-50" />
       <div class="flex justify-between mt-3 font-solina-extended-medium">
         <span class="text-xl leading-3">{{ $t('purchase_summary.total') }}</span>
-        <!--        <span class="text-xl leading-3">{{ item?.amount }}</span> -->
+        <span class="text-xl leading-3">{{ shoppingCart.amount.total+'€' }}</span>
       </div>
       <Divider class="opacity-50" />
     </div>

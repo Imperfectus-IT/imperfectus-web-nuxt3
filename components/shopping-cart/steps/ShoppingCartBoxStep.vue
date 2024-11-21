@@ -31,6 +31,7 @@ const goToPreviousStep = () => {
 </script>
 
 <template>
+  <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/4 lg:absolute lg:right-0 lg:z-10" />
   <div class="px-8 md:px-[28%] lg:px-[20%] 2xl:px-[20%]">
     <div class="flex items-center gap-5">
       <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">
@@ -49,11 +50,11 @@ const goToPreviousStep = () => {
         }}
       </p>
     </div>
-    <div class="flex flex-col lg:flex-row items-center gap-5 mt-8">
+    <div class="flex flex-col lg:flex-row items-center lg:justify-center gap-5 mt-8">
       <div
         v-for="box in boxDetails"
         :key="box.size"
-        class="w-full text-center"
+        class="w-full text-center lg:w-1/4"
       >
         <Button
           :class="['text-xl w-2/3 lg:w-full', shoppingCart.currentItem.boxSize === box.size ? 'bg-green-primary' : 'bg-transparent']"

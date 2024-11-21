@@ -6,7 +6,7 @@ const props = defineProps<{
 }>()
 const { shoppingCart } = useShoppingCartState()
 const { t, locale } = useI18n()
-const { getLocaleName } = useGetLocaleLanguage(locale)
+const { getLocaleName } = useGetLocaleLanguage(locale.value)
 const isExclusionSelected = ref(false)
 const searchExclusion = ref('')
 const filteredExclusions = computed(() => {

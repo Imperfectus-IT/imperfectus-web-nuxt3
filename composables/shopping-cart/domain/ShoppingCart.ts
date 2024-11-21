@@ -22,7 +22,7 @@ export type ShoppingCart = {
   billingAddress: OrderBilling
   shippingAddress: OrderShipping
   items: ShoppingCartItem[]
-  currentItem: ShoppingCartItem | null
+  currentItem: ShoppingCartItem
 }
 export const AVAILABILITY_STEP = 'StepAvailability'
 export const PURCHASE_TYPE_STEP = 'StepPurchaseType'

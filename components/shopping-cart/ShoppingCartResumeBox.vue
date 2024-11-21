@@ -19,7 +19,7 @@ watch(() => shoppingCart.value.items, async () => {
   const newAmount = await executeGetOrderAmount({ items: shoppingCart.value.items })
   shoppingCart.value.amount.subtotal = shoppingCart.value.items.reduce((acc, item) => acc + (item.product.priceWithTax * item.quantity), 0).toFixed(2)
   shoppingCart.value.amount.shippingCost = newAmount.shipping
-  shoppingCart.value.amount.saved = newAmount.saved
+  shoppingCart.value.amount.saved = newAmount.savedWithTax
   shoppingCart.value.amount.total = newAmount.total
 }, { deep: true })
 
@@ -61,7 +61,6 @@ const handleRemoveCoupon = () => {
     <slot name="boxCard" />
     <Button
       :label="$t('orderResume.add')"
-      outlined
       class="lg: mb-10"
       @click.prevent="addNewProduct"
     />

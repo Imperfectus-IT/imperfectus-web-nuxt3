@@ -9,64 +9,49 @@ import type RedsysPaymentForm from '~/components/share/RedsysPaymentForm.vue'
 definePageMeta({
   layout: 'default',
   middleware: ['auth'],
-})
+});
 
-const { t } = useI18n()
-const route = useRoute()
-const localePath = useLocalePath()
-const redsysForm = ref<HTMLFormElement | null>(null)
-const { removeShoppingCart } = useLocalStorageShoppingCartRepository()
-const notification = ref(route.query.notification || '')
-const isOrderFailed = computed(() => route.path.includes('failed'))
-const { order } = useOrdersState()
-useGetOrderByNotificationHandler(notification.value as string)
-
-// const { data: order } = useAsyncData(async () => {
-//   const { order, executeGetOrderByNotification } = useGetOrderByNotificationHandler(notification.value)
-//   if (!notification.value || !uuidValidate(notification.value) || uuidVersion(notification.value) !== 4) {
-//     throw new Error('Bad request')
-//   }
-//
-//   try {
-//     await executeGetOrderByNotification(notification.value)
-//     return order
-//   }
-//   catch (err) {
-//     throw new Error('Internal Server Error')
-//   }
-// })
+const { t } = useI18n();
+const route = useRoute();
+const localePath = useLocalePath();
+const redsysForm = ref<HTMLFormElement | null>(null);
+const { removeShoppingCart } = useLocalStorageShoppingCartRepository();
+const notification = ref(route.query.notification || '');
+const isOrderFailed = computed(() => route.path.includes('failed'));
+const { order } = useOrdersState();
+useGetOrderByNotificationHandler(notification.value as string);
 
 const totalAmountWithoutDiscount = computed(() => {
   if (!order.value?.orderPayment.totalAmount) {
     return null
   }
-  const amountWithoutDiscount = order.value?.orderPayment.totalAmount + order.value?.orderPayment.totalDiscount + order.value?.orderPayment.totalTax
+  const amountWithoutDiscount = order.value?.orderPayment.totalAmount + order.value?.orderPayment.totalDiscount + order.value?.orderPayment.totalTax;
   return parseFloat(amountWithoutDiscount.toFixed(2))
-})
+});
 
 const couponCode = computed(() => {
   if (!order.value?.orderItems) {
     return ''
   }
-  const orderItemWithCoupon = order.value.orderItems.find(item => item.coupon)
+  const orderItemWithCoupon = order.value.orderItems.find(item => item.coupon);
   if (!orderItemWithCoupon) {
     return ''
   }
   return orderItemWithCoupon.coupon.coupon
-})
+});
 
 const retryPayment = () => {
   redsysForm.value.submit()
-}
+};
 
 onMounted(() => {
   if (!isOrderFailed.value) {
     removeShoppingCart()
   }
-})
+});
 
 useHead({
-  title: t('pages.order.status.thanks'),
+  title: isOrderFailed ? t(t('pages.order.status.paymentError')) : t('pages.order.status.thanks'),
   meta: [
     {
       name: 'description',

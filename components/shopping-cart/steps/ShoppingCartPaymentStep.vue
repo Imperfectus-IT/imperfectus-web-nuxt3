@@ -142,5 +142,8 @@ const handleNewProduct = () => {
         </ShoppingCartResumeBox>
       </div>
     </div>
+    <ShoppingCartPurchaseSummaryFloating
+      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden"
+    />
   </div>
 </template>

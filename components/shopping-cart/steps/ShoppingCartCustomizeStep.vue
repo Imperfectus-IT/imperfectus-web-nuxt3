@@ -33,6 +33,7 @@ const nexStep = () => {
 </script>
 
 <template>
+  <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/4 lg:absolute lg:right-0 lg:z-10" />
   <div class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
     <div class="flex items-center gap-5">
       <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">
@@ -129,16 +130,6 @@ const nexStep = () => {
         @click.prevent="nexStep"
       />
     </div>
-    <!--    <ShoppingCartPurchaseSummaryFloating -->
-    <!--      v-if="shoppingCart.currentItem?.frequency" -->
-    <!--      class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" -->
-    <!--      :item="shoppingCart.currentItem" -->
-    <!--    /> -->
-    <!--    <ShoppingCartPurchaseSummaryFloating -->
-    <!--      v-if="shoppingCart.currentItem?.frequency" -->
-    <!--      class="hidden fixed z-10 top-[13%] 2xl:top-[10%] right-0 w-1/3 lg:block" -->
-    <!--      :item="shoppingCart.currentItem" -->
-    <!--    /> -->
   </div>
   <ShoppingCartPurchaseSummaryFloating class="fixed z-10 inset-x-0 bottom-0 w-full lg:hidden" />
 </template>

@@ -59,7 +59,7 @@ export default defineNuxtConfig({
       },
       {
         name: 'order-payment-failed',
-        path: '/ca/payment-failed/:slug?',
+        path: '/payment-failed/:slug?',
         file: '~/pages/order/status.vue',
       },
       {
