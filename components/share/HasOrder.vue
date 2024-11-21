@@ -24,7 +24,7 @@ const discardOrder = () => {
     class="bg-green-tertiary"
   >
     <div class="flex items-center justify-center py-2  flex-col md:gap-0 md:flex-row">
-      <span class="text-beige-primary">👋 {{ t('hasOrder.message') }}</span>
+      <span class="text-green-quaternary">👋 {{ t('hasOrder.message') }}</span>
 
       <div>
         <NuxtLinkLocale
@@ -45,7 +45,7 @@ const discardOrder = () => {
         </NuxtLinkLocale>
 
         <Button
-          class="ml-4 bg-transparent text-beige-primary underline"
+          class="ml-4 bg-transparent text-green-quaternary underline"
           size="small"
           variant="text"
           :pt="{
