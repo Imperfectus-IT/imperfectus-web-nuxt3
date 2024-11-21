@@ -4,6 +4,7 @@
       <TopToolbar />
       <MobileNavbarHeader class="lg:hidden bg-beige-primary" />
       <DesktopNavbarHeader class="hidden lg:block bg-beige-primary" />
+      <HasOrder />
     </section>
     <div class="text-green-tertiary">
       <slot />
