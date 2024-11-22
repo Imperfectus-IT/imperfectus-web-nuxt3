@@ -24,6 +24,10 @@ const { validHours, getValidHoursHandler } = useValidHoursHandler()
 const { unavailableDates, getUnavailableDates } = useUnavailableDatesHandler()
 const { availableWeekDays, getAvailableWeekDaysHandler } = availableWeekDaysHandler()
 
+const isCatalonianDelivery = computed(() => {
+  return ['08', '17', '25', '43'].some(code => shoppingCart.value.shippingAddress.shippingPostCode.startsWith(code))
+})
+
 const setHomeDelivery = () => {
   deliveryType.value = HOME_DELIVERY_TYPE
   shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = coveragesOptions.value[0]?.value as string
@@ -33,7 +37,6 @@ const setHomeDelivery = () => {
 
 const setPickupPointDelivery = () => {
   deliveryType.value = PICKUP_POINT_DELIVERY_TYPE
-  // shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = ''
   shoppingCart.value.shippingAddress.shippingCoverage.shippingOffice = null
   shoppingCart.value.shippingAddress.shippingCoverage.shippingService = ALLSERVICES.PICK_UP_POINT
 }
@@ -69,7 +72,11 @@ const mapValidHours = (validHours: ValidHour[]) => {
   }))
 }
 
-const getItemProductIds = computed(() => shoppingCart.value.items.map(item => item.product.id))
+const getItemProductIds: ComputedRef<number[]> = computed(() =>
+  shoppingCart.value.items
+    .map(item => item.product?.id)
+    .filter((id): id is number => id !== undefined),
+)
 onMounted(async () => {
   await getAvailableWeekDaysHandler(shoppingCart.value.shippingAddress.shippingPostCode, '')
   await getUnavailableDates(getItemProductIds.value, shoppingCart.value.shippingAddress.shippingPostCode, '')
@@ -87,9 +94,7 @@ const initializeCalendarDate = computed(() => {
   const isFirstThursdayUnavailable = unavailableDates.value.some((date: Date) => {
     return dayjs(date).format('YYYY-MM-DD') === dayjs(firstThursday).format('YYYY-MM-DD')
   })
-  const FirstThursdayAvaiable = isFirstThursdayUnavailable ? dayjs(firstThursday).add(1, 'w').toDate() : firstThursday
-  shoppingCart.value.deliveryDate = dayjs(FirstThursdayAvaiable).format('YYYY-MM-DD')
-  return FirstThursdayAvaiable
+  return isFirstThursdayUnavailable ? dayjs(firstThursday).add(1, 'w').toDate() : firstThursday
 })
 const selectedDate = ref(initializeCalendarDate.value)
 
@@ -104,8 +109,8 @@ const coveragesOptions = computed(() =>
 watch(selectedDate, async () => {
   shoppingCart.value.deliveryDate = dayjs(selectedDate.value).format('YYYY-MM-DD')
   const dayNumber = dayjs(selectedDate.value).day()
-  const preferredDay = Object.keys(DayMapping).find(key => DayMapping[key] === dayNumber)
-  shoppingCart.value.preferredDay = preferredDay
+  const preferredDay: string = Object.keys(DayMapping).find(key => DayMapping[key] === dayNumber) as string
+  shoppingCart.value.preferredDay = preferredDay as string
   try {
     availableCarriers.value = await executeGetShippingCompanies(
       shoppingCart.value.shippingAddress.shippingPostCode,
@@ -115,7 +120,7 @@ watch(selectedDate, async () => {
   catch (error) {
     console.error('Failed to fetch shipping companies:', error)
   }
-})
+}, { immediate: true })
 
 const isSelectedDate = (date: CalendarDate) => {
   const formattedDate = dateBuilder(date)
@@ -135,11 +140,12 @@ const getFormattedUnavailableDates = computed(() => unavailableDates.value.map(d
 // Pickup point delivery
 watch(deliveryType, async () => {
   if (deliveryType.value === PICKUP_POINT_DELIVERY_TYPE) {
+    pickupCarrierOptions.value = [ALL_COVERAGES.CORREOSEXPRESS]
+    correosPickUpPoints.value = correosPickUpPoints.value.length === 0 ? await executeGetCorreosPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode) : correosPickUpPoints.value
     seurPickUpPoints.value = await executeGetSeurPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
-    correosPickUpPoints.value = await executeGetCorreosPickUpPoints(shoppingCart.value.shippingAddress.shippingPostCode)
     pickupCarrierOptions.value = [
-      ALL_COVERAGES.CORREOSEXPRESS,
-      ...(seurPickUpPoints.value.length > 0 ? [ALL_COVERAGES.SEUR] : []),
+      ...pickupCarrierOptions.value,
+      ...(seurPickUpPoints.value.length > 0 && !isCatalonianDelivery.value ? [ALL_COVERAGES.SEUR] : []),
     ]
   }
 })

@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import type { z } from 'zod'
-import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
-import ShoppingCartTopSummaryBoxSmall from '~/components/shopping-cart/partials/ShoppingCartTopSummaryBoxSmall.vue'
 import { createEmpty as createEmptyShoppingCartItem } from '~/composables/shopping-cart/domain/Item.ts'
 
-const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const emit = defineEmits([GO_TO_STEP_EVENT])
