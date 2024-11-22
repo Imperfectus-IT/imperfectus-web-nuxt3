@@ -1,6 +1,6 @@
 import type { ComposerTranslation } from 'vue-i18n'
 
-export const useGetOrder = (t: ComposerTranslation) => {
+export const useGetOrderById = (t: ComposerTranslation) => {
   const { order } = useOrdersState()
 
   const { findById } = useOrderRepository(t)

@@ -14,12 +14,18 @@
       class="text-[14px] flex flex-col"
     >
       <div v-if="!isEditForm">
-        <p class="mt-5">
-          {{ $t(`${textData.section}item_${index}`) }}
-        </p>
-        <p class="font-bold mt-1">
-          {{ getShippingValue(item.key) }}
-        </p>
+        <div v-if="getShippingValue(item.key)">
+          <p
+            class="mt-5"
+          >
+            {{ $t(`${textData.section}item_${index}`) }}
+          </p>
+          <p
+            class="font-bold mt-1"
+          >
+            {{ getShippingValue(item.key) }}
+          </p>
+        </div>
       </div>
       <div
         v-else

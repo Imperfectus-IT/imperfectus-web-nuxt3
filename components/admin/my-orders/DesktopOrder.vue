@@ -102,9 +102,7 @@
           <div class="bg-red-secondary w-1/4 h-9 rounded-lg flex items-center justify-center text-[12px]">
             {{ $t("string.status.order.cancelled") }}
           </div>
-          <!--          @TODO INSERT CANCELLED AT COLUMN TO ORDERS -->
           <p>{{ $t(`${textData}cancelledDate`, { date: '1-1-2024' }) }}</p>
-          <!-- TODO This is not stored in DB -->
         </div>
       </div>
       <OrderCoupon

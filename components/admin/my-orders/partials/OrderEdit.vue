@@ -9,7 +9,7 @@
         v-if="!displayEditOrder"
         label="Editar"
         outlined
-        class="!h-5 mb-5 w-1/5"
+        class="!h-5 mb-5 w-2/5 lg:w-1/5"
         @click="toggleDisplayEditOrder"
       />
     </div>

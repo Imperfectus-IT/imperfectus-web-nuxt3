@@ -47,6 +47,10 @@ export const useOrderRepository = () => {
     const [order] = await find<Array<Order>>('orders', { id })
     return useOrdersFactory(order)
   }
+  const findByOrderId = async (id: number): Promise<Order> => {
+    const [order] = await find<Array<Order>>('orders', { order_id: id })
+    return useOrdersFactory(order)
+  }
   const addOrderReview = async (order: Order, review: string) => {
     const { update } = useStrapi()
     return await update('orders', order.id, { order_review: review })
@@ -156,6 +160,7 @@ export const useOrderRepository = () => {
     findByNotification,
     findOrdersByUser,
     findById,
+    findByOrderId,
     getAmount,
     getFirstPaidOrder,
     removeOrderCoupon,

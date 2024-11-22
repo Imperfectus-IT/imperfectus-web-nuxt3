@@ -3,6 +3,9 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import { useGetOrderHandler } from '~/composables/admin/orders/application/getOne/useGetOrderHandler.ts'
+import {
+  useGetOrderByOrderIdHandler,
+} from '~/composables/admin/orders/application/get-by-order-id/useGetOrderByOrderIdHandler.ts'
 
 definePageMeta({
   layout: 'default',
@@ -30,7 +33,7 @@ const order_id: number = Number(route.query.order)
 const currentStep = ref(FINISH_PAYMENT_PAY)
 const isModalErrorCouponVisible = ref(false)
 
-const { order } = useGetOrderHandler(order_id, t)
+const { order } = useGetOrderByOrderIdHandler(order_id, t)
 const { addOrderCoupon } = useUpdateOrderHandler(t)
 
 const componentToRenderFromStep: Record<string, Component> = {

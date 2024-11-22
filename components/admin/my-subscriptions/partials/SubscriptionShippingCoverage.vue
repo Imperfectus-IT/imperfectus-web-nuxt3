@@ -92,7 +92,7 @@
       </p>
       <div
         v-for="pickUpPoint in pickUpPoints"
-        :key="pickUpPoint"
+        :key="pickUpPoint.id"
       >
         <div class="flex items-start text-[14px]">
           <RadioButton
@@ -155,7 +155,9 @@ const selectedCoverage = ref<SubscriptionCoverage>({
 const preselectedPickUpPointId = ref<string | null>(props.subscriptionShippingCoverage.shippingOffice || null)
 const preselectedPickUpPoint = ref<PickUpPoint | null>(null)
 const pickUpPoints = ref<PickUpPoint[]>([])
-const canSaveChanges = computed(() => selectedCoverage.value === ALL_COVERAGES.SEUR.label ? preselectedPickUpPointId.value !== '' : true)
+const canSaveChanges = computed(() => {
+  return !(selectedCoverage.value.shippingCoverage === ALL_COVERAGES.SEUR.value && !selectedCoverage.value.shippingOffice)
+})
 
 onMounted(async () => {
   if (selectedCoverage.value.shippingService === ALLSERVICES.PICK_UP_POINT) {
@@ -167,7 +169,7 @@ const getSelectedPickUpPoint = async () => {
   pickUpPoints.value = props.subscriptionShippingCoverage.shippingCoverage === ALL_COVERAGES.SEUR.value
     ? await executeGetSeurPickUpPoints(props.postcode)
     : await executeGetCorreosPickUpPoints(props.postcode)
-  preselectedPickUpPoint.value = pickUpPoints.value.filter(pickUpPoint => pickUpPoint.id === preselectedPickUpPointId.value)[0]
+  preselectedPickUpPoint.value = pickUpPoints.value.filter(pickUpPoint => pickUpPoint.id === preselectedPickUpPointId.value)[0] as PickUpPoint
   displayPickUpPoints.value = true
 }
 
