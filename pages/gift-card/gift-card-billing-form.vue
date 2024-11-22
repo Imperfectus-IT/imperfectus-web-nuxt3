@@ -24,7 +24,6 @@
       />
     </NuxtLink>
   </div>
-  {{ giftCard }}
 </template>
 
 <script setup lang="ts">
