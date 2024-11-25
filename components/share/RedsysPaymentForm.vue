@@ -11,6 +11,7 @@ const props = defineProps({
 })
 
 const { url, body, formPaymentHandler } = useFormPaymentHandler()
+const { executeGetFormWithoutCharge } = useGetFormWithoutCharge()
 
 const { sleep } = useSleep()
 const paymentNotAvailable = ref(false)
@@ -18,14 +19,21 @@ const formRef = ref<HTMLFormElement | null>(null)
 
 const submit = async () => {
   paymentNotAvailable.value = false
+  console.log('orderpaymentform submit')
   try {
-    await formPaymentHandler(props.order.id)
-    if (url.value && formRef.value) {
-      await sleep(200)
-      formRef.value.submit()
+    if (props.order?.id) {
+      await formPaymentHandler(props.order.id)
+      if (url.value && formRef.value) {
+        await sleep(200)
+        formRef.value.submit()
+      }
+      else {
+        paymentNotAvailable.value = true
+      }
     }
     else {
-      paymentNotAvailable.value = true
+      await executeGetFormWithoutCharge()
+      formRef.value.submit()
     }
   }
   catch (error) {

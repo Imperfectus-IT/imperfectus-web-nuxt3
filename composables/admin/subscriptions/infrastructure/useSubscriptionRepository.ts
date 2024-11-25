@@ -32,8 +32,8 @@ export const useSubscriptionRepository = () => {
     await client<Subscription>(`/subscriptions/${subscriptionId}/coupon`, { method: 'PUT', body: { coupon_id: coupon } })
   }
   const addSubscriptionItem = async (newSubscriptionItem: addItemPayload, subscriptionId: number) => {
-    const { newBoxProduct, exclusions } = newSubscriptionItem
-    const { price, weight, id } = newBoxProduct
+    const { boxProduct, exclusions } = newSubscriptionItem
+    const { price, weight, id } = boxProduct
     const body = {
       subscription: subscriptionId,
       product: id,
