@@ -2975,43 +2975,43 @@ export default {
       title: 'Direccion de facturación',
       field_1: {
         label: 'Nombre',
-        value: 'name',
+        value: 'billingFirstName',
       },
       field_2: {
         label: 'Apellidos',
-        value: 'surname',
+        value: 'billingLastName',
       },
       field_3: {
         label: 'NIF',
-        value: 'nif',
+        value: 'billingCif',
       },
       field_4: {
         label: 'Correo electrónico',
-        value: 'email',
+        value: 'billingEmail',
       },
       field_5: {
         label: 'Dirección (calle y número)',
-        value: 'address1',
+        value: 'billingAddress',
       },
       field_6: {
         label: 'Piso y puerta',
-        value: 'address2',
+        value: 'billingAddress2',
       },
       field_7: {
         label: 'Código postal',
-        value: 'postalCode',
+        value: 'billingPostCode',
       },
       field_8: {
         label: 'Ciudad',
-        value: 'city',
+        value: 'billingCity',
       },
       field_9: {
         label: 'Provincia',
-        value: 'state',
+        value: 'billingState',
       },
       field_10: {
         label: 'País',
-        value: 'country',
+        value: 'billingCountry',
       },
     },
     'payment': {

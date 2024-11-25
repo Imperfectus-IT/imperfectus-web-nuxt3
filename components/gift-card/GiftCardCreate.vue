@@ -33,15 +33,17 @@
 import type { GiftCardForm } from './types/types'
 import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
 
-const { setGiftCard } = useLocalStorageGiftCardRepository()
+const { setGiftCardPurchase, getGiftCardPurchase } = useLocalStorageGiftCardRepository()
 
 const router = useRouter()
 const localePath = useLocalePath()
 const userLoggedIn = useStrapiUser()
 const isFormErrored = ref<boolean>(true)
-const { giftCardPurchase } = useGiftCardState()
+const { giftCardPurchase } = useGiftCardPurchaseState()
+
 onMounted(() => {
-  setGiftCard(giftCardPurchase.value)
+  const giftCardPurchaseLocalStorage = getGiftCardPurchase()
+  giftCardPurchase.value = giftCardPurchaseLocalStorage ? giftCardPurchaseLocalStorage : giftCardPurchase.value
 })
 const submitForm = () => {
   if (!userLoggedIn.value) {
@@ -49,13 +51,17 @@ const submitForm = () => {
   }
   else {
     router.push(localePath('gift-card-gift-card-billing-form'))
-    setGiftCard(giftCardPurchase.value)
+    setGiftCardPurchase(giftCardPurchase.value)
   }
 }
 
 const updateFormData = (payload: { formData: GiftCardForm, errors: any }) => {
   setIsFormErrored(payload.errors)
-  giftCardPurchase.value.currentItem = payload.formData
+  giftCardPurchase.value.currentItem = {
+    uuid: giftCardPurchase.value.currentItem.uuid,
+    designId: giftCardPurchase.value.currentItem.designId,
+    ...payload.formData,
+  }
 }
 
 const updateDesignId = (designId: number) => {

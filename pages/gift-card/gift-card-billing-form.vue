@@ -11,7 +11,7 @@
       <label for="username">{{ $t(`${textData.section}.field_${field}.label`) }}</label>
       <InputText
         :id="$t(`${textData.section}.field_${field}.label`)"
-        v-model="formData[$t(`${textData.section}.field_${field}.value`) as keyof BillingForm]"
+        v-model="formData[$t(`${textData.section}.field_${field}.value`) as keyof OrderBilling]"
         :disabled="field === 10"
         class="rounded-xl"
       />
@@ -24,12 +24,14 @@
       />
     </NuxtLink>
   </div>
-  {{ giftCard }}
+  {{ giftCardPurchase }}
+  -----------------------------
+  {{ formData }}
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import type { BillingForm } from '~/components/gift-card/types/types'
+import { createEmptyGiftCard } from '@/composables/gift-card/domain/GiftCard.ts'
 
 const { t } = useI18n()
 
@@ -49,53 +51,53 @@ defineI18nRoute({
     es: '/tarjeta-regalo-digital/facturacion',
   },
 })
-
+const { getGiftCardPurchase, setGiftCardPurchase } = useLocalStorageGiftCardRepository()
 const localePath = useLocalePath()
 const { orders } = useGetOrdersHandler(t)
-const { giftCard } = useGiftCardState()
+const { giftCardPurchase } = useGiftCardPurchaseState()
+const router = useRouter()
 
 const textData = {
   fields: 10,
   section: 'gift-card.billing-form',
 }
 // @TODO validate form
-const formData = ref<BillingForm>({
-  name: '',
-  surname: '',
-  nif: '',
-  email: '',
-  address1: '',
-  address2: '',
-  postalCode: '',
-  city: '',
-  state: '',
-  country: 'ES',
+const formData = ref<OrderBilling>({
+  billingFirstName: '',
+  billingLastName: '',
+  billingEmail: '',
+  billingPhone: '',
+  billingAddress: '',
+  billingAddress2: '',
+  billingPostCode: '',
+  billingCity: '',
+  billingState: '',
+  billingCif: '',
+  billingCountry: 'ES',
 })
 
 const router = useRouter()
 
 const handleNextStep = () => {
+  giftCardPurchase.value.items.push(giftCardPurchase.value.currentItem)
+  giftCardPurchase.value.currentItem = createEmptyGiftCard()
+  setGiftCardPurchase(giftCardPurchase.value)
   router.push(localePath({ name: 'gift-card-gift-card-payment' }))
 }
 
+onMounted(() => {
+  giftCardPurchase.value = giftCardPurchase.value.currentItem.forWho ? giftCardPurchase.value : getGiftCardPurchase() ? getGiftCardPurchase() : giftCardPurchase.value
+})
+
+watch(formData, () => {
+  giftCardPurchase.value.billing = formData.value
+}, { deep: true })
+
 watchEffect(() => {
   if (orders) {
-    const billingData = orders.value[0]?.billingInfo
+    const billingData: OrderBilling = orders.value[0]?.billingInfo
     if (billingData) {
-      const name = billingData.billingFirstName
-      const surname = billingData.billingLastName
-      formData.value = {
-        name,
-        surname,
-        nif: billingData.billingCif,
-        email: billingData.billingEmail,
-        address1: billingData.billingAddress,
-        address2: billingData.billingAddress2,
-        postalCode: billingData.billingPostCode,
-        city: billingData.billingCity,
-        state: billingData.billingState,
-        country: billingData.billingCountry,
-      }
+      formData.value = billingData
     }
   }
 })

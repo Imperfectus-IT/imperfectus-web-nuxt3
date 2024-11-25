@@ -1,14 +1,17 @@
 // import { v4 } from 'uuid'
 import type { Ref } from 'vue'
-import { createEmpty as createEmptyGiftCard } from '../domain/GiftCard.ts'
+import { createEmptyPurchase, createEmptyGiftCard } from '../domain/GiftCard.ts'
 
-export const giftCardCreator = () => {
-  return createEmptyGiftCard()
+export const giftCardPurchaseCreator = () => {
+  return createEmptyPurchase()
 }
 
-export const useGiftCardState = () => {
-  const giftCardPurchase: Ref<GiftCardPurchase> = useState('giftCardPurchase', () => giftCardCreator())
+export const useGiftCardPurchaseState = () => {
+  const giftCardPurchase: Ref<GiftCardPurchase> = useState('giftCardPurchase', () => giftCardPurchaseCreator())
+  const giftCard: Ref<GiftCard> = useState('giftCard', () => createEmptyGiftCard())
+
   return {
     giftCardPurchase,
+    giftCard,
   }
 }

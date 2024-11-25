@@ -9,6 +9,7 @@ export type GiftCardPurchase = {
 export type GiftCard = {
   id?: number
   uuid?: string
+  order?: number
   designId: number
   amount: number
   forWho: string
@@ -18,15 +19,15 @@ export type GiftCard = {
   quantity: number
 }
 
-export const createEmpty = (): GiftCardPurchase => {
+export const createEmptyPurchase = (): GiftCardPurchase => {
   return {
     items: [],
-    currentItem: createEmptyGiftCardItem(),
+    currentItem: createEmptyGiftCard(),
     billing: createEmptyBilling(),
   }
 }
 
-const createEmptyGiftCardItem = (): GiftCardItem => {
+export const createEmptyGiftCard = (): GiftCard => {
   return {
     uuid: uuidv4(),
     designId: 1,
