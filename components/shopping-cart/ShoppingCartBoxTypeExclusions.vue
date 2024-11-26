@@ -1,28 +1,6 @@
 <script setup lang="ts">
 import { useGetLocaleLanguage } from '~/composables/shared/useGetLocaleLanguage.ts'
 
-// :pt="{
-// input: 'cursor-not-allowed',
-//     box: ({ props, context }) => ({
-//   class: ['flex items-center justify-center w-6 h-6 border-2 rounded-[5px] transition-colors duration-200',
-//     {
-//       'peer-hover:border-green-tertiary': !props.disabled && !context.checked,
-//       'peer-hover:bg-green-tertiary peer-hover:border-green-tertiary':
-//           !props.disabled && context.checked,
-//       'peer-focus-visible:border-green-tertiary peer-focus-visible:ring-2 peer-focus-visible:ring-green-tertiary/20':
-//           !props.disabled,
-//       '!cursor-wait': props.disabled && !context.checked,
-//     },
-//     {
-//       'border-green-tertiary bg-transparent': !context.checked,
-//       'border-green-tertiary bg-green-tertiary': context.checked,
-//     },
-//
-//     // States
-//   ],
-// }),
-// }"
-
 const props = defineProps<{
   productExclusions: ItemProduct[]
 }>()
@@ -48,12 +26,6 @@ const maxLimitExclusions = computed(() => {
 const productExclusionsResume = computed(() => {
   return t('admin.order.exclusions.limit', { current_exclusions: shoppingCart.value.currentItem.exclusions.length, max_exclusions: maxLimitExclusions.value })
 })
-
-// const disabledExclusion = (product: ProductExclusion) => {
-//   const exclusionIds = shoppingCart.value.currentItem?.exclusions?.map(exclusion => exclusion.id)
-//   return shoppingCart.value.currentItem.exclusions.length === maxLimitExclusions.value
-//     && !exclusionIds.includes(product.id)
-// }
 
 const isExclusionsSelectionFull = computed(() => {
   return shoppingCart.value.currentItem.exclusions.length === maxLimitExclusions.value
@@ -126,7 +98,6 @@ onMounted(() => {
           <div
             class="py-3"
           >
-            {{ isExclusionsSelectionFull }}
             <Checkbox
               v-model="shoppingCart.currentItem.exclusions"
               :class="['mr-3']"
