@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { fruitsItemProducts, vegetablesItemProducts } = useProductsState()
@@ -23,7 +24,9 @@ const boxTypeImages = {
   },
 }
 const productExclusions = computed(() => {
-  return [...vegetablesItemProducts.value, ...fruitsItemProducts.value]
+  const mixedProducts = [...vegetablesItemProducts.value, ...fruitsItemProducts.value]
+  const language = locale.value === 'es' ? 'Es' : locale.value === 'ca' ? 'Ca' : 'Pt'
+  return mixedProducts.sort((productA: ItemProduct, productB: ItemProduct) => productA[`name${language}`].localeCompare(productB[`name${language}`]))
 })
 
 const nexStep = () => {

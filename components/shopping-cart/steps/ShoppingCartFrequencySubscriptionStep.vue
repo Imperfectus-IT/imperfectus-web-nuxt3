@@ -66,7 +66,7 @@ const goToNextStep = () => {
       format="webp"
       loading="lazy"
       alt="frequency_img"
-      class="hidden lg:block mx-auto"
+      class="hidden lg:block mx-auto lg:w-[600px]"
     />
     <div class="flex justify-center mt-5">
       <Button

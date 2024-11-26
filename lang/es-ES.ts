@@ -1193,6 +1193,7 @@ export default {
   'order.steps.stepPurchase.btn-subscription.section-3.bullet-1': '**Ajustar el tamaño, la frecuencia y las exclusiones** desde tu cuenta cliente, siempre que quieras.',
   'order.steps.stepPurchase.btn-subscription.section-3.bullet-2': '**Pausar, editar o cancelar** tu suscripción cuando quieras, ¡sin ningún coste añadido!',
   'order.steps.stepPurchase.btn-subscription.section-3.bullet-3': 'Compartir tú **código personalizado** para obtener un **15% de descuento**. 15% descuento tus amigos = 15% descuento en tú próxima caja',
+  'order.steps.stepPurchase.btn-subscription.section-3.bullet-4': 'Recibir sorpresas durante tu suscripción',
   'order.steps.stepPurchase.btn-order': 'Compra única (+2€)',
   'order.steps.stepPurchase.btn-order.section-1': '¿Es la primera vez con nosotros y quieres probar la calidad del producto?',
   'order.steps.stepPurchase.btn-order.section-2': 'La mejor opción.',
