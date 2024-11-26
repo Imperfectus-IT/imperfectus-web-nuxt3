@@ -33,7 +33,7 @@ const nexStep = () => {
 </script>
 
 <template>
-  <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/4 lg:absolute lg:right-0 lg:z-10" />
+  <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/5 lg:absolute lg:right-0 lg:z-10" />
   <div class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
     <div class="flex items-center gap-5">
       <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">
