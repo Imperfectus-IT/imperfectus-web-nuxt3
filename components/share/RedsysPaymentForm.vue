@@ -19,7 +19,6 @@ const formRef = ref<HTMLFormElement | null>(null)
 
 const submit = async () => {
   paymentNotAvailable.value = false
-  console.log('orderpaymentform submit')
   try {
     if (props.order?.id) {
       await formPaymentHandler(props.order.id)
