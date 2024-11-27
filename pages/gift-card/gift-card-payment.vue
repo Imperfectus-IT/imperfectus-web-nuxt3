@@ -7,7 +7,6 @@
     :key="index"
     class="lg:w-1/2 lg:mx-auto mt-8"
   >
-    {{ card }}
     <NuxtImg
       alt="gift_card"
       :src="`images/gift-card/cards/${locale}/${card.designId}.webp`"
@@ -21,18 +20,16 @@
       <div class="flex flex-row justify-between mt-4">
         <span>{{ card.whoSend }}</span>
         <div>
-          <NuxtLink>
-            <Button
-              :label="$t(`${section}.edit`)"
-              :pt="{ root: 'underline' }"
-              @click="editGiftCard(card.id)"
-            />
-          </NuxtLink>
+          <Button
+            :label="$t(`${section}.edit`)"
+            :pt="{ root: 'underline' }"
+            @click="editGiftCard(card.uuid as string)"
+          />
           <Button
             class="ml-3"
             :label="$t(`${section}.delete`)"
             :pt="{ root: 'underline' }"
-            @click="removeGiftCard(index)"
+            @click="removeGiftCard(card.uuid as string)"
           />
         </div>
       </div>
@@ -52,11 +49,10 @@
         <Button
           :label="$t(`${section}.add`)"
           :pt="{ root: 'underline' }"
-          @click="addGiftCard"
         />
       </NuxtLink>
       <RedsysPaymentForm
-        ref="redsys"
+        ref="redsysForm"
         :order="order"
         :is-button-outlined="false"
       />
@@ -70,7 +66,6 @@
             : $t('gift-card.payment.form.submit', { amount: getTotalAmount })
         }}
       </Button>
-      {{ giftCardPurchase }}sss
     </div>
   </div>
 
@@ -82,20 +77,19 @@
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
-const redsys = ref<HTMLFormElement | null>(null)
+const redsysForm = ref<HTMLFormElement | null>(null)
 const localePath = useLocalePath()
 const section = 'gift-card.payment'
 const router = useRouter()
 const route = useRoute()
-const order = ref<Order>(null)
 const status = ref('')
 const notification = ref('')
-const userGiftCards = ref([])
 const { t } = useI18n()
 
-const { giftCardPurchase } = useCreateGiftCardHandler()
-const { getGiftCardByUser } = useGetGiftCardsHandler()
+const { giftCardPurchase, executeCreateGiftCard } = useCreateGiftCardHandler()
 const { getGiftCardPurchase, setGiftCardPurchase } = useLocalStorageGiftCardRepository()
+const { order } = useOrdersState()
+const { executeGetGiftCardByNotification, giftCards } = useGetGiftCardByNotificationHandler()
 
 useHead({
   title: t('gift-card-payment.title'),
@@ -114,52 +108,44 @@ defineI18nRoute({
   },
 })
 
-// const setGiftCardFailed = async () => {
-//   if (route.query.status === 'error') {
-//     notification.value = route.query.notification
-//     status.value = route.query.status
-//     userGiftCards.value = await getGiftCardByUser()
-//     order.value = userGiftCards.value[0]?.order
-//     giftCard.value = [userGiftCards.value[0]]
-//   }
-// }
+const editGiftCard = (id: string) => {
+  giftCardPurchase.value.currentItem = giftCardPurchase.value.items.find((card: GiftCard) => card.uuid === id) as GiftCard
+  setGiftCardPurchase(giftCardPurchase.value)
+  router.push(localePath({ name: 'gift-card-gift-card-create' }))
+}
+
+const removeGiftCard = (id: string) => {
+  giftCardPurchase.value.items = giftCardPurchase.value.items.filter((card: GiftCard) => card.uuid !== id)
+  setGiftCardPurchase(giftCardPurchase.value)
+}
+
+const setGiftCardFailed = async () => {
+  if (route.query.status === 'error') {
+    status.value = route.query.status
+    notification.value = route.query.notification as string
+    await executeGetGiftCardByNotification(notification.value)
+    order.value = { id: giftCards.value[0]?.order }
+  }
+}
 
 onMounted(async () => {
-  // await setGiftCardFailed()
+  await setGiftCardFailed()
   giftCardPurchase.value = giftCardPurchase.value.currentItem.forWho ? giftCardPurchase.value : getGiftCardPurchase() ? getGiftCardPurchase() : giftCardPurchase.value
 })
 
-// const handlePayment = async () => {
-//   if (status.value !== 'error') {
-//     const result = await executeCreateGiftCard();
-//     order.value = result?.order
-//   }
-//   else {
-//     order.value = userGiftCards.value[0]?.order
-//   }
-//   setTimeout(async () => {
-//     await redsys.value?.submit()
-//   }, 200)
-// };
+const handlePayment = async () => {
+  if (status.value !== 'error') {
+    await executeCreateGiftCard()
+  }
+  await redsysForm.value?.submit()
+}
 
-// const getTotalAmount = computed(() => {
-//   let amount = 0;
-//   if (status.value !== 'error') {
-//     giftCardPurchase.value.items.forEach((card: GiftCard) => {
-//       amount += card.amount * card.quantity
-//     })
-//   }
-//   else {
-//     return giftCardPurchase.value[0]?.currentItem.amount
-//   }
-//   return amount
-// });
+const getTotalAmount = computed(() => {
+  let amount = 0
+  giftCardPurchase.value.items.forEach((card: GiftCard) => {
+    amount += card.amount * card.quantity
+  })
 
-// const unshiftGiftCard = (id: string) => {
-//   const card = giftCardPurchase.value.items.find(card => card.id === id);
-//   const index = giftCardPurchase.value.items.indexOf(card as GiftCard);
-//   giftCardPurchase.value.items.splice(index, 1);
-//   giftCardPurchase.value.items.unshift(card as GiftCard);
-//   router.push(localePath({ name: 'gift-card-gift-card-create', query: { card: card?.id } }))
-// }
+  return amount.toFixed(2)
+})
 </script>

@@ -10,6 +10,7 @@ export type GiftCard = {
   id?: number
   uuid?: string
   order?: number
+  coupon?: string
   designId: number
   amount: number
   forWho: string

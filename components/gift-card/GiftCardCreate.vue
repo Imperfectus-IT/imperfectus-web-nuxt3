@@ -45,12 +45,13 @@ onMounted(() => {
   giftCardPurchase.value = giftCardPurchaseLocalStorage ? giftCardPurchaseLocalStorage : giftCardPurchase.value
 })
 const submitForm = () => {
+  const itemsLength = giftCardPurchase.value.items.length
+  setGiftCardPurchase(giftCardPurchase.value)
   if (!userLoggedIn.value) {
     router.push(localePath('auth-login'))
   }
   else {
-    router.push(localePath('gift-card-gift-card-billing-form'))
-    setGiftCardPurchase(giftCardPurchase.value)
+    itemsLength === 0 ? router.push(localePath('gift-card-gift-card-billing-form')) : router.push(localePath('gift-card-gift-card-payment'))
   }
 }
 

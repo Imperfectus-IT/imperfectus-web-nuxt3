@@ -1,17 +1,23 @@
 export const useGiftCardRepository = () => {
   const user = useStrapiUser()
   const { create, find } = useStrapi()
-  const createGiftCard = async (giftCardPurchase: GiftCardPurchase): Promise<GiftCard> => {
-    giftCards = giftCards.map(card => ({
-      ...card,
-      amount: card.amount * card.quantity,
-    }))
-    const amount: number = giftCards.reduce((acc, giftCard) => acc + giftCard.amount, 0)
+  const client = useStrapiClient()
+  const createGiftCard = async (giftCardPurchase: GiftCardPurchase) => {
+    const amount: number = giftCardPurchase.items.reduce(
+      (acc, giftCard) => acc + giftCard.amount * giftCard.quantity,
+      0,
+    )
+
     return await create('gift-cards', {
-      giftCards,
+      giftCards: giftCardPurchase.items,
       amount,
       user: user.value?.id,
     })
+  }
+
+  const getGiftCardByNotification = async (notification: string): Promise<GiftCard[]> => {
+    const strapiGiftCard: any[] = await client(`/order-payments/${notification}/cards`)
+    return strapiGiftCard.map((card: GiftCard) => useGiftCardFactory(card))
   }
 
   const getGiftCardsByUser = async (): Promise<GiftCard[]> => {
@@ -22,6 +28,8 @@ export const useGiftCardRepository = () => {
   }
 
   return {
-    // createGiftCard,
+    createGiftCard,
+    getGiftCardsByUser,
+    getGiftCardByNotification,
   }
 }

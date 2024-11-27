@@ -10,7 +10,7 @@
     </p>
 
     <div
-      v-for="(card, index) in cards"
+      v-for="(card, index) in giftCards"
       :key="index"
       class="flex flex-col lg:grid lg:grid-cols-4 lg:grid-rows-2 lg:mt-10"
       style="grid-template-rows: 200px auto"
@@ -30,7 +30,7 @@
         <p class="text-[26px]">
           {{ card.forWho }}
         </p>
-        <p>{{ $t("gift-card.payment.price") }}</p>
+        <p>{{ $t("gift-card.payment.price") }} {{ card.amount }}€</p>
       </div>
       <div class="lg:col-span-2 lg:w-7/12 lg:mx-auto">
         <p
@@ -68,8 +68,10 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const route = useRoute()
-const cards = ref([])
-const locale = useI18n().locale.value
+const notification = ref<string>(route.query.notification as string)
+const { locale } = useI18n()
+
+const { giftCards } = useGetGiftCardByNotificationHandler(notification.value)
 
 useHead({
   title: t('gift-card.head.status.title'),
@@ -82,12 +84,6 @@ useHead({
 })
 
 const imageUrl = computed(() => {
-  return `/images/gift-card/cards/${locale}/${cards.value[0]?.designId}.webp`
-})
-
-onMounted(async () => {
-  cards.value = await $fetch(
-    `${process.env.STRAPI_URL}/order-payments/${route.query.notification}/cards`,
-  )
+  return `/images/gift-card/cards/${locale.value}/${giftCards.value[0]?.designId}.webp`
 })
 </script>

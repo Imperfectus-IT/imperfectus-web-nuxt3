@@ -65,7 +65,6 @@ export default defineNuxtConfig({
       {
         name: 'payment-added',
         path: '/add-payment-completed',
-        // file: '~/pages/admin/profile.vue',
         redirect: '/mi-cuenta/perfil',
       },
       )

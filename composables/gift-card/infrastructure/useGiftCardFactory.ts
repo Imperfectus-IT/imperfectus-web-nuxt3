@@ -8,5 +8,6 @@ export const useGiftCardFactory = (giftCard: any): GiftCard => {
     designId: giftCard.designId,
     sendMethod: giftCard.sendMethod,
     order: giftCard.order,
+    coupon: giftCard.coupon,
   }
 }

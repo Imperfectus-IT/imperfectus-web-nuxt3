@@ -24,9 +24,6 @@
       />
     </NuxtLink>
   </div>
-  {{ giftCardPurchase }}
-  -----------------------------
-  {{ formData }}
 </template>
 
 <script setup lang="ts">
@@ -75,8 +72,6 @@ const formData = ref<OrderBilling>({
   billingCif: '',
   billingCountry: 'ES',
 })
-
-const router = useRouter()
 
 const handleNextStep = () => {
   giftCardPurchase.value.items.push(giftCardPurchase.value.currentItem)
