@@ -58,7 +58,6 @@ const textData = {
   fields: 10,
   section: 'gift-card.billing-form',
 }
-// @TODO validate form
 const formData = ref<OrderBilling>({
   billingFirstName: '',
   billingLastName: '',

@@ -8,7 +8,6 @@
     <p class="text-[20px]">
       {{ $t("gift-card.status.description") }}
     </p>
-
     <div
       v-for="(card, index) in giftCards"
       :key="index"
@@ -30,7 +29,7 @@
         <p class="text-[26px]">
           {{ card.forWho }}
         </p>
-        <p>{{ $t("gift-card.payment.price") }} {{ card.amount }}€</p>
+        <p>{{ $t("gift-card.payment.price") }} {{ getTotalAmount }}€</p>
       </div>
       <div class="lg:col-span-2 lg:w-7/12 lg:mx-auto">
         <p
@@ -70,8 +69,9 @@ const { t } = useI18n()
 const route = useRoute()
 const notification = ref<string>(route.query.notification as string)
 const { locale } = useI18n()
-
+const { removeGiftCardPurchase } = useLocalStorageGiftCardRepository()
 const { giftCards } = useGetGiftCardByNotificationHandler(notification.value)
+const { getGiftCardPurchase } = useLocalStorageGiftCardRepository()
 
 useHead({
   title: t('gift-card.head.status.title'),
@@ -85,5 +85,18 @@ useHead({
 
 const imageUrl = computed(() => {
   return `/images/gift-card/cards/${locale.value}/${giftCards.value[0]?.designId}.webp`
+})
+
+const getTotalAmount = computed(() => {
+  const localStorageGiftCard = getGiftCardPurchase()
+  return localStorageGiftCard
+    ? localStorageGiftCard.items.reduce((acc, card) => {
+      return acc + card.amount * card.quantity
+    }, 0)
+    : 0
+})
+
+onBeforeRouteLeave(() => {
+  removeGiftCardPurchase()
 })
 </script>
