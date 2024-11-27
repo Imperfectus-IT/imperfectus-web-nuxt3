@@ -13,7 +13,6 @@ const isFormValid = computed(() => {
     return !!shippingFormErrors.value?.errors || !!billingFormErrors.value?.errors
   }
   else {
-    console.log(shippingFormErrors.value?.errors)
     return shippingFormErrors.value?.errors
   }
 })

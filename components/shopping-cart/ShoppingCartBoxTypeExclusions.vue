@@ -27,11 +27,10 @@ const productExclusionsResume = computed(() => {
   return t('admin.order.exclusions.limit', { current_exclusions: shoppingCart.value.currentItem.exclusions.length, max_exclusions: maxLimitExclusions.value })
 })
 
-const disabledExclusion = (product: ProductExclusion) => {
-  const exclusionIds = shoppingCart.value.currentItem?.exclusions?.map(exclusion => exclusion.id)
+const isExclusionsSelectionFull = computed(() => {
   return shoppingCart.value.currentItem.exclusions.length === maxLimitExclusions.value
-    && !exclusionIds.includes(product.id)
-}
+})
+
 const onClickSelectExclusion = (isSelected: boolean) => {
   isExclusionSelected.value = isSelected
   if (!isSelected) {
@@ -101,11 +100,18 @@ onMounted(() => {
           >
             <Checkbox
               v-model="shoppingCart.currentItem.exclusions"
-              class="mr-3"
+              :class="['mr-3']"
               :input-id="String(item.id)"
               name="productExclusion"
-              :disabled="disabledExclusion(item)"
               :value="item.id"
+              :disabled="isExclusionsSelectionFull && !shoppingCart.currentItem.exclusions.includes(item.id)"
+              :pt="{
+                input: ({ props }) => (props.disabled ? '!cursor-not-allowed' : ''),
+              }"
+              :pt-options="{
+                mergeSections: true,
+                mergeProps: true,
+              }"
             />
             <label
               class="font-solina-extended-book tex-base"

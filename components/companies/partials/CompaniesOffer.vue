@@ -10,15 +10,15 @@ const handleSlideChange = (payload) => {
 const inactiveTextStyle = (index: number) => (activeProductImage.value !== index ? 'text-grey-secondary' : '')
 const images = [
   {
-    image: ['/images/boxes/SFR1_sale.webp'],
+    image: '/images/boxes/sBox/SFR_1.webp',
     alt: 'boxes.s.alt',
   },
   {
-    image: ['/images/boxes/IMFR.webp'],
+    image: '/images/boxes/imBox/IMFR_1.webp',
     alt: 'boxes.m.alt',
   },
   {
-    image: ['/images/boxes/XLFR.webp'],
+    image: '/images/boxes/xlBox/XLFR_1.webp',
     alt: 'boxes.xl.alt',
   },
 ]

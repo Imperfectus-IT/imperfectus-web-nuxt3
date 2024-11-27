@@ -1,5 +1,4 @@
 <template>
-  {{ giftCard }}
   <h4 class="text-[60px] font-recoleta-regular leading-[60px] text-center">
     {{ route.query.status !== 'error' ? $t(`${section}.title`) : $t('gift-card.payment.fail') }}
   </h4>

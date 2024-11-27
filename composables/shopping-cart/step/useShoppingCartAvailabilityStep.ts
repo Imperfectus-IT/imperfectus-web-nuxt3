@@ -8,7 +8,7 @@ export default function () {
       return
     }
     const query: LocationQuery = {
-      postcode: Number(postalCode),
+      postcode: postalCode as string,
       deliveryDate: shoppingCart.value.deliveryDate,
     }
     shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = await executeFindCoverageByPostalCode(query) as string

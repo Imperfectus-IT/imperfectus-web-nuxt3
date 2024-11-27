@@ -26,7 +26,6 @@
       @click="submitForm"
     />
   </div>
-  {{ giftCardPurchase }}
 </template>
 
 <script setup lang="ts">

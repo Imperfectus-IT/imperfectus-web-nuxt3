@@ -32,7 +32,7 @@ const getPricesWithoutDiscount = computed(() => {
       <span class="font-solina-extended-medium text-base font-medium">{{ $t('purchase_summary.title') }}</span>
     </template>
     <template #togglericon="{ collapsed }">
-      <span :class="[collapsed ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down', 'rounded-full border border-green-tertiary bg-green-primary h-[32px] w-[32px] text-[22px]']" />
+      <span :class="[collapsed ? 'mdi mdi-chevron-down' : 'mdi mdi-chevron-up', 'rounded-full border border-green-tertiary bg-green-primary h-[32px] w-[32px] text-[22px]']" />
     </template>
     <div class="py-3 flex flex-col max-h-[80vh] overflow-y-auto">
       <div

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { locale } = useI18n()
 const { shoppingCart } = useShoppingCartState()
 const { setShoppingCart } = useLocalStorageShoppingCartRepository()
 const { fruitsItemProducts, vegetablesItemProducts } = useProductsState()
@@ -23,7 +24,9 @@ const boxTypeImages = {
   },
 }
 const productExclusions = computed(() => {
-  return [...vegetablesItemProducts.value, ...fruitsItemProducts.value]
+  const mixedProducts = [...vegetablesItemProducts.value, ...fruitsItemProducts.value]
+  const language = locale.value === 'es' ? 'Es' : locale.value === 'ca' ? 'Ca' : 'Pt'
+  return mixedProducts.sort((productA: ItemProduct, productB: ItemProduct) => productA[`name${language}`].localeCompare(productB[`name${language}`]))
 })
 
 const nexStep = () => {
@@ -33,7 +36,7 @@ const nexStep = () => {
 </script>
 
 <template>
-  <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/4 lg:absolute lg:right-0 lg:z-10" />
+  <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/5 lg:absolute lg:right-0 lg:z-10" />
   <div class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
     <div class="flex items-center gap-5">
       <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">

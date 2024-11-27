@@ -15,7 +15,7 @@ export type Weekdays = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday
 export type LocationAvailability = Weekdays[]
 
 export type LocationQuery = {
-  postcode: number
+  postcode: string
   deliveryDate?: string | undefined
 }
 

@@ -88,28 +88,33 @@ const goToNextStep = () => {
     </div>
     <div
       v-if="isOrderPurchaseType"
-      class="font-solina-extended-book text-base font-normal leading-6 mt-5 lg:grid lg:grid-cols-2"
+      class="font-solina-extended-book text-base font-normal leading-6 mt-5 lg:flex lg:mt-10 lg:max-h-[300px]"
     >
-      <div>
+      <NuxtImg
+        src="/images/steps/purchaseType/Ipad2_Dark2.webp"
+        format="webp"
+        loading="lazy"
+        class="hidden lg:block flex-1 object-fit"
+      />
+      <div class="flex-1">
         <p class="mb-5">
           {{ $t("order.steps.stepPurchase.btn-order.section-1") }}
         </p>
         <p>{{ $t("order.steps.stepPurchase.btn-order.section-2") }}</p>
       </div>
-
-      <NuxtImg
-        src="/images/steps/purchaseType/Ipad2_Dark2.webp"
-        format="webp"
-        loading="lazy"
-        class="hidden lg:block w-[400px] col-start-1 row-start-1"
-      />
     </div>
 
     <div
       v-if="isSubscriptionPurchaseType"
-      class="font-solina-extended-book text-base font-normal leading-6 mt-5 lg:grid lg:grid-cols-2"
+      class="font-solina-extended-book text-base font-normal leading-6 mt-5 lg:flex lg:mt-10 lg:max-h-[300px]"
     >
-      <div class="lg:col-start-2">
+      <NuxtImg
+        src="/images/steps/purchaseType/Ipad2_Dark2.webp"
+        format="webp"
+        loading="lazy"
+        class="hidden lg:block flex-1 object-fit"
+      />
+      <div class="flex-1">
         <p class="mb-5">
           {{ $t("order.steps.stepPurchase.btn-subscription.section-1") }}
         </p>
@@ -119,19 +124,13 @@ const goToNextStep = () => {
 
         <ul class="list-square ml-7">
           <li
-            v-for="n in 3"
+            v-for="n in 4"
             :key="n"
           >
             <MDC :value="$t(`order.steps.stepPurchase.btn-subscription.section-3.bullet-${n}`)" />
           </li>
         </ul>
       </div>
-      <NuxtImg
-        src="/images/steps/purchaseType/Ipad2_Dark2.webp"
-        format="webp"
-        loading="lazy"
-        class="hidden lg:block w-[400px] col-start-1 row-start-1"
-      />
     </div>
     <div class="text-center mt-8">
       <Button

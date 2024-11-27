@@ -21,10 +21,14 @@ export const usePaymentRepository = () => {
     return await client(`payments/${id}/form/`, { method: 'POST' })
   }
 
+  const getRedsysFormWithoutCharge = async (): Promise<PaymentForm> => {
+    return await client('payments/form/', { method: 'POST' })
+  }
   return {
     addPayment,
     findPaymentsByUserId,
     deletePayment,
     form,
+    getRedsysFormWithoutCharge,
   }
 }
