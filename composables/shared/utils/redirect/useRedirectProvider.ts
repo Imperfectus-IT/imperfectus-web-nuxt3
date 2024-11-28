@@ -1,10 +1,7 @@
-export const useRedirectProvider = () => {
+export const useRedirectProvider = (emit: (event: string, ...args: any[]) => void) => {
   const localePath = useLocalePath()
   const router = useRouter()
   const { redirectPaths } = useRedirectPaths()
-  const emit = defineEmits<{
-    (e: 'nextStep'): void
-  }>()
 
   const STEP_SHIPPING = 'StepShipping'
 
