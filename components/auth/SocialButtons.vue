@@ -2,7 +2,7 @@
 defineProps<{
   googleLabel: string
 }>()
-const googleConnectUrl = `${useRuntimeConfig().public.baseUrl}/connect/google`
+const googleConnectUrl = `${useRuntimeConfig().public.baseUrl}/api/connect/google`
 
 console.log(useRuntimeConfig().public.baseUrl)
 </script>

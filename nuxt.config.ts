@@ -41,9 +41,23 @@ export default defineNuxtConfig({
       NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     },
   },
-  routeRules: {
-    '/api/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: { '^/api/': '' } },
-    '/uploads/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL },
+  // routeRules: {
+  //   '/api/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: { '^/api/': '' } },
+  //   '/uploads/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL },
+  // },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: process.env.STRAPI_URL, // URL del backend Strapi
+        changeOrigin: true, // Cambia el origen de la solicitud
+        prependPath: true, // Añade el prefijo en las solicitudes
+        pathRewrite: { '^/api': '' }, // Elimina el prefijo '/api' antes de enviarlo al backend
+      },
+      '/uploads': {
+        target: process.env.NUXT_PUBLIC_STRAPI_URL, // URL para recursos estáticos
+        changeOrigin: true,
+      },
+    },
   },
   hooks: {
     'pages:extend'(pages) {
