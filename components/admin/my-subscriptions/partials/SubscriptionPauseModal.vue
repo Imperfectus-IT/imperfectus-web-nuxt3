@@ -88,7 +88,6 @@
       </div>
     </div>
     <div v-else-if="modalLayersDisplayed.pauseDatepickerModal">
-      {{ pauseInfo }}
       <div class="flex justify-center">
         <Calendar
           v-model="pauseInfo.nextDeliveryDate"

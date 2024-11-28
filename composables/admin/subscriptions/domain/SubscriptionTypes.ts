@@ -1,7 +1,3 @@
-import type { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
-import type { BoxProduct, ItemProduct } from '~/composables/admin/products/types/Product.ts'
-import type { Payment } from '~/composables/payment/domain/Payment.ts'
-
 export type Subscription = {
   id: number
   subscriptionId: string

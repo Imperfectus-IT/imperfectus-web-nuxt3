@@ -3260,7 +3260,7 @@ export default {
       help: '¿Necesitas ayuda?',
       link_1: 'Preguntas frecuentes',
       link_2: 'contáctanos',
-      info_1: 'Gracias a ti hemos rescatado más de',
+      info_1: 'Gracias a ti y a la tribu hemos rescatado más de',
       info_2: 'Tu has contribuido con',
       next_order: {
         title: 'Tu próximo pedido',
@@ -3652,6 +3652,7 @@ export default {
   'subscriptions': {
     title: 'Mis suscripciones',
     add: 'Añadir suscripción',
+    next_delivery_from_paused: 'Próxima entrega: ',
     subscription: {
       title: 'Editar suscripción',
       description: 'Las suscripciones se renuevan y cobran cada domingo. Si quieres cancelar o pausar la suscripción, asegúrate de hacerlo antes del domingo para que no se genere ni cobre el pedido.',

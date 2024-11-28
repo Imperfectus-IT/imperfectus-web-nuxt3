@@ -20,7 +20,7 @@
         :to="`/mi-cuenta/suscripciones/${subscription.subscriptionId}`"
       >
         <Button
-          v-if="subscription.status === 'active'"
+          v-if="[SUBSCRIPTION_STATES.ACTIVE, SUBSCRIPTION_STATES.PAUSED].includes(subscription.status)"
           class="text-right mt-4 lg:mt-0 "
           outlined
           :label="'Editar'"
@@ -75,7 +75,7 @@
           fecha elegida cuando la pausaste, reactiva la suscripción.
         </p>
         <p class="leading-4 mt-2 font-bold">
-          Fecha de reactivación programada:
+          {{ $t('subscriptions.next_delivery_from_paused') }}
           <span class="font-light hidden lg:inline-block">{{
             dayjs(props.subscription.nextPayment).format("DD-MM-YYYY")
           }}</span>
@@ -98,6 +98,7 @@
 
 <script setup lang="ts">
 import dayjs from 'dayjs'
+import { SUBSCRIPTION_STATES } from '~/composables/admin/subscriptions/domain/SubscriptionsConst.ts'
 
 const props = defineProps<{
   subscription: Subscription
