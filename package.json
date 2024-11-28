@@ -31,6 +31,7 @@
     "nuxt": "^3.13.2",
     "nuxt-mdi": "^1.1.6",
     "nuxt-primevue": "^0.3.1",
+    "nuxt-proxy-request": "^1.10.0",
     "nuxt-svgo": "^4.0.0",
     "nuxt-zod-i18n": "^1.6.0",
     "path": "^0.12.7",

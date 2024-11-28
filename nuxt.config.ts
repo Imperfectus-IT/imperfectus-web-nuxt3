@@ -40,11 +40,27 @@ export default defineNuxtConfig({
       STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
       NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     },
+    proxy: {
+      options: [
+        {
+          target: process.env.STRAPI_URL,
+          pathFilter: ['/api/**'],
+          pathRewrite: {
+            '^/api': '',
+          },
+        },
+        {
+          target: process.env.STRAPI_URL,
+          pathFilter: ['/uploads/**'],
+          pathRewrite: process.env.STRAPI_URL,
+        },
+      ],
+    },
   },
-  routeRules: {
-    '/api/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: { '^/api/': '' } },
-    '/uploads/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL },
-  },
+  // routeRules: {
+  //   '/api/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: { '^/api/': '/admin' } },
+  //   '/uploads/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL },
+  // },
   hooks: {
     'pages:extend'(pages) {
       pages.push({
@@ -121,6 +137,7 @@ export default defineNuxtConfig({
     'vue3-carousel-nuxt',
     '@nuxtjs/mdc',
     '@nuxtjs/device',
+    'nuxt-proxy-request',
   ],
   primevue: {
     options: {
