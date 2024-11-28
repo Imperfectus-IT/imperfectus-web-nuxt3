@@ -10,7 +10,7 @@ const getPricesWithoutDiscount = computed(() => {
   if (shoppingCart.value.items.length > 0) {
     itemsTotal = shoppingCart.value.items.reduce((acc, item) => acc + item.product?.priceWithTax, 0)
   }
-  return itemsTotal + shoppingCart.value.currentItem.product?.priceWithTax || 0
+  return (itemsTotal + shoppingCart.value.currentItem.product?.priceWithTax || 0).toFixed(2)
 })
 </script>
 

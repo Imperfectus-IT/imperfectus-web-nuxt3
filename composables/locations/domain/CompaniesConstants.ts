@@ -16,7 +16,7 @@ export const ALL_COVERAGES: AllCoverages = {
     value: 'seur',
   },
   TALKUAL: {
-    label: 'Talkual',
+    label: 'TALKUAL',
     value: 'talkual',
   },
 }

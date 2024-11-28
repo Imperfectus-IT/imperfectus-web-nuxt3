@@ -93,12 +93,6 @@
         }"
       />
     </div>
-    <p
-      v-if="subscription.status === 'cancelled'"
-      class="mt-5 lg:order-3 text-[14px] lg:hidden"
-    >
-      Fecha de cancelación: {{ cancelDate }}
-    </p>
   </Panel>
 </template>
 

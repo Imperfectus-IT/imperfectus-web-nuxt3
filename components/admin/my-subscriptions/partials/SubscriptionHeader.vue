@@ -25,7 +25,7 @@
     />
     <p
       v-if="subscription.status === 'cancelled'"
-      class="mt-5 lg:order-3 text-[14px] hidden lg:block lg:mt-0 lg:relative left-[35%] "
+      class="mt-5 text-[14px] hidden lg:block lg:mt-0 lg:ml-auto "
     >
       Fecha de cancelación: {{ dayjs(subscription.cancelledAt).format('HH:mm:ss DD-MM-YYYY') }}
     </p>

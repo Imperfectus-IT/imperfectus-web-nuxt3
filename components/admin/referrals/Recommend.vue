@@ -21,6 +21,7 @@
             label: ' text-[16px] lg:text-[18px]',
             root: 'max-h-[42px] font-solina-extended-book text-[14px] px-4 bg-green-primary border-[1px] border-green-tertiary rounded-r-lg  hover:bg-green-tertiary hover:text-green-primary focus:bg-green-tertiary focus:text-green-primary',
           }"
+          @click="copyToClipboard"
         />
       </InputGroup>
       <div class="flex flex-row gap-2 w-1/3">

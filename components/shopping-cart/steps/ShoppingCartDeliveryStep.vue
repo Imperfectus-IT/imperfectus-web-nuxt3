@@ -294,7 +294,7 @@ const goToNextStep = () => {
             </div>
           </div>
           <div
-            v-if="shoppingCart.shippingAddress.shippingCoverage.shippingCoverage"
+            v-if="[ALL_COVERAGES.PAACK.value, ALL_COVERAGES.MENSAKAS.value].includes(shoppingCart.shippingAddress.shippingCoverage.shippingCoverage)"
             class="mt-6"
           >
             <p class="font-recoleta-regular mb-3 lg:mb-5 text-lg leading-6 lg:leading-10 lg:text-[1.875rem]">
