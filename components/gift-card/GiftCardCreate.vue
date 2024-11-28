@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import type { GiftCardForm } from './types/types'
 import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
+import { createEmptyGiftCard } from '~/composables/gift-card/domain/GiftCard.ts'
 
 const { setGiftCardPurchase, getGiftCardPurchase } = useLocalStorageGiftCardRepository()
 
@@ -45,13 +46,15 @@ onMounted(() => {
   giftCardPurchase.value = giftCardPurchaseLocalStorage ? giftCardPurchaseLocalStorage : giftCardPurchase.value
 })
 const submitForm = () => {
-  const itemsLength = giftCardPurchase.value.items.length
+  const isEmailBillingSet = giftCardPurchase.value.billing.billingEmail !== ''
+  giftCardPurchase.value.items.push(giftCardPurchase.value.currentItem)
+  giftCardPurchase.value.currentItem = createEmptyGiftCard()
   setGiftCardPurchase(giftCardPurchase.value)
   if (!userLoggedIn.value) {
     router.push(localePath('auth-login'))
   }
   else {
-    itemsLength === 0 ? router.push(localePath('gift-card-gift-card-billing-form')) : router.push(localePath('gift-card-gift-card-payment'))
+    !isEmailBillingSet ? router.push(localePath('gift-card-gift-card-billing-form')) : router.push(localePath('gift-card-gift-card-payment'))
   }
 }
 

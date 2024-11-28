@@ -110,13 +110,16 @@ defineI18nRoute({
 
 const editGiftCard = (id: string) => {
   giftCardPurchase.value.currentItem = giftCardPurchase.value.items.find((card: GiftCard) => card.uuid === id) as GiftCard
+  giftCardPurchase.value.items = giftCardPurchase.value.items.filter((card: GiftCard) => card.uuid !== id)
   setGiftCardPurchase(giftCardPurchase.value)
   router.push(localePath({ name: 'gift-card-gift-card-create' }))
 }
 
 const removeGiftCard = (id: string) => {
-  giftCardPurchase.value.items = giftCardPurchase.value.items.filter((card: GiftCard) => card.uuid !== id)
-  setGiftCardPurchase(giftCardPurchase.value)
+  if (giftCardPurchase.value.items.length > 1) {
+    giftCardPurchase.value.items = giftCardPurchase.value.items.filter((card: GiftCard) => card.uuid !== id)
+    setGiftCardPurchase(giftCardPurchase.value)
+  }
 }
 
 const setGiftCardFailed = async () => {
