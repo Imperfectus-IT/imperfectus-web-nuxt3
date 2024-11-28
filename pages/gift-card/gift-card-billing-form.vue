@@ -73,8 +73,6 @@ const formData = ref<OrderBilling>({
 })
 
 const handleNextStep = () => {
-  giftCardPurchase.value.items.push(giftCardPurchase.value.currentItem)
-  giftCardPurchase.value.currentItem = createEmptyGiftCard()
   setGiftCardPurchase(giftCardPurchase.value)
   router.push(localePath({ name: 'gift-card-gift-card-payment' }))
 }
