@@ -7,8 +7,6 @@ const googleConnectUrl = `${useRuntimeConfig().public.STRAPI_URL}/connect/google
 const handleClick = () => {
   window.location.href = googleConnectUrl
 }
-
-console.log(useRuntimeConfig().public.baseUrl)
 </script>
 
 <template>
