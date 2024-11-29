@@ -42,8 +42,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/api/**': { proxy: process.env.STRAPI_URL },
-    '/uploads/**': { proxy: process.env.STRAPI_URL },
+    '/api/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL, pathRewrite: { '^/api/': '' } },
+    '/uploads/**': { proxy: process.env.NUXT_PUBLIC_STRAPI_URL },
   },
   hooks: {
     'pages:extend'(pages) {
