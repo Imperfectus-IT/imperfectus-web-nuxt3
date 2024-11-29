@@ -12,8 +12,17 @@
         <p class="mt-5">
           {{ $t(`${props.labelKey}.item_${index}`) }}
         </p>
-        <p class="font-bold mt-1">
-          {{ getBillingValue(key) }}
+        <p
+          v-if="key === 'state'"
+          class="font-bold mt-1"
+        >
+          {{ getBillingValue(key) ? $t('pages.order.status.payed') : $t('pages.order.status.notPayed') }}
+        </p>
+        <p
+          v-else
+          class="font-bold mt-1"
+        >
+          {{ getBillingValue(key) }} {{ key !== 'state' ? '€' : '' }}
         </p>
       </div>
     </div>
