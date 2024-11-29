@@ -20,25 +20,29 @@
       @change="handlePaymentChange"
     />
     <RedsysPaymentForm
-      ref="redsys"
-      class="mt-6 w-1/3"
-      :order="null"
+      ref="redsysForm"
+      class="mt-6 w-full lg:w-1/5 text-[14px]"
       :is-button-outlined="true"
-      @redirect="handleAddPayment"
-    >
-      {{ $t("profile.payment.addButton") }}
-    </RedsysPaymentForm>
+    />
+    <Button
+      :label="$t('adminSubscriptionPayment.addPaymentMethod')"
+      class="lg:w-1/3"
+      outlined
+      @click.prevent="handleAddPayment"
+    />
   </Panel>
 </template>
 
 <script setup lang="ts">
 import type { Payment } from '~/composables/payment/domain/Payment.ts'
+import type RedsysPaymentForm from '~/components/share/RedsysPaymentForm.vue'
 
 const props = defineProps<{
   payment: Payment
 }>()
 const { payments } = useGetAllPaymentsHandler()
 const paymentId = ref<number>(props.payment.id)
+const redsysForm = ref<HTMLFormElement | null>(null)
 const emits = defineEmits(['paymentChanged'])
 
 const getLabelsForDropdown = () => {
@@ -52,8 +56,8 @@ const handlePaymentChange = () => {
   emits('paymentChanged', paymentId.value)
 }
 
-const handleAddPayment = async (submit) => {
-  await submit()
+const handleAddPayment = async () => {
+  await redsysForm.value.submit()
 }
 
 const textData = {

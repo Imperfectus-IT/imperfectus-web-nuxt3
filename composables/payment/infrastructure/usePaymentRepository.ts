@@ -5,7 +5,8 @@ export const usePaymentRepository = () => {
 
   const findPaymentsByUserId = async (id: number): Promise<Payment[]> => {
     const { find } = useStrapi()
-    return await find<Payment[]>('payments', { user: id })
+    const userPayments = await find<Payment[]>('payments', { user: id })
+    return userPayments.filter((payment: Payment) => payment.cardNumber)
   }
   const deletePayment = async (id: number): Promise<Payment> => {
     const { delete: _delete } = useStrapi()

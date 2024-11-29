@@ -6,7 +6,7 @@ import { useFormPaymentHandler } from '~/composables/payment/application/form/us
 const props = defineProps({
   order: {
     type: Object as () => Order,
-    required: true,
+    required: false,
   },
 })
 

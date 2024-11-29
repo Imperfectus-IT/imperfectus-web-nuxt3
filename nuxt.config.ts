@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/api/**': { proxy: 'http://localhost:3000' },
+    '/api/**': { proxy: process.env.STRAPI_URL },
     '/uploads/**': { proxy: process.env.STRAPI_URL },
   },
   hooks: {
