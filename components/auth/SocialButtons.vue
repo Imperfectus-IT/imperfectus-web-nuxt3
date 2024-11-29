@@ -2,7 +2,7 @@
 defineProps<{
   googleLabel: string
 }>()
-const googleConnectUrl = `${useRuntimeConfig().public.STRAPI_URL}/api/connect/google`
+const googleConnectUrl = `${useRuntimeConfig().public.STRAPI_URL}/connect/google`
 
 const handleClick = () => {
   window.location.href = googleConnectUrl
