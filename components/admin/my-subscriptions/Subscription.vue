@@ -91,20 +91,26 @@
           root: 'bg-green-primary mt-4 border-[1px] border-green-tertiary px-3 py-2 rounded-lg lg:mt-0',
           label: 'text-[14px]',
         }"
+        @click="reactivateSubscription"
       />
     </div>
   </Panel>
+  <Toast />
 </template>
 
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import { SUBSCRIPTION_STATES } from '~/composables/admin/subscriptions/domain/SubscriptionsConst.ts'
 
+const { unpauseSubscription } = useUpdateSubscriptionHandler()
 const props = defineProps<{
   subscription: Subscription
 }>()
 
-const cancelDate = computed(() =>
-  dayjs(props.subscription.cancelledAt).format('DD/MM/YYYY'),
-)
+const { t } = useI18n()
+
+const reactivateSubscription = async () => {
+  console.log('subscription', props.subscription)
+  await unpauseSubscription(props.subscription.id, 'subscriptions.subscription.', t)
+}
 </script>

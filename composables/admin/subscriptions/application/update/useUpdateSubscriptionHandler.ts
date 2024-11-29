@@ -74,15 +74,14 @@ export const useUpdateSubscriptionHandler = () => {
       errorToast(toast, t(`${textData}modifyPeriodicity.errorToast.title`), t(`${textData}modifyPeriodicity.errorToast.description`))
     }
   }
-  const unpauseSubscription = async (subscriptionId: number, textData: string, t: ComposerTranslation, preferredDay: keyof typeof DayMapping, nextPayment: string) => {
+  const unpauseSubscription = async (subscriptionId: number, textData: string, t: ComposerTranslation) => {
     try {
-      await executeUnpauseSubscription(subscriptionId)
-      const days = DayMapping[preferredDay as keyof typeof DayMapping]
-      const date = dayjs(nextPayment).add(days, 'day').format('DD-MM-YYYY')
+      const updatedSubscription: Subscription = await executeUnpauseSubscription(subscriptionId)
+      const days = DayMapping[updatedSubscription.preferredDay as keyof typeof DayMapping]
+      const date = dayjs(updatedSubscription.nextPayment).add(days, 'day').format('DD-MM-YYYY')
       successToast(toast, t(`${textData}pause.unpauseToasts.successToast.title`), t(`${textData}pause.unpauseToasts.successToast.description`, { date }))
     }
     catch (error) {
-      console.log('Error', error)
       errorToast(toast, t(`${textData}pause.unpauseToasts.errorToast.title`), t(`${textData}pause.unpauseToasts.errorToast.description`))
     }
   }

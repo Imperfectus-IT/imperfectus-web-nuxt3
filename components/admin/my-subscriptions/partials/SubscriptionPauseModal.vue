@@ -93,7 +93,7 @@
           v-model="pauseInfo.nextDeliveryDate"
           date-format="dd/m/yy"
           inline
-          :disabled-days="[0, 1, 6]"
+          :disabled-days="filterWeekDaysFromPreferredDay"
         >
           <template #date="slotProps">
             <div
@@ -135,8 +135,9 @@
       <Button
         :label="t(`${textData.section}title`)"
         :pt="{
-          root: 'bg-orange-primary rounded-lg py-2 w-full mb-5 hover:bg-green-tertiary hover:text-orange-primary',
+          root: 'bg-orange-primary rounded-lg py-2 w-full mb-5 hover:bg-green-tertiary hover:text-orange-primary disabled:opacity-60 disabled:cursor-not-allowed',
         }"
+        :disabled="!pauseInfo.nextDeliveryDate"
         @click="pauseSubscription"
       />
     </div>
@@ -147,14 +148,22 @@
 import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
 import type { CalendarDate } from '~/components/admin/my-subscriptions/types/CalendarDate.ts'
+import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 
 const { t } = useI18n()
-defineProps<{
+const props = defineProps<{
   isVisible: boolean
+  preferredDay: string
 }>()
 const localePath = useLocalePath()
 const { dateBuilder } = useDateBuilder()
 const emit = defineEmits(['close-modal', 'pause-subscription'])
+
+const filterWeekDaysFromPreferredDay = computed(() => {
+  const allDays = [0, 1, 2, 3, 4, 5, 6]
+  return allDays.filter((day: number) => day !== DayMapping[props.preferredDay as keyof typeof DayMapping])
+})
+
 const closeModal = () => {
   emit('close-modal')
   resetPauseInfo()
@@ -177,6 +186,7 @@ const modalLayersDisplayed = reactive({
 const resetPauseInfo = () => {
   pauseInfo.reasonPaused = ''
   pauseInfo.reasonPausedText = ''
+  pauseInfo.nextDeliveryDate = ''
 }
 const generateDropdownOptions = computed(() => {
   const options = []

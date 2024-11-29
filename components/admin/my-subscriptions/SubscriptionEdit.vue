@@ -78,6 +78,7 @@
     </div>
     <SubscriptionPauseModal
       :is-visible="isPauseModalVisible"
+      :preferred-day="subscription.preferredDay"
       @close-modal="closePauseModal"
       @pause-subscription="handlePauseSubscription"
     />
