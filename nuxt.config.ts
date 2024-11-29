@@ -41,28 +41,10 @@ export default defineNuxtConfig({
       NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     },
   },
-  // routes: {
-  //   '/api/**': { proxy: { to: process.env.STRAPI_URL } },
-  //   '/uploads/**': { proxy: { to: process.env.STRAPI_URL } },
-  // },
-  // routeRules: {
-  //   '/api/**': { proxy: 'http://localhost:3000' },
-  //   '/uploads/**': { proxy: process.env.STRAPI_URL },
-  // },
-  // nitro: {
-  //   devProxy: {
-  //     '/api': {
-  //       target: process.env.STRAPI_URL, // URL del backend Strapi
-  //       changeOrigin: true, // Cambia el origen de la solicitud
-  //       prependPath: true, // Añade el prefijo en las solicitudes
-  //       pathRewrite: { '^/api': '' }, // Elimina el prefijo '/api' antes de enviarlo al backend
-  //     },
-  //     '/uploads': {
-  //       target: process.env.STRAPI_URL, // URL para recursos estáticos
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
+  routeRules: {
+    '/api/**': { proxy: 'http://localhost:3000' },
+    '/uploads/**': { proxy: process.env.STRAPI_URL },
+  },
   hooks: {
     'pages:extend'(pages) {
       pages.push({
@@ -84,11 +66,6 @@ export default defineNuxtConfig({
         name: 'payment-added',
         path: '/add-payment-completed',
         redirect: '/mi-cuenta/perfil',
-      },
-      {
-        name: 'google',
-        path: '/api/connect/google/callback',
-        file: '~/pages/callback.vue',
       },
       )
 
