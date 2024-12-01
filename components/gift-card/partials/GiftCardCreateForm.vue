@@ -114,19 +114,23 @@
       @click="submitForm"
     />
   </div>
-  {{ giftCardPurchase.currentItem }}
 </template>
 
 <script setup lang="ts">
 import type { GiftCardForm } from '~/components/gift-card/types/types.ts'
+import {
+  useLocalStorageGiftCardRepository,
+} from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
 
 const emit = defineEmits(['formSubmit'])
 const localePath = useLocalePath()
+const { getGiftCardPurchase } = useLocalStorageGiftCardRepository()
 
 const { validateSchema, validationErrors } = useGiftFormValidator()
 const { giftCardPurchase } = useCreateGiftCardHandler()
 const isFormErrored = ref<boolean>(true)
 const displayErrors = ref<boolean>(false)
+const route = useRoute()
 
 const textData = {
   priceButtons: 3,
@@ -135,25 +139,45 @@ const textData = {
   section: 'gift-card.create.form.field_',
 }
 
+onMounted(() => {
+  let giftCardPurchaseLocalStorage = getGiftCardPurchase()
+  if (giftCardPurchaseLocalStorage) {
+    if (giftCardPurchaseLocalStorage && giftCardPurchaseLocalStorage.currentItem.sendMethod === '' && !route.query.add) {
+      giftCardPurchaseLocalStorage = {
+        ...giftCardPurchaseLocalStorage,
+        currentItem: {
+          ...giftCardPurchaseLocalStorage.items[0],
+        },
+        items: giftCardPurchaseLocalStorage.items.slice(0, -1),
+      }
+    }
+    giftCardPurchase.value = giftCardPurchaseLocalStorage
+    formData.amount = giftCardPurchase.value.currentItem.amount
+    formData.quantity = giftCardPurchase.value.currentItem.quantity
+    formData.message = giftCardPurchase.value.currentItem.message
+    formData.whoSend = giftCardPurchase.value.currentItem.whoSend
+    formData.forWho = giftCardPurchase.value.currentItem.forWho
+    formData.sendMethod = giftCardPurchase.value.currentItem.sendMethod
+  }
+})
+
 const formData: GiftCardForm = reactive({
-  amount: giftCardPurchase.value.currentItem.amount || 21.07,
-  quantity: giftCardPurchase.value.currentItem.quantity || 1,
-  message: giftCardPurchase.value.currentItem.message || '',
-  whoSend: giftCardPurchase.value.currentItem.whoSend || '',
-  forWho: giftCardPurchase.value.currentItem.forWho || '',
-  sendMethod: giftCardPurchase.value.currentItem.sendMethod || '',
+  amount: 21.07,
+  quantity: 1,
+  message: '',
+  whoSend: '',
+  forWho: '',
+  sendMethod: '',
 })
 
 watch(formData, () => {
-  console.log('watch', giftCardPurchase.value.currentItem)
+  giftCardPurchase.value.currentItem = {
+    ...giftCardPurchase.value.currentItem,
+    ...formData,
+  }
   validateSchema(formData)
-  console.log(validationErrors.value)
   validationErrors.value ? isFormErrored.value = true : isFormErrored.value = false
-}, { immediate: true })
-
-watch(giftCardPurchase, () => {
-  console.log('sec watch', giftCardPurchase.value.currentItem)
-}, { immediate: true })
+}, { deep: true })
 
 const submitForm = () => {
   if (!isFormErrored.value) {

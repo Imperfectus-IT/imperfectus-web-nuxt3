@@ -45,7 +45,7 @@
       <h4 class="font-bold text-[24px]">
         {{ $t(`${section}.amount`) }}{{ getTotalAmount }}€
       </h4>
-      <NuxtLink :to="localePath({ name: 'gift-card-gift-card-create' })">
+      <NuxtLink :to="localePath({ name: 'gift-card-gift-card-create', query: { add: true } })">
         <Button
           :label="$t(`${section}.add`)"
           :pt="{ root: 'underline' }"

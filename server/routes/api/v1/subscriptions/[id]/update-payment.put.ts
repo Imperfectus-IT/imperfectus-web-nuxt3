@@ -11,7 +11,6 @@ export default defineEventHandler(async (event: H3Event) => {
     if (!JWT) {
       return new Error('Unauthorized')
     }
-    console.log('event', event.context.params)
     const { id: subscriptionId } = event.context.params
     if (!subscriptionId) {
       return new Error('ID is required')

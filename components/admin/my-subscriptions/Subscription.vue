@@ -110,7 +110,6 @@ const props = defineProps<{
 const { t } = useI18n()
 
 const reactivateSubscription = async () => {
-  console.log('subscription', props.subscription)
   await unpauseSubscription(props.subscription.id, 'subscriptions.subscription.', t)
 }
 </script>

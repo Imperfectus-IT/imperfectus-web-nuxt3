@@ -18,29 +18,13 @@
 import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
 import { createEmptyGiftCard } from '~/composables/gift-card/domain/GiftCard.ts'
 
-const { setGiftCardPurchase, getGiftCardPurchase } = useLocalStorageGiftCardRepository()
+const { setGiftCardPurchase } = useLocalStorageGiftCardRepository()
 
 const router = useRouter()
 const localePath = useLocalePath()
 const userLoggedIn = useStrapiUser()
 const { giftCardPurchase } = useGiftCardPurchaseState()
 
-onMounted(() => {
-  let giftCardPurchaseLocalStorage = getGiftCardPurchase()
-  if (giftCardPurchaseLocalStorage) {
-    if (giftCardPurchaseLocalStorage && giftCardPurchaseLocalStorage.currentItem.sendMethod === '') {
-      giftCardPurchaseLocalStorage = {
-        ...giftCardPurchaseLocalStorage,
-        currentItem: {
-          ...giftCardPurchaseLocalStorage.items[0],
-        },
-        items: giftCardPurchaseLocalStorage.items.slice(0, -1),
-      }
-      return giftCardPurchase.value = giftCardPurchaseLocalStorage
-    }
-    giftCardPurchase.value = giftCardPurchaseLocalStorage
-  }
-})
 const submitForm = () => {
   const isEmailBillingSet = giftCardPurchase.value.billing.billingEmail !== ''
   giftCardPurchase.value.items.push(giftCardPurchase.value.currentItem)
