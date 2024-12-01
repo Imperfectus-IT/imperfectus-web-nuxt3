@@ -8,28 +8,13 @@
     </p>
 
     <GiftCardCarousel @update-design-id="updateDesignId" />
-    <GiftCardCreateForm @form-updated="updateFormData" />
-
-    <div class="mt-8 lg:w-2/3">
-      <span class="text-[20px]">{{ $t("gift-card.create.form.description") }}</span>
-      <NuxtLink :to="localePath({ name: 'legal-conditions' })">
-        <span class="underline text-[20px]">{{ " " + $t("gift-card.create.form.description_link") }}</span>
-      </NuxtLink>
-    </div>
-    <Button
-      :pt="{
-        root: 'bg-green-primary w-2/3 mt-12 font-bold py-1 lg:py-2 lg:w-1/4 rounded-md disabled:opacity-50',
-        label: 'text-[18px]',
-      }"
-      :label="$t('gift-card.create.form.button')"
-      :disabled="isFormErrored"
-      @click="submitForm"
+    <GiftCardCreateForm
+      @form-submit="submitForm"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { GiftCardForm } from './types/types'
 import { useLocalStorageGiftCardRepository } from '~/composables/gift-card/infrastructure/useLocalStorageGiftCardRepository.ts'
 import { createEmptyGiftCard } from '~/composables/gift-card/domain/GiftCard.ts'
 
@@ -38,12 +23,23 @@ const { setGiftCardPurchase, getGiftCardPurchase } = useLocalStorageGiftCardRepo
 const router = useRouter()
 const localePath = useLocalePath()
 const userLoggedIn = useStrapiUser()
-const isFormErrored = ref<boolean>(true)
 const { giftCardPurchase } = useGiftCardPurchaseState()
 
 onMounted(() => {
-  const giftCardPurchaseLocalStorage = getGiftCardPurchase()
-  giftCardPurchase.value = giftCardPurchaseLocalStorage ? giftCardPurchaseLocalStorage : giftCardPurchase.value
+  let giftCardPurchaseLocalStorage = getGiftCardPurchase()
+  if (giftCardPurchaseLocalStorage) {
+    if (giftCardPurchaseLocalStorage && giftCardPurchaseLocalStorage.currentItem.sendMethod === '') {
+      giftCardPurchaseLocalStorage = {
+        ...giftCardPurchaseLocalStorage,
+        currentItem: {
+          ...giftCardPurchaseLocalStorage.items[0],
+        },
+        items: giftCardPurchaseLocalStorage.items.slice(0, -1),
+      }
+      return giftCardPurchase.value = giftCardPurchaseLocalStorage
+    }
+    giftCardPurchase.value = giftCardPurchaseLocalStorage
+  }
 })
 const submitForm = () => {
   const isEmailBillingSet = giftCardPurchase.value.billing.billingEmail !== ''
@@ -58,20 +54,7 @@ const submitForm = () => {
   }
 }
 
-const updateFormData = (payload: { formData: GiftCardForm, errors: any }) => {
-  setIsFormErrored(payload.errors)
-  giftCardPurchase.value.currentItem = {
-    uuid: giftCardPurchase.value.currentItem.uuid,
-    designId: giftCardPurchase.value.currentItem.designId,
-    ...payload.formData,
-  }
-}
-
 const updateDesignId = (designId: number) => {
   giftCardPurchase.value.currentItem.designId = designId
-}
-//
-const setIsFormErrored = (formErrors: any) => {
-  isFormErrored.value = formErrors.value
 }
 </script>

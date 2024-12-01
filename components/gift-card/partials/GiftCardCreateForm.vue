@@ -76,10 +76,10 @@
         :placeholder="$t(`${textData.section}${field}.placeholder`)"
       />
       <p
-        v-if="index !== 1"
+        v-if="index !== 1 && displayErrors"
         class="text-red-primary"
       >
-        {{ getValidationError(field as keyof GiftCardForm) }}
+        {{ validationErrors?.[field as keyof GiftCardForm]?._errors[0] ?? '' }}
       </p>
       <Textarea
         v-if="index === 1"
@@ -93,23 +93,40 @@
         :placeholder="$t(`${textData.section}${field}.placeholder`)"
       />
       <p
-        v-if="index === 1"
+        v-if="index === 1 && displayErrors"
         class="text-red-primary"
       >
-        {{ getValidationError(field as keyof GiftCardForm) }}
+        {{ validationErrors?.[field as keyof GiftCardForm]?._errors[0] ?? '' }}
       </p>
     </div>
+    <div class="mt-8 lg:w-2/3">
+      <span class="text-[20px]">{{ $t("gift-card.create.form.description") }}</span>
+      <NuxtLink :to="localePath({ name: 'legal-conditions' })">
+        <span class="underline text-[20px]">{{ " " + $t("gift-card.create.form.description_link") }}</span>
+      </NuxtLink>
+    </div>
+    <Button
+      :pt="{
+        root: 'bg-green-primary w-2/3 mt-12 font-bold py-1 lg:py-2 lg:w-1/4 rounded-md disabled:opacity-50',
+        label: 'text-[18px]',
+      }"
+      :label="$t('gift-card.create.form.button')"
+      @click="submitForm"
+    />
   </div>
+  {{ giftCardPurchase.currentItem }}
 </template>
 
 <script setup lang="ts">
-import { type GiftCardForm } from '../types/types'
-import { useCreateGiftCardHandler } from '~/composables/gift-card/application/create/useCreateGiftCardHandler.ts'
+import type { GiftCardForm } from '~/components/gift-card/types/types.ts'
 
-const emit = defineEmits(['formUpdated'])
+const emit = defineEmits(['formSubmit'])
+const localePath = useLocalePath()
 
 const { validateSchema, validationErrors } = useGiftFormValidator()
 const { giftCardPurchase } = useCreateGiftCardHandler()
+const isFormErrored = ref<boolean>(true)
+const displayErrors = ref<boolean>(false)
 
 const textData = {
   priceButtons: 3,
@@ -119,27 +136,33 @@ const textData = {
 }
 
 const formData: GiftCardForm = reactive({
-  amount: 21.07,
-  quantity: 1,
-  message: '',
-  whoSend: '',
-  forWho: '',
-  sendMethod: '',
-})
-
-watchEffect(() => {
-  formData.amount = giftCardPurchase.value.currentItem.amount
-  formData.quantity = giftCardPurchase.value.currentItem.quantity
-  formData.message = giftCardPurchase.value.currentItem.message
-  formData.whoSend = giftCardPurchase.value.currentItem.whoSend
-  formData.forWho = giftCardPurchase.value.currentItem.forWho
-  formData.sendMethod = giftCardPurchase.value.currentItem.sendMethod
+  amount: giftCardPurchase.value.currentItem.amount || 21.07,
+  quantity: giftCardPurchase.value.currentItem.quantity || 1,
+  message: giftCardPurchase.value.currentItem.message || '',
+  whoSend: giftCardPurchase.value.currentItem.whoSend || '',
+  forWho: giftCardPurchase.value.currentItem.forWho || '',
+  sendMethod: giftCardPurchase.value.currentItem.sendMethod || '',
 })
 
 watch(formData, () => {
+  console.log('watch', giftCardPurchase.value.currentItem)
   validateSchema(formData)
-  emit('formUpdated', { formData, errors: validationErrors })
-})
+  console.log(validationErrors.value)
+  validationErrors.value ? isFormErrored.value = true : isFormErrored.value = false
+}, { immediate: true })
+
+watch(giftCardPurchase, () => {
+  console.log('sec watch', giftCardPurchase.value.currentItem)
+}, { immediate: true })
+
+const submitForm = () => {
+  if (!isFormErrored.value) {
+    emit('formSubmit')
+  }
+  else {
+    displayErrors.value = true
+  }
+}
 
 const setPrice = (price: string) => {
   formData.amount = parseFloat(price)
@@ -149,17 +172,7 @@ const setQuantity = (quantity: string) => {
   formData.quantity = parseInt(quantity)
 }
 
-const getValidationError = (field: keyof GiftCardForm) => {
-  const errors = validationErrors.value as unknown as {
-    [K in keyof GiftCardForm]?: { _errors: string[] };
-  }
-  if (errors && errors[field]) {
-    return errors[field]?._errors[0]
-  }
-  return null
-}
-
 const getTotalPrice = computed(() => {
-  return formData.quantity * formData.amount + '€'
+  return formData.quantity * giftCardPurchase.value.currentItem.amount + '€'
 })
 </script>
