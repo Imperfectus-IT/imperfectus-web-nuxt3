@@ -41,9 +41,26 @@ export default defineNuxtConfig({
       NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     },
   },
-  routeRules: {
-    '/api/**': { proxy: process.env.STRAPI_URL },
-    '/uploads/**': { proxy: process.env.STRAPI_URL },
+  // routeRules: {
+  //   '/api/**': { proxy: process.env.STRAPI_URL },
+  //   '/uploads/**': { proxy: process.env.STRAPI_URL },
+  // },
+  proxy: {
+    debug: false,
+    experimental: {
+      listener: false,
+    },
+    proxies: {
+      // Configuración del proxy para Google Callback
+      '/api/connect/google/callback': {
+        target: process.env.STRAPI_URL,
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''),
+        configure: (proxy, options, runtimeConfig) => {
+          console.log('Proxy configurado para:', options.target)
+        },
+      },
+    },
   },
   hooks: {
     'pages:extend'(pages) {
@@ -108,6 +125,7 @@ export default defineNuxtConfig({
     typedPages: true,
   },
   modules: [
+    '@nuxt-alt/proxy',
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/test-utils/module',

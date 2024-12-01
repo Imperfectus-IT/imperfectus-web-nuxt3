@@ -59,9 +59,9 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
       }
     }),
     billing: {
-      state: order.status,
+      state: order.order_payment.isPaid,
       amount: order.order_payment.totalAmount,
-      shippingCosts: order.order_shipping_supplements,
+      shippingCosts: order.order_shipping_supplements === [] ? '0' : shippingSuplementsAmount(order.order_shipping_supplements),
       total: order.order_payment.totalAmount + shippingSuplementsAmount(order.order_shipping_supplements),
     },
     deliveryInfo: {
