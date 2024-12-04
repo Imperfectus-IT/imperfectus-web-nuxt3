@@ -171,11 +171,11 @@ const fillItWithGoogleMapsPlaceData = (place: google.maps.places.PlaceResult) =>
     component.types.includes('locality'),
   )[0]?.short_name
 
-  shippingInfo.shippingAddress = address || null
+  shippingInfo.shippingAddress = address || ''
   if (streetNumber) {
     shippingInfo.shippingAddress += ' ' + streetNumber
   }
-  shippingInfo.shippingPostCode = postalCode || null
-  shippingInfo.shippingCity = city || null
+  shippingInfo.shippingPostCode = postalCode || ''
+  shippingInfo.shippingCity = city || ''
 }
 </script>
