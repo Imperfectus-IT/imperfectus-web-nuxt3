@@ -3,7 +3,7 @@
     :header="props.header ? props.header : $t(textData.section + 'header')"
     :toggleable="isDesktop"
     :collapsed="isDesktop"
-    :pt=" {
+    :pt="{
       toggleableContent: 'lg:h-full lg:border-b-[1px] lg:border-x-[1px]  rounded-b-lg p-4 lg:!pt-0',
       content: 'lg:h-full lg:flex lg:flex-col',
     }"
@@ -15,14 +15,10 @@
     >
       <div v-if="!isEditForm">
         <div v-if="getShippingValue(item.key)">
-          <p
-            class="mt-5"
-          >
-            {{ $t(`${textData.section}item_${index}`) }}
+          <p class="mt-5">
+            {{ $t(textData.section + 'item_' + index) }}
           </p>
-          <p
-            class="font-bold mt-1"
-          >
+          <p class="font-bold mt-1">
             {{ getShippingValue(item.key) }}
           </p>
         </div>
@@ -32,10 +28,11 @@
         class="mt-2"
       >
         <div v-if="item.key !== 'shippingNotes'">
-          <span>{{ $t(`${textData.section}item_${index}`) }} </span>
+          <span>{{ $t(textData.section + 'item_' + index) }} </span>
           <InputText
+            :id="item.key"
             v-model="shippingInfo[item.key as keyof OrderShipping]"
-            :label="$t(`${textData.section}item_${index}`)"
+            :label="$t(textData.section + 'item_' + index)"
             class="mt-2 rounded-lg w-full mb-4"
             :pt="{
               root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
@@ -43,7 +40,7 @@
           />
         </div>
         <div v-else>
-          <span>{{ $t(`${textData.section}item_${index}`) }} </span>
+          <span>{{ $t(textData.section + 'item_' + index) }} </span>
           <Textarea
             v-model="shippingInfo[item.key as keyof OrderShipping]"
             class="w-full text-[16px] mt-2 rounded-lg mb-4"
@@ -73,11 +70,20 @@
 </template>
 
 <script setup lang="ts">
+import { ref, reactive, watch, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useGoogleMaps } from '~/composables/shared/utils/useGoogleMaps'
+import { useScreenSize } from '~/composables/shared/utils/useScreenSize'
+
+const { t: $t } = useI18n()
+
 const props = defineProps<{
   data: OrderShipping
   orderId: number
   header?: string
 }>()
+
+const { loadGoogleMaps } = useGoogleMaps()
 
 const isEditForm = ref(false)
 
@@ -109,10 +115,30 @@ const textData = {
     { key: 'shippingPostCode' },
     { key: 'shippingCity' },
     { key: 'shippingNotes' },
-
   ],
 }
 const emit = defineEmits(['editShippingInfo'])
+
+watch(isEditForm, async (newVal) => {
+  if (newVal) {
+    await loadGoogleMaps()
+
+    await nextTick(() => {
+      const inputElement = document.querySelector<HTMLInputElement>('#shippingAddress')
+      if (inputElement) {
+        const autocomplete = new google.maps.places.Autocomplete(inputElement, {
+          types: ['address'],
+          componentRestrictions: { country: 'es' },
+        })
+
+        autocomplete.addListener('place_changed', () => {
+          const place = autocomplete.getPlace()
+          fillItWithGoogleMapsPlaceData(place)
+        })
+      }
+    })
+  }
+})
 
 const displayShippingForm = () => {
   isEditForm.value = true
@@ -125,5 +151,30 @@ const updateShippingInfo = () => {
 
 const getShippingValue = (key: string) => {
   return props.data[key as keyof OrderShipping]
+}
+
+const fillItWithGoogleMapsPlaceData = (place: google.maps.places.PlaceResult) => {
+  const postalCode = place?.address_components?.filter(component =>
+    component.types.includes('postal_code'),
+  )[0]?.short_name
+
+  const address = place?.address_components?.filter(component =>
+    component.types.includes('route'),
+  )[0]?.short_name
+
+  const streetNumber = place?.address_components?.filter(component =>
+    component.types.includes('street_number'),
+  )[0]?.short_name
+
+  const city = place?.address_components?.filter(component =>
+    component.types.includes('locality'),
+  )[0]?.short_name
+
+  shippingInfo.shippingAddress = address || ''
+  if (streetNumber) {
+    shippingInfo.shippingAddress += ' ' + streetNumber
+  }
+  shippingInfo.shippingPostCode = postalCode || ''
+  shippingInfo.shippingCity = city || ''
 }
 </script>
