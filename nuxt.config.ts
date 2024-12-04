@@ -242,4 +242,7 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  plugins: [
+    '~/plugins/googleMapsLoader.client.ts', // Ensure this is included
+  ],
 })
