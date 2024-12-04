@@ -19,6 +19,7 @@
             {{ $t(`subscriptions.subscription.shipping.item_${index}`) }}
           </span>
           <InputText
+            :id="key"
             v-model="shippingForm[key as keyof SubscriptionShipping]"
             class="mt-2 rounded-lg w-full mb-4"
             :pt="{
@@ -98,6 +99,8 @@ const shippingForm = reactive<SubscriptionShipping>({
   shippingNotes: props.shipping.shippingNotes,
 })
 
+const { loadGoogleMaps } = useGoogleMaps()
+
 const modifySubscriptionShipping = () => {
   emits('modifyShipping', shippingForm)
   isShippingFormDisplayed.value = false
@@ -105,4 +108,57 @@ const modifySubscriptionShipping = () => {
 const displayShippingForm = () => {
   isShippingFormDisplayed.value = true
 }
+
+const fillItWithGoogleMapsPlaceData = (place: google.maps.places.PlaceResult) => {
+  const postalCode = place?.address_components?.filter(component =>
+    component.types.includes('postal_code'),
+  )[0]?.short_name
+
+  const address = place?.address_components?.filter(component =>
+    component.types.includes('route'),
+  )[0]?.short_name
+
+  const streetNumber = place?.address_components?.filter(component =>
+    component.types.includes('street_number'),
+  )[0]?.short_name
+
+  const city = place?.address_components?.filter(component =>
+    component.types.includes('locality'),
+  )[0]?.short_name
+
+  const state = place?.address_components?.filter(component =>
+    component.types.includes('administrative_area_level_2'),
+  )[0]?.long_name
+
+  const country = place?.address_components?.filter(component =>
+    component.types.includes('country'),
+  )[0]?.short_name
+
+  shippingForm.shippingAddress = address || ''
+  if (streetNumber) {
+    shippingForm.shippingAddress += ' ' + streetNumber
+  }
+  shippingForm.shippingPostCode = postalCode || ''
+  shippingForm.shippingCity = city || ''
+  shippingForm.shippingState = state || ''
+  shippingForm.shippingCountry = country || ''
+}
+
+watch(isShippingFormDisplayed, async (newVal) => {
+  if (newVal) {
+    await loadGoogleMaps()
+    const inputElement = document.querySelector<HTMLInputElement>('#shippingAddress')
+    console.info('inputElement', inputElement)
+    if (inputElement) {
+      const autocomplete = new google.maps.places.Autocomplete(inputElement, {
+        types: ['address'],
+        componentRestrictions: { country: 'es' },
+      })
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace()
+        fillItWithGoogleMapsPlaceData(place)
+      })
+    }
+  }
+})
 </script>
