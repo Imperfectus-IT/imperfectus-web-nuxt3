@@ -132,7 +132,6 @@ watch(isEditForm, async (newVal) => {
         })
 
         autocomplete.addListener('place_changed', () => {
-          console.info('place_changed')
           const place = autocomplete.getPlace()
           fillItWithGoogleMapsPlaceData(place)
         })
