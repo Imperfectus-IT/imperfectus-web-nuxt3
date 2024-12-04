@@ -46,6 +46,7 @@
     "zod": "^3.22.4"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@nuxt-alt/proxy": "^2.5.8",
     "@nuxt/image": "^1.8.0",
     "@nuxtjs/strapi": "^1.12.0",

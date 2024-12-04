@@ -35,10 +35,12 @@ export default defineNuxtConfig({
     baseUrl: process.env.BASE_URL,
     STRAPI_URL: process.env.STRAPI_URL,
     NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     public: {
       baseUrl: process.env.BASE_URL,
       STRAPI_URL: process.env.NUXT_PUBLIC_STRAPI_URL,
       NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
+      GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     },
   },
   // routeRules: {
