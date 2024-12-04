@@ -5,14 +5,57 @@ import { useValidateShippingForm } from '~/composables/shopping-cart/domain/useV
 const { shoppingCart } = useShoppingCartState()
 const cleanData = () => shoppingCart.value.shippingAddress = createEmptyShippingAddress()
 const { errors, validateSchema } = useValidateShippingForm()
+const { loadGoogleMaps } = useGoogleMaps()
 
-onMounted(() => {
+onMounted(async () => {
   validateSchema(shoppingCart.value.shippingAddress)
+  await loadGoogleMaps()
+  const inputElement = document.querySelector<HTMLInputElement>('#shippingAddress')
+  if (inputElement) {
+    const autocomplete = new google.maps.places.Autocomplete(inputElement, {
+      types: ['address'],
+      componentRestrictions: { country: 'es' },
+    })
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace()
+      fillItWithGoogleMapsPlaceData(place)
+    })
+  }
 })
 
 watch(shoppingCart, () => {
   validateSchema(shoppingCart.value.shippingAddress)
 }, { deep: true })
+
+const fillItWithGoogleMapsPlaceData = (place: google.maps.places.PlaceResult) => {
+  const postalCode = place?.address_components?.filter(component =>
+    component.types.includes('postal_code'),
+  )[0]?.short_name
+
+  const address = place?.address_components?.filter(component =>
+    component.types.includes('route'),
+  )[0]?.short_name
+
+  const streetNumber = place?.address_components?.filter(component =>
+    component.types.includes('street_number'),
+  )[0]?.short_name
+
+  const city = place?.address_components?.filter(component =>
+    component.types.includes('locality'),
+  )[0]?.short_name
+
+  const state = place?.address_components?.filter(component =>
+    component.types.includes('administrative_area_level_2'),
+  )[0]?.long_name
+
+  shoppingCart.value.shippingAddress.shippingAddress = address || ''
+  if (streetNumber) {
+    shoppingCart.value.shippingAddress.shippingAddress += ' ' + streetNumber
+  }
+  shoppingCart.value.shippingAddress.shippingPostCode = postalCode || ''
+  shoppingCart.value.shippingAddress.shippingCity = city || ''
+  shoppingCart.value.shippingAddress.shippingState = state || ''
+}
 
 defineExpose({ errors })
 </script>
@@ -21,9 +64,7 @@ defineExpose({ errors })
   <div class="text-center lg:col-span-2 font-recoleta-regular text-[40px]">
     {{ $t('order.steps.stepShipping.title') }}
   </div>
-  <div
-    class="lg:col-span-2 lg:flex lg:flex-row lg:justify-end hidden "
-  >
+  <div class="lg:col-span-2 lg:flex lg:flex-row lg:justify-end hidden">
     <Button
       outlined
       :label="$t('orderMeta.cleanData')"
@@ -103,6 +144,7 @@ defineExpose({ errors })
       {{ $t('orderMeta.shipping_fields.address1') }}
     </span>
     <InputText
+      id="shippingAddress"
       v-model="shoppingCart.shippingAddress.shippingAddress"
       class="mt-2 rounded-lg w-full mb-4 lg:mb-0"
       :pt="{
