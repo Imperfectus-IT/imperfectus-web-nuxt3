@@ -170,11 +170,16 @@ const fillItWithGoogleMapsPlaceData = (place: google.maps.places.PlaceResult) =>
     component.types.includes('locality'),
   )[0]?.short_name
 
+  const country = place?.address_components?.filter(component =>
+    component.types.includes('country'),
+  )[0]?.short_name
+
   shippingInfo.shippingAddress = address || ''
   if (streetNumber) {
     shippingInfo.shippingAddress += ' ' + streetNumber
   }
   shippingInfo.shippingPostCode = postalCode || ''
   shippingInfo.shippingCity = city || ''
+  shippingInfo.shippingCountry = country || ''
 }
 </script>
