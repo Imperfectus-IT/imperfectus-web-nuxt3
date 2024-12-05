@@ -3346,5 +3346,243 @@ export default {
       },
     },
   },
-
+  'subscriptions': {
+    title: 'Les meves subscripcions',
+    add: 'Afegir subscripció',
+    next_delivery_from_paused: 'Pròxima entrega: ',
+    subscription: {
+      title: 'Editar subscripció',
+      description: 'Les subscripcions es renoven i es cobren cada diumenge. Si vols cancel·lar o pausar la subscripció, assegura’t de fer-ho abans del diumenge perquè no es generi ni es cobri la comanda.',
+      details: {
+        title: 'Detalls de la subscripció',
+        date_picker: {
+          item_0: {
+            title: 'Avui',
+            color: 'transparent',
+          },
+          item_1: {
+            title: 'Entregues',
+            color: 'green-primary',
+          },
+          item_2: {
+            title: 'Pròxim pagament',
+            color: 'yellow-secondary',
+          },
+          item_3: {
+            title: 'Entrega cancel·lada',
+            color: 'orange-primary',
+          },
+          button: 'Gestionar pròximes entregues',
+        },
+        nextPayment: {
+          item_0: 'Pròxim pagament: {date}',
+          item_1: 'Freqüència: {frequency}',
+        },
+        nextDelivery: {
+          item_0: 'Pròxima comanda',
+          item_1: 'Dia d’entrega: {day}',
+          item_2: 'Hora d’entrega: {hour}',
+        },
+        billingInfo: {
+          item_0: 'Quantitat d’articles: {quantity}',
+          item_1: 'Preu de l’enviament: {shipping}',
+          item_2: 'Subtotal: {subtotal}€',
+          item_3: 'Import total: {total}€',
+        },
+      },
+      modifyItem: {
+        title: 'Modificar caixa',
+        button: 'Editar',
+        selected: 'La teva selecció actual:',
+        exclusionsTitle: 'Vols excloure algun aliment?',
+        exclusionsParagraph1: 'Pots excloure fins a 6 aliments.',
+        exclusionsParagraph2: 'Cada divendres enviem un correu amb les fruites i verdures que hi haurà a la caixa de la setmana següent perquè puguis editar les exclusions segons el contingut de la caixa.',
+        saveButton: 'Desar selecció',
+        cancelButton: 'Cancel·lar canvis',
+        successToast: {
+          title: 'Caixa modificada!',
+          description: 'La caixa s’ha modificat correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en modificar la caixa.',
+        },
+      },
+      modifyPeriodicity: {
+        title: 'Periodicitat',
+        successToast: {
+          title: 'Periodicitat modificada!',
+          description: 'La periodicitat s’ha modificat correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en modificar la caixa.',
+        },
+        item_0: {
+          title: 'Freqüència',
+          option_0: {
+            label: 'Setmanal',
+            value: 'weekly',
+          },
+          option_1: {
+            label: 'Quinzenal',
+            value: 'biweekly',
+          },
+        },
+        item_1: {
+          title: 'Dia d’entrega',
+          option_0: {
+            label: 'Dimarts',
+            value: 'tuesday',
+          },
+          option_1: {
+            label: 'Dimecres',
+            value: 'wednesday',
+          },
+          option_2: {
+            label: 'Dijous',
+            value: 'thursday',
+          },
+          option_3: {
+            label: 'Divendres',
+            value: 'friday',
+          },
+        },
+        item_2: {
+          title: 'Franja horària',
+          option_0: {
+            label: 'Entre les 10:00 i les 14:00',
+            value: 'morning',
+          },
+          option_1: {
+            label: 'Entre les 14:00 i les 18:00',
+            value: 'afternoon',
+          },
+          option_2: {
+            label: 'Entre les 18:00 i les 22:00',
+            value: 'night',
+          },
+        },
+        button: 'Desar',
+      },
+      addCoupon: {
+        title: 'Cupó de descompte',
+        placeholder: 'Tens un descompte?',
+        button: 'Aplicar',
+        removeButton: 'Eliminar',
+        successToast: {
+          add: {
+            title: 'Cupó afegit amb èxit!',
+            description: 'El cupó s’ha afegit correctament a la subscripció.',
+          },
+          remove: {
+            title: 'Cupó eliminat amb èxit!',
+            description: 'El cupó s’ha eliminat correctament de la subscripció.',
+          },
+        },
+        errorToast: {
+          couponNotFound: 'El cupó no existeix',
+          couponExpired: 'El cupó ha caducat',
+          couponNotActive: 'El cupó no està actiu',
+          couponUserEligibility: 'Aquest cupó no és vàlid per a aquest usuari',
+          couponLimitOrders: 'S’ha assolit el màxim d’usos per aquest cupó',
+          couponUser: 'Aquest usuari no està autoritzat a utilitzar aquest cupó',
+          couponPostalCode: 'Aquest cupó no és vàlid per al codi postal introduït',
+          couponBoxType: 'Aquest cupó no és vàlid per a aquest tipus de caixa',
+          couponFirstOrder: 'Aquest cupó només es pot utilitzar en la primera compra',
+          couponActiveSubscription: 'Aquest cupó només es pot utilitzar en una subscripció activa',
+          couponFriend: 'Aquest cupó no es pot utilitzar pel mateix usuari que el va crear',
+          title: 'Error!',
+          description: 'Hi ha hagut un error en afegir o eliminar el cupó.',
+        },
+      },
+      addItem: {
+        title: 'Afegir caixa a la subscripció',
+        button: 'Afegir caixa',
+        successToast: {
+          title: 'Caixa afegida!',
+          description: 'La caixa s’ha afegit correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en afegir la caixa.',
+        },
+      },
+      removeItem: {
+        title: 'Eliminar caixa de la subscripció',
+        button: 'Eliminar caixa',
+        successToast: {
+          title: 'Caixa eliminada!',
+          description: 'La caixa s’ha eliminat correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en eliminar la caixa.',
+        },
+      },
+      payment: {
+        title: 'Mètode de pagament',
+        option_0: 'Targeta: {card}',
+        option_1: 'Tipus de targeta: {cardType}',
+        option_2: 'Caducitat: {expiration}',
+        button: 'Afegir mètode de pagament',
+        successToast: {
+          title: 'Mètode de pagament actualitzat!',
+          description: 'El mètode de pagament s’ha actualitzat correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en actualitzar el mètode de pagament.',
+        },
+      },
+      billing: {
+        title: 'Adreça de facturació',
+        item_0: 'Nom',
+        item_1: 'Cognoms',
+        item_2: 'Correu electrònic',
+        item_3: 'Telèfon de contacte',
+        item_4: 'Adreça (carrer i número)',
+        item_5: 'Pis i porta',
+        item_6: 'Codi postal',
+        item_7: 'Localitat',
+        item_8: 'Província',
+        item_9: 'País',
+        item_10: 'NIF',
+        saveButton: 'Desar',
+        editButton: 'Modificar dades',
+        successToast: {
+          title: 'Dades desades!',
+          description: 'Les dades de facturació s’han desat correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en desar les dades.',
+        },
+      },
+      shipping: {
+        title: 'Adreça d’enviament',
+        item_0: 'Nom',
+        item_1: 'Cognoms',
+        item_2: 'Correu electrònic',
+        item_3: 'Telèfon de contacte',
+        item_4: 'Adreça (carrer i número)',
+        item_5: 'Pis i porta',
+        item_6: 'Codi postal',
+        item_7: 'Localitat',
+        item_8: 'Província',
+        item_9: 'País',
+        item_10: 'Notes',
+        saveButton: 'Desar',
+        editButton: 'Modificar dades',
+        successToast: {
+          title: 'Dades desades!',
+          description: 'Les dades d’enviament s’han desat correctament.',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Hi ha hagut un error en desar les dades.',
+        },
+      },
+    },
+  },
 }
