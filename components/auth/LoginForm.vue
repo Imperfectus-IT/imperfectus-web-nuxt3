@@ -60,7 +60,7 @@ const submitLoginForm = async () => {
         <Password
           id="password"
           v-model="userLogin.password"
-          type="password"
+          :toggle-mask="true"
           :feedback="false"
           :placeholder="$t('loginForm.password')"
           :invalid="!!validationErrors?.password?._errors?.length"
