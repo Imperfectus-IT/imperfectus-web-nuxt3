@@ -17,7 +17,7 @@ import { DayMapping } from '~/components/admin/my-subscriptions/DayMapping.ts'
 export const useUpdateSubscriptionHandler = () => {
   const toast = useToast()
   const { successToast, errorToast } = useToastService()
-  const { executeAddSubscriptionCoupon, executeCancelSubscription, executeGiveOrderToFriend, executeCancelDonation, executeDonateToONG, executeSkipAnOrder, executeRemoveSkip, executeRemoveSubscriptionCoupon, executeUpdatePeriodicity, executeUpdatePayment, executeUpdateBillingMeta, executeUpdateShippingMeta, executeUpdateSubscriptionItem, executeAddSubscriptionItem, executePauseSubscription, executeUpdateSubscriptionCoverage, executeUnpauseSubscription } = useUpdateSubscription()
+  const { executeAddSubscriptionCoupon, executeCancelSubscription, executeGiveOrderToFriend, executeCancelDonation, executeDonateToONG, executeSkipAnOrder, executeRemoveSkip, executeRemoveSubscriptionCoupon, executeUpdatePeriodicity, executeUpdatePayment, executeUpdateBillingMeta, executeUpdateShippingMeta, executeUpdateSubscriptionItem, executeAddSubscriptionItem, executeRemoveSubscriptionItem, executePauseSubscription, executeUpdateSubscriptionCoverage, executeUnpauseSubscription } = useUpdateSubscription()
 
   const addSubscriptionCoupon = async (subscriptionId: number, coupon: string, textData: string, t: ComposerTranslation) => {
     try {
@@ -43,6 +43,16 @@ export const useUpdateSubscriptionHandler = () => {
     catch (error) {
       console.log('Error on adding subscription item', error)
       errorToast(toast, t(`${textData}addItem.errorToast.title`), t(`${textData}addItem.errorToast.description`))
+    }
+  }
+  const removeSubscriptionItem = async (itemId: number, textData: string, t: ComposerTranslation) => {
+    try {
+      await executeRemoveSubscriptionItem(itemId)
+      successToast(toast, t(`${textData}removeItem.successToast.title`), t(`${textData}removeItem.successToast.description`))
+    }
+    catch (error) {
+      console.log('Error on removing subscription item', error)
+      errorToast(toast, t(`${textData}removeItem.errorToast.title`), t(`${textData}removeItem.errorToast.description`))
     }
   }
   const cancelSubscription = async (subscriptionId: number, cancelSubscriptionData: CancelSubscriptionPayload, section: string, t: ComposerTranslation) => {
@@ -197,6 +207,7 @@ export const useUpdateSubscriptionHandler = () => {
   return {
     addSubscriptionCoupon,
     addSubscriptionItem,
+    removeSubscriptionItem,
     cancelDonation,
     cancelSubscription,
     donateToONG,

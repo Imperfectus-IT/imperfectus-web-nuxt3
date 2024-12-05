@@ -10,7 +10,9 @@
       :subscription-item="item"
       :preferred-day="props.subscription.preferredDay"
       :subscription-status="props.subscription.status"
+      :show-remove-button="props.canRemoveItem"
       class="mt-4"
+      @remove-item="openRemoveItemModal"
     />
     <Divider class="-mt-0" />
     <Button
@@ -36,8 +38,9 @@ import type { BoxProduct } from '~/composables/shared/products/domain/Product.ts
 
 const props = defineProps<{
   subscription: Subscription
+  canRemoveItem: boolean
 }>()
-const emits = defineEmits(['save-add-item'])
+const emits = defineEmits(['save-add-item', 'remove-item'])
 const isAddFormDisplayed = ref<boolean>(false)
 const displayAddForm = () => {
   isAddFormDisplayed.value = true
@@ -53,5 +56,9 @@ const handleSave = (newItem: addItemPayload) => {
 export type addItemPayload = {
   boxProduct: BoxProduct
   exclusions: number[]
+}
+
+const openRemoveItemModal = (item: SubscriptionItem) => {
+  emits('remove-item', item)
 }
 </script>

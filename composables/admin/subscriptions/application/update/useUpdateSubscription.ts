@@ -14,7 +14,7 @@ import type { CancelSubscriptionPayload } from '~/components/admin/my-subscripti
 
 export const useUpdateSubscription = () => {
   const { subscriptions } = useSubscriptionsState()
-  const { addSubscriptionCoupon, cancelSubscription, cancelDonation, donateToONG, findSubscriptionsByUser, giveOrderToFriend, skipAnOrder, removeSkip, removeSubscriptionCoupon, unpauseSubscription, updateSubscriptionPeriodicity, updateSubscriptionPayment, updateSubscriptionBillingMeta, updateShippingCoverage, updateShippingMeta, updateSubscriptionItem, addSubscriptionItem, pauseSubscription } = useSubscriptionRepository()
+  const { addSubscriptionCoupon, cancelSubscription, cancelDonation, donateToONG, findSubscriptionsByUser, giveOrderToFriend, skipAnOrder, removeSkip, removeSubscriptionCoupon, unpauseSubscription, updateSubscriptionPeriodicity, updateSubscriptionPayment, updateSubscriptionBillingMeta, updateShippingCoverage, updateShippingMeta, updateSubscriptionItem, addSubscriptionItem, removeSubscriptionItem, pauseSubscription } = useSubscriptionRepository()
 
   const executeAddSubscriptionCoupon = async (subscriptionId: number, coupon: string) => {
     await addSubscriptionCoupon(subscriptionId, coupon)
@@ -26,6 +26,10 @@ export const useUpdateSubscription = () => {
   }
   const executeAddSubscriptionItem = async (newSubscriptionItem: addItemPayload, subscriptionId: number) => {
     await addSubscriptionItem(newSubscriptionItem, subscriptionId)
+    return subscriptions.value = await findSubscriptionsByUser()
+  }
+  const executeRemoveSubscriptionItem = async (itemId: number): Promise<Subscription[]> => {
+    await removeSubscriptionItem(itemId)
     return subscriptions.value = await findSubscriptionsByUser()
   }
   const executeDonateToONG = async (body: DonationPayload) => {
@@ -107,6 +111,7 @@ export const useUpdateSubscription = () => {
     executeDonateToONG,
     executeGiveOrderToFriend,
     executeAddSubscriptionItem,
+    executeRemoveSubscriptionItem,
     executePauseSubscription,
     executeSkipAnOrder,
     executeRemoveSkip,

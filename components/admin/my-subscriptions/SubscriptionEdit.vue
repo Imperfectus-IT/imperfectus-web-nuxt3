@@ -53,7 +53,9 @@
     <SubscriptionAddItem
       class="lg:col-start-2 lg:col-span-2 "
       :subscription="subscription"
+      :can-remove-item="canRemoveItem"
       @save-add-item="handleAddSubscriptionItem"
+      @remove-item="handleRemoveSubscriptionItem"
     />
     <div class="flex flex-col gap-3 lg:grid lg:grid-cols-2">
       <SubscriptionBilling
@@ -105,13 +107,16 @@ import type { addItemPayload } from '~/components/admin/my-subscriptions/partial
 import type { PauseSubscriptionPayload } from '~/components/admin/my-subscriptions/partials/SubscriptionPauseModal.vue'
 import type { CancelSubscriptionPayload } from '~/components/admin/my-subscriptions/partials/SubscriptionCancelModal.vue'
 
-const { addSubscriptionCoupon, cancelSubscription, updateBillingMeta, updatePeriodicity, updatePayment, updateSubscriptionItem, addSubscriptionItem, pauseSubscription, unpauseSubscription, updateSubscriptionCoverage, updateShippingMeta, removeSubscriptionCoupon } = useUpdateSubscriptionHandler()
+const { addSubscriptionCoupon, cancelSubscription, updateBillingMeta, updatePeriodicity, updatePayment, updateSubscriptionItem, addSubscriptionItem, removeSubscriptionItem, pauseSubscription, unpauseSubscription, updateSubscriptionCoverage, updateShippingMeta, removeSubscriptionCoupon } = useUpdateSubscriptionHandler()
 const { t } = useI18n()
 const isPauseModalVisible = ref(false)
 const isCancelModalVisible = ref(false)
 const props = defineProps<{
   subscription: Subscription
 }>()
+
+const canRemoveItem = computed(() => props.subscription.status !== 'cancelled' && props.subscription.subscriptionItems.length > 1)
+
 const { getDeliveryDateFromNextPayment } = useGetDeliveryDateFromNextPayment()
 const { executeGetShippingCompanies } = useGetShippingCompanies()
 const { shippingPostCode } = props.subscription.shippingInfo
@@ -156,4 +161,6 @@ const closePauseModal = () => isPauseModalVisible.value = false
 const closeCancelModal = () => isCancelModalVisible.value = false
 const openPauseModal = () => isPauseModalVisible.value = true
 const openCancelModal = () => isCancelModalVisible.value = true
+
+const handleRemoveSubscriptionItem = async (item: SubscriptionItem) => await removeSubscriptionItem(item.id, textData, t)
 </script>

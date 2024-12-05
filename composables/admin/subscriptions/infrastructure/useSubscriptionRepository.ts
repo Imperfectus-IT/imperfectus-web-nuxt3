@@ -25,7 +25,7 @@ import {
 
 export const useSubscriptionRepository = () => {
   const config = useRuntimeConfig()
-  const { update, find, create } = useStrapi()
+  const { update, find, create, delete: remove } = useStrapi()
   const client = useStrapiClient()
 
   const addSubscriptionCoupon = async (subscriptionId: number, coupon: string) => {
@@ -44,6 +44,9 @@ export const useSubscriptionRepository = () => {
       status: 'active',
     }
     return await create('subscription-items', body)
+  }
+  const removeSubscriptionItem = async (itemId: number) => {
+    await remove ('subscription-items', itemId)
   }
   const cancelDonation = async (subscriptionId: number, date: string) => {
     return await client(`/subscriptions/${subscriptionId}/removeDonationOrGift`, { method: 'POST', body: { date } })
@@ -150,6 +153,7 @@ export const useSubscriptionRepository = () => {
   return {
     addSubscriptionCoupon,
     addSubscriptionItem,
+    removeSubscriptionItem,
     cancelDonation,
     cancelSubscription,
     donateToONG,

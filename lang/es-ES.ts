@@ -3812,6 +3812,18 @@ export default {
           description: 'Ha habido un error al añadir la caja',
         },
       },
+      removeItem: {
+        title: 'Eliminar caja de la suscripción',
+        button: 'Eliminar caja',
+        successToast: {
+          title: 'Caja eliminada!',
+          description: 'La caja se ha eliminado correctamente',
+        },
+        errorToast: {
+          title: 'Error!',
+          description: 'Ha habido un error al eliminar la caja',
+        },
+      },
       payment: {
         title: 'Método de pago',
         option_0: 'Tarjeta: {card}',

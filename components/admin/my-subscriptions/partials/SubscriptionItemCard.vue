@@ -1,6 +1,47 @@
 <template>
   <div class="mb-10">
-    <div class="flex flex-row gap-4 mt-2">
+    <Dialog
+      :visible="isRemoveItemDialogVisible"
+      :header="$t('adminSubscriptionItems.deletePromptTitle')"
+      modal
+      :closable="false"
+      :dismissable-mask="true"
+      :pt="{
+        root: 'bg-beige-primary rounded-lg text-green-tertiary lg:w-[800px] lg:px-28 lg:py-10',
+        header: 'font-recoleta-regular text-green-tertiary text-center py-4',
+        title: 'text-[30px]',
+        content: '',
+      }"
+      class="px-6 w-full"
+      @close="closeRemoveItemModal"
+    >
+      <div class="flex flex-col gap-2 mb-10">
+        <p>
+          {{ $t('adminSubscriptionItems.deletePromptMessage') }}
+        </p>
+
+        <strong>{{ getBoxSize(subscriptionItem.sku) }} - {{ getBoxType(subscriptionItem.sku) }}</strong>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-4 mb-6">
+        <Button
+          :label="$t('adminSubscriptionItems.remove')"
+          :pt="{
+            root: 'bg-red-secondary py-3 rounded-lg lg:w-3/4 lg:mx-auto',
+          }"
+          @click="removeItem"
+        />
+        <Button
+          :label="$t('adminSubscriptionItems.deletePromptCancelButton')"
+          :pt="{
+            root: 'text-green-tertiary underline',
+          }"
+          @click="closeRemoveItemModal"
+        />
+      </div>
+    </Dialog>
+
+    <div class="flex flex-col md:flex-row gap-4 mt-2">
       <NuxtImg
         loading="lazy"
         format="webp"
@@ -51,6 +92,18 @@
           />
         </ul>
       </div>
+
+      <div v-if="showRemoveButton && subscriptionStatus === 'active'">
+        <Button
+          severity="success"
+          class="w-full px-4"
+          :pt="{
+            root: 'bg-red-secondary py-3 border-[1px] rounded-lg hover:bg-green-tertiary hover:text-red-secondary lg:mt-auto ',
+          }"
+          :label="$t('adminSubscriptionItems.remove')"
+          @click="openRemoveItemModal"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -86,7 +139,16 @@ const props = defineProps({
     required: false,
     default: false,
   },
+  showRemoveButton: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
+
+const emits = defineEmits(['remove-item'])
+
+const isRemoveItemDialogVisible = ref(false)
 
 const getBoxSize = (sku: string) => {
   return sku.includes('IM')
@@ -114,4 +176,17 @@ const getDeliveryDate = computed(() => {
   const days = DayMapping[props.preferredDay as keyof typeof DayMapping]
   return dayjs(props.nextPayment).add(days, 'days').format('DD-MM-YYYY')
 })
+
+const openRemoveItemModal = () => {
+  isRemoveItemDialogVisible.value = true
+}
+
+const closeRemoveItemModal = () => {
+  isRemoveItemDialogVisible.value = false
+}
+
+const removeItem = () => {
+  emits('remove-item', props.subscriptionItem)
+  closeRemoveItemModal()
+}
 </script>
