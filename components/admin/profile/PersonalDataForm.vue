@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { ref, watch, onMounted, defineProps, defineEmits } from 'vue'
+
 const { personalDataForm, handleUpdatePersonalData } = useUpdatePersonalDataHandler()
 const emit = defineEmits(['on-modify-data'])
-
-const originalData = ref<PersonalData>({ ...personalDataForm.value })
 
 const props = defineProps({
   data: {
@@ -11,8 +11,15 @@ const props = defineProps({
   },
 })
 
+const originalData = ref<PersonalData>({ ...props.data })
+
 onMounted(() => {
   personalDataForm.value = props.data
+})
+
+watch(() => props.data, (newData) => {
+  originalData.value = { ...newData }
+  personalDataForm.value = newData
 })
 
 const onSubmit = async () => {
