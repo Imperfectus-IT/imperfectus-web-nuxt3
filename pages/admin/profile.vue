@@ -23,8 +23,13 @@ defineI18nRoute({
     es: '/mi-cuenta/perfil/',
   },
 })
-const { personalData } = useProfileState()
+const { personalDataForm: personalData } = useUpdatePersonalDataHandler()
 const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle()
+
+const handlePersonalForm = async (newPersonalData: PersonalData) => {
+  handleToggleModifyProfile()
+  personalData.value = newPersonalData
+}
 </script>
 
 <template>
@@ -33,6 +38,7 @@ const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = 
     <div class="grid grid-cols-1 gap-5 lg:gap-0 lg:flex lg:flex-col-2">
       <ImageProfile class="hidden lg:block" />
       <div class="w-full my-auto">
+        <pre>personalData: {{ personalData }}</pre>
         <PersonalData
           v-if="!isModifyingProfile"
           :personal-data="personalData"
@@ -41,7 +47,8 @@ const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = 
         />
         <PersonalDataForm
           v-if="isModifyingProfile"
-          @on-modify-data="handleToggleModifyProfile"
+          :data="personalData"
+          @on-modify-data="handlePersonalForm"
         />
       </div>
     </div>

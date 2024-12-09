@@ -1,9 +1,23 @@
 <script setup lang="ts">
 const { personalDataForm, handleUpdatePersonalData } = useUpdatePersonalDataHandler()
 const emit = defineEmits(['on-modify-data'])
+
+const originalData = ref<PersonalData>({ ...personalDataForm.value })
+
+const props = defineProps({
+  data: {
+    type: Object as PropType<PersonalData>,
+    required: true,
+  },
+})
+
+onMounted(() => {
+  personalDataForm.value = props.data
+})
+
 const onSubmit = async () => {
   await handleUpdatePersonalData()
-  emit('on-modify-data')
+  emit('on-modify-data', personalDataForm.value)
 }
 </script>
 
@@ -47,7 +61,7 @@ const onSubmit = async () => {
           :label="$t('profile.personal_data.cancel_changes_button')"
           :pt="{ label: 'text-md' }"
           outlined
-          @click.prevent="$emit('on-modify-data')"
+          @click.prevent="$emit('on-modify-data', originalData)"
         />
       </div>
     </form>
