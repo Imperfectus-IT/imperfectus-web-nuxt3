@@ -5,13 +5,8 @@ export const useUpdatePersonalData = () => {
   const executeUpdatePersonalData = async (id: number, personalData: PersonalData) => {
     const { user } = useUserState()
     await update(id, personalData)
-    console.info('personalData', personalData)
-    profileData.value = {
-      email: personalData.email,
-      username: personalData.username,
-    }
+    profileData.value = personalData
     user.value = await getUser(id)
-    console.info('profileData', profileData.value)
   }
 
   return {

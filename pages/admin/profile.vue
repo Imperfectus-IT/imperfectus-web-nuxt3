@@ -38,7 +38,6 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
     <div class="grid grid-cols-1 gap-5 lg:gap-0 lg:flex lg:flex-col-2">
       <ImageProfile class="hidden lg:block" />
       <div class="w-full my-auto">
-        <pre>personalData: {{ personalData }}</pre>
         <PersonalData
           v-if="!isModifyingProfile"
           :personal-data="personalData"
