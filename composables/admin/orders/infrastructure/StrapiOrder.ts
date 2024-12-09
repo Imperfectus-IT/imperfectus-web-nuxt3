@@ -1,3 +1,5 @@
+import type { StrapiProduct } from '~/composables/shared/products/infrastructure/StrapiProduct.ts'
+
 export type StrapiOrder = {
   id: number
   order_id: number
@@ -18,10 +20,11 @@ export type StrapiOrder = {
 
 export interface StrapiOrderItem {
   id: number
-  product: BoxProduct
+  product: StrapiProduct
   quantity: number
   status: string
   amount: number
+  final_amount: number
   subscription: number
   weight: number
   image: string | string[]

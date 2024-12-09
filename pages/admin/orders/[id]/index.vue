@@ -34,7 +34,7 @@ useHead({
 
 const { isMobile } = useScreenSize()
 const { activeFruitsItemProducts, activeVegetablesItemProducts } = useProductsState()
-const { orders, executeGetOrdersByUser } = useGetOrdersHandler(t)
+const { orders, executeGetOrdersByUser } = useGetOrdersHandler()
 
 const order: Ref<Order | null> = ref(null)
 const orderId = parseInt(route.params.id as string)

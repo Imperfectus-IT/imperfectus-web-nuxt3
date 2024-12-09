@@ -21,6 +21,7 @@ export interface Order {
 export interface OrderItem {
   id: number
   amount: number
+  finalAmount: number
   sku: string
   exclusions: ItemProduct []
   image: string
@@ -39,6 +40,8 @@ export interface OrderItem {
 export interface Billing {
   state: string
   amount: number
+  saved: number
+  coupon: Coupon | null
   shippingCosts: string
   total: number
 }

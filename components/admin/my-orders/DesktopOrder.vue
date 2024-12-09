@@ -7,7 +7,7 @@
     >
       <Divider class="mt-2 !w-1/2" />
       <p
-        v-if="order.status === 'pending'"
+        v-if="['pending', 'failed'].includes(order.status)"
         class="bg-orange-primary w-1/2 px-2 py-2 rounded-lg "
       >
         {{ $t(`${textData}pending`) }}
@@ -58,11 +58,11 @@
           v-if="order.status !== 'cancelled'"
           class="bottom-3 w-full"
         >
-          <div v-if="isCollapsed && order.status !== 'pending'">
+          <div v-if="isCollapsed && !['pending', 'failed'].includes(order.status)">
             <NuxtLink :to="`/mi-cuenta/pedidos/${order.id}`">
               <Button
                 outlined
-                label="Detalles del pedido"
+                :label="$t(`${textData}details`)"
                 :pt="{ label: 'text-[14px]' }"
                 class="mt-8 w-1/3"
               />
@@ -107,7 +107,7 @@
       </div>
       <OrderCoupon
         v-if="!isCollapsed && (order.status === 'pending' || order.status === 'failed')"
-        :order-coupon="order.orderItems[0].coupon"
+        :order-coupon="order.orderItems[0]?.coupon"
         @add-coupon="handleAddOrderCoupon"
         @remove-coupon="handleRemoveOrderCoupon"
       />
@@ -217,7 +217,7 @@ const handleUpdateOrderBilling = async (meta: OrderBilling) => {
   await updateOrderBilling(meta, props.order.orderMeta, textData)
 }
 const handleRemoveOrderCoupon = async () => {
-  await removeOrderCoupon(props.order, props.order.coupon, textData)
+  await removeOrderCoupon(props.order, props.order.orderItems[0]?.coupon, textData)
 }
 const handleAddOrderCoupon = async (coupon: string) => {
   await addOrderCoupon(props.order, coupon, textData)

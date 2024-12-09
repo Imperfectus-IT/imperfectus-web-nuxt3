@@ -2,27 +2,45 @@
   <Panel
     :header="props.header ? props.header : $t(props.labelKey + '.header')"
   >
-    <div class="flex flex-col !justify-center !h-full">
+    <div class="flex flex-col !justify-center !h-full my-auto text-[14px]">
+      <div class="mt-5">
+        <p>{{ $t(`${props.labelKey}.item_0`) }}</p>
+        <p class="font-bold mt-1">
+          {{ data.state ? $t(`${props.labelKey}.order_paid`) : $t(`${props.labelKey}.order_not_paid`) }}
+        </p>
+      </div>
+      <div class="mt-5">
+        <p>{{ $t(`${props.labelKey}.item_1`) }}</p>
+        <p class="font-bold mt-1">
+          {{ data.amount }}€
+        </p>
+      </div>
       <div
-        v-for="(key, index) in Object.keys(props.data)"
-        :key="index"
-        class="text-[14px] my-auto"
+        v-if="data.coupon"
+        class="mt-5"
       >
-        <Divider v-if="index === Object.keys(props.data).length -1" />
-        <p class="mt-5">
-          {{ $t(`${props.labelKey}.item_${index}`) }}
+        <p>{{ $t(`${props.labelKey}.item_2`) }}</p>
+        <p class="font-bold mt-1">
+          {{ data.coupon.coupon }} ({{ data.coupon.discountValue }}%)
         </p>
-        <p
-          v-if="key === 'state'"
-          class="font-bold mt-1"
-        >
-          {{ getBillingValue(key) ? $t('pages.order.status.payed') : $t('pages.order.status.notPayed') }}
+        <div class="mt-5">
+          <p>{{ $t(`${props.labelKey}.item_3`) }}</p>
+          <p class="font-bold mt-1">
+            {{ data.saved }}€
+          </p>
+        </div>
+      </div>
+      <div class="mt-5">
+        <p>{{ $t(`${props.labelKey}.item_4`) }}</p>
+        <p class="font-bold mt-1">
+          {{ data.shippingCosts ? data.shippingCosts + '€' : $t(`${props.labelKey}.free_shipping`) }}
         </p>
-        <p
-          v-else
-          class="font-bold mt-1"
-        >
-          {{ getBillingValue(key) }} {{ key !== 'state' ? '€' : '' }}
+      </div>
+      <Divider />
+      <div class="mt-2">
+        <p>{{ $t(`${props.labelKey}.item_5`) }}</p>
+        <p class="font-bold mt-1">
+          {{ data.total }}€
         </p>
       </div>
     </div>

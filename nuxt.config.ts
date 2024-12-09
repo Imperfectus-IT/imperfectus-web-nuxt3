@@ -66,26 +66,27 @@ export default defineNuxtConfig({
   },
   hooks: {
     'pages:extend'(pages) {
-      pages.push({
-        name: 'gift-card-payment-completed',
-        path: '/gift-card-payment-completed/',
-        file: '~/pages/gift-card/payment-completed.vue',
-      },
-      {
-        name: 'order-payment-completed',
-        path: '/payment-completed/:slug?',
-        file: '~/pages/order/status.vue',
-      },
-      {
-        name: 'order-payment-failed',
-        path: '/payment-failed/:slug?',
-        file: '~/pages/order/status.vue',
-      },
-      {
-        name: 'payment-added',
-        path: '/add-payment-completed',
-        redirect: '/mi-cuenta/perfil',
-      },
+      pages.push(
+        {
+          name: 'gift-card-payment-completed',
+          path: '/gift-card-payment-completed/',
+          file: '~/pages/gift-card/payment-completed.vue',
+        },
+        {
+          name: 'order-payment-completed',
+          path: '/payment-completed/:slug?',
+          file: '~/pages/order/status.vue',
+        },
+        {
+          name: 'order-payment-failed',
+          path: '/payment-failed/:slug?',
+          file: '~/pages/order/status.vue',
+        },
+        {
+          name: 'payment-added',
+          path: '/add-payment-completed',
+          redirect: '/mi-cuenta/perfil',
+        },
       )
 
       function removePagesMatching(pattern: RegExp, pages: NuxtPage[] = []) {

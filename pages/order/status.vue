@@ -4,10 +4,10 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import MD5 from 'crypto-js/md5'
 
-definePageMeta({
-  layout: 'default',
-  middleware: ['auth'],
-})
+// definePageMeta({
+//   layout: 'default',
+//   middleware: ['auth'],
+// })
 
 const { t } = useI18n()
 const route = useRoute()

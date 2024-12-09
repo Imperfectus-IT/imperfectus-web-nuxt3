@@ -25,7 +25,8 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
           boxType: order_item.product.boxType,
           isActive: order_item.product.isActive,
         },
-        amount: order_item.final_amount ? order_item.final_amount : order_item.amount,
+        amount: order_item.amount,
+        finalAmount: order_item.final_amount,
         sku: order_item.product.SKU,
         image: order_item.product?.imagePath?.[0],
         coupon: order_item.coupon_id
@@ -60,7 +61,9 @@ export const useOrdersFactory = (order: StrapiOrder): Order => {
     }),
     billing: {
       state: order.order_payment.isPaid,
-      amount: order.order_payment.totalAmount,
+      amount: parseFloat((order.order_items.reduce((acc: number, order_item: StrapiOrderItem) => order_item.amount + acc, 0) * 1.02).toFixed(2)),
+      coupon: order.order_items[0]?.coupon_id ? useCouponFactory(order.order_items[0].coupon_id) : null,
+      saved: parseFloat((order.order_payment.totalDiscount * 1.02).toFixed(2)),
       shippingCosts: order.order_shipping_supplements === [] ? '0' : shippingSuplementsAmount(order.order_shipping_supplements),
       total: order.order_payment.totalAmount + shippingSuplementsAmount(order.order_shipping_supplements),
     },
