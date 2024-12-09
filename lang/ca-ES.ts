@@ -1501,34 +1501,24 @@ export default {
 
   // AdminSubscriptionPause
   'adminSubscriptionIsSundayModal.subtitle.bold': 'Tens una comanda en procés.',
-  'adminSubscriptionIsSundayPauseModal.description.1':
-        'Pots pausar la teva subscripció, ',
-  'adminSubscriptionIsSundayPauseModal.description.2.bold':
-        'però la pausa no afectarà a aquesta comanda.',
+  'adminSubscriptionIsSundayPauseModal.description.1': 'Pots pausar la teva subscripció, ',
+  'adminSubscriptionIsSundayPauseModal.description.2.bold': 'però la pausa no afectarà a aquesta comanda.',
   'adminSubscriptionPause.title': 'Pausar subscripció',
-  'adminSubscriptionPause.description.1':
-        'Necessites un descans? Aquí podràs pausar la teva subscripció temporalment y seleccionar fins quina data vols pausar-la. ',
-  'adminSubscriptionPause.description.2.bold':
-        'Mantindràs l\'antiguitat i els beneficis de ser subscriptor antic',
+  'adminSubscriptionPause.description.1': 'Necessites un descans? Aquí podràs pausar la teva subscripció temporalment y seleccionar fins quina data vols pausar-la. ',
+  'adminSubscriptionPause.description.2.bold': 'Mantindràs l\'antiguitat i els beneficis de ser subscriptor antic',
   'adminSubscriptionPause.pause': 'Pausar subscripció',
   'adminSubscriptionPauseModal.title': 'Pausar subscripció',
-  'adminSubscriptionPauseModal.description':
-        'Si el que desitges és cancel·lar algunes entregues, pots fer-ho aquí:',
-  'adminSubscriptionPauseModal.description.extend':
-        'Si per contra, vols pausar la teva subscripció',
+  'adminSubscriptionPauseModal.description': 'Si el que desitges és cancel·lar algunes entregues, pots fer-ho aquí:',
+  'adminSubscriptionPauseModal.description.extend': 'Si per contra, vols pausar la teva subscripció',
   'adminSubscriptionPauseModal.pausedTitle': 'Reactivar subscripció',
-  'adminSubscriptionPauseModal.pausedDescription.1':
-        'La teva subscripció està pausada. Si vols rebre la caixa abans de la data escollida quan la vas pausar, reactiva la subscripció.',
+  'adminSubscriptionPauseModal.pausedDescription.1': 'La teva subscripció està pausada. Si vols rebre la caixa abans de la data escollida quan la vas pausar, reactiva la subscripció.',
   // ++ break tag ++
   'adminSubscriptionPauseModal.pausedDescription.2': 'Pròxima entrega: {date}',
-  'adminSubscriptionPauseModal.datepicker.description':
-        'Després d\'aquesta pausa, quan vols rebre la propera caixa?',
-  'adminSubscriptionPauseModal.datepicker.description.extend':
-        'Selecciona aquí el dia d\'entrega.',
+  'adminSubscriptionPauseModal.datepicker.description': 'Després d\'aquesta pausa, quan vols rebre la propera caixa?',
+  'adminSubscriptionPauseModal.datepicker.description.extend': 'Selecciona aquí el dia d\'entrega.',
   'adminSubscriptionPausedSelect.placeholder': 'Indica el motiu',
   'adminSubscriptionPause.confirmPopup.title': 'Subscripció pausada!',
-  'adminSubscriptionPause.confirmPopup.description':
-        'Et confirmem que hem pausat temporalment la teva subscripció.',
+  'adminSubscriptionPause.confirmPopup.description': 'Et confirmem que hem pausat temporalment la teva subscripció.',
   'adminSubscriptionPause.confirmPopup.nextDeliveryDate': 'Pròxima entrega:',
   'adminSubscriptionPause.confirmPopup.button': 'Acceptar',
 
@@ -1556,7 +1546,7 @@ export default {
         'Si el que vols és cancel·lar alguns lliuraments, pots fer-ho aquí:',
   'cancelSubscriptionModal.infoCancel':
         'Si per contra, vols cancel·lar definitivament la teva subscripció:',
-  'cancelSubscriptionModal.close': 'Tancar',
+  'cancelSubscriptionModal.close': 'Cancel·lar',
   'cancelSubscriptionModal.next': 'Següent',
   'cancelSubscriptionModal.title': 'Cancel·lar subscripció',
   'cancelSubscriptionModalCancelled.title': 'Subscripció cancel·lada',
@@ -3581,6 +3571,121 @@ export default {
         errorToast: {
           title: 'Error!',
           description: 'Hi ha hagut un error en desar les dades.',
+        },
+      },
+      pause: {
+        title: 'Pausar subscripció',
+        description: 'Pausa temporalment la teva subscripció i reactiva-la quan vulguis. Quan la reactivis, mantindràs l’antiguitat i els avantatges de ser subscriptor antic.',
+        paused_description_1: 'La teva subscripció està pausada. Si vols rebre la caixa abans de la data escollida quan la vas pausar, reactiva la subscripció.',
+        paused_description_2: 'Pròxima entrega: {date}',
+        pauseToasts: {
+          successToast: {
+            title: 'Subscripció pausada!',
+            description: 'La subscripció s’ha pausat correctament.',
+          },
+          errorToast: {
+            title: 'Error!',
+            description: 'Hi ha hagut un error en pausar la subscripció.',
+          },
+        },
+        unpauseToasts: {
+          successToast: {
+            title: 'Subscripció reactivada!',
+            description: 'La subscripció s’ha reactivat correctament. La teva pròxima entrega serà el {date}.',
+          },
+          errorToast: {
+            title: 'Error!',
+            description: 'Hi ha hagut un error en reactivar la subscripció.',
+          },
+        },
+        pauseButton: 'Pausar subscripció',
+        unpauseButton: 'Reactivar subscripció',
+        modal: {
+          title: 'Pausar subscripció',
+          paragraph_1: 'Si el que vols és cancel·lar algunes entregues, pots fer-ho aquí:',
+          paragraph_2: 'Si, en canvi, vols pausar la teva subscripció:',
+          placeholder: 'Indica un motiu',
+          option_0: {
+            label: 'Estaré fora per vacances o feina',
+            value: 'awayFromHome',
+          },
+          option_1: {
+            label: 'No estic menjant tanta fruita i verdura',
+            value: 'notEatingAsMuch',
+          },
+          option_2: {
+            label: 'No m’agrada la varietat de fruites i verdures d’aquesta temporada',
+            value: 'dislikedVariety',
+          },
+          option_3: {
+            label: 'No m’ha agradat l’experiència amb l’empresa de transport',
+            value: 'dislikedTransport',
+          },
+          option_4: {
+            label: 'Altres',
+            value: 'other',
+          },
+          cancelButton: 'Cancel·lar',
+          nextButton: 'Següent',
+          upcomingButton: 'Gestionar pròximes entregues',
+          backButton: 'Tornar enrere',
+          processingOrder: 'Tens una comanda en procés',
+        },
+      },
+      cancel: {
+        title: 'Cancel·lar subscripció',
+        description: 'Si no tens intenció de tornar, cancel·la la teva subscripció. Tingues en compte que no la podràs reactivar. Si en un futur vols tornar, hauràs de donar-te d’alta una altra vegada.',
+        cancelledTitle: 'Subscripció cancel·lada',
+        cancelledDescription1: 'Gràcies per ajudar-nos a millorar.',
+        cancelledDescription2: 'Si en un futur vols tornar,',
+        cancelledDescription3: 'hauràs de donar-te d’alta una altra vegada amb una nova subscripció.',
+        button: 'Cancel·lar subscripció',
+        toasts: {
+          successToast: {
+            title: 'Subscripció cancel·lada!',
+            description: 'La subscripció s’ha cancel·lat correctament.',
+          },
+          errorToast: {
+            title: 'Error!',
+            description: 'Hi ha hagut un error en cancel·lar la subscripció.',
+          },
+        },
+        modal: {
+          title: 'Cancel·lar subscripció',
+          paragraph_1: 'Si el que vols és cancel·lar algunes entregues, pots fer-ho aquí:',
+          paragraph_2: 'Si, en canvi, vols cancel·lar definitivament la teva subscripció:',
+          placeholder: 'Indica el motiu',
+          cancelButton: 'Cancel·lar subscripció',
+          closeButton: 'Cancel·lar',
+          upcomingButton: 'Gestionar pròximes entregues',
+          option_0: {
+            label: 'Problemes amb el transport',
+            value: 'transportIssues',
+          },
+          option_1: {
+            label: 'Qualitat no desitjada',
+            value: 'unwantedQuality',
+          },
+          option_2: {
+            label: 'Varietat de les fruites i verdures',
+            value: 'varietyNotRight',
+          },
+          option_3: {
+            label: 'No m’agrada que no pugui personalitzar la caixa',
+            value: 'cantCustomizeBox',
+          },
+          option_4: {
+            label: 'M’agradaria una altra freqüència d’entrega',
+            value: 'frequencyIssue',
+          },
+          option_5: {
+            label: 'Preu massa alt',
+            value: 'pricoTooHigh',
+          },
+          option_6: {
+            label: 'Altres',
+            value: 'other',
+          },
         },
       },
     },

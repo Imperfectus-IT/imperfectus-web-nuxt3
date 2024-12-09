@@ -84,6 +84,12 @@
       @close-modal="closePauseModal"
       @pause-subscription="handlePauseSubscription"
     />
+    <SubscriptionOrderProcessing
+      :is-visible="isOrderProcessingModalVisible"
+      :title="$t('adminSubscriptionPause.title')"
+      @close="closeSubscriptionOrderProcessingModal"
+      @next="continuePauseSubscription"
+    />
     <SubscriptionCancelModal
       :is-visible="isCancelModalVisible"
       @close-modal="closeCancelModal"
@@ -94,6 +100,7 @@
 </template>
 
 <script setup lang='ts'>
+import dayjs from 'dayjs'
 import type {
   Subscription,
   SubscriptionBilling, SubscriptionShipping,
@@ -111,11 +118,14 @@ const { addSubscriptionCoupon, cancelSubscription, updateBillingMeta, updatePeri
 const { t } = useI18n()
 const isPauseModalVisible = ref(false)
 const isCancelModalVisible = ref(false)
+const isOrderProcessingModalVisible = ref(false)
 const props = defineProps<{
   subscription: Subscription
 }>()
 
 const canRemoveItem = computed(() => props.subscription.status !== 'cancelled' && props.subscription.subscriptionItems.length > 1)
+const isSunday = computed(() => dayjs().day() === 0)
+const isTodaySundaySkipped = computed(() => props.subscription.skip.includes(dayjs().format('YYYY-MM-DD')))
 
 const { getDeliveryDateFromNextPayment } = useGetDeliveryDateFromNextPayment()
 const { executeGetShippingCompanies } = useGetShippingCompanies()
@@ -159,8 +169,32 @@ const handleUpdateSubscriptionItem = async (updateSubscriptionItemData: updateSu
 const handleAddSubscriptionItem = async (newSubscriptionItem: addItemPayload) => await addSubscriptionItem(newSubscriptionItem, props.subscription.id, textData, t)
 const closePauseModal = () => isPauseModalVisible.value = false
 const closeCancelModal = () => isCancelModalVisible.value = false
-const openPauseModal = () => isPauseModalVisible.value = true
+
+const openPauseModal = () => {
+  if (isSunday.value) {
+    if (isTodaySundaySkipped.value) {
+      isPauseModalVisible.value = true
+    }
+    else if (!isTodaySundaySkipped.value && props.subscription.frequency === 'weekly') {
+      isOrderProcessingModalVisible.value = true
+    }
+    else if (!isTodaySundaySkipped.value && props.subscription.frequency === 'biweekly') {
+      const isNextPaymentTodayOrInTwoWeeks = props.subscription.nextPayment === dayjs().format('YYYY-MM-DD') || props.subscription.nextPayment === dayjs().add(2, 'week').format('YYYY-MM-DD')
+      isNextPaymentTodayOrInTwoWeeks ? isOrderProcessingModalVisible.value = true : isPauseModalVisible.value = true
+    }
+  }
+  else {
+    isOrderProcessingModalVisible.value = true
+  }
+}
 const openCancelModal = () => isCancelModalVisible.value = true
 
 const handleRemoveSubscriptionItem = async (item: SubscriptionItem) => await removeSubscriptionItem(item.id, textData, t)
+
+const closeSubscriptionOrderProcessingModal = () => isOrderProcessingModalVisible.value = false
+
+const continuePauseSubscription = () => {
+  isOrderProcessingModalVisible.value = false
+  isPauseModalVisible.value = true
+}
 </script>

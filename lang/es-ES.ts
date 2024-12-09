@@ -3943,6 +3943,7 @@ export default {
           nextButton: 'Siguiente',
           upcomingButton: 'Gestionar próximas entregas',
           backButton: 'Volver atrás',
+          processingOrder: 'Tienes un pedido en proceso',
         },
       },
       cancel: {
