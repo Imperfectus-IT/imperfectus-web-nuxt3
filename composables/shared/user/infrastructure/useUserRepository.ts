@@ -3,7 +3,7 @@ import type { DomainUser } from '~/composables/shared/user/types/DomainUser.ts'
 
 export const useUserRepository = () => {
   const client = useStrapiClient()
-  const { update, find } = useStrapi()
+  const { find } = useStrapi()
   const getUser = async (): Promise<DomainUser> => {
     const user = useStrapiUser()
     const id = user.value?.id
