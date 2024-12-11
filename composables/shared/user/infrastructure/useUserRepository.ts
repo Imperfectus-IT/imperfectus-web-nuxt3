@@ -22,9 +22,23 @@ export const useUserRepository = () => {
       body: user,
     })
   }
+
+  const updatePassword = async (oldPassword: string, password: string, newPassword: string) => {
+    await client('/profile/changePassword', {
+      method: 'POST',
+      body: {
+        email: user.email,
+        password: oldPassword,
+        newPassword: password,
+        confirmPassword: newPassword,
+      },
+    })
+  }
+
   return {
     getUser,
     subscribeToNewsletter,
     unsubscribeFromNewsletter,
+    updatePassword,
   }
 }
