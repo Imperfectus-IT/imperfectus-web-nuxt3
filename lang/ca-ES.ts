@@ -1824,17 +1824,15 @@ export default {
   'adminProfileForm.newPassword': 'Nova contrasenya',
   'adminProfileForm.newPasswordConfirmation': 'Confirmar contrasenya',
   'adminProfileForm.update': 'Actualitzar',
-  'adminProfileForm.validationUsernameErrorMessage':
-        'Has de completar aquest camp.',
-  'adminProfileForm.validationPasswordErrorMessage':
-        'La contrasenya ha de tenir com a mínim 8 caràcters, una minúscula, una majúscula, un numero.',
-  'adminProfileForm.validationPasswordMessage': 'La contrasenya és vàlida',
-  'adminProfileForm.validationPasswordConfirmationErrorMessage':
-        'La contrasenya no coincideix',
-  'adminProfileForm.validationPasswordConfirmationMessage':
-        'La contrasenya coincideix',
+  'adminProfileForm.validationUsernameErrorMessage': 'Has de completar aquest camp.',
+  'adminProfileForm.validationPasswordErrorMessage': 'La contrasenya ha de tenir com a mínim 8 caràcters, una minúscula, una majúscula, un numero.',
+  'ainProfileForm.validationPasswordMessage': 'La contrasenya és vàlida',
+  'adminProfileForm.validationPasswordConfirmationErrorMessage': 'La contrasenya no coincideix',
+  'adminProfileForm.validationPasswordConfirmationMessage': 'La contrasenya coincideix',
   'adminProfileForm.dataUpdated': 'Dades actualitzades correctament',
   'adminProfileForm.dataUpdateError': 'Error a l\'actualitzar',
+  'profileForm.validationCurrentPasswordRequired': 'Has de completar aquest camp',
+  'profileForm.validationPasswordErrorMessage': 'La contrasenya ha de tenir com a mínim 8 caràcters, una minúscula, una majúscula, un número',
 
   // AdminCommunicationPreferences
   'adminCommunicationPreferences.title':
@@ -3129,6 +3127,10 @@ export default {
       modify_data_button: 'Modificar dades',
       change_password_button: 'Canviar contrasenya',
       save_changes_button: 'Guardar canvis',
+      cancel_changes_button: 'Cancelar',
+    },
+    password: {
+      save_changes_button: 'Desar canvis',
       cancel_changes_button: 'Cancelar',
     },
     language_preference: {
