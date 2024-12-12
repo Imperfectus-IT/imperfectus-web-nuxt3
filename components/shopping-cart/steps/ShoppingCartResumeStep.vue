@@ -45,6 +45,14 @@ const goBack = () => {
   shoppingCart.value.items.splice(shoppingCart.value.items.length - 1, 1)
   emit(GO_TO_STEP_EVENT, PURCHASE_TYPE_STEP)
 }
+
+const incrementQuantity = (uuid: string) => {
+  shoppingCart.value.items.find(item => item.uuid === uuid).quantity++
+}
+const decrementQuantity = (uuid: string) => {
+  const item = shoppingCart.value.items.find(item => item.uuid === uuid)
+  item.quantity > 1 ? item.quantity-- : ''
+}
 </script>
 
 <template>
@@ -103,11 +111,41 @@ const goBack = () => {
               </li>
             </ul>
           </div>
-          <div class="flex flex-row-reverse justify-between lg:gap-14">
+          <div
+            class="flex flex-row-reverse justify-between px-4 lg:flex-col lg:items-end  lg:gap-14 lg:py-10 "
+          >
             <span
-              class="mdi mdi-close text-red-primary cursor-pointer hidden"
+              v-if="shoppingCart.items.length > 1"
+              class="mdi mdi-close text-red-primary cursor-pointer lg:text-[22px]"
               @click.prevent="removeItem(item.uuid)"
             />
+            <div class="flex gap-2 mt-auto mb-0">
+              <Button
+                icon="mdi mdi-minus"
+                outlined
+                :pt="{
+                  root: ['h-2 w-7'],
+                }"
+                :pt-options="{
+                  mergeSections: true,
+                  mergeProps: true,
+                }"
+                @click.prevent="decrementQuantity(item.uuid)"
+              />
+              <span>{{ item.quantity }}</span>
+              <Button
+                icon="mdi mdi-plus"
+                outlined
+                :pt="{
+                  root: ['h-4 w-7'],
+                }"
+                :pt-options="{
+                  mergeSections: true,
+                  mergeProps: true,
+                }"
+                @click.prevent="incrementQuantity(item.uuid)"
+              />
+            </div>
           </div>
           <Divider class="text-grey-secondary" />
         </div>
