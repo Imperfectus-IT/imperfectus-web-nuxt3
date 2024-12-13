@@ -23,11 +23,11 @@ export const useUserRepository = () => {
     })
   }
 
-  const updatePassword = async (oldPassword: string, password: string, newPassword: string) => {
+  const updatePassword = async (oldPassword: string, password: string, newPassword: string, email: string) => {
     await client('/profile/changePassword', {
       method: 'POST',
       body: {
-        email: user.email,
+        email: email,
         password: oldPassword,
         newPassword: password,
         confirmPassword: newPassword,

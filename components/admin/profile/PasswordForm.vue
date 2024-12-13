@@ -4,8 +4,9 @@ import { useI18n } from 'vue-i18n'
 import { useProfilePasswordValidator } from '@/composables/admin/orders/domain/useProfilePasswordValidator'
 
 const { t } = useI18n()
+const { personalData } = useProfileState()
 const { validationErrorsProfilePassword, validateSchemaProfilePassword } = useProfilePasswordValidator()
-
+const { updatePassword } = useUpdatePassword()
 const emits = defineEmits(['on-cancel', 'on-modify-password'])
 
 const form = ref({
@@ -20,13 +21,28 @@ const handleSubmit = async () => {
     newPassword: form.value.newPassword,
     confirmPassword: form.value.newPasswordConfirmation,
   })
+
+  if (!validationErrorsProfilePassword.value) {
+    await updatePassword(
+      form.value.currentPassword,
+      form.value.newPassword,
+      form.value.newPasswordConfirmation,
+      personalData.value.email,
+    )
+    resetForm()
+    emits('on-modify-password')
+  }
 }
 
 const handleCancel = () => {
+  resetForm()
+  emits('on-cancel')
+}
+
+const resetForm = () => {
   form.value.currentPassword = ''
   form.value.newPassword = ''
   form.value.newPasswordConfirmation = ''
-  emits('on-cancel')
 }
 
 const getFirstError = (errors) => {
