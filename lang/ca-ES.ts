@@ -1830,6 +1830,8 @@ export default {
   'adminProfileForm.validationPasswordConfirmationErrorMessage': 'La contrasenya no coincideix',
   'adminProfileForm.validationPasswordConfirmationMessage': 'La contrasenya coincideix',
   'adminProfileForm.dataUpdated': 'Dades actualitzades correctament',
+  'adminProfileForm.passwordUpdated': 'Contrasenya actualitzada',
+  'adminProfileForm.passwordUpdatedSuccess': 'Contrasenya actualitzada correctament',
   'adminProfileForm.dataUpdateError': 'Error a l\'actualitzar',
   'profileForm.validationCurrentPasswordRequired': 'Has de completar aquest camp',
   'profileForm.validationPasswordErrorMessage': 'La contrasenya ha de tenir com a mínim 8 caràcters, una minúscula, una majúscula, un número',

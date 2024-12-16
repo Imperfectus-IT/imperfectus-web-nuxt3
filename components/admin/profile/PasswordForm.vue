@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useToast } from 'primevue/usetoast'
 import { useProfilePasswordValidator } from '@/composables/admin/orders/domain/useProfilePasswordValidator'
 
 const { t } = useI18n()
+const toast = useToast()
+const { successToast } = useToastService()
 const { personalData } = useProfileState()
 const { validationErrorsProfilePassword, validateSchemaProfilePassword } = useProfilePasswordValidator()
 const { updatePassword } = useUpdatePassword()
@@ -32,6 +35,12 @@ const handleSubmit = async () => {
       )
       resetForm()
       emits('on-modify-password')
+
+      successToast(
+        toast,
+        t('adminProfileForm.passwordUpdated'),
+        t('adminProfileForm.passwordUpdatedSuccess'),
+      )
     }
     catch (error) {
       console.error('Error updating password:', error)
