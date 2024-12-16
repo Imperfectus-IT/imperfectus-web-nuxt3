@@ -1830,6 +1830,8 @@ export default {
   'adminProfileForm.validationPasswordConfirmationErrorMessage': 'La contrasenya no coincideix',
   'adminProfileForm.validationPasswordConfirmationMessage': 'La contrasenya coincideix',
   'adminProfileForm.dataUpdated': 'Dades actualitzades correctament',
+  'adminProfileForm.passwordUpdated': 'Contrasenya actualitzada',
+  'adminProfileForm.passwordUpdatedSuccess': 'Contrasenya actualitzada correctament',
   'adminProfileForm.dataUpdateError': 'Error a l\'actualitzar',
   'adminProfileForm.preferredProducts.title': 'Productes preferits',
   'profileForm.validationCurrentPasswordRequired': 'Has de completar aquest camp',

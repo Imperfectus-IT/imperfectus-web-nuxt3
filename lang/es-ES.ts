@@ -1869,6 +1869,8 @@ export default {
     'La contraseña coincide',
   'adminProfileForm.dataUpdated': 'Datos actualizados correctamente',
   'adminProfileForm.dataUpdateError': 'Error al actualizar',
+  'adminProfileForm.passwordUpdated': 'Contraseña actualizada',
+  'adminProfileForm.passwordUpdatedSuccess': 'Contraseña actualizada correctamente',
   'profileForm.validationCurrentPasswordRequired': 'Debes completar este campo',
   'profileForm.validationPasswordErrorMessage': 'La contraseña debe tener como minimo 8 caracteres, una minuscula, una mayuscula, un numero.',
   'adminProfileForm.preferredProducts.title': 'Productos preferidos',

@@ -60,7 +60,7 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
           class="mt-5"
           :email="user.email"
           @on-cancel="handleToggleModifyPassword"
-          @on-modify-password="handleToggleModifyProfile"
+          @on-modify-password="handleToggleModifyPassword"
         />
       </div>
     </div>
