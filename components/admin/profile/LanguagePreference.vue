@@ -50,6 +50,7 @@ const { handleUpdateLanguage } = useUpdateProfileLanguageHandler()
 const { isOpen, handleToggle } = useToggle()
 const updateLanguage = async () => {
   await handleUpdateLanguage(props.user.id, selectedLanguage.value)
+  isOpen.value = false
 }
 
 watch(() => props.user, (newValue) => {

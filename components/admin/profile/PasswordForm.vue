@@ -28,20 +28,12 @@ const handleSubmit = async () => {
   })
 
   if (!validationErrorsProfilePassword.value) {
-    await updatePassword(
-      form.value.currentPassword,
-      form.value.newPassword,
-      form.value.newPasswordConfirmation,
-      props.email,
-    )
-    resetForm()
-    emits('on-modify-password')
     try {
       await updatePassword(
         form.value.currentPassword,
         form.value.newPassword,
         form.value.newPasswordConfirmation,
-        personalData.value.email,
+        props.email,
       )
       resetForm()
       emits('on-modify-password')

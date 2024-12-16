@@ -53,6 +53,7 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
           v-if="isModifyingProfile"
           :user="user"
           @on-modify-data="handlePersonalForm"
+          @on-cancel="handleToggleModifyProfile"
         />
 
         <PasswordForm

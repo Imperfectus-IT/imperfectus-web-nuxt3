@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['on-modify-data'])
+const emit = defineEmits(['on-modify-data', 'on-cancel'])
 
 const props = defineProps<{
   user: User
@@ -60,7 +60,7 @@ const onSubmit = async () => {
           :label="$t('profile.personal_data.cancel_changes_button')"
           :pt="{ label: 'text-md' }"
           outlined
-          @click.prevent="$emit('on-modify-data', originalData)"
+          @click.prevent="emit('on-cancel')"
         />
       </div>
     </form>
