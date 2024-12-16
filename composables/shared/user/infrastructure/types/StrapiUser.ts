@@ -5,11 +5,11 @@ export type StrapiUser = {
   provider: string
   confirmed: boolean
   blocked: any
-  role: number
+  role: { id: number, name: string }
   created_at: string
   updated_at: string
   user_id: number
-  language: string
+  language: ProfileLanguage
   ref: string
   type: string
   company: any
@@ -21,4 +21,5 @@ export type StrapiUser = {
   device_tokens: string[]
   first_connection_date_app: string
   last_connection_date_app: string
+  preferred_products: { vegetables: number[], fruits: number[] }
 }

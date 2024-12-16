@@ -1831,6 +1831,7 @@ export default {
   'adminProfileForm.validationPasswordConfirmationMessage': 'La contrasenya coincideix',
   'adminProfileForm.dataUpdated': 'Dades actualitzades correctament',
   'adminProfileForm.dataUpdateError': 'Error a l\'actualitzar',
+  'adminProfileForm.preferredProducts.title': 'Productes preferits',
   'profileForm.validationCurrentPasswordRequired': 'Has de completar aquest camp',
   'profileForm.validationPasswordErrorMessage': 'La contrasenya ha de tenir com a mínim 8 caràcters, una minúscula, una majúscula, un número',
 

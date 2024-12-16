@@ -1,5 +1,5 @@
 export type ProfileLanguage = {
-  language: 'es' | 'ca'
+  language: 'es' | 'ca' | 'pt'
 }
 
 export type ProfileLanguages = {
@@ -8,7 +8,7 @@ export type ProfileLanguages = {
 }
 
 export interface PersonalData {
-  username?: string
+  username: string
   email: string
 }
 

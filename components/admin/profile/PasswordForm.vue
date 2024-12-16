@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useProfilePasswordValidator } from '@/composables/admin/orders/domain/useProfilePasswordValidator'
-
 const { t } = useI18n()
-const { personalData } = useProfileState()
 const { validationErrorsProfilePassword, validateSchemaProfilePassword } = useProfilePasswordValidator()
 const { updatePassword } = useUpdatePassword()
 const emits = defineEmits(['on-cancel', 'on-modify-password'])
+const props = defineProps<{
+  email: string
+}>()
 
 const form = ref({
   currentPassword: '',
@@ -27,7 +25,7 @@ const handleSubmit = async () => {
       form.value.currentPassword,
       form.value.newPassword,
       form.value.newPasswordConfirmation,
-      personalData.value.email,
+      props.email,
     )
     resetForm()
     emits('on-modify-password')

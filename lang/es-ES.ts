@@ -1871,6 +1871,7 @@ export default {
   'adminProfileForm.dataUpdateError': 'Error al actualizar',
   'profileForm.validationCurrentPasswordRequired': 'Debes completar este campo',
   'profileForm.validationPasswordErrorMessage': 'La contraseña debe tener como minimo 8 caracteres, una minuscula, una mayuscula, un numero.',
+  'adminProfileForm.preferredProducts.title': 'Productos preferidos',
 
   // AdminCommunicationPreferences
   'adminCommunicationPreferences.title':

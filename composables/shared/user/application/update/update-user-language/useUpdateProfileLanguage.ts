@@ -1,7 +1,9 @@
 export const useUpdateProfileLanguage = () => {
-  const { update } = useProfileLanguageRepository()
+  const { updateLanguage, getUser } = useUserRepository()
+  const { user } = useUserState()
   const executeUpdateProfileLanguage = async (id: number, language: ProfileLanguage): Promise<void> => {
-    await update(id, language)
+    await updateLanguage(id, language)
+    user.value = await getUser()
   }
 
   return { executeUpdateProfileLanguage }

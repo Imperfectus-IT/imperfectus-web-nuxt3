@@ -14,7 +14,7 @@
         v-if="isOpen"
         v-model="selectedLanguage"
         class="mt-4"
-        :options="languages"
+        :options="availableLanguages"
         option-label="name"
         option-value="code"
       />
@@ -24,7 +24,7 @@
           :label="$t('profile.language_preference.save_modify_language_button')"
           :pt="{ label: 'text-[16px] px-1' }"
           outlined
-          @click.prevent="handleUpdateLanguage"
+          @click.prevent="updateLanguage"
         />
         <Button
           :label="isOpen ? $t('profile.language_preference.cancel_modify_language_button') : $t('profile.language_preference.modify_language_button')"
@@ -38,8 +38,21 @@
 </template>
 
 <script setup lang="ts">
-const { selectedLanguage } = useProfileState()
-const { languages } = useGetAllLanguagesHandler()
-const { isOpen, handleToggle } = useToggle()
+import {
+  useUpdateProfileLanguageHandler,
+} from '~/composables/shared/user/application/update/update-user-language/useUpdateProfileLanguageHandler.ts'
+
+const props = defineProps<{
+  user: User
+}>()
+const selectedLanguage = ref<ProfileLanguage>(props.user?.language as ProfileLanguage)
 const { handleUpdateLanguage } = useUpdateProfileLanguageHandler()
+const { isOpen, handleToggle } = useToggle()
+const updateLanguage = async () => {
+  await handleUpdateLanguage(props.user.id, selectedLanguage.value)
+}
+
+watch(() => props.user, (newValue) => {
+  selectedLanguage.value = newValue.language as ProfileLanguage
+})
 </script>

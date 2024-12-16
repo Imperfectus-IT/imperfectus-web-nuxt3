@@ -1,21 +1,19 @@
 export const useUpdateProfileLanguageHandler = () => {
   const { t } = useI18n()
   const toast = useToast()
-  const handleUpdateLanguage = async (): Promise<void> => {
-    const { selectedLanguage } = useProfileState()
-    const user = useStrapiUser()
+  const handleUpdateLanguage = async (userId: number, language: ProfileLanguage): Promise<void> => {
     const { executeUpdateProfileLanguage } = useUpdateProfileLanguage()
     const { successToast, errorToast } = useToastService()
     const { handleToggle } = useToggle()
 
     try {
-      await executeUpdateProfileLanguage(Number(user?.value?.id), selectedLanguage.value)
+      await executeUpdateProfileLanguage(userId, language)
       successToast(toast, t('adminProfileForm.languagePreference'), t('adminProfileForm.dataUpdated'))
       handleToggle()
     }
     catch (e) {
       console.error(e)
-      errorToast(toast, t('profile.payment.deleteModal.title'), e)
+      errorToast(toast, t('profile.payment.deleteModal.title'), 'error')
       handleToggle()
     }
   }

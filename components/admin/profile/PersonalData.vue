@@ -1,26 +1,27 @@
 <script setup lang="ts">
-const { personalData } = defineProps<{
-  personalData: PersonalData
+const props = defineProps<{
+  user: User
 }>()
 
 const emit = defineEmits(['on-modify-data', 'on-modify-password'])
 
-const items = [
+const items = computed(() => [
   {
     id: useId(),
-    label: personalData.username,
+    label: props.user?.username || 'N/A',
     icon: 'mdi mdi-account-circle-outline',
   },
   {
     id: useId(),
-    label: personalData.email,
+    label: props.user?.email || 'N/A',
     icon: 'mdi mdi-email-outline',
   },
-]
+])
 </script>
 
 <template>
   <Panel
+    v-if="props.user.email"
     :header="$t('adminProfileForm.title')"
     class="lg:w-full"
     :pt="{
@@ -44,7 +45,7 @@ const items = [
         :label="$t('profile.personal_data.modify_data_button')"
         :pt="{ label: 'text-md' }"
         outlined
-        @click.prevent="emit('on-modify-data', personalData)"
+        @click.prevent="emit('on-modify-data')"
       />
       <Button
         class="w-[11.5rem] h-[3.125rem]"

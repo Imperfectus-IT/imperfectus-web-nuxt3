@@ -13,6 +13,7 @@ export const useUserFactory = (user: StrapiUser): User => {
     language: user.language,
     whatsappInfoComm: user.whatsappInfoComm,
     marketingInfoComm: user.marketingInfoComm,
+    preferredProducts: user.preferred_products,
   }
 }
 
@@ -28,6 +29,10 @@ export const emptyUser = (): User => {
     company: null,
     whatsappInfoComm: false,
     marketingInfoComm: false,
-    language: '',
+    language: 'es',
+    preferredProducts: {
+      fruits: [],
+      vegetables: [],
+    },
   }
 }

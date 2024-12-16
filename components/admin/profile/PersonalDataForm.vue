@@ -1,30 +1,22 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, defineProps, defineEmits } from 'vue'
-
-const { personalDataForm, handleUpdatePersonalData } = useUpdatePersonalDataHandler()
 const emit = defineEmits(['on-modify-data'])
 
-const props = defineProps({
-  data: {
-    type: Object as PropType<PersonalData>,
-    required: true,
-  },
+const props = defineProps<{
+  user: User
+}>()
+
+const originalData = reactive<PersonalData>({
+  username: props.user?.username,
+  email: props.user?.email,
 })
 
-const originalData = ref<PersonalData>({ ...props.data })
-
-onMounted(() => {
-  personalDataForm.value = props.data
-})
-
-watch(() => props.data, (newData) => {
-  originalData.value = { ...newData }
-  personalDataForm.value = newData
+watch(() => props.user, (newUser) => {
+  originalData.username = newUser.username
+  originalData.email = newUser.email
 })
 
 const onSubmit = async () => {
-  await handleUpdatePersonalData()
-  emit('on-modify-data', personalDataForm.value)
+  emit('on-modify-data', originalData)
 }
 </script>
 
@@ -41,7 +33,7 @@ const onSubmit = async () => {
         <label for="username">{{ $t('adminProfileForm.username') }}</label>
         <InputText
           id="username"
-          v-model="personalDataForm.username"
+          v-model="originalData.username"
           class="rounded-md"
           aria-describedby="username"
         />
@@ -50,7 +42,7 @@ const onSubmit = async () => {
         <label for="username">{{ $t('adminProfileForm.email') }}</label>
         <InputText
           id="email"
-          v-model="personalDataForm.email"
+          v-model="originalData.email"
           class="rounded-md"
           aria-describedby="email"
         />

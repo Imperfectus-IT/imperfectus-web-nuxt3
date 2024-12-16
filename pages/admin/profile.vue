@@ -23,13 +23,15 @@ defineI18nRoute({
     es: '/mi-cuenta/perfil/',
   },
 })
-const { personalDataForm: personalData } = useUpdatePersonalDataHandler()
+
+const { user } = useUserState()
+const { handleUpdatePersonalData } = useUpdatePersonalDataHandler()
 const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle()
 const { isOpen: isModifyingPassword, handleToggle: handleToggleModifyPassword } = useToggle()
 
 const handlePersonalForm = async (newPersonalData: PersonalData) => {
+  await handleUpdatePersonalData(user.value.id, newPersonalData)
   handleToggleModifyProfile()
-  personalData.value = newPersonalData
 }
 </script>
 
@@ -41,7 +43,7 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
       <div class="w-full my-auto">
         <PersonalData
           v-if="!isModifyingProfile && !isModifyingPassword"
-          :personal-data="personalData"
+          :user="user"
           class="mt-6 lg:mt-0"
           @on-modify-data="handleToggleModifyProfile"
           @on-modify-password="handleToggleModifyPassword"
@@ -49,23 +51,27 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
 
         <PersonalDataForm
           v-if="isModifyingProfile"
-          :data="personalData"
+          :user="user"
           @on-modify-data="handlePersonalForm"
         />
 
         <PasswordForm
           v-if="isModifyingPassword"
           class="mt-5"
+          :email="user.email"
           @on-cancel="handleToggleModifyPassword"
           @on-modify-password="handleToggleModifyProfile"
         />
       </div>
     </div>
     <div class="w-full">
-      <LanguagePreference class="mt-5 lg:mt-10" />
+      <LanguagePreference
+        :user="user"
+        class="mt-5 lg:mt-10"
+      />
       <PaymentMethodCard class="mt-5 lg:mt-10" />
-      <!--      <AddressProfile class="mt-5 lg:mt-10" /> -->
     </div>
-    <PreferredProducts />
+    <PreferredProducts :user="user" />
   </section>
+  <Toast />
 </template>

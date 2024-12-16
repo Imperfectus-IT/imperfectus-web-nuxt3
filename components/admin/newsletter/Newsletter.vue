@@ -28,11 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import { useUpdateUser } from '~/composables/shared/user/application/update/useUpdateUser.ts'
 import { useUserState } from '~/composables/shared/user/application/useUserState.ts'
 
 const { user } = useUserState()
-const { executeSubscribeToNewsletter, executeUnsubscribeFromNewsletter } = useUpdateUser()
+const { executeSubscribeToNewsletter } = useSubscribeToNewsletter()
+const { executeUnsubscribeFromNewsletter } = useUnsubscribeFromNewsletter()
 const textData = 'newsletter.'
 const handleSubscribeToNewsletter = async () => await executeSubscribeToNewsletter(user.value)
 const handleUnsubscribeToNewsletter = async () => await executeUnsubscribeFromNewsletter(user.value)
