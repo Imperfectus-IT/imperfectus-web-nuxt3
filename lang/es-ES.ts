@@ -1869,6 +1869,8 @@ export default {
     'La contraseña coincide',
   'adminProfileForm.dataUpdated': 'Datos actualizados correctamente',
   'adminProfileForm.dataUpdateError': 'Error al actualizar',
+  'profileForm.validationCurrentPasswordRequired': 'Debes completar este campo',
+  'profileForm.validationPasswordErrorMessage': 'La contraseña debe tener como minimo 8 caracteres, una minuscula, una mayuscula, un numero.',
 
   // AdminCommunicationPreferences
   'adminCommunicationPreferences.title':
@@ -3290,6 +3292,10 @@ export default {
     personal_data: {
       modify_data_button: 'Modificar datos',
       change_password_button: 'Cambiar contraseña',
+      save_changes_button: 'Guardar cambios',
+      cancel_changes_button: 'Cancelar',
+    },
+    password: {
       save_changes_button: 'Guardar cambios',
       cancel_changes_button: 'Cancelar',
     },

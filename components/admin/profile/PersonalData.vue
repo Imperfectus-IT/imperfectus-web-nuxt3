@@ -3,6 +3,8 @@ const { personalData } = defineProps<{
   personalData: PersonalData
 }>()
 
+const emit = defineEmits(['on-modify-data', 'on-modify-password'])
+
 const items = [
   {
     id: useId(),
@@ -42,13 +44,14 @@ const items = [
         :label="$t('profile.personal_data.modify_data_button')"
         :pt="{ label: 'text-md' }"
         outlined
-        @click.prevent="$emit('on-modify-data', personalData)"
+        @click.prevent="emit('on-modify-data', personalData)"
       />
       <Button
         class="w-[11.5rem] h-[3.125rem]"
         :label="$t('profile.personal_data.change_password_button')"
         :pt="{ label: 'text-md' }"
         outlined
+        @click.prevent="emit('on-modify-password')"
       />
     </div>
   </Panel>

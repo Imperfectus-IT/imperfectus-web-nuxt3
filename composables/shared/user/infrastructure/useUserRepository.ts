@@ -3,7 +3,7 @@ import type { DomainUser } from '~/composables/shared/user/types/DomainUser.ts'
 
 export const useUserRepository = () => {
   const client = useStrapiClient()
-  const { update, find } = useStrapi()
+  const { find } = useStrapi()
   const getUser = async (): Promise<DomainUser> => {
     const user = useStrapiUser()
     const id = user.value?.id
@@ -22,9 +22,23 @@ export const useUserRepository = () => {
       body: user,
     })
   }
+
+  const updatePassword = async (oldPassword: string, password: string, newPassword: string, email: string) => {
+    await client('/profile/changePassword', {
+      method: 'POST',
+      body: {
+        email: email,
+        password: oldPassword,
+        newPassword: password,
+        confirmPassword: newPassword,
+      },
+    })
+  }
+
   return {
     getUser,
     subscribeToNewsletter,
     unsubscribeFromNewsletter,
+    updatePassword,
   }
 }

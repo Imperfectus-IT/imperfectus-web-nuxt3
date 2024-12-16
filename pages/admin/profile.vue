@@ -25,6 +25,7 @@ defineI18nRoute({
 })
 const { personalDataForm: personalData } = useUpdatePersonalDataHandler()
 const { isOpen: isModifyingProfile, handleToggle: handleToggleModifyProfile } = useToggle()
+const { isOpen: isModifyingPassword, handleToggle: handleToggleModifyPassword } = useToggle()
 
 const handlePersonalForm = async (newPersonalData: PersonalData) => {
   handleToggleModifyProfile()
@@ -39,15 +40,24 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
       <ImageProfile class="hidden lg:block" />
       <div class="w-full my-auto">
         <PersonalData
-          v-if="!isModifyingProfile"
+          v-if="!isModifyingProfile && !isModifyingPassword"
           :personal-data="personalData"
           class="mt-6 lg:mt-0"
           @on-modify-data="handleToggleModifyProfile"
+          @on-modify-password="handleToggleModifyPassword"
         />
+
         <PersonalDataForm
           v-if="isModifyingProfile"
           :data="personalData"
           @on-modify-data="handlePersonalForm"
+        />
+
+        <PasswordForm
+          v-if="isModifyingPassword"
+          class="mt-5"
+          @on-cancel="handleToggleModifyPassword"
+          @on-modify-password="handleToggleModifyProfile"
         />
       </div>
     </div>
