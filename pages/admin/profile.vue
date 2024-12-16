@@ -57,7 +57,7 @@ const handlePersonalForm = async (newPersonalData: PersonalData) => {
           v-if="isModifyingPassword"
           class="mt-5"
           @on-cancel="handleToggleModifyPassword"
-          @on-modify-password="handleToggleModifyProfile"
+          @on-modify-password="handleToggleModifyPassword"
         />
       </div>
     </div>
