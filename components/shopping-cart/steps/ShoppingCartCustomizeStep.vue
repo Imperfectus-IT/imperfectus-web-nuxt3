@@ -22,6 +22,10 @@ const boxTypeImages = {
     src: '/images/boxes/imBox/IMVG_1.webp',
     alt: t('string.box.vegetables'),
   },
+  [ORANGE_BOX_TYPE]: {
+    src: '/images/boxes/orange/IM.webp',
+    alt: t('string.box.vegetables'),
+  },
 }
 const productExclusions = computed(() => {
   const mixedProducts = [...vegetablesItemProducts.value, ...fruitsItemProducts.value]
@@ -37,7 +41,7 @@ const nexStep = () => {
 
 <template>
   <ShoppingCartPurchaseSummaryFloating class="hidden lg:block lg:w-1/5 lg:absolute lg:right-0 lg:z-10" />
-  <div class="px-8 md:px-[28%] lg:px-[25%] 2xl:px-[30%]">
+  <div class="px-8 md:px-[28%] lg:px-[20%] 2xl:px-[24%]">
     <div class="flex items-center gap-5">
       <div class="lg:absolute lg:left-[35px] flex flex-row gap-3 lg:mt-3">
         <Button
@@ -104,8 +108,16 @@ const nexStep = () => {
         format="webp"
         preload
       />
+      <Button
+        :class="['text-xl w-2/3', activeButtonSelected(ORANGE_BOX_TYPE)]"
+        :label="$t('boxes.type.oranges')"
+        :icon="isSelectedBox(ORANGE_BOX_TYPE) ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'"
+        icon-pos="right"
+        outlined
+        @click.prevent="setBoxType(ORANGE_BOX_TYPE)"
+      />
       <NuxtImg
-        v-if="isSelectedBox(STONE_FRUITS_BOX_TYPE)"
+        v-if="isSelectedBox(ORANGE_BOX_TYPE)"
         class="rounded-lg lg:hidden"
         :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
         :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
@@ -119,10 +131,9 @@ const nexStep = () => {
       :src="boxTypeImages[shoppingCart.currentItem.boxType].src"
       :alt="boxTypeImages[shoppingCart.currentItem.boxType].alt"
       format="webp"
-      preload
     />
     <ShoppingCartBoxTypeExclusions
-      v-if="shoppingCart.currentItem.boxType && shoppingCart.currentItem.boxType !== STONE_FRUITS_BOX_TYPE"
+      v-if="shoppingCart.currentItem.boxType && shoppingCart.currentItem.boxType !== ORANGE_BOX_TYPE"
       :product-exclusions="productExclusions"
     />
     <div class="text-center mt-6">

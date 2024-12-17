@@ -24,9 +24,8 @@
       :selected-box="boxSelected.orange"
       card-order="1"
       carousel-order="2"
-      @update-item-on-parent="
-        (payload: SelectedOrangeBox) => updateSelectedBox(payload)
-      "
+      @update-item-on-parent="updateSelectedBox"
+      @create-shopping-cart="handleCreatePresetShoppingCart"
     />
 
     <TKCarousel
@@ -44,6 +43,7 @@
 import { useI18n } from 'vue-i18n'
 import type { OrangeBoxImages } from './types/OrangeBoxImages'
 import type { SelectedOrangeBox } from './types/OrangeBoxSelected'
+import type { SelectedBox } from '~/components/boxes/types/BoxSelected.ts'
 
 const { t } = useI18n()
 
@@ -75,47 +75,62 @@ onBeforeUnmount(() => {
 
 const displayDesktop = computed(() => windowWidth.value > 768)
 
-const orangeBoxData = {
-  s: {
-    title: t('content.home.ourBoxes.item0.title'),
-    description: t('boxes.our-boxes.oranges-box.description.2'),
-    price: '18.00€',
-  },
-  im: {
-    title: t('content.home.ourBoxes.item1.title'),
-    description: t('boxes.our-boxes.oranges-box.description.2'),
-    price: '22.00€',
-  },
-  xl: {
-    title: t('content.home.ourBoxes.item2.title'),
-    description: t('boxes.our-boxes.oranges-box.description.2'),
-    price: '30.00€',
-  },
+const { shoppingCart } = useShoppingCartState()
+const { setShoppingCart } = useLocalStorageShoppingCartRepository()
+const { activeBoxProducts } = useProductsState()
+const router = useRouter()
+const localePath = useLocalePath()
+
+const handleCreatePresetShoppingCart = (payload: SelectedBox) => {
+  const size = payload.content === 'SOrange' ? 'S' : payload.content === 'IMOrange' ? 'IM' : 'XL'
+  payload = {
+    ...payload,
+    content: 'orange',
+  }
+  const boxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === `${size}R1Orange`) as BoxProduct
+  const phurcaseType = payload.frequency === 'once' ? 'order' : 'subscription'
+  shoppingCart.value = createPreselectedShoppingCart(size, payload, phurcaseType, boxProduct)
+  setShoppingCart(shoppingCart.value)
+  router.push(localePath('order'))
 }
+
+const orangeBoxProducts = computed(() => activeBoxProducts.value.filter((product: BoxProduct) => product.sku.includes('R1Orange')))
+
+const orangeBoxData = computed(() => {
+  return orangeBoxProducts.value.map((product: BoxProduct) => {
+    return {
+      title: product.nameEs,
+      description: product.descriptionEs,
+      price: product.price + '€',
+      sku: product.sku,
+    }
+  })
+})
 
 const boxSelected = reactive({
   orange: {
-    content: 'IM',
+    content: 'IMOrange',
     frequency: 'weekly',
     units: 1,
   },
 })
 
 const getCardData = computed(() => {
-  if (boxSelected.orange.content === 'S') {
-    return orangeBoxData.s
+  const defaultCardData = { title: '', description: '', price: '', sku: '' }
+  if (boxSelected.orange.content === 'SOrange') {
+    return orangeBoxData.value.find(product => product.sku === 'SR1Orange') || defaultCardData
   }
-  else if (boxSelected.orange.content === 'IM') {
-    return orangeBoxData.im
+  else if (boxSelected.orange.content === 'IMOrange') {
+    return orangeBoxData.value.find(product => product.sku === 'IMR1Orange') || defaultCardData
   }
   else {
-    return orangeBoxData.xl
+    return orangeBoxData.value.find(product => product.sku === 'XLR1Orange') || defaultCardData
   }
 })
 
 const getImagesForCarousel = () => {
   return orangeBoxesImages[
-    boxSelected.orange.content.toLowerCase() as keyof OrangeBoxImages
+    boxSelected.orange.content as keyof OrangeBoxImages
   ]
 }
 
@@ -126,34 +141,34 @@ const updateSelectedBox = (payload: SelectedOrangeBox) => {
 const orangeBoxOptions = [
   {
     name: t('orderItemSize.small'),
-    value: 'S',
+    value: 'SOrange',
   },
   {
     name: t('orderItemSize.medium'),
-    value: 'IM',
+    value: 'IMOrange',
   },
   {
     name: t('orderItemSize.large'),
-    value: 'XL',
+    value: 'XLOrange',
   },
 ]
 
 const orangeBoxesImages: OrangeBoxImages = {
-  s: [
+  SOrange: [
     {
-      image: '/images/special/oranges/boxes/S-Orange.webp',
+      image: '/images/boxes/orange/S.webp',
       title: 'Orange Box S',
     },
   ],
-  im: [
+  IMOrange: [
     {
-      image: '/images/special/oranges/boxes/IM-Orange.webp',
+      image: '/images/boxes/orange/IM.webp',
       title: 'Orange Box M',
     },
   ],
-  xl: [
+  XLOrange: [
     {
-      image: '/images/special/oranges/boxes/XL-Orange.webp',
+      image: '/images/boxes/orange/XL.webp',
       title: 'Orange Box L',
     },
   ],

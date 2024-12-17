@@ -1110,6 +1110,7 @@ export default {
   'string.box.vegetables': 'Sólo verdura',
   'string.box.cherries': 'Cerezas',
   'string.box.stone_fruits': 'Fruta de hueso',
+  'string.box.orange': 'Naranjas',
   'string.misc.buy.now': 'Comprar ahora',
   'string.misc.order': 'Nuevo pedido',
   'string.misc.here': 'Aquí',

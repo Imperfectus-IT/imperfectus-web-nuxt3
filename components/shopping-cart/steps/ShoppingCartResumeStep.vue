@@ -89,7 +89,7 @@ const decrementQuantity = (uuid: string) => {
             :src="item.product.image"
             loading="lazy"
             format="webp"
-            class="rounded-lg mt-6 w-full lg:w-1/3"
+            class="rounded-lg mt-6 w-full lg:w-1/3 lg:mt-0"
           />
           <div class="p-4 lg:my-auto lg:p-0 lg:py-4 mt-5">
             <div class="flex justify-between items-center">
@@ -106,7 +106,10 @@ const decrementQuantity = (uuid: string) => {
               <li class="mb-3">
                 {{ item?.boxType ? $t(`string.box.${item?.boxType}`) : '-' }}
               </li>
-              <li class="mb-3">
+              <li
+                v-if="item.boxType !== ORANGE_BOX_TYPE"
+                class="mb-3"
+              >
                 {{ $t('adminSubscriptionNextDelivery.exclusions') }}: {{ item.exclusions.length }}
               </li>
             </ul>

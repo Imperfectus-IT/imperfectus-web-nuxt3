@@ -27,10 +27,10 @@ const goToNextStep = () => {
   const nextStep = purchaseTypesForStep[shoppingCart.value.currentItem?.purchaseType]
   const user = useStrapiUser()
   if (shoppingCart.value.currentItem.purchaseType === ORDER_TYPE) {
-    const newSku = generateSku(shoppingCart.value.currentItem.boxType, shoppingCart.value.currentItem.boxSize, shoppingCart.value.frequency as string)
+    const newSku = generateSku(shoppingCart.value.currentItem.boxType, shoppingCart.value.currentItem.boxSize, shoppingCart.value.currentItem.frequency as string)
     shoppingCart.value.currentItem.product = activeBoxProducts.value
       .find((boxProduct: BoxProduct) => {
-        return boxProduct.boxType === shoppingCart.value.currentItem.boxType && boxProduct.sku === newSku
+        return boxProduct.sku === newSku
       })
     shoppingCart.value.currentItem.amount = shoppingCart.value.currentItem.product?.price ?? 0
     const currentItem: ShoppingCartItem = shoppingCart.value.currentItem as ShoppingCartItem

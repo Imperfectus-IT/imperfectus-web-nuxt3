@@ -28,7 +28,7 @@ defineProps({
     required: true,
   },
   cardData: {
-    type: Object as PropType<{ title: string, description: string, price: string }>,
+    type: Object as PropType<{ title: string, description: string, price: string, sku?: string }>,
     required: true,
   },
   selectedBox: {

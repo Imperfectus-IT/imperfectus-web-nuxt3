@@ -9,7 +9,7 @@ export const useShoppingCartBoxStep = () => {
     if (shoppingCart.value.currentItem) {
       shoppingCart.value.currentItem.boxSize = boxSize
       const newSku = generateSku(shoppingCart.value.currentItem.boxType, shoppingCart.value.currentItem.boxSize, WEEKLY_FREQUENCY)
-      shoppingCart.value.currentItem.product = activeBoxProducts.value.find((boxProduct: BoxProduct) => boxProduct.boxType === shoppingCart.value.currentItem.boxType && boxProduct.sku === newSku)
+      shoppingCart.value.currentItem.product = activeBoxProducts.value.find((boxProduct: BoxProduct) => boxProduct.sku === newSku) as BoxProduct
       shoppingCart.value.currentItem.amount = shoppingCart.value.currentItem.product?.price ?? 0
     }
     const couponApplied = shoppingCart.value.items[0]?.coupon

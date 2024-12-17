@@ -188,9 +188,9 @@ const boxSelected = reactive({
 })
 
 const handleCreatePresetShoppingCart = (size: string, payload: SelectedBox) => {
-  const sBoxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === `${size}R1`) as BoxProduct
+  const boxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === `${size}R1`) as BoxProduct
   const phurcaseType = payload.frequency === 'once' ? 'order' : 'subscription'
-  shoppingCart.value = createPreselectedShoppingCart(size, payload, phurcaseType, sBoxProduct)
+  shoppingCart.value = createPreselectedShoppingCart(size, payload, phurcaseType, boxProduct)
   setShoppingCart(shoppingCart.value)
   router.push(localePath('order'))
 }
