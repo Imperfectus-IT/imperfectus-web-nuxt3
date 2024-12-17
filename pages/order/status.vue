@@ -43,11 +43,7 @@ const retryPayment = () => {
   redsysForm.value.submit()
 }
 
-onMounted(() => {
-  if (!isOrderFailed.value) {
-    handleDiscardShoppingCart()
-  }
-})
+onMounted(() => handleDiscardShoppingCart())
 
 useHead({
   title: isOrderFailed.value ? t(t('pages.order.status.paymentError')) : t('pages.order.status.thanks'),
