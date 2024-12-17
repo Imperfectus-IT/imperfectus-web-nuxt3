@@ -11,9 +11,10 @@ import MD5 from 'crypto-js/md5'
 
 const { t } = useI18n()
 const route = useRoute()
+const { handleDiscardShoppingCart } = useDiscardShoppingCartHandler()
+
 const localePath = useLocalePath()
 const redsysForm = ref<HTMLFormElement | null>(null)
-const { removeShoppingCart } = useLocalStorageShoppingCartRepository()
 const notification = ref(route.query.notification || '')
 const isOrderFailed = computed(() => route.path.includes('failed'))
 const { order } = useOrdersState()
@@ -44,7 +45,7 @@ const retryPayment = () => {
 
 onMounted(() => {
   if (!isOrderFailed.value) {
-    removeShoppingCart()
+    handleDiscardShoppingCart()
   }
 })
 
@@ -98,6 +99,7 @@ useHead({
     >
       {{ $t("pages.order.pay.title") }}
     </h1>
+
     <CompletePaymentOrderDetails
       v-if="order.orderPayment"
       :order-id="order.order_id"
