@@ -37,7 +37,6 @@ const {
 </script>
 
 <template>
-  <Divider />
   <LoginForm
     v-if="componentRender === LOGIN_EVENT"
     class="mt-8"

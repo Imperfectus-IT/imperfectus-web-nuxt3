@@ -3695,4 +3695,14 @@ export default {
       },
     },
   },
+  'validations': {
+    email: 'L\'email introduït no és vàlid',
+    required: 'Aquest camp és obligatori',
+    oneCaps: 'La contrasenya ha de tenir almenys una lletra majúscula',
+    oneLowerCase: 'La contrasenya ha de tenir almenys una lletra minúscula',
+    oneNumber: 'La contrasenya ha de tenir almenys un número',
+    oneSpecialCharacter: 'La contrasenya ha de tenir almenys un caràcter especial',
+    minLength: 'La contrasenya ha de tenir almenys {min} caràcters',
+    maxLength: 'La contrasenya ha de tenir com a màxim {max} caràcters',
+  },
 }

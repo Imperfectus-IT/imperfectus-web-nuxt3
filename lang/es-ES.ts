@@ -4074,5 +4074,15 @@ export default {
     message_1: 'Las entregas de la caja serán semanales para suscripciones semanales y quincenales de manera alterna.',
     message_2: 'El pago se realizará cada domingo previo.',
   },
+  'validations': {
+    email: 'El email introducido no es correcto',
+    required: 'Campo obligatorio',
+    oneCaps: 'La contraseña debe incluir al menos una letra mayúscula',
+    oneLowerCase: 'La contraseña debe incluir al menos una letra minúscula',
+    oneNumber: 'La contraseña debe incluir al menos un número',
+    oneSpecialCharacter: 'La contraseña debe incluir al menos un carácter especial',
+    minLength: 'La contraseña debe tener al menos {min} caracteres',
+    maxLength: 'La contraseña no puede tener más de {max} caracteres',
+  },
 
 }

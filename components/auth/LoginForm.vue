@@ -16,6 +16,7 @@ const isButtonDisabled = computed(() => {
 })
 
 const submitLoginForm = async () => {
+  displayErrors.value = true
   try {
     await handleLoginUser()
     emit('login')
@@ -24,20 +25,22 @@ const submitLoginForm = async () => {
     console.error(error)
   }
 }
+
+const displayErrors = ref<boolean>(false)
 </script>
 
 <template>
   <section class="px-10 md:px-[28%] lg:px-[35%] 2xl:px-[40%]">
     <div class="mb-5 lg:mb-10 text-center">
       <slot name="backButton" />
-      <span class="font-recoleta-regular text-lg font-normal">{{
+      <span class="font-recoleta-regular text-xl font-normal">{{
         $t("loginForm.login")
       }}</span>
     </div>
     <SocialButtons :google-label="$t('loginForm.buttonGoogleLogin')" />
     <div class="flex items-center text-center py-3 lg:py-8">
       <Divider class="w-[36%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50" />
-      <span class="text-[10px] text-green-tertiary/50 w-full lg:w-4/5">{{
+      <span class="text-[14px] text-green-tertiary/50 w-full lg:w-4/5">{{
         $t("socialProvider.loginWithEmail")
       }}</span>
       <Divider class="w-[36%] md:w-[50%] lg:w-[35%] xl:w-[55%] 2xl:w-[65%] opacity-50" />
@@ -46,26 +49,35 @@ const submitLoginForm = async () => {
       class="flex flex-col gap-y-4 lg:gap-y-8"
       @submit.prevent="submitLoginForm"
     >
-      <TKField :errors="validationErrors?.identifier?._errors">
+      <div>
         <InputText
           id="identifier"
           v-model="userLogin.identifier"
-          class="rounded-xl"
+          class="rounded-xl w-full"
           type="text"
           :placeholder="$t('loginForm.email')"
-          :invalid="!!validationErrors?.identifier?._errors?.length"
+          :invalid="!!validationErrors?.identifier?._errors?.length && displayErrors"
         />
-      </TKField>
-      <TKField :errors="validationErrors?.password?._errors">
+        <TKField
+          v-if="displayErrors"
+          :errors="validationErrors?.identifier?._errors"
+        />
+      </div>
+      <div>
         <Password
           id="password"
           v-model="userLogin.password"
+          class="w-full"
           :toggle-mask="true"
           :feedback="false"
           :placeholder="$t('loginForm.password')"
-          :invalid="!!validationErrors?.password?._errors?.length"
+          :invalid="!!validationErrors?.password?._errors?.length && displayErrors"
         />
-      </TKField>
+        <TKField
+          v-if="displayErrors"
+          :errors="validationErrors?.password?._errors"
+        />
+      </div>
       <div class="text-center">
         <Button
           class="w-full lg:w-[9rem]"
