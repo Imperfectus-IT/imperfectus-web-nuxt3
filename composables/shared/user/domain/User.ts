@@ -47,4 +47,8 @@ export const availableLanguages: ProfileLanguages[] = [
     name: 'Castellano',
     code: 'es',
   },
+  {
+    name: 'Português',
+    code: 'pt',
+  },
 ]

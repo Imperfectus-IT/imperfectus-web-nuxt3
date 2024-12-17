@@ -159,7 +159,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   removeResize()
 })
-
+const { locale } = useI18n()
 const { activeBoxProducts } = useProductsState()
 const { generateSku } = useGenerateSku()
 const isDisplayDesktop = computed(() => windowWidth.value > 768)
@@ -209,26 +209,43 @@ const imagesForCarousel = (size: Size) => {
   return images
 }
 
-const updateBoxSelected = (size: Size, payload: SelectedBox) =>
-  Object.assign(boxSelected[size], payload)
+const updateBoxSelected = (size: Size, payload: SelectedBox) => Object.assign(boxSelected[size], payload)
+const language = useGetLocaleLanguage(locale.value)
+const sBoxData = computed(() => {
+  if (activeBoxProducts.value.length > 0) {
+    const boxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === 'SR1') as BoxProduct
+    return {
+      title: boxProduct[`name${language}` as keyof BoxProduct],
+      description: boxProduct[`description${language}` as keyof BoxProduct],
+      price: boxProduct.price,
+    }
+  }
+  return {}
+})
 
-const sBoxData = {
-  title: t('content.home.ourBoxes.item0.title'),
-  description: t('content.home.ourBoxes.item0.description'),
-  price: '19.56€',
-}
+const mBoxData = computed(() => {
+  if (activeBoxProducts.value.length > 0) {
+    const boxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === 'IMR1') as BoxProduct
+    return {
+      title: boxProduct[`name${language}` as keyof BoxProduct],
+      description: boxProduct[`description${language}` as keyof BoxProduct],
+      price: boxProduct.price,
+    }
+  }
+  return {}
+})
 
-const mBoxData = {
-  title: t('content.home.ourBoxes.item1.title'),
-  description: t('content.home.ourBoxes.item1.description'),
-  price: '24.47€',
-}
-
-const xlBoxData = {
-  title: t('content.home.ourBoxes.item2.title'),
-  description: t('content.home.ourBoxes.item2.description'),
-  price: '31.33€',
-}
+const xlBoxData = computed(() => {
+  if (activeBoxProducts.value.length > 0) {
+    const boxProduct: BoxProduct = activeBoxProducts.value.find((product: BoxProduct) => product.sku === 'XLR1') as BoxProduct
+    return {
+      title: boxProduct[`name${language}` as keyof BoxProduct],
+      description: boxProduct[`description${language}` as keyof BoxProduct],
+      price: boxProduct.price,
+    }
+  }
+  return {}
+})
 
 const subscriptionList = [
   'boxes.subscription-description.1.description.1',
