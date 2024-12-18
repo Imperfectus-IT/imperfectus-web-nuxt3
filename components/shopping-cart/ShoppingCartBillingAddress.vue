@@ -3,6 +3,9 @@ import { useValidateBillingForm } from '~/composables/shopping-cart/domain/useVa
 
 const { shoppingCart } = useShoppingCartState()
 const { validateSchema, errors } = useValidateBillingForm()
+const props = defineProps<{
+  displayErrors: boolean
+}>()
 
 onMounted(() => {
   validateSchema(shoppingCart.value.billingAddress)
@@ -40,7 +43,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingFirstName?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingFirstName?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -53,7 +59,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingLastName?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingLastName?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -66,7 +75,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingCif?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingCif?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -79,7 +91,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingSocialName?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingSocialName?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -92,7 +107,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingEmail?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingEmail?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -105,7 +123,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingPhone?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingPhone?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -118,7 +139,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingCompany?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingCompany?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -131,7 +155,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingAddress?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingAddress?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -156,7 +183,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingPostCode?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingPostCode?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -169,7 +199,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingCity?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingCity?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -182,7 +215,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.billingState?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingState?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -195,6 +231,9 @@ defineExpose({ errors })
       option-value="value"
       option-label="label"
     />
-    <span class="text-red-primary">{{ errors?.billingCountry?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.billingCountry?._errors[0] }}</span>
   </div>
 </template>

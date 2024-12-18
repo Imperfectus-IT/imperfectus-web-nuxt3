@@ -23,6 +23,10 @@ const handleNewProduct = () => {
 }
 
 const goToNextStep = () => {
+  displayErrors.value = true
+  if (isFormValid.value) {
+    return
+  }
   if (!shoppingCart.value.invoiceRequired) {
     shoppingCart.value.billingAddress.billingFirstName = shoppingCart.value.shippingAddress.shippingFirstName
     shoppingCart.value.billingAddress.billingLastName = shoppingCart.value.shippingAddress.shippingLastName
@@ -38,6 +42,8 @@ const goToNextStep = () => {
   setShoppingCart(shoppingCart.value)
   emit(GO_TO_STEP_EVENT, DELIVERY_STEP)
 }
+
+const displayErrors = ref<boolean>(false)
 </script>
 
 <template>
@@ -72,7 +78,10 @@ const goToNextStep = () => {
     <div class="lg:flex lg:justify-evenly lg:gap-4">
       <div class="lg:w-7/12">
         <div class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12">
-          <ShoppingCartShippingAddress ref="shippingFormErrors" />
+          <ShoppingCartShippingAddress
+            ref="shippingFormErrors"
+            :display-errors="displayErrors"
+          />
         </div>
         <div class="flex items-center lg:mt-4">
           <Checkbox
@@ -92,7 +101,10 @@ const goToNextStep = () => {
           v-if="shoppingCart.invoiceRequired"
           class="lg:border-[1px] lg:rounded-lg lg:w-full lg:p-8 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-12"
         >
-          <ShoppingCartBillingAddress ref="billingFormErrors" />
+          <ShoppingCartBillingAddress
+            ref="billingFormErrors"
+            :display-errors="displayErrors"
+          />
         </div>
       </div>
       <div class="my-auto hidden lg:block lg:border-[1px] lg:rounded-lg lg:mt-12 lg:p-5 lg:pt-8 lg:w-5/12">
@@ -113,7 +125,6 @@ const goToNextStep = () => {
     </div>
     <div class="flex justify-center mt-4 lg:justify-center">
       <Button
-        :disabled="isFormValid"
         severity="secondary"
         :label="$t('orderMeta.continue')"
         @click.prevent="goToNextStep"

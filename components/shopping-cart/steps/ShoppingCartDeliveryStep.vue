@@ -39,6 +39,7 @@ const setPickupPointDelivery = () => {
   deliveryType.value = PICKUP_POINT_DELIVERY_TYPE
   shoppingCart.value.shippingAddress.shippingCoverage.shippingOffice = null
   shoppingCart.value.shippingAddress.shippingCoverage.shippingService = ALLSERVICES.PICK_UP_POINT
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = null
 }
 const hasAllDataSet = computed(() => {
   const { shippingCoverage, shippingOffice, shippingService } = shoppingCart.value.shippingAddress.shippingCoverage
@@ -54,7 +55,7 @@ const handleNewProduct = () => {
 watch(() => shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage,
   async (newCoverage) => {
     const { shippingService } = shoppingCart.value.shippingAddress.shippingCoverage
-    await getTimeSlotHandler(shoppingCart.value.shippingAddress.shippingPostCode, newCoverage)
+    newCoverage ? await getTimeSlotHandler(shoppingCart.value.shippingAddress.shippingPostCode, newCoverage) : ''
     await getValidHoursHandler(timeSlot.value)
     await getAvailableWeekDaysHandler(shoppingCart.value.shippingAddress.shippingPostCode, shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage)
     newCoverage === ALL_COVERAGES.CORREOSEXPRESS.value && shippingService !== ALLSERVICES.PICK_UP_POINT
@@ -105,6 +106,11 @@ const coveragesOptions = computed(() =>
     availableCarriers.value.includes(coverage.value),
   ).sort((a, b) => availableCarriers.value.indexOf(a.value) - availableCarriers.value.indexOf(b.value)),
 )
+
+watch(availableCarriers, () => {
+  shoppingCart.value.shippingAddress.shippingCoverage.shippingCoverage = coveragesOptions.value[0]?.value as string
+})
+
 // Update carriers availability and Timeslot
 watch(selectedDate, async () => {
   shoppingCart.value.deliveryDate = dayjs(selectedDate.value).format('YYYY-MM-DD')

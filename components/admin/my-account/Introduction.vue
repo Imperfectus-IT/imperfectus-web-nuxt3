@@ -7,9 +7,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="lg:flex lg:flex-row lg:justify-between lg:items-center lg:mr-4">
+  <div class="lg:flex lg:flex-row lg:justify-between lg:items-start lg:mr-4">
     <div
-      class="font-solina-extended-book mb-14 lg:m-0 lg:flex lg:flex-col lg:justify-center lg:mt-12"
+      class="font-solina-extended-book mb-14 lg:m-0 lg:flex lg:flex-col lg:justify-center lg:mt-4"
     >
       <h4
         v-if="user"

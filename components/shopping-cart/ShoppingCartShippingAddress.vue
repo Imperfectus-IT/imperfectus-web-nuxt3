@@ -2,6 +2,10 @@
 import { createEmpty as createEmptyShippingAddress } from '@/composables/shopping-cart/domain/ShippingAddress.ts'
 import { useValidateShippingForm } from '~/composables/shopping-cart/domain/useValidateShippingForm.ts'
 
+const props = defineProps<{
+  displayErrors: boolean
+}>()
+
 const { shoppingCart } = useShoppingCartState()
 const cleanData = () => shoppingCart.value.shippingAddress = createEmptyShippingAddress()
 const { errors, validateSchema } = useValidateShippingForm()
@@ -86,7 +90,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingFirstName?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingFirstName?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -99,7 +106,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingLastName?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingLastName?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -112,7 +122,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingEmail?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingEmail?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -125,7 +138,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingPhone?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingPhone?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -151,7 +167,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingAddress?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingAddress?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -176,7 +195,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingPostCode?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingPostCode?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -189,7 +211,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingCity?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingCity?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -202,7 +227,10 @@ defineExpose({ errors })
         root: 'text-[16px] bg-transparent border-[1px] px-4 py-3 rounded-lg w-full mb-4',
       }"
     />
-    <span class="text-red-primary">{{ errors?.shippingState?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingState?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
@@ -215,7 +243,10 @@ defineExpose({ errors })
       option-value="value"
       option-label="label"
     />
-    <span class="text-red-primary">{{ errors?.shippingCountry?._errors[0] }}</span>
+    <span
+      v-if="displayErrors"
+      class="text-red-primary"
+    >{{ errors?.shippingCountry?._errors[0] }}</span>
   </div>
   <div>
     <span class="font-bold text-[14px]">
