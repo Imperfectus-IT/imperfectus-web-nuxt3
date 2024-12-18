@@ -43,41 +43,6 @@ export default defineNuxtConfig({
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     },
   },
-  // routeRules: {
-  //   '/api/**': { proxy: process.env.STRAPI_URL },
-  //   '/uploads/**': { proxy: process.env.STRAPI_URL },
-  // },
-  proxy: {
-    debug: false,
-    experimental: {
-      listener: false,
-    },
-    proxies: {
-      // Configuración del proxy para Google Callback
-      '/api/connect/google/callback': {
-        target: process.env.STRAPI_URL,
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, ''),
-        configure: (proxy, options, runtimeConfig) => {
-          console.log('Proxy configurado para:', options.target)
-        },
-      },
-    },
-  },
-  nitro: {
-    devProxy: {
-      '/api': {
-        target: process.env.STRAPI_URL,
-        changeOrigin: true,
-        prependPath: true,
-        pathRewrite: { '^/api': '' },
-      },
-      '/uploads': {
-        target: process.env.STRAPI_URL,
-        changeOrigin: true,
-      },
-    },
-  },
   hooks: {
     'pages:extend'(pages) {
       pages.push(
