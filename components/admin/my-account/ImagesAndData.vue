@@ -21,7 +21,7 @@
         <p
           class="p-3 pt-0 text-[18px] mt-0 font-recoleta-medium text-center lg:w-full lg:text-[30px]"
         >
-          1.5000.000 Kgs
+          {{ totalKgs }} Kgs
         </p>
       </div>
     </div>
@@ -57,13 +57,13 @@
 import { computed } from 'vue'
 
 defineProps<{
-  kgs: string
+  kgs: number
+  totalKgs: number
 }>()
 
 const { addResize, removeResize, windowWidth } = useWindowSize()
 
 const imageWidth = computed(() => (windowWidth.value > 1024 ? '330' : '150'))
-const imageHeight = computed(() => (windowWidth.value > 1024 ? '366' : '150'))
 
 onMounted(() => {
   addResize()

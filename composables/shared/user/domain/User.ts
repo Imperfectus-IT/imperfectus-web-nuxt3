@@ -13,6 +13,7 @@ export type User = {
   whatsappInfoComm: boolean
   marketingInfoComm: boolean
   preferredProducts: PreferredProducts
+  totalKgsRescued: number
 }
 
 export type PreferredProducts = {

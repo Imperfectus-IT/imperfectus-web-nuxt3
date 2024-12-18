@@ -22,4 +22,5 @@ export type StrapiUser = {
   first_connection_date_app: string
   last_connection_date_app: string
   preferred_products: { vegetables: number[], fruits: number[] }
+  total_kgs_rescued: number
 }

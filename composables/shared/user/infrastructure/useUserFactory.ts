@@ -14,6 +14,7 @@ export const useUserFactory = (user: StrapiUser): User => {
     whatsappInfoComm: user.whatsappInfoComm,
     marketingInfoComm: user.marketingInfoComm,
     preferredProducts: user.preferred_products,
+    totalKgsRescued: user.total_kgs_rescued > 0 ? user.total_kgs_rescued : 0,
   }
 }
 

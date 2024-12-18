@@ -45,12 +45,17 @@ const getLastOrder = () => {
   isLoading.value = false
 }
 const getSubscriptionId = computed(() => lastOrder.value?.subscription)
+
+const { impactMetrics } = useMetricsState()
 </script>
 
 <template>
   <div class="lg:mt-2 xl:w-full">
     <Introduction :user="user" />
-    <ImagesAndData kgs="50" />
+    <ImagesAndData
+      :total-kgs="impactMetrics.totalRescuedKgs"
+      :kgs="user.totalKgsRescued"
+    />
     <div v-if="isLoading">
       <CardSkeleton />
     </div>
