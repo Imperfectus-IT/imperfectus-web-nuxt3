@@ -47,23 +47,23 @@ export default defineNuxtConfig({
   //   '/api/**': { proxy: process.env.STRAPI_URL },
   //   '/uploads/**': { proxy: process.env.STRAPI_URL },
   // },
-  // proxy: {
-  //   debug: false,
-  //   experimental: {
-  //     listener: false,
-  //   },
-  //   proxies: {
-  //     // Configuración del proxy para Google Callback
-  //     '/api/connect/google/callback': {
-  //       target: process.env.STRAPI_URL,
-  //       changeOrigin: true,
-  //       rewrite: path => path.replace(/^\/api/, ''),
-  //       configure: (proxy, options, runtimeConfig) => {
-  //         console.log('Proxy configurado para:', options.target)
-  //       },
-  //     },
-  //   },
-  // },
+  proxy: {
+    debug: false,
+    experimental: {
+      listener: false,
+    },
+    proxies: {
+      // Configuración del proxy para Google Callback
+      '/api/connect/google/callback': {
+        target: process.env.STRAPI_URL,
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''),
+        configure: (proxy, options, runtimeConfig) => {
+          console.log('Proxy configurado para:', options.target)
+        },
+      },
+    },
+  },
   nitro: {
     devProxy: {
       '/api': {
