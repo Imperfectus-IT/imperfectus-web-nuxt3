@@ -362,6 +362,11 @@ export default {
       register: {
         title: 'Registro de usuario',
         description: 'Registrate para continuar',
+        legalTerms_1: 'Acepto los ',
+        legalTerms_2_link: 'Términos y condiciones ',
+        legalTerms_3: 'y nuestra consulta de ',
+        legalTerms_4_link: 'Política de privacidad, ',
+        legalTerms_5: 'así como recibir comunicaciones informativas y transaccionales en relación a pedidos, transporte, servicio o entregas',
       },
     },
   },
@@ -4083,6 +4088,7 @@ export default {
     oneSpecialCharacter: 'La contraseña debe incluir al menos un carácter especial',
     minLength: 'La contraseña debe tener al menos {min} caracteres',
     maxLength: 'La contraseña no puede tener más de {max} caracteres',
+    emailsMatch: 'Los emails no coinciden',
+    passwordsMatch: 'Las contraseñas no coinciden',
   },
-
 }

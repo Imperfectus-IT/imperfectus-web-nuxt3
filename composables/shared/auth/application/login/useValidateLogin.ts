@@ -6,13 +6,7 @@ export const useValidateLogin = () => {
     .object({
       identifier: z.string().email(t('validations.email')).min(6, t('validations.minLength', { min: 6 })),
       password: z
-        .string()
-        .min(8, t('validations.minLength', { min: 8 }))
-        .max(64, t('validations.maxLength', { max: 64 }))
-        .regex(/[A-Z]/, t('validations.oneCaps'))
-        .regex(/[a-z]/, t('validations.oneLowerCase'))
-        .regex(/[0-9]/, t('validations.oneNumber'))
-        .regex(/[@$!%*?&]/, t('validations.oneSpecialCharacter') + ' (@, $, !, %, *, ?, &).'),
+        .string(),
     })
     .required()
   type LoginFormSchema = z.infer<typeof loginFormSchema>

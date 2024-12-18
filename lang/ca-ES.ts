@@ -171,7 +171,7 @@ export default {
   'pages.legal.conditions.description':
         'Coneix les condicions d\'ús del lloc web de TALKUAL, així com les condicions de compra dels productes.',
   'pages': {
-    'legal': {
+    legal: {
       notice: {
         title: 'Avís legal',
         description: 'Informació legal sobre la web de TALKUAL. Coneix tota la informació sobre les nostres polítiques de protecció de dades aquí.',
@@ -345,7 +345,7 @@ export default {
         },
       },
     },
-    'auth': {
+    auth: {
       login: {
         title: 'Iniciar sessió',
         description: 'Inicia sessió per continuar',
@@ -359,11 +359,15 @@ export default {
       register: {
         title: 'Registre d\'usuari',
         description: 'Registra\'t per continuar',
+        legalTerms_1: 'Accepto els ',
+        legalTerms_2_link: 'Termes i condicions ',
+        legalTerms_3: 'i la nostra consulta de ',
+        legalTerms_4_link: 'Política de privacitat, ',
+        legalTerms_5: 'així com rebre comunicacions informatives i transaccionals en relació a les comandes, el transport, el servei o els lliuraments',
       },
     },
-    'Auth.form.error.invalid': 'Las credenciales son incorrectas',
   },
-
+  'Auth.form.error.invalid': 'Les credencials son incorrectes',
   // Pages Terms and Conditions
   'pages.legal.terms.title': 'CONDICIONS GENERALS DE VENDA',
   'pages.legal.terms.description1':
@@ -1106,8 +1110,9 @@ export default {
   'string.misc.status': 'Estat',
   'string.misc.baseAmount': 'Preu basi',
   'string.misc.shippingCosts': 'Despeses d\'enviament',
-  'string.misc.freeShipping':
-        'Enviaments GRATUÏTS a tota la península | Fruita i verdura directa del camp',
+  'string.misc.freeShipping_1':
+      'Enviaments GRATUÏTS a tota la península',
+  'string.misc.freeShipping_2': 'Fruita i verdura directa del camp',
   'string.misc.freeShipping-mobile': 'Enviaments GRATUÏTS a tota la península',
   'string.misc.talkual': 'TALKUAL',
   'string.misc.contact.general': 'contacte per a particulars',
@@ -1951,7 +1956,7 @@ export default {
   'socialProvider.errorMessage':
         'No pots iniciar sessió amb aquest proveïdor, prova amb un altre',
   'socialProvider.loginWithEmail': 'o inicia sessió amb el teu email',
-  'socialProvider.registerWithEmail': 'o registra usuari amb el teu email',
+  'socialProvider.registerWithEmail': 'o registra l\'usuari amb el teu email',
 
   // LogoutButton
   'logoutButton.logout': 'Tancar sessió',
@@ -2090,8 +2095,7 @@ export default {
 
   // OrderStepAuth
   'orderStepAuth.hasAccount': 'Ja tinc compte',
-  'orderStepAuth.hanstAccount': 'No tinc compte',
-
+  'orderStepAuth.hastAccount': 'No tinc compte',
   // OrderStepCustomize
   'orderStepCustomize.add': 'Afegir una altra caixa',
   'orderStepCustomize.next': 'Continuar',
@@ -3704,5 +3708,7 @@ export default {
     oneSpecialCharacter: 'La contrasenya ha de tenir almenys un caràcter especial',
     minLength: 'La contrasenya ha de tenir almenys {min} caràcters',
     maxLength: 'La contrasenya ha de tenir com a màxim {max} caràcters',
+    emailsMatch: 'Els emails no coincideixen',
+    passwordsMatch: 'Les contrasenyes no coincideixen',
   },
 }
