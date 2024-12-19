@@ -43,7 +43,6 @@
 
 <script setup lang="ts">
 import type { Subscription } from '~/composables/admin/subscriptions/domain/SubscriptionTypes.ts'
-import type { BoxProduct } from '~/composables/admin/products/types/Product.ts'
 
 const emits = defineEmits(['save-modify-item'])
 const props = defineProps<{
@@ -58,6 +57,7 @@ const displayEditItem = (itemId: number) => {
 
 const handleSave = (updateSubscriptionItemData: updateSubscriptionItemPayload) => {
   emits('save-modify-item', updateSubscriptionItemData)
+  console.log('updateSubscriptionItemData', updateSubscriptionItemData)
   selectedItemId.value = null
 }
 

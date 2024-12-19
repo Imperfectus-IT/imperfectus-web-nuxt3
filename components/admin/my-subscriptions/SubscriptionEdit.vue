@@ -35,7 +35,7 @@
       />
       <SubscriptionUpdateShippingCoverageModal
         :is-visible="isUpdateCoverageModalVisible"
-        :subscription="props.subscription.id"
+        :subscription-id="props.subscription.id"
         @close-modal="isUpdateCoverageModalVisible = false"
       />
       <SubscriptionCoupon
@@ -131,7 +131,15 @@ const { getDeliveryDateFromNextPayment } = useGetDeliveryDateFromNextPayment()
 const { executeGetShippingCompanies } = useGetShippingCompanies()
 const { shippingPostCode } = props.subscription.shippingInfo
 const expectedDeliveryDate = computed(() => getDeliveryDateFromNextPayment(props.subscription.nextPayment, props.subscription.preferredDay))
-const availableShippingCoverages = await executeGetShippingCompanies(shippingPostCode, expectedDeliveryDate.value as string)
+const availableShippingCoverages = ref<string[]>([])
+onMounted(async () => {
+  availableShippingCoverages.value = await executeGetShippingCompanies(shippingPostCode, expectedDeliveryDate.value as string)
+})
+
+const subscriptionData = computed(() => props.subscription)
+watch(subscriptionData, async () => {
+  availableShippingCoverages.value = await executeGetShippingCompanies(shippingPostCode, expectedDeliveryDate.value as string)
+}, { deep: true })
 
 const textData = 'subscriptions.subscription.'
 const isSubscriptionCancelledModalStyle = computed(() => props.subscription.status === 'cancelled' ? 'lg:col-span-2 lg:w-1/2 lg:mx-auto' : '')

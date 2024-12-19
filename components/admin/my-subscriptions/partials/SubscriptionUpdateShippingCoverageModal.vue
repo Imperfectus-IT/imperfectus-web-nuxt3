@@ -39,10 +39,10 @@ const emits = defineEmits(['close-modal'])
 const handleCloseMoodal = () => {
   emits('close-modal')
 }
-const getSubscriptionId = computed(() => {
-  const subscription = subscriptions.value.find((subscription: Subscription) => {
-    return subscription.id === props.subscriptionId
-  })
-  return subscription ? subscription.subscriptionId : null
-})
+// const getSubscriptionId = computed(() => {
+//   const subscription = subscriptions.value.find((subscription: Subscription) => {
+//     return subscription.id === props.subscriptionId
+//   })
+//   return subscription ? subscription.subscriptionId : null
+// })
 </script>

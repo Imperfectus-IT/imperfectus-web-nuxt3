@@ -46,13 +46,27 @@
         </p>
         <MultiSelect
           v-model="updateOrderItemData.exclusions"
-          :options="[...fruitsItemProducts, ...vegetablesItemProducts]"
+          :options="sortedProducts"
           filter
           :option-label="`name${getLanguage}`"
           option-value="id"
+          :option-disabled="(item: ItemProduct) => isLimitReached && !updateOrderItemData.exclusions?.includes(item.id as number)"
           :placeholder="$t(`${textData}exclusions.placeholder`)"
-          :selection-limit="6"
           class="w-full border-[1px] text-[16px] mt-3 rounded-xl mb-5"
+          :pt-options="{
+            mergeProps: true,
+            mergeSections: true,
+          }"
+          :pt="{
+            itemCheckbox: {
+              box: ({ context }) => ({
+                class: ['border-2 rounded-md w-6 h-6 flex items-center justify-center', { 'opacity-60': !context.checked && isLimitReached }],
+              }),
+              input: ({ context }) => ({
+                class: ['peer w-full h-full absolute top-0 left-0 z-10 p-0 m-0 opacity-0 rounded-md outline-none border-2 border-green-tertiary appareance-none cursor-pointer', { '!cursor-not-allowed': !context.checked && isLimitReached }],
+              }),
+            },
+          }"
         />
         <Button
           :label="$t(`${textData}saveButton`)"
@@ -83,6 +97,7 @@ const displayEditOrder = ref(false)
 const emits = defineEmits(['update-item'])
 const textData = 'orders.order.edit.'
 const getLanguage = computed(() => locale.value === 'es' ? 'Es' : 'Ca')
+const isLimitReached = computed(() => updateOrderItemData.exclusions.length >= 6)
 
 const updateOrderItemData = reactive({
   type: props.orderItem.sku.includes('FR')
@@ -97,6 +112,8 @@ const updateOrderItemData = reactive({
       : 'XL',
   exclusions: [...props.exclusions.map((exclusion: ItemProduct) => exclusion.id)],
 })
+
+const sortedProducts = useSortProductsByLanguage([...fruitsItemProducts.value, ...vegetablesItemProducts.value])
 
 const toggleDisplayEditOrder = () => {
   displayEditOrder.value = !displayEditOrder.value
@@ -130,14 +147,6 @@ const boxSizes = [
   { name: 'Grande', code: 'XL' },
 ]
 
-// watch(products, () => {
-//   if (products.value.itemProducts) {
-//     listProducts.value = [
-//       ...products.value.itemProducts.fruits,
-//       ...products.value.itemProducts.vegetables,
-//     ]
-//   }
-// })
 export type updateOrderItemPayload = {
   newBoxProduct: BoxProduct
   orderItemId: number

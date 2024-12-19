@@ -7,10 +7,6 @@ export const useGenerateSku = () => {
     else {
       return `${size}${type === 'fruits' ? 'FR' : type === 'vegetables' ? 'VG' : type === 'orange' ? 'Orange' : ''}`
     }
-
-    if (type === 'orange') {
-      return `${size}${type === 'fruits' ? 'FR' : type === 'vegetables' ? 'VG' : type === 'orange' ? 'Orange' : ''}`
-    }
   }
   return { generateSku }
 }

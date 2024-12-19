@@ -1,4 +1,5 @@
 <template>
+  {{ availableCoverages }}
   <Panel
     v-model:collapsed="isCollapsed"
     :pt="{
@@ -146,11 +147,23 @@ const { executeGetCorreosPickUpPoints } = useGetCorreosPickUpPoints()
 const isCollapsed = ref<boolean>(true)
 const displayPickUpPoints = ref<boolean>(false)
 
-const coveragesOptions: CoverageOption[] = Object.values(ALL_COVERAGES).filter(coverage => props.availableCoverages.includes(coverage.value)).sort((coverageA, coverageB) => props.availableCoverages.indexOf(coverageA.value) - props.availableCoverages.indexOf(coverageB.value))
+const coveragesOptions = ref<CoverageOption[]>([])
+const setCoverageOptions = () => {
+  coveragesOptions.value = Object.values(ALL_COVERAGES).filter(coverage => props.availableCoverages.includes(coverage.value)).sort((coverageA, coverageB) => props.availableCoverages.indexOf(coverageA.value) - props.availableCoverages.indexOf(coverageB.value))
+  console.log(coveragesOptions.value)
+}
 const selectedCoverage = ref<SubscriptionCoverage>({
-  shippingCoverage: coveragesOptions.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value as string,
+  shippingCoverage: coveragesOptions.value.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value as string,
   shippingService: props.subscriptionShippingCoverage.shippingService,
   shippingOffice: props.subscriptionShippingCoverage.shippingOffice,
+})
+
+watch(coveragesOptions, () => {
+  selectedCoverage.value = ({
+    shippingCoverage: coveragesOptions.value.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value as string,
+    shippingService: props.subscriptionShippingCoverage.shippingService,
+    shippingOffice: props.subscriptionShippingCoverage.shippingOffice,
+  })
 })
 
 const preselectedPickUpPointId = ref<string | null>(props.subscriptionShippingCoverage.shippingOffice || null)
@@ -164,6 +177,12 @@ onMounted(async () => {
   if (selectedCoverage.value.shippingService === ALLSERVICES.PICK_UP_POINT) {
     await getSelectedPickUpPoint()
   }
+  setCoverageOptions()
+})
+
+watch(() => props.availableCoverages, () => {
+  console.log('hola')
+  setCoverageOptions()
 })
 
 const getSelectedPickUpPoint = async () => {

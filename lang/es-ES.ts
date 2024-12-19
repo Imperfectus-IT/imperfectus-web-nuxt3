@@ -3716,6 +3716,7 @@ export default {
         button: 'Editar',
         selected: 'Tu selección actual:',
         exclusionsTitle: '¿Quieres excluir algun alimento?',
+        exclusionsPlaceholder: 'Buscar producto',
         exclusionsParagraph1: 'Puedes excluir hasta 6 alimentos.',
         exclusionsParagraph2: 'Aún así, cada viernes enviamos un email con las frutas y verduras que habrá en la caja de la siguiente semana para que así puedas editar las exclusiones dependiendo del contenido de la caja.',
         saveButton: 'Guardar selección',
