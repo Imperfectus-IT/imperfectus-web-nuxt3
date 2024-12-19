@@ -1,5 +1,4 @@
 <template>
-  {{ availableCoverages }}
   <Panel
     v-model:collapsed="isCollapsed"
     :pt="{
