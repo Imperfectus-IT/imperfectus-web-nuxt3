@@ -58,13 +58,13 @@
       @remove-item="handleRemoveSubscriptionItem"
     />
     <div class="flex flex-col gap-3 lg:grid lg:grid-cols-2">
-      <SubscriptionBilling
-        :billing="subscription.billingInfo"
-        @modify-billing="handleUpdateSubscriptionBilling"
-      />
       <SubscriptionShipping
         :shipping="subscription.shippingInfo"
         @modify-shipping="handleUpdateSubscriptionShipping"
+      />
+      <SubscriptionBilling
+        :billing="subscription.billingInfo"
+        @modify-billing="handleUpdateSubscriptionBilling"
       />
       <SubscriptionPause
         v-if="subscription.status !== 'cancelled'"
