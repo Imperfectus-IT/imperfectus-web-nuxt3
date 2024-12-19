@@ -43,20 +43,6 @@ export default defineNuxtConfig({
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     },
   },
-  // nitro: {
-  //   devProxy: {
-  //     '/api': {
-  //       target: process.env.STRAPI_URL,
-  //       changeOrigin: true,
-  //       prependPath: true,
-  //       pathRewrite: { '^/api': '' },
-  //     },
-  //     '/uploads': {
-  //       target: process.env.STRAPI_URL,
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
   hooks: {
     'pages:extend'(pages) {
       pages.push(

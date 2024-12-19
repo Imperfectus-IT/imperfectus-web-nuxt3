@@ -1,14 +1,9 @@
 <template>
   <Panel
     v-model:collapsed="isCollapsed"
-    :toggleable="true"
     :pt="{
       header: ({ props, state }) => ({
-        class: [
-          'rounded-t-lg py-3 px-5 flex justify-between',
-          { 'border-[1px] rounded-lg': state.d_collapsed },
-          { 'border-[1px] border-b-0': !state.d_collapsed },
-        ],
+        class: 'rounded-t-lg py-3 px-5 flex justify-between',
       }),
     }"
   >
@@ -52,6 +47,13 @@
             {{ preselectedPickUpPoint?.city }} {{ preselectedPickUpPoint?.postcode }}
           </p>
         </div>
+        <Button
+          v-if="isCollapsed"
+          outlined
+          class="mt-3 !px-6 !py-2"
+          :label="$t('admin.order.edit')"
+          @click.prevent="isCollapsed = false"
+        />
       </div>
     </template>
     <p class="text-[16px] font-solina-extended-medium mr-4 leading-7">
@@ -144,7 +146,7 @@ const { executeGetCorreosPickUpPoints } = useGetCorreosPickUpPoints()
 const isCollapsed = ref<boolean>(true)
 const displayPickUpPoints = ref<boolean>(false)
 
-const coveragesOptions: CoverageOption[] = Object.values(ALL_COVERAGES).filter(coverage => props.availableCoverages.includes(coverage.value)).sort((coverageA, coverageB) => props.availableCoverages.indexOf(coverageA.value) - props.availableCoverages.indexOf(coverageB.value));
+const coveragesOptions: CoverageOption[] = Object.values(ALL_COVERAGES).filter(coverage => props.availableCoverages.includes(coverage.value)).sort((coverageA, coverageB) => props.availableCoverages.indexOf(coverageA.value) - props.availableCoverages.indexOf(coverageB.value))
 const selectedCoverage = ref<SubscriptionCoverage>({
   shippingCoverage: coveragesOptions.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value as string,
   shippingService: props.subscriptionShippingCoverage.shippingService,
@@ -167,17 +169,17 @@ onMounted(async () => {
 const getSelectedPickUpPoint = async () => {
   pickUpPoints.value = selectedCoverage.value.shippingCoverage === ALL_COVERAGES.SEUR.value
     ? await executeGetSeurPickUpPoints(props.postcode)
-    : await executeGetCorreosPickUpPoints(props.postcode);
-  preselectedPickUpPoint.value = pickUpPoints.value.filter(pickUpPoint => pickUpPoint.id === preselectedPickUpPointId.value || selectedCoverage.value.shippingOffice)[0] as PickUpPoint;
+    : await executeGetCorreosPickUpPoints(props.postcode)
+  preselectedPickUpPoint.value = pickUpPoints.value.filter(pickUpPoint => pickUpPoint.id === preselectedPickUpPointId.value || selectedCoverage.value.shippingOffice)[0] as PickUpPoint
   displayPickUpPoints.value = true
 }
 
 watch(selectedCoverage, async (newValue, oldValue) => {
-  const { shippingCoverage, shippingService } = newValue;
-  const oldShippingService = oldValue.shippingService;
+  const { shippingCoverage, shippingService } = newValue
+  const oldShippingService = oldValue.shippingService
   if (shippingCoverage === ALL_COVERAGES.SEUR.value) {
-    pickUpPoints.value = await executeGetSeurPickUpPoints(props.postcode);
-    selectedCoverage.value.shippingService = ALLSERVICES.PICK_UP_POINT;
+    pickUpPoints.value = await executeGetSeurPickUpPoints(props.postcode)
+    selectedCoverage.value.shippingService = ALLSERVICES.PICK_UP_POINT
     displayPickUpPoints.value = true
   }
   else if (shippingCoverage === ALL_COVERAGES.CORREOSEXPRESS.value) {
@@ -189,12 +191,14 @@ watch(selectedCoverage, async (newValue, oldValue) => {
     selectedCoverage.value.shippingOffice = null
     pickUpPoints.value = []
     displayPickUpPoints.value = false
+    preselectedPickUpPoint.value = null
   }
   else {
     selectedCoverage.value.shippingService = null
     selectedCoverage.value.shippingOffice = null
     pickUpPoints.value = []
     displayPickUpPoints.value = false
+    preselectedPickUpPoint.value = null
   }
 }, { deep: true })
 
