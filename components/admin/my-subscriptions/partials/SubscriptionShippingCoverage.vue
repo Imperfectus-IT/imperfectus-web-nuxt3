@@ -149,7 +149,6 @@ const displayPickUpPoints = ref<boolean>(false)
 const coveragesOptions = ref<CoverageOption[]>([])
 const setCoverageOptions = () => {
   coveragesOptions.value = Object.values(ALL_COVERAGES).filter(coverage => props.availableCoverages.includes(coverage.value)).sort((coverageA, coverageB) => props.availableCoverages.indexOf(coverageA.value) - props.availableCoverages.indexOf(coverageB.value))
-  console.log(coveragesOptions.value)
 }
 const selectedCoverage = ref<SubscriptionCoverage>({
   shippingCoverage: coveragesOptions.value.find(coverage => props.subscriptionShippingCoverage.shippingCoverage === coverage.value)?.value as string,
@@ -180,7 +179,6 @@ onMounted(async () => {
 })
 
 watch(() => props.availableCoverages, () => {
-  console.log('hola')
   setCoverageOptions()
 })
 

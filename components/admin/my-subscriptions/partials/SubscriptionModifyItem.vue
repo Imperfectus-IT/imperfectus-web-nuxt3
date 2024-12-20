@@ -57,7 +57,6 @@ const displayEditItem = (itemId: number) => {
 
 const handleSave = (updateSubscriptionItemData: updateSubscriptionItemPayload) => {
   emits('save-modify-item', updateSubscriptionItemData)
-  console.log('updateSubscriptionItemData', updateSubscriptionItemData)
   selectedItemId.value = null
 }
 

@@ -1,6 +1,13 @@
 <template>
   <Calendar
     inline
+    :pt="{
+      panel: '!p-0',
+    }"
+    :pt-options="{
+      mergeProps: true,
+      mergeSections: true,
+    }"
   >
     <template #date="slotProps">
       <div
