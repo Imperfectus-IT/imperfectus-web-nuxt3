@@ -1949,7 +1949,7 @@ export default {
   'loginForm.forgotPassword': 'Has oblidat la contrasenya?',
   'loginForm.errorMessage':
         'El correu electrònic i/o la contrasenya són incorrectes',
-  'loginForm.buttonGoogleLogin': 'Iniciar sesión con Google',
+  'loginForm.buttonGoogleLogin': 'Inicia sessió amb Google',
 
   // Social Provider
   'socialProvider.redirect': 'Carregant...',

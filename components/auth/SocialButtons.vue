@@ -11,11 +11,9 @@ const handleClick = () => {
 
 <template>
   <div class="flex justify-center">
-    <!--    <NuxtLink :to="googleConnectUrl"> -->
     <GoogleLoginButton
       :label="googleLabel"
       @click="handleClick"
     />
-    <!--    </NuxtLink> -->
   </div>
 </template>
