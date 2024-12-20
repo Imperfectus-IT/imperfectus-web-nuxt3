@@ -9,6 +9,7 @@ export default defineNuxtRouteMiddleware((to, _from) => {
     useCookie('redirect', { path: '/' }).value = to.fullPath
     console.log('REDIRECT TO:', route.fullPath)
     console.log(useCookie('redirect', { path: '/' }).value)
+    user.value = { email: 'wrong'}
     return navigateTo(route.fullPath)
   }
 })
