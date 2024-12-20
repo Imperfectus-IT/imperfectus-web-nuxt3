@@ -40,32 +40,30 @@ const redirectToAction = (action: string) => {
 }
 
 // Google Authentication Callback
-const googleCallback = async () => {
+const googleCallback = async (): Promise<{ jwt: string, user: StrapiUser }> => {
   return await client('/auth/google/callback', {
     method: 'GET',
     query: { access_token: route.query.access_token },
   })
 }
 
-// Lifecycle Hook
 onMounted(async () => {
   try {
-    const response = await googleCallback()
+    const response: { jwt: string, user: StrapiUser } = await googleCallback()
     setToken(response.jwt)
     const user = useStrapiUser()
     user.value = response.user
-    console.log('User onredirect!', user)
   }
   catch (error) {
     console.error('Error', error)
   }
-  // Redirect logic
   const url = useCookie('redirect').value
-  console.log('Before router push')
   router.push(`${url}`)
 })
 </script>
 
 <template>
-  Loading......
+  <p class="mt-20 text-center animate-bounce ">
+    {{ $t('socialProvider.redirect') }}
+  </p>
 </template>
