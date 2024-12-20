@@ -53,7 +53,7 @@ const { impactMetrics } = useMetricsState()
   <div class="xl:w-full">
     <Introduction :user="user" />
     <ImagesAndData
-      v-if="user && user.totalKgsRescued"
+      v-if="user"
       :total-kgs="impactMetrics.totalRescuedKgs"
       :kgs="user.totalKgsRescued"
     />

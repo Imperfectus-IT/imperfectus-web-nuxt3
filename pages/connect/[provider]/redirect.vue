@@ -50,15 +50,11 @@ const googleCallback = async () => {
 
 // Lifecycle Hook
 onMounted(async () => {
-  const { jwt } = await googleCallback()
-  setToken(jwt)
+  const response = await googleCallback()
+  console.log('response', response)
+  setToken(response.jwt)
   // Redirect logic
-  if (redirectProvider.value) {
-    redirectToAction(redirectProvider.value)
-  }
-  else {
-    redirectToAction(redirectPaths.ADMIN)
-  }
+  router.push('/mi-cuenta')
 })
 </script>
 
