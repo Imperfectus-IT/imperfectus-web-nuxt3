@@ -41,7 +41,6 @@ const redirectToAction = (action: string) => {
 
 // Google Authentication Callback
 const googleCallback = async () => {
-  console.log('call google callback')
   return await client('/auth/google/callback', {
     method: 'GET',
     query: { access_token: route.query.access_token },
@@ -50,11 +49,20 @@ const googleCallback = async () => {
 
 // Lifecycle Hook
 onMounted(async () => {
-  const response = await googleCallback()
-  console.log('response', response)
-  setToken(response.jwt)
+  try {
+    const response = await googleCallback()
+    setToken(response.jwt)
+    const user = useStrapiUser()
+    user.value = response.user
+    console.log('User onredirect!', user)
+  }
+  catch (error) {
+    console.error('Error', error)
+  }
   // Redirect logic
-  router.push('/mi-cuenta')
+  const url = useCookie('redirect').value
+  console.log('Before router push')
+  router.push(`${url}`)
 })
 </script>
 

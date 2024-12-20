@@ -15,6 +15,6 @@
 const { user } = useUserState()
 const { executeGetUser } = useGetUser()
 onMounted(async () => {
-  !user.value.id ? await executeGetUser() : null
+  !user.value?.id ? await executeGetUser() : null
 })
 </script>
